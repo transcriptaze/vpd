@@ -1,11 +1,21 @@
 package httpd
 
 import (
+	"fmt"
 	"io/fs"
 	"net/http"
+	"os"
+
+	"github.com/twystd/vcv-panel-designer/log"
 )
 
-func Run() {
+var debug = false
+
+func SetDebug(b bool) {
+	debug = b
+}
+
+func Run(config map[string]any) {
 	run(os.DirFS("../scms-www/html"))
 }
 
@@ -32,4 +42,34 @@ func run(html fs.FS) {
 
 	infof("HTTPD", "listening on port %v", port)
 	fatalf("HTTPD", "%v", http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+}
+
+func debugf(tag string, format string, values ...interface{}) {
+	f := fmt.Sprintf("%-8v %v", tag, format)
+
+	log.Debugf(f, values...)
+}
+
+func infof(tag string, format string, values ...interface{}) {
+	f := fmt.Sprintf("%-8v %v", tag, format)
+
+	log.Infof(f, values...)
+}
+
+func warnf(tag string, format string, values ...interface{}) {
+	f := fmt.Sprintf("%-8v %v", tag, format)
+
+	log.Warnf(f, values...)
+}
+
+func errorf(tag string, format string, values ...interface{}) {
+	f := fmt.Sprintf("%-8v %v", tag, format)
+
+	log.Errorf(f, values...)
+}
+
+func fatalf(tag string, format string, values ...interface{}) {
+	f := fmt.Sprintf("%-8v %v", tag, format)
+
+	log.Fatalf(f, values...)
 }

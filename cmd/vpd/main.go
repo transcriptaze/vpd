@@ -1,11 +1,14 @@
 package main
 
 import (
-	"embed"
+	_ "embed"
 	"encoding/json"
+	"flag"
 	"fmt"
+	"log"
+	"os"
 
-	"github.com/twystd/vcv-panel-designer/vpd/httpd"
+	"github.com/twystd/vcv-panel-designer/httpd"
 )
 
 //go:embed config.json
@@ -40,7 +43,7 @@ func main() {
 		case "config":
 			if bytes, err := os.ReadFile(options.conf); err != nil {
 				log.Fatalf("%v", err)
-			} else if err := toml.Unmarshal(bytes, &config); err != nil {
+			} else if err := json.Unmarshal(bytes, &config); err != nil {
 				log.Fatalf("invalid configuration '%v' (%v)", options.conf, err)
 			}
 		}
