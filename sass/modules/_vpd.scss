@@ -1,0 +1,89 @@
+@import '../base/_default';
+@import '../base/_fonts';
+
+:root {
+  --background: #222222;
+}
+
+* { 
+  background: transparent;
+  border: none;
+  margin: 0px; 
+  padding: 0px; 
+  box-sizing: border-box;
+  font-family: "Lato";
+}
+
+html { 
+  height: 100%;
+}
+
+body { 
+  background: var(--background);
+  background-image: url("../images/backgrounds/p6.webp");
+  background-blend-mode: hard-light;
+
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  #logo {
+    height: 80px;
+  }  
+}
+
+main {
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  display: flex;
+  justify-content: center;
+  column-gap: 64px;
+
+  div.panel {
+    width: fit-content;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    border-radius: 4px;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  #light {
+    background: $medium-gray;  
+  }
+
+  #dark {
+    background: $gray;  
+  }
+}
+
+footer {
+  background: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  #command {
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    border: 1px solid $gray;
+    border-radius: 4px;
+  }
+}

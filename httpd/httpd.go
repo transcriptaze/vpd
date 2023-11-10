@@ -16,7 +16,7 @@ func SetDebug(b bool) {
 }
 
 func Run(config map[string]any) {
-	run(os.DirFS("../scms-www/html"))
+	run(os.DirFS("./html"))
 }
 
 func run(html fs.FS) {
