@@ -1,3 +1,3 @@
-module github.com/twystd/vcv-panel-designer
+module github.com/twystd/vcv-panel-designer/go
 
 go 1.21.0

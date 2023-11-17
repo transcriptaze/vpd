@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/twystd/vcv-panel-designer/log"
+	"github.com/twystd/vcv-panel-designer/go/log"
 )
 
 var debug = false

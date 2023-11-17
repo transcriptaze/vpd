@@ -8,7 +8,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/twystd/vcv-panel-designer/httpd"
+	"github.com/twystd/vcv-panel-designer/go/httpd"
 )
 
 //go:embed config.json
