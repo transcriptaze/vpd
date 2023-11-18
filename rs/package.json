@@ -1,0 +1,26 @@
+{
+  "name": "vpd",
+  "description": "VCV Panel Designer",
+  "version": "0.0.0",
+  "author": "twystd",
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twystd/vpd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twystd/vpd/issues"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.3.1",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}

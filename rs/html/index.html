@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>VCV Panel Designer</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta charset="UTF-8">
+    <link rel="icon"       href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/vpd.css">
+  </head>
+
+  <body>
+    <header>
+      <img id="logo" src="../images/logo.svg" draggable="false"></a>
+    </header>
+  
+    <main>
+      <div id="light" class="panel">
+        <img src="../images/panel-light.svg" draggable="false"></a>
+      </div>
+      <div id="dark" class="panel">
+        <img src="../images/panel-dark.svg" draggable="false"></a>
+      </div>
+    </main>
+  
+    <footer>
+      <input id="command" />
+      <textarea id="history" readonly></textarea>
+    </footer>
+
+    <!-- TEMPLATES -->
+  </body>
+
+  <!-- SCRIPTS -->
+  <script type="module">
+    import "/javascript/components/components.js"
+  </script>
+
+  <script type="module">
+    import { initialise } from "./javascript/VPD.js"
+
+    initialise()
+  </script>
+
+  <script type="module">
+    import init, { add } from '../wasm/vpd.js';
+
+    async function run() {
+      await init()
+
+      const result = add(1, 2)
+      console.log(`1 + 2 = ${result}`)
+      if (result !== 3)
+          throw new Error("wasm addition doesn't work!")
+      }
+
+      run()
+  </script>
+</html>
+
