@@ -1,5 +1,8 @@
 # TODO
 
+1. TTF fonts in SVG
+   https://vecta.io/blog/how-to-use-fonts-in-svg
+
 ## Notes
 
 1. https://github.com/danmarshall/google-font-to-svg-path
