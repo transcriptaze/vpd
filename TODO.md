@@ -9,3 +9,4 @@
 2. https://stackoverflow.com/questions/26594555/d3js-how-to-convert-svg-text-to-path
 3. https://www.npmjs.com/package/text-to-svg
 4. https://github.com/paulzi/svg-text-to-path
+5. https://codepen.io/grimen/pen/naENeK

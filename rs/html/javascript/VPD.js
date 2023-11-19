@@ -18,7 +18,7 @@ export function initialise () {
 }
 
 function woot () {
-  const img = document.querySelector('#light img')
+  const object = document.querySelector('#light object')
 
   fetch('/images/fonts.svg')
     .then((response) => {
@@ -29,9 +29,11 @@ function woot () {
       }
     })
     .then((blob) => {
-      URL.revokeObjectURL(img.src)
-      
-      img.src = URL.createObjectURL(blob)
+      const old = object.data
+      const url = URL.createObjectURL(blob)
+
+      URL.revokeObjectURL(old)
+      object.data = url
     })
     .catch(function (err) {
       console.error(`${err.message}`)

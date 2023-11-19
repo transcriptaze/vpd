@@ -7,50 +7,17 @@
      viewBox="0 0 45.72 128.5">
   <defs>
     <style>
-            @font-face{
-                font-family:"Roboto Condensed";
-                font-weight:normal;
-                font-style:normal;
-            }
-            @font-face{
-                font-family:"Open Sans";
-                font-weight:normal;
-                font-style:normal;
-            }
-
-            @font-face {
-                font-family: "Lato";
-                font-style: normal;
-                font-weight: bold;
-                src: url('../fonts/Lato-Bold.woff2');
-            }
-
-            @font-face {
-                font-family: "Lato";
-                font-style: normal;
-                font-weight: 700;
-                src: url('../fonts/Lato-Semibold.woff2');
-            }
-
-            @font-face {
-                font-family: "Lato";
-                font-style: normal;
-                font-weight: normal;
-                src: url('../fonts/Lato-Regular.woff2');
-            }
-
-            @font-face {
-                font-family: "Style Script";
-                font-style: normal;
-                font-weight: normal;
-                src: url('../fonts/StyleScript-Regular.ttf');
-            }
+        @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+        @import url("https://fonts.googleapis.com/css?family=Anonymous+Pro:400");
+        @import url("https://fonts.googleapis.com/css?family=Style+Script");
+        @import url("https://fonts.googleapis.com/css?family=Lato");
     </style>
   </defs>
   <g font-size="8px" text-anchor="middle">
-    <text font-family="Roboto Condensed" x="22.86" y="20">This is a Roboto Condensed font</text>
-    <text font-family="Open Sans" x="22.86" y="40">This is a Open Sans font</text>
-    <text font-family="Style Script" font-weight="normal" font-size="1em" x="22.86" y="60">Script</text>
-    <text font-family="Lato" font-weight="normal" font-size="1em" x="22.86" y="80">Lato</text>
+    <text font-family="Roboto Condensed" x="22.86" y="20">Roboto Condensed</text>
+    <text font-family="Open Sans"        x="22.86" y="40">Open Sans</text>
+    <text font-family="Style Script"     x="22.86" y="60">Script</text>
+    <text font-family="Lato"             x="22.86" y="80">Lato</text>
   </g>
 </svg>
