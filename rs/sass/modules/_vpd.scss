@@ -70,8 +70,11 @@ main {
   }
 
   #light {
-    background: $medium-gray;  
-    height: 128.5mm;
+    background: $light-gray;  
+
+    object {
+      height: 138.5mm;    
+    }
   }
 
   #dark {

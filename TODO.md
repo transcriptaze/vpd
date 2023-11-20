@@ -14,3 +14,5 @@
 5. https://codepen.io/grimen/pen/naENeK
 6. https://vecta.io/blog/how-to-use-fonts-in-svg
 7. https://github.com/opentypejs/opentype.js
+8. https://siraben.dev/2022/03/01/tree-sitter.html
+9. https://github.com/tree-sitter/tree-sitter/tree/master/lib/binding_rust

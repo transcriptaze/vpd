@@ -76,8 +76,10 @@ main div.panel {
   justify-content: center;
 }
 main #light {
-  background: #c0c0c0;
-  height: 128.5mm;
+  background: #e5e5e5;
+}
+main #light object {
+  height: 138.5mm;
 }
 main #dark {
   background: #a7a7a7;
