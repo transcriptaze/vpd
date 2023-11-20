@@ -1,13 +1,22 @@
+.PHONY: format
 .PHONY: sass
+.DEFAULT_GOAL = build
 
-sass: 
-	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
+format:
+	cargo fmt
 
-build:
+build: format
 	npx eslint --fix ./html/javascript/*.js
-# 	npx eslint --fix ./html/javascript/components/*.js
 	sass --no-source-map sass/themes:html/css
 	wasm-pack build --target web --out-dir html/wasm
 
+test:
+#	wasm-pack test --chrome --headlesss
+# 	cargo test --target wasm32-unknown-unknown
+	cargo test
+
 run:
 	python3 -m http.server 9876 -d html
+
+sass: 
+	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css

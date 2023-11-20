@@ -1,7 +1,8 @@
 # TODO
 
-1. TTF fonts in SVG
-   https://vecta.io/blog/how-to-use-fonts-in-svg
+- [x] TTF fonts in SVG
+- [ ] async
+
 
 ## Notes
 
@@ -10,3 +11,4 @@
 3. https://www.npmjs.com/package/text-to-svg
 4. https://github.com/paulzi/svg-text-to-path
 5. https://codepen.io/grimen/pen/naENeK
+6. https://vecta.io/blog/how-to-use-fonts-in-svg

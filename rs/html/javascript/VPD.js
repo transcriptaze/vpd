@@ -1,3 +1,5 @@
+import { parse, render } from '../wasm/vpd.js'
+
 export function initialise () {
   const input = document.getElementById('command')
 
@@ -8,34 +10,26 @@ export function initialise () {
     if (event.key === 'Enter') {
       event.preventDefault()
 
-      const cmd = input.value
-
-      if (cmd === 'woot') {
-        woot()
-      }
+      exec(input.value)
     }
   }
 }
 
-function woot () {
+function exec (cmd) {
+  try {
+    const v = parse(cmd)
+    console.log('>>>>>>>>>', v)
+    redraw()
+  } catch (err) {
+    console.error('>>>>>>>>>', err)
+  }
+}
+
+function redraw () {
   const object = document.querySelector('#light object')
+  const svg = render()
+  const blob = new Blob([svg], { type: 'image/svg+xml' })
 
-  fetch('/images/fonts.svg')
-    .then((response) => {
-      if (response.status === 200) {
-        return response.blob()
-      } else {
-        response.text().then((msg) => { throw new Error(msg) })
-      }
-    })
-    .then((blob) => {
-      const old = object.data
-      const url = URL.createObjectURL(blob)
-
-      URL.revokeObjectURL(old)
-      object.data = url
-    })
-    .catch(function (err) {
-      console.error(`${err.message}`)
-    })
+  URL.revokeObjectURL(object.data)
+  object.data = URL.createObjectURL(blob)
 }
