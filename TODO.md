@@ -2,6 +2,7 @@
 
 - [x] TTF fonts in SVG
 - [ ] async
+- [ ] text-to-path
 
 
 ## Notes
@@ -12,3 +13,4 @@
 4. https://github.com/paulzi/svg-text-to-path
 5. https://codepen.io/grimen/pen/naENeK
 6. https://vecta.io/blog/how-to-use-fonts-in-svg
+7. https://github.com/opentypejs/opentype.js
