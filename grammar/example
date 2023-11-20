@@ -1,0 +1,8 @@
+new module "woot" 1U 5H
+new param
+new input
+new output
+new label "qwerty"
+set
+move
+delete

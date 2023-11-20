@@ -39,7 +39,7 @@ function redraw () {
 function text2path () {
   const object = document.querySelector('#light object')
   const options = {
-    decimalPlaces: 3,
+    decimalPlaces: 3
   }
 
   fetch('/fonts/RobotoMono-Bold.ttf')
@@ -48,12 +48,12 @@ function text2path () {
     })
     .then((bytes) => {
       const text = 'θ'
-      const fontSize = points2mm(64) 
+      const fontSize = points2mm(64)
       const font = opentype.parse(bytes)
       const path = font.getPath(text, 0, 0, fontSize, {})
       const bounds = path.getBoundingBox()
       const advance = font.getAdvanceWidth(text, fontSize, options)
-      
+
       console.log('>>>>>>>>>', bounds)
       console.log('>>>>>>>>>', advance)
       const svg = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -67,13 +67,13 @@ function text2path () {
     <g id="theta">${path.toSVG()}</g>
   </defs>
   <rect x="0" y="0" width="45.72" height="128.5" fill="none" stroke="purple" stroke-width="0.25" />
-  <g transform="translate(${45.72/2 - advance/2},50)" fill="red">
+  <g transform="translate(${45.72 / 2 - advance / 2},50)" fill="red">
     <use href="#theta" />
     <rect fill="none" stroke="green" stroke-width="0.25" 
           x="${bounds.x1}" 
           y="${bounds.y1}" 
-          width="${bounds.x2-bounds.x1}" 
-          height="${bounds.y2-bounds.y1}"/>
+          width="${bounds.x2 - bounds.x1}" 
+          height="${bounds.y2 - bounds.y1}"/>
   </g>
 </svg>
 `
@@ -87,6 +87,6 @@ function text2path () {
     })
 }
 
-function points2mm(pts) {
-  return 25.4*pts/72
+function points2mm (pts) {
+  return 25.4 * pts / 72
 }
