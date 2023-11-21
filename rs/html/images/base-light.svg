@@ -54,8 +54,8 @@
 
   <g inkscape:groupmode="layer" inkscape:label="guidelines">
     <polygon points="-2.5,0 0,2.5 2.5,0 0,-2.5" class="origin" />
-    <rect x="0"    y="0"    width="45.72" height="128.5" class="outline"/>
-    <line x1="22.86" y1="-5"    x2="22.86" y2="138.5" class="guideline"/>
-    <line x1="-5"    y1="64.25" x2="50.72" y2="64.25" class="guideline"/>
+    <rect x="0" y="0" width="45.72" height="128.5" class="outline"/>
+    <line x1="0"  y1="-5" x2="0" y2="133.5" class="guideline"/>
+    <line x1="-5" y1="0"  x2="50.72" y2="0" class="guideline"/>
   </g>
 </svg>

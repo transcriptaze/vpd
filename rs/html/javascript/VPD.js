@@ -11,8 +11,8 @@ export function initialise () {
     if (event.key === 'Enter') {
       event.preventDefault()
 
-      // exec(input.value)
-      text2path()
+      _exec(input.value)
+      // text2path()
     }
   }
 }
@@ -36,7 +36,7 @@ function redraw () {
   object.data = URL.createObjectURL(blob)
 }
 
-function text2path () {
+function _text2path () {
   const object = document.querySelector('#light object')
   const options = {
     decimalPlaces: 3

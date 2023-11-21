@@ -17,7 +17,6 @@
     <main>
       <div id="light" class="panel">
         <object data="/images/base-light.svg" width="193" height="400"></object>
-        <!-- <img src="/images/panel-light.svg" draggable="false"></a> -->
       </div>
       <div id="dark" class="panel">
         <img src="/images/panel-dark.svg" draggable="false"></a>
@@ -38,16 +37,12 @@
   </script>
 
   <script type="module">
-    import { initialise } from "./javascript/VPD.js"
-
-    initialise()
-  </script>
-
-  <script type="module">
     import init from '../wasm/vpd.js';
+    import { initialise } from "./javascript/VPD.js"
 
     async function run() {
       await init()
+      initialise()
     }
 
     run()

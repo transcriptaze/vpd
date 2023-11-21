@@ -91,6 +91,7 @@ name = "vpd"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
+ "once_cell",
  "wasm-bindgen",
  "wasm-bindgen-test",
  "web-sys",
