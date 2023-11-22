@@ -1,3 +1,5 @@
+use tera::Context;
+use tera::Tera;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -16,34 +18,19 @@ pub fn new() -> Panel {
 #[wasm_bindgen]
 impl Panel {
     #[allow(non_snake_case)]
-    pub fn to_SVG(&self) -> String {
-        let svg = format!(
-            r#"<svg xmlns="http://www.w3.org/2000/svg"
-     xmlns:svg="http://www.w3.org/2000/svg"
-     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-     version="1.1"
-     width="{0}mm"
-     height="{1}mm"
-     viewBox="0 0 45.72 128.5">
-  <defs>
-    <style>
-        @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-        @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-        @import url("https://fonts.googleapis.com/css?family=Anonymous+Pro:400");
-        @import url("https://fonts.googleapis.com/css?family=Style+Script");
-        @import url("https://fonts.googleapis.com/css?family=Lato");
-    </style>
-  </defs>
-  <g font-size="8px" text-anchor="middle">
-    <text font-family="Roboto Condensed" x="22.86" y="20">Roboto Condensed</text>
-    <text font-family="Open Sans"        x="22.86" y="40">Open Sans</text>
-    <text font-family="Style Script"     x="22.86" y="60">ScriptThing</text>
-    <text font-family="Lato"             x="22.86" y="80">Latoley</text>
-  </g>
-</svg>"#,
-            self.width, self.height
-        );
+    pub fn to_SVG(&self) -> Result<String, JsValue> {
+        let template = include_bytes!("panel.svg");
+        let SVG = String::from_utf8_lossy(template);
+        let mut tera = Tera::default();
+        let mut context = Context::new();
 
-        return svg.to_string();
+        tera.add_raw_template("SVG", &SVG).unwrap();
+
+        context.insert("width", &format!("{:.2}", self.width));
+        context.insert("height", &format!("{:.1}", self.height));
+
+        let svg = tera.render("SVG", &context).unwrap();
+
+        return Ok(svg.to_string());
     }
 }

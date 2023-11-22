@@ -31,9 +31,12 @@ function redraw () {
   const object = document.querySelector('#light object')
   const svg = render()
   const blob = new Blob([svg], { type: 'image/svg+xml' })
+  const old = object.data
+  const url = URL.createObjectURL(blob)
 
-  URL.revokeObjectURL(object.data)
-  object.data = URL.createObjectURL(blob)
+  object.data = url
+
+  URL.revokeObjectURL(old)
 }
 
 function _text2path () {

@@ -32,7 +32,7 @@ pub fn parse(v: &str) -> Result<String, JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn render() -> String {
+pub fn render() -> Result<String, JsValue> {
     let state = STATE.lock().unwrap();
 
     return state.panel.to_SVG();
