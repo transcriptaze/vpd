@@ -1,23 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-      version="1.1"
-      width="{{width}}mm"
-      height="{{height}}mm"
-      viewBox="0 0 {{width}} {{height}}">
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     version="1.1"
+     width="{{svg_width}}mm"
+     height="{{svg_height}}mm"
+     viewBox="{{viewport_x}} {{viewport_y}} {{viewport_width}} {{viewport_height}}">
+
+  <style>
+   .border {
+       fill: none;
+       stroke: none;
+       stroke-width: 0.1;
+   }
+
+   .origin {
+       fill: none;
+       stroke: #00008b;
+       stroke-width: 0.25;
+   }
+
+   .outline {
+       fill: none;
+       stroke: cadetblue;
+       stroke-width: 0.125;
+   }
+
+   .guideline {
+       fill: none;
+       stroke: cadetblue;
+       stroke-width: 0.25;
+       stroke-dasharray: 1 1;
+   }
+  </style>
+
   <defs>
-    <style>
-      @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-      @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-      @import url("https://fonts.googleapis.com/css?family=Anonymous+Pro:400");
-      @import url("https://fonts.googleapis.com/css?family=Style+Script");
-      @import url("https://fonts.googleapis.com/css?family=Lato");
-    </style>
+    <linearGradient id="background">
+      <stop offset="0%"   stop-color="#ebebeb" />
+      <stop offset="100%" stop-color="#e1e1e1" />
+    </linearGradient>
   </defs>
-  <g font-size="8px" text-anchor="middle">
-    <text font-family="Roboto Condensed" x="22.86" y="20">Roboto Condensed</text>
-    <text font-family="Open Sans"        x="22.86" y="40">Open Sans</text>
-    <text font-family="Style Script"     x="22.86" y="60">Scripty</text>
-    <text font-family="Lato"             x="22.86" y="80">Latoli</text>
-    </g>
+
+  <rect x="{{viewport_x}}" y="{{viewport_y}}" width="{{viewport_width}}" height="{{viewport_height}}" class="border" />
+
+  <g inkscape:groupmode="layer" inkscape:label="components"></g>
+  <g inkscape:groupmode="layer" inkscape:label="background">
+    <rect x="0" y="0" width="45.72" height="128.5" fill="url(#background)" />
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="title"></g>
+  <g inkscape:groupmode="layer" inkscape:label="controls"></g>
+  <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="labels"></g>
+
+  <g inkscape:groupmode="layer" inkscape:label="guidelines">
+    <polygon points="-2.5,0 0,2.5 2.5,0 0,-2.5" class="origin" />
+    <rect x="0" y="0" width="{{panel_width}}" height="{{panel_height}}" class="outline"/>
+    <line x1="0"  y1="-5" x2="0" y2="133.5" class="guideline"/>
+    <line x1="-5" y1="0"  x2="50.72" y2="0" class="guideline"/>
+  </g>
 </svg>

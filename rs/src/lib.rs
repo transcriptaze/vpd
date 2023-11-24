@@ -1,17 +1,20 @@
+mod module;
 mod panel;
 mod utils;
 
 use once_cell::sync::Lazy;
+use serde;
+use serde_json;
 use std::sync::Mutex;
 use wasm_bindgen::prelude::*;
 
 pub struct State {
-    pub panel: panel::Panel,
+    pub module: module::Module,
 }
 
 static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     Mutex::new(State {
-        panel: panel::new(),
+        module: module::new(),
     })
 });
 
@@ -25,7 +28,11 @@ pub fn main() -> Result<(), JsValue> {
 #[wasm_bindgen]
 pub fn parse(v: &str) -> Result<String, JsValue> {
     if v == "woot" {
-        Ok("wooot".to_string())
+        let state = STATE.lock().unwrap();
+        let module = &state.module;
+        let serialized = serde_json::to_string(&module).unwrap();
+
+        Ok(serialized)
     } else {
         Err(JsValue::from("WTF?!?"))
     }
@@ -34,8 +41,10 @@ pub fn parse(v: &str) -> Result<String, JsValue> {
 #[wasm_bindgen]
 pub fn render() -> Result<String, JsValue> {
     let state = STATE.lock().unwrap();
+    let module = &state.module;
+    let panel = &module.light;
 
-    return state.panel.to_SVG();
+    return panel.to_SVG();
 }
 
 // #[cfg(test)]
