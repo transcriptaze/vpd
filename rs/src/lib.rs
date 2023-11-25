@@ -8,6 +8,16 @@ use serde_json;
 use std::sync::Mutex;
 use wasm_bindgen::prelude::*;
 
+macro_rules! console_log {
+    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
+}
+
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(s: &str);
+}
+
 pub struct State {
     pub module: module::Module,
 }
@@ -22,7 +32,22 @@ static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
 pub fn main() -> Result<(), JsValue> {
     utils::set_panic_hook();
 
+    console_log!("initialised");
     Ok(())
+}
+
+#[wasm_bindgen]
+pub fn restore(json: &str) -> Result<(), JsValue> {
+    let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
+
+    match rs {
+        Ok(m) => {
+            let mut state = STATE.lock().unwrap();
+            state.module = m;
+            Ok(())
+        }
+        Err(e) => Err(JsValue::from(format!("{}", e))),
+    }
 }
 
 #[wasm_bindgen]

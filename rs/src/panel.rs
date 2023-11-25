@@ -1,10 +1,10 @@
-use super::serde::Serialize;
+use super::serde::{Deserialize, Serialize};
 
 use tera::Context;
 use tera::Tera;
 use wasm_bindgen::prelude::*;
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Panel {
     width: f32,
     height: f32,

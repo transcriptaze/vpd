@@ -1,7 +1,9 @@
 import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
-import { parse, render } from '../wasm/vpd.js'
+import { restore, parse, render } from '../wasm/vpd.js'
 
-export function initialise () {
+const PROJECT = 'project'
+
+export async function initialise () {
   const input = document.getElementById('command')
 
   input.focus()
@@ -15,15 +17,26 @@ export function initialise () {
       // text2path()
     }
   }
+
+  // ... restore project
+  try {
+    const json = retrieve(PROJECT)
+
+    if (json != null) {
+      restore(json)
+    }
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 function _exec (cmd) {
   try {
-    const v = parse(cmd)
-    console.log('>>>>>>>>>', v)
+    const json = parse(cmd)
+    store(PROJECT, json)
     redraw()
   } catch (err) {
-    console.error('>>>>>>>>>', err)
+    console.error(err)
   }
 }
 
@@ -88,6 +101,20 @@ function _text2path () {
     .catch((err) => {
       console.error(err)
     })
+}
+
+function store (tag, json) {
+  localStorage.setItem(tag, json)
+}
+
+function retrieve (tag) {
+  try {
+    return localStorage.getItem(tag)
+  } catch (err) {
+    console.error(err)
+  }
+
+  return null
 }
 
 function points2mm (pts) {

@@ -1,7 +1,7 @@
 use super::panel;
-use super::serde::Serialize;
+use super::serde::{Deserialize, Serialize};
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Module {
     pub name: Box<str>,
     pub light: panel::Panel,
