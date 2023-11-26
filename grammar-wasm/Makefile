@@ -6,7 +6,7 @@ format:
 	cargo fmt
 
 build: format
-	wasm-pack build --target web --out-dir ../html/wasm
+	wasm-pack build --target web --out-dir ../../html/wasm/grammar
 
 test:
 #	wasm-pack test --chrome --headlesss

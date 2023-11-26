@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "tree_sitter_VPD_binding",
+      "target_name": "tree_sitter_vpd_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "src"

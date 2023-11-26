@@ -1,13 +1,14 @@
 import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
-import { restore, parse, render } from '../wasm/vpd.js'
+import { parse } from './grammar.js'
+import { exec, restore, render } from '../wasm/vpd/vpd.js'
 
-const PROJECT = 'project'
+const PROJECT = 'projects.current'
 
 export async function initialise () {
   const input = document.getElementById('command')
 
   input.focus()
-  input.value = 'woot'
+  input.value = 'new module "woot" 1U 5H'
 
   input.onkeypress = (event) => {
     if (event.key === 'Enter') {
@@ -32,7 +33,10 @@ export async function initialise () {
 
 function _exec (cmd) {
   try {
-    const json = parse(cmd)
+    const command = parse(cmd)
+    const json = exec(command)
+
+    console.log(json)
     store(PROJECT, json)
     redraw()
   } catch (err) {

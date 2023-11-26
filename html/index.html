@@ -33,19 +33,26 @@
 
   <!-- SCRIPTS -->
   <script type="module">
-    import "/javascript/components/components.js"
+    import "./javascript/components/components.js"
   </script>
 
+  <script src="./wasm/grammar/tree-sitter.js"></script>
+
   <script type="module">
-    import init from '../wasm/vpd.js';
-    import { initialise } from "./javascript/VPD.js"
+    import { default as vpd_init } from './wasm/vpd/vpd.js'
+    import * as VPD from "./javascript/VPD.js"
+    import * as grammar from "./javascript/grammar.js"
 
-    async function run() {
-      await init()
-      initialise()
-    }
+    (async () => {
+      const Parser = window.TreeSitter
 
-    run()
+      await vpd_init()
+      await Parser.init()
+      await grammar.init(Parser)
+
+      VPD.initialise()
+    })()
+
   </script>
 </html>
 

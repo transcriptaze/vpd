@@ -8,7 +8,8 @@ format:
 
 build: format
 	sass --no-source-map sass/themes:html/css
-	cd rs && wasm-pack build --target web --out-dir ../html/wasm
+	cd rs/vpd     && wasm-pack build --target web --out-dir ../../html/wasm/vpd
+# 	cd rs/grammar && wasm-pack build --target web --out-dir ../../html/wasm/grammar
 
 run:
 	python3 -m http.server 9876 -d html
