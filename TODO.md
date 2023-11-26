@@ -1,8 +1,7 @@
 # TODO
 
 - [x] TTF fonts in SVG
-- [ ] async
-- [ ] text-to-path
+- [x] text-to-path
 
 
 ## Notes
