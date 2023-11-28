@@ -34,11 +34,13 @@ export async function initialise () {
 function _exec (cmd) {
   try {
     const command = parse(cmd)
-    const json = exec(command)
 
-    console.log(json)
-    store(PROJECT, json)
-    redraw()
+    if (command != null) {
+      const serialized = exec(JSON.stringify(command))
+
+      store(PROJECT, serialized)
+      redraw()
+    }
   } catch (err) {
     console.error(err)
   }
