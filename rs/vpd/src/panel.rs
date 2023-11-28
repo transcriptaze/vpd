@@ -29,15 +29,19 @@ pub fn new() -> Panel {
 impl Panel {
     #[allow(non_snake_case)]
     pub fn to_SVG(&self) -> Result<String, JsValue> {
-        let template = include_bytes!("panel.svg");
-        let SVG = String::from_utf8_lossy(template);
+        let panel = String::from_utf8_lossy(include_bytes!("templates/panel.svg"));
+        let styles = String::from_utf8_lossy(include_bytes!("templates/styles.svg"));
+        let guidelines = String::from_utf8_lossy(include_bytes!("templates/guidelines.svg"));
+
         let mut tera = Tera::default();
         let mut context = Context::new();
 
         let svg = self.svg();
         let viewport = self.viewport();
 
-        tera.add_raw_template("SVG", &SVG).unwrap();
+        tera.add_raw_template("panel.svg", &panel).unwrap();
+        tera.add_raw_template("styles.svg", &styles).unwrap();
+        tera.add_raw_template("guidelines.svg", &guidelines).unwrap();
 
         context.insert("svg_width", &format!("{:.2}", svg.width));
         context.insert("svg_height", &format!("{:.1}", svg.height));
@@ -50,7 +54,7 @@ impl Panel {
         context.insert("panel_width", &format!("{:.2}", self.width));
         context.insert("panel_height", &format!("{:.1}", self.height));
 
-        let svg = tera.render("SVG", &context).unwrap();
+        let svg = tera.render("panel.svg", &context).unwrap();
 
         Ok(svg.to_string())
     }

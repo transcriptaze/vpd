@@ -6,32 +6,7 @@
      height="{{svg_height}}mm"
      viewBox="{{viewport_x}} {{viewport_y}} {{viewport_width}} {{viewport_height}}">
 
-  <style>
-   .border {
-       fill: none;
-       stroke: none;
-       stroke-width: 0.1;
-   }
-
-   .origin {
-       fill: none;
-       stroke: #00008b;
-       stroke-width: 0.25;
-   }
-
-   .outline {
-       fill: none;
-       stroke: cadetblue;
-       stroke-width: 0.125;
-   }
-
-   .guideline {
-       fill: none;
-       stroke: cadetblue;
-       stroke-width: 0.25;
-       stroke-dasharray: 1 1;
-   }
-  </style>
+  {% include "styles.svg" %}
 
   <defs>
     <linearGradient id="background">
@@ -52,10 +27,5 @@
   <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
   <g inkscape:groupmode="layer" inkscape:label="labels"></g>
 
-  <g inkscape:groupmode="layer" inkscape:label="guidelines">
-    <polygon points="-2.5,0 0,2.5 2.5,0 0,-2.5" class="origin" />
-    <rect x="0" y="0" width="{{panel_width}}" height="{{panel_height}}" class="outline"/>
-    <line x1="0"  y1="-5" x2="0" y2="133.5" class="guideline"/>
-    <line x1="-5" y1="0"  x2="50.72" y2="0" class="guideline"/>
-  </g>
+  {% include "guidelines.svg" %}
 </svg>

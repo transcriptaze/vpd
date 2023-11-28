@@ -37,16 +37,22 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(v: &str) -> Result<String, JsValue> {
-    if v == "zoot" {
+pub fn exec(_v: &str) -> Result<String, JsValue> {
         let state = STATE.lock().unwrap();
         let module = &state.module;
         let serialized = serde_json::to_string(&module).unwrap();
 
         Ok(serialized)
-    } else {
-        Err(JsValue::from("WTF?!?"))
-    }
+
+    // if v == "zoot" {
+    //     let state = STATE.lock().unwrap();
+    //     let module = &state.module;
+    //     let serialized = serde_json::to_string(&module).unwrap();
+// 
+    //     Ok(serialized)
+    // } else {
+    //     Err(JsValue::from("WTF?!?"))
+    // }
 }
 
 #[wasm_bindgen]

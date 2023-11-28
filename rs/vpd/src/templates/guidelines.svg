@@ -1,0 +1,6 @@
+  <g inkscape:groupmode="layer" inkscape:label="guidelines">
+    <polygon points="-2.5,0 0,2.5 2.5,0 0,-2.5" class="origin" />
+    <rect x="0" y="0" width="{{panel_width}}" height="{{panel_height}}" class="outline"/>
+    <line x1="0"  y1="-5" x2="0" y2="133.5" class="guideline"/>
+    <line x1="-5" y1="0"  x2="50.72" y2="0" class="guideline"/>
+  </g>

@@ -1,0 +1,26 @@
+  <style>
+   .border {
+       fill: none;
+       stroke: none;
+       stroke-width: 0.1;
+   }
+
+   .origin {
+       fill: none;
+       stroke: #00008b;
+       stroke-width: 0.25;
+   }
+
+   .outline {
+       fill: none;
+       stroke: cadetblue;
+       stroke-width: 0.125;
+   }
+
+   .guideline {
+       fill: none;
+       stroke: cadetblue;
+       stroke-width: 0.25;
+       stroke-dasharray: 1 1;
+   }
+  </style>
