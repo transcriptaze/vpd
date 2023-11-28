@@ -26,12 +26,14 @@ pub fn new() -> Panel {
     };
 }
 
+// TODO include_dir
+//      https://crates.io/crates/include_dir
 impl Panel {
     #[allow(non_snake_case)]
     pub fn to_SVG(&self) -> Result<String, JsValue> {
-        let panel = String::from_utf8_lossy(include_bytes!("templates/panel.svg"));
-        let styles = String::from_utf8_lossy(include_bytes!("templates/styles.svg"));
-        let guidelines = String::from_utf8_lossy(include_bytes!("templates/guidelines.svg"));
+        let panel = include_str!("templates/panel.svg");
+        let styles = include_str!("templates/styles.svg");
+        let guidelines = include_str!("templates/guidelines.svg");
 
         let mut tera = Tera::default();
         let mut context = Context::new();
