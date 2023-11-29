@@ -8,8 +8,8 @@ format:
 build: format
 	wasm-pack build --target web --out-dir ../../html/wasm/vpd
 
-test:
+test: format
 #	wasm-pack test --chrome --headlesss
 # 	cargo test --target wasm32-unknown-unknown
-	cargo test
+	cargo test -- --nocapture
 

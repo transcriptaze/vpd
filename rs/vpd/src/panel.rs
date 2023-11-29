@@ -41,9 +41,9 @@ impl Panel {
         let svg = self.svg();
         let viewport = self.viewport();
 
-        tera.add_raw_template("panel.svg", &panel).unwrap();
-        tera.add_raw_template("styles.svg", &styles).unwrap();
-        tera.add_raw_template("guidelines.svg", &guidelines).unwrap();
+        tera.add_raw_template("panel", &panel).unwrap();
+        tera.add_raw_template("styles", &styles).unwrap();
+        tera.add_raw_template("guidelines", &guidelines).unwrap();
 
         context.insert("svg_width", &format!("{:.2}", svg.width));
         context.insert("svg_height", &format!("{:.1}", svg.height));
@@ -56,7 +56,7 @@ impl Panel {
         context.insert("panel_width", &format!("{:.2}", self.width));
         context.insert("panel_height", &format!("{:.1}", self.height));
 
-        let svg = tera.render("panel.svg", &context).unwrap();
+        let svg = tera.render("panel", &context).unwrap();
 
         Ok(svg.to_string())
     }

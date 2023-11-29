@@ -6,7 +6,7 @@
      height="{{svg_height}}mm"
      viewBox="{{viewport_x}} {{viewport_y}} {{viewport_width}} {{viewport_height}}">
 
-  {% include "styles.svg" %}
+  {% include "styles" %}
 
   <defs>
     <linearGradient id="background">
@@ -27,5 +27,5 @@
   <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
   <g inkscape:groupmode="layer" inkscape:label="labels"></g>
 
-  {% include "guidelines.svg" %}
+  {% include "guidelines" %}
 </svg>

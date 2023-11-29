@@ -1,3 +1,4 @@
+mod command;
 mod module;
 mod panel;
 mod utils;
@@ -37,22 +38,20 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(_v: &str) -> Result<String, JsValue> {
-        let state = STATE.lock().unwrap();
-        let module = &state.module;
-        let serialized = serde_json::to_string(&module).unwrap();
+pub fn exec(json: &str) -> Result<String, JsValue> {
+    match command::new(json) {
+        Ok(cmd) => {
+            console_log!(">>>>>>>>>>>>>>> {:?}", cmd);
 
-        Ok(serialized)
+            let state = STATE.lock().unwrap();
+            let module = &state.module;
+            let serialized = serde_json::to_string(&module).unwrap();
 
-    // if v == "zoot" {
-    //     let state = STATE.lock().unwrap();
-    //     let module = &state.module;
-    //     let serialized = serde_json::to_string(&module).unwrap();
-// 
-    //     Ok(serialized)
-    // } else {
-    //     Err(JsValue::from("WTF?!?"))
-    // }
+            Ok(serialized)
+        }
+
+        Err(e) => Err(JsValue::from(format!("{}", e))),
+    }
 }
 
 #[wasm_bindgen]
