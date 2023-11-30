@@ -41,10 +41,11 @@ pub fn main() -> Result<(), JsValue> {
 pub fn exec(json: &str) -> Result<String, JsValue> {
     match command::new(json) {
         Ok(cmd) => {
-            console_log!(">>>>>>>>>>>>>>> {:?}", cmd);
+            let mut state = STATE.lock().unwrap();
+            let module = &mut state.module;
 
-            let state = STATE.lock().unwrap();
-            let module = &state.module;
+            cmd.apply(module);
+
             let serialized = serde_json::to_string(&module).unwrap();
 
             Ok(serialized)

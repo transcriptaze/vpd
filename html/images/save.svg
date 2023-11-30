@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg" 
+     version="1.1"
+     x="0px"
+     y="0px"
+     width="32px"
+     height="32px"
+     viewBox="0 0 32 32"
+     enable-background="new 0 0 32 32">
+  <defs></defs>
+  <g>
+    <rect fill="none" width="32" height="32" id="rect3203" />
+  </g>
+  <path d="M 26,18 H 6 v 2 h 20 v -2 z m 0,4 H 6 v 2 h 20 v -2 z m 0,4 H 6 v 2 H 26 V 26 z M 26,0 H 24 V 13 H 8 V 0 H 0 V 32 H 32 V 6 L 26,0 z m 2,30 H 4 V 16 H 28 V 30 z M 22,2 h -4 v 9 h 4 V 2 z" />
+</svg>

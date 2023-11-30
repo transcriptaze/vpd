@@ -1,5 +1,7 @@
-use super::serde::{Deserialize, Serialize};
 use std::error::Error;
+
+use super::module::Module;
+use super::serde::{Deserialize, Serialize};
 
 #[derive(Debug)]
 pub struct Command {}
@@ -38,6 +40,12 @@ pub fn new(json: &str) -> Result<Command, Box<dyn Error>> {
         }
 
         Err(e) => Err(format!("{:?}", e).into()),
+    }
+}
+
+impl Command {
+    pub fn apply(&self, m: &mut Module) {
+        m.name = "zoot".into();
     }
 }
 
