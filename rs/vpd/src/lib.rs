@@ -41,6 +41,8 @@ pub fn main() -> Result<(), JsValue> {
 pub fn exec(json: &str) -> Result<String, JsValue> {
     match command::new(json) {
         Ok(cmd) => {
+            // console_log!(">>>>>>>> {:?}", cmd);
+
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;
 
