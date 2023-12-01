@@ -1,6 +1,6 @@
 import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
 import { parse } from './grammar.js'
-import { exec, restore, render } from '../wasm/vpd/vpd.js'
+import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
 
 const PROJECT = 'projects.current'
 
@@ -14,7 +14,7 @@ export async function initialise () {
     if (event.key === 'Enter') {
       event.preventDefault()
 
-      _exec(input.value)
+      execute(input.value)
       // text2path()
     }
   }
@@ -31,7 +31,18 @@ export async function initialise () {
   }
 }
 
-function _exec (cmd) {
+export function onSave () {
+  const json = serialize('project')
+  const blob = new Blob([json], { type: 'application/json' })
+
+  save(blob)
+}
+
+export function onExport () {
+  console.log('export')
+}
+
+function execute (cmd) {
   try {
     const command = parse(cmd)
 
@@ -123,6 +134,47 @@ function retrieve (tag) {
   }
 
   return null
+}
+
+async function save (blob) {
+  const filename = 'vpd.json'
+
+  if (window.showSaveFilePicker) {
+    saveWithPicker(blob, filename)
+  } else {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.querySelector('a#save')
+
+    anchor.href = url
+    anchor.download = 'vpd.json'
+    anchor.click()
+
+    URL.revokeObjectURL(url)
+  }
+}
+
+async function saveWithPicker (blob, filename) {
+  try {
+    const options = {
+      suggestedName: filename,
+      types: [
+        {
+          description: 'VPD project file',
+          accept: { 'application/json': ['.json'] }
+        }
+      ]
+    }
+
+    const handle = await window.showSaveFilePicker(options)
+    const stream = await handle.createWritable()
+
+    await stream.write(blob)
+    await stream.close()
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      console.error(err)
+    }
+  }
 }
 
 function points2mm (pts) {

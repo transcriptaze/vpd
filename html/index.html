@@ -22,8 +22,9 @@
         <img src="./images/panel-dark.svg" draggable="false"></a>
       </div>
       <div class="controls">
-        <button><img src="./images/save.svg" /></button>
-        <button><img src="./images/download.svg" /></button>
+        <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
+        <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
+        <a id="save" href="" style="display:none" download></a>
       </div>
     </main>
   
@@ -56,6 +57,9 @@
 
       VPD.initialise()
     })()
+
+    window.onSave = VPD.onSave
+    window.onExport = VPD.onExport
 
   </script>
 </html>

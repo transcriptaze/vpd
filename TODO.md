@@ -1,7 +1,6 @@
 # TODO
 
-- [x] TTF fonts in SVG
-- [x] text-to-path
+https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 
 ## Notes

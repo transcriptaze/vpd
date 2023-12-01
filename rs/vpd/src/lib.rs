@@ -41,8 +41,6 @@ pub fn main() -> Result<(), JsValue> {
 pub fn exec(json: &str) -> Result<String, JsValue> {
     match command::new(json) {
         Ok(cmd) => {
-            // console_log!(">>>>>>>> {:?}", cmd);
-
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;
 
@@ -54,6 +52,19 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
         }
 
         Err(e) => Err(JsValue::from(format!("{}", e))),
+    }
+}
+
+#[wasm_bindgen]
+pub fn serialize(object: &str) -> Result<String, JsValue> {
+    if object == "project" {
+        let state = STATE.lock().unwrap();
+        let module = &state.module;
+        let serialized = serde_json::to_string_pretty(&module).unwrap();
+
+        Ok(serialized)
+    } else {
+        Err(JsValue::from(format!("unknown object {}", object)))
     }
 }
 
