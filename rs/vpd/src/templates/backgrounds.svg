@@ -1,0 +1,4 @@
+    <linearGradient id="background">
+      <stop offset="0%"   stop-color="#ebebeb" />
+      <stop offset="100%" stop-color="#e1e1e1" />
+    </linearGradient>

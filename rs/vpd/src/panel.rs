@@ -33,6 +33,7 @@ impl Panel {
     pub fn to_SVG(&self) -> Result<String, JsValue> {
         let panel = include_str!("templates/panel.svg");
         let styles = include_str!("templates/styles.svg");
+        let backgrounds = include_str!("templates/backgrounds.svg");
         let guidelines = include_str!("templates/guidelines.svg");
 
         let mut tera = Tera::default();
@@ -43,6 +44,7 @@ impl Panel {
 
         tera.add_raw_template("panel", &panel).unwrap();
         tera.add_raw_template("styles", &styles).unwrap();
+        tera.add_raw_template("backgrounds", &backgrounds).unwrap();
         tera.add_raw_template("guidelines", &guidelines).unwrap();
 
         context.insert("svg_width", &format!("{:.2}", svg.width));

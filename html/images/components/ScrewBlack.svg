@@ -1,0 +1,42 @@
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" 
+	 xmlns:svg="http://www.w3.org/2000/svg"
+	 x="0px" 
+	 y="0px" 
+	 width="15px" 
+	 height="14.99889px"
+	 viewBox="0 0 15 14.99889">
+  <defs>
+    <linearGradient id="ScrewBlack1" 
+    	            x1="518.99988" y1="-5410.3999" x2="531.99988" y2="-5410.3999" 
+    	            gradientTransform="matrix(0 1 -1 0 -5402.8999 -518)"
+    	            gradientUnits="userSpaceOnUse">
+      <stop offset="0.00559" style="stop-color:#303030"/>
+      <stop offset="1"       style="stop-color:#222222"/>
+    </linearGradient>
+
+    <linearGradient id="ScrewBlack2" 
+    	            x1="519.68744" y1="-5410.3999" x2="531.31134" y2="-5410.3999" 
+    	            gradientTransform="matrix(0 1 -1 0 -5402.8999 -518)"
+    	            gradientUnits="userSpaceOnUse" >
+      <stop offset="0.01118" style="stop-color:#636363" />
+      <stop offset="1"       style="stop-color:#2B2B2B" />
+	</linearGradient>
+
+    <linearGradient id="ScrewBlack3" 
+    	            x1="520.13452" y1="-5410.3999" x2="530.86426" y2="-5410.3999" 
+    	            gradientTransform="matrix(0 1 -1 0 -5402.8999 -518)"
+    	            gradientUnits="userSpaceOnUse" >
+      <stop  offset="0.01118" style="stop-color:#4C4C4C"/>
+      <stop  offset="1"       style="stop-color:#3B3B3B"/>
+    </linearGradient>
+  </defs>
+
+  <g>
+    <circle fill="url(#ScrewBlack1)" cx="7.5" cy="7.4999" r="6.5"/>
+	<circle fill="url(#ScrewBlack2)" cx="7.5" cy="7.49937" r="5.81194"/>
+	<circle fill="url(#ScrewBlack3)" cx="7.5" cy="7.49937" r="5.36487"/>
+	<path fill="#171717" 
+		  d="M10.96888,6.81044L9.00527,6.57518c-0.30143-0.03611-0.53902-0.2738-0.57501-0.57525L8.19598,4.03765 c-0.01021-0.08553-0.08276-0.14993-0.1689-0.14993H6.97294c-0.08613,0-0.15867,0.06438-0.16889,0.1499L6.5692,6.00102 C6.53314,6.30251,6.29544,6.54016,5.99394,6.57616L4.03118,6.81049C3.94565,6.8207,3.88125,6.89325,3.88125,6.97939v1.0542 c0,0.08613,0.06438,0.15866,0.1499,0.16889l1.96299,0.2348C6.29557,8.47333,6.5332,8.71096,6.56925,9.0124l0.23479,1.96293 c0.01023,0.08552,0.08277,0.1499,0.16889,0.1499h1.0542c0.08612,0,0.15865-0.06436,0.16889-0.14986l0.23521-1.96318 c0.03611-0.30139,0.27372-0.53895,0.57512-0.575l1.96249-0.2347c0.08552-0.01023,0.1499-0.08276,0.1499-0.16889V6.97933 C11.11875,6.89321,11.05439,6.82068,10.96888,6.81044z"/>
+  </g>
+</svg>
