@@ -1,6 +1,6 @@
 mod command;
+mod commands;
 mod module;
-mod new_module;
 mod panel;
 mod utils;
 
@@ -40,23 +40,8 @@ pub fn main() -> Result<(), JsValue> {
 
 #[wasm_bindgen]
 pub fn exec(json: &str) -> Result<String, JsValue> {
-    // match command::new(json) {
-    //     Ok(cmd) => {
-    //         let mut state = STATE.lock().unwrap();
-    //         let module = &mut state.module;
-    //
-    //         cmd.apply(module);
-    //
-    //         let serialized = serde_json::to_string(&module).unwrap();
-    //
-    //         Ok(serialized)
-    //     }
-    //
-    //     Err(e) => Err(JsValue::from(format!("{}", e))),
-    // }
-
     match command::new(json) {
-        Some(cmd) => {
+        Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;
 
@@ -67,7 +52,7 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
             Ok(serialized)
         }
 
-        None => Err(JsValue::from("OOOPS")),
+        Err(e) => Err(JsValue::from(format!("{}", e))),
     }
 }
 
