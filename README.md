@@ -1,2 +1,5 @@
 # vcv-panel-designer
-VCV panel layout
+
+Web app for basic VCV panel layout.
+
+

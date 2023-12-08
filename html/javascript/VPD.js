@@ -8,7 +8,6 @@ export async function initialise () {
   const input = document.getElementById('command')
 
   input.focus()
-  input.value = 'new module "woot" 1U 5H'
 
   input.onkeypress = (event) => {
     if (event.key === 'Enter') {
@@ -45,6 +44,8 @@ export function onExport () {
 function execute (cmd) {
   try {
     const command = parse(cmd)
+
+    console.log(command)
 
     if (command != null) {
       const serialized = exec(JSON.stringify(command))

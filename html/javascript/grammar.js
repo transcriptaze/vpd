@@ -59,13 +59,27 @@ function makeNewModule (node) {
 
   for (const child of node.children.slice(1)) {
     if (child.type === 'name') {
-      object.module.name = child.text
+      object.module.name = child.text.trim()
     } else if (child.type === 'height') {
-      object.module.height = child.text
+      object.module.height = mm(child.text)
     } else if (child.type === 'width') {
-      object.module.width = child.text
+      object.module.width = mm(child.text)
     }
   }
 
   return object
+}
+
+function mm (v) {
+  let match = `${v}`.match(/([0-9]+)H/)
+  if (match != null && match.length > 1) {
+    return 5.08 * parseInt(match[1])
+  }
+
+  match = `${v}`.match(/([0-9]+)U/)
+  if (match != null && match.length > 1) {
+    return 128.5 * parseInt(match[1])
+  }
+
+  return 0
 }

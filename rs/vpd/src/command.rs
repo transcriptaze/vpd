@@ -1,11 +1,13 @@
-use std::error::Error;
+// use std::error::Error;
 
 use super::module::Module;
+use super::new_module::NewModuleCommand;
 use super::serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-#[derive(Debug)]
-pub struct Command {}
+pub trait Command {
+    fn apply(&self, m: &mut Module);
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 #[allow(non_camel_case_types)]
@@ -28,22 +30,26 @@ struct command {
 //     }
 // }
 
-pub fn new(json: &str) -> Result<Command, Box<dyn Error>> {
+// pub fn new(json: &str) -> Result<Box<dyn Command, Box<dyn Error>> {
+
+pub fn new(json: &str) -> Option<Box<dyn Command>> {
     let rs: Result<Value, serde_json::Error> = serde_json::from_str(json);
 
     match rs {
         Ok(v) => match v.get("action") {
             Some(a) => {
                 if a == "new" {
-                    Ok(Command {})
+                    // Ok(new_module::NewModuleCommand {})
+                    Some(Box::new(NewModuleCommand {}))
                 } else {
-                    Err(format!("unknown 'action' {:?}", a).into())
+                    // Err(format!("unknown 'action' {:?}", a).into())
+                    None
                 }
             }
-            None => Err("missing 'action' field".into()),
+            None => None, // Err("missing 'action' field".into()),
         },
 
-        Err(e) => Err(format!("{:?}", e).into()),
+        Err(_e) => None, // Err(format!("{:?}", e).into()),
     }
 
     // let rs: Result<command, serde_json::Error> = serde_json::from_str(json);
@@ -63,11 +69,11 @@ pub fn new(json: &str) -> Result<Command, Box<dyn Error>> {
     // Ok(Command {})
 }
 
-impl Command {
-    pub fn apply(&self, m: &mut Module) {
-        m.name = "zoot".into();
-    }
-}
+// impl Command {
+//     pub fn apply(&self, m: &mut Module) {
+//         m.name = "zoot".into();
+//     }
+// }
 
 #[cfg(test)]
 mod tests {
