@@ -1,18 +1,39 @@
+use serde::Deserialize;
+use std::error::Error;
+
 use crate::command::Command;
 use crate::module::Module;
 
-#[derive(Debug)]
-pub struct NewModuleCommand {}
+pub struct NewModuleCommand {
+    _name: String,
+    _width: f64,
+    _height: f64,
+}
 
-pub fn make_new_module_command(_json: &str) -> NewModuleCommand {
-    // let rs: Result<Value, serde_json::Error> = serde_json::from_str(json);
-    //
-    // match rs {
-    //     Ok(_v) => NewModuleCommand(),
-    //     Err(_e) => None,
-    // }
+#[derive(Deserialize)]
+struct V {
+    #[serde(rename = "action")]
+    _action: String,
+    module: M,
+}
 
-    NewModuleCommand {}
+#[derive(Deserialize)]
+struct M {
+    name: String,
+    width: f64,
+    height: f64,
+}
+
+impl NewModuleCommand {
+    pub fn new(json: &str) -> Result<NewModuleCommand, Box<dyn Error>> {
+        let v: V = serde_json::from_str(json)?;
+
+        Ok(NewModuleCommand {
+            _name: v.module.name,
+            _width: v.module.width,
+            _height: v.module.height,
+        })
+    }
 }
 
 impl Command for NewModuleCommand {

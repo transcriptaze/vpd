@@ -4,7 +4,7 @@ use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use crate::commands::make_new_module_command;
+use crate::commands::NewModuleCommand;
 
 pub trait Command {
     fn apply(&self, m: &mut Module);
@@ -17,21 +17,19 @@ struct command {
 }
 
 pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
-    let rs: Result<Value, serde_json::Error> = serde_json::from_str(json);
+    let v: Value = serde_json::from_str(json)?;
 
-    match rs {
-        Ok(v) => match v.get("action") {
-            Some(a) => {
-                if a == "new" {
-                    Ok(Box::new(make_new_module_command(json)))
-                } else {
-                    Err(format!("unknown 'action' {:?}", a).into())
-                }
+    match v.get("action") {
+        Some(a) => {
+            if a == "new" {
+                let c = NewModuleCommand::new(json)?;
+
+                Ok(Box::new(c))
+            } else {
+                Err(format!("unknown 'action' {:?}", a).into())
             }
-            None => Err("missing 'action' field".into()),
-        },
-
-        Err(e) => Err(format!("{:?}", e).into()),
+        }
+        None => Err("missing 'action' field".into()),
     }
 }
 
