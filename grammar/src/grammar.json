@@ -89,8 +89,26 @@
       ]
     },
     "name": {
-      "type": "PATTERN",
-      "value": "\"[a-zA-Z](.+?)\""
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([^\"]*?)"
+          },
+          "named": true,
+          "value": "value"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
     },
     "height": {
       "type": "STRING",

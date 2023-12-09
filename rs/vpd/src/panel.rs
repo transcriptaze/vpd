@@ -4,6 +4,10 @@ use tera::Context;
 use tera::Tera;
 use wasm_bindgen::prelude::*;
 
+pub const DEFAULT_WIDTH: f32 = 45.72; // 9H
+pub const DEFAULT_HEIGHT: f32 = 128.5; // 1U
+pub const H: f32 = 5.08; // 1 'horizontal' unit
+
 #[derive(Serialize, Deserialize)]
 pub struct Panel {
     width: f32,
@@ -18,17 +22,19 @@ pub struct Rect {
     height: f32,
 }
 
-pub fn new() -> Panel {
-    return Panel {
-        width: 45.72,
-        height: 128.5,
-        gutter: 5.0,
-    };
-}
-
 // TODO include_dir
 //      https://crates.io/crates/include_dir
 impl Panel {
+    pub fn new(width: f32, _height: f32) -> Panel {
+        let w = (width / H).round();
+
+        return Panel {
+            width: w * H,
+            height: 128.5,
+            gutter: 5.0,
+        };
+    }
+
     #[allow(non_snake_case)]
     pub fn to_SVG(&self) -> Result<String, JsValue> {
         let panel = include_str!("templates/panel.svg");

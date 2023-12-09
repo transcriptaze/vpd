@@ -16,5 +16,5 @@ wasm: regenerate
 	mv tree-sitter-vpd.wasm ../html/wasm/grammar
 
 run: build
-# 	tree-sitter parse example
-	cargo run
+	tree-sitter parse example
+# 	cargo run

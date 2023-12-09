@@ -58,8 +58,8 @@ function makeNewModule (node) {
   }
 
   for (const child of node.children.slice(1)) {
-    if (child.type === 'name') {
-      object.module.name = child.text.trim()
+    if (child.type === 'name' && child.namedChildCount > 0) {
+      object.module.name = child.namedChild(0).text.trim()
     } else if (child.type === 'height') {
       object.module.height = mm(child.text)
     } else if (child.type === 'width') {
@@ -81,5 +81,5 @@ function mm (v) {
     return 128.5 * parseInt(match[1])
   }
 
-  return 0
+  return parseFloat(`${v}`)
 }

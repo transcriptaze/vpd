@@ -1,18 +1,20 @@
-use super::panel;
+use super::panel::Panel;
+use super::panel::DEFAULT_HEIGHT;
+use super::panel::DEFAULT_WIDTH;
 use super::serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 pub struct Module {
     pub name: Box<str>,
-    pub light: panel::Panel,
-    pub dark: panel::Panel,
+    pub light: Panel,
+    pub dark: Panel,
 }
 
 pub fn new() -> Module {
     return Module {
-        name: "uiop".into(),
-        light: panel::new(),
-        dark: panel::new(),
+        name: "unknown".into(),
+        light: Panel::new(DEFAULT_WIDTH, DEFAULT_HEIGHT),
+        dark: Panel::new(DEFAULT_WIDTH, DEFAULT_HEIGHT),
     };
 }
 

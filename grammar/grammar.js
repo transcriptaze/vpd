@@ -30,7 +30,11 @@ module.exports = grammar({
       $.width,
     ),
 
-    name: $ => /"[a-zA-Z](.+?)"/,
+    name: $ => seq(
+      '"',
+      alias(/[a-zA-Z]([^"]*?)/,$.value),
+      '"',
+    ),
 
     height: $ => '1U',
     width: $ => /[1-9][0-9]*H/,

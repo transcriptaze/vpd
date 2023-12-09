@@ -6,11 +6,11 @@
 #endif
 
 #define LANGUAGE_VERSION 14
-#define STATE_COUNT 14
+#define STATE_COUNT 17
 #define LARGE_STATE_COUNT 2
-#define SYMBOL_COUNT 21
+#define SYMBOL_COUNT 23
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 14
+#define TOKEN_COUNT 15
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
@@ -25,18 +25,20 @@ enum {
   anon_sym_input = 6,
   anon_sym_output = 7,
   anon_sym_module = 8,
-  sym_name = 9,
-  sym_height = 10,
-  sym_width = 11,
-  anon_sym_label = 12,
-  sym_text = 13,
-  sym_source_file = 14,
-  sym__command = 15,
-  sym_new = 16,
-  sym_entity = 17,
-  sym_module = 18,
-  sym_label = 19,
-  aux_sym_source_file_repeat1 = 20,
+  anon_sym_DQUOTE = 9,
+  aux_sym_name_token1 = 10,
+  sym_height = 11,
+  sym_width = 12,
+  anon_sym_label = 13,
+  sym_text = 14,
+  sym_source_file = 15,
+  sym__command = 16,
+  sym_new = 17,
+  sym_entity = 18,
+  sym_module = 19,
+  sym_name = 20,
+  sym_label = 21,
+  aux_sym_source_file_repeat1 = 22,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -49,7 +51,8 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_input] = "input",
   [anon_sym_output] = "output",
   [anon_sym_module] = "module",
-  [sym_name] = "name",
+  [anon_sym_DQUOTE] = "\"",
+  [aux_sym_name_token1] = "value",
   [sym_height] = "height",
   [sym_width] = "width",
   [anon_sym_label] = "label",
@@ -59,6 +62,7 @@ static const char * const ts_symbol_names[] = {
   [sym_new] = "new",
   [sym_entity] = "entity",
   [sym_module] = "module",
+  [sym_name] = "name",
   [sym_label] = "label",
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
 };
@@ -73,7 +77,8 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_input] = anon_sym_input,
   [anon_sym_output] = anon_sym_output,
   [anon_sym_module] = anon_sym_module,
-  [sym_name] = sym_name,
+  [anon_sym_DQUOTE] = anon_sym_DQUOTE,
+  [aux_sym_name_token1] = aux_sym_name_token1,
   [sym_height] = sym_height,
   [sym_width] = sym_width,
   [anon_sym_label] = anon_sym_label,
@@ -83,6 +88,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_new] = sym_new,
   [sym_entity] = sym_entity,
   [sym_module] = sym_module,
+  [sym_name] = sym_name,
   [sym_label] = sym_label,
   [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
 };
@@ -124,7 +130,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [sym_name] = {
+  [anon_sym_DQUOTE] = {
+    .visible = true,
+    .named = false,
+  },
+  [aux_sym_name_token1] = {
     .visible = true,
     .named = true,
   },
@@ -164,6 +174,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
+  [sym_name] = {
+    .visible = true,
+    .named = true,
+  },
   [sym_label] = {
     .visible = true,
     .named = true,
@@ -197,6 +211,9 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [11] = 11,
   [12] = 12,
   [13] = 13,
+  [14] = 14,
+  [15] = 15,
+  [16] = 16,
 };
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
@@ -204,229 +221,196 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(44);
-      if (lookahead == '"') ADVANCE(40);
-      if (lookahead == '1') ADVANCE(6);
-      if (lookahead == 'd') ADVANCE(13);
-      if (lookahead == 'i') ADVANCE(25);
-      if (lookahead == 'l') ADVANCE(8);
-      if (lookahead == 'm') ADVANCE(26);
-      if (lookahead == 'n') ADVANCE(14);
-      if (lookahead == 'o') ADVANCE(35);
-      if (lookahead == 'p') ADVANCE(9);
-      if (lookahead == 's') ADVANCE(19);
+      if (eof) ADVANCE(38);
+      if (lookahead == '"') ADVANCE(47);
+      if (lookahead == '1') ADVANCE(3);
+      if (lookahead == 'd') ADVANCE(10);
+      if (lookahead == 'i') ADVANCE(22);
+      if (lookahead == 'l') ADVANCE(5);
+      if (lookahead == 'm') ADVANCE(23);
+      if (lookahead == 'n') ADVANCE(11);
+      if (lookahead == 'o') ADVANCE(32);
+      if (lookahead == 'p') ADVANCE(6);
+      if (lookahead == 's') ADVANCE(16);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ') SKIP(0)
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(7);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(4);
       END_STATE();
     case 1:
-      if (lookahead == '"') ADVANCE(57);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(2);
+      if (lookahead == '"') ADVANCE(37);
+      if (lookahead == '\t' ||
+          lookahead == '\n' ||
+          lookahead == '\r' ||
+          lookahead == ' ') SKIP(1)
+      if (('A' <= lookahead && lookahead <= 'Z') ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(48);
       END_STATE();
     case 2:
-      if (lookahead == '"') ADVANCE(53);
+      if (lookahead == '"') ADVANCE(52);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(2);
       END_STATE();
     case 3:
-      if (lookahead == '"') ADVANCE(41);
-      if (lookahead == '\t' ||
-          lookahead == '\n' ||
-          lookahead == '\r' ||
-          lookahead == ' ') SKIP(3)
+      if (lookahead == 'H') ADVANCE(50);
+      if (lookahead == 'U') ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(4);
       END_STATE();
     case 4:
-      if (lookahead == '"') ADVANCE(58);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(4);
+      if (lookahead == 'H') ADVANCE(50);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(4);
       END_STATE();
     case 5:
-      if (lookahead == '"') ADVANCE(43);
-      if (lookahead == '\t' ||
-          lookahead == '\n' ||
-          lookahead == '\r' ||
-          lookahead == ' ') SKIP(5)
+      if (lookahead == 'a') ADVANCE(8);
       END_STATE();
     case 6:
-      if (lookahead == 'H') ADVANCE(55);
-      if (lookahead == 'U') ADVANCE(54);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(7);
+      if (lookahead == 'a') ADVANCE(26);
       END_STATE();
     case 7:
-      if (lookahead == 'H') ADVANCE(55);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(7);
+      if (lookahead == 'a') ADVANCE(21);
       END_STATE();
     case 8:
-      if (lookahead == 'a') ADVANCE(11);
+      if (lookahead == 'b') ADVANCE(15);
       END_STATE();
     case 9:
-      if (lookahead == 'a') ADVANCE(29);
+      if (lookahead == 'd') ADVANCE(35);
+      if (lookahead == 'v') ADVANCE(12);
       END_STATE();
     case 10:
-      if (lookahead == 'a') ADVANCE(24);
+      if (lookahead == 'e') ADVANCE(19);
       END_STATE();
     case 11:
-      if (lookahead == 'b') ADVANCE(18);
+      if (lookahead == 'e') ADVANCE(36);
       END_STATE();
     case 12:
-      if (lookahead == 'd') ADVANCE(38);
-      if (lookahead == 'v') ADVANCE(15);
+      if (lookahead == 'e') ADVANCE(40);
       END_STATE();
     case 13:
-      if (lookahead == 'e') ADVANCE(22);
+      if (lookahead == 'e') ADVANCE(41);
       END_STATE();
     case 14:
-      if (lookahead == 'e') ADVANCE(39);
-      END_STATE();
-    case 15:
       if (lookahead == 'e') ADVANCE(46);
       END_STATE();
+    case 15:
+      if (lookahead == 'e') ADVANCE(18);
+      END_STATE();
     case 16:
-      if (lookahead == 'e') ADVANCE(47);
+      if (lookahead == 'e') ADVANCE(27);
       END_STATE();
     case 17:
-      if (lookahead == 'e') ADVANCE(52);
-      END_STATE();
-    case 18:
-      if (lookahead == 'e') ADVANCE(21);
-      END_STATE();
-    case 19:
       if (lookahead == 'e') ADVANCE(30);
       END_STATE();
-    case 20:
-      if (lookahead == 'e') ADVANCE(33);
+    case 18:
+      if (lookahead == 'l') ADVANCE(51);
       END_STATE();
-    case 21:
-      if (lookahead == 'l') ADVANCE(56);
-      END_STATE();
-    case 22:
-      if (lookahead == 'l') ADVANCE(20);
-      END_STATE();
-    case 23:
+    case 19:
       if (lookahead == 'l') ADVANCE(17);
       END_STATE();
+    case 20:
+      if (lookahead == 'l') ADVANCE(14);
+      END_STATE();
+    case 21:
+      if (lookahead == 'm') ADVANCE(43);
+      END_STATE();
+    case 22:
+      if (lookahead == 'n') ADVANCE(24);
+      END_STATE();
+    case 23:
+      if (lookahead == 'o') ADVANCE(9);
+      END_STATE();
     case 24:
-      if (lookahead == 'm') ADVANCE(49);
+      if (lookahead == 'p') ADVANCE(33);
       END_STATE();
     case 25:
-      if (lookahead == 'n') ADVANCE(27);
+      if (lookahead == 'p') ADVANCE(34);
       END_STATE();
     case 26:
-      if (lookahead == 'o') ADVANCE(12);
+      if (lookahead == 'r') ADVANCE(7);
       END_STATE();
     case 27:
-      if (lookahead == 'p') ADVANCE(36);
+      if (lookahead == 't') ADVANCE(39);
       END_STATE();
     case 28:
-      if (lookahead == 'p') ADVANCE(37);
+      if (lookahead == 't') ADVANCE(44);
       END_STATE();
     case 29:
-      if (lookahead == 'r') ADVANCE(10);
-      END_STATE();
-    case 30:
       if (lookahead == 't') ADVANCE(45);
       END_STATE();
+    case 30:
+      if (lookahead == 't') ADVANCE(13);
+      END_STATE();
     case 31:
-      if (lookahead == 't') ADVANCE(50);
+      if (lookahead == 't') ADVANCE(25);
       END_STATE();
     case 32:
-      if (lookahead == 't') ADVANCE(51);
-      END_STATE();
-    case 33:
-      if (lookahead == 't') ADVANCE(16);
-      END_STATE();
-    case 34:
-      if (lookahead == 't') ADVANCE(28);
-      END_STATE();
-    case 35:
-      if (lookahead == 'u') ADVANCE(34);
-      END_STATE();
-    case 36:
       if (lookahead == 'u') ADVANCE(31);
       END_STATE();
+    case 33:
+      if (lookahead == 'u') ADVANCE(28);
+      END_STATE();
+    case 34:
+      if (lookahead == 'u') ADVANCE(29);
+      END_STATE();
+    case 35:
+      if (lookahead == 'u') ADVANCE(20);
+      END_STATE();
+    case 36:
+      if (lookahead == 'w') ADVANCE(42);
+      END_STATE();
     case 37:
-      if (lookahead == 'u') ADVANCE(32);
+      if (lookahead != 0 &&
+          lookahead != '\n') ADVANCE(2);
       END_STATE();
     case 38:
-      if (lookahead == 'u') ADVANCE(23);
-      END_STATE();
-    case 39:
-      if (lookahead == 'w') ADVANCE(48);
-      END_STATE();
-    case 40:
-      if (('A' <= lookahead && lookahead <= 'Z') ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(1);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(4);
-      END_STATE();
-    case 41:
-      if (('A' <= lookahead && lookahead <= 'Z') ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(42);
-      END_STATE();
-    case 42:
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(2);
-      END_STATE();
-    case 43:
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(4);
-      END_STATE();
-    case 44:
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
-    case 45:
+    case 39:
       ACCEPT_TOKEN(anon_sym_set);
       END_STATE();
-    case 46:
+    case 40:
       ACCEPT_TOKEN(anon_sym_move);
       END_STATE();
-    case 47:
+    case 41:
       ACCEPT_TOKEN(anon_sym_delete);
       END_STATE();
-    case 48:
+    case 42:
       ACCEPT_TOKEN(anon_sym_new);
       END_STATE();
-    case 49:
+    case 43:
       ACCEPT_TOKEN(anon_sym_param);
       END_STATE();
-    case 50:
+    case 44:
       ACCEPT_TOKEN(anon_sym_input);
       END_STATE();
-    case 51:
+    case 45:
       ACCEPT_TOKEN(anon_sym_output);
       END_STATE();
-    case 52:
+    case 46:
       ACCEPT_TOKEN(anon_sym_module);
       END_STATE();
-    case 53:
-      ACCEPT_TOKEN(sym_name);
-      if (lookahead == '"') ADVANCE(53);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(2);
+    case 47:
+      ACCEPT_TOKEN(anon_sym_DQUOTE);
       END_STATE();
-    case 54:
+    case 48:
+      ACCEPT_TOKEN(aux_sym_name_token1);
+      if (lookahead != 0 &&
+          lookahead != '"') ADVANCE(48);
+      END_STATE();
+    case 49:
       ACCEPT_TOKEN(sym_height);
       END_STATE();
-    case 55:
+    case 50:
       ACCEPT_TOKEN(sym_width);
       END_STATE();
-    case 56:
+    case 51:
       ACCEPT_TOKEN(anon_sym_label);
       END_STATE();
-    case 57:
+    case 52:
       ACCEPT_TOKEN(sym_text);
-      if (lookahead == '"') ADVANCE(53);
+      if (lookahead == '"') ADVANCE(52);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(2);
-      END_STATE();
-    case 58:
-      ACCEPT_TOKEN(sym_text);
-      if (lookahead == '"') ADVANCE(58);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(4);
       END_STATE();
     default:
       return false;
@@ -444,10 +428,13 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
   [7] = {.lex_state = 0},
   [8] = {.lex_state = 0},
   [9] = {.lex_state = 0},
-  [10] = {.lex_state = 3},
-  [11] = {.lex_state = 5},
-  [12] = {.lex_state = 0},
+  [10] = {.lex_state = 0},
+  [11] = {.lex_state = 1},
+  [12] = {.lex_state = 1},
   [13] = {.lex_state = 0},
+  [14] = {.lex_state = 0},
+  [15] = {.lex_state = 0},
+  [16] = {.lex_state = 0},
 };
 
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
@@ -461,14 +448,13 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_input] = ACTIONS(1),
     [anon_sym_output] = ACTIONS(1),
     [anon_sym_module] = ACTIONS(1),
-    [sym_name] = ACTIONS(1),
+    [anon_sym_DQUOTE] = ACTIONS(1),
     [sym_height] = ACTIONS(1),
     [sym_width] = ACTIONS(1),
     [anon_sym_label] = ACTIONS(1),
-    [sym_text] = ACTIONS(1),
   },
   [1] = {
-    [sym_source_file] = STATE(9),
+    [sym_source_file] = STATE(10),
     [sym__command] = STATE(3),
     [sym_new] = STATE(3),
     [aux_sym_source_file_repeat1] = STATE(3),
@@ -549,21 +535,32 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_move,
       anon_sym_delete,
       anon_sym_new,
-  [85] = 1,
+  [85] = 2,
     ACTIONS(35), 1,
-      ts_builtin_sym_end,
-  [89] = 1,
-    ACTIONS(37), 1,
+      anon_sym_DQUOTE,
+    STATE(13), 1,
       sym_name,
-  [93] = 1,
+  [92] = 1,
+    ACTIONS(37), 1,
+      ts_builtin_sym_end,
+  [96] = 1,
     ACTIONS(39), 1,
       sym_text,
-  [97] = 1,
+  [100] = 1,
     ACTIONS(41), 1,
-      sym_height,
-  [101] = 1,
+      aux_sym_name_token1,
+  [104] = 1,
     ACTIONS(43), 1,
+      sym_height,
+  [108] = 1,
+    ACTIONS(45), 1,
+      anon_sym_DQUOTE,
+  [112] = 1,
+    ACTIONS(47), 1,
       sym_width,
+  [116] = 1,
+    ACTIONS(49), 1,
+      sym_height,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
@@ -575,10 +572,13 @@ static const uint32_t ts_small_parse_table_map[] = {
   [SMALL_STATE(7)] = 69,
   [SMALL_STATE(8)] = 77,
   [SMALL_STATE(9)] = 85,
-  [SMALL_STATE(10)] = 89,
-  [SMALL_STATE(11)] = 93,
-  [SMALL_STATE(12)] = 97,
-  [SMALL_STATE(13)] = 101,
+  [SMALL_STATE(10)] = 92,
+  [SMALL_STATE(11)] = 96,
+  [SMALL_STATE(12)] = 100,
+  [SMALL_STATE(13)] = 104,
+  [SMALL_STATE(14)] = 108,
+  [SMALL_STATE(15)] = 112,
+  [SMALL_STATE(16)] = 116,
 };
 
 static const TSParseActionEntry ts_parse_actions[] = {
@@ -588,7 +588,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
   [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
   [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
-  [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(10),
+  [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
   [13] = {.entry = {.count = 1, .reusable = true}}, SHIFT(11),
   [15] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1),
   [17] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
@@ -599,11 +599,14 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [29] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_new, 2),
   [31] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_label, 2),
   [33] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_module, 4),
-  [35] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
-  [37] = {.entry = {.count = 1, .reusable = true}}, SHIFT(12),
+  [35] = {.entry = {.count = 1, .reusable = true}}, SHIFT(12),
+  [37] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
   [39] = {.entry = {.count = 1, .reusable = true}}, SHIFT(7),
-  [41] = {.entry = {.count = 1, .reusable = true}}, SHIFT(13),
-  [43] = {.entry = {.count = 1, .reusable = true}}, SHIFT(8),
+  [41] = {.entry = {.count = 1, .reusable = true}}, SHIFT(14),
+  [43] = {.entry = {.count = 1, .reusable = true}}, SHIFT(15),
+  [45] = {.entry = {.count = 1, .reusable = true}}, SHIFT(16),
+  [47] = {.entry = {.count = 1, .reusable = true}}, SHIFT(8),
+  [49] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_name, 3),
 };
 
 #ifdef __cplusplus

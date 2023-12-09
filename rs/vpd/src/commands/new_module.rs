@@ -3,25 +3,30 @@ use std::error::Error;
 
 use crate::command::Command;
 use crate::module::Module;
+use crate::panel::Panel;
 
 pub struct NewModuleCommand {
-    _name: String,
-    _width: f64,
-    _height: f64,
+    name: String,
+    width: f32,
+    height: f32,
 }
 
 #[derive(Deserialize)]
 struct V {
-    #[serde(rename = "action")]
-    _action: String,
+    #[serde(rename = "module")]
     module: M,
 }
 
 #[derive(Deserialize)]
 struct M {
+    #[serde(rename = "name")]
     name: String,
-    width: f64,
-    height: f64,
+
+    #[serde(rename = "width")]
+    width: f32,
+
+    #[serde(rename = "height")]
+    height: f32,
 }
 
 impl NewModuleCommand {
@@ -29,15 +34,17 @@ impl NewModuleCommand {
         let v: V = serde_json::from_str(json)?;
 
         Ok(NewModuleCommand {
-            _name: v.module.name,
-            _width: v.module.width,
-            _height: v.module.height,
+            name: v.module.name,
+            width: v.module.width,
+            height: v.module.height,
         })
     }
 }
 
 impl Command for NewModuleCommand {
     fn apply(&self, m: &mut Module) {
-        m.name = "kwitequte".into();
+        m.name = self.name.clone().into();
+        m.light = Panel::new(self.width, self.height);
+        m.dark = Panel::new(self.width, self.height);
     }
 }

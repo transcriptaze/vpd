@@ -94,6 +94,7 @@ main #light {
   background: #e5e5e5;
 }
 main #light object {
+  width: 100%;
   height: 138.5mm;
 }
 main #dark {

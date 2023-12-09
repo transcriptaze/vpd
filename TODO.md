@@ -2,6 +2,8 @@
 
 https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
+- [x] 'new module'
+- [ ] 'add guideline'
 
 
 ## Notes
