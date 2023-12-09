@@ -2,8 +2,24 @@
 
 https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
-- [x] 'new module'
-- [ ] 'add guideline'
+### Load/Save
+- [x] Save project file
+- [ ] Load project file
+- [ ] _light_ SVG
+- [ ] _dark_ SVG
+- [ ] gzip project file
+
+### Commands
+- [x] new module
+- [ ] set module name/width/height
+- [ ] add guideline
+
+- [x] Help text skeleton
+- [ ] Rework help text as multi-column ul
+- [ ] Generate help text from grammar/examples
+
+### SVG
+- [ ] Convert objects to mm
 
 
 ## Notes

@@ -1,4 +1,5 @@
 import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
+import { help } from './help.js'
 import { parse } from './grammar.js'
 import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
 
@@ -6,8 +7,13 @@ const PROJECT = 'projects.current'
 
 export async function initialise () {
   const input = document.getElementById('command')
+  const helpText = document.getElementById('help-text')
 
   input.focus()
+
+  input.oninput = (event) => {
+    help(helpText, input.value)
+  }
 
   input.onkeypress = (event) => {
     if (event.key === 'Enter') {

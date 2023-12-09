@@ -30,10 +30,16 @@
   
     <footer>
       <input id="command" value='new module "woot" 1U 9H' />
-      <textarea id="history" readonly></textarea>
+      <vpd-help-text id="help-text"></vpd-help-text>
     </footer>
 
     <!-- TEMPLATES -->
+    <template id="template-help-text">
+      <div class="vpd-help-text">
+        <textarea readonly></textarea>
+      </div>
+    </template>
+
   </body>
 
   <!-- SCRIPTS -->

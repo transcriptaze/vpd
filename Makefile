@@ -5,6 +5,7 @@
 
 format:
 	npx eslint --fix ./html/javascript/*.js
+	npx eslint --fix ./html/javascript/components/*.js
 
 build: format
 	sass --no-source-map sass/themes:html/css
