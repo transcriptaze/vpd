@@ -44,7 +44,6 @@ impl NewModuleCommand {
 impl Command for NewModuleCommand {
     fn apply(&self, m: &mut Module) {
         m.name = self.name.clone().into();
-        m.light = Panel::new(self.width, self.height);
-        m.dark = Panel::new(self.width, self.height);
+        m.panel = Panel::new(self.width, self.height);
     }
 }

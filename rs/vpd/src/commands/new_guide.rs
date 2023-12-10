@@ -3,12 +3,12 @@ use std::error::Error;
 
 use crate::command::Command;
 use crate::module::Module;
-// use crate::panel::Panel;
+use crate::panel::Guide;
 
 pub struct NewGuideCommand {
-    _name: String,
-    _orientation: String,
-    _offset: f32,
+    name: String,
+    orientation: String,
+    offset: f32,
 }
 
 #[derive(Deserialize)]
@@ -34,13 +34,22 @@ impl NewGuideCommand {
         let v: V = serde_json::from_str(json)?;
 
         Ok(NewGuideCommand {
-            _name: v.guide.name,
-            _orientation: v.guide.orientation,
-            _offset: v.guide.offset,
+            name: v.guide.name,
+            orientation: v.guide.orientation,
+            offset: v.guide.offset,
         })
     }
 }
 
 impl Command for NewGuideCommand {
-    fn apply(&self, _m: &mut Module) {}
+    fn apply(&self, m: &mut Module) {
+        let name = self.name.clone();
+        let orientation = self.orientation.clone();
+        let offset = self.offset;
+
+        m.panel
+            .guides
+            .entry(name)
+            .or_insert(Guide::new(orientation, offset));
+    }
 }

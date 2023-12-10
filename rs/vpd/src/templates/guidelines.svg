@@ -1,6 +1,15 @@
   <g inkscape:groupmode="layer" inkscape:label="guidelines">
     <polygon points="-2.5,0 0,2.5 2.5,0 0,-2.5" class="origin" />
-    <rect x="0" y="0" width="{{panel_width}}" height="{{panel_height}}" class="outline"/>
-    <line x1="0"  y1="-5" x2="0" y2="133.5" class="guideline"/>
-    <line x1="-5" y1="0"  x2="50.72" y2="0" class="guideline"/>
+    <rect x="0" y="0" width="{{svg.width}}" height="{{svg.height}}" class="outline"/>
+    <line x1="0" y1="{{viewport.y}}" x2="0" y2="{{viewport.y + viewport.height}}" class="guideline"/>
+    <line x1="{{viewport.x}}" y1="0" x2="{{viewport.x + viewport.width}}" y2="0" class="guideline"/>
+
+    {% for k, v in guides %}
+      {% if v.orientation == 'vertical' %}
+    <line x1="{{v.offset}}" y1="{{viewport.y}}" x2="{{v.offset}}" y2="{{viewport.y + viewport.height}}" class="guideline" />
+      {% elif v.orientation == 'horizontal'%}
+    <line x1="{{viewport.x}}"  y1="{{v.offset}}" x2="{{viewport.x + viewport.width}}" y2="{{v.offset}}" class="guideline" />
+      {% endif %}
+    {% endfor %}    
+
   </g>

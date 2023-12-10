@@ -2,17 +2,22 @@
 
 https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
-### Load/Save
 - [x] Save project file
 - [ ] Load project file
 - [ ] _light_ SVG
 - [ ] _dark_ SVG
 - [ ] gzip project file
+- [ ] Show errors
+- [ ] Shortcut keys
 
 ### Commands
 - [x] new module
 - [ ] set module name/width/height
 - [ ] add guideline
+      - [ ] label
+      - [ ] error if identifier already exists
+      - (?) error if duplicate offset
+
 - [ ] load
 - [ ] save
 - [ ] download
@@ -21,8 +26,13 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [ ] Rework help text as multi-column ul
 - [ ] Generate help text from grammar/examples
 
+### Panel
+- [ ] Deserialize from JSON with missing fields
+
 ### SVG
 - [ ] Convert objects to mm
+- [ ] Use max 3 digits of precision
+      e.g. context.insert("panel_width", &format!("{:.2}", self.width));
 
 
 ## Notes

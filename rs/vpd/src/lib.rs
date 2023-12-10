@@ -6,7 +6,6 @@ mod utils;
 
 use once_cell::sync::Lazy;
 use serde;
-use serde_json;
 use std::sync::Mutex;
 use wasm_bindgen::prelude::*;
 
@@ -87,9 +86,9 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
 pub fn render() -> Result<String, JsValue> {
     let state = STATE.lock().unwrap();
     let module = &state.module;
-    let panel = &module.light;
+    let panel = &module.panel;
 
-    return panel.to_SVG();
+    return panel.to_SVG("light");
 }
 
 // #[cfg(test)]
