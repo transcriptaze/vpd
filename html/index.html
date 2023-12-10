@@ -26,6 +26,7 @@
         <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
         <button onclick="onCtrl1(event)">Ctrl₁</button>
         <button onclick="onCtrl2(event)">Ctrl₂</button>
+        <button onclick="onCtrl3(event)">Ctrl₃</button>
         <a id="save" href="" style="display:none" download></a>
       </div>
     </main>
@@ -79,6 +80,11 @@
         document.getElementById('command').value = 'new guide v1 vertical +4.5mm'
     }
 
+    window.onCtrl3 = (event) => {
+        document.getElementById('command').focus()
+        document.getElementById('command').value = 'set origin top,left'
+    }
+
     window.onkeypress = (event) => {
       if (event.ctrlKey && event.key === '1') {
         onCtrl1()
@@ -86,6 +92,10 @@
 
       if (event.ctrlKey && event.key === '2') {
         onCtrl2()
+      }
+
+      if (event.ctrlKey && event.key === '3') {
+        onCtrl3()
       }
     }
 

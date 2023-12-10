@@ -5,6 +5,7 @@ use super::serde::{Deserialize, Serialize};
 
 use crate::commands::NewGuideCommand;
 use crate::commands::NewModuleCommand;
+use crate::commands::SetOriginCommand;
 
 pub trait Command {
     fn apply(&self, m: &mut Module);
@@ -15,10 +16,14 @@ struct Action {
     action: String,
     module: Option<Entity>,
     guide: Option<Entity>,
+    origin: Option<Attr>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Entity {}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Attr {}
 
 pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
@@ -27,6 +32,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(NewModuleCommand::new(json)?))
     } else if v.action == "new" && v.guide.is_some() {
         Ok(Box::new(NewGuideCommand::new(json)?))
+    } else if v.action == "set" && v.origin.is_some() {
+        Ok(Box::new(SetOriginCommand::new(json)?))
     } else {
         Err("unknown command".into())
     }

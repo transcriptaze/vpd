@@ -9,14 +9,24 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [ ] gzip project file
 - [ ] Show errors
 - [ ] Shortcut keys
+- [ ] `undo`
 
 ### Commands
 - [x] new module
 - [ ] set module name/width/height
-- [ ] add guideline
+
+- [ ] `new guideline`
       - [x] label
+      - (?) label automatically
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
+
+- [ ] `set origin`
+      - [x] Allow _top-left_ or _centre-bottom_
+      - [ ] Reference guides to origin
+      - [ ] @xy
+      - [ ] @left+, etc
+      - [ ] help text
 
 - [ ] load
 - [ ] save

@@ -15,7 +15,26 @@ pub struct Panel {
     width: f32,
     height: f32,
     gutter: f32,
+    pub origin: Origin,
     pub guides: HashMap<String, Guide>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Origin {
+    x: String,
+    y: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Guide {
+    orientation: String,
+    offset: f32,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Point {
+    pub x: f32,
+    pub y: f32,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -24,12 +43,6 @@ pub struct Rect {
     pub y: f32,
     pub width: f32,
     pub height: f32,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Guide {
-    orientation: String,
-    offset: f32,
 }
 
 // TODO include_dir
@@ -42,6 +55,10 @@ impl Panel {
             width: w * H,
             height: 128.5,
             gutter: 5.0,
+            origin: Origin {
+                x: "left".to_string(),
+                y: "top".to_string(),
+            },
             guides: HashMap::new(),
         };
     }
@@ -64,6 +81,7 @@ impl Panel {
         };
         let svg = self.svg();
         let viewport = self.viewport();
+        let origin = self.origin();
 
         tera.add_raw_template("panel", &panel).unwrap();
         tera.add_raw_template("styles", &styles).unwrap();
@@ -73,6 +91,7 @@ impl Panel {
         context.insert("panel", &rect);
         context.insert("svg", &svg);
         context.insert("viewport", &viewport);
+        context.insert("origin", &origin);
         context.insert("guides", &self.guides);
 
         let svg = tera.render("panel", &context).unwrap();
@@ -96,6 +115,10 @@ impl Panel {
             width: self.width + 2.0 * self.gutter,
             height: self.height + 2.0 * self.gutter,
         }
+    }
+
+    fn origin(&self) -> Point {
+        Point { x: 10.0, y: 10.0 }
     }
 }
 

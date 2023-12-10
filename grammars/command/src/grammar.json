@@ -16,8 +16,8 @@
           "name": "new"
         },
         {
-          "type": "STRING",
-          "value": "set"
+          "type": "SYMBOL",
+          "name": "set"
         },
         {
           "type": "STRING",
@@ -39,6 +39,19 @@
         {
           "type": "SYMBOL",
           "name": "entity"
+        }
+      ]
+    },
+    "set": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "set"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr"
         }
       ]
     },
@@ -71,6 +84,15 @@
         }
       ]
     },
+    "attr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "origin"
+        }
+      ]
+    },
     "module": {
       "type": "SEQ",
       "members": [
@@ -89,6 +111,74 @@
         {
           "type": "SYMBOL",
           "name": "width"
+        }
+      ]
+    },
+    "origin": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "origin"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "top|middle|bottom"
+                  },
+                  "named": true,
+                  "value": "y"
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "left|centre|center|right"
+                  },
+                  "named": true,
+                  "value": "x"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "left|centre|center|right"
+                  },
+                  "named": true,
+                  "value": "x"
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "top|middle|bottom"
+                  },
+                  "named": true,
+                  "value": "y"
+                }
+              ]
+            }
+          ]
         }
       ]
     },

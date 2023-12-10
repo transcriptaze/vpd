@@ -4,6 +4,7 @@ new param
 new input
 new output
 new label "qwerty"
-set
+set origin top,left
+set origin right,bottom
 move
 delete

@@ -5,7 +5,7 @@ module.exports = grammar({
     source_file: $ => repeat($._command),
     _command: $ => choice(
       $.new,
-      'set',
+      $.set,
       'move',
       'delete'
     ),
@@ -13,6 +13,11 @@ module.exports = grammar({
     new: $ => seq(
       'new',
       $.entity,
+    ),
+
+    set: $ => seq(
+      'set',
+      $.attr,
     ),
 
     entity: $ => choice(
@@ -24,11 +29,23 @@ module.exports = grammar({
       $.guide,
     ),
 
+    attr: $ => choice(
+      $.origin,
+    ),
+
     module: $ => seq(
       'module',
       $.name,
       $.height,
       $.width,
+    ),
+
+    origin: $ => seq(
+      'origin',
+      choice(
+        seq(alias(/top|middle|bottom/,$.y), ',', alias(/left|centre|center|right/,$.x)),
+        seq(alias(/left|centre|center|right/,$.x),',',alias(/top|middle|bottom/,$.y)),
+      ),
     ),
 
     name: $ => seq(
