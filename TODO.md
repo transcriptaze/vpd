@@ -14,7 +14,7 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [x] new module
 - [ ] set module name/width/height
 - [ ] add guideline
-      - [ ] label
+      - [x] label
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
 

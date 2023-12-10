@@ -76,18 +76,16 @@
 
     window.onCtrl2 = (event) => {
         document.getElementById('command').focus()
-        document.getElementById('command').value = 'new guide g1 vertical +4.5mm'
+        document.getElementById('command').value = 'new guide v1 vertical +4.5mm'
     }
 
     window.onkeypress = (event) => {
       if (event.ctrlKey && event.key === '1') {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new module "woot" 1U 9H'
+        onCtrl1()
       }
 
       if (event.ctrlKey && event.key === '2') {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new guide g1 vertical +4.5mm'
+        onCtrl2()
       }
     }
 

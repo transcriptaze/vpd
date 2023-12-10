@@ -56,8 +56,6 @@ function execute (cmd) {
     if (command != null) {
       const serialized = exec(JSON.stringify(command))
 
-      console.log(serialized)
-
       store(PROJECT, serialized)
       redraw()
     }
