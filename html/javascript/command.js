@@ -34,12 +34,15 @@ function makeNew (node) {
     const cmd = node.children[0]
     const child = node.children[1]
 
-    if (cmd.type === 'new' && child.type === 'entity' && child.childCount > 0) {
-      const entity = child.children[0]
+    if (cmd.type === 'new' && child.type === 'entity' && child.namedChildCount > 0) {
+      const entity = child.namedChildren[0]
 
       switch (entity.type) {
         case 'module':
           return makeNewModule(entity)
+
+        case 'guide':
+          return makeNewGuide(entity)
 
         default:
           throw new Error(`unknown 'new' entity <<${entity.type}>>`)
@@ -53,17 +56,35 @@ function makeNew (node) {
 function makeNewModule (node) {
   const object = {
     action: 'new',
-    module: {
-    }
+    module: {}
   }
 
-  for (const child of node.children.slice(1)) {
+  for (const child of node.namedChildren) {
     if (child.type === 'name' && child.namedChildCount > 0) {
       object.module.name = child.namedChild(0).text.trim()
     } else if (child.type === 'height') {
       object.module.height = mm(child.text)
     } else if (child.type === 'width') {
       object.module.width = mm(child.text)
+    }
+  }
+
+  return object
+}
+
+function makeNewGuide (node) {
+  const object = {
+    action: 'new',
+    guide: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier' ) {
+      object.guide.name = child.text.trim()
+    } else if (child.type === 'orientation') {
+      object.guide.orientation = child.text
+    } else if (child.type === 'offset') {
+      object.guide.offset = mm(child.text)
     }
   }
 
@@ -79,6 +100,11 @@ function mm (v) {
   match = `${v}`.match(/([0-9]+)U/)
   if (match != null && match.length > 1) {
     return 128.5 * parseInt(match[1])
+  }
+
+  match = `${v}`.match(/([0-9]+(?:\.[0-9]*)?)mm/)
+  if (match != null && match.length > 1) {
+    return parseFloat(match[1])
   }
 
   return parseFloat(`${v}`)

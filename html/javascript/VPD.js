@@ -1,6 +1,6 @@
 import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
 import { help } from './help.js'
-import { parse } from './grammar.js'
+import { parse } from './command.js'
 import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
 
 const PROJECT = 'projects.current'

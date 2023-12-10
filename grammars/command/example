@@ -1,0 +1,9 @@
+new module "woot" 1U 5H
+new guide g1 vertical +4.5mm
+new param
+new input
+new output
+new label "qwerty"
+set
+move
+delete

@@ -52,14 +52,14 @@
   <script type="module">
     import { default as vpd_init } from './wasm/vpd/vpd.js'
     import * as VPD from "./javascript/VPD.js"
-    import * as grammar from "./javascript/grammar.js"
+    import * as command from "./javascript/command.js"
 
     (async () => {
       const Parser = window.TreeSitter
 
       await vpd_init()
       await Parser.init()
-      await grammar.init(Parser)
+      await command.init(Parser)
 
       VPD.initialise()
     })()

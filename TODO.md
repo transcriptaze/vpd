@@ -13,6 +13,9 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [x] new module
 - [ ] set module name/width/height
 - [ ] add guideline
+- [ ] load
+- [ ] save
+- [ ] download
 
 - [x] Help text skeleton
 - [ ] Rework help text as multi-column ul

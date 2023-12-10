@@ -2,8 +2,8 @@ use std::error::Error;
 
 use super::module::Module;
 use super::serde::{Deserialize, Serialize};
-use serde_json::Value;
 
+use crate::commands::NewGuideCommand;
 use crate::commands::NewModuleCommand;
 
 pub trait Command {
@@ -11,25 +11,24 @@ pub trait Command {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-#[allow(non_camel_case_types)]
-struct command {
+struct Action {
     action: String,
+    module: Option<Entity>,
+    guide: Option<Entity>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+struct Entity {}
+
 pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
-    let v: Value = serde_json::from_str(json)?;
+    let v: Action = serde_json::from_str(json)?;
 
-    match v.get("action") {
-        Some(a) => {
-            if a == "new" {
-                let c = NewModuleCommand::new(json)?;
-
-                Ok(Box::new(c))
-            } else {
-                Err(format!("unknown 'action' {:?}", a).into())
-            }
-        }
-        None => Err("missing 'action' field".into()),
+    if v.action == "new" && v.module.is_some() {
+        Ok(Box::new(NewModuleCommand::new(json)?))
+    } else if v.action == "new" && v.guide.is_some() {
+        Ok(Box::new(NewGuideCommand::new(json)?))
+    } else {
+        Err("unknown command".into())
     }
 }
 
