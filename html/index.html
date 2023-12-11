@@ -24,7 +24,7 @@
         <div class="panel">
           <img src="./images/panel-dark.svg" draggable="false"></a>
         </div>
-        <div class="controls">
+        <div id="controls">
           <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
           <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
           <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
@@ -34,6 +34,14 @@
           <a id="save" href="" style="display:none" download></a>
           <input id="picker" type="file" accept="application/json" style="display:none;" />
         </div>
+      </div>
+      <div id="drop">
+        <img src="../images/load.svg" />
+        <div class="overlay" 
+             ondragenter="onDragEnter(event)"
+             ondragleave="onDragLeave(event)" 
+             ondragover="onDragOver(event)"
+             ondrop="onDrop(event)"></div>
       </div>
     </main>
   
@@ -76,6 +84,68 @@
     window.onLoad = VPD.onLoad
     window.onSave = VPD.onSave
     window.onExport = VPD.onExport
+
+    window.onDragEnter = (e) => {
+      const drop = document.getElementById('drop')
+      const types = e.dataTransfer.types.map((v) => v.toLowerCase())
+
+      if (types.includes("files")) {
+        const files = e.dataTransfer.files
+        const items = e.dataTransfer.items
+
+        if (files.length > 0 && files.item(0).type === 'application/json') {
+           e.preventDefault()
+           drop.classList.add('dropping')
+        } else if (items.length > 0 && items[0].type == 'application/json') {
+           e.preventDefault()      
+           drop.classList.add('dropping')
+        }
+      }
+    }
+
+    window.onDragLeave = (e) => {
+      const drop = document.getElementById('drop')
+
+      drop.classList.remove('dropping')
+    }
+
+    window.onDragOver = (e) => {
+      const drop = document.getElementById('drop')
+      const types = e.dataTransfer.types.map((v) => v.toLowerCase())
+
+      if (types.includes("files")) {
+        const files = e.dataTransfer.files
+        const items = e.dataTransfer.items
+
+        if (files.length > 0 && files.item(0).type === 'application/json') {
+           e.preventDefault()
+           drop.classList.add('dropping')
+        } else if (items.length > 0 && items[0].type == 'application/json') {
+           e.preventDefault()      
+           drop.classList.add('dropping')
+        }
+      }
+    }
+
+    window.onDrop = (e) => {
+      e.preventDefault()
+      
+      const drop = document.getElementById('drop')
+      const types = e.dataTransfer.types.map((v) => v.toLowerCase())
+
+      drop.classList.remove('dropping')
+
+      if (types.includes("files")) {
+        const files = e.dataTransfer.files
+        const items = e.dataTransfer.items
+
+        if (files.length > 0 && files.item(0).type === 'application/json') {
+            VPD.onDrop(files.item(0))
+        } else if (items.length > 0 && items[0].type == 'application/json') {
+            VPD.onDrop(items[0])
+        }
+      }
+    }
 
     window.onCtrl1 = (event) => {
         document.getElementById('command').focus()

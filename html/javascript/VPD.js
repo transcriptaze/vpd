@@ -79,6 +79,10 @@ export function onLoad () {
   }
 }
 
+export function onDrop (file) {
+  load(file)
+}
+
 export function onSave () {
   const json = serialize('project')
   const blob = new Blob([json], { type: 'application/json' })

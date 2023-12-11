@@ -5,6 +5,8 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [x] Save project file
 - [x] Load project file
 - [ ] Drop project file
+      - [ ] web component
+      - [ ] style drop icon and div
 - [x] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
 - [ ] _dark_ SVG

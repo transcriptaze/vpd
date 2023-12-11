@@ -64,9 +64,10 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  column-gap: 64px;
+  column-gap: 16.5mm;
 }
 main div.panel {
+  min-width: 56mm;
   width: fit-content;
   height: 100%;
   padding-top: 16px;
@@ -80,12 +81,39 @@ main div.panel {
 main div.panel object {
   width: 100%;
 }
-main div.controls {
+main div#left {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: stretch;
+  display: flex;
+  justify-content: flex-end;
+}
+main div#left div.panel {
+  background: #e5e5e5;
+}
+main div#left div.panel object {
+  height: 138.5mm;
+}
+main div#right {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 16px;
+}
+main div#right div.panel {
+  background: #a7a7a7;
+}
+main div#right div.panel object {
+  height: 128.5mm;
+}
+main div#controls {
   display: flex;
   flex-direction: column;
   row-gap: 4px;
 }
-main div.controls button {
+main div#controls button {
   width: 48px;
   height: 48px;
   padding-top: 4px;
@@ -95,35 +123,36 @@ main div.controls button {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
 }
-main div.controls button img {
+main div#controls button img {
   width: 40px;
 }
-main #left {
+main div#drop {
+  grid-column: 1/3;
+  grid-row: 1;
+  justify-self: center;
+  width: 128mm;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+main div#drop img {
   grid-column: 1;
   grid-row: 1;
-  justify-self: stretch;
-  display: flex;
-  justify-content: flex-end;
+  width: 128px;
+  visibility: hidden;
 }
-main #left div.panel {
-  background: #e5e5e5;
-}
-main #left div.panel object {
-  height: 138.5mm;
-}
-main #right {
-  grid-column: 2;
+main div#drop div.overlay {
+  grid-column: 1;
   grid-row: 1;
-  justify-self: stretch;
-  display: flex;
-  justify-content: flex-start;
-  column-gap: 16px;
+  width: 100%;
+  height: 100%;
+  border-radius: 64px;
+  z-index: 2;
 }
-main #right div.panel {
-  background: #a7a7a7;
-}
-main #right div.panel object {
-  height: 128.5mm;
+main div#drop.dropping img {
+  visibility: visible;
 }
 
 footer {
