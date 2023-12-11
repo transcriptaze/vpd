@@ -46,7 +46,7 @@ body {
 
 header {
   grid-row: 1;
-  grid-column: 1/4;
+  grid-column: 1;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 12px;
@@ -61,12 +61,14 @@ main {
   grid-column: 1/4;
   padding-top: 32px;
   padding-bottom: 32px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   column-gap: 64px;
 }
 main div.panel {
   width: fit-content;
+  height: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 16px;
@@ -74,6 +76,9 @@ main div.panel {
   border-radius: 4px;
   display: flex;
   justify-content: center;
+}
+main div.panel object {
+  width: 100%;
 }
 main div.controls {
   display: flex;
@@ -90,15 +95,31 @@ main div.controls button {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
 }
-main #light {
+main #left {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: stretch;
+  display: flex;
+  justify-content: flex-end;
+}
+main #left div.panel {
   background: #e5e5e5;
 }
-main #light object {
-  width: 100%;
+main #left div.panel object {
   height: 138.5mm;
 }
-main #dark {
+main #right {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 16px;
+}
+main #right div.panel {
   background: #a7a7a7;
+}
+main #right div.panel object {
   height: 128.5mm;
 }
 

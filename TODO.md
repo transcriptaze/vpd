@@ -4,7 +4,7 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 - [x] Save project file
 - [ ] Load project file
-- [ ] Fix panel layout so that it doesn't jump
+- [x] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
 - [ ] _dark_ SVG
 - [ ] gzip project file

@@ -65,7 +65,7 @@ function execute (cmd) {
 }
 
 function redraw () {
-  const object = document.querySelector('#light object')
+  const object = document.querySelector('object#light')
   const svg = render()
   const blob = new Blob([svg], { type: 'image/svg+xml' })
   const old = object.data
@@ -77,7 +77,7 @@ function redraw () {
 }
 
 function _text2path () {
-  const object = document.querySelector('#light object')
+  const object = document.querySelector('object#light')
   const options = {
     decimalPlaces: 3
   }

@@ -33,7 +33,7 @@ body {
 
 header {
   grid-row: 1;
-  grid-column: 1 / 4;
+  grid-column: 1;
 
   padding-top: 12px;
   padding-bottom: 12px;
@@ -52,12 +52,14 @@ main {
   padding-top: 32px;
   padding-bottom: 32px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   column-gap: 64px;
 
   div.panel {
     width: fit-content;
+    height: 100%;
     padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 16px;
@@ -67,6 +69,10 @@ main {
 
     display: flex;
     justify-content: center;
+
+    object {
+      width: 100%;
+    }
   }
 
   div.controls {
@@ -86,18 +92,38 @@ main {
     }
   }
 
-  #light {
-    background: $light-gray;  
+  #left {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: stretch;
 
-    object {
-      width: 100%;
-      height: 138.5mm;    
+    display: flex;
+    justify-content: flex-end;
+
+    div.panel {
+      background: $light-gray;  
+
+      object {
+        height: 138.5mm;    
+      }
     }
   }
 
-  #dark {
-    background: $gray;  
-    height: 128.5mm;
+  #right {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: stretch;
+
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 16px;
+
+    div.panel {
+      background: $gray;  
+      object {
+        height: 128.5mm;
+      }
+    }
   }
 }
 

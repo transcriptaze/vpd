@@ -15,19 +15,23 @@
     </header>
   
     <main>
-      <div id="light" class="panel">
-        <object data="./images/panel-light.svg" width="193" height="400"></object>
+      <div id="left">
+        <div class="panel">
+          <object id="light" data="./images/panel-light.svg" width="193" height="400"></object>
+        </div>
       </div>
-      <div id="dark" class="panel">
-        <img src="./images/panel-dark.svg" draggable="false"></a>
-      </div>
-      <div class="controls">
-        <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
-        <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
-        <button onclick="onCtrl1(event)">Ctrl₁</button>
-        <button onclick="onCtrl2(event)">Ctrl₂</button>
-        <button onclick="onCtrl3(event)">Ctrl₃</button>
-        <a id="save" href="" style="display:none" download></a>
+      <div id="right">
+        <div class="panel">
+          <img src="./images/panel-dark.svg" draggable="false"></a>
+        </div>
+        <div class="controls">
+          <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
+          <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
+          <button onclick="onCtrl1(event)">Ctrl₁</button>
+          <button onclick="onCtrl2(event)">Ctrl₂</button>
+          <button onclick="onCtrl3(event)">Ctrl₃</button>
+          <a id="save" href="" style="display:none" download></a>
+        </div>
       </div>
     </main>
   
