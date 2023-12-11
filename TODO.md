@@ -4,6 +4,7 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 - [x] Save project file
 - [ ] Load project file
+- [ ] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
 - [ ] _dark_ SVG
 - [ ] gzip project file
@@ -17,13 +18,13 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 - [ ] `new guideline`
       - [x] label
-      - (?) label automatically
+      - [ ] label automatically
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
 
 - [ ] `set origin`
       - [x] Allow _top-left_ or _centre-bottom_
-      - [ ] Reference guides to origin
+      - [x  ] Reference guides to origin
       - [ ] @xy
       - [ ] @left+, etc
       - [ ] help text

@@ -6,6 +6,9 @@ use tera::Context;
 use tera::Tera;
 use wasm_bindgen::prelude::*;
 
+use crate::svg::Line;
+use crate::svg::Point;
+
 pub const DEFAULT_WIDTH: f32 = 45.72; // 9H
 pub const DEFAULT_HEIGHT: f32 = 128.5; // 1U
 pub const H: f32 = 5.08; // 1 'horizontal' unit
@@ -21,20 +24,15 @@ pub struct Panel {
 
 #[derive(Serialize, Deserialize)]
 pub struct Origin {
-    x: String,
-    y: String,
+    pub x: String,
+    pub y: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Guide {
     orientation: String,
+    reference: String,
     offset: f32,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Point {
-    pub x: f32,
-    pub y: f32,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -82,6 +80,7 @@ impl Panel {
         let svg = self.svg();
         let viewport = self.viewport();
         let origin = self.origin();
+        let guides = self.guides();
 
         tera.add_raw_template("panel", &panel).unwrap();
         tera.add_raw_template("styles", &styles).unwrap();
@@ -92,7 +91,7 @@ impl Panel {
         context.insert("svg", &svg);
         context.insert("viewport", &viewport);
         context.insert("origin", &origin);
-        context.insert("guides", &self.guides);
+        context.insert("guides", &guides);
 
         let svg = tera.render("panel", &context).unwrap();
 
@@ -118,7 +117,53 @@ impl Panel {
     }
 
     fn origin(&self) -> Point {
-        Point { x: 10.0, y: 10.0 }
+        let w: f32 = self.width;
+        let h: f32 = self.height;
+
+        let x = match self.origin.x.as_ref() {
+            "left" => 0.0,
+            "right" => w,
+            "centre" => w / 2.0,
+            "center" => w / 2.0,
+            _ => 0.0,
+        };
+
+        let y = match self.origin.y.as_ref() {
+            "top" => 0.0,
+            "middle" => h / 2.0,
+            "bottom" => h,
+            _ => 0.0,
+        };
+
+        return Point { x: x, y: y };
+    }
+
+    fn guides(&self) -> Vec<Line> {
+        let origin = self.origin();
+        let gutter = self.gutter;
+        let mut list: Vec<Line> = Vec::new();
+
+        for (k, v) in self.guides.iter() {
+            if v.orientation == "vertical" {
+                list.push(Line::new(
+                    k,
+                    origin.x + v.offset,
+                    -gutter,
+                    origin.x + v.offset,
+                    self.height + gutter,
+                ));
+            } else if v.orientation == "horizontal" {
+                list.push(Line::new(
+                    k,
+                    -gutter,
+                    origin.y + v.offset,
+                    self.width + gutter,
+                    origin.y + v.offset,
+                ));
+            }
+        }
+
+        return list;
     }
 }
 
@@ -126,6 +171,7 @@ impl Guide {
     pub fn new(orientation: String, offset: f32) -> Guide {
         Guide {
             orientation: orientation,
+            reference: "origin".to_string(),
             offset: offset,
         }
     }

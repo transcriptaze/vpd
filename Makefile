@@ -10,7 +10,11 @@ format:
 
 build: format
 	sass --no-source-map sass/themes:html/css
-	cd rs/vpd     && wasm-pack build --target web --out-dir ../../html/wasm/vpd
+	cd rs/vpd     && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
+
+build-release: format
+	sass --no-source-map sass/themes:html/css
+	cd rs/vpd     && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
 
 run:
 	python3 -m http.server 9876 -d html

@@ -2,6 +2,7 @@ mod command;
 mod commands;
 mod module;
 mod panel;
+mod svg;
 mod utils;
 
 use once_cell::sync::Lazy;

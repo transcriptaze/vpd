@@ -5,8 +5,8 @@ use crate::command::Command;
 use crate::module::Module;
 
 pub struct SetOriginCommand {
-    _x: String,
-    _y: String,
+    x: String,
+    y: String,
 }
 
 #[derive(Deserialize)]
@@ -29,12 +29,15 @@ impl SetOriginCommand {
         let v: V = serde_json::from_str(json)?;
 
         Ok(SetOriginCommand {
-            _x: v.origin.x,
-            _y: v.origin.y,
+            x: v.origin.x,
+            y: v.origin.y,
         })
     }
 }
 
 impl Command for SetOriginCommand {
-    fn apply(&self, _m: &mut Module) {}
+    fn apply(&self, m: &mut Module) {
+        m.panel.origin.x = self.x.clone();
+        m.panel.origin.y = self.y.clone();
+    }
 }

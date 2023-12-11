@@ -12,15 +12,14 @@
      </g>
 
     <g id="guidelines">
-      {% for k, v in guides %}
+      {% for v in guides %}
       <g font-size="3" font-family="Roboto Condensed" font-style="italic" text-anchor="start" >
         {% if v.orientation == 'vertical' %}
-        <text x="{{v.offset + 0.5}}" y="{{viewport.y + 2.5}}" text-align="start">{{k}}</text>
-        <line x1="{{v.offset}}" y1="{{viewport.y}}" x2="{{v.offset}}" y2="{{viewport.y + viewport.height}}" class="guideline" />
+        <text x="{{v.x1 + 0.5}}" y="{{v.y1 + 2.5}}" text-align="start">{{v.label}}</text>
         {% elif v.orientation == 'horizontal'%}
-        <text x="{{viewport.x}}" y="{{v.offset - 0.25}}">{{k}}</text>
-        <line x1="{{viewport.x}}"  y1="{{v.offset}}" x2="{{viewport.x + viewport.width}}" y2="{{v.offset}}" class="guideline" />
+        <text x="{{v.x1}}" y="{{v.y1 - 0.25}}">{{v.label}}</text>
         {% endif %}
+        <line x1="{{v.x1}}"  y1="{{v.y1}}" x2="{{v.x2}}" y2="{{v.y2}}" class="guideline" />
       </g>
     {% endfor %}
     </g>
