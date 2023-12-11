@@ -6,11 +6,10 @@ use tera::Context;
 use tera::Tera;
 use wasm_bindgen::prelude::*;
 
+use super::guideline::Guide;
 use crate::svg::Line;
 use crate::svg::Point;
 
-pub const DEFAULT_WIDTH: f32 = 45.72; // 9H
-pub const DEFAULT_HEIGHT: f32 = 128.5; // 1U
 pub const H: f32 = 5.08; // 1 'horizontal' unit
 
 #[derive(Serialize, Deserialize)]
@@ -26,13 +25,6 @@ pub struct Panel {
 pub struct Origin {
     pub x: String,
     pub y: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Guide {
-    orientation: String,
-    reference: String,
-    offset: f32,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -164,15 +156,5 @@ impl Panel {
         }
 
         return list;
-    }
-}
-
-impl Guide {
-    pub fn new(orientation: String, offset: f32) -> Guide {
-        Guide {
-            orientation: orientation,
-            reference: "origin".to_string(),
-            offset: offset,
-        }
     }
 }
