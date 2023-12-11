@@ -3,13 +3,14 @@
 https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 - [x] Save project file
-- [ ] Load project file
+- [x] Load project file
+- [ ] Drop project file
 - [x] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
 - [ ] _dark_ SVG
-- [ ] gzip project file
+- (?) gzip project file
 - [ ] Show errors
-- [ ] Shortcut keys
+- [ ] Assign shortcut keys
 - [ ] `undo`
 
 ### Commands
@@ -38,7 +39,7 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [ ] Generate help text from grammar/examples
 
 ### Panel
-- [ ] Deserialize from JSON with missing fields
+- [ ] Robust JSON deserialization i.e. accomodate missing fields
 
 ### SVG
 - [ ] Convert objects to mm

@@ -95,6 +95,9 @@ main div.controls button {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
 }
+main div.controls button img {
+  width: 40px;
+}
 main #left {
   grid-column: 1;
   grid-row: 1;

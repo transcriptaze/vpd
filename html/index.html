@@ -25,12 +25,14 @@
           <img src="./images/panel-dark.svg" draggable="false"></a>
         </div>
         <div class="controls">
+          <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
           <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
           <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
           <button onclick="onCtrl1(event)">Ctrl₁</button>
           <button onclick="onCtrl2(event)">Ctrl₂</button>
           <button onclick="onCtrl3(event)">Ctrl₃</button>
           <a id="save" href="" style="display:none" download></a>
+          <input id="picker" type="file" accept="application/json" style="display:none;" />
         </div>
       </div>
     </main>
@@ -71,6 +73,7 @@
       VPD.initialise()
     })()
 
+    window.onLoad = VPD.onLoad
     window.onSave = VPD.onSave
     window.onExport = VPD.onExport
 

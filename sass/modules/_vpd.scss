@@ -89,6 +89,10 @@ main {
       padding-right: 4px;
       border: $button-border;
       border-radius: 4px;
+
+      img {
+        width: 40px;
+      }
     }
   }
 

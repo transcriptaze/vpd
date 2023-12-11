@@ -36,6 +36,49 @@ export async function initialise () {
   }
 }
 
+export function onLoad () {
+  if (window.showOpenFilePicker) {
+    const options = {
+      id: 'vpd',
+      multiple: false,
+      types: [
+        {
+          description: 'VPD project file',
+          accept: {
+            'application/json': ['.json', '.vpd']
+          }
+        }
+      ]
+    }
+
+    window.showOpenFilePicker(options)
+      .then((files) => {
+        return files.length > 0 ? files[0].getFile() : null
+      })
+      .then((file) => {
+        if (file != null) {
+          load(file)
+        }
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  } else {
+    const file = document.getElementById('picker')
+
+    file.onchange = async (e) => {
+      const files = e.target.files
+
+      if (files.length > 0) {
+        load(files.item(0))
+      }
+    }
+
+    file.value = null
+    file.click()
+  }
+}
+
 export function onSave () {
   const json = serialize('project')
   const blob = new Blob([json], { type: 'application/json' })
@@ -156,6 +199,20 @@ async function save (blob) {
 
     URL.revokeObjectURL(url)
   }
+}
+
+async function load (file) {
+  file.text()
+    .then((b) => JSON.parse(b))
+    .then((object) => {
+      const serialized = JSON.stringify(object)
+      restore(serialized)
+      store(PROJECT, serialized)
+      redraw()
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 }
 
 async function saveWithPicker (blob, filename) {
