@@ -36,13 +36,7 @@
         </div>
       </div>
       <div id="drop">
-        <img src="../images/load.svg" />
-        <div class="overlay" 
-             ondragenter="onDragEnter(event)"
-             ondragleave="onDragLeave(event)" 
-             ondragover="onDragOver(event)"
-             ondrop="onDrop(event)"></div>
-      </div>
+        <vpd-drop></vpd-drop>
     </main>
   
     <footer>
@@ -54,6 +48,13 @@
     <template id="template-help-text">
       <div class="vpd-help-text">
         <textarea readonly></textarea>
+      </div>
+    </template>
+
+    <template id="template-drop">
+      <div class="vpd-drop">
+        <img src="../images/load.svg" />
+        <div class="overlay"></div>
       </div>
     </template>
 
@@ -85,68 +86,6 @@
     window.onSave = VPD.onSave
     window.onExport = VPD.onExport
 
-    window.onDragEnter = (e) => {
-      const drop = document.getElementById('drop')
-      const types = e.dataTransfer.types.map((v) => v.toLowerCase())
-
-      if (types.includes("files")) {
-        const files = e.dataTransfer.files
-        const items = e.dataTransfer.items
-
-        if (files.length > 0 && files.item(0).type === 'application/json') {
-           e.preventDefault()
-           drop.classList.add('dropping')
-        } else if (items.length > 0 && items[0].type == 'application/json') {
-           e.preventDefault()      
-           drop.classList.add('dropping')
-        }
-      }
-    }
-
-    window.onDragLeave = (e) => {
-      const drop = document.getElementById('drop')
-
-      drop.classList.remove('dropping')
-    }
-
-    window.onDragOver = (e) => {
-      const drop = document.getElementById('drop')
-      const types = e.dataTransfer.types.map((v) => v.toLowerCase())
-
-      if (types.includes("files")) {
-        const files = e.dataTransfer.files
-        const items = e.dataTransfer.items
-
-        if (files.length > 0 && files.item(0).type === 'application/json') {
-           e.preventDefault()
-           drop.classList.add('dropping')
-        } else if (items.length > 0 && items[0].type == 'application/json') {
-           e.preventDefault()      
-           drop.classList.add('dropping')
-        }
-      }
-    }
-
-    window.onDrop = (e) => {
-      e.preventDefault()
-      
-      const drop = document.getElementById('drop')
-      const types = e.dataTransfer.types.map((v) => v.toLowerCase())
-
-      drop.classList.remove('dropping')
-
-      if (types.includes("files")) {
-        const files = e.dataTransfer.files
-        const items = e.dataTransfer.items
-
-        if (files.length > 0 && files.item(0).type === 'application/json') {
-            VPD.onDrop(files.item(0))
-        } else if (items.length > 0 && items[0].type == 'application/json') {
-            VPD.onDrop(items[0])
-        }
-      }
-    }
-
     window.onCtrl1 = (event) => {
         document.getElementById('command').focus()
         document.getElementById('command').value = 'new module "woot" 1U 9H'
@@ -176,6 +115,10 @@
       }
     }
 
+    document.querySelector('vpd-drop')
+            .addEventListener('dropped', (e) => {
+              VPD.onDropped(e.detail.file)
+            })
   </script>
 </html>
 

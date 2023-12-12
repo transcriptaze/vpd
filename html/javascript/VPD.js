@@ -79,7 +79,7 @@ export function onLoad () {
   }
 }
 
-export function onDrop (file) {
+export function onDropped (file) {
   load(file)
 }
 

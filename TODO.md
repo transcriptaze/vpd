@@ -4,8 +4,9 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 - [x] Save project file
 - [x] Load project file
-- [ ] Drop project file
       - [ ] web component
+- [ ] Drop project file
+      - [x] web component
       - [ ] style drop icon and div
 - [x] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
@@ -16,6 +17,7 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [ ] `undo`
 
 ### Commands
+- [ ] Enable input autocomplete attribute
 - [x] new module
 - [ ] set module name/width/height
 
