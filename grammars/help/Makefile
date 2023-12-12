@@ -11,9 +11,9 @@ regenerate:
 build: regenerate format
 	cargo build
 
-# wasm: regenerate
-# 	tree-sitter build-wasm 
-# 	mv tree-sitter-vpd.wasm ../html/wasm/grammar
+wasm: regenerate
+	tree-sitter build-wasm 
+	mv tree-sitter-help.wasm ../../html/wasm/grammars/
 
 run: build
 	tree-sitter parse example

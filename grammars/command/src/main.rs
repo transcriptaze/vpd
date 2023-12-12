@@ -6,7 +6,9 @@ fn main() {
     let mut parser = Parser::new();
     let src = r#"new module "woot" 1U 5H"#;
 
-    parser.set_language(tree_sitter_vpd::language()).unwrap();
+    parser
+        .set_language(tree_sitter_command::language())
+        .unwrap();
 
     let tree = parser.parse(src, None).unwrap();
     let root = tree.root_node();

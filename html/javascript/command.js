@@ -3,7 +3,7 @@ import * as _set from './commands/set.js'
 let parser
 
 export async function init (Parser) {
-  const grammar = await Parser.Language.load('../wasm/grammar/tree-sitter-vpd.wasm')
+  const grammar = await Parser.Language.load('../wasm/grammars/tree-sitter-command.wasm')
 
   parser = new Parser()
   parser.setLanguage(grammar)

@@ -1,10 +1,10 @@
 [package]
-name = "tree-sitter-vpd"
-description = "vpd grammar for the tree-sitter parsing library"
+name = "tree-sitter-help"
+description = "VPD tree-sitter help grammar"
 version = "0.0.1"
 keywords = ["incremental", "parsing", "vpd"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/twystd/vcv-panel-designer/grammar"
+repository = "https://github.com/twystd/vcv-panel-designer"
 edition = "2018"
 license = "MIT"
 

@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-vpd",
+  "name": "tree-sitter-command",
   "version": "0.0.1",
-  "description": "vpd grammar for tree-sitter",
+  "description": "VPD tree-sitter command grammar",
   "main": "bindings/node",
   "keywords": [
     "parsing",

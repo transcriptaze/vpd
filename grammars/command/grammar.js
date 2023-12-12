@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: 'vpd',
+  name: 'command',
 
   rules: {
     source_file: $ => repeat($._command),

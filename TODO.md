@@ -13,7 +13,9 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 - [ ] _dark_ SVG
 - (?) gzip project file
 - [ ] Show errors
-- [ ] Assign shortcut keys
+- [ ] Macro keys
+      - [ ] web component
+      - [ ] programmable
 - [ ] `undo`
 
 ### Commands

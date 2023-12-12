@@ -72,7 +72,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tree-sitter-vpd"
+name = "tree-sitter-command"
 version = "0.0.1"
 dependencies = [
  "cc",

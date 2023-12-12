@@ -1,8 +1,6 @@
-new module "woot" 1U 5H
-new param
-new input
-new output
-new label "qwerty"
+new
+new module
+new guide
+new label
 set
-move
-delete
+set origin

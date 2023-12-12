@@ -1,5 +1,5 @@
 {
-  "name": "vpd",
+  "name": "command",
   "rules": {
     "source_file": {
       "type": "REPEAT",

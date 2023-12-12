@@ -1,49 +1,43 @@
 module.exports = grammar({
-  name: 'vpd',
+  name: 'help',
 
   rules: {
     source_file: $ => repeat($._command),
     _command: $ => choice(
       $.new,
-      'set',
-      'move',
-      'delete'
+      $.set,
     ),
 
     new: $ => seq(
       'new',
-      $.entity,
+      optional($.entity),
+    ),
+
+    set: $ => seq(
+      'set',
+      optional($.attribute),
     ),
 
     entity: $ => choice(
       $.module,
-      'param',
-      'input',
-      'output',
+      $.guide,
       $.label,
+    ),
+
+    attribute: $ => choice(
+      'origin',
     ),
 
     module: $ => seq(
       'module',
-      $.name,
-      $.height,
-      $.width,
     ),
 
-    name: $ => seq(
-      '"',
-      alias(/[a-zA-Z]([^"]*?)/,$.value),
-      '"',
+    guide: $ => seq(
+      'guide',
     ),
-
-    height: $ => '1U',
-    width: $ => /[1-9][0-9]*H/,
 
     label: $ => seq(
       'label',
-      $.text,
     ),
-
-    text: $ => /"(.+?)"/,
   }
 });

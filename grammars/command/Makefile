@@ -13,7 +13,7 @@ build: regenerate format
 
 wasm: regenerate
 	tree-sitter build-wasm 
-	mv tree-sitter-vpd.wasm ../../html/wasm/grammar
+	mv tree-sitter-command.wasm ../../html/wasm/grammars/
 
 run: build
 	tree-sitter parse example
