@@ -3,7 +3,7 @@ new guide g1 vertical +4.5mm
 new param
 new input
 new output
-new label "qwerty"
+new label "uiop" @22.2mm,33.3mm
 set origin top,left
 set origin right,bottom
 move

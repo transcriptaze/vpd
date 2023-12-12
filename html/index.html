@@ -31,6 +31,7 @@
           <button onclick="onCtrl1(event)">Ctrl₁</button>
           <button onclick="onCtrl2(event)">Ctrl₂</button>
           <button onclick="onCtrl3(event)">Ctrl₃</button>
+          <button onclick="onCtrl4(event)">Ctrl₄</button>
           <a id="save" href="" style="display:none" download></a>
           <input id="picker" type="file" accept="application/json" style="display:none;" />
         </div>
@@ -99,6 +100,11 @@
     window.onCtrl3 = (event) => {
         document.getElementById('command').focus()
         document.getElementById('command').value = 'set origin centre,middle'
+    }
+
+    window.onCtrl4 = (event) => {
+        document.getElementById('command').focus()
+        document.getElementById('command').value = 'new label "qwerty" @22.2mm,33.3mm'
     }
 
     window.onkeypress = (event) => {

@@ -222,6 +222,10 @@
         {
           "type": "SYMBOL",
           "name": "text"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "anchor"
         }
       ]
     },
@@ -271,6 +275,37 @@
     "offset": {
       "type": "PATTERN",
       "value": "[+-]?([0-9]+)(\\.[0-9]*)?mm"
+    },
+    "anchor": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?mm"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?mm"
+          },
+          "named": true,
+          "value": "y"
+        }
+      ]
     }
   },
   "extras": [

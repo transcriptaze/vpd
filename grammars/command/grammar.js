@@ -60,6 +60,7 @@ module.exports = grammar({
     label: $ => seq(
       'label',
       $.text,
+      $.anchor
     ),
 
     guide: $ => seq(
@@ -72,5 +73,12 @@ module.exports = grammar({
     identifier: $ => /[a-z][a-z0-9]+/i,
     text: $ => /"(.+?)"/,
     offset: $ => /[+-]?([0-9]+)(\.[0-9]*)?mm/,
+
+    anchor: $ => seq(
+      '@',
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
+      ',',
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+    )
   }
 });
