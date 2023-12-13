@@ -67,6 +67,10 @@ div.vpd-drop div.overlay {
   z-index: 2;
 }
 
+div.vpd-drop.dropping {
+  filter: contrast(170%) brightness(500%);
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.2) 60%, transparent 90%), url("/images/dropbg.svg");
+}
 div.vpd-drop.dropping img {
   visibility: visible;
 }
