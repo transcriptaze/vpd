@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     version="1.1"
+     width="{{width}}mm"
+     height="{{height}}mm"
+     viewBox="{{viewport.x}} {{viewport.y}} {{viewport.width}} {{viewport.height}}">
+{% include "styles" %}
+
+  <defs>
+  {% include "backgrounds" %}
+  </defs>
+
+  <rect x="{{viewport.x}}" y="{{viewport.y}}" width="{{viewport.width}}" height="{{viewport.height}}" class="border" />
+
+  <g inkscape:groupmode="layer" inkscape:label="components"></g>
+  <g inkscape:groupmode="layer" inkscape:label="background">
+    {% if background -%}
+    <rect x="{{background.x}}" y="{{background.y}}" width="{{background.width}}" height="{{background.height}}" fill="url(#background)" />
+    {%- endif %}
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="title"></g>
+  <g inkscape:groupmode="layer" inkscape:label="controls"></g>
+  <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="labels"></g>
+  <g inkscape:groupmode="layer" inkscape:label="overlay"></g>
+</svg>

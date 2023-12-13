@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-      version="1.1"
-      width="{{width}}mm"
-      height="{{height}}mm"
-      viewBox="0 0 {{width}} {{height}}">
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     version="1.1"
+     width="{{width}}mm"
+     height="{{height}}mm"
+     viewBox="0 0 {{width}} {{height}}">
   <defs>
     <style>
       @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
@@ -19,5 +19,5 @@
     <text font-family="Open Sans"        x="22.86" y="40">Open Sans</text>
     <text font-family="Style Script"     x="22.86" y="60">Scripty</text>
     <text font-family="Lato"             x="22.86" y="80">Latoli</text>
-    </g>
+  </g>
 </svg>

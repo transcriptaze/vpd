@@ -2,14 +2,14 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-use tera::Context;
-use tera::Tera;
 use wasm_bindgen::prelude::*;
 
 use crate::panel::Guide;
 use crate::panel::Label;
 use crate::svg::Line;
 use crate::svg::Point;
+use crate::svg::Rect;
+use crate::svg::SVG;
 
 pub const H: f32 = 5.08; // 1 'horizontal' unit
 
@@ -27,14 +27,6 @@ pub struct Panel {
 pub struct Origin {
     pub x: String,
     pub y: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Rect {
-    pub x: f32,
-    pub y: f32,
-    pub width: f32,
-    pub height: f32,
 }
 
 // TODO include_dir
@@ -57,50 +49,61 @@ impl Panel {
     }
 
     #[allow(non_snake_case)]
-    pub fn to_SVG(&self, _theme: &str) -> Result<String, JsValue> {
-        let panel = include_str!("templates/panel.svg");
-        let styles = include_str!("templates/styles.svg");
-        let backgrounds = include_str!("templates/backgrounds.svg");
-        let guidelines = include_str!("templates/guidelines.svg");
-
-        let mut tera = Tera::default();
-        let mut context = Context::new();
-
-        let rect = Rect {
+    pub fn to_SVG(&self, theme: &str) -> Result<String, JsValue> {
+        let w = self.width + 2.0 * self.gutter;
+        let h = self.height + 2.0 * self.gutter;
+        let viewport = self.viewport();
+        let background = Rect {
             x: 0.0,
             y: 0.0,
             width: self.width,
             height: self.height,
         };
-        let svg = self.svg();
-        let viewport = self.viewport();
-        let origin = self.origin();
-        let guides = self.guides();
 
-        tera.add_raw_template("panel", &panel).unwrap();
-        tera.add_raw_template("styles", &styles).unwrap();
-        tera.add_raw_template("backgrounds", &backgrounds).unwrap();
-        tera.add_raw_template("guidelines", &guidelines).unwrap();
+        let svg = SVG::new(w, h, viewport).background(background);
 
-        context.insert("panel", &rect);
-        context.insert("svg", &svg);
-        context.insert("viewport", &viewport);
-        context.insert("origin", &origin);
-        context.insert("guides", &guides);
-
-        let svg = tera.render("panel", &context).unwrap();
-
-        Ok(svg.to_string())
-    }
-
-    fn svg(&self) -> Rect {
-        Rect {
-            x: 0.0,
-            y: 0.0,
-            width: self.width + 2.0 * self.gutter,
-            height: self.height + 2.0 * self.gutter,
+        match svg.to_SVG(theme) {
+            Ok(v) => Ok(v),
+            Err(e) => Err(JsValue::from(format!("{}", e))),
         }
     }
+
+    // #[allow(non_snake_case)]
+    // pub fn to_SVGx(&self, _theme: &str) -> Result<String, JsValue> {
+    //     let panel = include_str!("templates/panel.svg");
+    //     let styles = include_str!("templates/styles.svg");
+    //     let backgrounds = include_str!("templates/backgrounds.svg");
+    //     let guidelines = include_str!("templates/guidelines.svg");
+    //
+    //     let mut tera = Tera::default();
+    //     let mut context = Context::new();
+    //
+    //     let rect = Rect {
+    //         x: 0.0,
+    //         y: 0.0,
+    //         width: self.width,
+    //         height: self.height,
+    //     };
+    //     let svg = self.svg();
+    //     let viewport = self.viewport();
+    //     let origin = self.origin();
+    //     let guides = self.guides();
+    //
+    //     tera.add_raw_template("panel", &panel).unwrap();
+    //     tera.add_raw_template("styles", &styles).unwrap();
+    //     tera.add_raw_template("backgrounds", &backgrounds).unwrap();
+    //     tera.add_raw_template("guidelines", &guidelines).unwrap();
+    //
+    //     context.insert("panel", &rect);
+    //     context.insert("svg", &svg);
+    //     context.insert("viewport", &viewport);
+    //     context.insert("origin", &origin);
+    //     context.insert("guides", &guides);
+    //
+    //     let svg = tera.render("panel", &context).unwrap();
+    //
+    //     Ok(svg.to_string())
+    // }
 
     fn viewport(&self) -> Rect {
         Rect {
