@@ -6,7 +6,8 @@ use tera::Context;
 use tera::Tera;
 use wasm_bindgen::prelude::*;
 
-use super::guideline::Guide;
+use crate::panel::Guide;
+use crate::panel::Label;
 use crate::svg::Line;
 use crate::svg::Point;
 
@@ -19,6 +20,7 @@ pub struct Panel {
     gutter: f32,
     pub origin: Origin,
     pub guides: HashMap<String, Guide>,
+    pub labels: Vec<Label>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -50,6 +52,7 @@ impl Panel {
                 y: "top".to_string(),
             },
             guides: HashMap::new(),
+            labels: Vec::new(),
         };
     }
 

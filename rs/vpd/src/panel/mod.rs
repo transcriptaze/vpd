@@ -1,7 +1,9 @@
 mod guideline;
+mod label;
 mod panel;
 
 pub use guideline::Guide;
+pub use label::Label;
 pub use panel::Panel;
 
 pub const DEFAULT_WIDTH: f32 = 45.72; // 9H

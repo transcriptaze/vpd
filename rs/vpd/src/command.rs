@@ -4,6 +4,7 @@ use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
 use crate::commands::NewGuideCommand;
+use crate::commands::NewLabelCommand;
 use crate::commands::NewModuleCommand;
 use crate::commands::SetOriginCommand;
 
@@ -16,6 +17,8 @@ struct Action {
     action: String,
     module: Option<Entity>,
     guide: Option<Entity>,
+    label: Option<Entity>,
+
     origin: Option<Attr>,
 }
 
@@ -32,6 +35,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(NewModuleCommand::new(json)?))
     } else if v.action == "new" && v.guide.is_some() {
         Ok(Box::new(NewGuideCommand::new(json)?))
+    } else if v.action == "new" && v.label.is_some() {
+        Ok(Box::new(NewLabelCommand::new(json)?))
     } else if v.action == "set" && v.origin.is_some() {
         Ok(Box::new(SetOriginCommand::new(json)?))
     } else {

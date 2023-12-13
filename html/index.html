@@ -27,7 +27,10 @@
         <div id="controls">
           <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
           <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
-          <button onclick="onExport(event)"><img src="./images/download.svg" /></button>
+          <div>
+            <button class="light" onclick="onExport(event,'light')"><img src="./images/download.svg" /></button>
+            <button class="dark"  onclick="onExport(event,'dark')"><img src="./images/download.svg" /></button>
+          </div>
           <button onclick="onCtrl1(event)">Ctrl₁</button>
           <button onclick="onCtrl2(event)">Ctrl₂</button>
           <button onclick="onCtrl3(event)">Ctrl₃</button>
