@@ -40,10 +40,10 @@ export class HelpText extends HTMLElement {
 
     const lines = []
     for (const v of help) {
-      lines.push(v.join(', '))
+      lines.push(v)
     }
 
-    textarea.value = lines.join('>> \n')
+    textarea.value = lines.join('\n')
   }
 }
 
