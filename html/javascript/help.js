@@ -8,10 +8,26 @@ export async function init (Parser) {
 }
 
 const COMMANDS = [
-  ['new', 'module'],
-  ['new', 'guide'],
-  ['new', 'label'],
-  ['set', 'origin']
+  {
+    command: ['new', 'module'],
+    help: ['new', 'module', '<em>&lt;name&gt;</em>'],
+    min: 3
+  },
+  {
+    command: ['new', 'guide'],
+    help: ['new', 'guide'],
+    min: 2
+  },
+  {
+    command: ['new', 'label'],
+    help: ['<b>new</b>', 'label'],
+    min: 2
+  },
+  {
+    command: ['set', 'origin'],
+    help: ['set', 'origin'],
+    min: 2
+  }
 ]
 
 export function help (prompt, text) {
@@ -29,11 +45,11 @@ export function help (prompt, text) {
   }
 
   const list = new Set()
-  const N = tokens.length
 
   for (const c of COMMANDS) {
-    if (matches(c, tokens)) {
-      list.add(c.slice(0, N + 1).join(' '))
+    if (matches(c.command, tokens)) {
+      const N = tokens.length + 1 < c.min ? c.min : tokens.length + 1
+      list.add(c.help.slice(0, N + 1).join(' '))
     }
   }
 

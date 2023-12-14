@@ -36,14 +36,15 @@ export class HelpText extends HTMLElement {
 
   display (help) {
     const shadow = this.shadowRoot
-    const textarea = shadow.querySelector('textarea')
+    const ul = shadow.querySelector('ul')
 
-    const lines = []
+    ul.replaceChildren()
+
     for (const v of help) {
-      lines.push(v)
+      const li = document.createElement('li')
+      li.innerHTML = `${v}`
+      ul.append(li)
     }
-
-    textarea.value = lines.join('\n')
   }
 }
 
