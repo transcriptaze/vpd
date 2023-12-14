@@ -46,9 +46,8 @@
 
 ### SVG
 - [ ] Convert objects to mm
-- [ ] Use max 3 digits of precision
-      e.g. context.insert("panel_width", &format!("{:.2}", self.width));
-
+- [ ] `fmt` function 
+- [ ] SVG pretty printer
 
 ## Notes
 

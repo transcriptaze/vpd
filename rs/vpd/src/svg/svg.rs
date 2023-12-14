@@ -5,6 +5,7 @@ use tera::Tera;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Text;
 
 const OUTLINE_STROKE: f32 = 0.125;
 
@@ -16,6 +17,7 @@ pub struct SVG {
     outline: Option<Rect>,
     origin: Option<Point>,
     guidelines: Option<Vec<GuideLine>>,
+    labels: Option<Vec<Text>>,
 }
 
 // TODO include_dir
@@ -30,6 +32,7 @@ impl SVG {
             outline: None,
             origin: None,
             guidelines: None,
+            labels: None,
         }
     }
 
@@ -58,12 +61,18 @@ impl SVG {
         self
     }
 
+    pub fn labels(mut self, labels: Vec<Text>) -> Self {
+        self.labels = Some(labels);
+        self
+    }
+
     #[allow(non_snake_case)]
     pub fn to_SVG(&self, _theme: &str) -> Result<String, Box<dyn Error>> {
         let panel = include_str!("templates/panel.svg");
         let styles = include_str!("templates/styles.svg");
         let backgrounds = include_str!("templates/backgrounds.svg");
         let guidelines = include_str!("templates/guidelines.svg");
+        let labels = include_str!("templates/labels.svg");
 
         let mut tera = Tera::default();
         let mut context = Context::new();
@@ -72,6 +81,7 @@ impl SVG {
         tera.add_raw_template("styles", &styles).unwrap();
         tera.add_raw_template("backgrounds", &backgrounds).unwrap();
         tera.add_raw_template("guidelines", &guidelines).unwrap();
+        tera.add_raw_template("labels", &labels).unwrap();
 
         context.insert("width", &format!("{:3}", self.width));
         context.insert("height", &format!("{:3}", self.height));
@@ -97,39 +107,13 @@ impl SVG {
             _ => todo!(),
         }
 
-        // context.insert("origin", &origin);
-        // context.insert("guides", &guides);
+        match &self.labels {
+            Some(v) => context.insert("labels", &v),
+            _ => todo!(),
+        }
 
         let svg = tera.render("panel", &context).unwrap();
 
         Ok(svg.to_string())
     }
 }
-
-// <g inkscape:groupmode="layer" inkscape:label="guidelines">
-//   <rect x="0" y="0" width="{{panel.width}}" height="{{panel.height}}" class="outline"/>
-//
-//   <g id="origin">
-//     <polygon points="{{origin.x-2.5}},{{origin.y}} {{origin.x}},{{origin.y+2.5}} {{origin.x+2.5}},{{origin.y}} {{origin.x}},{{origin.y-2.5}}" class="origin" />
-//     <line x1="{{origin.x}}" y1="{{viewport.y}}"
-//           x2="{{origin.x}}" y2="{{viewport.y + viewport.height}}"
-//           class="guideline" />
-//     <line x1="{{viewport.x}}" y1="{{origin.y}}"
-//           x2="{{viewport.x + viewport.width}}" y2="{{origin.y}}"
-//           class="guideline" />
-//    </g>
-//
-//   <g id="guidelines">
-//     {% for v in guides %}
-//     <g font-size="3" font-family="Roboto Condensed" font-style="italic" text-anchor="start" >
-//       {% if v.orientation == 'vertical' %}
-//       <text x="{{v.x1 + 0.5}}" y="{{v.y1 + 2.5}}" text-align="start">{{v.label}}</text>
-//       {% elif v.orientation == 'horizontal'%}
-//       <text x="{{v.x1}}" y="{{v.y1 - 0.25}}">{{v.label}}</text>
-//       {% endif %}
-//       <line x1="{{v.x1}}"  y1="{{v.y1}}" x2="{{v.x2}}" y2="{{v.y2}}" class="guideline" />
-//     </g>
-//   {% endfor %}
-//   </g>
-//
-// </g>

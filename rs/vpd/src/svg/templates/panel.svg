@@ -25,8 +25,7 @@
   <g inkscape:groupmode="layer" inkscape:label="controls"></g>
   <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
   <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
-  <g inkscape:groupmode="layer" inkscape:label="labels"></g>
+{% include "labels" %}
   <g inkscape:groupmode="layer" inkscape:label="overlay"></g>
-
 {% include "guidelines" %}
 </svg>

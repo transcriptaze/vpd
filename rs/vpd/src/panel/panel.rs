@@ -9,6 +9,7 @@ use crate::panel::Label;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Text;
 use crate::svg::SVG;
 
 pub const H: f32 = 5.08; // 1 'horizontal' unit
@@ -55,12 +56,14 @@ impl Panel {
         let outline = Rect::new(0.0, 0.0, self.width, self.height);
         let origin = self.origin();
         let guidelines = self.guidelines();
+        let labels = self.labels();
 
         let svg = SVG::new(w, h, viewport)
             .background(background)
             .outline(outline)
             .origin(origin)
-            .guidelines(guidelines);
+            .guidelines(guidelines)
+            .labels(labels);
 
         match svg.to_SVG(theme) {
             Ok(v) => Ok(v),
@@ -124,6 +127,16 @@ impl Panel {
                     "horizontal".to_string(),
                 ));
             }
+        }
+
+        return list;
+    }
+
+    fn labels(&self) -> Vec<Text> {
+        let mut list: Vec<Text> = Vec::new();
+
+        for v in self.labels.iter() {
+            list.push(Text::new(v.path.to_string()));
         }
 
         return list;

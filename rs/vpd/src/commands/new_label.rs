@@ -1,10 +1,18 @@
-use serde::Deserialize;
 use std::error::Error;
+
+use serde::Deserialize;
+
+use wasm_bindgen::prelude::*;
 
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
 use crate::svg::Point;
+
+#[wasm_bindgen(raw_module = "../../javascript/text.js")]
+extern "C" {
+    fn text2path(text: &str) -> String;
+}
 
 pub struct NewLabelCommand {
     name: String,
@@ -60,7 +68,10 @@ impl Command for NewLabelCommand {
         let text = self.text.clone();
         let x = self.anchor.x;
         let y = self.anchor.y;
+        let path = text2path(&self.text);
 
-        m.panel.labels.push(panel::Label::new(name, text, x, y));
+        m.panel
+            .labels
+            .push(panel::Label::new(name, text, x, y, path));
     }
 }
