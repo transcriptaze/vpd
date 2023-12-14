@@ -1,6 +1,9 @@
   <g inkscape:groupmode="layer" inkscape:label="guidelines">
-    <rect x="0" y="0" width="{{panel.width}}" height="{{panel.height}}" class="outline"/>
-    
+    {% if outline -%}
+    <rect x="{{outline.x}}" y="{{outline.y}}" width="{{outline.width}}" height="{{outline.height}}" class="outline"/>
+    {%- endif %}
+
+    {% if origin -%}
     <g id="origin">
       <polygon points="{{origin.x-2.5}},{{origin.y}} {{origin.x}},{{origin.y+2.5}} {{origin.x+2.5}},{{origin.y}} {{origin.x}},{{origin.y-2.5}}" class="origin" />
       <line x1="{{origin.x}}" y1="{{viewport.y}}" 
@@ -9,10 +12,12 @@
       <line x1="{{viewport.x}}" y1="{{origin.y}}" 
             x2="{{viewport.x + viewport.width}}" y2="{{origin.y}}" 
             class="guideline" />
-     </g>
+    </g>
+    {%- endif %}
 
+    {% if guidelines -%}
     <g id="guidelines">
-      {% for v in guides %}
+      {% for v in guidelines -%}
       <g font-size="3" font-family="Roboto Condensed" font-style="italic" text-anchor="start" >
         {% if v.orientation == 'vertical' %}
         <text x="{{v.x1 + 0.5}}" y="{{v.y1 + 2.5}}" text-align="start">{{v.label}}</text>
@@ -21,7 +26,8 @@
         {% endif %}
         <line x1="{{v.x1}}"  y1="{{v.y1}}" x2="{{v.x2}}" y2="{{v.y2}}" class="guideline" />
       </g>
-    {% endfor %}
+      {%- endfor %}
     </g>
+    {%- endif %}
 
   </g>

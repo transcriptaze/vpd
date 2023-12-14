@@ -1,13 +1,10 @@
 # TODO
 
-https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 
 - [x] Save project file
 - [x] Load project file
       - [ ] web component
-- [ ] Drop project file
-      - [x] web component
-      - [ ] style drop icon and div
+- [x] Drop project file
 - [x] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
 - [ ] _dark_ SVG
@@ -65,3 +62,6 @@ https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 8.  https://siraben.dev/2022/03/01/tree-sitter.html
 9.  https://github.com/tree-sitter/tree-sitter/tree/master/lib/binding_rust
 10. https://www.reddit.com/r/learnrust/comments/lrfci0/why_err_uses_string_and_not_str/
+11. https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
+12. https://github.com/bodoni/svg
+13. https://github.com/RazrFalcon/ttf-parser

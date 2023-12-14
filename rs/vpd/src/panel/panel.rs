@@ -6,7 +6,7 @@ use wasm_bindgen::prelude::*;
 
 use crate::panel::Guide;
 use crate::panel::Label;
-use crate::svg::Line;
+use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
 use crate::svg::SVG;
@@ -29,8 +29,6 @@ pub struct Origin {
     pub y: String,
 }
 
-// TODO include_dir
-//      https://crates.io/crates/include_dir
 impl Panel {
     pub fn new(width: f32, _height: f32) -> Panel {
         let w = (width / H).round();
@@ -53,57 +51,22 @@ impl Panel {
         let w = self.width + 2.0 * self.gutter;
         let h = self.height + 2.0 * self.gutter;
         let viewport = self.viewport();
-        let background = Rect {
-            x: 0.0,
-            y: 0.0,
-            width: self.width,
-            height: self.height,
-        };
+        let background = Rect::new(0.0, 0.0, self.width, self.height);
+        let outline = Rect::new(0.0, 0.0, self.width, self.height);
+        let origin = self.origin();
+        let guidelines = self.guidelines();
 
-        let svg = SVG::new(w, h, viewport).background(background);
+        let svg = SVG::new(w, h, viewport)
+            .background(background)
+            .outline(outline)
+            .origin(origin)
+            .guidelines(guidelines);
 
         match svg.to_SVG(theme) {
             Ok(v) => Ok(v),
             Err(e) => Err(JsValue::from(format!("{}", e))),
         }
     }
-
-    // #[allow(non_snake_case)]
-    // pub fn to_SVGx(&self, _theme: &str) -> Result<String, JsValue> {
-    //     let panel = include_str!("templates/panel.svg");
-    //     let styles = include_str!("templates/styles.svg");
-    //     let backgrounds = include_str!("templates/backgrounds.svg");
-    //     let guidelines = include_str!("templates/guidelines.svg");
-    //
-    //     let mut tera = Tera::default();
-    //     let mut context = Context::new();
-    //
-    //     let rect = Rect {
-    //         x: 0.0,
-    //         y: 0.0,
-    //         width: self.width,
-    //         height: self.height,
-    //     };
-    //     let svg = self.svg();
-    //     let viewport = self.viewport();
-    //     let origin = self.origin();
-    //     let guides = self.guides();
-    //
-    //     tera.add_raw_template("panel", &panel).unwrap();
-    //     tera.add_raw_template("styles", &styles).unwrap();
-    //     tera.add_raw_template("backgrounds", &backgrounds).unwrap();
-    //     tera.add_raw_template("guidelines", &guidelines).unwrap();
-    //
-    //     context.insert("panel", &rect);
-    //     context.insert("svg", &svg);
-    //     context.insert("viewport", &viewport);
-    //     context.insert("origin", &origin);
-    //     context.insert("guides", &guides);
-    //
-    //     let svg = tera.render("panel", &context).unwrap();
-    //
-    //     Ok(svg.to_string())
-    // }
 
     fn viewport(&self) -> Rect {
         Rect {
@@ -136,27 +99,29 @@ impl Panel {
         return Point { x: x, y: y };
     }
 
-    fn guides(&self) -> Vec<Line> {
+    fn guidelines(&self) -> Vec<GuideLine> {
         let origin = self.origin();
         let gutter = self.gutter;
-        let mut list: Vec<Line> = Vec::new();
+        let mut list: Vec<GuideLine> = Vec::new();
 
         for (k, v) in self.guides.iter() {
             if v.orientation == "vertical" {
-                list.push(Line::new(
+                list.push(GuideLine::new(
                     k,
                     origin.x + v.offset,
                     -gutter,
                     origin.x + v.offset,
                     self.height + gutter,
+                    "vertical".to_string(),
                 ));
             } else if v.orientation == "horizontal" {
-                list.push(Line::new(
+                list.push(GuideLine::new(
                     k,
                     -gutter,
                     origin.y + v.offset,
                     self.width + gutter,
                     origin.y + v.offset,
+                    "horizontal".to_string(),
                 ));
             }
         }
