@@ -136,7 +136,7 @@ impl Panel {
         let mut list: Vec<Text> = Vec::new();
 
         for v in self.labels.iter() {
-            list.push(Text::new(v.path.to_string()));
+            list.push(Text::new(v.x, v.y, v.path.to_string()));
         }
 
         return list;

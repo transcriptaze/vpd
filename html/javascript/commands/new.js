@@ -71,8 +71,8 @@ function newLabel (node) {
   }
 
   for (const child of node.namedChildren) {
-    if (child.type === 'text') {
-      object.label.text = child.text
+    if (child.type === 'text' && child.namedChildCount > 0) {
+      object.label.text = child.namedChildren[0].text.trim()
     } else if (child.type === 'anchor') {
       object.label.anchor = {
         reference: 'absolute'

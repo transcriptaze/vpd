@@ -68,7 +68,7 @@ impl Command for NewLabelCommand {
         let text = self.text.clone();
         let x = self.anchor.x;
         let y = self.anchor.y;
-        let path = text2path(&self.text);
+        let path = text2path(&self.text).to_string();
 
         m.panel
             .labels

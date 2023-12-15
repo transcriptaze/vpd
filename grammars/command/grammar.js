@@ -71,7 +71,13 @@ module.exports = grammar({
     ),
 
     identifier: $ => /[a-z][a-z0-9]+/i,
-    text: $ => /"(.+?)"/,
+
+    text: $ => seq(
+      '"',
+      alias(/[a-zA-Z]([^"]*?)/,$.value),
+      '"',
+    ),
+
     offset: $ => /[+-]?([0-9]+)(\.[0-9]*)?mm/,
 
     anchor: $ => seq(

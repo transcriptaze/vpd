@@ -15,14 +15,44 @@
       - [ ] programmable
 - [ ] `undo`
 
+### Fonts 
+
+- [ ] `load font...`
+- (?) load all on startup
+- [ ] _woff_
+- [ ] _woff2_
+
 ### Commands
 - [ ] Enable input autocomplete attribute
-- [x] new module
-- [ ] set module name/width/height
 
-- [ ] `new guideline`
-      - [x] label
-      - [ ] label automatically
+- [ ] _module_
+      - [x] `new module`
+      - [ ] `set` module name/width/height
+
+- [ ] _guidelines_
+      - [x] `new guideline`
+      - [x] guide ID
+      - [x] relative to origin
+      - [ ] absolute
+      - [ ] relative to another guideline
+      - [ ] make guide ID optional
+      - [ ] generate ID automatically
+      - [ ] error if identifier already exists
+      - (?) error if duplicate offset
+
+- [ ] _labels_
+      - [x] `new label`
+      - [x] text2path\
+      - [ ] anchor
+            - [x] absolute
+            - [ ] relative to origin
+            - [ ] relative to guideline
+      - [ ] align left/centre/right
+      - [ ] align top/middle/baseline/bottom
+      - [ ] font
+      - [ ] fontsize
+      - [ ] label ID
+      - [ ] generate label ID automatically
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
 
@@ -64,3 +94,6 @@
 11. https://rustwasm.github.io/wasm-bindgen/examples/import-js.html
 12. https://github.com/bodoni/svg
 13. https://github.com/RazrFalcon/ttf-parser
+14. https://github.com/extraymond/rust-async-wasm-demo/blob/master/README.md
+15. https://users.rust-lang.org/t/do-async-frameworks-like-tokio-support-wasm-particularly-multithreading-in-the-browser/85927/2
+16. https://stackoverflow.com/questions/72220581/how-to-produce-a-wasm-interface-with-asynchronous-access

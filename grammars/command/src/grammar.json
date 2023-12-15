@@ -269,8 +269,26 @@
       "value": "[a-z][a-z0-9]+"
     },
     "text": {
-      "type": "PATTERN",
-      "value": "\"(.+?)\""
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([^\"]*?)"
+          },
+          "named": true,
+          "value": "value"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
     },
     "offset": {
       "type": "PATTERN",
