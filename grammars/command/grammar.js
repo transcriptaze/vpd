@@ -65,20 +65,44 @@ module.exports = grammar({
 
     guide: $ => seq(
       'guide',
-      $.identifier,
-      alias(choice('vertical', 'horizontal'),$.orientation),
-      $.offset,
+      optional($.identifier),
+      choice(
+        $.vertical, 
+        $.horizontal,
+      ),
     ),
 
     identifier: $ => /[a-z][a-z0-9]+/i,
+
+    vertical: $ => seq(
+      alias('vertical',$.orientation),
+      alias(choice( 
+        /[@+-]?([0-9]+)(\.[0-9]*)?mm/, 
+        /left|centre|center|right/,
+        seq(
+          $.identifier, 
+          /[+-]([0-9]+)(\.[0-9]*)?mm/,
+        ),
+      ), $.offset),
+    ),
+
+    horizontal: $ => seq(
+      alias('horizontal',$.orientation),
+      alias(choice( 
+        /[@+-]?([0-9]+)(\.[0-9]*)?mm/, 
+        /top|middle|bottom/,
+        seq (
+          $.identifier,
+          /[+-]([0-9]+)(\.[0-9]*)?mm/,
+        ),
+      ), $.offset),
+    ),
 
     text: $ => seq(
       '"',
       alias(/[a-zA-Z]([^"]*?)/,$.value),
       '"',
     ),
-
-    offset: $ => /[+-]?([0-9]+)(\.[0-9]*)?mm/,
 
     anchor: $ => seq(
       '@',

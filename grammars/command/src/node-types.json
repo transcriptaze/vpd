@@ -65,9 +65,28 @@
       "required": true,
       "types": [
         {
+          "type": "horizontal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
+        {
+          "type": "vertical",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "horizontal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
         {
           "type": "offset",
           "named": true
@@ -214,6 +233,25 @@
       "types": [
         {
           "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "vertical",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "orientation",
           "named": true
         }
       ]

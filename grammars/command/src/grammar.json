@@ -237,8 +237,47 @@
           "value": "guide"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "vertical"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "horizontal"
+            }
+          ]
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-z][a-z0-9]+"
+    },
+    "vertical": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "vertical"
+          },
+          "named": true,
+          "value": "orientation"
         },
         {
           "type": "ALIAS",
@@ -246,27 +285,77 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "STRING",
-                "value": "vertical"
+                "type": "PATTERN",
+                "value": "[@+-]?([0-9]+)(\\.[0-9]*)?mm"
               },
               {
-                "type": "STRING",
-                "value": "horizontal"
+                "type": "PATTERN",
+                "value": "left|centre|center|right"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[+-]([0-9]+)(\\.[0-9]*)?mm"
+                  }
+                ]
               }
             ]
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "horizontal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "horizontal"
           },
           "named": true,
           "value": "orientation"
         },
         {
-          "type": "SYMBOL",
-          "name": "offset"
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[@+-]?([0-9]+)(\\.[0-9]*)?mm"
+              },
+              {
+                "type": "PATTERN",
+                "value": "top|middle|bottom"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[+-]([0-9]+)(\\.[0-9]*)?mm"
+                  }
+                ]
+              }
+            ]
+          },
+          "named": true,
+          "value": "offset"
         }
       ]
-    },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-z][a-z0-9]+"
     },
     "text": {
       "type": "SEQ",
@@ -289,10 +378,6 @@
           "value": "\""
         }
       ]
-    },
-    "offset": {
-      "type": "PATTERN",
-      "value": "[+-]?([0-9]+)(\\.[0-9]*)?mm"
     },
     "anchor": {
       "type": "SEQ",
