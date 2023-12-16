@@ -136,9 +136,11 @@ main div#drop {
 footer {
   grid-row: 3;
   grid-column: 1/4;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   row-gap: 4px;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -148,6 +150,7 @@ footer {
 footer #command {
   background: white;
   width: 100%;
+  max-width: 1250px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 12px;
@@ -161,6 +164,7 @@ footer vpd-help-text {
   background: white;
   width: 100%;
   height: 100%;
+  max-width: 1250px;
   border: 1px solid #a7a7a7;
   border-radius: 4px;
 }

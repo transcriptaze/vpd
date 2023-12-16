@@ -2,8 +2,12 @@ div.vpd-help-text {
   background: white;
   width: 100%;
   height: 100%;
+
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 4px;
   padding-right: 4px;
+
   border: none;
   border-radius: 4px;
 
@@ -11,22 +15,22 @@ div.vpd-help-text {
   justify-content: flex-start;
 
   ul {
-    width: min-content;
-    height: 75px;
-    column-width: auto;
-    column-count: 10;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+
+    column-width: 160px;
     column-rule: none;
     column-rule-width: thin;
-    column-fill: auto;
-    column-gap: 32px;
+    
     overflow-y: hidden;
   }
 
   li {
     display: inline-block;
-    width: min-content;
+    width: 100%;
     padding-left: 8px;
-    padding-right: 32px;
+    padding-right: 8px;
     color: $gray;
     font-size: 0.9em;
     white-space: nowrap;
