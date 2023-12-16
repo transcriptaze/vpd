@@ -45,6 +45,52 @@ function newModule (node) {
   return object
 }
 
+const reference = {
+  absolute: (node) => { return 'absolute' },
+  relative: (node) => { return 'origin' },
+  geometry: (node) => { return node.text },
+  guideline: (node) => {
+    for (const v of node.namedChildren) {
+      if (v.type === 'identifier') {
+        return v.text
+      }
+    }
+
+    return ''
+  }
+}
+
+const offset = {
+  absolute: (node) => {
+    if (node.namedChildCount > 0 && node.namedChildren[0].type === 'offset') {
+      return mm(node.namedChildren[0].text)
+    } else {
+      return 0.0
+    }
+  },
+
+  relative: (node) => {
+    if (node.namedChildCount > 0 && node.namedChildren[0].type === 'offset') {
+      return mm(node.namedChildren[0].text)
+    } else {
+      return 0.0
+    }
+  },
+
+  geometry: (node) => {
+    return 0.0
+  },
+
+  guideline: (node) => {
+    for (const v of node.namedChildren) {
+      if (v.type === 'offset') {
+        return mm(v.text)
+      }
+    }
+    return 0.0
+  }
+}
+
 function newGuide (node) {
   const object = {
     action: 'new',
@@ -54,10 +100,15 @@ function newGuide (node) {
   for (const child of node.namedChildren) {
     if (child.type === 'identifier') {
       object.guide.name = child.text.trim()
-    } else if (child.type === 'orientation') {
-      object.guide.orientation = child.text
-    } else if (child.type === 'offset') {
-      object.guide.offset = mm(child.text)
+    } else if (child.type === 'vertical' || child.type === 'horizontal') {
+      object.guide.orientation = child.type
+
+      if (child.namedChildCount > 0) {
+        const xy = child.namedChildren[0]
+
+        object.guide.reference = reference[xy.type](xy)
+        object.guide.offset = offset[xy.type](xy)
+      }
     }
   }
 

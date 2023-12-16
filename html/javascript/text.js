@@ -3,7 +3,7 @@ import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js
 const fonts = new Map()
 
 export async function init () {
-    fetch('/fonts/RobotoMono-Bold.ttf')
+  fetch('/fonts/RobotoMono-Bold.ttf')
     .then((response) => response.arrayBuffer())
     .then((bytes) => fonts.set('RobotoMono-Bold', bytes))
     .catch((err) => console.error(err))

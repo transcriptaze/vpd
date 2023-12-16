@@ -1,6 +1,9 @@
 new module "woot" 1U 5H
 
+new guide v1 vertical @4.5mm
 new guide vertical @4.5mm
+new guide vertical @4.5h
+new guide vertical @4.5H
 new guide vertical +4.5mm
 new guide vertical -4.5mm
 new guide vertical left
@@ -10,17 +13,10 @@ new guide vertical right
 new guide vertical g1+4.5mm
 new guide vertical g1-4.5mm
 
-new guide v1 vertical @4.5mm
-new guide v1 vertical +4.5mm
-new guide v1 vertical -4.5mm
-new guide v1 vertical left
-new guide v1 vertical centre
-new guide v1 vertical center
-new guide v1 vertical right
-new guide v1 vertical g1+4.5mm
-new guide v1 vertical g1-4.5mm
-
+new guide h1 horizontal @4.5mm
 new guide horizontal @4.5mm
+new guide horizontal @4.5h
+new guide horizontal @4.5H
 new guide horizontal +4.5mm
 new guide horizontal -4.5mm
 new guide horizontal top
@@ -28,15 +24,6 @@ new guide horizontal middle
 new guide horizontal bottom
 new guide horizontal g1+4.5mm
 new guide horizontal g1-4.5mm
-
-new guide h1 horizontal @4.5mm
-new guide h1 horizontal +4.5mm
-new guide h1 horizontal -4.5mm
-new guide h1 horizontal top
-new guide h1 horizontal middle
-new guide h1 horizontal bottom
-new guide h1 horizontal g1+4.5mm
-new guide h1 horizontal g1-4.5mm
 
 new param
 new input

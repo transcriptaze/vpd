@@ -72,30 +72,33 @@ module.exports = grammar({
       ),
     ),
 
-    identifier: $ => /[a-z][a-z0-9]+/i,
+    identifier: $ => /[a-zA-Z][a-zA-Z0-9]*/,
 
     vertical: $ => seq(
-      alias('vertical',$.orientation),
-      alias(choice( 
-        /[@+-]?([0-9]+)(\.[0-9]*)?mm/, 
-        /left|centre|center|right/,
-        seq(
-          $.identifier, 
-          /[+-]([0-9]+)(\.[0-9]*)?mm/,
-        ),
-      ), $.offset),
+      'vertical',
+      choice( 
+        $.absolute, 
+        $.relative,
+        alias(/left|centre|center|right/,$.geometry),
+        $.guideline,
+      ),
+    ),
+
+    absolute: $ => seq( '@', alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset)),
+    relative: $ => alias(/[+-]?([0-9]+)(\.[0-9]*)?(mm|h|H)/, $.offset),
+    guideline: $ => seq(
+      $.identifier, 
+      alias(/[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
     ),
 
     horizontal: $ => seq(
-      alias('horizontal',$.orientation),
-      alias(choice( 
-        /[@+-]?([0-9]+)(\.[0-9]*)?mm/, 
-        /top|middle|bottom/,
-        seq (
-          $.identifier,
-          /[+-]([0-9]+)(\.[0-9]*)?mm/,
-        ),
-      ), $.offset),
+      'horizontal',
+      choice( 
+        $.absolute, 
+        $.relative,
+        alias(/top|middle|bottom/,$.geometry),
+        $.guideline,
+      ),
     ),
 
     text: $ => seq(
