@@ -35,7 +35,7 @@
       - [x] relative to origin
       - [x] make guide ID optional in grammar
       - [x] generate ID automatically
-      - [ ] absolute
+      - [x] absolute
       - [ ] relative to another guideline
       - [ ] relative to the geometry
       - [ ] error if identifier already exists

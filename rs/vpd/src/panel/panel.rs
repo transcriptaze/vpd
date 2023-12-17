@@ -17,9 +17,9 @@ pub const H: f32 = 5.08; // 1 'horizontal' unit
 
 #[derive(Serialize, Deserialize)]
 pub struct Panel {
-    width: f32,
-    height: f32,
-    gutter: f32,
+    pub width: f32,
+    pub height: f32,
+    pub gutter: f32,
     pub origin: Origin,
     pub guides: HashMap<String, Guide>,
     pub labels: Vec<Label>,
@@ -68,7 +68,7 @@ impl Panel {
                     }
                 }
 
-                None => {},
+                None => {}
             }
         }
 
@@ -112,7 +112,7 @@ impl Panel {
         }
     }
 
-    fn origin(&self) -> Point {
+    pub fn origin(&self) -> Point {
         let w: f32 = self.width;
         let h: f32 = self.height;
 
@@ -135,29 +135,12 @@ impl Panel {
     }
 
     fn guidelines(&self) -> Vec<GuideLine> {
-        let origin = self.origin();
-        let gutter = self.gutter;
         let mut list: Vec<GuideLine> = Vec::new();
 
         for (k, v) in self.guides.iter() {
-            if v.orientation == "vertical" {
-                list.push(GuideLine::new(
-                    k,
-                    origin.x + v.offset,
-                    -gutter,
-                    origin.x + v.offset,
-                    self.height + gutter,
-                    "vertical".to_string(),
-                ));
-            } else if v.orientation == "horizontal" {
-                list.push(GuideLine::new(
-                    k,
-                    -gutter,
-                    origin.y + v.offset,
-                    self.width + gutter,
-                    origin.y + v.offset,
-                    "horizontal".to_string(),
-                ));
+            match v.to_SVG(k, self) {
+                Some(g) => list.push(g),
+                _ => {}
             }
         }
 
