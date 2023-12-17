@@ -1,8 +1,8 @@
-mod guideline;
+mod guide;
 mod label;
 mod panel;
 
-pub use guideline::Guide;
+pub use guide::Guide;
 pub use label::Label;
 pub use panel::Panel;
 

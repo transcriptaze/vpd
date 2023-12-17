@@ -8,10 +8,10 @@ pub struct Guide {
 }
 
 impl Guide {
-    pub fn new(orientation: String, offset: f32) -> Guide {
+    pub fn new(orientation: &str, reference: &str, offset: f32) -> Guide {
         Guide {
-            orientation: orientation,
-            reference: "origin".to_string(),
+            orientation: orientation.to_string(),
+            reference: reference.to_string(),
             offset: offset,
         }
     }

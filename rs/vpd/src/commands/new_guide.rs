@@ -6,8 +6,9 @@ use crate::module::Module;
 use crate::panel::Guide;
 
 pub struct NewGuideCommand {
-    name: String,
+    name: Option<String>,
     orientation: String,
+    reference: String,
     offset: f32,
 }
 
@@ -20,10 +21,13 @@ struct V {
 #[derive(Deserialize)]
 struct G {
     #[serde(rename = "name")]
-    name: String,
+    name: Option<String>,
 
     #[serde(rename = "orientation")]
     orientation: String,
+
+    #[serde(rename = "reference")]
+    reference: String,
 
     #[serde(rename = "offset")]
     offset: f32,
@@ -36,6 +40,7 @@ impl NewGuideCommand {
         Ok(NewGuideCommand {
             name: v.guide.name,
             orientation: v.guide.orientation,
+            reference: v.guide.reference,
             offset: v.guide.offset,
         })
     }
@@ -43,13 +48,15 @@ impl NewGuideCommand {
 
 impl Command for NewGuideCommand {
     fn apply(&self, m: &mut Module) {
-        let name = self.name.clone();
-        let orientation = self.orientation.clone();
-        let offset = self.offset;
+        let name = match &self.name {
+            Some(v) => v.to_string(),
+            None => m.panel.new_guide_name(&self.orientation),
+        };
 
-        m.panel
-            .guides
-            .entry(name)
-            .or_insert(Guide::new(orientation, offset));
+        m.panel.guides.entry(name).or_insert(Guide::new(
+            &self.orientation,
+            &self.reference,
+            self.offset,
+        ));
     }
 }

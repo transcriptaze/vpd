@@ -64,14 +64,14 @@ impl NewLabelCommand {
 
 impl Command for NewLabelCommand {
     fn apply(&self, m: &mut Module) {
-        let name = self.name.clone();
-        let text = self.text.clone();
-        let x = self.anchor.x;
-        let y = self.anchor.y;
         let path = text2path(&self.text).to_string();
 
-        m.panel
-            .labels
-            .push(panel::Label::new(name, text, x, y, path));
+        m.panel.labels.push(panel::Label::new(
+            &self.name,
+            &self.text,
+            self.anchor.x,
+            self.anchor.y,
+            &path,
+        ));
     }
 }

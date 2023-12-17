@@ -10,13 +10,13 @@ pub struct Label {
 }
 
 impl Label {
-    pub fn new(id: String, text: String, x: f32, y: f32, path: String) -> Label {
+    pub fn new(id: &str, text: &str, x: f32, y: f32, path: &str) -> Label {
         Label {
-            id: id,
-            text: text,
+            id: id.to_string(),
+            text: text.to_string(),
             x: x,
             y: y,
-            path: path,
+            path: path.to_string(),
         }
     }
 }

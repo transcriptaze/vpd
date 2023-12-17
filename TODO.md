@@ -33,10 +33,11 @@
       - [x] `new guideline`
       - [x] guide ID
       - [x] relative to origin
+      - [x] make guide ID optional in grammar
+      - [x] generate ID automatically
       - [ ] absolute
       - [ ] relative to another guideline
-      - [ ] make guide ID optional
-      - [ ] generate ID automatically
+      - [ ] relative to the geometry
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
 
