@@ -14,11 +14,12 @@
       - [ ] web component
       - [ ] programmable
 - [ ] `undo`
+- [ ] _info_ panel
 
 ### Fonts 
 
+- [ ] load all on startup
 - [ ] `load font...`
-- (?) load all on startup
 - [ ] _woff_
 - [ ] _woff2_
 
@@ -36,8 +37,9 @@
       - [x] make guide ID optional in grammar
       - [x] generate ID automatically
       - [x] absolute
-      - [ ] relative to another guideline
+      - [x] geometry
       - [ ] relative to the geometry
+      - [ ] relative to another guideline
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
 

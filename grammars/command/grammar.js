@@ -48,12 +48,7 @@ module.exports = grammar({
       ),
     ),
 
-    name: $ => seq(
-      '"',
-      alias(/[a-zA-Z]([^"]*?)/,$.value),
-      '"',
-    ),
-
+    name: $ => /"[a-zA-Z]([a-zA-Z0-9_-]*?)"/,
     height: $ => '1U',
     width: $ => /[1-9][0-9]*H/,
 
@@ -64,11 +59,12 @@ module.exports = grammar({
     ),
 
     guide: $ => seq(
-      'guide',
-      optional($.identifier),
+      'guide',      
       choice(
-        $.vertical, 
-        $.horizontal,
+        seq(optional($.identifier),$.vertical), 
+        seq(optional($.identifier),$.horizontal), 
+        seq(optional($.identifier),$.geometry),
+        $.geometry,
       ),
     ),
 
@@ -79,13 +75,27 @@ module.exports = grammar({
       choice( 
         $.absolute, 
         $.relative,
-        alias(/left|centre|center|right/,$.geometry),
         $.guideline,
       ),
     ),
 
-    absolute: $ => seq( '@', alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset)),
+    absolute: $ => seq( 
+      '@', 
+      alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+    ),
+
     relative: $ => alias(/[+-]?([0-9]+)(\.[0-9]*)?(mm|h|H)/, $.offset),
+
+    geometry: $ => choice(
+      "left",
+      "centre",
+      "center",
+      "right",
+      "top",
+      "middle",
+      "bottom",
+    ),
+    
     guideline: $ => seq(
       $.identifier, 
       alias(/[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
@@ -96,7 +106,6 @@ module.exports = grammar({
       choice( 
         $.absolute, 
         $.relative,
-        alias(/top|middle|bottom/,$.geometry),
         $.guideline,
       ),
     ),

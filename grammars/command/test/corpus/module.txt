@@ -1,0 +1,14 @@
+=============================
+new module <name> 1U <height>
+=============================
+new module "woot" 1U 3H
+---
+(source_file
+  (new
+    (entity
+      (module
+        (name)
+        (height)
+        (width)))))
+
+

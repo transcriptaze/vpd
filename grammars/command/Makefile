@@ -11,6 +11,9 @@ regenerate:
 build: regenerate format
 	cargo build
 
+test: build
+	tree-sitter test
+
 wasm: regenerate
 	tree-sitter build-wasm 
 	mv tree-sitter-command.wasm ../../html/wasm/grammars/
@@ -18,3 +21,6 @@ wasm: regenerate
 run: build
 	tree-sitter parse example
 # 	cargo run
+
+debug: build
+	tree-sitter parse debug

@@ -1,5 +1,7 @@
 # User Manual
 
+## Modules
+
 ## Guidelines
 
 `new guide [label] vertical|horizontal <location>`
@@ -36,3 +38,9 @@ new guide vertical v1+H
 new guide horizontal middle
 new guide H0+7.62mm
 ```   
+
+## Labels
+
+
+## Fonts
+

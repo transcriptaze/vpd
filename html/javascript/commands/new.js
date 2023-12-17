@@ -33,8 +33,15 @@ function newModule (node) {
   }
 
   for (const child of node.namedChildren) {
-    if (child.type === 'name' && child.namedChildCount > 0) {
-      object.module.name = child.namedChild(0).text.trim()
+    if (child.type === 'name') {
+      const name = child.text.trim()
+      const match = name.match(/"(.*?)"/)
+
+      if (match && match.length > 1) {
+        object.module.name = match[1]
+      } else {
+        object.module.name = name
+      }
     } else if (child.type === 'height') {
       object.module.height = mm(child.text)
     } else if (child.type === 'width') {
@@ -109,6 +116,12 @@ function newGuide (node) {
         object.guide.reference = reference[xy.type](xy)
         object.guide.offset = offset[xy.type](xy)
       }
+    } else if (child.type === 'geometry') {
+      const reference = child.text.trim()
+
+      object.guide.orientation = ''
+      object.guide.reference = reference
+      object.guide.offset = 0.0
     }
   }
 

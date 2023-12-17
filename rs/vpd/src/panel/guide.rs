@@ -30,6 +30,14 @@ impl Guide {
         let gutter = panel.gutter;
 
         let offset = match (orientation, reference) {
+            (_, "left") => self.offset,
+            (_, "centre") => self.offset,
+            (_, "center") => self.offset,
+            (_, "right") => self.offset,
+            (_, "top") => self.offset,
+            (_, "middle") => self.offset,
+            (_, "bottom") => self.offset,
+
             ("vertical", "absolute") => self.offset,
             ("vertical", "origin") => origin.x + self.offset,
 
@@ -39,8 +47,8 @@ impl Guide {
             (_, _) => 0.0,
         };
 
-        match orientation {
-            "vertical" => Some(GuideLine::new(
+        match (orientation, reference) {
+            (_, "left") => Some(GuideLine::new(
                 label,
                 offset,
                 -gutter,
@@ -49,7 +57,70 @@ impl Guide {
                 "vertical".to_string(),
             )),
 
-            "horizontal" => Some(GuideLine::new(
+            (_, "centre") => Some(GuideLine::new(
+                label,
+                width / 2.0,
+                -gutter,
+                width / 2.0,
+                height + gutter,
+                "vertical".to_string(),
+            )),
+
+            (_, "center") => Some(GuideLine::new(
+                label,
+                width / 2.0,
+                -gutter,
+                width / 2.0,
+                height + gutter,
+                "vertical".to_string(),
+            )),
+
+            (_, "right") => Some(GuideLine::new(
+                label,
+                width,
+                -gutter,
+                width,
+                height + gutter,
+                "vertical".to_string(),
+            )),
+
+            (_, "top") => Some(GuideLine::new(
+                label,
+                -gutter,
+                offset,
+                width + gutter,
+                offset,
+                "horizontal".to_string(),
+            )),
+
+            (_, "middle") => Some(GuideLine::new(
+                label,
+                -gutter,
+                height / 2.0,
+                width + gutter,
+                height / 2.0,
+                "horizontal".to_string(),
+            )),
+
+            (_, "bottom") => Some(GuideLine::new(
+                label,
+                -gutter,
+                height,
+                width + gutter,
+                height,
+                "horizontal".to_string(),
+            )),
+
+            ("vertical", _) => Some(GuideLine::new(
+                label,
+                offset,
+                -gutter,
+                offset,
+                height + gutter,
+                "vertical".to_string(),
+            )),
+
+            ("horizontal", _) => Some(GuideLine::new(
                 label,
                 -gutter,
                 offset,

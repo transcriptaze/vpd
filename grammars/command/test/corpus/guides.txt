@@ -1,0 +1,154 @@
+===========================================
+new guide vertical <relative offset>
+===========================================
+new guide vertical +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (vertical
+            (relative
+              (offset)))))))
+
+
+===========================================
+new guide <name> vertical <relative offset>
+===========================================
+new guide v1 vertical +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (identifier)
+          (vertical
+            (relative
+              (offset)))))))
+
+
+=============================================
+new guide horizontal <relative offset>
+=============================================
+new guide horizontal +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (horizontal
+            (relative
+              (offset)))))))
+
+
+=============================================
+new guide <name> horizontal <relative offset>
+=============================================
+new guide v1 horizontal +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (identifier)
+          (horizontal
+            (relative
+              (offset)))))))
+
+
+==============
+new guide left
+==============
+new guide left
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+================
+new guide centre
+================
+new guide centre
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+================
+new guide center
+================
+new guide center
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+===============
+new guide right
+===============
+new guide right
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+=============
+new guide top
+=============
+new guide top
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+================
+new guide middle
+================
+new guide middle
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+================
+new guide bottom
+================
+new guide bottom
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry)))))
+
+
+=====================
+new guide <name> left
+=====================
+new guide l1 left
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (identifier)
+        (geometry)))))
+
