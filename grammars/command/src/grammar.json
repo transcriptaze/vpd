@@ -307,96 +307,22 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "absolute"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "@"
+              },
+              "named": true,
+              "value": "absolute"
             },
             {
-              "type": "SYMBOL",
-              "name": "relative"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "guideline"
+              "type": "BLANK"
             }
           ]
-        }
-      ]
-    },
-    "absolute": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "@"
         },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "([0-9]+)(\\.[0-9]*)?(mm|h|H)"
-          },
-          "named": true,
-          "value": "offset"
-        }
-      ]
-    },
-    "relative": {
-      "type": "ALIAS",
-      "content": {
-        "type": "PATTERN",
-        "value": "[+-]?([0-9]+)(\\.[0-9]*)?(mm|h|H)"
-      },
-      "named": true,
-      "value": "offset"
-    },
-    "geometry": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "left"
-        },
-        {
-          "type": "STRING",
-          "value": "centre"
-        },
-        {
-          "type": "STRING",
-          "value": "center"
-        },
-        {
-          "type": "STRING",
-          "value": "right"
-        },
-        {
-          "type": "STRING",
-          "value": "top"
-        },
-        {
-          "type": "STRING",
-          "value": "middle"
-        },
-        {
-          "type": "STRING",
-          "value": "bottom"
-        }
-      ]
-    },
-    "guideline": {
-      "type": "SEQ",
-      "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
-          },
-          "named": true,
-          "value": "offset"
+          "name": "offset"
         }
       ]
     },
@@ -411,20 +337,83 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "absolute"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "@"
+              },
+              "named": true,
+              "value": "absolute"
             },
             {
-              "type": "SYMBOL",
-              "name": "relative"
-            },
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "offset"
+        }
+      ]
+    },
+    "geometry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "left"
+              },
+              {
+                "type": "STRING",
+                "value": "centre"
+              },
+              {
+                "type": "STRING",
+                "value": "center"
+              },
+              {
+                "type": "STRING",
+                "value": "right"
+              },
+              {
+                "type": "STRING",
+                "value": "top"
+              },
+              {
+                "type": "STRING",
+                "value": "middle"
+              },
+              {
+                "type": "STRING",
+                "value": "bottom"
+              }
+            ]
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
             {
               "type": "SYMBOL",
-              "name": "guideline"
+              "name": "offset"
+            },
+            {
+              "type": "BLANK"
             }
           ]
         }
       ]
+    },
+    "offset": {
+      "type": "PATTERN",
+      "value": "[+-]?([0-9]+)(\\.[0-9]*)?(mm|h|H)"
     },
     "text": {
       "type": "SEQ",

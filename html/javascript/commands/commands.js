@@ -4,17 +4,17 @@ export function mm (v) {
     return 128.5 * parseInt(match[1])
   }
 
-  match = `${v}`.match(/([0-9]+(?:\.[0-9]*)?)H/)
+  match = `${v}`.match(/([+-]?[0-9]+(?:\.[0-9]*)?)H/)
   if (match != null && match.length > 1) {
     return 5.08 * parseInt(match[1])
   }
 
-  match = `${v}`.match(/([0-9]+(?:\.[0-9]*)?)h/)
+  match = `${v}`.match(/([+-]?[0-9]+(?:\.[0-9]*)?)h/)
   if (match != null && match.length > 1) {
     return 2.54 * parseInt(match[1])
   }
 
-  match = `${v}`.match(/([0-9]+(?:\.[0-9]*)?)mm/)
+  match = `${v}`.match(/([+-]?[0-9]+(?:\.[0-9]*)?)mm/)
   if (match != null && match.length > 1) {
     return parseFloat(match[1])
   }

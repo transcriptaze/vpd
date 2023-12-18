@@ -59,27 +59,27 @@ impl Guide {
 
             (_, "centre") => Some(GuideLine::new(
                 label,
-                width / 2.0,
+                width / 2.0 + offset,
                 -gutter,
-                width / 2.0,
+                width / 2.0 + offset,
                 height + gutter,
                 "vertical".to_string(),
             )),
 
             (_, "center") => Some(GuideLine::new(
                 label,
-                width / 2.0,
+                width / 2.0 + offset,
                 -gutter,
-                width / 2.0,
+                width / 2.0 + offset,
                 height + gutter,
                 "vertical".to_string(),
             )),
 
             (_, "right") => Some(GuideLine::new(
                 label,
-                width,
+                width + offset,
                 -gutter,
-                width,
+                width + offset,
                 height + gutter,
                 "vertical".to_string(),
             )),
@@ -96,18 +96,18 @@ impl Guide {
             (_, "middle") => Some(GuideLine::new(
                 label,
                 -gutter,
-                height / 2.0,
+                height / 2.0 + offset,
                 width + gutter,
-                height / 2.0,
+                height / 2.0 + offset,
                 "horizontal".to_string(),
             )),
 
             (_, "bottom") => Some(GuideLine::new(
                 label,
                 -gutter,
-                height,
+                height + offset,
                 width + gutter,
-                height,
+                height + offset,
                 "horizontal".to_string(),
             )),
 

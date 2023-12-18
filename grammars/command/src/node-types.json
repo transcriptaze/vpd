@@ -1,20 +1,5 @@
 [
   {
-    "type": "absolute",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "offset",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "anchor",
     "named": true,
     "fields": {},
@@ -74,7 +59,21 @@
   {
     "type": "geometry",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "guide",
@@ -104,7 +103,7 @@
     }
   },
   {
-    "type": "guideline",
+    "type": "horizontal",
     "named": true,
     "fields": {},
     "children": {
@@ -112,34 +111,11 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "offset",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "horizontal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
           "type": "absolute",
           "named": true
         },
         {
-          "type": "guideline",
-          "named": true
-        },
-        {
-          "type": "relative",
+          "type": "offset",
           "named": true
         }
       ]
@@ -222,21 +198,6 @@
     }
   },
   {
-    "type": "relative",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "offset",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "set",
     "named": true,
     "fields": {},
@@ -290,7 +251,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -298,11 +259,7 @@
           "named": true
         },
         {
-          "type": "guideline",
-          "named": true
-        },
-        {
-          "type": "relative",
+          "type": "offset",
           "named": true
         }
       ]
@@ -321,16 +278,8 @@
     "named": false
   },
   {
-    "type": "bottom",
-    "named": false
-  },
-  {
-    "type": "center",
-    "named": false
-  },
-  {
-    "type": "centre",
-    "named": false
+    "type": "absolute",
+    "named": true
   },
   {
     "type": "delete",
@@ -358,14 +307,6 @@
   },
   {
     "type": "label",
-    "named": false
-  },
-  {
-    "type": "left",
-    "named": false
-  },
-  {
-    "type": "middle",
     "named": false
   },
   {
@@ -401,15 +342,11 @@
     "named": false
   },
   {
-    "type": "right",
-    "named": false
+    "type": "reference",
+    "named": true
   },
   {
     "type": "set",
-    "named": false
-  },
-  {
-    "type": "top",
     "named": false
   },
   {

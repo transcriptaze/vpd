@@ -72,43 +72,38 @@ module.exports = grammar({
 
     vertical: $ => seq(
       'vertical',
-      choice( 
-        $.absolute, 
-        $.relative,
-        $.guideline,
-      ),
-    ),
-
-    absolute: $ => seq( 
-      '@', 
-      alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
-    ),
-
-    relative: $ => alias(/[+-]?([0-9]+)(\.[0-9]*)?(mm|h|H)/, $.offset),
-
-    geometry: $ => choice(
-      "left",
-      "centre",
-      "center",
-      "right",
-      "top",
-      "middle",
-      "bottom",
-    ),
-    
-    guideline: $ => seq(
-      $.identifier, 
-      alias(/[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+      optional(alias('@', $.absolute)),
+      $.offset,
     ),
 
     horizontal: $ => seq(
       'horizontal',
-      choice( 
-        $.absolute, 
-        $.relative,
-        $.guideline,
-      ),
+      optional(alias('@', $.absolute)),
+      $.offset,
     ),
+
+
+    geometry: $ => seq(
+      alias(
+        choice(
+          "left",
+          "centre",
+          "center",
+          "right",
+          "top",
+          "middle",
+          "bottom",
+        ), $.reference,
+      ),
+      optional($.offset),
+    ),
+
+    offset: $ => /[+-]?([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+    
+    // guideline: $ => seq(
+    //   $.identifier, 
+    //   alias(/[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+    // ),
 
     text: $ => seq(
       '"',

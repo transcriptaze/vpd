@@ -38,7 +38,7 @@
       - [x] generate ID automatically
       - [x] absolute
       - [x] geometry
-      - [ ] relative to the geometry
+      - [x] relative to the geometry
       - [ ] relative to another guideline
       - [ ] error if identifier already exists
       - (?) error if duplicate offset

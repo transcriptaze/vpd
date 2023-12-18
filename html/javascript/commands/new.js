@@ -1,4 +1,5 @@
 import { mm } from './commands.js'
+import { newGuide } from './guide.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -46,82 +47,6 @@ function newModule (node) {
       object.module.height = mm(child.text)
     } else if (child.type === 'width') {
       object.module.width = mm(child.text)
-    }
-  }
-
-  return object
-}
-
-const reference = {
-  absolute: (node) => { return 'absolute' },
-  relative: (node) => { return 'origin' },
-  geometry: (node) => { return node.text },
-  guideline: (node) => {
-    for (const v of node.namedChildren) {
-      if (v.type === 'identifier') {
-        return v.text
-      }
-    }
-
-    return ''
-  }
-}
-
-const offset = {
-  absolute: (node) => {
-    if (node.namedChildCount > 0 && node.namedChildren[0].type === 'offset') {
-      return mm(node.namedChildren[0].text)
-    } else {
-      return 0.0
-    }
-  },
-
-  relative: (node) => {
-    if (node.namedChildCount > 0 && node.namedChildren[0].type === 'offset') {
-      return mm(node.namedChildren[0].text)
-    } else {
-      return 0.0
-    }
-  },
-
-  geometry: (node) => {
-    return 0.0
-  },
-
-  guideline: (node) => {
-    for (const v of node.namedChildren) {
-      if (v.type === 'offset') {
-        return mm(v.text)
-      }
-    }
-    return 0.0
-  }
-}
-
-function newGuide (node) {
-  const object = {
-    action: 'new',
-    guide: {}
-  }
-
-  for (const child of node.namedChildren) {
-    if (child.type === 'identifier') {
-      object.guide.name = child.text.trim()
-    } else if (child.type === 'vertical' || child.type === 'horizontal') {
-      object.guide.orientation = child.type
-
-      if (child.namedChildCount > 0) {
-        const xy = child.namedChildren[0]
-
-        object.guide.reference = reference[xy.type](xy)
-        object.guide.offset = offset[xy.type](xy)
-      }
-    } else if (child.type === 'geometry') {
-      const reference = child.text.trim()
-
-      object.guide.orientation = ''
-      object.guide.reference = reference
-      object.guide.offset = 0.0
     }
   }
 

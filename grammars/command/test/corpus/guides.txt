@@ -8,8 +8,33 @@ new guide vertical +4.5mm
     (entity
       (guide
           (vertical
-            (relative
-              (offset)))))))
+            (offset))))))
+
+
+===========================================
+new guide vertical <relative offset>
+===========================================
+new guide vertical -4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (vertical
+            (offset))))))
+
+===========================================
+new guide vertical <absolute offset>
+===========================================
+new guide vertical @4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (vertical
+            (absolute)
+            (offset))))))
 
 
 ===========================================
@@ -23,8 +48,7 @@ new guide v1 vertical +4.5mm
       (guide
         (identifier)
           (vertical
-            (relative
-              (offset)))))))
+            (offset))))))
 
 
 =============================================
@@ -37,8 +61,7 @@ new guide horizontal +4.5mm
     (entity
       (guide
           (horizontal
-            (relative
-              (offset)))))))
+            (offset))))))
 
 
 =============================================
@@ -52,8 +75,7 @@ new guide v1 horizontal +4.5mm
       (guide
         (identifier)
           (horizontal
-            (relative
-              (offset)))))))
+            (offset))))))
 
 
 ==============
@@ -65,79 +87,8 @@ new guide left
   (new
     (entity
       (guide
-        (geometry)))))
-
-
-================
-new guide centre
-================
-new guide centre
----
-(source_file
-  (new
-    (entity
-      (guide
-        (geometry)))))
-
-
-================
-new guide center
-================
-new guide center
----
-(source_file
-  (new
-    (entity
-      (guide
-        (geometry)))))
-
-
-===============
-new guide right
-===============
-new guide right
----
-(source_file
-  (new
-    (entity
-      (guide
-        (geometry)))))
-
-
-=============
-new guide top
-=============
-new guide top
----
-(source_file
-  (new
-    (entity
-      (guide
-        (geometry)))))
-
-
-================
-new guide middle
-================
-new guide middle
----
-(source_file
-  (new
-    (entity
-      (guide
-        (geometry)))))
-
-
-================
-new guide bottom
-================
-new guide bottom
----
-(source_file
-  (new
-    (entity
-      (guide
-        (geometry)))))
+        (geometry
+          (reference))))))
 
 
 =====================
@@ -150,5 +101,114 @@ new guide l1 left
     (entity
       (guide
         (identifier)
-        (geometry)))))
+        (geometry
+          (reference))))))
+
+
+=====================
+new guide left <offset
+=====================
+new guide left+4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference)
+          (offset))))))
+
+
+==============================
+new guide <name> left <offset>
+=============================
+new guide l1 left+4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (identifier)
+        (geometry
+          (reference)
+          (offset))))))
+
+
+================
+new guide centre
+================
+new guide centre
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference))))))
+
+
+================
+new guide center
+================
+new guide center
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference))))))
+
+
+===============
+new guide right
+===============
+new guide right
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference))))))
+
+
+=============
+new guide top
+=============
+new guide top
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference))))))
+
+
+================
+new guide middle
+================
+new guide middle
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference))))))
+
+
+================
+new guide bottom
+================
+new guide bottom
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (geometry
+          (reference))))))
+
 
