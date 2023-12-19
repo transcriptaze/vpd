@@ -307,6 +307,18 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "STRING",
+              "value": "origin"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "ALIAS",
               "content": {
                 "type": "STRING",
@@ -332,6 +344,18 @@
         {
           "type": "STRING",
           "value": "horizontal"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "origin"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",

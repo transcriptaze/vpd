@@ -23,6 +23,19 @@ new guide vertical -4.5mm
           (vertical
             (offset))))))
 
+==================================
+new guide vertical origin <offset>
+==================================
+new guide vertical origin+4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (vertical
+            (offset))))))
+
+
 ===========================================
 new guide vertical <absolute offset>
 ===========================================
@@ -55,6 +68,19 @@ new guide v1 vertical +4.5mm
 new guide horizontal <relative offset>
 =============================================
 new guide horizontal +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (horizontal
+            (offset))))))
+
+
+=============================================
+new guide horizontal origin <offset>
+=============================================
+new guide horizontal origin+4.5mm
 ---
 (source_file
   (new

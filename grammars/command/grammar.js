@@ -72,12 +72,14 @@ module.exports = grammar({
 
     vertical: $ => seq(
       'vertical',
+      optional('origin'),
       optional(alias('@', $.absolute)),
       $.offset,
     ),
 
     horizontal: $ => seq(
       'horizontal',
+      optional('origin'),
       optional(alias('@', $.absolute)),
       $.offset,
     ),

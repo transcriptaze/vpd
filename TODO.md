@@ -17,7 +17,6 @@
 - [ ] _info_ panel
 
 ### Fonts 
-
 - [ ] load all on startup
 - [ ] `load font...`
 - [ ] _woff_
@@ -29,6 +28,11 @@
 - [ ] _module_
       - [x] `new module`
       - [ ] `set` module name/width/height
+
+- [ ] origin
+      - [ ] absolute
+      - [x] geometry
+      - [ ] offset relative to geometry
 
 - [ ] _guidelines_
       - [x] `new guideline`
@@ -45,7 +49,7 @@
 
 - [ ] _labels_
       - [x] `new label`
-      - [x] text2path\
+      - [x] text2path
       - [ ] anchor
             - [x] absolute
             - [ ] relative to origin
@@ -54,17 +58,10 @@
       - [ ] align top/middle/baseline/bottom
       - [ ] font
       - [ ] fontsize
-      - [ ] label ID
+      - [ ] optional label ID
       - [ ] generate label ID automatically
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
-
-- [ ] `set origin`
-      - [x] Allow _top-left_ or _centre-bottom_
-      - [x  ] Reference guides to origin
-      - [ ] @xy
-      - [ ] @left+, etc
-      - [ ] help text
 
 - [ ] load
 - [ ] save
