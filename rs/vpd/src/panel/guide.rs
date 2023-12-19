@@ -3,6 +3,9 @@ use serde::{Deserialize, Serialize};
 use crate::panel::Panel;
 use crate::svg::GuideLine;
 
+// use crate::console_log;
+// use crate::utils::log;
+
 #[derive(Serialize, Deserialize)]
 pub struct Guide {
     pub orientation: String,
@@ -44,7 +47,7 @@ impl Guide {
             ("horizontal", "absolute") => self.offset,
             ("horizontal", "origin") => origin.y + self.offset,
 
-            (_, _) => 0.0,
+            (_, _) => self.offset,
         };
 
         match (orientation, reference) {
@@ -129,7 +132,41 @@ impl Guide {
                 "horizontal".to_string(),
             )),
 
-            _ => None,
+            (_, r) => {
+                for (k, v) in panel.guides.iter() {
+                    if k != label && k == r {
+                        match v.to_SVG(k, panel) {
+                            Some(g) => {
+                                return match g.orientation.as_str() {
+                                    "vertical" => Some(GuideLine::new(
+                                        label,
+                                        g.x1 + offset,
+                                        g.y1,
+                                        g.x2 + offset,
+                                        g.y2,
+                                        g.orientation,
+                                    )),
+                                    "horizontal" => {
+                                        return Some(GuideLine::new(
+                                            label,
+                                            g.x1,
+                                            g.y1 + offset,
+                                            g.x2,
+                                            g.y2 + offset,
+                                            g.orientation,
+                                        ))
+                                    }
+                                    _ => None,
+                                };
+                            }
+
+                            None => break,
+                        }
+                    }
+                }
+
+                None
+            }
         }
     }
 }

@@ -88,6 +88,10 @@
           "named": true
         },
         {
+          "type": "guideline",
+          "named": true
+        },
+        {
           "type": "horizontal",
           "named": true
         },
@@ -97,6 +101,25 @@
         },
         {
           "type": "vertical",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "guideline",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "reference",
           "named": true
         }
       ]

@@ -5,20 +5,21 @@ mod panel;
 mod svg;
 mod utils;
 
+use crate::utils::log;
 use once_cell::sync::Lazy;
 use serde;
 use std::sync::Mutex;
 use wasm_bindgen::prelude::*;
 
-macro_rules! console_log {
-    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
-}
+// macro_rules! console_log {
+//     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
+// }
 
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = console)]
-    fn log(s: &str);
-}
+// #[wasm_bindgen]
+// extern "C" {
+//     #[wasm_bindgen(js_namespace = console)]
+//     fn log(s: &str);
+// }
 
 pub struct State {
     pub module: module::Module,

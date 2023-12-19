@@ -22,6 +22,12 @@ export function newGuide (node) {
       object.guide.reference = reference(child)
       object.guide.offset = offset(child)
     }
+
+    if (child.type === 'guideline') {
+      object.guide.orientation = ''
+      object.guide.reference = reference(child)
+      object.guide.offset = offset(child)
+    }
   }
 
   return object

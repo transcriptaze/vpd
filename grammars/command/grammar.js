@@ -65,6 +65,7 @@ module.exports = grammar({
         seq(optional($.identifier),$.horizontal), 
         seq(optional($.identifier),$.geometry),
         $.geometry,
+        seq(optional($.identifier),$.guideline),
       ),
     ),
 
@@ -74,14 +75,20 @@ module.exports = grammar({
       'vertical',
       optional('origin'),
       optional(alias('@', $.absolute)),
-      $.offset,
+      choice (
+        alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+        $.offset,
+      ),
     ),
 
     horizontal: $ => seq(
       'horizontal',
       optional('origin'),
       optional(alias('@', $.absolute)),
-      $.offset,
+      choice (
+        alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+        $.offset,
+      ),
     ),
 
 
@@ -100,12 +107,12 @@ module.exports = grammar({
       optional($.offset),
     ),
 
-    offset: $ => /[+-]?([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+    offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
     
-    // guideline: $ => seq(
-    //   $.identifier, 
-    //   alias(/[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
-    // ),
+    guideline: $ => seq(
+      alias($.identifier, $.reference),
+      $.offset,
+    ),
 
     text: $ => seq(
       '"',

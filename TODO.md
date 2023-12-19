@@ -44,6 +44,10 @@
       - [x] geometry
       - [x] relative to the geometry
       - [ ] relative to another guideline
+            - [ ] handle circular references
+            - [ ] error on command if reference does not exist
+            - [ ] reuse guideline label prefix
+            - [ ] (maybe) append 'A', 'B' etc
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
 

@@ -1,7 +1,33 @@
-===========================================
+====================================
 new guide vertical <relative offset>
-===========================================
+====================================
+new guide vertical 4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (vertical
+            (offset))))))
+
+
+=============================================
+new guide vertical <positive relative offset>
+=============================================
 new guide vertical +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (vertical
+            (offset))))))
+
+
+=============================================
+new guide vertical <negative relative offset>
+=============================================
+new guide vertical -4.5mm
 ---
 (source_file
   (new
@@ -64,10 +90,36 @@ new guide v1 vertical +4.5mm
             (offset))))))
 
 
-=============================================
+======================================
 new guide horizontal <relative offset>
-=============================================
+======================================
+new guide horizontal 4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (horizontal
+            (offset))))))
+
+
+===============================================
+new guide horizontal <positive relative offset>
+===============================================
 new guide horizontal +4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+          (horizontal
+            (offset))))))
+
+
+===============================================
+new guide horizontal <negative relative offset>
+===============================================
+new guide horizontal -4.5mm
 ---
 (source_file
   (new
@@ -236,5 +288,34 @@ new guide bottom
       (guide
         (geometry
           (reference))))))
+
+
+==============================
+new guide <guideline> <offset>
+==============================
+new guide v1+4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (guideline  
+          (reference)
+          (offset))))))
+
+
+=====================================
+new guide <name> <guideline> <offset>
+=====================================
+new guide v2 v1+4.5mm
+---
+(source_file
+  (new
+    (entity
+      (guide
+        (identifier)
+        (guideline  
+          (reference)
+          (offset))))))
 
 

@@ -287,6 +287,27 @@
             {
               "type": "SYMBOL",
               "name": "geometry"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "guideline"
+                }
+              ]
             }
           ]
         }
@@ -333,8 +354,22 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "offset"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "offset"
+            }
+          ]
         }
       ]
     },
@@ -375,8 +410,22 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "offset"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "offset"
+            }
+          ]
         }
       ]
     },
@@ -437,7 +486,25 @@
     },
     "offset": {
       "type": "PATTERN",
-      "value": "[+-]?([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+    },
+    "guideline": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "offset"
+        }
+      ]
     },
     "text": {
       "type": "SEQ",
