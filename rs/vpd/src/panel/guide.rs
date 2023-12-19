@@ -3,9 +3,6 @@ use serde::{Deserialize, Serialize};
 use crate::panel::Panel;
 use crate::svg::GuideLine;
 
-// use crate::console_log;
-// use crate::utils::log;
-
 #[derive(Serialize, Deserialize)]
 pub struct Guide {
     pub orientation: String,
@@ -24,6 +21,14 @@ impl Guide {
 
     #[allow(non_snake_case)]
     pub fn to_SVG(&self, label: &str, panel: &Panel) -> Option<GuideLine> {
+        self.to_svg(label, panel, 0)
+    }
+
+    fn to_svg(&self, label: &str, panel: &Panel, depth: i32) -> Option<GuideLine> {
+        if depth >= panel.guides.len().try_into().unwrap() {
+            return None;
+        }
+
         let orientation = self.orientation.as_str();
         let reference = self.reference.as_str();
 
@@ -135,7 +140,7 @@ impl Guide {
             (_, r) => {
                 for (k, v) in panel.guides.iter() {
                     if k != label && k == r {
-                        match v.to_SVG(k, panel) {
+                        match v.to_svg(k, panel, depth + 1) {
                             Some(g) => {
                                 return match g.orientation.as_str() {
                                     "vertical" => Some(GuideLine::new(
