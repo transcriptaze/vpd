@@ -140,33 +140,10 @@ impl Guide {
             (_, r) => {
                 for (k, v) in panel.guides.iter() {
                     if k != label && k == r {
-                        match v.to_svg(k, panel, depth + 1) {
-                            Some(g) => {
-                                return match g.orientation.as_str() {
-                                    "vertical" => Some(GuideLine::new(
-                                        label,
-                                        g.x1 + offset,
-                                        g.y1,
-                                        g.x2 + offset,
-                                        g.y2,
-                                        g.orientation,
-                                    )),
-                                    "horizontal" => {
-                                        return Some(GuideLine::new(
-                                            label,
-                                            g.x1,
-                                            g.y1 + offset,
-                                            g.x2,
-                                            g.y2 + offset,
-                                            g.orientation,
-                                        ))
-                                    }
-                                    _ => None,
-                                };
-                            }
-
-                            None => break,
-                        }
+                        return match v.to_svg(k, panel, depth + 1) {
+                            Some(g) => g.clone(label, offset),
+                            None => None,
+                        };
                     }
                 }
 
