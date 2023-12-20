@@ -49,7 +49,7 @@
             - [x] error on command if reference does not exist
             - [ ] reuse guideline label prefix
             - [ ] (maybe) append 'A', 'B' etc
-      - [ ] error if identifier already exists
+      - [x] error if identifier already exists
       - (?) error if duplicate offset
 
 - [ ] _labels_

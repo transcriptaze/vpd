@@ -58,28 +58,36 @@ impl Command for NewGuideCommand {
 
         let reference = self.reference.as_str();
 
-        match reference {
-            "" => {}
+        if validate(&name, &reference, &m) {
+            m.panel.guides.entry(name).or_insert(Guide::new(
+                &self.orientation,
+                &reference,
+                self.offset,
+            ));
+        }
+    }
+}
 
-            "absolute" | "origin" | "left" | "centre" | "center" | "right" | "top" | "middle"
-            | "bottom" => {
-                m.panel.guides.entry(name).or_insert(Guide::new(
-                    &self.orientation,
-                    &reference,
-                    self.offset,
-                ));
-            }
+fn validate(name: &str, reference: &str, m: &Module) -> bool {
+    // ... name
+    if m.panel.guides.contains_key(name) {
+        warnf!("duplicate guideline name '{}'", name);
+        return false;
+    }
 
-            _ => {
-                if m.panel.guides.contains_key(reference) {
-                    m.panel.guides.entry(name).or_insert(Guide::new(
-                        &self.orientation,
-                        &reference,
-                        self.offset,
-                    ));
-                } else {
-                    warnf!("no reference guideline '{}'", reference);
-                }
+    // ... reference
+    match reference {
+        "" => false,
+
+        "absolute" | "origin" | "left" | "centre" | "center" | "right" | "top" | "middle"
+        | "bottom" => true,
+
+        _ => {
+            if m.panel.guides.contains_key(reference) {
+                true
+            } else {
+                warnf!("no reference guideline '{}'", reference);
+                false
             }
         }
     }
