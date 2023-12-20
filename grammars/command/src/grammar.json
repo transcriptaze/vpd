@@ -177,6 +177,42 @@
                   "value": "y"
                 }
               ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "@"
+                  },
+                  "named": true,
+                  "value": "absolute"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+                  },
+                  "named": true,
+                  "value": "x"
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+                  },
+                  "named": true,
+                  "value": "y"
+                }
+              ]
             }
           ]
         }

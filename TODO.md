@@ -16,6 +16,7 @@
 - [ ] `save`
 - [ ] `export`
 - [ ] _info_ panel
+- [ ] error handling
 
 ### Fonts 
 - [ ] load all on startup
@@ -47,9 +48,11 @@
       - [ ] relative to another guideline
             - [x] handle circular references
             - [x] error on command if reference does not exist
-            - [ ] reuse guideline label prefix
-            - [ ] (maybe) append 'A', 'B' etc
+            - [ ] reuse guideline label prefix  (append 'A', 'B' etc ?)
       - [x] error if identifier already exists
+      - [ ] help
+      - [ ] `delete`
+      - [ ] `set`
       - (?) error if duplicate offset
 
 - [ ] _labels_

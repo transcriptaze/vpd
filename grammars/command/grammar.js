@@ -43,8 +43,22 @@ module.exports = grammar({
     origin: $ => seq(
       'origin',
       choice(
-        seq(alias(/top|middle|bottom/,$.y), ',', alias(/left|centre|center|right/,$.x)),
-        seq(alias(/left|centre|center|right/,$.x),',',alias(/top|middle|bottom/,$.y)),
+        seq(
+          alias(/top|middle|bottom/,$.y), 
+          ',', 
+          alias(/left|centre|center|right/,$.x),
+        ),
+        seq(
+          alias(/left|centre|center|right/,$.x),
+          ',',
+          alias(/top|middle|bottom/,$.y),
+        ),
+        seq(
+          alias('@',$.absolute),
+          alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.x),
+          ',',
+          alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.y),
+         )
       ),
     ),
 

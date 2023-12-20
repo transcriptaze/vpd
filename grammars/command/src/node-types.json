@@ -210,6 +210,10 @@
       "required": true,
       "types": [
         {
+          "type": "absolute",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
