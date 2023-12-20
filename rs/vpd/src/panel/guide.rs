@@ -3,6 +3,9 @@ use serde::{Deserialize, Serialize};
 use crate::panel::Panel;
 use crate::svg::GuideLine;
 
+use crate::utils::log;
+use crate::warnf;
+
 #[derive(Serialize, Deserialize)]
 pub struct Guide {
     pub orientation: String,
@@ -21,11 +24,31 @@ impl Guide {
 
     #[allow(non_snake_case)]
     pub fn to_SVG(&self, label: &str, panel: &Panel) -> Option<GuideLine> {
-        self.to_svg(label, panel, 0)
+        let reference = self.reference.as_str();
+
+        match reference {
+            "" => None,
+
+            "absolute" | "origin" => self.to_svg(label, panel, 0),
+
+            "left" | "centre" | "center" | "right" | "top" | "middle" | "bottom" => {
+                self.to_svg(label, panel, 0)
+            }
+
+            _ => {
+                if panel.guides.contains_key(reference) {
+                    self.to_svg(label, panel, 0)
+                } else {
+                    warnf!("missing reference guideline '{}'", reference);
+                    None
+                }
+            }
+        }
     }
 
     fn to_svg(&self, label: &str, panel: &Panel, depth: i32) -> Option<GuideLine> {
         if depth >= panel.guides.len().try_into().unwrap() {
+            warnf!("guide circular reference");
             return None;
         }
 

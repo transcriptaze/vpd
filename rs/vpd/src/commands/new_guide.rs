@@ -5,6 +5,9 @@ use crate::command::Command;
 use crate::module::Module;
 use crate::panel::Guide;
 
+use crate::utils::log;
+use crate::warnf;
+
 pub struct NewGuideCommand {
     name: Option<String>,
     orientation: String,
@@ -53,10 +56,31 @@ impl Command for NewGuideCommand {
             None => m.panel.new_guide_name(&self.orientation),
         };
 
-        m.panel.guides.entry(name).or_insert(Guide::new(
-            &self.orientation,
-            &self.reference,
-            self.offset,
-        ));
+        let reference = self.reference.as_str();
+
+        match reference {
+            "" => {}
+
+            "absolute" | "origin" | "left" | "centre" | "center" | "right" | "top" | "middle"
+            | "bottom" => {
+                m.panel.guides.entry(name).or_insert(Guide::new(
+                    &self.orientation,
+                    &reference,
+                    self.offset,
+                ));
+            }
+
+            _ => {
+                if m.panel.guides.contains_key(reference) {
+                    m.panel.guides.entry(name).or_insert(Guide::new(
+                        &self.orientation,
+                        &reference,
+                        self.offset,
+                    ));
+                } else {
+                    warnf!("no reference guideline '{}'", reference);
+                }
+            }
+        }
     }
 }

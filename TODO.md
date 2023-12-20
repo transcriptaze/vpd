@@ -1,6 +1,5 @@
 # TODO
 
-
 - [x] Save project file
 - [x] Load project file
       - [ ] web component
@@ -14,6 +13,8 @@
       - [ ] web component
       - [ ] programmable
 - [ ] `undo`
+- [ ] `save`
+- [ ] `export`
 - [ ] _info_ panel
 
 ### Fonts 
@@ -45,7 +46,7 @@
       - [x] relative to the geometry
       - [ ] relative to another guideline
             - [x] handle circular references
-            - [ ] error on command if reference does not exist
+            - [x] error on command if reference does not exist
             - [ ] reuse guideline label prefix
             - [ ] (maybe) append 'A', 'B' etc
       - [ ] error if identifier already exists
