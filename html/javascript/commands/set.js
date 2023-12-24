@@ -1,3 +1,5 @@
+import { setOrigin } from './origin.js'
+
 export function parse (node) {
   if (node.namedChildCount > 0) {
     const child = node.namedChildren[0]
@@ -16,21 +18,4 @@ export function parse (node) {
   }
 
   throw new Error("invalid 'set' command")
-}
-
-export function setOrigin (node) {
-  const object = {
-    action: 'set',
-    origin: {}
-  }
-
-  for (const child of node.namedChildren) {
-    if (child.type === 'x') {
-      object.origin.x = child.text.trim()
-    } else if (child.type === 'y') {
-      object.origin.y = child.text.trim()
-    }
-  }
-
-  return object
 }

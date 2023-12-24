@@ -53,6 +53,7 @@
       - [ ] help
       - [ ] `delete`
       - [ ] `set`
+      - [ ] `list`
       - (?) error if duplicate offset
 
 - [ ] _labels_

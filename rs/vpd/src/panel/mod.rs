@@ -1,9 +1,11 @@
 mod guide;
 mod label;
+mod origin;
 mod panel;
 
 pub use guide::Guide;
 pub use label::Label;
+pub use origin::Origin;
 pub use panel::Panel;
 
 pub const DEFAULT_WIDTH: f32 = 45.72; // 9H

@@ -7,6 +7,7 @@ use wasm_bindgen::prelude::*;
 
 use crate::panel::Guide;
 use crate::panel::Label;
+use crate::panel::Origin;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
@@ -25,12 +26,6 @@ pub struct Panel {
     pub labels: Vec<Label>,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct Origin {
-    pub x: String,
-    pub y: String,
-}
-
 impl Panel {
     pub fn new(width: f32, _height: f32) -> Panel {
         let w = (width / H).round();
@@ -39,10 +34,7 @@ impl Panel {
             width: w * H,
             height: 128.5,
             gutter: 5.0,
-            origin: Origin {
-                x: "left".to_string(),
-                y: "top".to_string(),
-            },
+            origin: Origin::new(),
             guides: HashMap::new(),
             labels: Vec::new(),
         };
@@ -113,25 +105,7 @@ impl Panel {
     }
 
     pub fn origin(&self) -> Point {
-        let w: f32 = self.width;
-        let h: f32 = self.height;
-
-        let x = match self.origin.x.as_ref() {
-            "left" => 0.0,
-            "right" => w,
-            "centre" => w / 2.0,
-            "center" => w / 2.0,
-            _ => 0.0,
-        };
-
-        let y = match self.origin.y.as_ref() {
-            "top" => 0.0,
-            "middle" => h / 2.0,
-            "bottom" => h,
-            _ => 0.0,
-        };
-
-        return Point { x: x, y: y };
+        self.origin.to_point(&self)
     }
 
     fn guidelines(&self) -> Vec<GuideLine> {
