@@ -1,8 +1,22 @@
 [
   {
-    "type": "attribute",
+    "type": "absolute",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "entity",
@@ -58,6 +72,29 @@
     }
   },
   {
+    "type": "origin",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "set",
     "named": true,
     "fields": {},
@@ -66,7 +103,7 @@
       "required": false,
       "types": [
         {
-          "type": "attribute",
+          "type": "origin",
           "named": true
         }
       ]
@@ -92,6 +129,44 @@
     }
   },
   {
+    "type": "x",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "y",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "guide",
     "named": false
   },
@@ -110,6 +185,10 @@
   {
     "type": "origin",
     "named": false
+  },
+  {
+    "type": "reference",
+    "named": true
   },
   {
     "type": "set",

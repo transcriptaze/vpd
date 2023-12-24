@@ -15,7 +15,11 @@ module.exports = grammar({
 
     set: $ => seq(
       'set',
-      optional($.attribute),
+      optional(
+        choice(
+          $.origin,
+        ),
+      ),
     ),
 
     entity: $ => choice(
@@ -25,11 +29,63 @@ module.exports = grammar({
     ),
 
     attribute: $ => choice(
-      'origin',
+      $.origin,
     ),
 
     module: $ => seq(
       'module',
+    ),
+
+    origin: $ => seq(
+      'origin',
+      optional(
+        choice(
+          $.absolute,          
+          seq(
+            $.x,
+            optional(
+              seq(
+                ',',
+                optional($.y),
+              ),
+            ),
+          ),
+          seq(
+            $.y,
+            optional(
+              seq(
+                ',',
+                optional($.x),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+
+    absolute: $ => seq(
+      '@',
+      optional(
+        seq(
+          alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.x),
+          optional(
+            seq(
+              ',',
+              optional(
+                alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.y),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+
+    x: $ => seq(
+      alias(/left|centre|center|right/,$.reference),
+    ),
+
+    y: $ => seq(
+      alias (/top|middle|bottom/,$.reference), 
     ),
 
     guide: $ => seq(
