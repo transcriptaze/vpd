@@ -31,17 +31,29 @@ export function setOrigin (node) {
 
   for (const child of node.namedChildren) {
     if (child.type === 'x') {
-      object.origin.x = {
-        reference: child.text.trim(),
-        offset: 0.0
-      }
+      object.origin.x = xy(child)
     }
 
     if (child.type === 'y') {
-      object.origin.y = {
-        reference: child.text.trim(),
-        offset: 0.0
-      }
+      object.origin.y = xy(child)
+    }
+  }
+
+  return object
+}
+
+function xy (node) {
+  const object = {
+    offset: 0.0
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'reference') {
+      object.reference = child.text.trim()
+    }
+
+    if (child.type === 'offset') {
+      object.offset = mm(child.text)
     }
   }
 

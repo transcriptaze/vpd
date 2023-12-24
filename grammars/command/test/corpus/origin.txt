@@ -1,30 +1,6 @@
-==========================
-set origin module top,left
-==========================
-set origin top,left
----
-(source_file
-  (set
-    (attr
-      (origin
-        (y)
-        (x)))))
-
-==========================
-set origin module left,top
-==========================
-set origin left,top
----
-(source_file
-  (set
-    (attr
-      (origin
-        (x)
-        (y)))))
-
-==============================
-set origin module @1.2mm,3.4mm
-==============================
+=======================
+set origin @1.2mm,3.4mm
+=======================
 set origin @1.2mm,3.4mm
 ---
 (source_file
@@ -34,4 +10,68 @@ set origin @1.2mm,3.4mm
         (absolute)
         (x)
         (y)))))
+
+
+===================
+set origin top,left
+===================
+set origin top,left
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (y
+          (reference))
+        (x
+          (reference))))))
+
+
+===================
+set origin left,top
+===================
+set origin left,top
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (x
+          (reference))
+        (y
+          (reference))))))
+
+
+===================================
+set origin middle+4.5mm,right-4.5mm
+===================================
+set origin middle+4.5mm,right-4.5mm
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (y
+          (reference)
+          (offset))
+        (x
+          (reference)
+          (offset))))))
+
+
+===================================
+set origin right-4.5mm,middle+4.5mm
+===================================
+set origin right-4.5mm,middle+4.5mm
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (x
+          (reference)
+          (offset))
+        (y
+          (reference)
+          (offset))))))
 

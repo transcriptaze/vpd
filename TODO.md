@@ -32,9 +32,10 @@
       - [ ] `set` module name/width/height
 
 - [ ] origin
-      - [ ] absolute
+      - [x] absolute
       - [x] geometry
-      - [ ] offset relative to geometry
+      - [x] offset relative to geometry
+      - [ ] help
 
 - [ ] _guidelines_
       - [x] `new guideline`

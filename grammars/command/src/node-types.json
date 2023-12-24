@@ -293,6 +293,44 @@
     }
   },
   {
+    "type": "x",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "y",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -386,14 +424,6 @@
   },
   {
     "type": "width",
-    "named": true
-  },
-  {
-    "type": "x",
-    "named": true
-  },
-  {
-    "type": "y",
     "named": true
   }
 ]
