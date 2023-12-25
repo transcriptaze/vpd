@@ -1,25 +1,25 @@
 {
   "name": "help",
   "rules": {
-    "source_file": {
+    "command": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_command"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "new"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "set"
+          },
+          {
+            "type": "STRING",
+            "value": "..."
+          }
+        ]
       }
-    },
-    "_command": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "new"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "set"
-        }
-      ]
     },
     "new": {
       "type": "SEQ",
@@ -33,7 +33,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "entity"
+              "name": "_entity"
             },
             {
               "type": "BLANK"
@@ -53,13 +53,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "origin"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_attribute"
             },
             {
               "type": "BLANK"
@@ -68,7 +63,7 @@
         }
       ]
     },
-    "entity": {
+    "_entity": {
       "type": "CHOICE",
       "members": [
         {
@@ -85,7 +80,7 @@
         }
       ]
     },
-    "attribute": {
+    "_attribute": {
       "type": "CHOICE",
       "members": [
         {
@@ -134,8 +129,8 @@
                           "type": "SEQ",
                           "members": [
                             {
-                              "type": "PATTERN",
-                              "value": "[, ]"
+                              "type": "STRING",
+                              "value": ","
                             },
                             {
                               "type": "CHOICE",
@@ -172,8 +167,8 @@
                           "type": "SEQ",
                           "members": [
                             {
-                              "type": "PATTERN",
-                              "value": "[, ]"
+                              "type": "STRING",
+                              "value": ","
                             },
                             {
                               "type": "CHOICE",
@@ -234,8 +229,8 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "PATTERN",
-                          "value": "[, ]"
+                          "type": "STRING",
+                          "value": ","
                         },
                         {
                           "type": "CHOICE",

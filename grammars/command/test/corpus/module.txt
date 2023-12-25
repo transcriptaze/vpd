@@ -3,12 +3,11 @@ new module <name> 1U <height>
 =============================
 new module "woot" 1U 3H
 ---
-(source_file
+(command
   (new
-    (entity
-      (module
-        (name)
-        (height)
-        (width)))))
+    (module
+      (name)
+      (height)
+      (width))))
 
 

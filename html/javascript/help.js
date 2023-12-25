@@ -74,15 +74,15 @@ export function help (prompt, text) {
   prompt.display(list)
 }
 
-function walk(node) {
+function walk (node) {
   if (node.type === 'ERROR') {
-      return []
-  } 
+    return []
+  }
 
   if (node.namedChildCount < 1) {
-      return [node.type]
-  } 
-    
+    return [node.type]
+  }
+
   return [node.type, ...walk(node.namedChildren[0])]
 }
 

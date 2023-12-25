@@ -1,33 +1,21 @@
 {
   "name": "command",
   "rules": {
-    "source_file": {
+    "command": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_command"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "new"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "set"
+          }
+        ]
       }
-    },
-    "_command": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "new"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "set"
-        },
-        {
-          "type": "STRING",
-          "value": "move"
-        },
-        {
-          "type": "STRING",
-          "value": "delete"
-        }
-      ]
     },
     "new": {
       "type": "SEQ",
@@ -38,7 +26,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "entity"
+          "name": "_entity"
         }
       ]
     },
@@ -51,11 +39,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "attr"
+          "name": "_attribute"
         }
       ]
     },
-    "entity": {
+    "_entity": {
       "type": "CHOICE",
       "members": [
         {
@@ -84,7 +72,7 @@
         }
       ]
     },
-    "attr": {
+    "_attribute": {
       "type": "CHOICE",
       "members": [
         {
@@ -132,8 +120,8 @@
                   "name": "y"
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "[, ]"
+                  "type": "STRING",
+                  "value": ","
                 },
                 {
                   "type": "SYMBOL",
@@ -149,8 +137,8 @@
                   "name": "x"
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "[, ]"
+                  "type": "STRING",
+                  "value": ","
                 },
                 {
                   "type": "SYMBOL",
@@ -180,8 +168,8 @@
                   "value": "x"
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "[, ]"
+                  "type": "STRING",
+                  "value": ","
                 },
                 {
                   "type": "ALIAS",

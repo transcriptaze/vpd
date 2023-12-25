@@ -3,7 +3,7 @@ set origin
 ==========
 set origin
 ---
-(source_file
+(command
   (set
     (origin)))
 
@@ -13,7 +13,7 @@ set origin @
 ============
 set origin @
 ---
-(source_file
+(command
   (set
     (origin
       (absolute))))
@@ -24,7 +24,7 @@ set origin @10mm
 ================
 set origin @10mm
 ---
-(source_file
+(command
   (set
     (origin
       (absolute
@@ -36,7 +36,7 @@ set origin @10mm,
 =================
 set origin @10mm,
 ---
-(source_file
+(command
   (set
     (origin
       (absolute
@@ -48,20 +48,7 @@ set origin @10mm,10mm
 =====================
 set origin @10mm,10mm
 ---
-(source_file
-  (set
-    (origin
-      (absolute
-        (x)
-        (y)))))
-
-
-=====================
-set origin @10mm 10mm
-=====================
-set origin @10mm 10mm
----
-(source_file
+(command
   (set
     (origin
       (absolute
@@ -74,7 +61,7 @@ set origin left
 ===============
 set origin left
 ---
-(source_file
+(command
   (set
     (origin
       (x
@@ -86,7 +73,7 @@ set origin left,
 ================
 set origin left,
 ---
-(source_file
+(command
   (set
     (origin
       (x
@@ -98,7 +85,7 @@ set origin left+4.5mm
 =====================
 set origin left+4.5mm
 ---
-(source_file
+(command
   (set
     (origin
       (x
@@ -111,7 +98,7 @@ set origin left+4.5mm,
 ======================
 set origin left+4.5mm,
 ---
-(source_file
+(command
   (set
     (origin
       (x
@@ -124,7 +111,7 @@ set origin left,top
 ===================
 set origin left,top
 ---
-(source_file
+(command
   (set
     (origin
       (x
@@ -138,7 +125,7 @@ set origin left+4.5mm,top+4.5mm
 ===============================
 set origin left+4.5mm,top+4.5mm
 ---
-(source_file
+(command
   (set
     (origin
       (x
@@ -149,26 +136,12 @@ set origin left+4.5mm,top+4.5mm
         (offset)))))
 
 
-===================
-set origin left top
-===================
-set origin left top
----
-(source_file
-  (set
-    (origin
-      (x
-        (reference))
-      (y
-        (reference)))))
-
-
 ==============
 set origin top
 ==============
 set origin top
 ---
-(source_file
+(command
   (set
     (origin
       (y
@@ -180,7 +153,7 @@ set origin top,
 ===============
 set origin top,
 ---
-(source_file
+(command
   (set
     (origin
       (y
@@ -192,21 +165,7 @@ set origin top,left
 ===================
 set origin top,left
 ---
-(source_file
-  (set
-    (origin
-      (y
-        (reference))
-      (x
-        (reference)))))
-
-
-===================
-set origin top left
-===================
-set origin top left
----
-(source_file
+(command
   (set
     (origin
       (y

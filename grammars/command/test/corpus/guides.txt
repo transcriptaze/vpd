@@ -1,14 +1,13 @@
-====================================
+ ====================================
 new guide vertical <relative offset>
 ====================================
 new guide vertical 4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (vertical
-            (offset))))))
+    (guide
+        (vertical
+          (offset)))))
 
 
 =============================================
@@ -16,12 +15,11 @@ new guide vertical <positive relative offset>
 =============================================
 new guide vertical +4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (vertical
-            (offset))))))
+    (guide
+        (vertical
+          (offset)))))
 
 
 =============================================
@@ -29,12 +27,11 @@ new guide vertical <negative relative offset>
 =============================================
 new guide vertical -4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (vertical
-            (offset))))))
+    (guide
+        (vertical
+          (offset)))))
 
 
 ===========================================
@@ -42,24 +39,22 @@ new guide vertical <relative offset>
 ===========================================
 new guide vertical -4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
       (guide
-          (vertical
-            (offset))))))
+        (vertical
+          (offset)))))
 
 ==================================
 new guide vertical origin <offset>
 ==================================
 new guide vertical origin+4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (vertical
-            (offset))))))
+    (guide
+        (vertical
+          (offset)))))
 
 
 ===========================================
@@ -67,13 +62,12 @@ new guide vertical <absolute offset>
 ===========================================
 new guide vertical @4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (vertical
-            (absolute)
-            (offset))))))
+    (guide
+        (vertical
+          (absolute)
+          (offset)))))
 
 
 ===========================================
@@ -81,13 +75,12 @@ new guide <name> vertical <relative offset>
 ===========================================
 new guide v1 vertical +4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (identifier)
-          (vertical
-            (offset))))))
+    (guide
+      (identifier)
+        (vertical
+          (offset)))))
 
 
 ======================================
@@ -95,12 +88,11 @@ new guide horizontal <relative offset>
 ======================================
 new guide horizontal 4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (horizontal
-            (offset))))))
+    (guide
+      (horizontal
+        (offset)))))
 
 
 ===============================================
@@ -108,12 +100,11 @@ new guide horizontal <positive relative offset>
 ===============================================
 new guide horizontal +4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (horizontal
-            (offset))))))
+    (guide
+      (horizontal
+        (offset)))))
 
 
 ===============================================
@@ -121,12 +112,11 @@ new guide horizontal <negative relative offset>
 ===============================================
 new guide horizontal -4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (horizontal
-            (offset))))))
+    (guide
+      (horizontal
+        (offset)))))
 
 
 =============================================
@@ -134,12 +124,11 @@ new guide horizontal origin <offset>
 =============================================
 new guide horizontal origin+4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-          (horizontal
-            (offset))))))
+    (guide
+      (horizontal
+        (offset)))))
 
 
 =============================================
@@ -147,13 +136,12 @@ new guide <name> horizontal <relative offset>
 =============================================
 new guide v1 horizontal +4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (identifier)
-          (horizontal
-            (offset))))))
+    (guide
+      (identifier)
+        (horizontal
+          (offset)))))
 
 
 ==============
@@ -161,12 +149,11 @@ new guide left
 ==============
 new guide left
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 =====================
@@ -174,13 +161,12 @@ new guide <name> left
 =====================
 new guide l1 left
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (identifier)
-        (geometry
-          (reference))))))
+    (guide
+      (identifier)
+      (geometry
+        (reference)))))
 
 
 =====================
@@ -188,13 +174,12 @@ new guide left <offset
 =====================
 new guide left+4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference)
-          (offset))))))
+    (guide
+      (geometry
+        (reference)
+        (offset)))))
 
 
 ==============================
@@ -202,14 +187,13 @@ new guide <name> left <offset>
 =============================
 new guide l1 left+4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (identifier)
-        (geometry
-          (reference)
-          (offset))))))
+    (guide
+      (identifier)
+      (geometry
+        (reference)
+        (offset)))))
 
 
 ================
@@ -217,12 +201,11 @@ new guide centre
 ================
 new guide centre
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 ================
@@ -230,12 +213,11 @@ new guide center
 ================
 new guide center
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 ===============
@@ -243,12 +225,11 @@ new guide right
 ===============
 new guide right
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 =============
@@ -256,12 +237,11 @@ new guide top
 =============
 new guide top
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 ================
@@ -269,12 +249,11 @@ new guide middle
 ================
 new guide middle
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 ================
@@ -282,12 +261,11 @@ new guide bottom
 ================
 new guide bottom
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (geometry
-          (reference))))))
+    (guide
+      (geometry
+        (reference)))))
 
 
 ==============================
@@ -295,13 +273,12 @@ new guide <guideline> <offset>
 ==============================
 new guide v1+4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (guideline  
-          (reference)
-          (offset))))))
+    (guide
+      (guideline  
+        (reference)
+        (offset)))))
 
 
 =====================================
@@ -309,13 +286,11 @@ new guide <name> <guideline> <offset>
 =====================================
 new guide v2 v1+4.5mm
 ---
-(source_file
+(command
   (new
-    (entity
-      (guide
-        (identifier)
-        (guideline  
-          (reference)
-          (offset))))))
-
+    (guide
+      (identifier)
+      (guideline  
+        (reference)
+        (offset)))))
 

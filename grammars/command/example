@@ -31,5 +31,3 @@ new output
 new label "uiop" @22.2mm,33.3mm
 set origin top,left
 set origin right,bottom
-move
-delete

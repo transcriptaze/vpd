@@ -3,24 +3,20 @@ import { newGuide } from './guide.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
-    const child = node.namedChildren[0]
+    const entity = node.namedChildren[0]
 
-    if (child.type === 'entity' && child.namedChildCount > 0) {
-      const entity = child.namedChildren[0]
+    switch (entity.type) {
+      case 'module':
+        return newModule(entity)
 
-      switch (entity.type) {
-        case 'module':
-          return newModule(entity)
+      case 'guide':
+        return newGuide(entity)
 
-        case 'guide':
-          return newGuide(entity)
+      case 'label':
+        return newLabel(entity)
 
-        case 'label':
-          return newLabel(entity)
-
-        default:
-          throw new Error(`unknown 'new' entity <<${entity.type}>>`)
-      }
+      default:
+        throw new Error(`unknown 'new' entity <<${entity.type}>>`)
     }
   }
 

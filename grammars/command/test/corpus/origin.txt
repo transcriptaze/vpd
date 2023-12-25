@@ -3,27 +3,12 @@ set origin @1.2mm,3.4mm
 =======================
 set origin @1.2mm,3.4mm
 ---
-(source_file
+(command
   (set
-    (attr
-      (origin
-        (absolute)
-        (x)
-        (y)))))
-
-
-=======================
-set origin @1.2mm 3.4mm
-=======================
-set origin @1.2mm 3.4mm
----
-(source_file
-  (set
-    (attr
-      (origin
-        (absolute)
-        (x)
-        (y)))))
+    (origin
+      (absolute)
+      (x)
+      (y))))
 
 
 ===================
@@ -31,29 +16,13 @@ set origin top,left
 ===================
 set origin top,left
 ---
-(source_file
+(command
   (set
-    (attr
-      (origin
-        (y
-          (reference))
-        (x
-          (reference))))))
-
-
-===================
-set origin top left
-===================
-set origin top left
----
-(source_file
-  (set
-    (attr
-      (origin
-        (y
-          (reference))
-        (x
-          (reference))))))
+    (origin
+      (y
+        (reference))
+      (x
+        (reference)))))
 
 
 ===================
@@ -61,29 +30,13 @@ set origin left,top
 ===================
 set origin left,top
 ---
-(source_file
+(command
   (set
-    (attr
-      (origin
-        (x
-          (reference))
-        (y
-          (reference))))))
-
-
-===================
-set origin left top
-===================
-set origin left top
----
-(source_file
-  (set
-    (attr
-      (origin
-        (x
-          (reference))
-        (y
-          (reference))))))
+    (origin
+      (x
+        (reference))
+      (y
+        (reference)))))
 
 
 ===================================
@@ -91,16 +44,15 @@ set origin middle+4.5mm,right-4.5mm
 ===================================
 set origin middle+4.5mm,right-4.5mm
 ---
-(source_file
+(command
   (set
-    (attr
-      (origin
-        (y
-          (reference)
-          (offset))
-        (x
-          (reference)
-          (offset))))))
+    (origin
+      (y
+        (reference)
+        (offset))
+      (x
+        (reference)
+        (offset)))))
 
 
 ===================================
@@ -108,14 +60,13 @@ set origin right-4.5mm,middle+4.5mm
 ===================================
 set origin right-4.5mm,middle+4.5mm
 ---
-(source_file
+(command
   (set
-    (attr
-      (origin
-        (x
-          (reference)
-          (offset))
-        (y
-          (reference)
-          (offset))))))
+    (origin
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
 

@@ -1,9 +1,17 @@
 ===
+...
+===
+...
+---
+(command)
+
+
+===
 new
 ===
 new
 ---
-(source_file
+(command
   (new))
 
 
@@ -12,6 +20,6 @@ set
 ===
 set
 ---
-(source_file
+(command
   (set))
 

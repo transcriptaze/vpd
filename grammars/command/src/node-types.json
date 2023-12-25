@@ -19,38 +19,19 @@
     }
   },
   {
-    "type": "attr",
+    "type": "command",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "origin",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "entity",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "guide",
+          "type": "new",
           "named": true
         },
         {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "module",
+          "type": "set",
           "named": true
         }
       ]
@@ -192,10 +173,18 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "entity",
+          "type": "guide",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "module",
           "named": true
         }
       ]
@@ -233,26 +222,7 @@
       "required": true,
       "types": [
         {
-          "type": "attr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "source_file",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "new",
-          "named": true
-        },
-        {
-          "type": "set",
+          "type": "origin",
           "named": true
         }
       ]
@@ -347,10 +317,6 @@
     "named": true
   },
   {
-    "type": "delete",
-    "named": false
-  },
-  {
     "type": "guide",
     "named": false
   },
@@ -376,10 +342,6 @@
   },
   {
     "type": "module",
-    "named": false
-  },
-  {
-    "type": "move",
     "named": false
   },
   {

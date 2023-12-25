@@ -19,23 +19,19 @@
     }
   },
   {
-    "type": "entity",
+    "type": "command",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
-          "type": "guide",
+          "type": "new",
           "named": true
         },
         {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "module",
+          "type": "set",
           "named": true
         }
       ]
@@ -65,7 +61,15 @@
       "required": false,
       "types": [
         {
-          "type": "entity",
+          "type": "guide",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "module",
           "named": true
         }
       ]
@@ -110,25 +114,6 @@
     }
   },
   {
-    "type": "source_file",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "new",
-          "named": true
-        },
-        {
-          "type": "set",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "x",
     "named": true,
     "fields": {},
@@ -165,6 +150,14 @@
         }
       ]
     }
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "...",
+    "named": false
   },
   {
     "type": "@",

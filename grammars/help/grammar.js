@@ -2,33 +2,31 @@ module.exports = grammar({
   name: 'help',
 
   rules: {
-    source_file: $ => repeat($._command),
-    _command: $ => choice(
-      $.new,
-      $.set,
+    command: $ => repeat(
+      choice(
+        $.new,
+        $.set,
+        '...',
+      ),
     ),
 
     new: $ => seq(
       'new',
-      optional($.entity),
+      optional($._entity),
     ),
 
     set: $ => seq(
       'set',
-      optional(
-        choice(
-          $.origin,
-        ),
-      ),
+      optional($._attribute),
     ),
 
-    entity: $ => choice(
+    _entity: $ => choice(
       $.module,
       $.guide,
       $.label,
     ),
 
-    attribute: $ => choice(
+    _attribute: $ => choice(
       $.origin,
     ),
 
@@ -45,7 +43,7 @@ module.exports = grammar({
             $.x,
             optional(
               seq(
-                /[, ]/,
+                ',',
                 optional($.y),
               ),
             ),
@@ -54,7 +52,7 @@ module.exports = grammar({
             $.y,
             optional(
               seq(
-                /[, ]/,
+                ',',
                 optional($.x),
               ),
             ),
@@ -70,7 +68,7 @@ module.exports = grammar({
           alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.x),
           optional(
             seq(
-                /[, ]/,
+                ',',
               optional(
                 alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.y),
               ),
