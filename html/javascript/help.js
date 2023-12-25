@@ -10,23 +10,43 @@ export async function init (Parser) {
 const COMMANDS = [
   {
     command: ['new', 'module'],
-    help: ['new', 'module', '<em>&lt;name&gt;</em>'],
+    help: ['<b>new</b>', 'module', '<em>&lt;name&gt;</em>'],
     min: 3
   },
   {
     command: ['new', 'guide'],
-    help: ['new', 'guide'],
-    min: 2
+    help: ['<b>new</b>', 'guide'],
+    min: 1
   },
   {
     command: ['new', 'label'],
     help: ['<b>new</b>', 'label'],
-    min: 2
+    min: 1
   },
   {
-    command: ['set', 'origin'],
-    help: ['set', 'origin'],
-    min: 2
+    command: ['set', 'origin', 'absolute'],
+    help: ['<b>set</b>', 'origin', '@10mm,12.5mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'origin', 'x', 'reference', 'y', 'reference'],
+    help: ['<b>set</b>', 'origin', 'left,top'],
+    min: 1
+  },
+  {
+    command: ['set', 'origin', 'x', 'reference', 'offset', 'y', 'reference', 'offset'],
+    help: ['<b>set</b>', 'origin', 'left+4.5mm,top+4.5mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'origin', 'y', 'reference', 'x', 'reference'],
+    help: ['<b>set</b>', 'origin', 'top,left'],
+    min: 1
+  },
+  {
+    command: ['set', 'origin', 'y', 'reference', 'offset', 'x', 'reference', 'offset'],
+    help: ['<b>set</b>', 'origin', 'top+4.5mm,left+4.5mm'],
+    min: 1
   }
 ]
 
@@ -37,12 +57,10 @@ export function help (prompt, text) {
   const root = tree.rootNode
 
   if (root.namedChildCount > 0) {
-    const node = root.namedChildren[0]
-
-    if (node.type !== 'ERROR') {
-      tokens.push(node.type)
-    }
+    tokens.push(...walk(root.namedChildren[0]))
   }
+
+  console.log(tokens)
 
   const list = new Set()
 
@@ -54,6 +72,18 @@ export function help (prompt, text) {
   }
 
   prompt.display(list)
+}
+
+function walk(node) {
+  if (node.type === 'ERROR') {
+      return []
+  } 
+
+  if (node.namedChildCount < 1) {
+      return [node.type]
+  } 
+    
+  return [node.type, ...walk(node.namedChildren[0])]
 }
 
 function matches (command, tokenset) {

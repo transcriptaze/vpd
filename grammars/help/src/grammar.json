@@ -134,8 +134,8 @@
                           "type": "SEQ",
                           "members": [
                             {
-                              "type": "STRING",
-                              "value": ","
+                              "type": "PATTERN",
+                              "value": "[, ]"
                             },
                             {
                               "type": "CHOICE",
@@ -172,8 +172,8 @@
                           "type": "SEQ",
                           "members": [
                             {
-                              "type": "STRING",
-                              "value": ","
+                              "type": "PATTERN",
+                              "value": "[, ]"
                             },
                             {
                               "type": "CHOICE",
@@ -234,8 +234,8 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "STRING",
-                          "value": ","
+                          "type": "PATTERN",
+                          "value": "[, ]"
                         },
                         {
                           "type": "CHOICE",
@@ -281,6 +281,18 @@
           },
           "named": true,
           "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -295,6 +307,18 @@
           },
           "named": true,
           "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -315,6 +339,10 @@
           "value": "label"
         }
       ]
+    },
+    "offset": {
+      "type": "PATTERN",
+      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
     }
   },
   "extras": [

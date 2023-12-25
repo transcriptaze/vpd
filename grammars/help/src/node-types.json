@@ -133,9 +133,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
         {
           "type": "reference",
           "named": true
@@ -148,19 +152,19 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "offset",
+          "named": true
+        },
         {
           "type": "reference",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": ",",
-    "named": false
   },
   {
     "type": "@",
@@ -181,6 +185,10 @@
   {
     "type": "new",
     "named": false
+  },
+  {
+    "type": "offset",
+    "named": true
   },
   {
     "type": "origin",

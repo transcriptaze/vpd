@@ -3,6 +3,7 @@
 - [x] Save project file
 - [x] Load project file
       - [ ] web component
+      - [ ] https://thenounproject.com/search/icons/?q=open
 - [x] Drop project file
 - [x] Fix panel layout so that it doesn't jump
 - [ ] _light_ SVG
@@ -107,3 +108,5 @@
 14. https://github.com/extraymond/rust-async-wasm-demo/blob/master/README.md
 15. https://users.rust-lang.org/t/do-async-frameworks-like-tokio-support-wasm-particularly-multithreading-in-the-browser/85927/2
 16. https://stackoverflow.com/questions/72220581/how-to-produce-a-wasm-interface-with-asynchronous-access
+17. https://lukasatkinson.de/2015/mopping-it-up/
+

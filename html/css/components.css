@@ -41,7 +41,7 @@ div.vpd-help-text ul {
   width: 100%;
   height: 100%;
   list-style-type: none;
-  column-width: 160px;
+  column-width: 172px;
   column-rule: none;
   column-rule-width: thin;
   overflow-y: hidden;
@@ -52,7 +52,7 @@ div.vpd-help-text li {
   padding-left: 8px;
   padding-right: 8px;
   color: #a7a7a7;
-  font-size: 0.9em;
+  font-size: 0.8em;
   white-space: nowrap;
   text-overflow: ellipsis;
 }

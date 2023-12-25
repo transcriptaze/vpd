@@ -132,8 +132,8 @@
                   "name": "y"
                 },
                 {
-                  "type": "STRING",
-                  "value": ","
+                  "type": "PATTERN",
+                  "value": "[, ]"
                 },
                 {
                   "type": "SYMBOL",
@@ -149,8 +149,8 @@
                   "name": "x"
                 },
                 {
-                  "type": "STRING",
-                  "value": ","
+                  "type": "PATTERN",
+                  "value": "[, ]"
                 },
                 {
                   "type": "SYMBOL",
@@ -180,8 +180,8 @@
                   "value": "x"
                 },
                 {
-                  "type": "STRING",
-                  "value": ","
+                  "type": "PATTERN",
+                  "value": "[, ]"
                 },
                 {
                   "type": "ALIAS",

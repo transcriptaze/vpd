@@ -45,7 +45,7 @@ module.exports = grammar({
             $.x,
             optional(
               seq(
-                ',',
+                /[, ]/,
                 optional($.y),
               ),
             ),
@@ -54,7 +54,7 @@ module.exports = grammar({
             $.y,
             optional(
               seq(
-                ',',
+                /[, ]/,
                 optional($.x),
               ),
             ),
@@ -70,7 +70,7 @@ module.exports = grammar({
           alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.x),
           optional(
             seq(
-              ',',
+                /[, ]/,
               optional(
                 alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.y),
               ),
@@ -82,10 +82,12 @@ module.exports = grammar({
 
     x: $ => seq(
       alias(/left|centre|center|right/,$.reference),
+      optional($.offset),
     ),
 
     y: $ => seq(
       alias (/top|middle|bottom/,$.reference), 
+      optional($.offset),
     ),
 
     guide: $ => seq(
@@ -95,5 +97,7 @@ module.exports = grammar({
     label: $ => seq(
       'label',
     ),
+
+    offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
   }
 });

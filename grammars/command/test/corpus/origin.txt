@@ -12,6 +12,20 @@ set origin @1.2mm,3.4mm
         (y)))))
 
 
+=======================
+set origin @1.2mm 3.4mm
+=======================
+set origin @1.2mm 3.4mm
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (absolute)
+        (x)
+        (y)))))
+
+
 ===================
 set origin top,left
 ===================
@@ -28,9 +42,39 @@ set origin top,left
 
 
 ===================
+set origin top left
+===================
+set origin top left
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (y
+          (reference))
+        (x
+          (reference))))))
+
+
+===================
 set origin left,top
 ===================
 set origin left,top
+---
+(source_file
+  (set
+    (attr
+      (origin
+        (x
+          (reference))
+        (y
+          (reference))))))
+
+
+===================
+set origin left top
+===================
+set origin left top
 ---
 (source_file
   (set
