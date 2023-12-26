@@ -1,3 +1,22 @@
+======
+export
+======
+export
+---
+(command
+  (export))
+
+
+=============
+export module
+=============
+export module
+---
+(command
+  (export
+    (module)))
+
+
 =================
 export module svg
 =================
@@ -7,6 +26,7 @@ export module svg
   (export
     (module
       (svg))))
+
 
 =======================
 export module svg light
@@ -20,9 +40,9 @@ export module svg light
         (light)))))
 
 
-======================
+=======================
 export module svg dark
-======================
+=======================
 export module svg dark
 ---
 (command

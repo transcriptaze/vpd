@@ -15,3 +15,12 @@ set
 (command
   (set))
 
+
+======
+export
+======
+export
+---
+(command
+  (export))
+

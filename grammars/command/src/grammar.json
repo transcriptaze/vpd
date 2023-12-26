@@ -55,6 +55,24 @@
           "value": "export"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_exportable"
+          },
+          "named": true,
+          "value": "module"
+        }
+      ]
+    },
+    "_exportable": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "module"
+        },
+        {
           "type": "SYMBOL",
           "name": "svg"
         }
@@ -71,22 +89,30 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "STRING",
-                "value": "light"
-              },
-              "named": true,
-              "value": "light"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "light"
+                  },
+                  "named": true,
+                  "value": "light"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "dark"
+                  },
+                  "named": true,
+                  "value": "dark"
+                }
+              ]
             },
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "STRING",
-                "value": "dark"
-              },
-              "named": true,
-              "value": "dark"
+              "type": "BLANK"
             }
           ]
         }

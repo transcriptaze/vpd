@@ -22,14 +22,21 @@ module.exports = grammar({
 
     export: $ => seq (
       'export',
+      alias($._exportable,$.module)
+    ),
+
+    _exportable: $ => seq(
+      'module',
       $.svg,
     ),
 
     svg: $ => seq(
       'svg',
-      choice(
-        alias('light',$.light),
-        alias('dark',$.dark),
+      optional (
+        choice(
+          alias('light',$.light),
+          alias('dark',$.dark),
+        ),
       ),
     ),
 

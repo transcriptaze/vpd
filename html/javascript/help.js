@@ -49,13 +49,18 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['export', 'svg', 'light'],
-    help: ['export', 'svg', 'light'],
+    command: ['export', 'module', 'svg'],
+    help: ['export', 'module', 'svg'],
     min: 1
   },
   {
-    command: ['export', 'svg', 'dark'],
-    help: ['export', 'svg', 'dark'],
+    command: ['export', 'module', 'svg', 'light'],
+    help: ['export', 'module', 'svg', 'light'],
+    min: 1
+  },
+  {
+    command: ['export', 'module', 'svg', 'dark'],
+    help: ['export', 'module', 'svg', 'dark'],
     min: 1
   }
 ]

@@ -27,11 +27,30 @@
       "required": false,
       "types": [
         {
+          "type": "export",
+          "named": true
+        },
+        {
           "type": "new",
           "named": true
         },
         {
           "type": "set",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "export",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "module",
           "named": true
         }
       ]
@@ -50,7 +69,17 @@
   {
     "type": "module",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "svg",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "new",
@@ -114,6 +143,25 @@
     }
   },
   {
+    "type": "svg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "dark",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "x",
     "named": true,
     "fields": {},
@@ -160,12 +208,24 @@
     "named": false
   },
   {
+    "type": "dark",
+    "named": true
+  },
+  {
+    "type": "export",
+    "named": false
+  },
+  {
     "type": "guide",
     "named": false
   },
   {
     "type": "label",
     "named": false
+  },
+  {
+    "type": "light",
+    "named": true
   },
   {
     "type": "module",
@@ -189,6 +249,10 @@
   },
   {
     "type": "set",
+    "named": false
+  },
+  {
+    "type": "svg",
     "named": false
   }
 ]

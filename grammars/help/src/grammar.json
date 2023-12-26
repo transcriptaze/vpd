@@ -13,6 +13,10 @@
           {
             "type": "SYMBOL",
             "name": "set"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "export"
           }
         ]
       }
@@ -59,6 +63,32 @@
         }
       ]
     },
+    "export": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_exportable"
+              },
+              "named": true,
+              "value": "module"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "_entity": {
       "type": "CHOICE",
       "members": [
@@ -82,6 +112,67 @@
         {
           "type": "SYMBOL",
           "name": "origin"
+        }
+      ]
+    },
+    "_exportable": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "module"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "svg"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "svg": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "svg"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "light"
+                  },
+                  "named": true,
+                  "value": "light"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "dark"
+                  },
+                  "named": true,
+                  "value": "dark"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

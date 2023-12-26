@@ -3,21 +3,26 @@ export function parse (node) {
     const entity = node.namedChildren[0]
 
     switch (entity.type) {
-      case 'svg':
-        return exportSVG(entity)
+      case 'module':
+        if (entity.namedChildCount > 0 && entity.namedChildren[0].type === 'svg') {
+          return exportSVG(entity.namedChildren[0])
+        }
+        break
 
       default:
         throw new Error(`unknown 'export' entity <<${entity.type}>>`)
     }
   }
 
-  throw new Error("invalid 'new' command")
+  throw new Error("invalid 'export' command")
 }
 
 function exportSVG (node) {
   const object = {
     action: 'export',
-    svg: {}
+    svg: {
+      theme: 'light'
+    }
   }
 
   for (const child of node.namedChildren) {

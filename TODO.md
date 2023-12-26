@@ -36,9 +36,10 @@
       - [x] grammar
       - [x] JS
       - [x] rs
-      - [ ] help
-      - (?) "export module svg"
-      - (?) make 'dark' optional and export light by default
+      - [x] "export module svg"
+      - [x] make 'dark' optional and export light by default
+      - [x] help
+      - [ ] Remove Google fonts from exported SVG
 
 - [x] origin
 
