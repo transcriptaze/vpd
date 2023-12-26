@@ -6,7 +6,6 @@ module.exports = grammar({
       choice(
         $.new,
         $.set,
-        '...',
       ),
     ),
 

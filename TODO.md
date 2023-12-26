@@ -32,11 +32,11 @@
       - [x] `new module`
       - [ ] `set` module name/width/height
 
-- [ ] origin
+- [x] origin
       - [x] absolute
       - [x] geometry
       - [x] offset relative to geometry
-      - [ ] help
+      - [x] help
 
 - [ ] _guidelines_
       - [x] `new guideline`
@@ -47,10 +47,10 @@
       - [x] absolute
       - [x] geometry
       - [x] relative to the geometry
-      - [ ] relative to another guideline
+      - [x] relative to another guideline
             - [x] handle circular references
             - [x] error on command if reference does not exist
-            - [ ] reuse guideline label prefix  (append 'A', 'B' etc ?)
+            - [x] reuse guideline label prefix  (append 'A', 'B' etc ?)
       - [x] error if identifier already exists
       - [ ] help
       - [ ] `delete`

@@ -13,10 +13,6 @@
           {
             "type": "SYMBOL",
             "name": "set"
-          },
-          {
-            "type": "STRING",
-            "value": "..."
           }
         ]
       }

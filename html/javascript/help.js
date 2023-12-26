@@ -35,7 +35,7 @@ const COMMANDS = [
   },
   {
     command: ['set', 'origin', 'x', 'reference', 'offset', 'y', 'reference', 'offset'],
-    help: ['<b>set</b>', 'origin', 'left+4.5mm,top+4.5mm'],
+    help: ['<b>set</b>', 'origin', 'left+4.5mm,top-4.5mm'],
     min: 1
   },
   {
@@ -45,7 +45,7 @@ const COMMANDS = [
   },
   {
     command: ['set', 'origin', 'y', 'reference', 'offset', 'x', 'reference', 'offset'],
-    help: ['<b>set</b>', 'origin', 'top+4.5mm,left+4.5mm'],
+    help: ['<b>set</b>', 'origin', 'top+4.5mm,left-4.5mm'],
     min: 1
   }
 ]
