@@ -11,6 +11,7 @@ use crate::panel::Origin;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Style;
 use crate::svg::Text;
 use crate::svg::SVG;
 
@@ -82,6 +83,7 @@ impl Panel {
         let w = self.width + 2.0 * self.gutter;
         let h = self.height + 2.0 * self.gutter;
         let viewport = self.viewport();
+        let styles = self.styles();
         let background = Rect::new(0.0, 0.0, self.width, self.height);
         let outline = Rect::new(0.0, 0.0, self.width, self.height);
         let origin = self.origin();
@@ -89,6 +91,7 @@ impl Panel {
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
+            .styles(styles)
             .background(background)
             .outline(outline)
             .origin(origin)
@@ -126,6 +129,10 @@ impl Panel {
             width: self.width + 2.0 * self.gutter,
             height: self.height + 2.0 * self.gutter,
         }
+    }
+
+    fn styles(&self) -> Vec<Style> {
+        return Vec::new();
     }
 
     pub fn origin(&self) -> Point {

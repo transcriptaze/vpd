@@ -5,6 +5,7 @@ use tera::Tera;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Style;
 use crate::svg::Text;
 
 const OUTLINE_STROKE: f32 = 0.125;
@@ -13,6 +14,7 @@ pub struct SVG {
     width: f32,
     height: f32,
     viewport: Rect,
+    styles: Option<Vec<Style>>,
     background: Option<Rect>,
     outline: Option<Rect>,
     origin: Option<Point>,
@@ -28,12 +30,18 @@ impl SVG {
             width: width,
             height: height,
             viewport: viewport,
+            styles: None,
             background: None,
             outline: None,
             origin: None,
             guidelines: None,
             labels: None,
         }
+    }
+
+    pub fn styles(mut self, styles: Vec<Style>) -> Self {
+        self.styles = Some(styles);
+        self
     }
 
     pub fn background(mut self, bg: Rect) -> Self {
@@ -77,9 +85,14 @@ impl SVG {
         context.insert("height", &format!("{:3}", self.height));
         context.insert("viewport", &self.viewport);
 
+        match &self.styles {
+            Some(_) => context.insert("styles", "yes"),
+            _ => context.insert("styles", "no"),
+        }
+
         match &self.background {
             Some(v) => context.insert("background", &v),
-            _ => todo!(),
+            _ => {}
         }
 
         match &self.outline {

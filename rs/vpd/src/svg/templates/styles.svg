@@ -1,4 +1,6 @@
+{% if styles == "yes" %}
   <style>
+
    @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
    .border {
@@ -26,3 +28,4 @@
        stroke-dasharray: 1 1;
    }
   </style>
+{% endif %}

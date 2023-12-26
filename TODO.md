@@ -32,14 +32,14 @@
       - [x] `new module`
       - [ ] `set` module name/width/height
 
-- [ ] _export_
+- [x] _export_
       - [x] grammar
       - [x] JS
       - [x] rs
       - [x] "export module svg"
       - [x] make 'dark' optional and export light by default
       - [x] help
-      - [ ] Remove Google fonts from exported SVG
+      - [x] Remove Google fonts from exported SVG
 
 - [x] origin
 

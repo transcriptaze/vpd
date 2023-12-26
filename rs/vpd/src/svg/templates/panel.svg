@@ -6,7 +6,6 @@
      height="{{height}}mm"
      viewBox="{{viewport.x}} {{viewport.y}} {{viewport.width}} {{viewport.height}}">
 {% include "styles" %}
-
   <defs>
 {% include "backgrounds" %}
   </defs>
