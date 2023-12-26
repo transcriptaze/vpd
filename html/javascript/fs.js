@@ -1,5 +1,5 @@
 export function save (filename, svg) {
-  const blob = new Blob([svg], { type: "image/svg+xml" })
+  const blob = new Blob([svg], { type: 'image/svg+xml' })
 
   if (window.showSaveFilePicker) {
     saveWithPicker(filename, blob)

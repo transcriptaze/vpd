@@ -67,21 +67,11 @@ impl SVG {
     }
 
     #[allow(non_snake_case)]
-    pub fn to_SVG(&self, _theme: &str) -> Result<String, Box<dyn Error>> {
-        let panel = include_str!("templates/panel.svg");
-        let styles = include_str!("templates/styles.svg");
-        let backgrounds = include_str!("templates/backgrounds.svg");
-        let guidelines = include_str!("templates/guidelines.svg");
-        let labels = include_str!("templates/labels.svg");
-
+    pub fn to_SVG(&self, theme: &str) -> Result<String, Box<dyn Error>> {
         let mut tera = Tera::default();
         let mut context = Context::new();
 
-        tera.add_raw_template("panel", &panel).unwrap();
-        tera.add_raw_template("styles", &styles).unwrap();
-        tera.add_raw_template("backgrounds", &backgrounds).unwrap();
-        tera.add_raw_template("guidelines", &guidelines).unwrap();
-        tera.add_raw_template("labels", &labels).unwrap();
+        load_templates(&mut tera, theme);
 
         context.insert("width", &format!("{:3}", self.width));
         context.insert("height", &format!("{:3}", self.height));
@@ -116,4 +106,23 @@ impl SVG {
 
         Ok(svg.to_string())
     }
+}
+
+fn load_templates(tera: &mut Tera, theme: &str) {
+    let panel = include_str!("templates/panel.svg");
+    let mut styles = include_str!("templates/styles.svg");
+    let mut backgrounds = include_str!("templates/backgrounds.svg");
+    let guidelines = include_str!("templates/guidelines.svg");
+    let labels = include_str!("templates/labels.svg");
+
+    if theme == "dark" {
+        styles = include_str!("templates/dark/styles.svg");
+        backgrounds = include_str!("templates/dark/backgrounds.svg");
+    }
+
+    tera.add_raw_template("panel", &panel).unwrap();
+    tera.add_raw_template("styles", &styles).unwrap();
+    tera.add_raw_template("backgrounds", &backgrounds).unwrap();
+    tera.add_raw_template("guidelines", &guidelines).unwrap();
+    tera.add_raw_template("labels", &labels).unwrap();
 }

@@ -1,7 +1,7 @@
   <g inkscape:groupmode="layer" inkscape:label="labels">
     {% if labels -%}
     {% for v in labels -%}
-    <g transform="translate({{v.x}},{{v.y}})">
+    <g transform="translate({{v.x}},{{v.y}})" fill="{{v.colour}}">
       {{v.path}}
     </g>
     {%- endfor %}

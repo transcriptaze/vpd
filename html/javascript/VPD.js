@@ -110,15 +110,17 @@ function execute (cmd) {
 }
 
 function redraw () {
-  const object = document.querySelector('object#light')
-  const svg = render()
-  const blob = new Blob([svg], { type: 'image/svg+xml' })
-  const old = object.data
-  const url = URL.createObjectURL(blob)
+  for (const theme of ['light', 'dark']) {
+    const object = document.querySelector(`object#${theme}`)
+    const svg = render(theme)
+    const blob = new Blob([svg], { type: 'image/svg+xml' })
+    const old = object.data
+    const url = URL.createObjectURL(blob)
 
-  object.data = url
+    object.data = url
 
-  URL.revokeObjectURL(old)
+    URL.revokeObjectURL(old)
+  }
 }
 
 function store (tag, json) {

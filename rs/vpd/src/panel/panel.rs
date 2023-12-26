@@ -86,7 +86,7 @@ impl Panel {
         let outline = Rect::new(0.0, 0.0, self.width, self.height);
         let origin = self.origin();
         let guidelines = self.guidelines();
-        let labels = self.labels();
+        let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
             .background(background)
@@ -107,7 +107,7 @@ impl Panel {
         let h = self.height + 2.0 * self.gutter;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let background = Rect::new(0.0, 0.0, self.width, self.height);
-        let labels = self.labels();
+        let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
             .background(background)
@@ -145,11 +145,16 @@ impl Panel {
         return list;
     }
 
-    fn labels(&self) -> Vec<Text> {
+    fn labels(&self, theme: &str) -> Vec<Text> {
         let mut list: Vec<Text> = Vec::new();
+        let mut colour = "#222222";
+
+        if theme == "dark" {
+            colour = "#ebebeb";
+        }
 
         for v in self.labels.iter() {
-            list.push(Text::new(v.x, v.y, v.path.to_string()));
+            list.push(Text::new(v.x, v.y, v.path.to_string(), colour.to_string()));
         }
 
         return list;

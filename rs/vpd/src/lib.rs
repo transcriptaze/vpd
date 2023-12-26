@@ -75,12 +75,12 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn render() -> Result<String, JsValue> {
+pub fn render(theme: &str) -> Result<String, JsValue> {
     let state = STATE.lock().unwrap();
     let module = &state.module;
     let panel = &module.panel;
 
-    return panel.to_SVG("light");
+    return panel.to_SVG(theme);
 }
 
 // #[cfg(test)]
