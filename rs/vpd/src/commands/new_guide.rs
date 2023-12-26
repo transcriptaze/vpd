@@ -16,13 +16,13 @@ pub struct NewGuideCommand {
 }
 
 #[derive(Deserialize)]
-struct V {
+struct E {
     #[serde(rename = "guide")]
-    guide: G,
+    guide: V,
 }
 
 #[derive(Deserialize)]
-struct G {
+struct V {
     #[serde(rename = "name")]
     name: Option<String>,
 
@@ -38,13 +38,13 @@ struct G {
 
 impl NewGuideCommand {
     pub fn new(json: &str) -> Result<NewGuideCommand, Box<dyn Error>> {
-        let v: V = serde_json::from_str(json)?;
+        let e: E = serde_json::from_str(json)?;
 
         Ok(NewGuideCommand {
-            name: v.guide.name,
-            orientation: v.guide.orientation,
-            reference: v.guide.reference,
-            offset: v.guide.offset,
+            name: e.guide.name,
+            orientation: e.guide.orientation,
+            reference: e.guide.reference,
+            offset: e.guide.offset,
         })
     }
 }

@@ -94,22 +94,22 @@ impl SVG {
 
         match &self.outline {
             Some(v) => context.insert("outline", &v),
-            _ => todo!(),
+            _ => {}
         }
 
         match &self.origin {
             Some(v) => context.insert("origin", &v),
-            _ => todo!(),
+            _ => {}
         }
 
         match &self.guidelines {
             Some(v) => context.insert("guidelines", &v),
-            _ => todo!(),
+            _ => {}
         }
 
         match &self.labels {
             Some(v) => context.insert("labels", &v),
-            _ => todo!(),
+            _ => {}
         }
 
         let svg = tera.render("panel", &context).unwrap();

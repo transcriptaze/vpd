@@ -15,13 +15,13 @@ pub struct XY {
 }
 
 #[derive(Deserialize)]
-struct V {
+struct Object {
     #[serde(rename = "origin")]
-    origin: O,
+    origin: Origin,
 }
 
 #[derive(Deserialize)]
-struct O {
+struct Origin {
     #[serde(rename = "x")]
     x: xy,
 
@@ -41,16 +41,16 @@ struct xy {
 
 impl SetOriginCommand {
     pub fn new(json: &str) -> Result<SetOriginCommand, Box<dyn Error>> {
-        let v: V = serde_json::from_str(json)?;
+        let o: Object = serde_json::from_str(json)?;
 
         Ok(SetOriginCommand {
             x: XY {
-                reference: v.origin.x.reference,
-                offset: v.origin.x.offset,
+                reference: o.origin.x.reference,
+                offset: o.origin.x.offset,
             },
             y: XY {
-                reference: v.origin.y.reference,
-                offset: v.origin.y.offset,
+                reference: o.origin.y.reference,
+                offset: o.origin.y.offset,
             },
         })
     }

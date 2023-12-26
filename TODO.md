@@ -32,26 +32,17 @@
       - [x] `new module`
       - [ ] `set` module name/width/height
 
+- [ ] _export_
+      - [x] grammar
+      - [x] JS
+      - [x] rs
+      - [ ] help
+      - (?) "export module svg"
+      - (?) make 'dark' optional and export light by default
+
 - [x] origin
-      - [x] absolute
-      - [x] geometry
-      - [x] offset relative to geometry
-      - [x] help
 
 - [ ] _guidelines_
-      - [x] `new guideline`
-      - [x] guide ID
-      - [x] relative to origin
-      - [x] make guide ID optional in grammar
-      - [x] generate ID automatically
-      - [x] absolute
-      - [x] geometry
-      - [x] relative to the geometry
-      - [x] relative to another guideline
-            - [x] handle circular references
-            - [x] error on command if reference does not exist
-            - [x] reuse guideline label prefix  (append 'A', 'B' etc ?)
-      - [x] error if identifier already exists
       - [ ] help
       - [ ] `delete`
       - [ ] `set`
@@ -76,7 +67,7 @@
 
 - [ ] load
 - [ ] save
-- [ ] download
+
 
 - [x] Help text skeleton
 - [ ] Rework help text as multi-column ul

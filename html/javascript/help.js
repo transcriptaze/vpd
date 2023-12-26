@@ -10,42 +10,52 @@ export async function init (Parser) {
 const COMMANDS = [
   {
     command: ['new', 'module'],
-    help: ['<b>new</b>', 'module', '<em>&lt;name&gt;</em>'],
+    help: ['new', 'module', '<em>&lt;name&gt;</em>'],
     min: 3
   },
   {
     command: ['new', 'guide'],
-    help: ['<b>new</b>', 'guide'],
+    help: ['new', 'guide'],
     min: 1
   },
   {
     command: ['new', 'label'],
-    help: ['<b>new</b>', 'label'],
+    help: ['new', 'label'],
     min: 1
   },
   {
     command: ['set', 'origin', 'absolute'],
-    help: ['<b>set</b>', 'origin', '@10mm,12.5mm'],
+    help: ['set', 'origin', '@10mm,12.5mm'],
     min: 1
   },
   {
     command: ['set', 'origin', 'x', 'reference', 'y', 'reference'],
-    help: ['<b>set</b>', 'origin', 'left,top'],
+    help: ['set', 'origin', 'left,top'],
     min: 1
   },
   {
     command: ['set', 'origin', 'x', 'reference', 'offset', 'y', 'reference', 'offset'],
-    help: ['<b>set</b>', 'origin', 'left+4.5mm,top-4.5mm'],
+    help: ['set', 'origin', 'left+4.5mm,top-4.5mm'],
     min: 1
   },
   {
     command: ['set', 'origin', 'y', 'reference', 'x', 'reference'],
-    help: ['<b>set</b>', 'origin', 'top,left'],
+    help: ['set', 'origin', 'top,left'],
     min: 1
   },
   {
     command: ['set', 'origin', 'y', 'reference', 'offset', 'x', 'reference', 'offset'],
-    help: ['<b>set</b>', 'origin', 'top+4.5mm,left-4.5mm'],
+    help: ['set', 'origin', 'top+4.5mm,left-4.5mm'],
+    min: 1
+  },
+  {
+    command: ['export', 'svg', 'light'],
+    help: ['export', 'svg', 'light'],
+    min: 1
+  },
+  {
+    command: ['export', 'svg', 'dark'],
+    help: ['export', 'svg', 'dark'],
     min: 1
   }
 ]

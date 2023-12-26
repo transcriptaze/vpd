@@ -13,6 +13,10 @@
           {
             "type": "SYMBOL",
             "name": "set"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "export"
           }
         ]
       }
@@ -40,6 +44,51 @@
         {
           "type": "SYMBOL",
           "name": "_attribute"
+        }
+      ]
+    },
+    "export": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "svg"
+        }
+      ]
+    },
+    "svg": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "svg"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "light"
+              },
+              "named": true,
+              "value": "light"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "dark"
+              },
+              "named": true,
+              "value": "dark"
+            }
+          ]
         }
       ]
     },

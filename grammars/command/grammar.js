@@ -6,6 +6,7 @@ module.exports = grammar({
       choice(
         $.new,
         $.set,
+        $.export,
       ),
     ),
 
@@ -17,6 +18,19 @@ module.exports = grammar({
     set: $ => seq(
       'set',
       $._attribute,
+    ),
+
+    export: $ => seq (
+      'export',
+      $.svg,
+    ),
+
+    svg: $ => seq(
+      'svg',
+      choice(
+        alias('light',$.light),
+        alias('dark',$.dark),
+      ),
     ),
 
     _entity: $ => choice(

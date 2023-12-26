@@ -3,6 +3,7 @@ use std::error::Error;
 use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
+use crate::commands::ExportSVGCommand;
 use crate::commands::NewGuideCommand;
 use crate::commands::NewLabelCommand;
 use crate::commands::NewModuleCommand;
@@ -20,6 +21,7 @@ struct Action {
     label: Option<Entity>,
 
     origin: Option<Attr>,
+    svg: Option<Entity>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,6 +41,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(NewLabelCommand::new(json)?))
     } else if v.action == "set" && v.origin.is_some() {
         Ok(Box::new(SetOriginCommand::new(json)?))
+    } else if v.action == "export" && v.svg.is_some() {
+        Ok(Box::new(ExportSVGCommand::new(json)?))
     } else {
         Err("unknown command".into())
     }

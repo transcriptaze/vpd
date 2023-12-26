@@ -1,5 +1,6 @@
 import * as _new from './commands/new.js'
 import * as _set from './commands/set.js'
+import * as _export from './commands/export.js'
 let parser
 
 export async function init (Parser) {
@@ -25,6 +26,9 @@ export function parse (cmd) {
 
       case 'set':
         return _set.parse(node)
+
+      case 'export':
+        return _export.parse(node)
 
       default:
         throw new Error(`unknown command ${node.type}`)

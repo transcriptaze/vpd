@@ -20,14 +20,18 @@ new guide    center
 new guide    right
 new guide l1 left
 
-new guide top
-new guide middle
-new guide bottom
+new guide    top
+new guide    middle
+new guide    bottom
 new guide t1 top
 
-new param
-new input
-new output
-new label "uiop" @22.2mm,33.3mm
+new guide v1+4.5mm
+
+set origin @10mm,10mm
 set origin top,left
-set origin right,bottom
+set origin right-10mm,bottom-10mm
+
+new label "uiop" @22.2mm,33.3mm
+
+export svg light
+export svg dark

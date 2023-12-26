@@ -101,6 +101,24 @@ impl Panel {
         }
     }
 
+    #[allow(non_snake_case)]
+    pub fn export_SVG(&self, theme: &str) -> Result<String, JsValue> {
+        let w = self.width + 2.0 * self.gutter;
+        let h = self.height + 2.0 * self.gutter;
+        let viewport = Rect::new(0.0, 0.0, self.width, self.height);
+        let background = Rect::new(0.0, 0.0, self.width, self.height);
+        let labels = self.labels();
+
+        let svg = SVG::new(w, h, viewport)
+            .background(background)
+            .labels(labels);
+
+        match svg.to_SVG(theme) {
+            Ok(v) => Ok(v),
+            Err(e) => Err(JsValue::from(format!("{}", e))),
+        }
+    }
+
     fn viewport(&self) -> Rect {
         Rect {
             x: -self.gutter,

@@ -1,0 +1,22 @@
+================
+export svg light
+================
+export svg light
+---
+(command
+  (export
+    (svg
+      (light))))
+
+
+===============
+export svg dark
+===============
+export svg dark
+---
+(command
+  (export
+    (svg
+      (dark))))
+
+
