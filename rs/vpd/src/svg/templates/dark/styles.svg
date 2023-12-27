@@ -10,7 +10,7 @@
 
    .origin {
        fill: none;
-       stroke: #00008b;
+       stroke: cadetblue;
        stroke-width: 0.25;
    }
 
