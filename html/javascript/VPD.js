@@ -22,16 +22,17 @@ export async function initialise () {
     }
   }
 
-  // ... restore project
-  try {
-    const json = retrieve(PROJECT)
-
-    if (json != null) {
-      restore(json)
-    }
-  } catch (err) {
-    console.error(err)
-  }
+  // // ... restore project
+  // try {
+  //   const json = retrieve(PROJECT)
+  //
+  //   if (json != null) {
+  //     restore(json)
+  //     redraw()
+  //   }
+  // } catch (err) {
+  //   console.error(err)
+  // }
 }
 
 export function onLoad () {
@@ -127,7 +128,7 @@ function store (tag, json) {
   localStorage.setItem(tag, json)
 }
 
-function retrieve (tag) {
+function _retrieve (tag) {
   try {
     return localStorage.getItem(tag)
   } catch (err) {

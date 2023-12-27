@@ -15,22 +15,28 @@
     </header>
   
     <main>
+      <a id="save" href="" style="display:none" download></a>
+      <input id="picker" type="file" accept="application/json" style="display:none;" />
+
       <div id="left">
         <div id="info">
           <fieldset id="module">
             <legend>MODULE</legend>
-            <label>name:</label><p>woot</p>
-            <label>width:</label><p>45.72mm</p>
+            <label>name:</label><p data-tag="module.name"></p>
+            <label>width:</label><p data-tag="module.width"></p>
           </fieldset>
         </div>
+        
         <div class="panel">
           <object id="light" data="./images/panel-light.svg" width="193" height="400"></object>
         </div>
       </div>
+
       <div id="right">
         <div class="panel">
           <object id="dark" data="./images/panel-dark.svg" width="193" height="400"></object>
         </div>
+
         <div id="controls">
           <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
           <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
@@ -42,9 +48,8 @@
           <button onclick="onCtrl2(event)">Ctrl₂</button>
           <button onclick="onCtrl3(event)">Ctrl₃</button>
           <button onclick="onCtrl4(event)">Ctrl₄</button>
-          <a id="save" href="" style="display:none" download></a>
-          <input id="picker" type="file" accept="application/json" style="display:none;" />
         </div>
+
       </div>
       <div id="drop">
         <vpd-drop></vpd-drop>

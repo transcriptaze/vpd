@@ -120,7 +120,7 @@ main {
     row-gap: 4px;
 
     fieldset {
-      display: grid;
+      display: none;
       grid-template-columns: auto auto;
       grid-template-rows: auto;
       column-gap: 8px;
@@ -153,6 +153,10 @@ main {
         font-style: normal;
         font-size: 0.9em;            
       }
+    }
+
+    fieldset.visible {
+      display: grid;
     }
   }
 

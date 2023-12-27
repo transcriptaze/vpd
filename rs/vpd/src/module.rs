@@ -19,6 +19,18 @@ pub struct Module {
     pub panel: Panel,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct ModuleInfo {
+    #[serde(rename = "name")]
+    pub name: String,
+
+    #[serde(rename = "height")]
+    pub height: f32,
+
+    #[serde(rename = "width")]
+    pub width: f32,
+}
+
 pub fn new() -> Module {
     return Module {
         name: "unknown".into(),
@@ -27,6 +39,14 @@ pub fn new() -> Module {
 }
 
 impl Module {
+    pub fn info(&self) -> ModuleInfo {
+        ModuleInfo {
+            name: self.name.to_string(),
+            height: self.panel.height,
+            width: self.panel.width,
+        }
+    }
+
     pub fn export_svg(&self, theme: &str) {
         match self.panel.export_SVG(theme) {
             Ok(blob) => {

@@ -21,6 +21,11 @@ static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     })
 });
 
+#[wasm_bindgen(raw_module = "../../javascript/rs.js")]
+extern "C" {
+    fn set(tag: &str, object: &str);
+}
+
 #[wasm_bindgen(start)]
 pub fn main() -> Result<(), JsValue> {
     utils::set_panic_hook();
@@ -37,6 +42,10 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
             let module = &mut state.module;
 
             cmd.apply(module);
+
+            let info = module.info();
+            let object = serde_json::to_string(&info).unwrap();
+            set("module", &object);
 
             let serialized = serde_json::to_string(&module).unwrap();
 
@@ -68,6 +77,11 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
         Ok(m) => {
             let mut state = STATE.lock().unwrap();
             state.module = m;
+
+            let info = state.module.info();
+            let object = serde_json::to_string(&info).unwrap();
+            set("module", &object);
+
             Ok(())
         }
         Err(e) => Err(JsValue::from(format!("{}", e))),
