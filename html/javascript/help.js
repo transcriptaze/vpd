@@ -75,7 +75,7 @@ export function help (prompt, text) {
     tokens.push(...walk(root.namedChildren[0]))
   }
 
-  console.log(tokens)
+  // console.log(tokens)
 
   const list = new Set()
 

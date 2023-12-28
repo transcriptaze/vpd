@@ -1,19 +1,26 @@
 import { mm } from './commands.js'
-import { newGuide } from './guide.js'
+import { newParameter } from './parameters.js'
+import { newLabel } from './labels.js'
+import { newGuide } from './guides.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
     const entity = node.namedChildren[0]
 
+    console.log('>>> ', entity.type)
+
     switch (entity.type) {
       case 'module':
         return newModule(entity)
 
-      case 'guide':
-        return newGuide(entity)
+      case 'parameter':
+        return newParameter(entity)
 
       case 'label':
         return newLabel(entity)
+
+      case 'guide':
+        return newGuide(entity)
 
       default:
         throw new Error(`unknown 'new' entity <<${entity.type}>>`)
@@ -43,34 +50,6 @@ function newModule (node) {
       object.module.height = mm(child.text)
     } else if (child.type === 'width') {
       object.module.width = mm(child.text)
-    }
-  }
-
-  return object
-}
-
-function newLabel (node) {
-  const object = {
-    action: 'new',
-    label: {}
-  }
-
-  for (const child of node.namedChildren) {
-    if (child.type === 'text' && child.namedChildCount > 0) {
-      object.label.text = child.namedChildren[0].text.trim()
-    } else if (child.type === 'anchor') {
-      object.label.anchor = {
-        reference: 'absolute'
-      }
-
-      for (const v of child.namedChildren) {
-        if (v.type === 'x') {
-          object.label.anchor.x = mm(v.text)
-        }
-        if (v.type === 'y') {
-          object.label.anchor.y = mm(v.text)
-        }
-      }
     }
   }
 

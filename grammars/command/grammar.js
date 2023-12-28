@@ -34,7 +34,7 @@ module.exports = grammar({
     parameter: $ => seq(
       'parameter',
       $.name,
-      $._anchor,
+      $.anchor,
     ),
 
     set: $ => seq(
@@ -161,13 +161,6 @@ module.exports = grammar({
       '"',
       alias(/[a-zA-Z]([^"]*?)/,$.value),
       '"',
-    ),
-
-    _anchor: $ => seq(
-      '@',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
-      ',',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
     ),
 
     anchor: $ => seq(

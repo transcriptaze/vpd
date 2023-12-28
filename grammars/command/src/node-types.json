@@ -249,15 +249,11 @@
       "required": true,
       "types": [
         {
+          "type": "anchor",
+          "named": true
+        },
+        {
           "type": "name",
-          "named": true
-        },
-        {
-          "type": "x",
-          "named": true
-        },
-        {
-          "type": "y",
           "named": true
         }
       ]

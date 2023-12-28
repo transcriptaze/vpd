@@ -7,6 +7,7 @@ use crate::commands::ExportSVGCommand;
 use crate::commands::NewGuideCommand;
 use crate::commands::NewLabelCommand;
 use crate::commands::NewModuleCommand;
+use crate::commands::NewParameterCommand;
 use crate::commands::SetOriginCommand;
 
 pub trait Command {
@@ -15,12 +16,25 @@ pub trait Command {
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Action {
+    #[serde(rename = "action")]
     action: String,
+
+    #[serde(rename = "module")]
     module: Option<Entity>,
-    guide: Option<Entity>,
+
+    #[serde(rename = "parameter")]
+    parameter: Option<Entity>,
+
+    #[serde(rename = "label")]
     label: Option<Entity>,
 
+    #[serde(rename = "guide")]
+    guide: Option<Entity>,
+
+    #[serde(rename = "origin")]
     origin: Option<Attr>,
+
+    #[serde(rename = "svg")]
     svg: Option<Entity>,
 }
 
@@ -35,10 +49,12 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.action == "new" && v.module.is_some() {
         Ok(Box::new(NewModuleCommand::new(json)?))
-    } else if v.action == "new" && v.guide.is_some() {
-        Ok(Box::new(NewGuideCommand::new(json)?))
+    } else if v.action == "new" && v.parameter.is_some() {
+        Ok(Box::new(NewParameterCommand::new(json)?))
     } else if v.action == "new" && v.label.is_some() {
         Ok(Box::new(NewLabelCommand::new(json)?))
+    } else if v.action == "new" && v.guide.is_some() {
+        Ok(Box::new(NewGuideCommand::new(json)?))
     } else if v.action == "set" && v.origin.is_some() {
         Ok(Box::new(SetOriginCommand::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {
