@@ -1,0 +1,13 @@
+==========================
+new parameter <name> @<xy>
+==========================
+new parameter "e" @10mm,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (x)
+      (y))))
+
+

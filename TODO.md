@@ -6,24 +6,31 @@
       - [ ] https://thenounproject.com/search/icons/?q=open
 - [x] Drop project file
 - [x] Fix panel layout so that it doesn't jump
-- [ ] _light_ SVG
-- [ ] _dark_ SVG
+- [x] _light_ SVG
+- [x] _dark_ SVG
 - (?) gzip project file
 - [ ] Show errors
 - [ ] Macro keys
       - [ ] web component
       - [ ] programmable
-- [ ] `undo`
-- [ ] `save`
-- [ ] `export`
-- [ ] _info_ panel
+
+- [x] _info_ panel
+- [x] _export_
+- [x] _origin_
 - [ ] error handling
+- [ ] Double buffer panel redraws
+      - OR: edit SVG in place
+- [ ] `save module`
+- [ ] `load module`
+- [ ] `undo`
+
 
 ### Fonts 
 - [ ] load all on startup
 - [ ] `load font...`
 - [ ] _woff_
 - [ ] _woff2_
+- [ ] Load/drop font file
 
 ### Commands
 - [ ] Enable input autocomplete attribute
@@ -31,17 +38,6 @@
 - [ ] _module_
       - [x] `new module`
       - [ ] `set` module name/width/height
-
-- [x] _export_
-      - [x] grammar
-      - [x] JS
-      - [x] rs
-      - [x] "export module svg"
-      - [x] make 'dark' optional and export light by default
-      - [x] help
-      - [x] Remove Google fonts from exported SVG
-
-- [x] origin
 
 - [ ] _guidelines_
       - [ ] help
@@ -61,6 +57,7 @@
       - [ ] align top/middle/baseline/bottom
       - [ ] font
       - [ ] fontsize
+      - [ ] colour
       - [ ] optional label ID
       - [ ] generate label ID automatically
       - [ ] error if identifier already exists
@@ -68,7 +65,6 @@
 
 - [ ] load
 - [ ] save
-
 
 - [x] Help text skeleton
 - [ ] Rework help text as multi-column ul

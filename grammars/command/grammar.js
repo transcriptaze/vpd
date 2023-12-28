@@ -1,3 +1,5 @@
+const parameters = require('./grammars/parameters.js')
+
 module.exports = grammar({
   name: 'command',
 
@@ -13,6 +15,26 @@ module.exports = grammar({
     new: $ => seq(
       'new',
       $._entity,
+    ),
+
+    _entity: $ => choice(
+      $.module,
+      $.parameter,
+      $.label,
+      $.guide,
+    ),
+
+    module: $ => seq(
+      'module',
+      $.name,
+      $.height,
+      $.width,
+    ),
+
+    parameter: $ => seq(
+      'parameter',
+      $.name,
+      $._anchor,
     ),
 
     set: $ => seq(
@@ -40,24 +62,9 @@ module.exports = grammar({
       ),
     ),
 
-    _entity: $ => choice(
-      $.module,
-      'param',
-      'input',
-      'output',
-      $.label,
-      $.guide,
-    ),
 
     _attribute: $ => choice(
       $.origin,
-    ),
-
-    module: $ => seq(
-      'module',
-      $.name,
-      $.height,
-      $.width,
     ),
 
     origin: $ => seq(
@@ -156,11 +163,18 @@ module.exports = grammar({
       '"',
     ),
 
+    _anchor: $ => seq(
+      '@',
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
+      ',',
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+    ),
+
     anchor: $ => seq(
       '@',
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
       ',',
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
-    )
+    ),
   }
 });
