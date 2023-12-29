@@ -102,7 +102,8 @@ impl Panel {
             .origin(origin)
             .guidelines(guidelines)
             .parameters(parameters)
-            .labels(labels);
+            .labels(labels)
+            .overlay(true);
 
         match svg.to_SVG(theme) {
             Ok(v) => Ok(v),
@@ -122,7 +123,8 @@ impl Panel {
         let svg = SVG::new(w, h, viewport)
             .background(background)
             .parameters(parameters)
-            .labels(labels);
+            .labels(labels)
+            .overlay(false);
 
         match svg.to_SVG(theme) {
             Ok(v) => Ok(v),

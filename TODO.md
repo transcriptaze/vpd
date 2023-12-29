@@ -16,6 +16,8 @@
 
 - [x] _info_ panel
 - [x] _export_
+      - [ ] Don't export overlay
+
 - [x] _origin_
 - [ ] error handling
 - [ ] Double buffer panel redraws

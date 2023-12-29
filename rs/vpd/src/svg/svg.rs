@@ -22,6 +22,7 @@ pub struct SVG {
     guidelines: Option<Vec<GuideLine>>,
     parameters: Option<Vec<Circle>>,
     labels: Option<Vec<Text>>,
+    overlay: bool,
 }
 
 // TODO include_dir
@@ -39,6 +40,7 @@ impl SVG {
             guidelines: None,
             parameters: None,
             labels: None,
+            overlay: true,
         }
     }
 
@@ -82,6 +84,11 @@ impl SVG {
         self
     }
 
+    pub fn overlay(mut self, overlay:bool) -> Self {
+        self.overlay = overlay;
+        self
+    }
+
     #[allow(non_snake_case)]
     pub fn to_SVG(&self, theme: &str) -> Result<String, Box<dyn Error>> {
         let mut tera = Tera::default();
@@ -92,6 +99,7 @@ impl SVG {
         context.insert("width", &format!("{:3}", self.width));
         context.insert("height", &format!("{:3}", self.height));
         context.insert("viewport", &self.viewport);
+        context.insert("overlay", &self.overlay);
 
         match &self.styles {
             Some(_) => context.insert("styles", "yes"),

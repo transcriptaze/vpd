@@ -1,3 +1,4 @@
+{% if overlay -%}
   <g inkscape:groupmode="layer" inkscape:label="overlay">    
     {% if parameters -%}
     {% for v in parameters -%}
@@ -5,3 +6,4 @@
     {%- endfor %}
     {%- endif %}
   </g>
+{%- endif %}s
