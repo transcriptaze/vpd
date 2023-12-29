@@ -8,6 +8,8 @@ use wasm_bindgen::prelude::*;
 use crate::panel::Guide;
 use crate::panel::Label;
 use crate::panel::Origin;
+use crate::panel::Parameter;
+use crate::svg::Circle;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
@@ -24,6 +26,7 @@ pub struct Panel {
     pub gutter: f32,
     pub origin: Origin,
     pub guides: HashMap<String, Guide>,
+    pub parameters: Vec<Parameter>,
     pub labels: Vec<Label>,
 }
 
@@ -37,6 +40,7 @@ impl Panel {
             gutter: 5.0,
             origin: Origin::new(),
             guides: HashMap::new(),
+            parameters: Vec::new(),
             labels: Vec::new(),
         };
     }
@@ -88,6 +92,7 @@ impl Panel {
         let outline = Rect::new(0.0, 0.0, self.width, self.height);
         let origin = self.origin();
         let guidelines = self.guidelines();
+        let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
@@ -96,6 +101,7 @@ impl Panel {
             .outline(outline)
             .origin(origin)
             .guidelines(guidelines)
+            .parameters(parameters)
             .labels(labels);
 
         match svg.to_SVG(theme) {
@@ -110,10 +116,12 @@ impl Panel {
         let h = self.height + 2.0 * self.gutter;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let background = Rect::new(0.0, 0.0, self.width, self.height);
+        let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
             .background(background)
+            .parameters(parameters)
             .labels(labels);
 
         match svg.to_SVG(theme) {
@@ -147,6 +155,18 @@ impl Panel {
                 Some(g) => list.push(g),
                 _ => {}
             }
+        }
+
+        return list;
+    }
+
+    fn parameters(&self, _theme: &str) -> Vec<Circle> {
+        let mut list: Vec<Circle> = Vec::new();
+        let radius = 2.54;
+        let colour = "#ff0000";
+
+        for v in self.parameters.iter() {
+            list.push(Circle::new(v.x, v.y, radius, &colour));
         }
 
         return list;

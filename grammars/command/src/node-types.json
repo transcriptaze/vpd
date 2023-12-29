@@ -434,10 +434,6 @@
     "named": false
   },
   {
-    "type": "parameter",
-    "named": false
-  },
-  {
     "type": "reference",
     "named": true
   },

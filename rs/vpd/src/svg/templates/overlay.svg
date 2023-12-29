@@ -1,0 +1,7 @@
+  <g inkscape:groupmode="layer" inkscape:label="overlay">    
+    {% if parameters -%}
+    {% for v in parameters -%}
+    <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
+    {%- endfor %}
+    {%- endif %}
+  </g>

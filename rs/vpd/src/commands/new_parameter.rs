@@ -4,12 +4,12 @@ use serde::Deserialize;
 
 use crate::command::Command;
 use crate::module::Module;
-// use crate::panel;
+use crate::panel;
 use crate::svg::Point;
 
 pub struct NewParameterCommand {
-    _name: String,
-    _anchor: Point,
+    name: String,
+    anchor: Point,
 }
 
 #[derive(Deserialize)]
@@ -41,8 +41,8 @@ impl NewParameterCommand {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(NewParameterCommand {
-            _name: o.parameter.name.unwrap_or("".to_string()),
-            _anchor: Point {
+            name: o.parameter.name.unwrap_or("".to_string()),
+            anchor: Point {
                 x: o.parameter.anchor.x,
                 y: o.parameter.anchor.y,
             },
@@ -51,13 +51,11 @@ impl NewParameterCommand {
 }
 
 impl Command for NewParameterCommand {
-    fn apply(&self, _m: &mut Module) {
-        // m.panel.labels.push(panel::Label::new(
-        //     &self.name,
-        //     &self.text,
-        //     self.anchor.x,
-        //     self.anchor.y,
-        //     &path,
-        // ));
+    fn apply(&self, m: &mut Module) {
+        m.panel.parameters.push(panel::Parameter::new(
+            &self.name,
+            self.anchor.x,
+            self.anchor.y,
+        ));
     }
 }

@@ -39,6 +39,14 @@
       - [x] `new module`
       - [ ] `set` module name/width/height
 
+- [ ] _parameters_
+      - [x] `new parameter`
+      - [ ] relative to geometry
+      - [ ] relative to guidelines
+      - [ ] delete
+      - [ ] set
+      - [ ] help
+
 - [ ] _guidelines_
       - [ ] help
       - [ ] `delete`

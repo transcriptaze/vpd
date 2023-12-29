@@ -2,6 +2,7 @@ use std::error::Error;
 use tera::Context;
 use tera::Tera;
 
+use crate::svg::Circle;
 use crate::svg::GuideLine;
 use crate::svg::Point;
 use crate::svg::Rect;
@@ -19,6 +20,7 @@ pub struct SVG {
     outline: Option<Rect>,
     origin: Option<Point>,
     guidelines: Option<Vec<GuideLine>>,
+    parameters: Option<Vec<Circle>>,
     labels: Option<Vec<Text>>,
 }
 
@@ -35,6 +37,7 @@ impl SVG {
             outline: None,
             origin: None,
             guidelines: None,
+            parameters: None,
             labels: None,
         }
     }
@@ -66,6 +69,11 @@ impl SVG {
 
     pub fn guidelines(mut self, guidelines: Vec<GuideLine>) -> Self {
         self.guidelines = Some(guidelines);
+        self
+    }
+
+    pub fn parameters(mut self, parameters: Vec<Circle>) -> Self {
+        self.parameters = Some(parameters);
         self
     }
 
@@ -110,6 +118,11 @@ impl SVG {
             _ => {}
         }
 
+        match &self.parameters {
+            Some(v) => context.insert("parameters", &v),
+            _ => {}
+        }
+
         match &self.labels {
             Some(v) => context.insert("labels", &v),
             _ => {}
@@ -124,9 +137,11 @@ impl SVG {
 fn load_templates(tera: &mut Tera, theme: &str) {
     let panel = include_str!("templates/panel.svg");
     let mut styles = include_str!("templates/styles.svg");
+    let components = include_str!("templates/components.svg");
     let mut backgrounds = include_str!("templates/backgrounds.svg");
     let guidelines = include_str!("templates/guidelines.svg");
     let labels = include_str!("templates/labels.svg");
+    let overlay = include_str!("templates/overlay.svg");
 
     if theme == "dark" {
         styles = include_str!("templates/dark/styles.svg");
@@ -135,7 +150,9 @@ fn load_templates(tera: &mut Tera, theme: &str) {
 
     tera.add_raw_template("panel", &panel).unwrap();
     tera.add_raw_template("styles", &styles).unwrap();
+    tera.add_raw_template("components", &components).unwrap();
     tera.add_raw_template("backgrounds", &backgrounds).unwrap();
-    tera.add_raw_template("guidelines", &guidelines).unwrap();
     tera.add_raw_template("labels", &labels).unwrap();
+    tera.add_raw_template("guidelines", &guidelines).unwrap();
+    tera.add_raw_template("overlay", &overlay).unwrap();
 }

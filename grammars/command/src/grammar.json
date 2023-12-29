@@ -80,8 +80,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "parameter"
+          "type": "PATTERN",
+          "value": "parameter|param"
         },
         {
           "type": "SYMBOL",

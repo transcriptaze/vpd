@@ -12,7 +12,7 @@
 
   <rect x="{{viewport.x}}" y="{{viewport.y}}" width="{{viewport.width}}" height="{{viewport.height}}" class="border" />
 
-  <g inkscape:groupmode="layer" inkscape:label="components"></g>
+{% include "components" %}
 
   <g inkscape:groupmode="layer" inkscape:label="background">
   {% if background -%}
@@ -24,7 +24,7 @@
   <g inkscape:groupmode="layer" inkscape:label="controls"></g>
   <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
   <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
-{% include "labels" %}
-  <g inkscape:groupmode="layer" inkscape:label="overlay"></g>
+{% include "labels"     %}
 {% include "guidelines" %}
+{% include "overlay"    %}
 </svg>

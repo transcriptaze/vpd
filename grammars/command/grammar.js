@@ -32,7 +32,7 @@ module.exports = grammar({
     ),
 
     parameter: $ => seq(
-      'parameter',
+      /parameter|param/,
       $.name,
       $.anchor,
     ),

@@ -48,6 +48,7 @@
           <button onclick="onCtrl2(event)">Ctrl₂</button>
           <button onclick="onCtrl3(event)">Ctrl₃</button>
           <button onclick="onCtrl4(event)">Ctrl₄</button>
+          <button onclick="onCtrl5(event)">Ctrl₅</button>
         </div>
 
       </div>
@@ -126,6 +127,11 @@
         document.getElementById('command').value = 'new label "qwerty" @22.2mm,33.3mm'
     }
 
+    window.onCtrl5 = (event) => {
+        document.getElementById('command').focus()
+        document.getElementById('command').value = 'new parameter "E" @15.24mm,15.24mm'
+    }
+
     window.onkeypress = (event) => {
       if (event.ctrlKey && event.key === '1') {
         onCtrl1()
@@ -141,6 +147,10 @@
 
       if (event.ctrlKey && event.key === '4') {
         onCtrl4()
+      }
+
+      if (event.ctrlKey && event.key === '5') {
+        onCtrl5()
       }
     }
 
