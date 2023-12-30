@@ -51,6 +51,9 @@ function _new (node) {
       case 'input':
         return commands.newInput(entity)
 
+      case 'output':
+        return commands.newOutput(entity)
+
       case 'parameter':
         return commands.newParameter(entity)
 

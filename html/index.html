@@ -52,6 +52,7 @@
           <button onclick="onCtrl4(event)">Ctrl₄</button>
           <button onclick="onCtrl5(event)">Ctrl₅</button>
           <button onclick="onCtrl5(event)">Ctrl₆</button>
+          <button onclick="onCtrl5(event)">Ctrl₇</button>
         </div>
 
       </div>
@@ -137,6 +138,11 @@
 
     window.onCtrl6 = (event) => {
         document.getElementById('command').focus()
+        document.getElementById('command').value = 'new output "u" @25.4mm,15.24mm'
+    }
+
+    window.onCtrl7 = (event) => {
+        document.getElementById('command').focus()
         document.getElementById('command').value = 'new parameter "E" @15.24mm,15.24mm'
     }
 
@@ -163,6 +169,10 @@
 
       if (event.ctrlKey && event.key === '6') {
         onCtrl6()
+      }
+
+      if (event.ctrlKey && event.key === '7') {
+        onCtrl7()
       }
     }
 

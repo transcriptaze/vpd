@@ -1,5 +1,6 @@
 export { newModule } from './modules.js'
 export { newInput } from './inputs.js'
+export { newOutput } from './outputs.js'
 export { newParameter } from './parameters.js'
 export { newLabel } from './labels.js'
 export { newGuide } from './guides.js'

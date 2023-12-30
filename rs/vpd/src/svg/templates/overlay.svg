@@ -6,6 +6,12 @@
     {%- endfor %}
     {%- endif %}
 
+    {% if outputs -%}
+    {% for v in outputs -%}
+    <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
+    {%- endfor %}
+    {%- endif %}
+
     {% if parameters -%}
     {% for v in parameters -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />

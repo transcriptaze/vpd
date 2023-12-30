@@ -1,18 +1,21 @@
 use serde::{Deserialize, Serialize};
 
+use crate::panel::X;
+use crate::panel::Y;
+
 #[derive(Serialize, Deserialize)]
 pub struct Parameter {
     pub name: String,
-    pub x: f32,
-    pub y: f32,
+    pub x: X,
+    pub y: Y,
 }
 
 impl Parameter {
-    pub fn new(name: &str, x: f32, y: f32) -> Parameter {
+    pub fn new(name: &str, x: &X, y: &Y) -> Parameter {
         Parameter {
             name: name.to_string(),
-            x: x,
-            y: y,
+            x: x.clone(),
+            y: y.clone(),
         }
     }
 }

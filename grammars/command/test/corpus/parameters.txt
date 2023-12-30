@@ -1,28 +1,42 @@
-==========================
-new parameter <name> @<xy>
-==========================
+============================
+new parameter "E" @10mm,10mm
+============================
 new parameter "E" @10mm,10mm
 ---
 (command
   (new
     (parameter
       (name)
-      (anchor
+      (absolute
         (x)
         (y)))))
 
 
-======================
-new param <name> @<xy>
-======================
+========================
+new param "E" @10mm,10mm
+========================
 new param "E" @10mm,10mm
 ---
 (command
   (new
     (parameter
       (name)
-      (anchor
+      (absolute
         (x)
         (y)))))
 
 
+
+======================
+new param "E" left,top
+======================
+new param "E" left,top
+---
+(command
+  (new
+    (parameter
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))

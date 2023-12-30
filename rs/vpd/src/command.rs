@@ -8,6 +8,7 @@ use crate::commands::NewGuideCommand;
 use crate::commands::NewInputCommand;
 use crate::commands::NewLabelCommand;
 use crate::commands::NewModuleCommand;
+use crate::commands::NewOutputCommand;
 use crate::commands::NewParameterCommand;
 use crate::commands::SetOriginCommand;
 
@@ -25,6 +26,9 @@ struct Action {
 
     #[serde(rename = "input")]
     input: Option<Entity>,
+
+    #[serde(rename = "output")]
+    output: Option<Entity>,
 
     #[serde(rename = "parameter")]
     parameter: Option<Entity>,
@@ -55,6 +59,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(NewModuleCommand::new(json)?))
     } else if v.action == "new" && v.input.is_some() {
         Ok(Box::new(NewInputCommand::new(json)?))
+    } else if v.action == "new" && v.output.is_some() {
+        Ok(Box::new(NewOutputCommand::new(json)?))
     } else if v.action == "new" && v.parameter.is_some() {
         Ok(Box::new(NewParameterCommand::new(json)?))
     } else if v.action == "new" && v.label.is_some() {

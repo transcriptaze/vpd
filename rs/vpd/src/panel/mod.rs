@@ -3,14 +3,18 @@ mod guide;
 mod input;
 mod label;
 mod origin;
+mod output;
 mod panel;
 mod parameter;
 
 pub use anchor::Anchor;
+pub use anchor::X;
+pub use anchor::Y;
 pub use guide::Guide;
 pub use input::Input;
 pub use label::Label;
 pub use origin::Origin;
+pub use output::Output;
 pub use panel::Panel;
 pub use parameter::Parameter;
 

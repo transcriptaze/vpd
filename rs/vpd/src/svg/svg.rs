@@ -21,6 +21,7 @@ pub struct SVG {
     origin: Option<Point>,
     guidelines: Option<Vec<GuideLine>>,
     inputs: Option<Vec<Circle>>,
+    outputs: Option<Vec<Circle>>,
     parameters: Option<Vec<Circle>>,
     labels: Option<Vec<Text>>,
     overlay: bool,
@@ -40,6 +41,7 @@ impl SVG {
             origin: None,
             guidelines: None,
             inputs: None,
+            outputs: None,
             parameters: None,
             labels: None,
             overlay: true,
@@ -78,6 +80,11 @@ impl SVG {
 
     pub fn inputs(mut self, inputs: Vec<Circle>) -> Self {
         self.inputs = Some(inputs);
+        self
+    }
+
+    pub fn outputs(mut self, outputs: Vec<Circle>) -> Self {
+        self.outputs = Some(outputs);
         self
     }
 
@@ -135,6 +142,11 @@ impl SVG {
 
         match &self.inputs {
             Some(v) => context.insert("inputs", &v),
+            _ => {}
+        }
+
+        match &self.outputs {
+            Some(v) => context.insert("outputs", &v),
             _ => {}
         }
 

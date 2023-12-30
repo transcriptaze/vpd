@@ -5,11 +5,11 @@ use serde::Deserialize;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
-use crate::svg::Point;
 
 pub struct NewParameterCommand {
     name: String,
-    anchor: Point,
+    x: panel::X,
+    y: panel::Y,
 }
 
 #[derive(Deserialize)]
@@ -23,17 +23,29 @@ struct Parameter {
     #[serde(rename = "name")]
     name: Option<String>,
 
-    #[serde(rename = "anchor")]
-    anchor: Anchor,
+    #[serde(rename = "x")]
+    x: X,
+
+    #[serde(rename = "y")]
+    y: Y,
 }
 
 #[derive(Deserialize)]
-struct Anchor {
-    #[serde(rename = "x")]
-    x: f32,
+struct X {
+    #[serde(rename = "reference")]
+    reference: String,
 
-    #[serde(rename = "y")]
-    y: f32,
+    #[serde(rename = "offset")]
+    offset: f32,
+}
+
+#[derive(Deserialize)]
+struct Y {
+    #[serde(rename = "reference")]
+    reference: String,
+
+    #[serde(rename = "offset")]
+    offset: f32,
 }
 
 impl NewParameterCommand {
@@ -42,9 +54,13 @@ impl NewParameterCommand {
 
         Ok(NewParameterCommand {
             name: o.parameter.name.unwrap_or("".to_string()),
-            anchor: Point {
-                x: o.parameter.anchor.x,
-                y: o.parameter.anchor.y,
+            x: panel::X {
+                reference: o.parameter.x.reference,
+                offset: o.parameter.x.offset,
+            },
+            y: panel::Y {
+                reference: o.parameter.y.reference,
+                offset: o.parameter.y.offset,
             },
         })
     }
@@ -52,10 +68,8 @@ impl NewParameterCommand {
 
 impl Command for NewParameterCommand {
     fn apply(&self, m: &mut Module) {
-        m.panel.parameters.push(panel::Parameter::new(
-            &self.name,
-            self.anchor.x,
-            self.anchor.y,
-        ));
+        m.panel
+            .parameters
+            .push(panel::Parameter::new(&self.name, &self.x, &self.y));
     }
 }

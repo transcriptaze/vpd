@@ -20,6 +20,7 @@ module.exports = grammar({
     _entity: $ => choice(
       $.module,
       $.input,
+      $.output,
       $.parameter,
       $.label,
       $.guide,
@@ -37,14 +38,26 @@ module.exports = grammar({
       $.name,
       choice (
         $.absolute,
-        alias($._xy,$.geometry),
+        $._xy,
+      )
+    ),
+
+    output: $ => seq(
+      'output',
+      $.name,
+      choice (
+        $.absolute,
+        $._xy,
       )
     ),
 
     parameter: $ => seq(
       /parameter|param/,
       $.name,
-      $.anchor,
+      choice (
+        $.absolute,
+        $._xy,
+      )
     ),
 
     set: $ => seq(

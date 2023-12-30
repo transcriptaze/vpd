@@ -8,7 +8,7 @@ export function newInput (node) {
 
   for (const child of node.namedChildren) {
     if (child.type === 'name' && child.namedChildCount > 0) {
-      object.label.name = child.namedChildren[0].text.trim()
+      object.input.name = child.namedChildren[0].text.trim()
     }
 
     if (child.type === 'absolute') {
@@ -29,21 +29,17 @@ export function newInput (node) {
       }
     }
 
-    if (child.type === 'geometry') {
-      for (const v of child.namedChildren) {
-        if (v.type === 'x') {
-          object.input.x = {
-            reference: reference(v),
-            offset: offset(v)
-          }
-        }
+    if (child.type === 'x') {
+      object.input.x = {
+        reference: reference(child),
+        offset: offset(child)
+      }
+    }
 
-        if (v.type === 'y') {
-          object.input.y = {
-            reference: reference(v),
-            offset: offset(v)
-          }
-        }
+    if (child.type === 'y') {
+      object.input.y = {
+        reference: reference(child),
+        offset: offset(child)
       }
     }
   }

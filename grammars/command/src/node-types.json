@@ -90,14 +90,6 @@
         {
           "type": "reference",
           "named": true
-        },
-        {
-          "type": "x",
-          "named": true
-        },
-        {
-          "type": "y",
-          "named": true
         }
       ]
     }
@@ -184,11 +176,15 @@
           "named": true
         },
         {
-          "type": "geometry",
+          "type": "name",
           "named": true
         },
         {
-          "type": "name",
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -265,6 +261,10 @@
           "named": true
         },
         {
+          "type": "output",
+          "named": true
+        },
+        {
           "type": "parameter",
           "named": true
         }
@@ -295,6 +295,33 @@
     }
   },
   {
+    "type": "output",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parameter",
     "named": true,
     "fields": {},
@@ -303,11 +330,19 @@
       "required": true,
       "types": [
         {
-          "type": "anchor",
+          "type": "absolute",
           "named": true
         },
         {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -485,6 +520,10 @@
   },
   {
     "type": "origin",
+    "named": false
+  },
+  {
+    "type": "output",
     "named": false
   },
   {

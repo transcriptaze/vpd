@@ -15,9 +15,9 @@
 
 - [ ] error handling
 - [x] Double buffer panel redraws
+- [ ] Use local fonts for SVG (cf. _slow Internet problem_)
 - [ ] Set panel width from module width
-- [ ] `save module`
-- [ ] `load module`
+- [ ] Hide logo when overlapped by SVG
 - [ ] `undo`
 
 
@@ -34,20 +34,9 @@
 - [ ] _module_
       - [x] `new module <name> [height] <width>`
       - [ ] `set` module name/width/height
-
-- [ ] _inputs_
-      - [ ] `new input <name> <absolute|geometry|guideline>`
-      - [x] absolute
-      - [x] relative to geometry
-      - [ ] help
-
-- [ ] _parameters_
-      - [x] `new parameter`
-      - [ ] relative to geometry
-      - [ ] relative to guidelines
-      - [ ] delete
-      - [ ] set
-      - [ ] help
+      - [ ] `export module [gzip]`
+      - [ ] `export module svg [light|dark]`
+      - [ ] `export module script [gzip]`
 
 - [ ] _guidelines_
       - [ ] help
@@ -56,8 +45,52 @@
       - [ ] `list`
       - (?) error if duplicate offset
 
-- [ ] _labels_
-      - [x] `new label <text> <absolute>`
+- [ ] _inputs_
+      - [ ] `new input <name> <absolute|geometry|guidelines> [symbol`
+      - [x] absolute
+      - [x] relative to geometry
+      - [ ] relative to guidelines
+      - [ ] symbol
+      - [ ] help
+
+- [ ] _outputs_
+      - [ ] `new output <name> <absolute|geometry|guidelines> [symbol]`
+      - [x] absolute
+      - [x] relative to geometry
+      - [ ] relative to guidelines
+      - [ ] symbol
+      - [ ] help
+
+- [ ] _parameters_
+      - [ ] `new parameter <name> <absolute|geometry|guidelines> [symbol]`
+      - [x] absolute
+      - [x] relative to geometry
+      - [ ] relative to guidelines
+      - [ ] symbol
+      - [ ] delete
+      - [ ] set
+      - [ ] help
+
+- [ ] _lights_
+      - [ ] `new light <name> <absolute|geometry|guidelines> [symbol]`
+      - [ ] relative to geometry
+      - [ ] relative to guidelines
+      - [ ] symbol
+      - [ ] delete
+      - [ ] set
+      - [ ] help
+
+- [ ] _widget_
+      - [ ] `new widget <name> <absolute|geometry|guidelines> [symbol]`
+      - [ ] relative to geometry
+      - [ ] relative to guidelines
+      - [ ] symbol
+      - [ ] delete
+      - [ ] set
+      - [ ] help
+
+- [ ] _text_
+      - [x] `new text <text> <absolute>`
       - [x] text2path
       - [ ] anchor
             - [x] absolute
@@ -77,9 +110,10 @@
 - [ ] load
 - [ ] save
 
-- [x] Help text skeleton
-- [ ] Rework help text as multi-column ul
-- [ ] Generate help text from grammar/examples
+- [ ] _help_
+       - [ ] Rework help text as multi-column ul
+       - [ ] Generate help text from grammar/examples
+
 
 ### Panel
 - [ ] Robust JSON deserialization i.e. accomodate missing fields

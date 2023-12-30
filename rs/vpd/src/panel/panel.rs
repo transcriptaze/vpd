@@ -9,6 +9,7 @@ use crate::panel::Guide;
 use crate::panel::Input;
 use crate::panel::Label;
 use crate::panel::Origin;
+use crate::panel::Output;
 use crate::panel::Parameter;
 
 use crate::svg::Circle;
@@ -29,6 +30,7 @@ pub struct Panel {
     pub origin: Origin,
     pub guides: HashMap<String, Guide>,
     pub inputs: Vec<Input>,
+    pub outputs: Vec<Output>,
     pub parameters: Vec<Parameter>,
     pub labels: Vec<Label>,
 }
@@ -44,6 +46,7 @@ impl Panel {
             origin: Origin::new(),
             guides: HashMap::new(),
             inputs: Vec::new(),
+            outputs: Vec::new(),
             parameters: Vec::new(),
             labels: Vec::new(),
         };
@@ -97,6 +100,7 @@ impl Panel {
         let origin = self.origin();
         let guidelines = self.guidelines();
         let inputs = self.inputs(theme);
+        let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
@@ -107,6 +111,7 @@ impl Panel {
             .origin(origin)
             .guidelines(guidelines)
             .inputs(inputs)
+            .outputs(outputs)
             .parameters(parameters)
             .labels(labels)
             .overlay(true);
@@ -124,12 +129,14 @@ impl Panel {
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let background = Rect::new(0.0, 0.0, self.width, self.height);
         let inputs = self.inputs(theme);
+        let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
             .background(background)
             .inputs(inputs)
+            .outputs(outputs)
             .parameters(parameters)
             .labels(labels)
             .overlay(false);
@@ -185,13 +192,31 @@ impl Panel {
         return list;
     }
 
+    fn outputs(&self, _theme: &str) -> Vec<Circle> {
+        let mut list: Vec<Circle> = Vec::new();
+        let radius = 2.54;
+        let colour = "#0000ff";
+
+        for v in self.outputs.iter() {
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Circle::new(x, y, radius, &colour));
+        }
+
+        return list;
+    }
+
     fn parameters(&self, _theme: &str) -> Vec<Circle> {
         let mut list: Vec<Circle> = Vec::new();
         let radius = 2.54;
         let colour = "#ff0000";
 
         for v in self.parameters.iter() {
-            list.push(Circle::new(v.x, v.y, radius, &colour));
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Circle::new(x, y, radius, &colour));
         }
 
         return list;

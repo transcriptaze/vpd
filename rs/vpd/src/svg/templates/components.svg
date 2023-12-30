@@ -4,6 +4,13 @@
     <circle cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
     {%- endfor %}
     {%- endif %}
+
+    {% if outputs -%}
+    {% for v in outputs -%}
+    <circle cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
+    {%- endfor %}
+    {%- endif %}
+
     {% if parameters -%}
     {% for v in parameters -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
