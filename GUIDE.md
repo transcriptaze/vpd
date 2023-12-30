@@ -1,6 +1,6 @@
 # User Guide
 
-Contents
+### Contents
 
 1. [Getting started](#getting-started)
 2. [Projects](#projects)
@@ -18,14 +18,20 @@ Contents
 ## Getting started
 
 1. Create a new module named _quickstart_ that is 50.8mm (i.e. 10 units) wide
-```
-new module "quickstart" 1U 10H
-```
+   ```
+   new module "quickstart" 1U 10H
+   ```
 
 2. Create vertical guidelines to locate inputs, outputs and parameters:
-```new guide vertical @5.08mm```
-```new guide v1+10.16mm```
-```new guide v2+10.16mm```
+   ```
+   new guide vertical @5.08mm
+   ```
+   ```
+   new guide v1+10.16mm
+   ```
+   ```
+   new guide v2+10.16mm
+   ```
 
 3. Add a horizontal guideline to locate inputs, outputs and parameters:
 ```new guide horizontal top+10.16mm```
@@ -34,53 +40,55 @@ new module "quickstart" 1U 10H
 
 
 4. Set the background:
-```set module background "foundation"```
+   ```
+   set module background "foundation"
+   ```
 
 5. Create the inputs:
-```
-new input "e" v1,h1 PJ301M
-new input "v" v1,h2 PJ301M
-```
+   ```
+   new input "e" v1,h1 PJ301M
+   new input "v" v1,h2 PJ301M
+   ```
 
 6. Create the outputs:
-```
-new output "P" v3,h3-10.16mm PJ301M
-new output "Q" v3,h3         PJ301M
-```
+   ```
+   new output "P" v3,h3-10.16mm PJ301M
+   new output "Q" v3,h3         PJ301M
+   ```
 
 7. Create the parameters:
-```
-new parameter "E" v2,h1 RoundBlackKnob
-new parameter "V" v2,h2 RoundBlackKnob
-```
+   ```
+   new parameter "E" v2,h1 RoundBlackKnob
+   new parameter "V" v2,h2 RoundBlackKnob
+   ```
 
 8. Add a title:
-```
-new label l1 "QST" centre,top+5.08mm align:centre
-```
+   ```
+   new label l1 "QST" centre,top+5.08mm align:centre
+   ```
 
 9. Label the parameters and inputs:
-```
-new label l2 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
-new label l3 "V" v2-2.54mm, h1+5.08mm RobotoCondensed
-```
+   ```
+   new label l2 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
+   new label l3 "V" v2-2.54mm, h1+5.08mm RobotoCondensed
+   ```
 
 10. Add the graduations for the parameters:
-```
-decorate parameter "E" graduations 7.5mm
-decorate parameter "V" graduations 7.5mm
-```
+    ```
+    decorate parameter "E" graduations 7.5mm
+    decorate parameter "V" graduations 7.5mm
+    ```
 
 11. Export the project file:
-```
-export module project
-```
+    ```
+    export module project
+    ```
 
 12. Export the SVG file:
-```
-export module SVG 
-export module SVG dark
-```
+    ```
+    export module SVG 
+    export module SVG dark
+    ```
 
 ## Projects
 
@@ -88,13 +96,13 @@ export module SVG dark
 
 ## Modules
 
-### `new module <name> [height] <width>`
+1. `new module <name> [height] <width>`
 
-### `export module project [gzip]`
+2. `export module project [gzip]`
 
-### `export module script`
+3. `export module script`
 
-### `export module svg [light|dark]`
+4. `export module svg [light|dark]`
 
 ## Guidelines
 
