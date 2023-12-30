@@ -33,12 +33,6 @@ pub struct Panel {
     pub labels: Vec<Label>,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct Anchor {
-    pub reference: String,
-    pub offset: f32,
-}
-
 impl Panel {
     pub fn new(width: f32, _height: f32) -> Panel {
         let w = (width / H).round();
@@ -182,7 +176,10 @@ impl Panel {
         let colour = "#00ff00";
 
         for v in self.inputs.iter() {
-            list.push(Circle::new(v.x.offset, v.y.offset, radius, &colour));
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Circle::new(x, y, radius, &colour));
         }
 
         return list;

@@ -36,7 +36,7 @@ module.exports = grammar({
       'input',
       $.name,
       choice (
-        $.anchor,
+        $.absolute,
         alias($._xy,$.geometry),
       )
     ),
@@ -144,7 +144,6 @@ module.exports = grammar({
       ),
     ),
 
-
     geometry: $ => seq(
       alias(
         choice(
@@ -180,10 +179,41 @@ module.exports = grammar({
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
     ),
 
-    _xy: $ => seq(
-      alias(/left|centre|center|right/,$.x),
+    absolute: $ => seq(
+      '@',
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
       ',',
-      alias(/top|middle|bottom/,$.y),
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
     ),
+
+    _xy: $ => seq(
+      $.x,
+      ',',
+      $.y,
+    ),
+
+    x: $ => seq(
+      alias(
+        choice(
+          "left",
+          "centre",
+          "center",
+          "right",
+        ), $.reference,
+      ),
+      optional($.offset),
+    ),
+
+    y: $ => seq(
+      alias(
+        choice(
+          "top",
+          "middle",
+          "bottom",
+        ), $.reference,
+      ),
+      optional($.offset),
+    ),
+
   }
 });

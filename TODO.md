@@ -36,7 +36,10 @@
       - [ ] `set` module name/width/height
 
 - [ ] _inputs_
-      - [ ] `new input <name> <absolute|geometry>`
+      - [ ] `new input <name> <absolute|geometry|guideline>`
+      - [x] absolute
+      - [x] relative to geometry
+      - [ ] help
 
 - [ ] _parameters_
       - [x] `new parameter`

@@ -96,7 +96,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "anchor"
+              "name": "absolute"
             },
             {
               "type": "ALIAS",
@@ -311,8 +311,25 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "left|centre|center|right"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "left"
+              },
+              {
+                "type": "STRING",
+                "value": "centre"
+              },
+              {
+                "type": "STRING",
+                "value": "center"
+              },
+              {
+                "type": "STRING",
+                "value": "right"
+              }
+            ]
           },
           "named": true,
           "value": "reference"
@@ -337,8 +354,21 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "top|middle|bottom"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "top"
+              },
+              {
+                "type": "STRING",
+                "value": "middle"
+              },
+              {
+                "type": "STRING",
+                "value": "bottom"
+              }
+            ]
           },
           "named": true,
           "value": "reference"
@@ -734,14 +764,18 @@
         }
       ]
     },
-    "_xy": {
+    "absolute": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
         {
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "left|centre|center|right"
+            "value": "[0-9]+(?:\\.[0-9]*)?mm"
           },
           "named": true,
           "value": "x"
@@ -754,10 +788,27 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "top|middle|bottom"
+            "value": "[0-9]+(?:\\.[0-9]*)?mm"
           },
           "named": true,
           "value": "y"
+        }
+      ]
+    },
+    "_xy": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "y"
         }
       ]
     }

@@ -11,7 +11,7 @@ export function newInput (node) {
       object.label.name = child.namedChildren[0].text.trim()
     }
 
-    if (child.type === 'anchor') {
+    if (child.type === 'absolute') {
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
           object.input.x = {
@@ -31,15 +31,17 @@ export function newInput (node) {
 
     if (child.type === 'geometry') {
       for (const v of child.namedChildren) {
-        object.input.x = {
-          reference: v.text,
-          offset: 0.0
+        if (v.type === 'x') {
+          object.input.x = {
+            reference: reference(v),
+            offset: offset(v)
+          }
         }
 
         if (v.type === 'y') {
           object.input.y = {
-            reference: v.text,
-            offset: 0.0
+            reference: reference(v),
+            offset: offset(v)
           }
         }
       }
@@ -47,4 +49,24 @@ export function newInput (node) {
   }
 
   return object
+}
+
+function reference (node) {
+  for (const child of node.namedChildren) {
+    if (child.type === 'reference') {
+      return child.text.trim()
+    }
+  }
+
+  return 'origin'
+}
+
+function offset (node) {
+  for (const child of node.namedChildren) {
+    if (child.type === 'offset') {
+      return mm(child.text)
+    }
+  }
+
+  return 0.0
 }

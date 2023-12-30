@@ -23,23 +23,18 @@ new module "quickstart" 1U 10H
 ```
 
 2. Create vertical guidelines to locate inputs, outputs and parameters:
-```
-new guideline vertical @5.08mm
-new guideline v1+10.16mm
-new guideline v2+10.16mm
-```
+```new guide vertical @5.08mm```
+```new guide v1+10.16mm```
+```new guide v2+10.16mm```
 
 3. Add a horizontal guideline to locate inputs, outputs and parameters:
-```
-new guideline horizontal top+10.16mm
-new guideline h1+2H
-new guideline bottom-15.24mm
-```
+```new guide horizontal top+10.16mm```
+```new guide h1+2H```
+```new guide bottom-15.24mm```
+
 
 4. Set the background:
-```
-set module background "foundation"
-```
+```set module background "foundation"```
 
 5. Create the inputs:
 ```

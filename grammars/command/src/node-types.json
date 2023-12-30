@@ -1,5 +1,24 @@
 [
   {
+    "type": "absolute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "anchor",
     "named": true,
     "fields": {},
@@ -161,7 +180,7 @@
       "required": true,
       "types": [
         {
-          "type": "anchor",
+          "type": "absolute",
           "named": true
         },
         {
@@ -411,10 +430,6 @@
   {
     "type": "@",
     "named": false
-  },
-  {
-    "type": "absolute",
-    "named": true
   },
   {
     "type": "dark",
