@@ -2,17 +2,18 @@
 
 Contents
 
-1. [Getting started](#gettingstarted)
-2. Projects
-3. Scripts
-4. Fonts
-5. Guidelines
-6. Modules
-7. Inputs
-8. Outputs
-9. Parameters
-10. Labels
-11. Backgrounds
+1. [Getting started](#getting-started)
+2. [Projects](#projects)
+3. [Scripts](#scripts)
+4. [Fonts](#fonts)
+5. [Guidelines](#guidelines)
+6. [Modules](#modules)
+7. [Inputs](#inputs)
+8. [Outputs](#outputs)
+9. [Parameters](#parameters)
+10. [Lights](#lights)
+11. [Labels](#labels)
+12. [Backgrounds](#backgrounds)
 
 ## Getting started
 
