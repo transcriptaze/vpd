@@ -1,0 +1,44 @@
+=========================
+new output "e" @10mm,10mm
+=========================
+new output "u" @10mm,10mm
+---
+(command
+  (new
+    (output
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
+=======================
+new output "u" left,top
+=======================
+new output "u" left,top
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+
+===================================
+new output "u" left+4.5mm,top+4.5mm
+===================================
+new output "u" left+4.5mm,top+4.5mm
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))

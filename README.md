@@ -15,15 +15,12 @@ Web app for basic VCV panel layout.
 You need a **bunch** of tools:
 - _make_ (optional but recommended)
 - _tree-sitter_
-- _Rust_
+- [_Rust_ 1.74+](https://www.rust-lang.org/tools/install)
+- _wasm_bindgen_
 - [_Go 1.21+_](https://go.dev)
 - [_sass_](https://sass-lang.com)
 - [_eslint_](https://eslint.org)
 - [_eslint-config-standard_](https://www.npmjs.com/package/eslint-config-standard)
-```
-npm install eslint
-npm install eslint-config-standard
-```
 
 **NOTES**: 
 
