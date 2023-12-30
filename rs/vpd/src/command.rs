@@ -5,6 +5,7 @@ use super::serde::{Deserialize, Serialize};
 
 use crate::commands::ExportSVGCommand;
 use crate::commands::NewGuideCommand;
+use crate::commands::NewInputCommand;
 use crate::commands::NewLabelCommand;
 use crate::commands::NewModuleCommand;
 use crate::commands::NewParameterCommand;
@@ -21,6 +22,9 @@ struct Action {
 
     #[serde(rename = "module")]
     module: Option<Entity>,
+
+    #[serde(rename = "input")]
+    input: Option<Entity>,
 
     #[serde(rename = "parameter")]
     parameter: Option<Entity>,
@@ -49,6 +53,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.action == "new" && v.module.is_some() {
         Ok(Box::new(NewModuleCommand::new(json)?))
+    } else if v.action == "new" && v.input.is_some() {
+        Ok(Box::new(NewInputCommand::new(json)?))
     } else if v.action == "new" && v.parameter.is_some() {
         Ok(Box::new(NewParameterCommand::new(json)?))
     } else if v.action == "new" && v.label.is_some() {

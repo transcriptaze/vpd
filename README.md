@@ -13,14 +13,11 @@ Web app for basic VCV panel layout.
 ## Development Notes
 
 You need a **bunch** of tools:
-
 - _make_ (optional but recommended)
 - _tree-sitter_
 - _Rust_
 - [_Go 1.21+_](https://go.dev)
-
 - [_sass_](https://sass-lang.com)
-
 - [_eslint_](https://eslint.org)
 - [_eslint-config-standard_](https://www.npmjs.com/package/eslint-config-standard)
 ```
@@ -30,7 +27,7 @@ npm install eslint-config-standard
 
 **NOTES**: 
 
-1. `apt install sass` on Ubuntu installs `ruby-sass` which was marked **[obsolete](https://sass-lang.com/ruby-sass)**
+1. `apt install sass` on _Ubuntu_ installs `ruby-sass` which was marked **[obsolete](https://sass-lang.com/ruby-sass)**
    in 2019. Please follow the installation instructions on the [Sass homepage](https://sass-lang.com) to install
    the current version._
 

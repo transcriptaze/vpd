@@ -49,6 +49,7 @@
           <button onclick="onCtrl3(event)">Ctrl₃</button>
           <button onclick="onCtrl4(event)">Ctrl₄</button>
           <button onclick="onCtrl5(event)">Ctrl₅</button>
+          <button onclick="onCtrl5(event)">Ctrl₆</button>
         </div>
 
       </div>
@@ -109,7 +110,7 @@
 
     window.onCtrl1 = (event) => {
         document.getElementById('command').focus()
-        document.getElementById('command').value = 'new module "woot" 1U 9H'
+        document.getElementById('command').value = 'new module "quickstart" 1U 10H'
     }
 
     window.onCtrl2 = (event) => {
@@ -128,6 +129,11 @@
     }
 
     window.onCtrl5 = (event) => {
+        document.getElementById('command').focus()
+        document.getElementById('command').value = 'new input "e" @10.16mm,15.24mm'
+    }
+
+    window.onCtrl6 = (event) => {
         document.getElementById('command').focus()
         document.getElementById('command').value = 'new parameter "E" @15.24mm,15.24mm'
     }
@@ -151,6 +157,10 @@
 
       if (event.ctrlKey && event.key === '5') {
         onCtrl5()
+      }
+
+      if (event.ctrlKey && event.key === '6') {
+        onCtrl6()
       }
     }
 

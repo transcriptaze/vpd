@@ -19,6 +19,7 @@ module.exports = grammar({
 
     _entity: $ => choice(
       $.module,
+      $.input,
       $.parameter,
       $.label,
       $.guide,
@@ -29,6 +30,15 @@ module.exports = grammar({
       $.name,
       $.height,
       $.width,
+    ),
+
+    input: $ => seq(
+      'input',
+      $.name,
+      choice (
+        $.anchor,
+        alias($._xy,$.geometry),
+      )
     ),
 
     parameter: $ => seq(
@@ -168,6 +178,12 @@ module.exports = grammar({
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
       ',',
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+    ),
+
+    _xy: $ => seq(
+      alias(/left|centre|center|right/,$.x),
+      ',',
+      alias(/top|middle|bottom/,$.y),
     ),
   }
 });

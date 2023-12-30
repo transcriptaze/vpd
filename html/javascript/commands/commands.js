@@ -1,3 +1,9 @@
+export { newModule } from './modules.js'
+export { newInput } from './inputs.js'
+export { newParameter } from './parameters.js'
+export { newLabel } from './labels.js'
+export { newGuide } from './guides.js'
+
 export function mm (v) {
   let match = `${v}`.match(/([0-9]+)U/)
   if (match != null && match.length > 1) {

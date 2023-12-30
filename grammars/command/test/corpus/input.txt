@@ -1,0 +1,26 @@
+========================
+new input "e" @10mm,10mm
+========================
+new input "e" @10mm,10mm
+---
+(command
+  (new
+    (input
+      (name)
+      (anchor
+        (x)
+        (y)))))
+
+
+======================
+new input "e" left,top
+======================
+new input "e" left,top
+---
+(command
+  (new
+    (input
+      (name)
+      (geometry
+        (x)
+        (y)))))

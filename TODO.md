@@ -1,14 +1,9 @@
 # TODO
 
-- [x] Save project file
+- [ ] gzip project file
 - [x] Load project file
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
-- [x] Drop project file
-- [x] Fix panel layout so that it doesn't jump
-- [x] _light_ SVG
-- [x] _dark_ SVG
-- (?) gzip project file
 - [ ] Show errors
 - [ ] Macro keys
       - [ ] web component
@@ -16,9 +11,8 @@
 
 - [x] _info_ panel
 - [x] _export_
-      - [ ] Don't export overlay
+      - [x] Don't export overlay
 
-- [x] _origin_
 - [ ] error handling
 - [ ] Double buffer panel redraws
       - OR: edit SVG in place
@@ -38,8 +32,11 @@
 - [ ] Enable input autocomplete attribute
 
 - [ ] _module_
-      - [x] `new module`
+      - [x] `new module <name> [height] <width>`
       - [ ] `set` module name/width/height
+
+- [ ] _inputs_
+      - [ ] `new input <name> <absolute|geometry>`
 
 - [ ] _parameters_
       - [x] `new parameter`
@@ -57,11 +54,12 @@
       - (?) error if duplicate offset
 
 - [ ] _labels_
-      - [x] `new label`
+      - [x] `new label <text> <absolute>`
       - [x] text2path
       - [ ] anchor
             - [x] absolute
             - [ ] relative to origin
+            - [ ] relative to geometry
             - [ ] relative to guideline
       - [ ] align left/centre/right
       - [ ] align top/middle/baseline/bottom

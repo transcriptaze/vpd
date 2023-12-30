@@ -6,9 +6,11 @@ use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 
 use crate::panel::Guide;
+use crate::panel::Input;
 use crate::panel::Label;
 use crate::panel::Origin;
 use crate::panel::Parameter;
+
 use crate::svg::Circle;
 use crate::svg::GuideLine;
 use crate::svg::Point;
@@ -26,8 +28,15 @@ pub struct Panel {
     pub gutter: f32,
     pub origin: Origin,
     pub guides: HashMap<String, Guide>,
+    pub inputs: Vec<Input>,
     pub parameters: Vec<Parameter>,
     pub labels: Vec<Label>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct Anchor {
+    pub reference: String,
+    pub offset: f32,
 }
 
 impl Panel {
@@ -40,6 +49,7 @@ impl Panel {
             gutter: 5.0,
             origin: Origin::new(),
             guides: HashMap::new(),
+            inputs: Vec::new(),
             parameters: Vec::new(),
             labels: Vec::new(),
         };
@@ -92,6 +102,7 @@ impl Panel {
         let outline = Rect::new(0.0, 0.0, self.width, self.height);
         let origin = self.origin();
         let guidelines = self.guidelines();
+        let inputs = self.inputs(theme);
         let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
@@ -101,6 +112,7 @@ impl Panel {
             .outline(outline)
             .origin(origin)
             .guidelines(guidelines)
+            .inputs(inputs)
             .parameters(parameters)
             .labels(labels)
             .overlay(true);
@@ -117,11 +129,13 @@ impl Panel {
         let h = self.height + 2.0 * self.gutter;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let background = Rect::new(0.0, 0.0, self.width, self.height);
+        let inputs = self.inputs(theme);
         let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, viewport)
             .background(background)
+            .inputs(inputs)
             .parameters(parameters)
             .labels(labels)
             .overlay(false);
@@ -157,6 +171,18 @@ impl Panel {
                 Some(g) => list.push(g),
                 _ => {}
             }
+        }
+
+        return list;
+    }
+
+    fn inputs(&self, _theme: &str) -> Vec<Circle> {
+        let mut list: Vec<Circle> = Vec::new();
+        let radius = 2.54;
+        let colour = "#00ff00";
+
+        for v in self.inputs.iter() {
+            list.push(Circle::new(v.x.offset, v.y.offset, radius, &colour));
         }
 
         return list;

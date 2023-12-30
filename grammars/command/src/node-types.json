@@ -71,6 +71,14 @@
         {
           "type": "reference",
           "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
         }
       ]
     }
@@ -145,6 +153,29 @@
     }
   },
   {
+    "type": "input",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "anchor",
+          "named": true
+        },
+        {
+          "type": "geometry",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "label",
     "named": true,
     "fields": {},
@@ -200,6 +231,10 @@
       "types": [
         {
           "type": "guide",
+          "named": true
+        },
+        {
+          "type": "input",
           "named": true
         },
         {
@@ -404,6 +439,10 @@
   {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "input",
+    "named": false
   },
   {
     "type": "label",
