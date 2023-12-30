@@ -34,9 +34,15 @@
    ```
 
 3. Add a horizontal guideline to locate inputs, outputs and parameters:
-```new guide horizontal top+10.16mm```
-```new guide h1+2H```
-```new guide bottom-15.24mm```
+   ```
+   new guide horizontal top+10.16mm
+   ```
+   ```
+   new guide h1+2H
+   ```
+   ```
+   new guide bottom-15.24mm
+   ```
 
 
 4. Set the background:
@@ -47,35 +53,45 @@
 5. Create the inputs:
    ```
    new input "e" v1,h1 PJ301M
+   ```
+   ```
    new input "v" v1,h2 PJ301M
    ```
 
 6. Create the outputs:
    ```
    new output "P" v3,h3-10.16mm PJ301M
+   ```
+   ```
    new output "Q" v3,h3         PJ301M
    ```
 
 7. Create the parameters:
    ```
    new parameter "E" v2,h1 RoundBlackKnob
+   ```
+   ```
    new parameter "V" v2,h2 RoundBlackKnob
    ```
 
 8. Add a title:
    ```
-   new label l1 "QST" centre,top+5.08mm align:centre
+   new label l1 "QST" centre,top+5.08mm "Lato-Bold" 12pt centered,baseline
    ```
 
 9. Label the parameters and inputs:
    ```
    new label l2 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
+   ```
+   ```
    new label l3 "V" v2-2.54mm, h1+5.08mm RobotoCondensed
    ```
 
 10. Add the graduations for the parameters:
     ```
     decorate parameter "E" graduations 7.5mm
+   ```
+   ```
     decorate parameter "V" graduations 7.5mm
     ```
 
@@ -87,6 +103,8 @@
 12. Export the SVG file:
     ```
     export module SVG 
+   ```
+   ```
     export module SVG dark
     ```
 
@@ -94,19 +112,42 @@
 
 ## Scripts
 
-## Modules
+## Fonts
 
-1. `new module <name> [height] <width>`
+VPD is a static web app and as such CORS restrictions mean it is limited to those fonts included in the app:
 
-2. `export module project [gzip]`
+- Lato-Regular
+- Lato-Semibold
+- Lato-Bold
+- RobotoMono-Regular
+- RobotoMono-Bold
+- RobotoCondensed-Regular
+- RobotoCondensed-Bold
+- StyleScript-Regular
 
-3. `export module script`
+To use an alternative font:
 
-4. `export module svg [light|dark]`
+1. Download the _TrueType_ or _OpenType_ font file (support for _woff_ and _woff2_ files will be added .. sometime ..)
+2. Issue the `add font` command and pick the font file
 
-## Guidelines
+The font will be stored more-or-less permanently in the browser local storage.
 
-`new guide [label] vertical|horizontal <location>`
+
+## Commands
+
+### Modules
+
+`new module <name> [height] <width>`
+
+`export module project [gzip]`
+
+`export module script`
+
+`export module svg [light|dark]`
+
+### Guidelines
+
+- `new guide [label] vertical|horizontal <location>`
 
 1. The label is optional and if a user specified label is not present one will be generated automatically.
 
@@ -141,21 +182,32 @@ new guide horizontal middle
 new guide H0+7.62mm
 ```   
 
-## Inputs
+### Inputs
 
-`new input "name" <location>`
+`new input "name" <location> [symbol]`
+
+Adds an _input_ circle to the component layer of the SVG file.
 
 1. The location can be:
    - _absolute_ e.g. `new input "e" @4.5mm,4.5mm`
+   - _relative to the geometry_ e.g. `new input "e" centre,top+4.5mm`
+   - _relative to the guidelines_ e.g. `new input "e" v1,h2-4.5mm`
+
+2. The optional _symbol_ set the physical symbol displayed on the overlay. Defaults to a red dot if none. The currently included
+   symbols are:
+   - _PJ301M_
 
 _Examples_
 ```
-new input "E" @10mm,10mm
+new input "e" @10mm,10mm
+new input "e" @10mm,10mm PJ301M
+new input "e" left+10.16mm,middle
+new input "e" v1+10.16mm,v2  PJ301M
 ```
 
-## Outputs
+### Outputs
 
-## Parameters
+### Parameters
 
 `new parameter "name" <location>`
 
@@ -169,30 +221,19 @@ new parameter "E" @10mm,10mm
 new param "E" @10mm,10mm
 ```
 
-## Lights
+### Lights
 
-## Labels
+### Label s  
 
-## Backgrounds
+### Backgrounds
 
-## Fonts
+### Fonts
 
-VPD is a static web app and as such CORS restrictions mean it is limited to those fonts included in the app:
+`add font`
 
-- Lato-Regular
-- Lato-Semibold
-- Lato-Bold
-- RobotoMono-Regular
-- RobotoMono-Bold
-- RobotoCondensed-Regular
-- RobotoCondensed-Bold
-- StyleScript-Regular
+`delete font <name>`
 
-To use an alternative font:
+`show fonts`
 
-1. Download the _TrueType_ or _OpenType_ font file (support for _woff_ and _woff2_ files will be added .. sometime ..)
-2. Open the font list (`show fonts`)
-3. Add the font using the the **+** button to load the font file.
-
-The font will be stored more-or-less permanently in the browser local storage.
+`hide fonts`
 

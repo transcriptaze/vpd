@@ -38,4 +38,4 @@ jobs:
       run: npm install -g sass
 
     - name: Install eslint
-      run: npm install eslint eslint-config-standards
+      run: npm install eslint eslint-config-standard
