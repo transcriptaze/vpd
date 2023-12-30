@@ -67,19 +67,29 @@ main {
   column-gap: 16.5mm;
 }
 main div.panel {
-  min-width: 56mm;
-  width: fit-content;
+  min-width: 100mm;
   height: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 16px;
   padding-right: 16px;
   border-radius: 4px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
   justify-content: center;
 }
 main div.panel object {
+  grid-column: 1;
+  grid-row: 1;
   width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.25s linear, opacity 0.25s linear;
+}
+main div.panel object.visible {
+  visibility: visible;
+  opacity: 1;
 }
 main div#left {
   grid-column: 1;

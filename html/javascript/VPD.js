@@ -111,14 +111,25 @@ function execute (cmd) {
 }
 
 function redraw () {
+  if (redraw.buffer == null) {
+    redraw.buffer = 0
+  }
+
+  const kx = redraw.buffer % 2
+  redraw.buffer++
+  const ix = redraw.buffer % 2
+
   for (const theme of ['light', 'dark']) {
-    const object = document.querySelector(`object#${theme}`)
+    const object0 = document.querySelector(`object#${theme}${kx}`)
+    const object = document.querySelector(`object#${theme}${ix}`)
     const svg = render(theme)
     const blob = new Blob([svg], { type: 'image/svg+xml' })
     const old = object.data
     const url = URL.createObjectURL(blob)
 
     object.data = url
+    object0.classList.remove('visible')
+    object.classList.add('visible')
 
     URL.revokeObjectURL(old)
   }

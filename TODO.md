@@ -14,8 +14,8 @@
       - [x] Don't export overlay
 
 - [ ] error handling
-- [ ] Double buffer panel redraws
-      - OR: edit SVG in place
+- [x] Double buffer panel redraws
+- [ ] Set panel width from module width
 - [ ] `save module`
 - [ ] `load module`
 - [ ] `undo`
