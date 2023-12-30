@@ -96,16 +96,19 @@
     decorate parameter "V" graduations 7.5mm
     ```
 
-11. Export the project file:
+11. Export the project files:
     ```
-    export module project
+    export module
+    ```
+    ```
+    export module script
     ```
 
 12. Export the SVG file:
     ```
     export module SVG 
-   ```
-   ```
+    ```
+    ```
     export module SVG dark
     ```
 
