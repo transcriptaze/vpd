@@ -2,22 +2,23 @@
 
 ### Contents
 
-1. [Getting started](#getting-started)
-2. [Projects](#projects)
-3. [Scripts](#scripts)
-4. [Fonts](#fonts)
-5. [Guidelines](#guidelines)
-6. [Modules](#modules)
-7. [Inputs](#inputs)
-8. [Outputs](#outputs)
-9. [Parameters](#parameters)
-10. [Lights](#lights)
-11. [Labels](#labels)
-12. [Backgrounds](#backgrounds)
+- [Getting started](#getting-started)
+- [Projects](#projects)
+- [Scripts](#scripts)
+- [Fonts](#fonts)
+- [Guidelines](#guidelines)
+- [Commands](#commands)
+  - [Modules](#modules)
+  - [Inputs](#inputs)
+  - [Outputs](#outputs)
+  - [Parameters](#parameters)
+  - [Lights](#lights)
+  - [Labels](#labels)
+  - [Backgrounds](#backgrounds)
 
 ## Getting started
 
-1. Create a new module named _quickstart_ that is 50.8mm (i.e. 10 units) wide
+1. Create a new module named _quickstart_ that is 50.8mm (10 units) wide
    ```
    new module "quickstart" 1U 10H
    ```
@@ -114,7 +115,8 @@
 
 ## Fonts
 
-VPD is a static web app and as such CORS restrictions mean it is limited to those fonts included in the app:
+VPD is a static web app and as such CORS restrictions mean it cannot load external fonts from e.g. Google Fonts. The following fonts
+are included in the app:
 
 - Lato-Regular
 - Lato-Semibold
@@ -125,12 +127,16 @@ VPD is a static web app and as such CORS restrictions mean it is limited to thos
 - RobotoCondensed-Bold
 - StyleScript-Regular
 
-To use an alternative font:
+To use a different font:
 
-1. Download the _TrueType_ or _OpenType_ font file (support for _woff_ and _woff2_ files will be added .. sometime ..)
-2. Issue the `add font` command and pick the font file
+1. Download the _TrueType_ or _OpenType_ font file (support for _woff_ and _woff2_ files will be added sometime)
+2. Issue the `add font` command and pick the font file (or just drag and drop it onto the panels. The _load_ button will
+   also work if you open a font file).
 
-The font will be stored more-or-less permanently in the browser local storage.
+The font will be stored more-or-less permanently in the browser local storage. 
+
+- To see the list of installed fonts, type `show fonts`
+- To remove a font, type `delete font <name>``
 
 
 ## Commands
@@ -145,7 +151,25 @@ The font will be stored more-or-less permanently in the browser local storage.
 
 `export module svg [light|dark]`
 
+### Origin
+
+By default, most elements are located relative to the _origin_ which is normally located at the top left corner of the panel. 
+To change origin:
+```
+set origin <xy>
+```
+
+Example:
+```
+set origin @10mm,10mm
+set origin centre,middle
+set origin left+2.54mm,top+10.16mm
+```
+
 ### Guidelines
+
+Inputs, outputs, etc can be aligned to a guideline and will be relocated if the guideline is moved. 
+
 
 - `new guide [label] vertical|horizontal <location>`
 
@@ -226,14 +250,4 @@ new param "E" @10mm,10mm
 ### Label s  
 
 ### Backgrounds
-
-### Fonts
-
-`add font`
-
-`delete font <name>`
-
-`show fonts`
-
-`hide fonts`
 
