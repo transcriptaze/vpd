@@ -1,3 +1,5 @@
+![build](https://github.com/transcriptaze/vpd/workflows/build/badge.svg)
+
 # vcv-panel-designer
 
 Web app for basic VCV panel layout.
@@ -14,13 +16,14 @@ Web app for basic VCV panel layout.
 
 You need a **bunch** of tools:
 - _make_ (optional but recommended)
-- _tree-sitter_
+- [_tree-sitter_](https://tree-sitter.github.io/tree-sitter)
 - [_Rust_ 1.74+](https://www.rust-lang.org/tools/install)
 - _wasm_bindgen_
 - [_Go 1.21+_](https://go.dev)
 - [_sass_](https://sass-lang.com)
 - [_eslint_](https://eslint.org)
 - [_eslint-config-standard_](https://www.npmjs.com/package/eslint-config-standard)
+- _Docker_
 
 **NOTES**: 
 

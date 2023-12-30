@@ -1,5 +1,8 @@
 # TODO
 
+- [ ] github workflow
+      - https://github.com/abiosoft/colima
+
 - [ ] gzip project file
 - [x] Load project file
       - [ ] web component
