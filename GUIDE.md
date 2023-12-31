@@ -169,7 +169,7 @@ The font will be stored more-or-less permanently in the browser local storage.
 
 ## Macro keys
 
-The macro keys (Ctrl-1 to Ctrl-9) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a macro key (or 
+The macro keys (Ctrl-1 to Ctrl-0) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a macro key (or 
 pressing e.g. Ctrl-1) will paste the command into the command area where it can be edited and then executed with _Enter_.
 
 To assign a command to a macro key:

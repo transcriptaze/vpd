@@ -1,10 +1,10 @@
 import { help } from './help.js'
 import { parse } from './command.js'
+import { store, retrieve, PROJECT, MACROS } from './db.js'
 import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
 
-const PROJECT = 'projects.current'
-
 export async function initialise () {
+  // ... 'command' handler
   const input = document.getElementById('command')
   const helpText = document.getElementById('help-text')
 
@@ -20,6 +20,34 @@ export async function initialise () {
 
       execute(input.value)
     }
+  }
+
+  // ... intialise macro keys
+  const macros = Array.from(document.querySelectorAll('vpd-macro-key'))
+
+  const m = (e) => {
+    const list = new Map(macros.map((v) => [v.id, v.command]))
+    const object = Object.fromEntries(list)
+
+    store(MACROS, object)
+  }
+
+  try {
+    const object = retrieve(MACROS)
+    if (object != null) {
+      for (const [k, v] of Object.entries(object)) {
+        const key = macros.find((e) => k === e.id)
+        if (key != null) {
+          key.command = v
+        }
+      }
+    }
+  } catch (err) {
+    console.error(err)
+  }
+
+  for (const v of macros) {
+    v.onchanged = m
   }
 
   // // ... restore project
@@ -133,20 +161,6 @@ function redraw () {
 
     URL.revokeObjectURL(old)
   }
-}
-
-function store (tag, json) {
-  localStorage.setItem(tag, json)
-}
-
-function _retrieve (tag) {
-  try {
-    return localStorage.getItem(tag)
-  } catch (err) {
-    console.error(err)
-  }
-
-  return null
 }
 
 async function save (blob) {

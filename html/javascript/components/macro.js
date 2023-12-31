@@ -64,7 +64,10 @@ export class MacroKey extends HTMLElement {
     this.internal.key = `${v}`
   }
 
-  /* eslint-disable-next-line accessor-pairs */
+  get command () {
+    return this.internal.command == null ? '' : `${this.internal.command}`
+  }
+
   set command (v) {
     this.internal.command = `${v}`.trim() === '' ? null : `${v}`
 
@@ -73,23 +76,37 @@ export class MacroKey extends HTMLElement {
 
     button.title = `${v}`
   }
+
+  /* eslint-disable-next-line accessor-pairs */
+  set onchanged (v) {
+    this.internal.onchanged = v
+  }
 }
 
 function onClick (object, event) {
   const cmd = document.getElementById('command')
 
-  if (event.altKey) {
-    object.command = `${cmd.value}`.trimStart()
-  } else if (object.internal.command != null) {
-    cmd.focus()
-    cmd.value = object.internal.command
+  cmd.focus()
+
+  switch (true) {
+    case event.altKey:
+      object.command = `${cmd.value}`.trimStart()
+
+      if (object.internal.onchanged != null) {
+        object.internal.onchanged(object)
+      }
+      break
+
+    case object.internal.command !== '':
+      cmd.value = object.internal.command
+      break
   }
 }
 
 function onKeyDown (object, event) {
   const cmd = document.getElementById('command')
 
-  if (event.ctrlKey && `ctrl-${event.key}` === `${object.internal.key}` && object.internal.command != null) {
+  if (event.ctrlKey && `ctrl-${event.key}` === `${object.internal.key}` && object.internal.command !== '') {
     cmd.focus()
     cmd.value = object.internal.command
   }

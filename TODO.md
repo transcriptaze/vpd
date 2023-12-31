@@ -11,10 +11,12 @@
 - [ ] Hide logo when overlapped by SVG
       - [ ] web component
 
-- [ ] Macro keys
+- [ ] _command_ web component
+
+- [x] Macro keys
       - [x] web component
       - [x] programmable
-      - [ ] save/restore
+      - [x] save/restore
 
 - [x] _info_ panel
 - [x] _export_
