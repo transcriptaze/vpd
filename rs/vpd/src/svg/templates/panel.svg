@@ -6,6 +6,53 @@
      height="{{height}}mm"
      viewBox="{{viewport.x}} {{viewport.y}} {{viewport.width}} {{viewport.height}}">
 {% include "styles" %}
+
+  <defs>
+    <g id="screw-silver" transform="scale(0.30)">
+      <linearGradient id="ScrewSilver1"  x1="0" y1="-6.5" x2="0" y2="6.5" gradientUnits="userSpaceOnUse" >
+        <stop offset="0" style="stop-color:#aba9a9"/>
+        <stop offset="1" style="stop-color:#8f8f8f"/>
+      </linearGradient>
+      <linearGradient id="ScrewSilver2" x1="0" y1="-5.812" x2="0" y2="5.812" gradientUnits="userSpaceOnUse" >
+        <stop offset="0.00559" style="stop-color:#f5f5f5"/>
+        <stop offset="1"       style="stop-color:#c2c2c2"/>
+      </linearGradient>
+      <linearGradient id="ScrewSilver3"  x1="0" y1="-5.3765" x2="0" y2="5.365"  gradientUnits="userSpaceOnUse" >
+        <stop  offset="0.00559" style="stop-color:#ebebeb"/>
+        <stop  offset="1" style="stop-color:#cccccc"/>
+      </linearGradient>
+      <g>
+        <circle fill="url(#ScrewSilver1)" cx="0" cy="0" r="6.5" /> 
+        <circle fill="url(#ScrewSilver2)" cx="0" cy="0" r="5.812"/>
+        <circle fill="url(#ScrewSilver3)" cx="0" cy="0" r="5.365"/>
+        <path fill="#8c8c8c" 
+              d="M3.469,-0.69 l-1.964,-0.235 c-0.301,-0.036,-0.539,-0.274,-0.575,-0.575 l-0.234,-1.963 c-0.01021,-0.08553,-0.08276,-0.14993,-0.1689,-0.14993 h-1.054 c-0.08613,0,-0.15867,0.06438,-0.16889,0.1499 l-0.23484,1.9634c-0.036,0.302,-0.274,0.539,-0.575,0.575 l-1.963,0.235 c-0.08554,0.01021,-0.14993,0.08276,-0.14993,0.1689v1.0542 c0,0.08613,0.06438,0.15866,0.1499,0.16889 l1.96299,0.2348 c0.301,0.036,0.539,0.273,0.575,0.575 l0.23479,1.96293c0.01023,0.08552,0.08277,0.1499,0.16889,0.1499 h1.0542c0.08612,0,0.15865,-0.06436,0.16889,-0.14986 l0.23521,-1.96318c0.03611,-0.30139,0.27372,-0.53895,0.57512,-0.57499l1.96249,-0.2347 c0.08552,-0.01023,0.1499,-0.08276,0.1499,-0.16889 v-1.054c0,-0.087,-0.064,-0.159,-0.15,-0.169 z"/>
+      </g>
+    </g>
+
+    <g id="screw-black" transform="scale(0.30)">
+      <linearGradient id="ScrewBlack1" x1="0" y1="-6.5" x2="0" y2="6.5" gradientUnits="userSpaceOnUse">
+        <stop offset="0" style="stop-color:#303030"/>
+        <stop offset="1" style="stop-color:#222222"/>
+      </linearGradient>   
+      <linearGradient id="ScrewBlack2" x1="0" y1="-5.812" x2="0" y2="5.812" gradientUnits="userSpaceOnUse" >
+        <stop offset="0.01118" style="stop-color:#636363" />
+        <stop offset="1"       style="stop-color:#2b2b2b" />
+      </linearGradient>
+      <linearGradient id="ScrewBlack3" x1="0" y1="-5.365" x2="0" y2="5.365" gradientUnits="userSpaceOnUse" >
+        <stop  offset="0.01118" style="stop-color:#4c4c4c"/>
+        <stop  offset="1"       style="stop-color:#3b3b3b"/>
+      </linearGradient>
+      <g>
+        <circle fill="url(#ScrewBlack1)" cx="0" cy="0" r="6.5"/>
+        <circle fill="url(#ScrewBlack2)" cx="0" cy="0" r="5.812"/>
+        <circle fill="url(#ScrewBlack3)" cx="0" cy="0" r="5.365"/>
+        <path fill="#171717" 
+              d="M3.469,-0.690 l-1.964,-0.235 c-0.30143,-0.03611,-0.53902,-0.2738,-0.57501,-0.57525 l-0.234,-1.963 c-0.01021,-0.08553,-0.08276,-0.14993,-0.1689,-0.14993 h-1.054 c-0.08613,0,-0.15867,0.06438,-0.16889,0.1499 l-0.235,1.964 c-0.036,0.301,-0.274,0.539,-0.575,0.575 l-1.963,0.234 c-0.085,0.011,-0.15,0.083,-0.15,0.169 v1.0542 c0,0.08613,0.06438,0.15866,0.1499,0.16889 l1.96299,0.2348 c0.302,0.036,0.539,0.274,0.575,0.575 l0.23479,1.96293 c0.01023,0.08552,0.08277,0.1499,0.16889,0.1499 h1.0542 c0.08612,0,0.15865,-0.06436,0.16889,-0.14986 l0.23521,-1.96318 c0.03611,-0.30139,0.27372,-0.53895,0.57512,-0.575 l1.96249,-0.2347 c0.08552,-0.01023,0.1499,-0.08276,0.1499,-0.16889 v-1.054 c0,-0.086,-0.064,-0.159,-0.15,-0.169 z"/>
+      </g>
+    </g>
+  </defs>
+      
   <defs>
 {% include "backgrounds" %}
   </defs>

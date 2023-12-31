@@ -18,7 +18,8 @@
 
 - [ ] error handling
 - [x] Double buffer panel redraws
-- [ ] Use local fonts for SVG (cf. _slow Internet problem_)
+- [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
+      - [ ] Maybe use CSS ??????
 - [ ] Set panel width from module width
 - [ ] Hide logo when overlapped by SVG
 - [ ] `undo`
@@ -145,4 +146,7 @@
 15. https://users.rust-lang.org/t/do-async-frameworks-like-tokio-support-wasm-particularly-multithreading-in-the-browser/85927/2
 16. https://stackoverflow.com/questions/72220581/how-to-produce-a-wasm-interface-with-asynchronous-access
 17. https://lukasatkinson.de/2015/mopping-it-up/
+18. Can't easily use local fonts in SVGs because the URLs are referenced to the blob not the originating server.
+    (cf. _slow Internet problem_)~~
+
 

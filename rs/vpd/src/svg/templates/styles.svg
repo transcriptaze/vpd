@@ -1,31 +1,31 @@
 {% if styles == "yes" %}
   <style>
 
-   @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+    @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
-   .border {
-       fill: none;
-       stroke: none;
-       stroke-width: 0.1;
-   }
+    .border {
+      fill: none;
+      stroke: none;
+      stroke-width: 0.1;
+    }
 
-   .origin {
-       fill: none;
-       stroke: #00008b;
-       stroke-width: 0.25;
-   }
+    .origin {
+      fill: none;
+      stroke: #00008b;
+      stroke-width: 0.25;
+    }
 
-   .outline {
-       fill: none;
-       stroke: cadetblue;
-       stroke-width: 0.125;
-   }
+    .outline {
+      fill: none;
+      stroke: cadetblue;
+      stroke-width: 0.125;
+    }
 
-   .guideline {
-       fill: none;
-       stroke: cadetblue;
-       stroke-width: 0.25;
-       stroke-dasharray: 1 1;
-   }
+    .guideline {
+      fill: none;
+      stroke: cadetblue;
+      stroke-width: 0.25;
+      stroke-dasharray: 1 1;
+    }
   </style>
 {% endif %}

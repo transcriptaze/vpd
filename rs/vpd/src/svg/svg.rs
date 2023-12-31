@@ -114,6 +114,7 @@ impl SVG {
         context.insert("height", &format!("{:3}", self.height));
         context.insert("viewport", &self.viewport);
         context.insert("overlay", &self.overlay);
+        context.insert("theme", &theme);
 
         match &self.styles {
             Some(_) => context.insert("styles", "yes"),

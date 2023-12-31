@@ -1,5 +1,17 @@
 {% if overlay -%}
   <g inkscape:groupmode="layer" inkscape:label="overlay">    
+    {% if theme == "dark" -%}
+    <use href="#screw-black" transform="translate(5.08, 2.54)" />
+    <use href="#screw-black" transform="translate({{background.width-5.08}},2.54)" />
+    <use href="#screw-black" transform="translate(5.08, {{background.height-2.54}})" />
+    <use href="#screw-black" transform="translate({{background.width-5.08}}, {{background.height-2.54}})" />
+    {% else %}
+    <use href="#screw-silver" transform="translate(5.08, 2.54)" />
+    <use href="#screw-silver" transform="translate({{background.width-5.08}},2.54)" />
+    <use href="#screw-silver" transform="translate(5.08, {{background.height-2.54}})" />
+    <use href="#screw-silver" transform="translate({{background.width-5.08}}, {{background.height-2.54}})" />
+    {%- endif %}
+
     {% if inputs -%}
     {% for v in inputs -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
@@ -18,4 +30,4 @@
     {%- endfor %}
     {%- endif %}
   </g>
-{%- endif %}s
+{%- endif %}

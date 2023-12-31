@@ -91,8 +91,8 @@
 10. Add the graduations for the parameters:
     ```
     decorate parameter "E" graduations 7.5mm
-   ```
-   ```
+    ```
+    ```
     decorate parameter "V" graduations 7.5mm
     ```
 
