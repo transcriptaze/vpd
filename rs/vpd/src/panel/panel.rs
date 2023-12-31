@@ -94,9 +94,9 @@ impl Panel {
         let w = self.width + 2.0 * self.gutter;
         let h = self.height + 2.0 * self.gutter;
         let viewport = self.viewport();
+        let panel = Rect::new(0.0, 0.0, self.width, self.height);
         let styles = self.styles();
         let background = Rect::new(0.0, 0.0, self.width, self.height);
-        let outline = Rect::new(0.0, 0.0, self.width, self.height);
         let origin = self.origin();
         let guidelines = self.guidelines();
         let inputs = self.inputs(theme);
@@ -104,10 +104,10 @@ impl Panel {
         let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
-        let svg = SVG::new(w, h, viewport)
+        let svg = SVG::new(w, h, &viewport, &panel)
             .styles(styles)
             .background(background)
-            .outline(outline)
+            .outline(&panel)
             .origin(origin)
             .guidelines(guidelines)
             .inputs(inputs)
@@ -127,13 +127,14 @@ impl Panel {
         let w = self.width + 2.0 * self.gutter;
         let h = self.height + 2.0 * self.gutter;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
+        let panel = Rect::new(0.0, 0.0, self.width, self.height);
         let background = Rect::new(0.0, 0.0, self.width, self.height);
         let inputs = self.inputs(theme);
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
         let labels = self.labels(theme);
 
-        let svg = SVG::new(w, h, viewport)
+        let svg = SVG::new(w, h, &viewport, &panel)
             .background(background)
             .inputs(inputs)
             .outputs(outputs)

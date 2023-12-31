@@ -24,6 +24,12 @@
 - [ ] Hide logo when overlapped by SVG
 - [ ] `undo`
 
+### Overlay
+    - [ ] panel screws
+          - [x] light theme
+          - [x] dark theme
+          - [ ] create in SVG for panel width
+          - [ ] 'show/hide panel screws'
 
 ### Fonts 
 - [ ] load all on startup

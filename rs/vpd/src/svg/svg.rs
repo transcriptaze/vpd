@@ -15,6 +15,7 @@ pub struct SVG {
     width: f32,
     height: f32,
     viewport: Rect,
+    panel: Rect,
     styles: Option<Vec<Style>>,
     background: Option<Rect>,
     outline: Option<Rect>,
@@ -30,11 +31,12 @@ pub struct SVG {
 // TODO include_dir
 //      https://crates.io/crates/include_dir
 impl SVG {
-    pub fn new(width: f32, height: f32, viewport: Rect) -> SVG {
+    pub fn new(width: f32, height: f32, viewport: &Rect, panel: &Rect) -> SVG {
         SVG {
             width: width,
             height: height,
-            viewport: viewport,
+            viewport: viewport.clone(),
+            panel: panel.clone(),
             styles: None,
             background: None,
             outline: None,
@@ -53,12 +55,13 @@ impl SVG {
         self
     }
 
+
     pub fn background(mut self, bg: Rect) -> Self {
         self.background = Some(bg);
         self
     }
 
-    pub fn outline(mut self, outline: Rect) -> Self {
+    pub fn outline(mut self, outline: &Rect) -> Self {
         self.outline = Some(Rect {
             x: outline.x - OUTLINE_STROKE / 2.0,
             y: outline.y - OUTLINE_STROKE / 2.0,
@@ -113,6 +116,7 @@ impl SVG {
         context.insert("width", &format!("{:3}", self.width));
         context.insert("height", &format!("{:3}", self.height));
         context.insert("viewport", &self.viewport);
+        context.insert("panel", &self.panel);
         context.insert("overlay", &self.overlay);
         context.insert("theme", &theme);
 
@@ -175,10 +179,12 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     let guidelines = include_str!("templates/guidelines.svg");
     let labels = include_str!("templates/labels.svg");
     let overlay = include_str!("templates/overlay.svg");
+    let mut widgets = include_str!("templates/widgets.svg");
 
     if theme == "dark" {
         styles = include_str!("templates/dark/styles.svg");
         backgrounds = include_str!("templates/dark/backgrounds.svg");
+        widgets = include_str!("templates/dark/widgets.svg");
     }
 
     tera.add_raw_template("panel", &panel).unwrap();
@@ -188,4 +194,5 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("labels", &labels).unwrap();
     tera.add_raw_template("guidelines", &guidelines).unwrap();
     tera.add_raw_template("overlay", &overlay).unwrap();
+    tera.add_raw_template("widgets", &widgets).unwrap();
 }

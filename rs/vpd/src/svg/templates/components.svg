@@ -1,4 +1,4 @@
-  <g inkscape:groupmode="layer" inkscape:label="components">    
+  <g inkscape:groupmode="layer" inkscape:label="components" style="display:none">    
     {% if inputs -%}
     {% for v in inputs -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
