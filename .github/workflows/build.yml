@@ -20,12 +20,12 @@ jobs:
         node-version: [16.13.2]
 
     steps:
-    - name: Setup NPM
+    - name: Setup npm
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Set up Go 1.x
+    - name: Set up Go 1.21+
       uses: actions/setup-go@v5
       with:
         go-version: 1.21
@@ -34,8 +34,19 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v4
 
-    - name: Install sass
-      run: npm install -g sass
+    - name: Set up tree-sitter v0.20.8+
+      run: |
+        cargo install tree-sitter-cli
+        tree-sitter --version
 
-    - name: Install eslint
-      run: npm install eslint eslint-config-standard
+    - name: Install sass 1.58.0+
+      run: |
+        npm install -g sass
+        sass --version
+
+    - name: Install eslint v8.56.0+
+      run: |
+        npm install eslint eslint-config-standard
+        npx eslint --version
+
+

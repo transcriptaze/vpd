@@ -1,16 +1,27 @@
 ![build](https://github.com/transcriptaze/vpd/workflows/build/badge.svg)
 
-# vcv-panel-designer
+# VPD: VCV Rack 2 Panel Designer
 
-VPD is a browser based web application to create the SVG files for a basic VCV module panel.
+VPD is a browser based web application to create the SVG files for a basic VCV module panel. 
 
-It exists mostly because I wanted to experiment with tree-sitter but also because having to switch back and forth between
-between text and paths in Inkscape was just plain annoying.
+It has been tested on:
+- Chrome
+- Firefox
+- Opera
+- Safari
+
+There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [User guide](GUIDE.md) which 
+describes all the available commands.
+
+## Raison d’être
+
+Mostly as an experimental command interface implemented using _tree-sitter_, but also because having to switch back
+and forth between between text and paths in Inkscape is just plain annoying.
 
 
 ## Getting Started
 
-1. Open the web application in your browser (currrently Chrome).
+1. Open the web application in your browser.
 2. Follow the _Getting started_ instructions in the [User Guide](GUIDE.md).
 3. Export the SVG files:
    ```
@@ -25,19 +36,29 @@ between text and paths in Inkscape was just plain annoying.
    <Rack SDK>/helper.py createmodule <module slug> res/<module slug>.svg src/<module slug>.cpp
    ```
 
-The [_User Guide](GUIDE.md) describes all the available commands.
-
 ### _web-app_
 
 ### Releases
 
 ### Running locally
 
-1. Python 
+1. Clone (or download) the VPD [repository](https://github.com/transcriptaze/vpd):
+```
+git clone https://github.com/transcriptaze/vpd
+cd vpd
+```
 
-2. NPM
+2. _Python_
+   ```
+   python3 -m http.server 9876 -d html
+   ```
 
-3. Go
+3. _NodeJS_
+   ```
+   npx http-server html --port 9876
+   ```
+
+4. _Go_
 
 
 ## Building from source

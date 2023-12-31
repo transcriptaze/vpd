@@ -51,8 +51,8 @@
           <button onclick="onCtrl3(event)">Ctrl₃</button>
           <button onclick="onCtrl4(event)">Ctrl₄</button>
           <button onclick="onCtrl5(event)">Ctrl₅</button>
-          <button onclick="onCtrl5(event)">Ctrl₆</button>
-          <button onclick="onCtrl5(event)">Ctrl₇</button>
+          <button onclick="onCtrl6(event)">Ctrl₆</button>
+          <button onclick="onCtrl7(event)">Ctrl₇</button>
         </div>
 
       </div>
@@ -146,7 +146,8 @@
         document.getElementById('command').value = 'new parameter "E" @15.24mm,15.24mm'
     }
 
-    window.onkeypress = (event) => {
+    window.onkeydown = (event) => {
+      console.log(event)
       if (event.ctrlKey && event.key === '1') {
         onCtrl1()
       }

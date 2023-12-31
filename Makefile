@@ -37,5 +37,15 @@ build-release: format
 run:
 	python3 -m http.server 9876 -d html
 
+run-npx:
+	npx http-server html --port 9876
+
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
+
+cloudflare: build-all
+	rm -rf dist/cloudflare
+	mkdir -p dist/cloudflare
+	cp -r  ./html/*        dist/cloudflare
+	cp -r  ./cloudflare/*  dist/cloudflare
+
