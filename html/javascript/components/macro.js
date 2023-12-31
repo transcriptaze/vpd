@@ -66,7 +66,7 @@ export class MacroKey extends HTMLElement {
 
   /* eslint-disable-next-line accessor-pairs */
   set command (v) {
-    this.internal.command = `${v}`
+    this.internal.command = `${v}`.trim() === '' ? null : `${v}`
 
     const shadow = this.shadowRoot
     const button = shadow.querySelector('button')
@@ -76,18 +76,20 @@ export class MacroKey extends HTMLElement {
 }
 
 function onClick (object, event) {
-  if (object.internal.command != null) {
-    const cmd = document.getElementById('command')
+  const cmd = document.getElementById('command')
 
+  if (event.altKey) {
+    object.command = `${cmd.value}`.trimStart()
+  } else if (object.internal.command != null) {
     cmd.focus()
     cmd.value = object.internal.command
   }
 }
 
 function onKeyDown (object, event) {
-  if (event.ctrlKey && object.internal.key != null && `ctrl-${event.key}` === object.internal.key) {
-    const cmd = document.getElementById('command')
+  const cmd = document.getElementById('command')
 
+  if (event.ctrlKey && `ctrl-${event.key}` === `${object.internal.key}` && object.internal.command != null) {
     cmd.focus()
     cmd.value = object.internal.command
   }

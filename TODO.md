@@ -13,7 +13,7 @@
 
 - [ ] Macro keys
       - [x] web component
-      - [ ] programmable
+      - [x] programmable
       - [ ] save/restore
 
 - [x] _info_ panel
