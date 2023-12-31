@@ -6,33 +6,26 @@
 docker:
 	open -a docker
 
-format:
+www:
 	npx eslint --fix ./html/javascript/*.js
 	npx eslint --fix ./html/javascript/components/*.js
 	npx eslint --fix ./html/javascript/commands/*.js
-
-build: format
 	sass --no-source-map sass/themes:html/css
+
+build: www
 	cd rs/vpd && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 
-test:
-	npx eslint ./html/javascript/*.js
-	npx eslint ./html/javascript/components/*.js
-	npx eslint ./html/javascript/commands/*.js
+test: build
 	cd grammars/command && make test
 	cd grammars/help    && make test
 
-build-all: format test
-	sass --no-source-map sass/themes:html/css
+build-all: test
 	cd grammars/command && make wasm
 	cd grammars/help    && make wasm
-# 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
+	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 
-build-release: format
-	sass --no-source-map sass/themes:html/css
-	cd grammars/command && make wasm
-	cd grammars/help    && make wasm
-	cd rs/vpd     && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
+build-release: build-all
+	cd rs/vpd && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
 
 run:
 	python3 -m http.server 9876 -d html
@@ -43,7 +36,7 @@ run-npx:
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
 
-cloudflare: build-all
+cloudflare: build-release
 	rm -rf dist/cloudflare
 	mkdir -p dist/cloudflare
 	cp -r  ./html/*        dist/cloudflare

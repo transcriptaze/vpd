@@ -49,5 +49,10 @@ jobs:
         npm install eslint eslint-config-standard
         npx eslint --version
 
+    - name: Install wasm-pack v0.12.1+
+      run: |
+        cargo install wasm-pack
+        wasm-pack --version
+
     - name: Build
       run: make build-all
