@@ -49,4 +49,9 @@ jobs:
         npm install eslint eslint-config-standard
         npx eslint --version
 
+    - name: Build
+      run: make build-all
+
+    - name: Docker ???
+      run: systemctl status docker
 
