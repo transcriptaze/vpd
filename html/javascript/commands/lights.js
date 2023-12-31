@@ -1,27 +1,27 @@
 import { reference, offset, mm } from './commands.js'
 
-export function newParameter (node) {
+export function newLight (node) {
   const object = {
     action: 'new',
-    parameter: {}
+    light: {}
   }
 
   for (const child of node.namedChildren) {
     if (child.type === 'name' && child.namedChildCount > 0) {
-      object.parameter.name = child.namedChildren[0].text.trim()
+      object.light.name = child.namedChildren[0].text.trim()
     }
 
     if (child.type === 'absolute') {
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
-          object.parameter.x = {
+          object.light.x = {
             reference: 'absolute',
             offset: mm(v.text)
           }
         }
 
         if (v.type === 'y') {
-          object.parameter.y = {
+          object.light.y = {
             reference: 'absolute',
             offset: mm(v.text)
           }
@@ -30,14 +30,14 @@ export function newParameter (node) {
     }
 
     if (child.type === 'x') {
-      object.parameter.x = {
+      object.light.x = {
         reference: reference(child),
         offset: offset(child)
       }
     }
 
     if (child.type === 'y') {
-      object.parameter.y = {
+      object.light.y = {
         reference: reference(child),
         offset: offset(child)
       }

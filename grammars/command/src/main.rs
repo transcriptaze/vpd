@@ -4,7 +4,7 @@ fn main() {
     println!("VPD grammar");
 
     let mut parser = Parser::new();
-    let src = r#"new module "woot" 1U 5H"#;
+    let src = r#"new module "quickstart" 1U 10H"#;
 
     parser
         .set_language(tree_sitter_command::language())

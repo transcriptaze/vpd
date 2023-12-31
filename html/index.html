@@ -46,13 +46,16 @@
             <button class="light" onclick="onExport(event,'light')"><img src="./images/download.svg" /></button>
             <button class="dark"  onclick="onExport(event,'dark')"><img src="./images/download.svg" /></button>
           </div>
-          <button onclick="onCtrl1(event)">Ctrl₁</button>
-          <button onclick="onCtrl2(event)">Ctrl₂</button>
-          <button onclick="onCtrl3(event)">Ctrl₃</button>
-          <button onclick="onCtrl4(event)">Ctrl₄</button>
-          <button onclick="onCtrl5(event)">Ctrl₅</button>
-          <button onclick="onCtrl6(event)">Ctrl₆</button>
-          <button onclick="onCtrl7(event)">Ctrl₇</button>
+          <div class="macros">
+            <vpd-macro-key label="Ctrl₁" key="ctrl-1" command='new module "quickstart" 1U 10H'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₂" key="ctrl-2" command='new guide vertical +4.5mm'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₃" key="ctrl-3" command='set origin centre,middle'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₄" key="ctrl-4" command='new label "qwerty" @22.2mm,33.3mm'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₅" key="ctrl-5" command='new input "e" @10.16mm,15.24mm'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₆" key="ctrl-6" command='new output "u" @25.4mm,15.24mm'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₇" key="ctrl-7" command='new parameter "E" @15.24mm,15.24mm'></vpd-macro-key>
+            <vpd-macro-key label="Ctrl₈" key="ctrl-8" command='new light "on" @15.24mm,15.24mm'></vpd-macro-key>
+          </div>
         </div>
 
       </div>
@@ -66,6 +69,10 @@
     </footer>
 
     <!-- TEMPLATES -->
+    <template id="template-macro-key">
+      <button class="vpd-macro-key"></button>
+    </template>
+
     <template id="template-help-text">
       <div class="vpd-help-text">
         <ul></ul>
@@ -110,72 +117,6 @@
     window.onLoad = VPD.onLoad
     window.onSave = VPD.onSave
     window.onExport = VPD.onExport
-
-    window.onCtrl1 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new module "quickstart" 1U 10H'
-    }
-
-    window.onCtrl2 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new guide vertical +4.5mm'
-    }
-
-    window.onCtrl3 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'set origin centre,middle'
-    }
-
-    window.onCtrl4 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new label "qwerty" @22.2mm,33.3mm'
-    }
-
-    window.onCtrl5 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new input "e" @10.16mm,15.24mm'
-    }
-
-    window.onCtrl6 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new output "u" @25.4mm,15.24mm'
-    }
-
-    window.onCtrl7 = (event) => {
-        document.getElementById('command').focus()
-        document.getElementById('command').value = 'new parameter "E" @15.24mm,15.24mm'
-    }
-
-    window.onkeydown = (event) => {
-      console.log(event)
-      if (event.ctrlKey && event.key === '1') {
-        onCtrl1()
-      }
-
-      if (event.ctrlKey && event.key === '2') {
-        onCtrl2()
-      }
-
-      if (event.ctrlKey && event.key === '3') {
-        onCtrl3()
-      }
-
-      if (event.ctrlKey && event.key === '4') {
-        onCtrl4()
-      }
-
-      if (event.ctrlKey && event.key === '5') {
-        onCtrl5()
-      }
-
-      if (event.ctrlKey && event.key === '6') {
-        onCtrl6()
-      }
-
-      if (event.ctrlKey && event.key === '7') {
-        onCtrl7()
-      }
-    }
 
     document.querySelector('vpd-drop')
             .addEventListener('dropped', (e) => {

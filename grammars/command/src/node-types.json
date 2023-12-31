@@ -164,6 +164,11 @@
     }
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "input",
     "named": true,
     "fields": {},
@@ -204,6 +209,33 @@
         },
         {
           "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "light",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -254,6 +286,10 @@
         },
         {
           "type": "label",
+          "named": true
+        },
+        {
+          "type": "light",
           "named": true
         },
         {
@@ -347,6 +383,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "reference",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "set",
@@ -487,10 +528,6 @@
     "named": false
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
     "type": "input",
     "named": false
   },
@@ -500,7 +537,7 @@
   },
   {
     "type": "light",
-    "named": true
+    "named": false
   },
   {
     "type": "module",
@@ -525,10 +562,6 @@
   {
     "type": "output",
     "named": false
-  },
-  {
-    "type": "reference",
-    "named": true
   },
   {
     "type": "set",

@@ -57,6 +57,9 @@ function _new (node) {
       case 'parameter':
         return commands.newParameter(entity)
 
+      case 'light':
+        return commands.newLight(entity)
+
       case 'label':
         return commands.newLabel(entity)
 

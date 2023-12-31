@@ -1,3 +1,11 @@
+new module "lfo" 1U 10H
+new module "lfo" 1U 50mm
+new module "lfo" 10H
+new module "lfo" 50mm
+
+
+
+
 new module "woot" 1U 5H
 
 new guide    vertical @4.5mm

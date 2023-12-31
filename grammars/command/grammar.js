@@ -22,6 +22,7 @@ module.exports = grammar({
       $.input,
       $.output,
       $.parameter,
+      $.light,
       $.label,
       $.guide,
     ),
@@ -53,6 +54,15 @@ module.exports = grammar({
 
     parameter: $ => seq(
       /parameter|param/,
+      $.name,
+      choice (
+        $.absolute,
+        $._xy,
+      )
+    ),
+
+    light: $ => seq(
+      'light',
       $.name,
       choice (
         $.absolute,
@@ -93,8 +103,16 @@ module.exports = grammar({
     origin: $ => seq(
       'origin',
       choice(
-        seq( $.y, ',', $.x),
-        seq( $.x, ',', $.y),
+        seq( 
+          alias($._originy, $.y), 
+          ',', 
+          alias($._originx, $.x)
+        ),
+        seq( 
+          alias($._originx,$.x),
+          ',',
+          alias($._originy,$.y),
+        ),
         seq(
           alias('@',$.absolute),
           alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.x),
@@ -104,12 +122,12 @@ module.exports = grammar({
       ),
     ),
 
-    x: $ => seq(
+    _originx: $ => seq(
       alias(/left|centre|center|right/,$.reference),
       optional($.offset),
     ),
 
-    y: $ => seq(
+    _originy: $ => seq(
       alias (/top|middle|bottom/,$.reference), 
       optional($.offset),
     ),
@@ -212,6 +230,7 @@ module.exports = grammar({
           "centre",
           "center",
           "right",
+          /[a-zA-Z][a-zA-Z0-9]*/,
         ), $.reference,
       ),
       optional($.offset),
@@ -223,6 +242,7 @@ module.exports = grammar({
           "top",
           "middle",
           "bottom",
+          /[a-zA-Z][a-zA-Z0-9]*/,
         ), $.reference,
       ),
       optional($.offset),

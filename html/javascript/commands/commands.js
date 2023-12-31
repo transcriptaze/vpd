@@ -2,8 +2,29 @@ export { newModule } from './modules.js'
 export { newInput } from './inputs.js'
 export { newOutput } from './outputs.js'
 export { newParameter } from './parameters.js'
-export { newLabel } from './labels.js'
+export { newLight } from './lights.js'
+export { newLabel } from './text.js'
 export { newGuide } from './guides.js'
+
+export function reference (node) {
+  for (const child of node.namedChildren) {
+    if (child.type === 'reference') {
+      return child.text.trim()
+    }
+  }
+
+  return 'origin'
+}
+
+export function offset (node) {
+  for (const child of node.namedChildren) {
+    if (child.type === 'offset') {
+      return mm(child.text)
+    }
+  }
+
+  return 0.0
+}
 
 export function mm (v) {
   let match = `${v}`.match(/([0-9]+)U/)

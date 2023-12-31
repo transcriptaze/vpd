@@ -26,6 +26,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: "Lato";
 }
 
 html {
@@ -175,6 +176,14 @@ main div#controls button {
 }
 main div#controls button img {
   width: 40px;
+}
+main div#controls div.macros {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  grid-row-gap: 4px;
+  grid-column-gap: 4px;
 }
 main div#drop {
   grid-column: 1/3;

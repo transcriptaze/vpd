@@ -17,7 +17,7 @@ describes all the available commands.
 ### Raison d’être
 
 VPD was created mostly as an experiment in implementing a command interface using _tree-sitter_, but also because having to
-switch back and forth between between text and paths in Inkscape when creating or modifying an VCV panel is just plain annoying.
+switch back and forth between between text and paths in _Inkscape_ when creating or modifying an VCV panel is just plain annoying.
 
 
 ### Getting Started
@@ -40,6 +40,11 @@ switch back and forth between between text and paths in Inkscape when creating o
 ### Releases
 
 ## _web-app_
+
+The web app is currently hosted on _Cloudflare Pages_:
+
+[VPD](https://vpd.pages.dev)
+
 
 ## Running locally
 

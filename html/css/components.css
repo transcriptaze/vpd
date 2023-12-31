@@ -16,6 +16,24 @@
   font-weight: normal;
   src: url("/fonts/Lato-Regular.woff2");
 }
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/Lato-Bold.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Lato-Semibold.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/Lato-Regular.woff2");
+}
 * {
   background: transparent;
   margin: 0px;
@@ -90,4 +108,15 @@ div.vpd-drop.dropping {
 }
 div.vpd-drop.dropping img {
   visibility: visible;
+}
+
+button.vpd-macro-key {
+  width: 48px;
+  height: 48px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
 }

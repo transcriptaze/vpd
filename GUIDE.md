@@ -143,7 +143,7 @@ A _.vps_ script file is a text file of VPD commands (one per line) that can be l
 
 ## Fonts
 
-VPD is a static web app and as such CORS restrictions mean it cannot load external fonts from e.g. Google Fonts. The following fonts
+VPD is a static web app and as such, CORS restrictions mean it cannot load external fonts from e.g. Google Fonts. The following fonts
 are included in the app:
 
 - Lato-Regular
@@ -155,7 +155,7 @@ are included in the app:
 - RobotoCondensed-Bold
 - StyleScript-Regular
 
-To use a different font:
+To use a other fonts:
 
 1. Download the _TrueType_ or _OpenType_ font file (support for _woff_ and _woff2_ files will be added sometime)
 2. Issue the `add font` command and pick the font file (or just drag and drop it onto the panels. The _load_ button will
@@ -169,13 +169,13 @@ The font will be stored more-or-less permanently in the browser local storage.
 
 ## Macro keys
 
-The macro keys (Ctrl-1 to 9) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a macro key (or pressing Ctrl-1)
-will paste the command into the command area where it can be edited and executed with _Enter_.
+The macro keys (Ctrl-1 to Ctrl-9) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a macro key (or 
+pressing e.g. Ctrl-1) will paste the command into the command area where it can be edited and then executed with _Enter_.
 
 To assign a command to a macro key:
 
 1. Type the command into the command area
-2. Alt-click on the macro key button to assign the command to that key.
+2. _Alt_-click (_Option_-click on a Mac) on the macro key button to assign the command to that key.
 3. A macro key command can be viewed by hovering over the key (or of course, just click on it to paste the command into the command area)
 
 The macro keys assignments are stored only in the browser local storage and are not included in the project file. 
@@ -183,11 +183,27 @@ The macro keys assignments are stored only in the browser local storage and are 
 
 ## Commands
 
-1. Measurement units can be:
+1. Measurement units can be specified in:
    - _mm_ (millimeters)
-   - _H_  (panel units, 5.08mm or 0.2")
-   - _h_ (half-panel units, 2.54mm or 0.1")
+   - _H_  (standard panel units, 5.08mm or 0.2")
+   - _h_ (standard panel half units, 2.54mm or 0.1")
 
+2. Locations can be:
+   - _absolute_, measured from the top left corner of the panel. Absolute locations are prefixed with an '@' (e.g. `@10mmm,12.5mm`)
+   - _relative to the origin_, e.g. +10mm,-12.5mm. By default the origin is located at the top left corner of the panel but it can be
+      relocated with a `set origin` command. 
+   - _relative to the geometry_ where _geometry_ means the sides or centres of the panel (e.g. left+10mm,middle-12.5mm)
+   - _relative to the guidelines_ e.g. v1+10mm,h1-12.5mm
+
+   _Examples:_
+   ```
+   new input "e" @10mm,12.5mm
+   new input "e" +10mm,-12.5mm
+   new input "e" left,middle
+   new input "e" centre+10mm,middle-12.5mm
+   new input "e" v1,h1
+   new input "e" v1+10mm,h1-12.5mm
+   ```
 
 ### Modules
 

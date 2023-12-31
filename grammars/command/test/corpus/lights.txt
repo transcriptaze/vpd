@@ -1,0 +1,76 @@
+=========================
+new light "on" @10mm,10mm
+=========================
+new light "on" @10mm,10mm
+---
+(command
+  (new
+    (light
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
+======================
+new light "on" left,top
+======================
+new light "on" left,top
+---
+(command
+  (new
+    (light
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+
+===================================
+new light "on" left+4.5mm,top+4.5mm
+===================================
+new light "on" left+4.5mm,top+4.5mm
+---
+(command
+  (new
+    (light
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+====================
+new light "on" v1,h1
+====================
+new light "on" v1,h1
+---
+(command
+  (new
+    (light
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+
+=================================
+new light "on" v1+4.5mm,h1-12.5mm
+=================================
+new light "on" v1+4.5mm,h1-12.5mm
+---
+(command
+  (new
+    (light
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))

@@ -1,4 +1,4 @@
-import { mm } from './commands.js'
+import { reference, offset, mm } from './commands.js'
 
 export function newInput (node) {
   const object = {
@@ -45,24 +45,4 @@ export function newInput (node) {
   }
 
   return object
-}
-
-function reference (node) {
-  for (const child of node.namedChildren) {
-    if (child.type === 'reference') {
-      return child.text.trim()
-    }
-  }
-
-  return 'origin'
-}
-
-function offset (node) {
-  for (const child of node.namedChildren) {
-    if (child.type === 'offset') {
-      return mm(child.text)
-    }
-  }
-
-  return 0.0
 }

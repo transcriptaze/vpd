@@ -7,7 +7,8 @@
 
 2. _What happens if I specify a location relative to two horizontal guides?_
 
-   Nothing. Well, technically you consign your text to the ninth level of hell, annoy Cthulhu and possibly [_break the Internet_](https://www.youtube.com/watch?v=v2FMqtC1x9Y), but other than that nothing.
+   Nothing. Well, technically you consign your text to the ninth level of hell for all infinity, annoy Cthulhu and quite possibly 
+   [_break the Internet_](https://www.youtube.com/watch?v=v2FMqtC1x9Y), but other than that nothing.
 
 
 3. _Why can't I do X?_

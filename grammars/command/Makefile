@@ -19,8 +19,7 @@ wasm: regenerate
 	mv tree-sitter-command.wasm ../../html/wasm/grammars/
 
 run: build
-	tree-sitter parse example
-# 	cargo run
+	tree-sitter parse checklist.txt
 
 debug: build
-	tree-sitter parse debug
+	tree-sitter parse debug.txt

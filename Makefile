@@ -26,13 +26,6 @@ build-all: test
 
 build-release: build-all
 	cd rs/vpd && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
-
-run:
-	python3 -m http.server 9876 -d html
-
-run-npx:
-	npx http-server html --port 9876
-
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
 
@@ -41,4 +34,12 @@ cloudflare: build-release
 	mkdir -p dist/cloudflare
 	cp -r  ./html/*        dist/cloudflare
 	cp -r  ./cloudflare/*  dist/cloudflare
+
+run-python:
+	python3 -m http.server 9876 -d html
+
+run-nodejs:
+	npx http-server html --port 9876
+
+run: run-python
 

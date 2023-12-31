@@ -7,9 +7,14 @@
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
 - [ ] Show errors
-- [ ] Macro keys
+
+- [ ] Hide logo when overlapped by SVG
       - [ ] web component
+
+- [ ] Macro keys
+      - [x] web component
       - [ ] programmable
+      - [ ] save/restore
 
 - [x] _info_ panel
 - [x] _export_
@@ -20,7 +25,6 @@
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Maybe use CSS ??????
 - [ ] Set panel width from module width
-- [ ] Hide logo when overlapped by SVG
 - [ ] `undo`
 
 ### Overlay
@@ -47,6 +51,10 @@
       - [ ] `export module svg [light|dark]`
       - [ ] `export module script [gzip]`
 
+- [ ] _origin_
+      - [ ] `set origin absolute`
+      - [ ] `set origin relative`
+
 - [ ] _guidelines_
       - [ ] help
       - [ ] `delete`
@@ -55,11 +63,10 @@
       - (?) error if duplicate offset
 
 - [ ] _inputs_
-      - [ ] `new input <name> <absolute|geometry|guidelines> [symbol`
-      - [x] absolute
-      - [x] relative to geometry
-      - [ ] relative to guidelines
-      - [ ] symbol
+      - [x] `new input <name> <absolute>`
+      - [x] `new input <name> <geometry>`
+      - [ ] `new input <name> <guidelines>`
+      - [ ] `new input <name> <absolute|geometry|guidelines> [symbol]`
       - [ ] help
 
 - [ ] _outputs_
@@ -81,10 +88,11 @@
       - [ ] help
 
 - [ ] _lights_
+      - [ ] `new light <name> <absolute>`
+      - [ ] `new light <name> <geometry>`
+      - [ ] `new light <name> <guidelines>`
       - [ ] `new light <name> <absolute|geometry|guidelines> [symbol]`
-      - [ ] relative to geometry
-      - [ ] relative to guidelines
-      - [ ] symbol
+      - [ ] help
       - [ ] delete
       - [ ] set
       - [ ] help
