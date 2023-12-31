@@ -1,8 +1,7 @@
 # TODO
 
-- [ ] github workflow
-      - https://github.com/abiosoft/colima
-
+- [x] github workflow
+- [ ] github 'nightlies'
 - [ ] gzip project file
 - [x] Load project file
       - [ ] web component

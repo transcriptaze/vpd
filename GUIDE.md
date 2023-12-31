@@ -7,6 +7,7 @@
 - [Scripts](#scripts)
 - [Fonts](#fonts)
 - [Guidelines](#guidelines)
+- [Macro keys](#macro-keys)
 - [Commands](#commands)
   - [Modules](#modules)
   - [Inputs](#inputs)
@@ -75,20 +76,28 @@
    new parameter "V" v2,h2 RoundBlackKnob
    ```
 
-8. Add a title:
+8. Create the lights:
    ```
-   new label l1 "QST" centre,top+5.08mm "Lato-Bold" 12pt centered,baseline
-   ```
-
-9. Label the parameters and inputs:
-   ```
-   new label l2 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
+   new light "ok" v2,h1 GreenLED
    ```
    ```
-   new label l3 "V" v2-2.54mm, h1+5.08mm RobotoCondensed
+   new light "recording" v2,h2 RedLED
    ```
 
-10. Add the graduations for the parameters:
+9. Add a title:
+   ```
+   new text title "QST" centre,top+5.08mm "Lato-Bold" 12pt centered,baseline
+   ```
+
+10. Label the parameters and inputs:
+   ```
+   new text label1 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
+   ```
+   ```
+   new text label2 "V" v2-2.54mm, h1+5.08mm RobotoCondensed
+   ```
+
+11. Add the graduations for the parameters:
     ```
     decorate parameter "E" graduations 7.5mm
     ```
@@ -96,7 +105,7 @@
     decorate parameter "V" graduations 7.5mm
     ```
 
-11. Export the project files:
+12. Export the project files:
     ```
     export module
     ```
@@ -104,7 +113,7 @@
     export module script
     ```
 
-12. Export the SVG file:
+13. Export the SVG file:
     ```
     export module SVG 
     ```
@@ -112,9 +121,25 @@
     export module SVG dark
     ```
 
+
 ## Projects
 
+A _.vpd_ project file is a human readable JSON file and a _.vpz_ file is the same JSON file gzipped that can be loaded (or dropped on to the panel design
+area) to recreate a module.
+
+The current state of a project is saved in the browser local storage and the application will do its level best to resume where you last left off, but really
+you should export and save the project file:
+```
+export module [timestamp] [gzip]
+```
+- `timestamp` will include the current datetime in the filename
+- `gzip` will download the JSON project file compressed with gzip
+
+
 ## Scripts
+
+A _.vps_ script file is a text file of VPD commands (one per line) that can be loaded (or dropped on to the panel design area) to recreate a module.
+
 
 ## Fonts
 
@@ -139,14 +164,45 @@ To use a different font:
 The font will be stored more-or-less permanently in the browser local storage. 
 
 - To see the list of installed fonts, type `show fonts`
-- To remove a font, type `delete font <name>``
+- To remove a font, type `delete font <name>`
+
+
+## Macro keys
+
+The macro keys (Ctrl-1 to 9) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a macro key (or pressing Ctrl-1)
+will paste the command into the command area where it can be edited and executed with _Enter_.
+
+To assign a command to a macro key:
+
+1. Type the command into the command area
+2. Alt-click on the macro key button to assign the command to that key.
+3. A macro key command can be viewed by hovering over the key (or of course, just click on it to paste the command into the command area)
+
+The macro keys assignments are stored only in the browser local storage and are not included in the project file. 
 
 
 ## Commands
 
+1. Measurement units can be:
+   - _mm_ (millimeters)
+   - _H_  (panel units, 5.08mm or 0.2")
+   - _h_ (half-panel units, 2.54mm or 0.1")
+
+
 ### Modules
 
 `new module <name> [height] <width>`
+
+1. The name must be in quotes (e.g. "vpd")
+2. The _height_ is optional and must be _1U_ if provided.
+3. The width can be in either _mm _or _H_ (standard panel units of 5.08mm). Widths in _mm_ will be rounded to the nearest multiple
+   of _5.08mm_.
+
+_Examples:_
+```
+new module "vpd" 1U 10H
+new module "vpd" 50mm
+```
 
 `export module project [gzip]`
 

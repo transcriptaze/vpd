@@ -10,16 +10,17 @@ It has been tested on:
 - Opera
 - Safari
 
-There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [User guide](GUIDE.md) which 
+There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands.
 
-## Raison d’être
 
-Mostly as an experimental command interface implemented using _tree-sitter_, but also because having to switch back
-and forth between between text and paths in Inkscape is just plain annoying.
+### Raison d’être
+
+VPD was created mostly as an experiment in implementing a command interface using _tree-sitter_, but also because having to
+switch back and forth between between text and paths in Inkscape when creating or modifying an VCV panel is just plain annoying.
 
 
-## Getting Started
+### Getting Started
 
 1. Open the web application in your browser.
 2. Follow the _Getting started_ instructions in the [User Guide](GUIDE.md).
@@ -36,30 +37,38 @@ and forth between between text and paths in Inkscape is just plain annoying.
    <Rack SDK>/helper.py createmodule <module slug> res/<module slug>.svg src/<module slug>.cpp
    ```
 
-### _web-app_
-
 ### Releases
 
-### Running locally
+## _web-app_
 
-1. Clone (or download) the VPD [repository](https://github.com/transcriptaze/vpd):
+## Running locally
+
+VPD is a static web application that runs entirely in the browser. Running it locally requires just the _wwww_ files and a web server
+
+1. Download the _VPD_ artifact from either a release or a nightly build and unzip it to a folder::
 ```
-git clone https://github.com/transcriptaze/vpd
-cd vpd
+wget .... 
+unzip ....
 ```
 
-2. _Python_
+2. Start an HTTP server to serve the unzipped files, e.g.:
+
+- _Python_
    ```
+   cd vpd
    python3 -m http.server 9876 -d html
    ```
-
-3. _NodeJS_
+- _NodeJS_
    ```
+   cd vpd
    npx http-server html --port 9876
    ```
+- _Go_
 
-4. _Go_
-
+   ```
+   cd vpd
+   ./vpd
+   ```
 
 ## Building from source
 
