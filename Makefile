@@ -24,8 +24,8 @@ test:
 
 build-all: format test
 	sass --no-source-map sass/themes:html/css
-# 	cd grammars/command && make wasm
-# 	cd grammars/help    && make wasm
+	cd grammars/command && make wasm
+	cd grammars/help    && make wasm
 # 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 
 build-release: format
