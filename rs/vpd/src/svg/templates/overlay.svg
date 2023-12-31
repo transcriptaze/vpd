@@ -22,5 +22,11 @@
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
     {%- endfor %}
     {%- endif %}
+
+    {% if lights -%}
+    {% for v in lights -%}
+    <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
+    {%- endfor %}
+    {%- endif %}
   </g>
 {%- endif %}

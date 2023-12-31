@@ -8,6 +8,7 @@ use wasm_bindgen::prelude::*;
 use crate::panel::Guide;
 use crate::panel::Input;
 use crate::panel::Label;
+use crate::panel::Light;
 use crate::panel::Origin;
 use crate::panel::Output;
 use crate::panel::Parameter;
@@ -32,6 +33,7 @@ pub struct Panel {
     pub inputs: Vec<Input>,
     pub outputs: Vec<Output>,
     pub parameters: Vec<Parameter>,
+    pub lights: Vec<Light>,
     pub labels: Vec<Label>,
 }
 
@@ -48,6 +50,7 @@ impl Panel {
             inputs: Vec::new(),
             outputs: Vec::new(),
             parameters: Vec::new(),
+            lights: Vec::new(),
             labels: Vec::new(),
         };
     }
@@ -102,6 +105,7 @@ impl Panel {
         let inputs = self.inputs(theme);
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
+        let lights = self.lights(theme);
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
@@ -113,6 +117,7 @@ impl Panel {
             .inputs(inputs)
             .outputs(outputs)
             .parameters(parameters)
+            .lights(lights)
             .labels(labels)
             .overlay(true);
 
@@ -132,6 +137,7 @@ impl Panel {
         let inputs = self.inputs(theme);
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
+        let lights = self.lights(theme);
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
@@ -139,6 +145,7 @@ impl Panel {
             .inputs(inputs)
             .outputs(outputs)
             .parameters(parameters)
+            .lights(lights)
             .labels(labels)
             .overlay(false);
 
@@ -214,6 +221,21 @@ impl Panel {
         let colour = "#ff0000";
 
         for v in self.parameters.iter() {
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Circle::new(x, y, radius, &colour));
+        }
+
+        return list;
+    }
+
+    fn lights(&self, _theme: &str) -> Vec<Circle> {
+        let mut list: Vec<Circle> = Vec::new();
+        let radius = 2.54;
+        let colour = "#ff00ff";
+
+        for v in self.lights.iter() {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 

@@ -24,6 +24,7 @@ pub struct SVG {
     inputs: Option<Vec<Circle>>,
     outputs: Option<Vec<Circle>>,
     parameters: Option<Vec<Circle>>,
+    lights: Option<Vec<Circle>>,
     labels: Option<Vec<Text>>,
     overlay: bool,
 }
@@ -45,6 +46,7 @@ impl SVG {
             inputs: None,
             outputs: None,
             parameters: None,
+            lights: None,
             labels: None,
             overlay: true,
         }
@@ -54,7 +56,6 @@ impl SVG {
         self.styles = Some(styles);
         self
     }
-
 
     pub fn background(mut self, bg: Rect) -> Self {
         self.background = Some(bg);
@@ -93,6 +94,11 @@ impl SVG {
 
     pub fn parameters(mut self, parameters: Vec<Circle>) -> Self {
         self.parameters = Some(parameters);
+        self
+    }
+
+    pub fn lights(mut self, lights: Vec<Circle>) -> Self {
+        self.lights = Some(lights);
         self
     }
 
@@ -157,6 +163,11 @@ impl SVG {
 
         match &self.parameters {
             Some(v) => context.insert("parameters", &v),
+            _ => {}
+        }
+
+        match &self.lights {
+            Some(v) => context.insert("lights", &v),
             _ => {}
         }
 
