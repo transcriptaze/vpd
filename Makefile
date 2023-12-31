@@ -22,7 +22,7 @@ test:
 	cd grammars/command && make test
 	cd grammars/help    && make test
 
-build-all: format
+build-all: format test
 	sass --no-source-map sass/themes:html/css
 # 	cd grammars/command && make wasm
 # 	cd grammars/help    && make wasm

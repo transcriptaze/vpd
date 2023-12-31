@@ -51,7 +51,3 @@ jobs:
 
     - name: Build
       run: make build-all
-
-    - name: Docker ???
-      run: systemctl status docker
-
