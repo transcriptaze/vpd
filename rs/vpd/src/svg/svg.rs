@@ -4,6 +4,7 @@ use tera::Tera;
 
 use crate::svg::Circle;
 use crate::svg::GuideLine;
+use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
 use crate::svg::Style;
@@ -26,6 +27,7 @@ pub struct SVG {
     parameters: Option<Vec<Circle>>,
     lights: Option<Vec<Circle>>,
     labels: Option<Vec<Text>>,
+    parts: Option<Vec<Part>>,
     overlay: bool,
 }
 
@@ -48,6 +50,7 @@ impl SVG {
             parameters: None,
             lights: None,
             labels: None,
+            parts: None,
             overlay: true,
         }
     }
@@ -104,6 +107,11 @@ impl SVG {
 
     pub fn labels(mut self, labels: Vec<Text>) -> Self {
         self.labels = Some(labels);
+        self
+    }
+
+    pub fn parts(mut self, parts: Vec<Part>) -> Self {
+        self.parts = Some(parts);
         self
     }
 
@@ -173,6 +181,11 @@ impl SVG {
 
         match &self.labels {
             Some(v) => context.insert("labels", &v),
+            _ => {}
+        }
+
+        match &self.parts {
+            Some(v) => context.insert("parts", &v),
             _ => {}
         }
 

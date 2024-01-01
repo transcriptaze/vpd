@@ -15,6 +15,7 @@
 - [ ] error handling
 - [ ] Set panel width from module width
 - [ ] `undo`
+- [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Maybe use CSS ??????
 

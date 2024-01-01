@@ -10,6 +10,7 @@ pub struct NewParameterCommand {
     name: String,
     x: panel::X,
     y: panel::Y,
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -21,13 +22,16 @@ struct Object {
 #[derive(Deserialize)]
 struct Parameter {
     #[serde(rename = "name")]
-    name: Option<String>,
+    name: String,
 
     #[serde(rename = "x")]
     x: X,
 
     #[serde(rename = "y")]
     y: Y,
+
+    #[serde(rename = "part")]
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -53,7 +57,7 @@ impl NewParameterCommand {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(NewParameterCommand {
-            name: o.parameter.name.unwrap_or("".to_string()),
+            name: o.parameter.name,
             x: panel::X {
                 reference: o.parameter.x.reference,
                 offset: o.parameter.x.offset,
@@ -62,14 +66,15 @@ impl NewParameterCommand {
                 reference: o.parameter.y.reference,
                 offset: o.parameter.y.offset,
             },
+            part: o.parameter.part,
         })
     }
 }
 
 impl Command for NewParameterCommand {
     fn apply(&self, m: &mut Module) {
-        m.panel
-            .parameters
-            .push(panel::Parameter::new(&self.name, &self.x, &self.y));
+        m.panel.parameters.push(panel::Parameter::new(
+            &self.name, &self.x, &self.y, &self.part,
+        ));
     }
 }

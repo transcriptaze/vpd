@@ -1,5 +1,3 @@
-const parameters = require('./grammars/parameters.js')
-
 module.exports = grammar({
   name: 'command',
 
@@ -30,7 +28,7 @@ module.exports = grammar({
     module: $ => seq(
       'module',
       $.name,
-      $.height,
+      optional($.height),
       $.width,
     ),
 
@@ -58,7 +56,8 @@ module.exports = grammar({
       choice (
         $.absolute,
         $._xy,
-      )
+      ),
+      optional($.part),
     ),
 
     light: $ => seq(
@@ -132,9 +131,10 @@ module.exports = grammar({
       optional($.offset),
     ),
 
-    name: $ => /"[a-zA-Z]([a-zA-Z0-9_-]*?)"/,
+    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_-]*?)"|'[a-zA-Z]([a-zA-Z0-9_-]*?)'/,
     height: $ => '1U',
     width: $ => /[1-9][0-9]*H/,
+    part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
 
     label: $ => seq(
       'label',

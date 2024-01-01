@@ -15,6 +15,7 @@ use crate::panel::Parameter;
 
 use crate::svg::Circle;
 use crate::svg::GuideLine;
+use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
 use crate::svg::Style;
@@ -107,6 +108,7 @@ impl Panel {
         let parameters = self.parameters(theme);
         let lights = self.lights(theme);
         let labels = self.labels(theme);
+        let parts = self.parts(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
             .styles(styles)
@@ -119,6 +121,7 @@ impl Panel {
             .parameters(parameters)
             .lights(lights)
             .labels(labels)
+            .parts(parts)
             .overlay(true);
 
         match svg.to_SVG(theme) {
@@ -255,6 +258,24 @@ impl Panel {
 
         for v in self.labels.iter() {
             list.push(Text::new(v.x, v.y, v.path.to_string(), colour.to_string()));
+        }
+
+        return list;
+    }
+
+    fn parts(&self, _theme: &str) -> Vec<Part> {
+        let mut list: Vec<Part> = Vec::new();
+
+        for v in self.parameters.iter() {
+            match &v.part {
+                Some(_p) => {
+                    let x = v.x.resolve(&self);
+                    let y = v.y.resolve(&self);
+
+                    list.push(Part::new("placeholder", x, y));
+                }
+                None => {}
+            }
         }
 
         return list;

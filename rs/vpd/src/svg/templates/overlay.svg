@@ -28,5 +28,11 @@
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
     {%- endfor %}
     {%- endif %}
+
+    {% if parts -%}
+    {% for v in parts -%}
+    <use href="#{{v.name}}" x="{{v.x}}" y="{{v.y}}" />
+    {%- endfor %}
+    {%- endif %}
   </g>
 {%- endif %}

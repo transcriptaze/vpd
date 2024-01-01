@@ -1,6 +1,6 @@
-=============================
-new module <name> 1U <height>
-=============================
+=======================
+new module "woot" 1U 3H
+=======================
 new module "woot" 1U 3H
 ---
 (command
@@ -8,6 +8,44 @@ new module "woot" 1U 3H
     (module
       (name)
       (height)
+      (width))))
+
+
+=======================
+new module 'woot' 1U 3H
+=======================
+new module 'woot' 1U 3H
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
+
+=====================
+new module woot 1U 3H
+=====================
+new module woot 1U 3H
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
+
+=========================
+new module <name> <width>
+=========================
+new module "woot" 3H
+---
+(command
+  (new
+    (module
+      (name)
       (width))))
 
 
