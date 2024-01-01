@@ -272,7 +272,7 @@ impl Panel {
                     let x = v.x.resolve(&self);
                     let y = v.y.resolve(&self);
 
-                    list.push(Part::new("placeholder", x, y));
+                    list.push(Part::new("RoundBlackKnob", x, y));
                 }
                 None => {}
             }

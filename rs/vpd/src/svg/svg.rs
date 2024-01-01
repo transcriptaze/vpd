@@ -205,10 +205,16 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     let overlay = include_str!("templates/overlay.svg");
     let mut widgets = include_str!("templates/widgets.svg");
 
+    let mut screw = include_str!("templates/components/PanelScrew.svg");
+    let mut rbk = include_str!("templates/components/RoundBlackKnob.svg");
+
     if theme == "dark" {
         styles = include_str!("templates/dark/styles.svg");
         backgrounds = include_str!("templates/dark/backgrounds.svg");
         widgets = include_str!("templates/dark/widgets.svg");
+
+        screw = include_str!("templates/components/dark/PanelScrew.svg");
+        rbk = include_str!("templates/components/dark/RoundBlackKnob.svg");
     }
 
     tera.add_raw_template("panel", &panel).unwrap();
@@ -219,4 +225,7 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("guidelines", &guidelines).unwrap();
     tera.add_raw_template("overlay", &overlay).unwrap();
     tera.add_raw_template("widgets", &widgets).unwrap();
+
+    tera.add_raw_template("PanelScrew", &screw).unwrap();
+    tera.add_raw_template("RoundBlackKnob", &rbk).unwrap();
 }
