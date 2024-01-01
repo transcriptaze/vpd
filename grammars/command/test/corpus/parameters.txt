@@ -1,3 +1,17 @@
+========================
+new param "E" @10mm,10mm
+========================
+new param "E" @10mm,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
 ============================
 new parameter "E" @10mm,10mm
 ============================
@@ -12,39 +26,10 @@ new parameter "E" @10mm,10mm
         (y)))))
 
 
-=======================================
-new param "E" @10mm,10mm RoundBlackKnob
-=======================================
-new param "E" @10mm,10mm RoundBlackKnob
----
-(command
-  (new
-    (parameter
-      (name)
-      (absolute
-        (x)
-        (y))
-      (part))))
-
-
 ===========================================
-new param "E" @10mm,10mm "Round Black Knob"
+new parameter "E" @10mm,10mm RoundBlackKnob
 ===========================================
-new param "E" @10mm,10mm "Round Black Knob"
----
-(command
-  (new
-    (parameter
-      (name)
-      (absolute
-        (x)
-        (y))
-      (part))))
-
-=========================================
-new param "E" @10mm,10mm 'Round Black Knob'
-=========================================
-new param "E" @10mm,10mm 'Round Black Knob'
+new parameter "E" @10mm,10mm RoundBlackKnob
 ---
 (command
   (new
@@ -56,10 +41,39 @@ new param "E" @10mm,10mm 'Round Black Knob'
       (part))))
 
 
-======================
-new param "E" left,top
-======================
-new param "E" left,top
+===============================================
+new parameter "E" @10mm,10mm "Round Black Knob"
+===============================================
+new parameter "E" @10mm,10mm "Round Black Knob"
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (x)
+        (y))
+      (part))))
+
+===============================================
+new parameter "E" @10mm,10mm 'Round Black Knob'
+===============================================
+new parameter "E" @10mm,10mm 'Round Black Knob'
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (x)
+        (y))
+      (part))))
+
+
+==========================
+new parameter "E" left,top
+==========================
+new parameter "E" left,top
 ---
 (command
   (new
@@ -71,10 +85,10 @@ new param "E" left,top
         (reference)))))
 
 
-=======================================
-new param "E" left,top "RoundBlackKnob"
-=======================================
-new param "E" left,top "RoundBlackKnob"
+===========================================
+new parameter "E" left,top "RoundBlackKnob"
+===========================================
+new parameter "E" left,top "RoundBlackKnob"
 ---
 (command
   (new
@@ -87,10 +101,10 @@ new param "E" left,top "RoundBlackKnob"
       (part))))
 
 
-==================================
-new param "E" left+4.5mm,top+4.5mm
-==================================
-new param "E" left+4.5mm,top+4.5mm
+======================================
+new parameter "E" left+4.5mm,top+4.5mm
+======================================
+new parameter "E" left+4.5mm,top+4.5mm
 ---
 (command
   (new
@@ -104,10 +118,10 @@ new param "E" left+4.5mm,top+4.5mm
         (offset)))))
 
 
-===================================================
-new param "E" left+4.5mm,top+4.5mm "RoundBlackKnob"
-===================================================
-new param "E" left+4.5mm,top+4.5mm "RoundBlackKnob"
+=======================================================
+new parameter "E" left+4.5mm,top+4.5mm "RoundBlackKnob"
+=======================================================
+new parameter "E" left+4.5mm,top+4.5mm "RoundBlackKnob"
 ---
 (command
   (new
@@ -122,10 +136,10 @@ new param "E" left+4.5mm,top+4.5mm "RoundBlackKnob"
       (part))))
 
 
-===================
-new param "E" v1,h1
-===================
-new param "E" v1,h1
+=======================
+new parameter "E" v1,h1
+=======================
+new parameter "E" v1,h1
 ---
 (command
   (new
@@ -137,10 +151,10 @@ new param "E" v1,h1
         (reference)))))
 
 
-====================================
-new param "E" v1,h1 "RoundBlackKnob"
-====================================
-new param "E" v1,h1 "RoundBlackKnob"
+========================================
+new parameter "E" v1,h1 "RoundBlackKnob"
+========================================
+new parameter "E" v1,h1 "RoundBlackKnob"
 ---
 (command
   (new
@@ -153,10 +167,10 @@ new param "E" v1,h1 "RoundBlackKnob"
       (part))))
 
 
-===============================
-new param "E" v1+4.5mm,h1+4.5mm
-===============================
-new param "E" v1+4.5mm,h1+4.5mm
+===================================
+new parameter "E" v1+4.5mm,h1+4.5mm
+===================================
+new parameter "E" v1+4.5mm,h1+4.5mm
 ---
 (command
   (new
@@ -170,10 +184,10 @@ new param "E" v1+4.5mm,h1+4.5mm
         (offset)))))
 
 
-================================================
-new param "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
-================================================
-new param "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
+====================================================
+new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
+====================================================
+new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
 ---
 (command
   (new

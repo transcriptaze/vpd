@@ -4,10 +4,24 @@ new module "lfo" 10H
 new module "lfo" 50mm
 
 
+new param     "E" @10mm,10mm
+new parameter "E" @10mm,10mm
+new parameter "E" @10mm,10mm RoundBlackKnob
+new parameter "E" @10mm,10mm "Round Black Knob"
+new parameter "E" @10mm,10mm 'Round Black Knob'
+new parameter "E" left,top
+new parameter "E" left,top "RoundBlackKnob"
+new parameter "E" left+4.5mm,top+4.5mm
+new parameter "E" left+4.5mm,top+4.5mm "RoundBlackKnob"
+new parameter "E" v1,h1
+new parameter "E" v1,h1 "RoundBlackKnob"
+new parameter "E" v1+4.5mm,h1+4.5mm
+new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
+
+
 
 
 new module "woot" 1U 5H
-
 new guide    vertical @4.5mm
 new guide    vertical @4.5h
 new guide    vertical @4.5H

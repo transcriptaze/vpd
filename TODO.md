@@ -37,7 +37,8 @@
 - [ ] Enable input autocomplete attribute
 
 - [ ] _module_
-      - [x] `new module <name> [height] <width>`
+      - [x] `new module <name> [1U] 10H`
+      - [ ] `new module <name> [1U] 50mm`
       - [ ] `set` module name/width/height
       - [ ] `export module [gzip]`
       - [ ] `export module svg [light|dark]`
@@ -78,7 +79,7 @@
       - [x] `new parameter <name> <absolute>`
       - [x] `new parameter <name> <geometry>`
       - [x] `new parameter <name> <guidelines>`
-      - [ ] `new parameter <name> <absolute|geometry|guidelines> [symbol]`
+      - [x] `new parameter <name> <absolute|geometry|guidelines> [symbol]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
