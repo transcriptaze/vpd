@@ -1,7 +1,7 @@
 .DEFAULT_GOAL=debug
 
+.PHONY: clean
 .PHONY: format
-.PHONY: sass
 
 clean:
 	rm -rf bin/*
@@ -10,9 +10,6 @@ format:
 	go fmt ./...
 
 build: format
-# 	npx eslint --fix ./html/javascript/components/*.js
-# 	npx eslint --fix ./html/javascript/*.js
-	sass --no-source-map sass/themes:html/css
 	go build -o bin/ ./...
 
 test: build
@@ -33,12 +30,8 @@ build-all: test vet
 	env GOOS=windows GOARCH=amd64 GOWORK=off go build -trimpath -o dist/$(DIST)/windows ./...
 
 debug: build
-	./bin/vpd
+	./bin/vpd --debug --port 9876
 
 run: build
 	./bin/vpd
-
-sass: 
-	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
-
 

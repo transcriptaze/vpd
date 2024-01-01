@@ -15,11 +15,11 @@ func SetDebug(b bool) {
 	debug = b
 }
 
-func Run(config map[string]any) {
-	run(os.DirFS("./html"))
+func Run(port uint16) {
+	run(fmt.Sprintf("%d", port), os.DirFS("../html"))
 }
 
-func run(html fs.FS) {
+func run(port string, html fs.FS) {
 	infof("httpd", "initialising")
 
 	// ... initialise HTTP server
@@ -33,11 +33,9 @@ func run(html fs.FS) {
 	http.Handle("/javascript/", http.FileServer(fsys))
 	http.Handle("/favicon.ico", http.FileServer(fsys))
 	http.Handle("/", http.FileServer(fsys))
-	//	http.HandleFunc("/", httpd.dispatch)
 
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "9876"
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
 	}
 
 	infof("HTTPD", "listening on port %v", port)

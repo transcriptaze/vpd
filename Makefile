@@ -23,9 +23,12 @@ build-all: test
 	cd grammars/command && make wasm
 	cd grammars/help    && make wasm
 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
+	cd go               && make build-all
 
 build-release: build-all
 	cd rs/vpd && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
+	cd go     && make build-all
+
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
 
@@ -40,6 +43,9 @@ run-python:
 
 run-nodejs:
 	npx http-server html --port 9876
+
+run-go:
+	cd go && make run
 
 run: run-python
 

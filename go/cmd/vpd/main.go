@@ -2,25 +2,19 @@ package main
 
 import (
 	_ "embed"
-	"encoding/json"
 	"flag"
 	"fmt"
-	"log"
-	"os"
 
 	"github.com/twystd/vcv-panel-designer/go/httpd"
 )
 
-//go:embed config.json
-var configuration []byte
-
-const VERSION = "v0.1.0"
+const VERSION = "v0.0.0"
 
 var options = struct {
-	conf  string
+	port  uint
 	debug bool
 }{
-	conf:  "",
+	port:  9876,
 	debug: false,
 }
 
@@ -29,26 +23,10 @@ func main() {
 	fmt.Printf("VCV Panel Designer %v\n", VERSION)
 	fmt.Println()
 
-	config := map[string]any{}
-	if err := json.Unmarshal(configuration, &config); err != nil {
-		log.Fatalf("Error parsing default configuration: %v", err)
-	}
-
-	flag.StringVar(&options.conf, "config", options.conf, "(optional) configuration file")
+	flag.UintVar(&options.port, "port", options.port, "(optional) HTTP port")
 	flag.BoolVar(&options.debug, "debug", options.debug, "enables internal debug mode")
 	flag.Parse()
 
-	flag.Visit(func(f *flag.Flag) {
-		switch f.Name {
-		case "config":
-			if bytes, err := os.ReadFile(options.conf); err != nil {
-				log.Fatalf("%v", err)
-			} else if err := json.Unmarshal(bytes, &config); err != nil {
-				log.Fatalf("invalid configuration '%v' (%v)", options.conf, err)
-			}
-		}
-	})
-
 	httpd.SetDebug(options.debug)
-	httpd.Run(config)
+	httpd.Run(uint16(options.port))
 }
