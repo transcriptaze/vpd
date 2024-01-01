@@ -53,9 +53,6 @@ header {
   padding-left: 12px;
   padding-right: 12px;
 }
-header #logo {
-  height: 80px;
-}
 
 main {
   grid-row: 1/3;

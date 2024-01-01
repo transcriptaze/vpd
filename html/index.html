@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <img id="logo" src="../images/logo.svg" draggable="false"></a>
+      <vpd-logo id="logo"></vpd-logo>
     </header>
   
     <main>
@@ -88,6 +88,10 @@
       </div>
     </template>
 
+    <template id="template-logo">
+      <img class="vpd-logo" src="../images/logo.png" draggable="false"></a>
+    </template>
+
   </body>
 
   <!-- SCRIPTS -->
@@ -124,6 +128,7 @@
             .addEventListener('dropped', (e) => {
               VPD.onDropped(e.detail.file)
             })
+
   </script>
 </html>
 

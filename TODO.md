@@ -7,27 +7,16 @@
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
 - [ ] Show errors
-
-- [ ] Hide logo when overlapped by SVG
-      - [ ] web component
-
-- [ ] _command_ web component
-
+- [x] Hide logo when overlapped by SVG
 - [x] Macro keys
-      - [x] web component
-      - [x] programmable
-      - [x] save/restore
-
 - [x] _info_ panel
 - [x] _export_
-      - [x] Don't export overlay
-
+- [ ] _command_ web component
 - [ ] error handling
-- [x] Double buffer panel redraws
-- [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
-      - [ ] Maybe use CSS ??????
 - [ ] Set panel width from module width
 - [ ] `undo`
+- [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
+      - [ ] Maybe use CSS ??????
 
 ### Overlay
     - [ ] panel screws
