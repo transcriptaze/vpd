@@ -8,8 +8,8 @@ use crate::panel;
 
 pub struct NewInputCommand {
     name: String,
-    x: panel::Anchor,
-    y: panel::Anchor,
+    x: panel::X,
+    y: panel::Y,
 }
 
 #[derive(Deserialize)]
@@ -24,14 +24,23 @@ struct Input {
     name: Option<String>,
 
     #[serde(rename = "x")]
-    x: Anchor,
+    x: X,
 
     #[serde(rename = "y")]
-    y: Anchor,
+    y: Y,
 }
 
 #[derive(Deserialize)]
-struct Anchor {
+struct X {
+    #[serde(rename = "reference")]
+    reference: String,
+
+    #[serde(rename = "offset")]
+    offset: f32,
+}
+
+#[derive(Deserialize)]
+struct Y {
     #[serde(rename = "reference")]
     reference: String,
 
@@ -45,11 +54,11 @@ impl NewInputCommand {
 
         Ok(NewInputCommand {
             name: o.input.name.unwrap_or("".to_string()),
-            x: panel::Anchor {
+            x: panel::X {
                 reference: o.input.x.reference,
                 offset: o.input.x.offset,
             },
-            y: panel::Anchor {
+            y: panel::Y {
                 reference: o.input.y.reference,
                 offset: o.input.y.offset,
             },

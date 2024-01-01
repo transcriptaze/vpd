@@ -57,13 +57,33 @@ impl Command for NewGuideCommand {
         };
 
         let reference = self.reference.as_str();
+        let orientation = match (self.orientation.as_str(), reference) {
+            ("", "left") => "vertical",
+            ("", "centre") => "vertical",
+            ("", "center") => "vertical",
+            ("", "right") => "vertical",
+
+            ("", "top") => "horizontal",
+            ("", "middle") => "horizontal",
+            ("", "bottom") => "horizontal",
+
+            ("", v) => match m.panel.guides.get(v) {
+                Some(g) => match g.orientation.as_str() {
+                    "vertical" => "vertical",
+                    "horizontal" => "horizontal",
+                    _ => "",
+                },
+                _ => "",
+            },
+
+            (o, _) => o,
+        };
 
         if validate(&name, &reference, &m) {
-            m.panel.guides.entry(name).or_insert(Guide::new(
-                &self.orientation,
-                &reference,
-                self.offset,
-            ));
+            m.panel
+                .guides
+                .entry(name)
+                .or_insert(Guide::new(&orientation, &reference, self.offset));
         }
     }
 }

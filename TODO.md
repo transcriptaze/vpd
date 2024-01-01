@@ -67,43 +67,48 @@
 - [ ] _inputs_
       - [x] `new input <name> <absolute>`
       - [x] `new input <name> <geometry>`
-      - [ ] `new input <name> <guidelines>`
+      - [x] `new input <name> <guidelines>`
       - [ ] `new input <name> <absolute|geometry|guidelines> [symbol]`
+      - [ ] discard/warn duplicates
+      - [ ] delete
+      - [ ] set
       - [ ] help
 
 - [ ] _outputs_
-      - [ ] `new output <name> <absolute|geometry|guidelines> [symbol]`
       - [x] absolute
       - [x] relative to geometry
-      - [ ] relative to guidelines
-      - [ ] symbol
+      - [x] relative to guidelines
+      - [ ] `new output <name> <absolute|geometry|guidelines> [symbol]`
+      - [ ] discard/warn duplicates
+      - [ ] delete
+      - [ ] set
       - [ ] help
 
 - [ ] _parameters_
+      - [x] `new parameter <name> <absolute>`
+      - [x] `new parameter <name> <geometry>`
+      - [x] `new parameter <name> <guidelines>`
       - [ ] `new parameter <name> <absolute|geometry|guidelines> [symbol]`
-      - [x] absolute
-      - [x] relative to geometry
-      - [ ] relative to guidelines
-      - [ ] symbol
+      - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
 
 - [ ] _lights_
-      - [ ] `new light <name> <absolute>`
-      - [ ] `new light <name> <geometry>`
-      - [ ] `new light <name> <guidelines>`
+      - [x] `new light <name> <absolute>`
+      - [x] `new light <name> <geometry>`
+      - [x] `new light <name> <guidelines>`
       - [ ] `new light <name> <absolute|geometry|guidelines> [symbol]`
-      - [ ] help
+      - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
 
 - [ ] _widget_
+      - [ ] `new widget <name> <absolute>`
+      - [ ] `new widget <name> <geometry>`
+      - [ ] `new widget <name> <guidelines>`
       - [ ] `new widget <name> <absolute|geometry|guidelines> [symbol]`
-      - [ ] relative to geometry
-      - [ ] relative to guidelines
-      - [ ] symbol
       - [ ] delete
       - [ ] set
       - [ ] help
