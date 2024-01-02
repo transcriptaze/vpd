@@ -25,7 +25,7 @@ build-all: test
 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 	cd go               && make build-all
 
-release: build-all
+build-release: build-all
 	mkdir -p dist/darwin/vpd
 	mkdir -p dist/linux/vpd
 	mkdir -p dist/windows/vpd
