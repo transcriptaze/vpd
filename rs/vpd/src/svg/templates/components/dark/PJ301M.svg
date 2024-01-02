@@ -1,0 +1,60 @@
+    <g id="PJ301M" transform="scale(0.3)">
+      <linearGradient id="PJ301M1" x1="0" y1="-11.61" x2="0" y2="11.77" gradientUnits="userSpaceOnUse">
+        <stop offset="0" style="stop-color:#828181" />
+        <stop offset="1" style="stop-color:#575757" />
+      </linearGradient>
+  
+      <linearGradient id="PJ301M2" x1="0" y1="-11.01" x2="0" y2="11.19" gradientUnits="userSpaceOnUse">
+        <stop offset="0.00559" style="stop-color:#ffffff" />
+        <stop offset="1" style="stop-color:#7a7a7a" />
+      </linearGradient>
+  
+      <linearGradient id="PJ301M3" x1="0" y1="1.46" x2="0" y2="-1.31" gradientUnits="userSpaceOnUse">
+        <stop offset="0" style="stop-color:#fffbfd" />
+        <stop offset="1" style="stop-color:#808080" />
+      </linearGradient>
+  
+      <linearGradient id="PJ301M4" x1="0" y1="8.82" x2="0" y2="-8.66" gradientUnits="userSpaceOnUse">
+        <stop offset="0" style="stop-color:#b0aeae" />
+        <stop offset="1" style="stop-color:#616161" />
+      </linearGradient>    
+  
+      <linearGradient id="PJ301M5" x1="0" y1="-7.55" x2="0" y2="7.71" gradientUnits="userSpaceOnUse">
+        <stop offset="0" style="stop-color:#fffefe" />
+        <stop offset="1" style="stop-color:#545454" />
+      </linearGradient>
+  
+      <linearGradient id="PJ301M6" x1="0" y1="5.59" x2="0" y2="-5.44" gradientUnits="userSpaceOnUse">
+        <stop offset="0" style="stop-color:#fffefe" />
+        <stop offset="1" style="stop-color:#706c6c" />
+      </linearGradient>
+  
+      <path fill="url(#PJ301M1)"
+            d="M0,11.76541 c-6.44467,0,-11.68796,-5.24279,-11.68796,-11.68697   c0,-6.44517,5.24329,-11.68796,11.68796,-11.68796s11.68747,5.24279,11.68747,11.68797 c0,6.444,-5.243,11.687,-11.687,11.687 z" />
+  
+      <circle fill="url(#PJ301M2)" cx="0" cy="0.08965" r="11.10243" />
+      <circle fill="#e0e0e0"       cx="0" cy="0.08965" r="10.44346" />
+    
+      <path fill="url(#PJ301M3)"
+            d="M-10.32864,-1.30842 l-0.42968,0.41685 c-0.44,0.579,-0.437,1.381,0.008,1.957 l0.39828,0.36948l20.70001,0.02984 l0.40244,-0.38429   c0.45989,-0.57286,0.46323,-1.38741,0.00805,-1.96402 l-0.41049,-0.40101l-20.677,-0.024 z" />
+  
+      <circle fill="url(#PJ301M4)" cx="0" cy="0.07791" r="8.73843" />
+      <circle fill="#1f1f1f"       cx="0" cy="0.07791" r="8.16656" />
+  
+      <path opacity="0.28" fill="#404040"
+            d="M0,-7.55322 c4.21318,0,7.62864,3.78218,7.62864,8.44773 s-3.41546,9.28764,-7.62864,9.28764 s-7.62864,-4.62209,-7.62864,-9.28764   s3.415,-8.448,7.629,-8.448 z" />
+    
+      <circle fill="url(#PJ301M5)" cx="0" cy="0.07798" r="7.6312" />
+      <circle fill="#e0e0e0"       cx="0" cy="0.07798" r="6.79996" />
+      <g opacity="0.43">
+        <path fill="#404040"
+              d="M0,-7.10422 c4.17474,0,7.56128,3.25714,7.62286,7.29614   c0.00055,-0.03833,0.00574,-0.0755,0.00574,-0.11395c0,-4.2146,-3.41541,-7.63116,-7.6286,-7.63116s-7.629,3.417,-7.629,7.631   c0,0.03845,0.00519,0.07562,0.00574,0.11395 c0.062,-4.039,3.449,-7.296,7.623,-7.296 z" />
+        <path opacity="0.28" fill="#404040"
+              d="M-7.62277,0.19192 c-0.00055,0.03723,-0.00574,0.07324,-0.00574,0.1106 c0,4.09058,3.41547,7.40668,7.62866,7.40668   c-4.175,0,-7.561,-3.356,-7.623,-7.517 z" />
+        <path opacity="0.28" fill="red"
+              d="M0,7.70919 c4.2132,0,7.6286,-3.3161,7.6286,-7.40668 c0,-0.03735,-0.00519,-0.07336,-0.00574,-0.1106   c-0.062,4.162,-3.448,7.517,-7.623,7.517 z" />
+      </g>
+    
+      <circle fill="url(#PJ301M6)" cx="0" cy="0.07798" r="5.51413" />
+      <circle                      cx="0" cy="0.07791" r="4.86733" />
+    </g>

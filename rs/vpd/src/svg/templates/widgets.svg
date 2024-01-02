@@ -5,4 +5,5 @@
 
 {% include "PanelScrew"      %}
 {% include "RoundBlackKnob"  %}
+{% include "PJ301M"          %}
   </defs>

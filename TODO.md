@@ -1,7 +1,7 @@
 # TODO
 
 - [x] github workflow
-- [ ] github 'nightlies'
+- [ ] github 'nightly' build
 - [ ] gzip project file
 - [x] Load project file
       - [ ] web component
