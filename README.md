@@ -48,7 +48,26 @@ The web app is currently hosted on _Cloudflare Pages_:
 
 ## Running locally
 
-VPD is a static web application that runs entirely in the browser. Running it locally requires just the _wwww_ files and a web server
+VPD is a static web application that runs entirely in the browser. There are a couple of ways to run it locally:
+
+### VPD executable
+
+1. Download the _VPD_ executable from a [release](https://github.com/transcriptaze/vpd/releases) or the latest 'nightly' build.
+2. Run the VPD application.
+3. Open the [http://localhost:9876](http://localhost:9876) in your browser.
+
+#### Command line
+```
+VPD [--debug] [--port <port>] [--html <folder>]
+
+Options:
+--debug          Enables verbose internal debug logging
+--port <port>    Serves the web application on the specifed port (the default port is 9876)
+--html <folder>  External folder for the HTML files - by default it serves the web application embedded in
+                 the executable. A tar.gz file with the base version of the HTML can be downloaded from the 
+                 Github releases or the latest 'nightly' build.
+```
+
 
 1. Download the _VPD_ artifact from either a release or a nightly build and unzip it to a folder::
 ```

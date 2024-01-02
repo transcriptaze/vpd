@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/twystd/vcv-panel-designer/go/html"
 	"github.com/twystd/vcv-panel-designer/go/log"
 )
 
@@ -15,8 +16,12 @@ func SetDebug(b bool) {
 	debug = b
 }
 
-func Run(port uint16) {
-	run(fmt.Sprintf("%d", port), os.DirFS("../html"))
+func Run(HTML string, port uint16) {
+	if HTML != "" {
+		run(fmt.Sprintf("%d", port), os.DirFS(HTML))
+	} else {
+		run(fmt.Sprintf("%d", port), html.HTML)
+	}
 }
 
 func run(port string, html fs.FS) {

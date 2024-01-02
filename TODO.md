@@ -18,6 +18,7 @@
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Maybe use CSS ??????
+- [x] Embed HTML in Go binary
 
 ### Overlay
     - [ ] panel screws

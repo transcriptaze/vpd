@@ -10,6 +10,7 @@ format:
 	go fmt ./...
 
 build: format
+	cp -r ../html .
 	go build -o bin/ ./...
 
 test: build
@@ -30,7 +31,7 @@ build-all: test vet
 	env GOOS=windows GOARCH=amd64 GOWORK=off go build -trimpath -o dist/$(DIST)/windows ./...
 
 debug: build
-	./bin/vpd --debug --port 9876
+	./bin/vpd --debug --port 9876 --html ../HTML
 
 run: build
 	./bin/vpd
