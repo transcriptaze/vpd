@@ -56,17 +56,17 @@ jobs:
     - name: Upload Linux-x64 artifact
       uses: actions/upload-artifact@v3
       with:
-        path: go/bin/dist/linux/*
+        path: go/dist/linux/*
         name: vpd-0.0.0-linux.tar.gz
 
     - name: Upload MacOS-x64 artifact
       uses: actions/upload-artifact@v3
       with:
-        path: go/bin/dist/darwin/*
+        path: go/dist/darwin/*
         name: vpd-0.0.0-darwin.tar.gz
 
     - name: Upload Windows artifact
       uses: actions/upload-artifact@v3
       with:
-        path: go/bin/dist/windows/*
+        path: go/dist/windows/*
         name: vpd-0.0.0-windows.tar.gz

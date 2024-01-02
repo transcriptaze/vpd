@@ -1,4 +1,5 @@
 ![build](https://github.com/transcriptaze/vpd/workflows/build/badge.svg)
+![nightly](https://github.com/transcriptaze/vpd/workflows/nightly/badge.svg)
 
 # VPD: VCV Rack 2 Panel Designer
 
