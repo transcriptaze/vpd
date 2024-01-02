@@ -52,13 +52,13 @@ VPD is a static web application that runs entirely in the browser. There are a c
 
 ### VPD executable
 
-1. Download the _VPD_ executable from a [release](https://github.com/transcriptaze/vpd/releases) or the latest 'nightly' build.
+1. Download the _vpd_ executable from a [release](https://github.com/transcriptaze/vpd/releases) or the latest 'nightly' build.
 2. Run the VPD application.
 3. Open the [http://localhost:9876](http://localhost:9876) in your browser.
 
 #### Command line
 ```
-VPD [--debug] [--port <port>] [--html <folder>]
+vpd [--debug] [--port <port>] [--html <folder>]
 
 Options:
 --debug          Enables verbose internal debug logging
@@ -68,32 +68,25 @@ Options:
                  Github releases or the latest 'nightly' build.
 ```
 
+### Python
 
-1. Download the _VPD_ artifact from either a release or a nightly build and unzip it to a folder::
-```
-wget .... 
-unzip ....
-```
-
-2. Start an HTTP server to serve the unzipped files, e.g.:
-
-- _Python_
+1. Download the _HTML_ artifact from either a release or a nightly build and unzip it to a folder::
+2. Start an HTTP server to serve the unzipped files:
    ```
    cd vpd
    python3 -m http.server 9876 -d html
    ```
+
+### NodeJS
+
+1. Download the _HTML_ artifact from either a release or a nightly build and unzip it to a folder::
+2. Start an HTTP server to serve the unzipped files:
 - _NodeJS_
    ```
    cd vpd
    npx http-server html --port 9876
    ```
-- _Go_
-
-   ```
-   cd vpd
-   ./vpd
-   ```
-
+   
 ## Building from source
 
 You need a **bunch** of tools:
