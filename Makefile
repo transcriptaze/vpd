@@ -25,9 +25,14 @@ build-all: test
 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 	cd go               && make build-all
 
-build-release: build-all
+release: build-all
+	mkdir -p dist/darwin/vpd
+	mkdir -p dist/linux/vpd
+	mkdir -p dist/windows/vpd
+	mkdir -p dist/html
 	cd rs/vpd && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
 	cd go     && make build-all
+	cp -r html/* dist/html/
 
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css

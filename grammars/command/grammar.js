@@ -132,8 +132,8 @@ module.exports = grammar({
     ),
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_-]*?)"|'[a-zA-Z]([a-zA-Z0-9_-]*?)'/,
-    height: $ => '1U',
-    width: $ => /[1-9][0-9]*H/,
+    height: $ => /1U|128.5mm/,
+    width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
     part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
 
     label: $ => seq(

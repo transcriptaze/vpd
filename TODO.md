@@ -1,7 +1,7 @@
 # TODO
 
-- [x] github workflow
 - [ ] github 'nightly' build
+- [ ] github 'cloudflare' build
 - [ ] gzip project file
 - [x] Load project file
       - [ ] web component
@@ -13,19 +13,23 @@
 - [x] _export_
 - [ ] _command_ web component
 - [ ] error handling
-- [ ] Set panel width from module width
+- [ ] Set CSS panel element width from module width
 - [ ] `undo`
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Maybe use CSS ??????
 - [x] Embed HTML in Go binary
 
+
 ### Overlay
-    - [ ] panel screws
-          - [x] light theme
-          - [x] dark theme
-          - [ ] create in SVG for panel width
-          - [ ] 'show/hide panel screws'
+- [ ] panel screws
+      - [x] light theme
+      - [x] dark theme
+      - [ ] create in SVG for panel width
+      - [ ] 'show/hide panel screws'
+- [ ] Only add used widgets to defs
+- [ ] Use placeholder for unknown parts
+
 
 ### Fonts 
 - [ ] load all on startup
@@ -33,6 +37,7 @@
 - [ ] _woff_
 - [ ] _woff2_
 - [ ] Load/drop font file
+
 
 ### Commands
 - [ ] Enable input autocomplete attribute
@@ -65,6 +70,7 @@
       - [ ] delete
       - [ ] set
       - [ ] help
+      - [ ] `decorate`
 
 - [ ] _outputs_
       - [x] absolute
@@ -75,6 +81,7 @@
       - [ ] delete
       - [ ] set
       - [ ] help
+      - [ ] `decorate`
 
 - [ ] _parameters_
       - [x] `new parameter <name> <absolute>`
@@ -85,6 +92,7 @@
       - [ ] delete
       - [ ] set
       - [ ] help
+      - [ ] `decorate`
 
 - [ ] _lights_
       - [x] `new light <name> <absolute>`
@@ -95,6 +103,7 @@
       - [ ] delete
       - [ ] set
       - [ ] help
+      - [ ] `decorate`
 
 - [ ] _widget_
       - [ ] `new widget <name> <absolute>`
@@ -104,6 +113,7 @@
       - [ ] delete
       - [ ] set
       - [ ] help
+      - [ ] `decorate`
 
 - [ ] _text_
       - [x] `new text <text> <absolute>`

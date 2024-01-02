@@ -37,9 +37,22 @@ new module woot 1U 3H
       (width))))
 
 
-=========================
-new module <name> <width>
-=========================
+==============================
+new module "woot" 128.5mm 50mm
+==============================
+new module "woot" 128.5mm 50mm
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
+
+====================
+new module "woot" 3H
+====================
 new module "woot" 3H
 ---
 (command

@@ -23,14 +23,14 @@ switch back and forth between between text and paths in _Inkscape_ when creating
 
 ### Getting Started
 
-1. Open the web application in your browser.
-2. Follow the _Getting started_ instructions in the [User Guide](GUIDE.md).
+1. Open the VPD [web application](https://vpd.pages.dev) in your browser.
+2. Follow the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_ to create a basic panel.
 3. Export the SVG files:
    ```
-   export module SVG
+   export module svg
    ```
    ```
-   export module SVG dark
+   export module svg dark
    ```
 4. Copy the SVG files to the plugin `res` folder.
 5. Generate a module using the [VCV helper script](https://vcvrack.com/manual/Panel):
@@ -49,13 +49,13 @@ The web app is currently hosted on _Cloudflare Pages_:
 
 ## Running locally
 
-VPD is a static web application that runs entirely in the browser. There are a couple of ways to run it locally:
+### VPD application
 
-### VPD executable
-
-1. Download the _vpd_ executable from a [release](https://github.com/transcriptaze/vpd/releases) or the latest 'nightly' build.
-2. Run the VPD application.
-3. Open the [http://localhost:9876](http://localhost:9876) in your browser.
+1. Download the _vpd_ executable archive from a [release](https://github.com/transcriptaze/vpd/releases) or the latest
+   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and _untar_ it (_unzip_ on Windows).
+2. Open the VPD application in a terminal window.
+3. Open [http://localhost:9876](http://localhost:9876) in your browser.
+4. Voilá
 
 #### Command line
 ```

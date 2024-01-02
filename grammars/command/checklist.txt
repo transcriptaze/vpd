@@ -1,9 +1,14 @@
+new module  lfo  1U 10H
+new module 'lfo' 1U 10H
 new module "lfo" 1U 10H
 new module "lfo" 1U 50mm
+new module "lfo" 128.5mm 10H
+new module "lfo" 128.5mm 50mm
 new module "lfo" 10H
 new module "lfo" 50mm
 
-
+new param      E @10mm,10mm
+new param     'E' @10mm,10mm
 new param     "E" @10mm,10mm
 new parameter "E" @10mm,10mm
 new parameter "E" @10mm,10mm RoundBlackKnob
@@ -21,7 +26,6 @@ new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
 
 
 
-new module "woot" 1U 5H
 new guide    vertical @4.5mm
 new guide    vertical @4.5h
 new guide    vertical @4.5H
@@ -55,5 +59,6 @@ set origin right-10mm,bottom-10mm
 
 new label "uiop" @22.2mm,33.3mm
 
-export svg light
-export svg dark
+export module svg
+export module svg light
+export module svg dark

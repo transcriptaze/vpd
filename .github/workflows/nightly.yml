@@ -51,29 +51,28 @@ jobs:
         wasm-pack --version
 
     - name: Build
-      run: make build-all
+      run: make build-release
 
     - name: Upload Linux-x64 artifact
       uses: actions/upload-artifact@v3
       with:
-        path: go/dist/linux/*
+        path: dist/linux/*
         name: vpd-0.0.0-linux
 
     - name: Upload MacOS-x64 artifact
       uses: actions/upload-artifact@v3
       with:
-        path: go/dist/darwin/*
-        name: vpd-0.0.0-darwin]
+        path: dist/darwin/*
+        name: vpd-0.0.0-darwin
 
     - name: Upload Windows artifact
       uses: actions/upload-artifact@v3
       with:
-        path: go/dist/windows/*
+        path: dist/windows/*
         name: vpd-0.0.0-windows
-
 
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v3
       with:
-        path: html/*
+        path: dist/html/*
         name: vpd-0.0.0-html
