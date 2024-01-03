@@ -117,8 +117,8 @@ export function onSave () {
   save(blob)
 }
 
-export function onExport () {
-  console.log('export')
+export function onExport (event, theme) {
+  execute(`export module svg ${theme}`)
 }
 
 function execute (cmd) {

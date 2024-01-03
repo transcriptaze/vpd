@@ -6,7 +6,7 @@ use crate::svg::Circle;
 use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
-use crate::svg::PrettyPrinter;
+// use crate::svg::PrettyPrinter;
 use crate::svg::Rect;
 use crate::svg::Style;
 use crate::svg::Text;
@@ -191,9 +191,12 @@ impl SVG {
         }
 
         let svg = tera.render("panel", &context).unwrap();
-        let pp = PrettyPrinter::new();
 
-        Ok(pp.prettify(&svg))
+        return Ok(svg.to_string());
+
+        // let pp = PrettyPrinter::new();
+        //
+        // Ok(pp.prettify(&svg))
     }
 }
 

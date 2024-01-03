@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     version="1.1"
+     width="55.72mm"
+     height="138.5mm"
+     viewBox="0 0 45.720001220703125 128.5">
+
+
+
+
+      
+  <defs>
+    <linearGradient id="background">
+      <stop offset="0%"   stop-color="#ebebeb" />
+      <stop offset="100%" stop-color="#e1e1e1" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="45.720001220703125" height="128.5" class="border" />
+
+  <g inkscape:groupmode="layer" inkscape:label="components" style="display:none"></g>
+
+
+  <g inkscape:groupmode="layer" inkscape:label="background">
+    <rect x="0" y="0" width="45.720001220703125" height="128.5" fill="url(#background)" />
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="title"></g>
+  <g inkscape:groupmode="layer" inkscape:label="controls"></g>
+  <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="labels"></g>
+
+  <g inkscape:groupmode="layer" inkscape:label="guidelines"></g>
+
+
+</svg>

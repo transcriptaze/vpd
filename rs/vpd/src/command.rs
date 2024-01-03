@@ -91,6 +91,9 @@ mod tests {
         let json = r#"{
             "action": "new",
             "module": {
+                "name": "test",
+                "width": 45.72,
+                "height": 128.5
             }
         }"#;
 

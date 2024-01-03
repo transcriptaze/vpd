@@ -15,8 +15,6 @@ export function parse (cmd) {
   const tree = parser.parse(src)
   const root = tree.rootNode
 
-  console.log(cmd)
-
   if (root.childCount > 0) {
     const node = root.children[0]
     switch (node.type) {
