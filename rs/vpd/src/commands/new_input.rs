@@ -10,6 +10,7 @@ pub struct NewInputCommand {
     name: String,
     x: panel::X,
     y: panel::Y,
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -28,6 +29,9 @@ struct Input {
 
     #[serde(rename = "y")]
     y: Y,
+
+    #[serde(rename = "part")]
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -62,6 +66,7 @@ impl NewInputCommand {
                 reference: o.input.y.reference,
                 offset: o.input.y.offset,
             },
+            part: o.input.part,
         })
     }
 }
@@ -70,6 +75,6 @@ impl Command for NewInputCommand {
     fn apply(&self, m: &mut Module) {
         m.panel
             .inputs
-            .push(panel::Input::new(&self.name, &self.x, &self.y));
+            .push(panel::Input::new(&self.name, &self.x, &self.y, &self.part));
     }
 }

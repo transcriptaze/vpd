@@ -266,13 +266,25 @@ impl Panel {
     fn parts(&self, _theme: &str) -> Vec<Part> {
         let mut list: Vec<Part> = Vec::new();
 
-        for v in self.parameters.iter() {
+        for v in self.inputs.iter() {
             match &v.part {
-                Some(_p) => {
+                Some(p) => {
                     let x = v.x.resolve(&self);
                     let y = v.y.resolve(&self);
 
-                    list.push(Part::new("RoundBlackKnob", x, y));
+                    list.push(Part::new(p, x, y));
+                }
+                None => {}
+            }
+        }
+
+        for v in self.parameters.iter() {
+            match &v.part {
+                Some(p) => {
+                    let x = v.x.resolve(&self);
+                    let y = v.y.resolve(&self);
+
+                    list.push(Part::new(p, x, y));
                 }
                 None => {}
             }

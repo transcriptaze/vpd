@@ -38,7 +38,8 @@ module.exports = grammar({
       choice (
         $.absolute,
         $._xy,
-      )
+      ),
+      optional($.part),
     ),
 
     output: $ => seq(

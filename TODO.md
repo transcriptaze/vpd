@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] github 'nightly' build
+- [x] github 'nightly' build
 - [ ] github 'cloudflare' build
 - [ ] gzip project file
 - [x] Load project file
@@ -29,6 +29,7 @@
       - [ ] 'show/hide panel screws'
 - [ ] Only add used widgets to defs
 - [ ] Use placeholder for unknown parts
+- [ ] Themed PJ301M
 
 
 ### Fonts 
@@ -44,7 +45,7 @@
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
-      - [ ] `new module <name> [1U] 50mm`
+      - [x] `new module <name> [1U] 50mm`
       - [ ] `set` module name/width/height
       - [ ] `export module [gzip]`
       - [ ] `export module svg [light|dark]`
@@ -65,7 +66,7 @@
       - [x] `new input <name> <absolute>`
       - [x] `new input <name> <geometry>`
       - [x] `new input <name> <guidelines>`
-      - [ ] `new input <name> <absolute|geometry|guidelines> [symbol]`
+      - [x] `new input <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -73,10 +74,10 @@
       - [ ] `decorate`
 
 - [ ] _outputs_
-      - [x] absolute
-      - [x] relative to geometry
-      - [x] relative to guidelines
-      - [ ] `new output <name> <absolute|geometry|guidelines> [symbol]`
+      - [x] `new output <name> <absolute>`
+      - [x] `new output <name> <geometry>`
+      - [x] `new output <name> <guidelines>`
+      - [ ] `new output <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -87,7 +88,7 @@
       - [x] `new parameter <name> <absolute>`
       - [x] `new parameter <name> <geometry>`
       - [x] `new parameter <name> <guidelines>`
-      - [x] `new parameter <name> <absolute|geometry|guidelines> [symbol]`
+      - [x] `new parameter <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -98,7 +99,7 @@
       - [x] `new light <name> <absolute>`
       - [x] `new light <name> <geometry>`
       - [x] `new light <name> <guidelines>`
-      - [ ] `new light <name> <absolute|geometry|guidelines> [symbol]`
+      - [ ] `new light <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -109,7 +110,7 @@
       - [ ] `new widget <name> <absolute>`
       - [ ] `new widget <name> <geometry>`
       - [ ] `new widget <name> <guidelines>`
-      - [ ] `new widget <name> <absolute|geometry|guidelines> [symbol]`
+      - [ ] `new widget <name> <absolute|geometry|guidelines> [part]`
       - [ ] delete
       - [ ] set
       - [ ] help
@@ -145,9 +146,10 @@
 - [ ] Robust JSON deserialization i.e. accomodate missing fields
 
 ### SVG
-- [ ] Convert objects to mm
-- [ ] `fmt` function 
+- [x] Convert objects to mm
 - [ ] SVG pretty printer
+      - [ ] blank lines
+      - [ ] 3 digits
 
 ## Notes
 

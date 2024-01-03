@@ -49,3 +49,22 @@ export function mm (v) {
 
   return parseFloat(`${v}`)
 }
+
+export function clean (v) {
+  const re = /^(([a-zA-Z][a-zA-Z0-9_-]*)|"([a-zA-Z][a-zA-Z0-9_ -]*?)"|'([a-zA-Z][a-zA-Z0-9_ -]*?)')$/
+  const match = `${v}`.match(re)
+
+  if (match.length > 2 && match[2] != null) {
+    return match[2].trim()
+  }
+
+  if (match.length > 3 && match[3] != null) {
+    return match[3].trim()
+  }
+
+  if (match.length > 4 && match[4] != null) {
+    return match[4].trim()
+  }
+
+  return `${v}`.trim()
+}

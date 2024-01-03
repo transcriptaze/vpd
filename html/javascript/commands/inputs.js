@@ -1,4 +1,4 @@
-import { reference, offset, mm } from './commands.js'
+import { reference, offset, clean, mm } from './commands.js'
 
 export function newInput (node) {
   const object = {
@@ -41,6 +41,10 @@ export function newInput (node) {
         reference: reference(child),
         offset: offset(child)
       }
+    }
+
+    if (child.type === 'part') {
+      object.input.part = clean(child.text)
     }
   }
 
