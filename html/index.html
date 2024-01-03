@@ -16,7 +16,7 @@
   
     <main>
       <a id="save" href="" style="display:none" download></a>
-      <input id="picker" type="file" accept="application/json" style="display:none;" />
+      <input id="picker" type="file" accept="application/json, text/plain, .vpd, .vpx" style="display:none;" />
 
       <div id="left">
         <div id="info">
@@ -40,7 +40,10 @@
         </div>
 
         <div id="controls">
-          <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
+          <div class="load">
+            <button onclick="onLoad(event, 'vpd')"><img src="./images/load.svg" /></button>
+            <button onclick="onLoad(event, 'vpx')"><img src="./images/load.svg" /></button>
+          </div>
           <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
           <div class="download">
             <button class="light" onclick="onExport(event,'light')"><img src="./images/download.svg" /></button>

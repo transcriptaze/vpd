@@ -63,19 +63,32 @@ export async function initialise () {
   // }
 }
 
-export function onLoad () {
+export function onLoad (event, type) {
   if (window.showOpenFilePicker) {
     const options = {
       id: 'vpd',
       multiple: false,
-      types: [
+      types: []
+    }
+
+    if (type === 'vpd') {
+      options.types.push(
         {
           description: 'VPD project file',
           accept: {
-            'application/json': ['.json', '.vpd']
+            'application/json': ['.vpd']
           }
-        }
-      ]
+        })
+    }
+
+    if (type === 'vpx') {
+      options.types.push(
+        {
+          description: 'VPD script file',
+          accept: {
+            'text/plain': ['.vpx']
+          }
+        })
     }
 
     window.showOpenFilePicker(options)
@@ -181,17 +194,31 @@ async function save (blob) {
 }
 
 async function load (file) {
-  file.text()
-    .then((b) => JSON.parse(b))
-    .then((object) => {
-      const serialized = JSON.stringify(object)
-      restore(serialized)
-      store(PROJECT, serialized)
-      redraw()
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+  console.log(file)
+
+  if (file.type === 'application/json' || file.name.endsWith('.vpd')) {
+    file.text()
+      .then((b) => JSON.parse(b))
+      .then((object) => {
+        const serialized = JSON.stringify(object)
+        restore(serialized)
+        store(PROJECT, serialized)
+        redraw()
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  if (file.type === 'text/plain' || file.name.endsWith('.vpx')) {
+    file.text()
+      .then((b) => {
+        console.log(b)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }  
 }
 
 async function saveWithPicker (blob, filename) {
