@@ -31,7 +31,7 @@
 
     {% if parts -%}
     {% for v in parts -%}
-    <use href="#{{v.name}}" x="{{v.x}}" y="{{v.y}}" />
+    <use href="#{{v.template}}" x="{{v.x}}" y="{{v.y}}" />
     {%- endfor %}
     {%- endif %}
   </g>
