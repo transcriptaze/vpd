@@ -7,15 +7,11 @@
      viewBox="{{viewport.x}} {{viewport.y}} {{viewport.width}} {{viewport.height}}">
 
 {% include "styles"  %}
-
+{% include "backgrounds" %}
 {% if overlay -%}
 {% include "widgets" %}
 {%- endif %}
       
-{% include "backgrounds" %}
-
-  <rect x="{{viewport.x}}" y="{{viewport.y}}" width="{{viewport.width}}" height="{{viewport.height}}" class="border" />
-
 {% include "components" %}
 
   <g inkscape:groupmode="layer" inkscape:label="background">

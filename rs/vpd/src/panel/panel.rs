@@ -132,8 +132,8 @@ impl Panel {
 
     #[allow(non_snake_case)]
     pub fn export_SVG(&self, theme: &str) -> Result<String, JsValue> {
-        let w = self.width + 2.0 * self.gutter;
-        let h = self.height + 2.0 * self.gutter;
+        let w = self.width;
+        let h = self.height;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let panel = Rect::new(0.0, 0.0, self.width, self.height);
         let background = Rect::new(0.0, 0.0, self.width, self.height);

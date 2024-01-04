@@ -67,7 +67,7 @@ impl NewOutputCommand {
                 offset: o.output.y.offset,
             },
             part: o.output.part,
-   })
+        })
     }
 }
 

@@ -29,6 +29,7 @@ impl Part {
 
 fn normalise(v: &str) -> String {
     Regex::new(r#"\s+"#)
-    .unwrap().replace_all(v, "")
-    .to_lowercase()
+        .unwrap()
+        .replace_all(v, "")
+        .to_lowercase()
 }

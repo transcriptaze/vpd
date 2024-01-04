@@ -1,4 +1,4 @@
-use regex::RegexBuilder;
+use regex::Regex;
 
 pub struct PrettyPrinter {}
 
@@ -8,14 +8,18 @@ impl PrettyPrinter {
     }
 
     pub fn _prettify(&self, svg: &str) -> String {
-        let pattern = RegexBuilder::new(r#"<(g[^>]*)>\s*<(/g)>"#)
-            .dot_matches_new_line(true)
-            .build()
-            .unwrap();
+        // ... remove trailing whitespace
+        let clean0 = Regex::new(r#"(?m)\s+$"#).unwrap().replace_all(svg, "");
 
-        let clean = pattern.replace_all(svg, "<$1><$2>");
+        // ... collapse empty <g></g> tags
+        let clean1 = Regex::new(r#"(?s)<(g[^>]*)>\s*<(/g)>"#)
+            .unwrap()
+            .replace_all(&clean0, "<$1><$2>");
 
-        return clean.to_string();
+        // ... collapse multiple blank lines
+        let clean2 = Regex::new(r#"\n{2,}"#).unwrap().replace_all(&clean1, "\n");
+
+        return clean2.to_string();
     }
 }
 
