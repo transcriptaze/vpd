@@ -278,6 +278,18 @@ impl Panel {
             }
         }
 
+        for v in self.outputs.iter() {
+            match &v.part {
+                Some(p) => {
+                    let x = v.x.resolve(&self);
+                    let y = v.y.resolve(&self);
+
+                    list.push(Part::new(p, x, y));
+                }
+                None => {}
+            }
+        }
+
         for v in self.parameters.iter() {
             match &v.part {
                 Some(p) => {

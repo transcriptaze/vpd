@@ -10,6 +10,7 @@ pub struct NewOutputCommand {
     name: String,
     x: panel::X,
     y: panel::Y,
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -28,6 +29,9 @@ struct Output {
 
     #[serde(rename = "y")]
     y: Y,
+
+    #[serde(rename = "part")]
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -62,7 +66,8 @@ impl NewOutputCommand {
                 reference: o.output.y.reference,
                 offset: o.output.y.offset,
             },
-        })
+            part: o.output.part,
+   })
     }
 }
 
@@ -70,6 +75,6 @@ impl Command for NewOutputCommand {
     fn apply(&self, m: &mut Module) {
         m.panel
             .outputs
-            .push(panel::Output::new(&self.name, &self.x, &self.y));
+            .push(panel::Output::new(&self.name, &self.x, &self.y, &self.part));
     }
 }

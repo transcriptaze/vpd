@@ -351,6 +351,10 @@
           "named": true
         },
         {
+          "type": "part",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },

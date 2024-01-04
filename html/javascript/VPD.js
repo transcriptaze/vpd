@@ -218,7 +218,7 @@ async function load (file) {
       .catch((err) => {
         console.error(err)
       })
-  }  
+  }
 }
 
 async function saveWithPicker (blob, filename) {

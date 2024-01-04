@@ -157,6 +157,18 @@
               "name": "_xy"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "part"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

@@ -1,4 +1,4 @@
-import { reference, offset, mm } from './commands.js'
+import { reference, offset, clean, mm } from './commands.js'
 
 export function newOutput (node) {
   const object = {
@@ -41,6 +41,10 @@ export function newOutput (node) {
         reference: reference(child),
         offset: offset(child)
       }
+    }
+
+    if (child.type === 'part') {
+      object.output.part = clean(child.text)
     }
   }
 

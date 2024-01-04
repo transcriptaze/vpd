@@ -1,4 +1,32 @@
 ========================
+new input e @10mm,10mm
+========================
+new input e @10mm,10mm
+---
+(command
+  (new
+    (input
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
+========================
+new input 'e' @10mm,10mm
+========================
+new input 'e' @10mm,10mm
+---
+(command
+  (new
+    (input
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
+========================
 new input "e" @10mm,10mm
 ========================
 new input "e" @10mm,10mm
@@ -121,3 +149,71 @@ new input "e" left+4.5mm,top+4.5mm "PJ301M"
         (reference)
         (offset))
       (part))))
+
+
+===================
+new input "e" v1,h1
+===================
+new input "e" v1,h1
+---
+(command
+  (new
+    (input
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+
+============================
+new input "e" v1,h1 "PJ301M"
+============================
+new input "e" v1,h1 "PJ301M"
+---
+(command
+  (new
+    (input
+      (name)
+      (x
+        (reference))
+      (y
+        (reference))
+      (part))))
+
+
+===============================
+new input "e" v1+4.5mm,h1+4.5mm
+===============================
+new input "e" v1+4.5mm,h1+4.5mm
+---
+(command
+  (new
+    (input
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+========================================
+new input "e" v1+4.5mm,h1+4.5mm "PJ301M"
+========================================
+new input "e" v1+4.5mm,h1+4.5mm "PJ301M"
+---
+(command
+  (new
+    (input
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset))
+        (part))))
+
+

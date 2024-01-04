@@ -1,5 +1,33 @@
 =========================
-new output "e" @10mm,10mm
+new output u @10mm,10mm
+=========================
+new output u @10mm,10mm
+---
+(command
+  (new
+    (output
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
+=========================
+new output 'u' @10mm,10mm
+=========================
+new output 'u' @10mm,10mm
+---
+(command
+  (new
+    (output
+      (name)
+      (absolute
+        (x)
+        (y)))))
+
+
+=========================
+new output "u" @10mm,10mm
 =========================
 new output "u" @10mm,10mm
 ---
@@ -10,6 +38,51 @@ new output "u" @10mm,10mm
       (absolute
         (x)
         (y)))))
+
+
+================================
+new output "u" @10mm,10mm PJ301M
+================================
+new output "u" @10mm,10mm PJ301M
+---
+(command
+  (new
+    (output
+      (name)
+      (absolute
+        (x)
+        (y))
+        (part))))
+
+
+==================================
+new output "u" @10mm,10mm "PJ301M"
+==================================
+new output "u" @10mm,10mm "PJ301M"
+---
+(command
+  (new
+    (output
+      (name)
+      (absolute
+        (x)
+        (y))
+        (part))))
+
+
+==================================
+new output "u" @10mm,10mm 'PJ301M'
+==================================
+new output "u" @10mm,10mm 'PJ301M'
+---
+(command
+  (new
+    (output
+      (name)
+      (absolute
+        (x)
+        (y))
+        (part))))
 
 
 =======================
@@ -27,6 +100,22 @@ new output "u" left,top
         (reference)))))
 
 
+================================
+new output "u" left,top "PJ301M"
+================================
+new output "u" left,top "PJ301M"
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference))
+      (y
+        (reference))
+      (part))))
+
+
 ===================================
 new output "u" left+4.5mm,top+4.5mm
 ===================================
@@ -42,3 +131,89 @@ new output "u" left+4.5mm,top+4.5mm
       (y
         (reference)
         (offset)))))
+
+
+============================================
+new output "u" left+4.5mm,top+4.5mm "PJ301M"
+============================================
+new output "u" left+4.5mm,top+4.5mm "PJ301M"
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset))
+      (part))))
+
+
+====================
+new output "u" v1,h1
+====================
+new output "u" v1,h1
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+
+=============================
+new output "u" v1,h1 "PJ301M"
+=============================
+new output "u" v1,h1 "PJ301M"
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference))
+      (y
+        (reference))
+      (part))))
+
+
+================================
+new output "u" v1+4.5mm,h1+4.5mm
+================================
+new output "u" v1+4.5mm,h1+4.5mm
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+=========================================
+new output "u" v1+4.5mm,h1+4.5mm "PJ301M"
+=========================================
+new output "u" v1+4.5mm,h1+4.5mm "PJ301M"
+---
+(command
+  (new
+    (output
+      (name)
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset))
+      (part))))
+
+

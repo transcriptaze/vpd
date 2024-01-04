@@ -80,7 +80,7 @@
       - [x] `new output <name> <absolute>`
       - [x] `new output <name> <geometry>`
       - [x] `new output <name> <guidelines>`
-      - [ ] `new output <name> <absolute|geometry|guidelines> [part]`
+      - [x] `new output <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
