@@ -16,26 +16,43 @@ export function parse (cmd) {
   const root = tree.rootNode
 
   if (root.childCount > 0) {
-    const node = root.children[0]
-    switch (node.type) {
-      case 'ERROR':
-        return null
-
-      case 'new':
-        return _new(node)
-
-      case 'set':
-        return _set.parse(node)
-
-      case 'export':
-        return _export.parse(node)
-
-      default:
-        throw new Error(`unknown command ${node.type}`)
-    }
+    return parseNode(root.children[0])
   }
 
   throw new Error('invalid command')
+}
+
+export function parseVPX (vpx) {
+  const src = `${vpx}`
+  const tree = parser.parse(src)
+  const root = tree.rootNode
+  const script = []
+
+  for (const node of root.namedChildren) {
+    script.push(parseNode(node))
+  }
+
+  return script
+}
+
+export function parseNode (node) {
+  switch (node.type) {
+    case 'new':
+      return _new(node)
+
+    case 'set':
+      return _set.parse(node)
+
+    case 'export':
+      return _export.parse(node)
+
+    case 'ERROR':
+      console.error(node)
+      throw new Error(`error parsing command ${node}`)
+
+    default:
+      throw new Error(`unknown command ${node.type}`)
+  }
 }
 
 function _new (node) {

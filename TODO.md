@@ -6,6 +6,14 @@
 - [x] Load project file
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
+- [ ] VPX
+      - [x] Load and run file
+      - [ ] Drag 'n drop
+      - [ ] Firefox/Safari (browser without file API picker)
+      - [ ] Alt-load
+      - [ ] User guide
+      - [ ] `load vpx`
+
 - [ ] Show errors
 - [x] Hide logo when overlapped by SVG
 - [x] Macro keys
@@ -47,7 +55,6 @@
       - [ ] `export project [gzip]`
       - [ ] `export script`
       - [ ] `export panel svg [light|dark]`
-      - [ ] `export panel script [gzip]`
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`

@@ -1,5 +1,5 @@
 import { help } from './help.js'
-import { parse } from './command.js'
+import { parse, parseVPX } from './command.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
 import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
 
@@ -97,7 +97,7 @@ export function onLoad (event, type) {
       })
       .then((file) => {
         if (file != null) {
-          load(file)
+          load(file, type)
         }
       })
       .catch((err) => {
@@ -105,6 +105,14 @@ export function onLoad (event, type) {
       })
   } else {
     const file = document.getElementById('picker')
+
+    if (type === 'vpd') {
+      file.accept = 'application/json, text/plain, .vpd'
+    }
+
+    if (type === 'vpx') {
+      file.accept = 'text/plain, .vpx'
+    }
 
     file.onchange = async (e) => {
       const files = e.target.files
@@ -140,12 +148,10 @@ function execute (cmd) {
 
     console.log(command)
 
-    if (command != null) {
-      const serialized = exec(JSON.stringify(command))
+    const serialized = exec(JSON.stringify(command))
 
-      store(PROJECT, serialized)
-      redraw()
-    }
+    store(PROJECT, serialized)
+    redraw()
   } catch (err) {
     console.error(err)
   }
@@ -193,10 +199,8 @@ async function save (blob) {
   }
 }
 
-async function load (file) {
-  console.log(file)
-
-  if (file.type === 'application/json' || file.name.endsWith('.vpd')) {
+async function load (file, type) {
+  if (type === 'vpd') {
     file.text()
       .then((b) => JSON.parse(b))
       .then((object) => {
@@ -210,13 +214,20 @@ async function load (file) {
       })
   }
 
-  if (file.type === 'text/plain' || file.name.endsWith('.vpx')) {
+  if (type === 'vpx') {
     file.text()
-      .then((b) => {
-        console.log(b)
+      .then((text) => parseVPX(text))
+      .then((script) => {
+        for (const command of script) {
+          const serialized = exec(JSON.stringify(command))
+          store(PROJECT, serialized)
+        }
       })
       .catch((err) => {
         console.error(err)
+      })
+      .finally(() => {
+        redraw()
       })
   }
 }
