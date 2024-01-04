@@ -41,15 +41,18 @@
 
 
 ### Commands
-- [ ] Enable input autocomplete attribute
+- [x] Enable input autocomplete attribute
+
+- [ ] _export_
+      - [ ] `export project [gzip]`
+      - [ ] `export script`
+      - [ ] `export panel svg [light|dark]`
+      - [ ] `export panel script [gzip]`
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
       - [x] `new module <name> [1U] 50mm`
       - [ ] `set` module name/width/height
-      - [ ] `export module [gzip]`
-      - [ ] `export module svg [light|dark]`
-      - [ ] `export module script [gzip]`
 
 - [ ] _origin_
       - [ ] `set origin absolute`
