@@ -109,7 +109,7 @@
       - [x] `new light <name> <absolute>`
       - [x] `new light <name> <geometry>`
       - [x] `new light <name> <guidelines>`
-      - [ ] `new light <name> <absolute|geometry|guidelines> [part]`
+      - [x] `new light <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set

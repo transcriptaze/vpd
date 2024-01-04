@@ -56,9 +56,9 @@ new input "e" @10mm,10mm PJ301M
 
 
 =================================
-new input "e" @10mm,10mm "PJ301M"
+new input "e" @10mm,10mm 'PJ301M'
 =================================
-new input "e" @10mm,10mm "PJ301M"
+new input "e" @10mm,10mm 'PJ301M'
 ---
 (command
   (new
@@ -71,9 +71,9 @@ new input "e" @10mm,10mm "PJ301M"
 
 
 =================================
-new input "e" @10mm,10mm 'PJ301M'
+new input "e" @10mm,10mm "PJ301M"
 =================================
-new input "e" @10mm,10mm 'PJ301M'
+new input "e" @10mm,10mm "PJ301M"
 ---
 (command
   (new
@@ -215,5 +215,3 @@ new input "e" v1+4.5mm,h1+4.5mm "PJ301M"
         (reference)
         (offset))
         (part))))
-
-

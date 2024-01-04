@@ -70,20 +70,6 @@ new parameter "E" @10mm,10mm RoundBlackKnob
 
 
 ===============================================
-new parameter "E" @10mm,10mm "Round Black Knob"
-===============================================
-new parameter "E" @10mm,10mm "Round Black Knob"
----
-(command
-  (new
-    (parameter
-      (name)
-      (absolute
-        (x)
-        (y))
-      (part))))
-
-===============================================
 new parameter "E" @10mm,10mm 'Round Black Knob'
 ===============================================
 new parameter "E" @10mm,10mm 'Round Black Knob'
@@ -97,6 +83,20 @@ new parameter "E" @10mm,10mm 'Round Black Knob'
         (y))
       (part))))
 
+
+===============================================
+new parameter "E" @10mm,10mm "Round Black Knob"
+===============================================
+new parameter "E" @10mm,10mm "Round Black Knob"
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (x)
+        (y))
+      (part))))
 
 ==========================
 new parameter "E" left,top

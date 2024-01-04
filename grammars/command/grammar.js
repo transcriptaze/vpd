@@ -68,7 +68,8 @@ module.exports = grammar({
       choice (
         $.absolute,
         $._xy,
-      )
+      ),
+      optional($.part),
     ),
 
     set: $ => seq(

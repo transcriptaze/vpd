@@ -10,6 +10,7 @@ pub struct NewLightCommand {
     name: String,
     x: panel::X,
     y: panel::Y,
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -28,6 +29,9 @@ struct Light {
 
     #[serde(rename = "y")]
     y: Y,
+
+    #[serde(rename = "part")]
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -62,6 +66,7 @@ impl NewLightCommand {
                 reference: o.light.y.reference,
                 offset: o.light.y.offset,
             },
+            part: o.light.part,
         })
     }
 }
@@ -70,6 +75,6 @@ impl Command for NewLightCommand {
     fn apply(&self, m: &mut Module) {
         m.panel
             .lights
-            .push(panel::Light::new(&self.name, &self.x, &self.y));
+            .push(panel::Light::new(&self.name, &self.x, &self.y, &self.part));
     }
 }

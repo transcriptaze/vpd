@@ -1,4 +1,4 @@
-import { reference, offset, mm } from './commands.js'
+import { reference, offset, clean, mm } from './commands.js'
 
 export function newLight (node) {
   const object = {
@@ -41,6 +41,10 @@ export function newLight (node) {
         reference: reference(child),
         offset: offset(child)
       }
+    }
+
+    if (child.type === 'part') {
+      object.light.part = clean(child.text)
     }
   }
 
