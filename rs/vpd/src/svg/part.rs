@@ -1,8 +1,9 @@
+use regex::Regex;
 use serde::{Deserialize, Serialize};
 
 const PARTS: [&'static str; 2] = ["PJ301M", "RoundBlackKnob"];
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Part {
     pub name: String,
     pub x: f32,
@@ -12,7 +13,7 @@ pub struct Part {
 
 impl Part {
     pub fn new(name: &str, x: f32, y: f32) -> Part {
-        let template = match PARTS.iter().find(|v| *v == &name) {
+        let template = match PARTS.iter().find(|v| normalise(*v) == normalise(&name)) {
             Some(p) => p,
             None => "placeholder",
         };
@@ -24,4 +25,10 @@ impl Part {
             template: template.to_string(),
         }
     }
+}
+
+fn normalise(v: &str) -> String {
+    Regex::new(r#"\s+"#)
+    .unwrap().replace_all(v, "")
+    .to_lowercase()
 }
