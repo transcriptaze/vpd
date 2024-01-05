@@ -107,7 +107,7 @@ export function onLoad (event, type) {
     const file = document.getElementById('picker')
 
     if (type === 'vpd') {
-      file.accept = 'application/json, text/plain, .vpd'
+      file.accept = 'application/json, .vpd'
     }
 
     if (type === 'vpx') {

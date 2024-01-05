@@ -7,14 +7,14 @@
 - [ ] VPX
       - [x] Load and run file
       - [x] Drag 'n drop
-      - [ ] Firefox/Safari (browser without file API picker)
+      - [x] Firefox/Safari (browser without file API picker)
       - [ ] Alt-load
       - [ ] User guide
 
-- [ ] Show errors
+- [ ] **\Show errors**
+
 - [x] _info_ panel
 - [ ] _command_ web component
-- [ ] error handling
 - [ ] Set CSS panel element width from module width
 - [ ] `undo`
 - [ ] `redo`
