@@ -180,8 +180,35 @@ main div#controls button {
 main div#controls button img {
   width: 40px;
 }
-main div#controls div.download button.light img {
+main div#controls div.files {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: row;
+  grid-row-gap: 4px;
+  grid-column-gap: 4px;
+  margin-bottom: 8px;
+}
+main div#controls div.files button img {
+  width: 32px;
+}
+main div#controls div.files button.light img {
   filter: invert(100%) sepia(3%) saturate(7500%) hue-rotate(195deg) brightness(102%) contrast(104%);
+}
+main div#controls div.undo {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  grid-row-gap: 4px;
+  grid-column-gap: 4px;
+  margin-bottom: 8px;
+}
+main div#controls div.undo button img {
+  width: 24px;
+}
+main div#controls div.undo button:disabled img {
+  filter: invert(59%) sepia(0%) saturate(1850%) hue-rotate(204deg) brightness(85%) contrast(77%);
 }
 main div#controls div.macros {
   display: grid;

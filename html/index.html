@@ -40,14 +40,15 @@
         </div>
 
         <div id="controls">
-          <div class="load">
-            <button onclick="onLoad(event, 'vpd')"><img src="./images/load.svg" /></button>
-            <button onclick="onLoad(event, 'vpx')"><img src="./images/load.svg" /></button>
-          </div>
-          <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
-          <div class="download">
+          <div class="files">
+            <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
+            <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
             <button class="light" onclick="onExport(event,'light')"><img src="./images/download.svg" /></button>
             <button class="dark"  onclick="onExport(event,'dark')"><img src="./images/download.svg" /></button>
+          </div>
+          <div class="undo">
+            <button disabled><img src="./images/undo.svg" /></button>
+            <button disabled><img src="./images/redo.svg" /></button>
           </div>
           <div class="macros">
             <vpd-macro-key id="macro1"  label="Ctrl₁" key="ctrl-1" command='load project'></vpd-macro-key>

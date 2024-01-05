@@ -8,10 +8,10 @@
       - [x] Load and run file
       - [x] Drag 'n drop
       - [x] Firefox/Safari (browser without file API picker)
-      - [ ] Alt-load
+      - [x] Alt-load
       - [ ] User guide
 
-- [ ] **\Show errors**
+- [ ] **Show errors**
 
 - [x] _info_ panel
 - [ ] _command_ web component

@@ -15,15 +15,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.13.2]
-
     steps:
     - name: Setup npm
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '16.13.2'
 
     - name: Set up Go 1.21+
       uses: actions/setup-go@v5

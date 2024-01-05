@@ -19,24 +19,32 @@ describes all the available commands.
 ### Raison d’être
 
 VPD was created mostly as an experiment in implementing a command interface using _tree-sitter_, but also because having to
-switch back and forth between between text and paths in _Inkscape_ when creating or modifying an VCV panel is just plain annoying.
+switch back and forth between between text and paths in _Inkscape_ when creating or modifying a VCV panel is just plain annoying.
 
 
 ### Getting Started
 
-1. Open the VPD [web application](https://vpd.pages.dev) in your browser.
-2. Follow the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_ to create a basic panel.
-3. Export the SVG files:
+1. Create a _quickstart_ sample VCV plugin:
    ```
-   export module svg
+   $RACK_DIR/quickstart.py createplugin quickstart
+   make
+   ```
+2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
+3. Follow the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_ to create a basic panel.
+4. Export the SVG files to the plugin `res` folder using either the _export SVG_ buttons or the commands:
+   ```
+   export panel svg
    ```
    ```
-   export module svg dark
+   export panel svg dark
    ```
-4. Copy the SVG files to the plugin `res` folder.
 5. Generate a module using the [VCV helper script](https://vcvrack.com/manual/Panel):
    ```
-   <Rack SDK>/helper.py createmodule <module slug> res/<module slug>.svg src/<module slug>.cpp
+   $RACK_DIR/helper.py createmodule quickstart res/quickstart.svg src/quickstart.cpp
+   ```
+6. Compile and link:
+   ```
+   make
    ```
 
 ### Releases
@@ -127,3 +135,9 @@ cd vpd
 ```
 make build-all
 ```
+
+
+## Attribution
+
+1. Undo by Michael Kussmaul from <a href="https://thenounproject.com/browse/icons/term/undo/" target="_blank" title="Undo Icons">Noun Project</a> (CC BY 3.0)
+2. Redo by Michael Kussmaul from <a href="https://thenounproject.com/browse/icons/term/redo/" target="_blank" title="redo Icons">Noun Project</a> (CC BY 3.0)
