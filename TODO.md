@@ -6,7 +6,7 @@
       - [ ] https://thenounproject.com/search/icons/?q=open
 - [ ] VPX
       - [x] Load and run file
-      - [ ] Drag 'n drop
+      - [x] Drag 'n drop
       - [ ] Firefox/Safari (browser without file API picker)
       - [ ] Alt-load
       - [ ] User guide

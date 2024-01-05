@@ -118,7 +118,7 @@ export function onLoad (event, type) {
       const files = e.target.files
 
       if (files.length > 0) {
-        load(files.item(0))
+        load(files.item(0), type)
       }
     }
 
@@ -129,7 +129,14 @@ export function onLoad (event, type) {
 
 export function onDropped (file) {
   console.log(file)
-  // load(file)
+
+  if (file.type === 'application/json' || file.name.endsWith('.vpd')) {
+    load(file, 'vpd')
+  }
+
+  if (file.type === 'text/plain' || file.name.endsWith('.vpx')) {
+    load(file, 'vpx')
+  }
 }
 
 export function onSave () {

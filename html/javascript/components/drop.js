@@ -1,5 +1,3 @@
-const MIMETYPES = ['application/json', 'application/text']
-
 export class DropTarget extends HTMLElement {
   static get observedAttributes () {
     return []
@@ -85,10 +83,10 @@ function onDragEnter (drop, evt) {
     const files = evt.dataTransfer.files
     const items = evt.dataTransfer.items
 
-    if (files.length > 0 && files.item(0).type === 'application/json') {
+    if (files.length > 0) {
       evt.preventDefault()
       div.classList.add('dropping')
-    } else if (items.length > 0 && items[0].type === 'application/json') {
+    } else if (items.length > 0) {
       evt.preventDefault()
       div.classList.add('dropping')
     }
@@ -111,10 +109,10 @@ function onDragOver (drop, evt) {
     const files = evt.dataTransfer.files
     const items = evt.dataTransfer.items
 
-    if (files.length > 0 && files.item(0).type === 'application/json') {
+    if (files.length > 0) {
       evt.preventDefault()
       div.classList.add('dropping')
-    } else if (items.length > 0 && items[0].type === 'application/json') {
+    } else if (items.length > 0) {
       evt.preventDefault()
       div.classList.add('dropping')
     }
@@ -134,9 +132,9 @@ function onDrop (drop, evt) {
     const files = evt.dataTransfer.files
     const items = evt.dataTransfer.items
 
-    if (files.length > 0 && MIMETYPES.include(files.item(0).type)) {
+    if (files.length > 0) {
       drop._dropped(files.item(0))
-    } else if (items.length > 0 && MIMETYPES.includes(items[0].type)) {
+    } else if (items.length > 0) {
       drop._dropped(items[0])
     }
   }
