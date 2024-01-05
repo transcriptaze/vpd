@@ -128,7 +128,8 @@ export function onLoad (event, type) {
 }
 
 export function onDropped (file) {
-  load(file)
+  console.log(file)
+  // load(file)
 }
 
 export function onSave () {

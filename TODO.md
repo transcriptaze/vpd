@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] github 'cloudflare' build
+- [x] github 'cloudflare' build
 - [x] Load project file
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open

@@ -51,4 +51,4 @@ jobs:
         wasm-pack --version
 
     - name: Build
-      run: make build-cloudflare
+      run: make cloudflare
