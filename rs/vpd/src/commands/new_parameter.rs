@@ -15,40 +15,26 @@ pub struct NewParameterCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    #[serde(rename = "parameter")]
     parameter: Parameter,
 }
 
 #[derive(Deserialize)]
 struct Parameter {
-    #[serde(rename = "name")]
     name: String,
-
-    #[serde(rename = "x")]
     x: X,
-
-    #[serde(rename = "y")]
     y: Y,
-
-    #[serde(rename = "part")]
     part: Option<String>,
 }
 
 #[derive(Deserialize)]
 struct X {
-    #[serde(rename = "reference")]
     reference: String,
-
-    #[serde(rename = "offset")]
     offset: f32,
 }
 
 #[derive(Deserialize)]
 struct Y {
-    #[serde(rename = "reference")]
     reference: String,
-
-    #[serde(rename = "offset")]
     offset: f32,
 }
 
@@ -73,8 +59,10 @@ impl NewParameterCommand {
 
 impl Command for NewParameterCommand {
     fn apply(&self, m: &mut Module) {
+        let id = m.new_parameter_id();
+
         m.panel.parameters.push(panel::Parameter::new(
-            &self.name, &self.x, &self.y, &self.part,
+            &id, &self.name, &self.x, &self.y, &self.part,
         ));
     }
 }

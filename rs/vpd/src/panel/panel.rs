@@ -1,4 +1,3 @@
-use regex::Regex;
 use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
@@ -54,43 +53,6 @@ impl Panel {
             lights: Vec::new(),
             labels: Vec::new(),
         };
-    }
-
-    pub fn new_guide_name(&self, orientation: &str, reference: &str) -> String {
-        let re = match (orientation, reference) {
-            ("vertical", _) => Regex::new(r"(v)(\d+)").unwrap(),
-            ("horizontal", _) => Regex::new(r"(h)(\d+)").unwrap(),
-            _ => match Regex::new(r"^(.*?)(\d+)$").unwrap().find(reference) {
-                Some(_) => Regex::new(r"^(.*?)(\d+)$").unwrap(),
-                None => Regex::new(r"(g)(\d+)").unwrap(),
-            },
-        };
-
-        let mut ix: i32 = 0;
-
-        for k in self.guides.keys() {
-            match re.captures(k) {
-                Some(captures) => {
-                    let v = captures.get(2).unwrap().as_str();
-                    let i = v.parse::<i32>().unwrap();
-
-                    if i > ix {
-                        ix = i;
-                    }
-                }
-
-                None => {}
-            }
-        }
-
-        match orientation {
-            "vertical" => format!("v{}", ix + 1),
-            "horizontal" => format!("h{}", ix + 1),
-            _ => match re.captures(reference) {
-                Some(v) => format!("{}{}", v.get(1).unwrap().as_str(), ix + 1),
-                None => format!("g{}", ix + 1),
-            },
-        }
     }
 
     #[allow(non_snake_case)]

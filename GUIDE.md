@@ -121,6 +121,14 @@
     export module SVG dark
     ```
 
+## User interface
+
+- load project/script
+- save project/script
+- export light/dark SVG
+- undo/redo
+- macro keys
+- command area
 
 ## Projects
 

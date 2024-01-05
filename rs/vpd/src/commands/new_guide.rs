@@ -53,7 +53,7 @@ impl Command for NewGuideCommand {
     fn apply(&self, m: &mut Module) {
         let name = match &self.name {
             Some(v) => v.to_string(),
-            None => m.panel.new_guide_name(&self.orientation, &self.reference),
+            None => m.new_guide_name(&self.orientation, &self.reference),
         };
 
         let reference = self.reference.as_str();

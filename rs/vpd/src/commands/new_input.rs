@@ -15,40 +15,26 @@ pub struct NewInputCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    #[serde(rename = "input")]
     input: Input,
 }
 
 #[derive(Deserialize)]
 struct Input {
-    #[serde(rename = "name")]
-    name: Option<String>,
-
-    #[serde(rename = "x")]
+    name: String,
     x: X,
-
-    #[serde(rename = "y")]
     y: Y,
-
-    #[serde(rename = "part")]
     part: Option<String>,
 }
 
 #[derive(Deserialize)]
 struct X {
-    #[serde(rename = "reference")]
     reference: String,
-
-    #[serde(rename = "offset")]
     offset: f32,
 }
 
 #[derive(Deserialize)]
 struct Y {
-    #[serde(rename = "reference")]
     reference: String,
-
-    #[serde(rename = "offset")]
     offset: f32,
 }
 
@@ -57,7 +43,7 @@ impl NewInputCommand {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(NewInputCommand {
-            name: o.input.name.unwrap_or("".to_string()),
+            name: o.input.name.to_string(),
             x: panel::X {
                 reference: o.input.x.reference,
                 offset: o.input.x.offset,
@@ -73,8 +59,10 @@ impl NewInputCommand {
 
 impl Command for NewInputCommand {
     fn apply(&self, m: &mut Module) {
-        m.panel
-            .inputs
-            .push(panel::Input::new(&self.name, &self.x, &self.y, &self.part));
+        let id = m.new_input_id();
+
+        m.panel.inputs.push(panel::Input::new(
+            &id, &self.name, &self.x, &self.y, &self.part,
+        ));
     }
 }

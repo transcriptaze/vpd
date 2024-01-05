@@ -21,16 +21,9 @@ struct Object {
 
 #[derive(Deserialize)]
 struct Light {
-    #[serde(rename = "name")]
-    name: Option<String>,
-
-    #[serde(rename = "x")]
+    name: String,
     x: X,
-
-    #[serde(rename = "y")]
     y: Y,
-
-    #[serde(rename = "part")]
     part: Option<String>,
 }
 
@@ -57,7 +50,7 @@ impl NewLightCommand {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(NewLightCommand {
-            name: o.light.name.unwrap_or("".to_string()),
+            name: o.light.name.to_string(),
             x: panel::X {
                 reference: o.light.x.reference,
                 offset: o.light.x.offset,
@@ -73,8 +66,10 @@ impl NewLightCommand {
 
 impl Command for NewLightCommand {
     fn apply(&self, m: &mut Module) {
-        m.panel
-            .lights
-            .push(panel::Light::new(&self.name, &self.x, &self.y, &self.part));
+        let id = m.new_light_id();
+
+        m.panel.lights.push(panel::Light::new(
+            &id, &self.name, &self.x, &self.y, &self.part,
+        ));
     }
 }
