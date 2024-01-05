@@ -6,6 +6,7 @@ use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
 
+#[derive(Deserialize)]
 pub struct NewLightCommand {
     name: String,
     x: panel::X,
@@ -16,33 +17,7 @@ pub struct NewLightCommand {
 #[derive(Deserialize)]
 struct Object {
     #[serde(rename = "light")]
-    light: Light,
-}
-
-#[derive(Deserialize)]
-struct Light {
-    name: String,
-    x: X,
-    y: Y,
-    part: Option<String>,
-}
-
-#[derive(Deserialize)]
-struct X {
-    #[serde(rename = "reference")]
-    reference: String,
-
-    #[serde(rename = "offset")]
-    offset: f32,
-}
-
-#[derive(Deserialize)]
-struct Y {
-    #[serde(rename = "reference")]
-    reference: String,
-
-    #[serde(rename = "offset")]
-    offset: f32,
+    light: NewLightCommand,
 }
 
 impl NewLightCommand {

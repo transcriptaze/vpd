@@ -7,8 +7,8 @@ export function newInput (node) {
   }
 
   for (const child of node.namedChildren) {
-    if (child.type === 'name' && child.namedChildCount > 0) {
-      object.input.name = child.namedChildren[0].text.trim()
+    if (child.type === 'name') {
+      object.input.name = clean(child.text)
     }
 
     if (child.type === 'absolute') {

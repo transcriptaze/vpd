@@ -6,6 +6,7 @@ use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
 
+#[derive(Deserialize)]
 pub struct NewOutputCommand {
     name: String,
     x: panel::X,
@@ -15,27 +16,7 @@ pub struct NewOutputCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    output: Output,
-}
-
-#[derive(Deserialize)]
-struct Output {
-    name: String,
-    x: X,
-    y: Y,
-    part: Option<String>,
-}
-
-#[derive(Deserialize)]
-struct X {
-    reference: String,
-    offset: f32,
-}
-
-#[derive(Deserialize)]
-struct Y {
-    reference: String,
-    offset: f32,
+    output: NewOutputCommand,
 }
 
 impl NewOutputCommand {

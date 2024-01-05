@@ -7,8 +7,8 @@ export function newOutput (node) {
   }
 
   for (const child of node.namedChildren) {
-    if (child.type === 'name' && child.namedChildCount > 0) {
-      object.output.name = child.namedChildren[0].text.trim()
+    if (child.type === 'name') {
+      object.output.name = clean(child.text)
     }
 
     if (child.type === 'absolute') {

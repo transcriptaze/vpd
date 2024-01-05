@@ -7,8 +7,8 @@ export function newLight (node) {
   }
 
   for (const child of node.namedChildren) {
-    if (child.type === 'name' && child.namedChildCount > 0) {
-      object.light.name = child.namedChildren[0].text.trim()
+    if (child.type === 'name') {
+      object.light.name = child.text.trim()
     }
 
     if (child.type === 'absolute') {
