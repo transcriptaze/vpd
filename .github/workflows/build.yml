@@ -35,26 +35,27 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up tree-sitter v0.20.8+
-      run: |
-        cargo install tree-sitter-cli
-        tree-sitter --version
+      run: cargo install tree-sitter-cli
 
     - name: Install sass 1.58.0+
-      run: |
-        npm install -g sass
-        sass --version
+      run: npm install -g sass
 
     - name: Install eslint v8.56.0+
-      run: |
-        npm install eslint eslint-config-standard
-        npx eslint --version
+      run: npm install eslint eslint-config-standard
 
     - name: Install wasm-pack v0.12.1+
       uses: jetli/wasm-pack-action@v0.4.0
       with:
         version: 'latest'
+
+    - name: List versions
       run: |
-        wasm-pack --version
+        rustc       --version
+        tree-sitter --version
+        wasm-pack   --version
+        npx eslint  --version
+        sass        --version
+        go            version
 
     - name: Build
       run: make build-all
