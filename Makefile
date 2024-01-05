@@ -52,5 +52,8 @@ run-nodejs:
 run-go:
 	cd go && make run
 
+run-cloudflare:
+	python3 -m http.server 9876 -d dist/cloudflare
+
 run: run-python
 

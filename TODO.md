@@ -1,8 +1,6 @@
 # TODO
 
-- [x] github 'nightly' build
 - [ ] github 'cloudflare' build
-- [ ] gzip project file
 - [x] Load project file
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
@@ -12,13 +10,9 @@
       - [ ] Firefox/Safari (browser without file API picker)
       - [ ] Alt-load
       - [ ] User guide
-      - [ ] `load vpx`
 
 - [ ] Show errors
-- [x] Hide logo when overlapped by SVG
-- [x] Macro keys
 - [x] _info_ panel
-- [x] _export_
 - [ ] _command_ web component
 - [ ] error handling
 - [ ] Set CSS panel element width from module width
@@ -35,9 +29,9 @@
       - [x] dark theme
       - [ ] create in SVG for panel width
       - [ ] 'show/hide panel screws'
+- [x] Use placeholder for unknown parts
+- [x] Themed PJ301M
 - [ ] Only add used widgets to defs
-- [ ] Use placeholder for unknown parts
-- [ ] Themed PJ301M
 
 
 ### Fonts 
@@ -52,9 +46,14 @@
 - [x] Enable input autocomplete attribute
 
 - [ ] _export_
-      - [ ] `export project [gzip]`
+      - [ ] `export project`
+      - [ ] `export project gzip`
       - [ ] `export script`
       - [ ] `export panel svg [light|dark]`
+
+- [ ] _load_
+      - [ ] `load project [gzip]`
+      - [ ] `load script`
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
@@ -143,9 +142,6 @@
       - [ ] generate label ID automatically
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
-
-- [ ] load
-- [ ] save
 
 - [ ] _help_
        - [ ] Rework help text as multi-column ul
