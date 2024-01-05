@@ -19,7 +19,21 @@ impl PrettyPrinter {
         // ... collapse multiple blank lines
         let clean2 = Regex::new(r#"\n{2,}"#).unwrap().replace_all(&clean1, "\n");
 
-        return clean2.to_string();
+        // ... add blank lines around busy groups
+        let clean3 = Regex::new(r#"(?ms)(^  <g[^>]*>\n)"#)
+            .unwrap()
+            .replace_all(&clean2, "\n$1");
+
+        let clean4 = Regex::new(r#"(?ms)(^  </g>\n)"#)
+            .unwrap()
+            .replace_all(&clean3, "$1\n");
+
+        // ... add blank line after </defs>
+        let clean5 = Regex::new(r#"(?ms)(^  </defs>\n)"#)
+            .unwrap()
+            .replace_all(&clean4, "$1\n");
+
+        return clean5.to_string();
     }
 }
 

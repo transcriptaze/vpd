@@ -11,10 +11,13 @@
       <stop offset="100%" stop-color="#e1e1e1" />
     </linearGradient>
   </defs>
+
   <g inkscape:groupmode="layer" inkscape:label="components" style="display:none"></g>
+
   <g inkscape:groupmode="layer" inkscape:label="background">
     <rect x="0" y="0" width="45.720001220703125" height="128.5" fill="url(#background)" />
   </g>
+
   <g inkscape:groupmode="layer" inkscape:label="title"></g>
   <g inkscape:groupmode="layer" inkscape:label="controls"></g>
   <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
