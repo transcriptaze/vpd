@@ -177,13 +177,18 @@ impl Module {
         let re = match (orientation, reference) {
             ("vertical", _) => Regex::new(r"(v)(\d+)").unwrap(),
             ("horizontal", _) => Regex::new(r"(h)(\d+)").unwrap(),
-            _ => match Regex::new(r"^(.*?)(\d+)$").unwrap().find(reference) {
-                Some(_) => Regex::new(r"^(.*?)(\d+)$").unwrap(),
+            _ => match Regex::new(r"^([a-zA-Z]+)(\d+)$")
+                .unwrap()
+                .captures(reference)
+            {
+                Some(captures) => {
+                    let prefix = captures.get(1).unwrap().as_str();
+                    let exp = format!(r"^({})(\d+)$", &prefix);
+                    Regex::new(&exp).unwrap()
+                }
                 None => Regex::new(r"(g)(\d+)").unwrap(),
             },
         };
-
-        warnf!(">>>> RE: {:}", re);
 
         let mut ix: i32 = 0;
 

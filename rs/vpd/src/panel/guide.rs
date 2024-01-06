@@ -36,9 +36,7 @@ impl Guide {
             }
 
             _ => {
-                warnf!(">>>>>>>>>>>> AWOOGAH/1");
                 if panel.guides.contains_key(reference) {
-                    warnf!(">>>>>>>>>>>> AWOOGAH/2 {}", reference);
                     self.to_svg(label, panel, 0)
                 } else {
                     warnf!("missing reference guideline '{}'", reference);
@@ -79,13 +77,6 @@ impl Guide {
 
             (_, _) => self.offset,
         };
-
-        warnf!(
-            ">>>>>>>>>>>> AWOOGAH/3 {} {} {}",
-            orientation,
-            reference,
-            offset
-        );
 
         match (orientation, reference) {
             (_, "left") => Some(GuideLine::new(
@@ -170,7 +161,6 @@ impl Guide {
             )),
 
             (_, r) => {
-                warnf!(">>>>>>>>>>>> AWOOGAH/4 {}", r);
                 for (k, v) in panel.guides.iter() {
                     if k != label && k == r {
                         return match v.to_svg(k, panel, depth + 1) {
