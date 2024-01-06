@@ -21,6 +21,7 @@ module.exports = grammar({
       $.output,
       $.parameter,
       $.light,
+      $.widget,
       $.label,
       $.guide,
     ),
@@ -34,36 +35,30 @@ module.exports = grammar({
 
     input: $ => seq(
       'input',
-      $.name,
-      choice (
-        $.absolute,
-        $._xy,
-      ),
-      optional($.part),
+      $._component,
     ),
 
     output: $ => seq(
       'output',
-      $.name,
-      choice (
-        $.absolute,
-        $._xy,
-      ),
-      optional($.part),
+      $._component,
     ),
 
     parameter: $ => seq(
       /parameter|param/,
-      $.name,
-      choice (
-        $.absolute,
-        $._xy,
-      ),
-      optional($.part),
+      $._component,
     ),
 
     light: $ => seq(
       'light',
+      $._component,
+    ),
+
+    widget: $ => seq(
+      'widget',
+      $._component,
+    ),
+
+    _component: $ => seq(
       $.name,
       choice (
         $.absolute,

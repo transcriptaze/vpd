@@ -311,6 +311,10 @@
         {
           "type": "parameter",
           "named": true
+        },
+        {
+          "type": "widget",
+          "named": true
         }
       ]
     }
@@ -474,6 +478,37 @@
     }
   },
   {
+    "type": "widget",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "part",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "x",
     "named": true,
     "fields": {},
@@ -597,6 +632,10 @@
   },
   {
     "type": "vertical",
+    "named": false
+  },
+  {
+    "type": "widget",
     "named": false
   },
   {

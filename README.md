@@ -28,7 +28,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 
 1. Create a sample VCV plugin:
    ```
-   $RACK_DIR/helper.py createplugin quickstart
+   $RACK_DIR/helper.py createplugin bodacious
    make
    ```
 2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
@@ -42,7 +42,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
    ```
 5. Generate a module using the [VCV helper script](https://vcvrack.com/manual/Panel):
    ```
-   $RACK_DIR/helper.py createmodule quickstart res/quickstart.svg src/quickstart.cpp
+   $RACK_DIR/helper.py createmodule bodacious res/bodacious.svg src/bodacious.cpp
    ```
 6. Compile and link:
    ```

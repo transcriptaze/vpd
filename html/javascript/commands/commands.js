@@ -3,6 +3,7 @@ export { newInput } from './inputs.js'
 export { newOutput } from './outputs.js'
 export { newParameter } from './parameters.js'
 export { newLight } from './lights.js'
+export { newWidget } from './widgets.js'
 export { newLabel } from './text.js'
 export { newGuide } from './guides.js'
 

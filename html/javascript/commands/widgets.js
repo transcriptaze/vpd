@@ -1,8 +1,8 @@
 import * as components from './components.js'
 
-export function newParameter (node) {
+export function newWidget (node) {
   return {
     action: 'new',
-    parameter: components.parse(node)
+    widget: components.parse(node)
   }
 }

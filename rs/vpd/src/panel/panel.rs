@@ -8,6 +8,7 @@ use crate::panel::Guide;
 use crate::panel::Input;
 use crate::panel::Label;
 use crate::panel::Light;
+use crate::panel::Widget;
 use crate::panel::Origin;
 use crate::panel::Output;
 use crate::panel::Parameter;
@@ -34,6 +35,7 @@ pub struct Panel {
     pub outputs: Vec<Output>,
     pub parameters: Vec<Parameter>,
     pub lights: Vec<Light>,
+    pub widgets: Vec<Widget>,
     pub labels: Vec<Label>,
 }
 
@@ -51,6 +53,7 @@ impl Panel {
             outputs: Vec::new(),
             parameters: Vec::new(),
             lights: Vec::new(),
+            widgets: Vec::new(),
             labels: Vec::new(),
         };
     }
@@ -69,6 +72,7 @@ impl Panel {
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
         let lights = self.lights(theme);
+        let widgets = self.widgets(theme);
         let labels = self.labels(theme);
         let parts = self.parts(theme);
 
@@ -82,6 +86,7 @@ impl Panel {
             .outputs(outputs)
             .parameters(parameters)
             .lights(lights)
+            .widgets(widgets)
             .labels(labels)
             .parts(parts)
             .overlay(true);
@@ -210,6 +215,21 @@ impl Panel {
         return list;
     }
 
+    fn widgets(&self, _theme: &str) -> Vec<Circle> {
+        let mut list: Vec<Circle> = Vec::new();
+        let radius = 2.54;
+        let colour = "#ffff00";
+
+        for v in self.widgets.iter() {
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Circle::new(x, y, radius, &colour));
+        }
+
+        return list;
+    }
+
     fn labels(&self, theme: &str) -> Vec<Text> {
         let mut list: Vec<Text> = Vec::new();
         let mut colour = "#222222";
@@ -265,6 +285,18 @@ impl Panel {
         }
 
         for v in self.lights.iter() {
+            match &v.part {
+                Some(p) => {
+                    let x = v.x.resolve(&self);
+                    let y = v.y.resolve(&self);
+
+                    list.push(Part::new(p, x, y));
+                }
+                None => {}
+            }
+        }
+
+        for v in self.widgets.iter() {
             match &v.part {
                 Some(p) => {
                     let x = v.x.resolve(&self);

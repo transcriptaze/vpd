@@ -22,4 +22,10 @@
     <circle cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
     {%- endfor %}
     {%- endif %}
+
+    {% if widgets -%}
+    {% for v in widgets -%}
+    <circle cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
+    {%- endfor %}
+    {%- endif %}
   </g>

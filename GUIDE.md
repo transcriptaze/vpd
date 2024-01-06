@@ -19,9 +19,9 @@
 
 ## Getting started
 
-1. Create a new module named _quickstart_ that is 50.8mm (10 units) wide
+1. Create a new module named _bodacious_ that is 50.8mm (10 units) wide
    ```
-   new module "quickstart" 1U 10H
+   new module "bodacious" 1U 10H
    ```
 
 2. Create vertical guidelines to locate inputs, outputs and parameters:
@@ -107,18 +107,18 @@
 
 12. Export the project files:
     ```
-    export module
+    export project
     ```
     ```
-    export module script
+    export script
     ```
 
 13. Export the SVG file:
     ```
-    export module SVG 
+    export panel svg
     ```
     ```
-    export module SVG dark
+    export panel svg dark
     ```
 
 ## User interface

@@ -116,10 +116,10 @@
       - [ ] `decorate`
 
 - [ ] _widget_
-      - [ ] `new widget <name> <absolute>`
-      - [ ] `new widget <name> <geometry>`
-      - [ ] `new widget <name> <guidelines>`
-      - [ ] `new widget <name> <absolute|geometry|guidelines> [part]`
+      - [x] `new widget <name> <absolute>`
+      - [x] `new widget <name> <geometry>`
+      - [x] `new widget <name> <guidelines>`
+      - [x] `new widget <name> <absolute|geometry|guidelines> [part]`
       - [ ] delete
       - [ ] set
       - [ ] help

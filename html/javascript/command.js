@@ -75,6 +75,9 @@ function _new (node) {
       case 'light':
         return commands.newLight(entity)
 
+      case 'widget':
+        return commands.newWidget(entity)
+
       case 'label':
         return commands.newLabel(entity)
 
