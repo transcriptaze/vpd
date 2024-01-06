@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+use crate::panel::Guide;
 use crate::panel::Panel;
 
 use crate::utils::log;
@@ -24,11 +25,17 @@ impl X {
             "right" => w + self.offset,
 
             _ => match panel.guides.get(reference) {
-                Some(g) => match g.orientation.as_str() {
-                    "vertical" => g.offset + self.offset,
-                    _ => 0.0,
+                Some(g) => match g.resolve(reference, &panel, 0) {
+                    Some((orientation, offset)) => {
+                        if orientation.as_str() == "vertical" {
+                            self.offset + offset
+                        } else {
+                            0.0
+                        }
+                    }
+                    None => 0.0,
                 },
-                _ => {
+                None => {
                     warnf!("missing reference guideline '{}'", reference);
                     0.0
                 }
@@ -55,11 +62,17 @@ impl Y {
             "bottom" => h + self.offset,
 
             _ => match panel.guides.get(reference) {
-                Some(g) => match g.orientation.as_str() {
-                    "horizontal" => g.offset + self.offset,
-                    _ => 0.0,
+                Some(g) => match g.resolve(reference, &panel, 0) {
+                    Some((orientation, offset)) => {
+                        if orientation.as_str() == "horizontal" {
+                            self.offset + offset
+                        } else {
+                            0.0
+                        }
+                    }
+                    None => 0.0,
                 },
-                _ => {
+                None => {
                     warnf!("missing reference guideline '{}'", reference);
                     0.0
                 }

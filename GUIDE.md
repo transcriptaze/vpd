@@ -37,3 +37,22 @@
    new guide bottom-15.24mm
    ```
 
+4. **TODO**
+
+
+5. Create the inputs:
+   ```
+   new input "e" v1,h1 PJ301M
+   ```
+   ```
+   new input "v" v1,h2 PJ301M
+   ```
+
+6. Create the outputs:
+   ```
+   new output "P" v3,h3-10.16mm PJ301M
+   ```
+   ```
+   new output "Q" v3,h3         PJ301M
+   ```
+
