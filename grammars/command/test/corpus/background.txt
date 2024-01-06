@@ -1,0 +1,52 @@
+======================
+set background #ff00ed
+======================
+set background #ff00ed
+---
+(command
+  (set
+    (background
+      (rgb))))
+
+
+========================
+set background #ff00ed40
+========================
+set background #ff00ed40
+---
+(command
+  (set
+    (background
+      (rgba))))
+
+
+=========================
+set background foundation
+=========================
+set background foundation
+---
+(command
+  (set
+    (background
+      (name))))
+
+===========================
+set background 'foundation'
+===========================
+set background 'foundation'
+---
+(command
+  (set
+    (background
+      (name))))
+
+
+===========================
+set background "foundation"
+===========================
+set background "foundation"
+---
+(command
+  (set
+    (background
+      (name))))

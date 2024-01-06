@@ -43,7 +43,9 @@
 
 
 ### Commands
-- [x] Enable input autocomplete attribute
+- [ ] _load_
+      - [ ] `load project`
+      - [ ] `load script`
 
 - [ ] _export_
       - [ ] `export project`
@@ -51,14 +53,12 @@
       - [ ] `export script`
       - [ ] `export panel svg [light|dark]`
 
-- [ ] _load_
-      - [ ] `load project [gzip]`
-      - [ ] `load script`
-
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
       - [x] `new module <name> [1U] 50mm`
       - [ ] `set` module name/width/height
+      - [ ] help
+      - [ ] user guide
 
 - [ ] _origin_
       - [ ] `set origin absolute`
@@ -70,6 +70,13 @@
       - [ ] `set`
       - [ ] `list`
       - (?) error if duplicate offset
+
+- [ ] _background_
+      - [ ] `set background <rgb>`
+      - [ ] `set background <rgba>`
+      - [ ] `set background <name>`
+      - [ ] help
+      - [ ] user guide
 
 - [ ] _inputs_
       - [x] `new input <name> <absolute>`

@@ -11,8 +11,10 @@ module.exports = grammar({
       ),
     ),
 
+    // ... comments
     comment: $ => /#.*/,
 
+    // ... new
     new: $ => seq(
       'new',
       $._entity,
@@ -70,34 +72,13 @@ module.exports = grammar({
       optional($.part),
     ),
 
+    // ... set
     set: $ => seq(
       'set',
-      $._attribute,
-    ),
-
-    export: $ => seq (
-      'export',
-      alias($._exportable,$.module)
-    ),
-
-    _exportable: $ => seq(
-      'module',
-      $.svg,
-    ),
-
-    svg: $ => seq(
-      'svg',
-      optional (
-        choice(
-          alias('light',$.light),
-          alias('dark',$.dark),
-        ),
-      ),
-    ),
-
-
-    _attribute: $ => choice(
-      $.origin,
+      choice (
+        $.origin,
+        $.background,
+      )
     ),
 
     origin: $ => seq(
@@ -130,6 +111,39 @@ module.exports = grammar({
     _originy: $ => seq(
       alias (/top|middle|bottom/,$.reference), 
       optional($.offset),
+    ),
+
+    background: $ => seq(
+      'background',
+      choice(
+        $.rgb,
+        $.rgba,
+        $.name,
+      ),
+    ),
+
+    rgb: $ => /#[a-fA-F0-9]{6}/,
+    rgba: $ => /#[a-fA-F0-9]{8}/,
+
+    // ... export
+    export: $ => seq (
+      'export',
+      alias($._exportable,$.module)
+    ),
+
+    _exportable: $ => seq(
+      'module',
+      $.svg,
+    ),
+
+    svg: $ => seq(
+      'svg',
+      optional (
+        choice(
+          alias('light',$.light),
+          alias('dark',$.dark),
+        ),
+      ),
     ),
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_-]*?)"|'[a-zA-Z]([a-zA-Z0-9_-]*?)'/,

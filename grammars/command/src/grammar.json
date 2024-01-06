@@ -215,88 +215,17 @@
           "value": "set"
         },
         {
-          "type": "SYMBOL",
-          "name": "_attribute"
-        }
-      ]
-    },
-    "export": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "export"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_exportable"
-          },
-          "named": true,
-          "value": "module"
-        }
-      ]
-    },
-    "_exportable": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "module"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "svg"
-        }
-      ]
-    },
-    "svg": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "svg"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "light"
-                  },
-                  "named": true,
-                  "value": "light"
-                },
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "dark"
-                  },
-                  "named": true,
-                  "value": "dark"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "origin"
             },
             {
-              "type": "BLANK"
+              "type": "SYMBOL",
+              "name": "background"
             }
           ]
-        }
-      ]
-    },
-    "_attribute": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "origin"
         }
       ]
     },
@@ -448,6 +377,111 @@
             {
               "type": "SYMBOL",
               "name": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "background": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "background"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rgb"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rgba"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "name"
+            }
+          ]
+        }
+      ]
+    },
+    "rgb": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{6}"
+    },
+    "rgba": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{8}"
+    },
+    "export": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_exportable"
+          },
+          "named": true,
+          "value": "module"
+        }
+      ]
+    },
+    "_exportable": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "module"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "svg"
+        }
+      ]
+    },
+    "svg": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "svg"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "light"
+                  },
+                  "named": true,
+                  "value": "light"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "dark"
+                  },
+                  "named": true,
+                  "value": "dark"
+                }
+              ]
             },
             {
               "type": "BLANK"
