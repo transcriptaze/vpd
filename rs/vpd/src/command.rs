@@ -13,6 +13,7 @@ use crate::commands::NewOutputCommand;
 use crate::commands::NewParameterCommand;
 use crate::commands::NewWidgetCommand;
 use crate::commands::SetOriginCommand;
+use crate::commands::SetBackgroundCommand;
 
 pub trait Command {
     fn apply(&self, m: &mut Module);
@@ -25,6 +26,9 @@ struct Action {
 
     #[serde(rename = "module")]
     module: Option<Entity>,
+
+    #[serde(rename = "background")]
+    background: Option<Attr>,
 
     #[serde(rename = "input")]
     input: Option<Entity>,
@@ -81,6 +85,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(NewGuideCommand::new(json)?))
     } else if v.action == "set" && v.origin.is_some() {
         Ok(Box::new(SetOriginCommand::new(json)?))
+    } else if v.action == "set" && v.background.is_some() {
+        Ok(Box::new(SetBackgroundCommand::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {
         Ok(Box::new(ExportSVGCommand::new(json)?))
     } else {

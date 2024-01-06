@@ -1,15 +1,19 @@
-import { setOrigin } from './origin.js'
+import * as origin from './origin.js'
+import * as background from './background.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
-    const attr = node.namedChildren[0]
+    const child = node.namedChildren[0]
 
-    switch (attr.type) {
+    switch (child.type) {
       case 'origin':
-        return setOrigin(attr)
+        return origin.set(child)
+
+      case 'background':
+        return background.set(child)
 
       default:
-        throw new Error(`unknown 'set' attribute <<${attr.type}>>`)
+        throw new Error(`unknown 'set' entity <<${child.type}>>`)
     }
   }
 

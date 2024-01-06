@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-use crate::panel::Guide;
 use crate::panel::Panel;
 
 use crate::utils::log;

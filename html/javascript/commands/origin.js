@@ -1,6 +1,6 @@
 import { mm } from './commands.js'
 
-export function setOrigin (node) {
+export function set (node) {
   const object = {
     action: 'set',
     origin: {

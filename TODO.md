@@ -1,9 +1,12 @@
 # TODO
 
 - [x] github 'cloudflare' build
+      - [ ] bundle
+
 - [x] Load project file
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
+
 - [ ] VPX
       - [x] Load and run file
       - [x] Drag 'n drop
@@ -77,6 +80,7 @@
       - [ ] `set background <name>`
       - [ ] help
       - [ ] user guide
+      - [ ] default background
 
 - [ ] _inputs_
       - [x] `new input <name> <absolute>`
