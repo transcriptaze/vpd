@@ -31,9 +31,9 @@ impl NewGuideCommand {
 
 impl Command for NewGuideCommand {
     fn apply(&self, m: &mut Module) {
-        let name = match &self.name {
+        let id = match &self.name {
             Some(v) => v.to_string(),
-            None => m.new_guide_name(&self.orientation, &self.reference),
+            None => m.new_guide_id(&self.orientation, &self.reference),
         };
 
         let reference = self.reference.as_str();
@@ -58,19 +58,19 @@ impl Command for NewGuideCommand {
             (o, _) => o,
         };
 
-        if validate(&name, &reference, &m) {
+        if validate(&id, &reference, &m) {
             m.panel
                 .guides
-                .entry(name)
+                .entry(id)
                 .or_insert(Guide::new(&orientation, &reference, self.offset));
         }
     }
 }
 
-fn validate(name: &str, reference: &str, m: &Module) -> bool {
+fn validate(id: &str, reference: &str, m: &Module) -> bool {
     // ... name
-    if m.panel.guides.contains_key(name) {
-        warnf!("duplicate guideline name '{}'", name);
+    if m.panel.guides.contains_key(id) {
+        warnf!("duplicate guideline ID '{}'", id);
         return false;
     }
 

@@ -41,7 +41,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
      by executing the _load script_ command)
    - or, following the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_
 
-4. Export the SVG files to the plugin `res` folder using either the _export SVG_ buttons or the commands:
+4. Export the SVG files to the plugin `res` folder using either the _Export SVG_ buttons or the commands:
    ```
    export panel svg
    ```
@@ -61,9 +61,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 
 ## _web-app_
 
-The web app is currently hosted on _Cloudflare Pages_:
-
-[VPD](https://vpd.pages.dev)
+The [VPD](https://vpd.pages.dev) web app is currently hosted on _Cloudflare Pages_.
 
 
 ## Running locally
@@ -71,10 +69,12 @@ The web app is currently hosted on _Cloudflare Pages_:
 ### VPD application
 
 1. Download the _vpd_ executable archive from a [release](https://github.com/transcriptaze/vpd/releases) or the latest
-   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and _untar_ it (_unzip_ on Windows).
-2. Open the VPD application in a terminal window.
+   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and extract it to a folder of 
+   your choice.
+2. Open the `vpd` application in a terminal window - on a Mac you may have to Ctrl-Open the file the first time to grant
+   it permissions to run.
 3. Open [http://localhost:9876](http://localhost:9876) in your browser.
-4. Voilá
+4. Voilá, you're good to go!
 
 #### Command line
 ```
@@ -90,7 +90,8 @@ Options:
 
 ### Python
 
-1. Download the _HTML_ artifact from either a release or a nightly build and unzip it to a folder::
+1. Download the _HTML_ artifact from either a [release](https://github.com/transcriptaze/vpd/releases) or the latest 
+   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and unzip it to a folder.
 2. Start an HTTP server to serve the unzipped files:
    ```
    cd vpd
@@ -99,9 +100,9 @@ Options:
 
 ### NodeJS
 
-1. Download the _HTML_ artifact from either a release or a nightly build and unzip it to a folder::
+1. Download the _HTML_ artifact from either a [release](https://github.com/transcriptaze/vpd/releases) or the latest
+   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and unzip it to a folder.
 2. Start an HTTP server to serve the unzipped files:
-- _NodeJS_
    ```
    cd vpd
    npx http-server html --port 9876
@@ -127,7 +128,7 @@ You need a **bunch** of tools:
 
 1. `apt install sass` on _Ubuntu_ installs `ruby-sass` which was marked **[obsolete](https://sass-lang.com/ruby-sass)**
    in 2019. Please follow the installation instructions on the [Sass homepage](https://sass-lang.com) to install
-   the current version._
+   the current version.
 
 
 ### Build instructions
@@ -149,5 +150,7 @@ make build-all
 
 ## Attribution
 
-1. Undo by Michael Kussmaul from <a href="https://thenounproject.com/browse/icons/term/undo/" target="_blank" title="Undo Icons">Noun Project</a> (CC BY 3.0)
-2. Redo by Michael Kussmaul from <a href="https://thenounproject.com/browse/icons/term/redo/" target="_blank" title="redo Icons">Noun Project</a> (CC BY 3.0)
+1. `undo` icon by Michael Kussmaul from <a href="https://thenounproject.com/browse/icons/term/undo/" target="_blank" title="Undo Icons">Noun Project</a> (CC BY 3.0)
+2. `redo` icon by Michael Kussmaul from <a href="https://thenounproject.com/browse/icons/term/redo/" target="_blank" title="redo Icons">Noun Project</a> (CC BY 3.0)
+3. The remaining icons are from the [SVG Silh](https://svgsilh.com) project.
+

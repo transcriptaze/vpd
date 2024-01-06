@@ -156,7 +156,7 @@ impl Module {
         let mut ix: i32 = 0;
 
         for k in &self.panel.widgets {
-            match re.captures(&k.component.id) {
+            match re.captures(&k.id) {
                 Some(captures) => {
                     let v = captures.get(2).unwrap().as_str();
                     let i = v.parse::<i32>().unwrap();
@@ -173,7 +173,7 @@ impl Module {
         format!("w{}", ix + 1)
     }
 
-    pub fn new_guide_name(&self, orientation: &str, reference: &str) -> String {
+    pub fn new_guide_id(&self, orientation: &str, reference: &str) -> String {
         let re = match (orientation, reference) {
             ("vertical", _) => Regex::new(r"(v)(\d+)").unwrap(),
             ("horizontal", _) => Regex::new(r"(h)(\d+)").unwrap(),
@@ -182,6 +182,8 @@ impl Module {
                 None => Regex::new(r"(g)(\d+)").unwrap(),
             },
         };
+
+        warnf!(">>>> RE: {:}", re);
 
         let mut ix: i32 = 0;
 

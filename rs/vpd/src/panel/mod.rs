@@ -1,4 +1,3 @@
-mod component;
 mod guide;
 mod input;
 mod label;
@@ -10,7 +9,6 @@ mod parameter;
 mod widget;
 mod xy;
 
-pub use component::Component;
 pub use guide::Guide;
 pub use input::Input;
 pub use label::Label;

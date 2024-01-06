@@ -221,8 +221,8 @@ impl Panel {
         let colour = "#ffff00";
 
         for v in self.widgets.iter() {
-            let x = v.component.x.resolve(&self);
-            let y = v.component.y.resolve(&self);
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
 
             list.push(Circle::new(x, y, radius, &colour));
         }
@@ -297,10 +297,10 @@ impl Panel {
         }
 
         for v in self.widgets.iter() {
-            match &v.component.part {
+            match &v.part {
                 Some(p) => {
-                    let x = v.component.x.resolve(&self);
-                    let y = v.component.y.resolve(&self);
+                    let x = v.x.resolve(&self);
+                    let y = v.y.resolve(&self);
 
                     list.push(Part::new(p, x, y));
                 }
