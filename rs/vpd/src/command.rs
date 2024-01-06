@@ -8,10 +8,10 @@ use crate::commands::NewGuideCommand;
 use crate::commands::NewInputCommand;
 use crate::commands::NewLabelCommand;
 use crate::commands::NewLightCommand;
-use crate::commands::NewWidgetCommand;
 use crate::commands::NewModuleCommand;
 use crate::commands::NewOutputCommand;
 use crate::commands::NewParameterCommand;
+use crate::commands::NewWidgetCommand;
 use crate::commands::SetOriginCommand;
 
 pub trait Command {

@@ -33,7 +33,17 @@ impl PrettyPrinter {
             .unwrap()
             .replace_all(&clean4, "$1\n");
 
-        return clean5.to_string();
+        // ... reduce floats to 3 decimal places
+        let clean6 = Regex::new(r#"([+-]?[0-9]+[.][0-9]{4,})"#)
+            .unwrap()
+            .replace_all(&clean5, |captures: &regex::Captures| {
+                let u = &captures[0];
+                let v: f64 = u.parse().unwrap();
+
+                format!("{:.3}", v).trim_end_matches('0').to_string()
+            });
+
+        return clean6.to_string();
     }
 }
 

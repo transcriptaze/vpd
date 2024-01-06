@@ -29,6 +29,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 1. Create a sample VCV plugin:
    ```
    $RACK_DIR/helper.py createplugin bodacious
+   cd bodacious
    make
    ```
 2. Open the VPD [web application](https://vpd.pages.dev) in your browser.

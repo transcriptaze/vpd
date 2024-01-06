@@ -8,10 +8,10 @@ use crate::panel::Guide;
 use crate::panel::Input;
 use crate::panel::Label;
 use crate::panel::Light;
-use crate::panel::Widget;
 use crate::panel::Origin;
 use crate::panel::Output;
 use crate::panel::Parameter;
+use crate::panel::Widget;
 
 use crate::svg::Circle;
 use crate::svg::GuideLine;
