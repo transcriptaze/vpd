@@ -4,11 +4,14 @@ module.exports = grammar({
   rules: {
     command: $ =>repeat(
       choice(
+        $.comment,
         $.new,
         $.set,
         $.export,
       ),
     ),
+
+    comment: $ => /#.*/,
 
     new: $ => seq(
       'new',

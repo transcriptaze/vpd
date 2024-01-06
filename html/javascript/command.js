@@ -29,7 +29,11 @@ export function parseVPX (vpx) {
   const script = []
 
   for (const node of root.namedChildren) {
-    script.push(parseNode(node))
+    const v = parseNode(node)
+
+    if (v != null) {
+      script.push(parseNode(node))
+    }
   }
 
   return script
@@ -37,6 +41,9 @@ export function parseVPX (vpx) {
 
 export function parseNode (node) {
   switch (node.type) {
+    case 'comment':
+      return null
+
     case 'new':
       return _new(node)
 

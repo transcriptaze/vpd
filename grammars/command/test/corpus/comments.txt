@@ -1,0 +1,8 @@
+=======
+comment
+=======
+# new module "woot" 1U 3H
+---
+(command
+  (comment))
+

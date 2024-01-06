@@ -8,6 +8,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
             "name": "new"
           },
           {
@@ -20,6 +24,10 @@
           }
         ]
       }
+    },
+    "comment": {
+      "type": "PATTERN",
+      "value": "#.*"
     },
     "new": {
       "type": "SEQ",

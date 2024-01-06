@@ -156,12 +156,14 @@ function execute (cmd) {
   try {
     const command = parse(cmd)
 
-    console.log(command)
+    if (command != null) {
+      console.log(command)
 
-    const serialized = exec(JSON.stringify(command))
+      const serialized = exec(JSON.stringify(command))
 
-    store(PROJECT, serialized)
-    redraw()
+      store(PROJECT, serialized)
+      redraw()
+    }
   } catch (err) {
     console.error(err)
   }
