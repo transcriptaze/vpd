@@ -1,3 +1,4 @@
+mod component;
 mod guide;
 mod input;
 mod label;
@@ -18,6 +19,7 @@ pub use origin::Origin;
 pub use output::Output;
 pub use panel::Panel;
 pub use parameter::Parameter;
+pub use component::Component;
 pub use xy::X;
 pub use xy::Y;
 

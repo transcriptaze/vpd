@@ -156,7 +156,7 @@ impl Module {
         let mut ix: i32 = 0;
 
         for k in &self.panel.widgets {
-            match re.captures(&k.id) {
+            match re.captures(&k.component.id) {
                 Some(captures) => {
                     let v = captures.get(2).unwrap().as_str();
                     let i = v.parse::<i32>().unwrap();
