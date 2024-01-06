@@ -8,6 +8,7 @@ use crate::panel::Guide;
 use crate::utils::log;
 use crate::warnf;
 
+#[derive(Deserialize)]
 pub struct NewGuideCommand {
     name: Option<String>,
     orientation: String,
@@ -16,36 +17,15 @@ pub struct NewGuideCommand {
 }
 
 #[derive(Deserialize)]
-struct E {
-    #[serde(rename = "guide")]
-    guide: V,
-}
-
-#[derive(Deserialize)]
-struct V {
-    #[serde(rename = "name")]
-    name: Option<String>,
-
-    #[serde(rename = "orientation")]
-    orientation: String,
-
-    #[serde(rename = "reference")]
-    reference: String,
-
-    #[serde(rename = "offset")]
-    offset: f32,
+struct Object {
+    guide: NewGuideCommand,
 }
 
 impl NewGuideCommand {
     pub fn new(json: &str) -> Result<NewGuideCommand, Box<dyn Error>> {
-        let e: E = serde_json::from_str(json)?;
+        let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewGuideCommand {
-            name: e.guide.name,
-            orientation: e.guide.orientation,
-            reference: e.guide.reference,
-            offset: e.guide.offset,
-        })
+        Ok(o.guide)
     }
 }
 
@@ -67,15 +47,14 @@ impl Command for NewGuideCommand {
             ("", "middle") => "horizontal",
             ("", "bottom") => "horizontal",
 
-            ("", v) => match m.panel.guides.get(v) {
-                Some(g) => match g.orientation.as_str() {
-                    "vertical" => "vertical",
-                    "horizontal" => "horizontal",
-                    _ => "",
-                },
-                _ => "",
-            },
-
+            // ("", v) => match m.panel.guides.get(v) {
+            //     Some(g) => match g.orientation.as_str() {
+            //         "vertical" => "vertical",
+            //         "horizontal" => "horizontal",
+            //         _ => "",
+            //     },
+            //     _ => "",
+            // },
             (o, _) => o,
         };
 

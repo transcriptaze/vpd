@@ -24,18 +24,7 @@ impl NewWidgetCommand {
     pub fn new(json: &str) -> Result<NewWidgetCommand, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewWidgetCommand {
-            name: o.widget.name.to_string(),
-            x: panel::X {
-                reference: o.widget.x.reference,
-                offset: o.widget.x.offset,
-            },
-            y: panel::Y {
-                reference: o.widget.y.reference,
-                offset: o.widget.y.offset,
-            },
-            part: o.widget.part,
-        })
+        Ok(o.widget)
     }
 }
 

@@ -33,7 +33,14 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
    make
    ```
 2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
-3. Follow the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_ to create a basic panel.
+
+3. Create a sample panel by either:
+   - Opening the [_bodacious.vpd_](/doc/examples/bodacious.vpd) project file by clicking on the _Load_ button (or alternatively
+     by executing the _load project_ command)
+   - or, opening the [_bodacious.vpx_](/doc/examples/bodacious.vpx) script file by alt-clicking on the _Load_ button (or alternatively
+     by executing the _load script_ command)
+   - or, following the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_
+
 4. Export the SVG files to the plugin `res` folder using either the _export SVG_ buttons or the commands:
    ```
    export panel svg

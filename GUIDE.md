@@ -3,19 +3,7 @@
 ### Contents
 
 - [Getting started](#getting-started)
-- [Projects](#projects)
-- [Scripts](#scripts)
-- [Fonts](#fonts)
-- [Guidelines](#guidelines)
-- [Macro keys](#macro-keys)
-- [Commands](#commands)
-  - [Modules](#modules)
-  - [Inputs](#inputs)
-  - [Outputs](#outputs)
-  - [Parameters](#parameters)
-  - [Lights](#lights)
-  - [Labels](#labels)
-  - [Backgrounds](#backgrounds)
+
 
 ## Getting started
 
@@ -23,3 +11,29 @@
    ```
    new module "bodacious" 1U 10H
    ```
+
+2. Create vertical guidelines to locate inputs, outputs and parameters:
+   ```
+   new guide vertical @10.16mm
+   ```
+   ```
+   new guide v1+10.16mm
+   ```
+   ```
+   new guide v2+10.16mm
+   ```
+   ```
+   new guide v3+10.16mm
+   ```
+
+3. Add a horizontal guideline to locate inputs, outputs and parameters:
+   ```
+   new guide horizontal top+20.32mm
+   ```
+   ```
+   new guide h1+2H
+   ```
+   ```
+   new guide bottom-15.24mm
+   ```
+

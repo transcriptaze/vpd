@@ -1,0 +1,88 @@
+{
+  "name": "bodacious",
+  "panel": {
+    "width": 50.8,
+    "height": 128.5,
+    "gutter": 5.0,
+    "origin": {
+      "x": {
+        "reference": "left",
+        "offset": 0.0
+      },
+      "y": {
+        "reference": "top",
+        "offset": 0.0
+      }
+    },
+    "guides": {
+      "v2": {
+        "orientation": "",
+        "reference": "v1",
+        "offset": 10.16
+      },
+      "h1": {
+        "orientation": "horizontal",
+        "reference": "origin",
+        "offset": 20.32
+      },
+      "v1": {
+        "orientation": "vertical",
+        "reference": "absolute",
+        "offset": 10.16
+      },
+      "h5": {
+        "orientation": "",
+        "reference": "h1",
+        "offset": 10.16
+      },
+      "v4": {
+        "orientation": "",
+        "reference": "v3",
+        "offset": 10.16
+      },
+      "g1": {
+        "orientation": "horizontal",
+        "reference": "bottom",
+        "offset": -15.24
+      },
+      "v3": {
+        "orientation": "",
+        "reference": "v2",
+        "offset": 10.16
+      }
+    },
+    "inputs": [
+      {
+        "id": "i1",
+        "name": "\"e\"",
+        "x": {
+          "reference": "v1",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h1",
+          "offset": 0.0
+        },
+        "part": "PJ301M"
+      },
+      {
+        "id": "i2",
+        "name": "\"v\"",
+        "x": {
+          "reference": "v1",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h2",
+          "offset": 0.0
+        },
+        "part": "PJ301M"
+      }
+    ],
+    "outputs": [],
+    "parameters": [],
+    "lights": [],
+    "widgets": [],
+    "labels": []
+  }
+}

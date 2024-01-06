@@ -23,18 +23,7 @@ impl NewInputCommand {
     pub fn new(json: &str) -> Result<NewInputCommand, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewInputCommand {
-            name: o.input.name.to_string(),
-            x: panel::X {
-                reference: o.input.x.reference,
-                offset: o.input.x.offset,
-            },
-            y: panel::Y {
-                reference: o.input.y.reference,
-                offset: o.input.y.offset,
-            },
-            part: o.input.part,
-        })
+        Ok(o.input)
     }
 }
 

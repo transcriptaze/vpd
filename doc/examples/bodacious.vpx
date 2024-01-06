@@ -1,0 +1,10 @@
+new module "bodacious" 1U 10H
+new guide vertical @10.16mm
+new guide v1+10.16mm
+new guide v2+10.16mm
+new guide v3+10.16mm
+new guide horizontal top+20.32mm
+new guide h1+2H
+new guide bottom-15.24mm
+new input "e" v1,h1 PJ301M
+new input "v" v1,h2 PJ301M

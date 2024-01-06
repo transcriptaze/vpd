@@ -16,7 +16,6 @@ pub struct NewLightCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    #[serde(rename = "light")]
     light: NewLightCommand,
 }
 
@@ -24,18 +23,7 @@ impl NewLightCommand {
     pub fn new(json: &str) -> Result<NewLightCommand, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewLightCommand {
-            name: o.light.name.to_string(),
-            x: panel::X {
-                reference: o.light.x.reference,
-                offset: o.light.x.offset,
-            },
-            y: panel::Y {
-                reference: o.light.y.reference,
-                offset: o.light.y.offset,
-            },
-            part: o.light.part,
-        })
+        Ok(o.light)
     }
 }
 

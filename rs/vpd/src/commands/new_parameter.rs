@@ -23,18 +23,7 @@ impl NewParameterCommand {
     pub fn new(json: &str) -> Result<NewParameterCommand, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewParameterCommand {
-            name: o.parameter.name,
-            x: panel::X {
-                reference: o.parameter.x.reference,
-                offset: o.parameter.x.offset,
-            },
-            y: panel::Y {
-                reference: o.parameter.y.reference,
-                offset: o.parameter.y.offset,
-            },
-            part: o.parameter.part,
-        })
+        Ok(o.parameter)
     }
 }
 

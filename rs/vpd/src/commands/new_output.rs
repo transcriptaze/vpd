@@ -23,18 +23,7 @@ impl NewOutputCommand {
     pub fn new(json: &str) -> Result<NewOutputCommand, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewOutputCommand {
-            name: o.output.name.to_string(),
-            x: panel::X {
-                reference: o.output.x.reference,
-                offset: o.output.x.offset,
-            },
-            y: panel::Y {
-                reference: o.output.y.reference,
-                offset: o.output.y.offset,
-            },
-            part: o.output.part,
-        })
+        Ok(o.output)
     }
 }
 
