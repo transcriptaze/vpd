@@ -12,6 +12,8 @@ It has been tested on:
 - Opera
 - Safari
 
+(but mostly on Chrome).
+
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands.
 
@@ -35,13 +37,21 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
 
 3. Create a sample panel by either:
-   - Opening the [_bodacious.vpd_](/doc/examples/bodacious.vpd) project file by clicking on the _Load_ button (or alternatively
-     by executing the _load project_ command)
-   - or, opening the [_bodacious.vpx_](/doc/examples/bodacious.vpx) script file by alt-clicking on the _Load_ button (or alternatively
-     by executing the _load script_ command)
-   - or, following the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_
+   - Downloading [_bodacious.vpd_](/doc/examples/bodacious.vpd) project file and opening it by clicking on the _Load_ 
+     button <img width="24" src="doc/images/load.png"> (or alternatively by executing the _load project_ command)
 
-4. Export the SVG files to the plugin `res` folder using either the _Export SVG_ buttons or the commands:
+     -- OR --
+
+   - Downloading the [_bodacious.vpx_](/doc/examples/bodacious.vpx) script file and opening it by alt-clicking on the _Load_ 
+     button (<img width="24" src="doc/images/load.png">) (or alternatively by executing the _load script_ command)
+
+     -- OR --
+
+   - Following the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_
+
+4. Export the SVG files to the plugin `res` folder using either the _Export SVG_ buttons 
+   <img width="24" src="doc/images/export-svg-light.png"> <img width="24" src="doc/images/export-svg-dark.png"> or 
+   the commands:
    ```
    export panel svg
    ```
