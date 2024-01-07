@@ -168,6 +168,10 @@
       - [ ] blank lines
       - [ ] 3 digits
 
+### Tests
+- https://playwright.dev/docs/intro
+
+
 ## Notes
 
 1.  https://github.com/danmarshall/google-font-to-svg-path

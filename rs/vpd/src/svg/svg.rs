@@ -8,7 +8,6 @@ use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
-use crate::svg::Stop;
 use crate::svg::Style;
 use crate::svg::Text;
 
@@ -66,13 +65,14 @@ impl SVG {
         self
     }
 
-    pub fn background(mut self, bg: &str) -> Self {
-        let stop1 = Stop::new(0.0, "#ffff00");
-        let stop2 = Stop::new(100.0, "#00ffff");
-        let gradient = Gradient::new("xxx", stop1, stop2);
-
-        self.backgrounds.push(gradient);
+    pub fn background(mut self, bg: &str, gradient: Option<Gradient>) -> Self {
         self.background = bg.to_string();
+
+        match gradient {
+            Some(g) => self.backgrounds.push(g),
+            None => {}
+        }
+
         self
     }
 

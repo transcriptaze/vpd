@@ -16,10 +16,12 @@ use crate::panel::Parameter;
 use crate::panel::Widget;
 
 use crate::svg::Circle;
+use crate::svg::Gradient;
 use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Stop;
 use crate::svg::Style;
 use crate::svg::Text;
 use crate::svg::SVG;
@@ -50,7 +52,7 @@ impl Panel {
         return Panel {
             width: w * H,
             height: 128.5,
-            background: Background::new_rgb("default", "#00ff00"),
+            background: Background::new_rgb("default", "#ffffff00"),
             inputs: Vec::new(),
             outputs: Vec::new(),
             parameters: Vec::new(),
@@ -71,9 +73,9 @@ impl Panel {
         let viewport = self.viewport();
         let panel = Rect::new(0.0, 0.0, self.width, self.height);
         let styles = self.styles();
-        let background = &self.background.background;
         let origin = self.origin();
         let guidelines = self.guidelines();
+        let background = self.background(theme);
         let inputs = self.inputs(theme);
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
@@ -84,7 +86,7 @@ impl Panel {
 
         let svg = SVG::new(w, h, &viewport, &panel)
             .styles(styles)
-            .background(background.as_str())
+            .background(&background.0, background.1)
             .outline(&panel)
             .origin(origin)
             .guidelines(guidelines)
@@ -106,7 +108,7 @@ impl Panel {
         let h = self.height;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let panel = Rect::new(0.0, 0.0, self.width, self.height);
-        let background = &self.background.background;
+        let background = self.background(theme);
         let inputs = self.inputs(theme);
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
@@ -114,7 +116,7 @@ impl Panel {
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
-            .background(background.as_str())
+            .background(&background.0, background.1)
             .inputs(inputs)
             .outputs(outputs)
             .parameters(parameters)
@@ -156,6 +158,25 @@ impl Panel {
         }
 
         return list;
+    }
+
+    pub fn background(&self, _theme: &str) -> (String, Option<Gradient>) {
+        let background = &self.background.background;
+        let gradient = match (&self.background.rgb, &self.background.rgba) {
+            (Some(v), _) => {
+                let stop1 = Stop::new(0.0, &v.colour);
+                let stop2 = Stop::new(100.0, &v.colour);
+                Some(Gradient::new(&background, stop1, stop2))
+            }
+            (_, Some(v)) => {
+                let stop1 = Stop::new(0.0, &v.colour);
+                let stop2 = Stop::new(100.0, &v.colour);
+                Some(Gradient::new(&background, stop1, stop2))
+            }
+            (_, _) => None,
+        };
+
+        (background.to_string(), gradient)
     }
 
     fn inputs(&self, _theme: &str) -> Vec<Circle> {

@@ -14,7 +14,12 @@ pub struct Background {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RGB {
-    colour: String,
+    pub colour: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RGBA {
+    pub colour: String,
 }
 
 impl Background {
@@ -49,11 +54,6 @@ impl RGB {
             colour: colour.to_string(),
         };
     }
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RGBA {
-    colour: String,
 }
 
 impl RGBA {
