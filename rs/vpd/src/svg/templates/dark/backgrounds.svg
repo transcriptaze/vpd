@@ -1,12 +1,4 @@
   <defs>
-    <linearGradient id="xyz">
-      <stop offset="0%"   stop-color="#00ff00" />
-      <stop offset="100%" stop-color="#0000ff" />
-    </linearGradient>
-    <linearGradient id="xyza">
-      <stop offset="0%"   stop-color="#00ff0080" />
-      <stop offset="100%" stop-color="#0000ff40" />
-    </linearGradient>
     <linearGradient id="foundation">
       <stop offset="0%"   stop-color="#2a2a2b" />
       <stop offset="100%" stop-color="#171717" />

@@ -75,9 +75,11 @@
       - (?) error if duplicate offset
 
 - [ ] _background_
-      - [ ] `set background <rgb>`
-      - [ ] `set background <rgba>`
-      - [ ] `set background <name>`
+      - [x] `set background <rgb>`
+      - [x] `set background <rgba>`
+      - [x] `set background <name>`
+      - [ ] `set background <rgb>,<rgb>`
+      - [ ] `set background <rgba>,<rgba>`
       - [ ] help
       - [ ] user guide
       - [ ] default background
