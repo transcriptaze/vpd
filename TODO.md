@@ -7,6 +7,10 @@
       - [ ] web component
       - [ ] https://thenounproject.com/search/icons/?q=open
 
+- [ ] Save project/script file
+      - [ ] set filename
+      - [ ] ctrl-click to save as timestamped
+
 - [ ] VPX
       - [x] Load and run file
       - [x] Drag 'n drop
@@ -52,8 +56,10 @@
 
 - [ ] _export_
       - [ ] `export project`
+      - [ ] `export project timestamp`
       - [ ] `export project gzip`
       - [ ] `export script`
+      - [ ] `export script timestamp`
       - [ ] `export panel svg [light|dark]`
 
 - [ ] _module_
@@ -81,8 +87,8 @@
       - [ ] `set background <rgb>,<rgb>`
       - [ ] `set background <rgba>,<rgba>`
       - [ ] help
-      - [ ] user guide
-      - [ ] default background
+      - [x] user guide
+      - [x] default background
 
 - [ ] _inputs_
       - [x] `new input <name> <absolute>`

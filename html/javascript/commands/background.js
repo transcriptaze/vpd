@@ -17,7 +17,14 @@ export function set (node) {
     }
 
     if (child.type === 'name') {
-      object.background.background = child.text
+      const name = child.text.trim()
+      const match = name.match(/"(.*?)"/)
+
+      if (match && match.length > 1) {
+        object.background.background = match[1]
+      } else {
+        object.background.background = child.text
+      }
     }
   }
 

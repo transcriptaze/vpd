@@ -3,53 +3,10 @@
   "panel": {
     "width": 50.8,
     "height": 128.5,
-    "gutter": 5.0,
-    "origin": {
-      "x": {
-        "reference": "left",
-        "offset": 0.0
-      },
-      "y": {
-        "reference": "top",
-        "offset": 0.0
-      }
-    },
-    "guides": {
-      "v2": {
-        "orientation": "",
-        "reference": "v1",
-        "offset": 10.16
-      },
-      "h1": {
-        "orientation": "horizontal",
-        "reference": "origin",
-        "offset": 20.32
-      },
-      "v1": {
-        "orientation": "vertical",
-        "reference": "absolute",
-        "offset": 10.16
-      },
-      "h5": {
-        "orientation": "",
-        "reference": "h1",
-        "offset": 10.16
-      },
-      "v4": {
-        "orientation": "",
-        "reference": "v3",
-        "offset": 10.16
-      },
-      "g1": {
-        "orientation": "horizontal",
-        "reference": "bottom",
-        "offset": -15.24
-      },
-      "v3": {
-        "orientation": "",
-        "reference": "v2",
-        "offset": 10.16
-      }
+    "background": {
+      "rgb,omitempty": null,
+      "rgba,omitempty": null,
+      "background,omitempty": "foundation"
     },
     "inputs": [
       {
@@ -69,7 +26,7 @@
         "id": "i2",
         "name": "\"v\"",
         "x": {
-          "reference": "v1",
+          "reference": "v2",
           "offset": 0.0
         },
         "y": {
@@ -79,10 +36,85 @@
         "part": "PJ301M"
       }
     ],
-    "outputs": [],
+    "outputs": [
+      {
+        "id": "o1",
+        "name": "\"P\"",
+        "x": {
+          "reference": "v4",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "g1",
+          "offset": -10.16
+        },
+        "part": "PJ301M"
+      },
+      {
+        "id": "o2",
+        "name": "\"Q\"",
+        "x": {
+          "reference": "v4",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "g1",
+          "offset": 0.0
+        },
+        "part": "PJ301M"
+      }
+    ],
     "parameters": [],
     "lights": [],
     "widgets": [],
-    "labels": []
+    "labels": [],
+    "gutter": 5.0,
+    "origin": {
+      "x": {
+        "reference": "left",
+        "offset": 0.0
+      },
+      "y": {
+        "reference": "top",
+        "offset": 0.0
+      }
+    },
+    "guides": {
+      "h2": {
+        "orientation": "",
+        "reference": "h1",
+        "offset": 10.16
+      },
+      "v3": {
+        "orientation": "",
+        "reference": "v2",
+        "offset": 10.16
+      },
+      "v4": {
+        "orientation": "",
+        "reference": "v3",
+        "offset": 10.16
+      },
+      "v1": {
+        "orientation": "vertical",
+        "reference": "absolute",
+        "offset": 10.16
+      },
+      "g1": {
+        "orientation": "horizontal",
+        "reference": "bottom",
+        "offset": -15.24
+      },
+      "v2": {
+        "orientation": "",
+        "reference": "v1",
+        "offset": 10.16
+      },
+      "h1": {
+        "orientation": "horizontal",
+        "reference": "origin",
+        "offset": 20.32
+      }
+    }
   }
 }

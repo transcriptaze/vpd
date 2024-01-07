@@ -51,7 +51,7 @@
 
 4. Set the background:
    ```
-   set module background "foundation"
+   set background "foundation"
    ```
 
 5. Create the inputs:
@@ -333,6 +333,4 @@ new param "E" @10mm,10mm
 ### Lights
 
 ### Label s  
-
-### Backgrounds
 
