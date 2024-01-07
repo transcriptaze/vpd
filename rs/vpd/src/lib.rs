@@ -11,6 +11,8 @@ use serde;
 use std::sync::Mutex;
 use wasm_bindgen::prelude::*;
 
+use svg::PrettyPrinter;
+
 pub struct State {
     pub module: module::Module,
 }
@@ -93,8 +95,13 @@ pub fn render(theme: &str) -> Result<String, JsValue> {
     let state = STATE.lock().unwrap();
     let module = &state.module;
     let panel = &module.panel;
+    let pp = PrettyPrinter::new();
+    let svg = panel.to_SVG(theme);
 
-    return panel.to_SVG(theme);
+    match svg {
+        Ok(v) => Ok(pp.prettify(&v)),
+        Err(e) => Err(JsValue::from(format!("{}", e))),
+    }
 }
 
 // #[cfg(test)]

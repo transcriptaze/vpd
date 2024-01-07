@@ -1,4 +1,5 @@
 mod circle;
+mod gradient;
 mod guideline;
 mod part;
 mod point;
@@ -9,6 +10,8 @@ mod svg;
 mod text;
 
 pub use circle::Circle;
+pub use gradient::Gradient;
+pub use gradient::Stop;
 pub use guideline::GuideLine;
 pub use part::Part;
 pub use point::Point;

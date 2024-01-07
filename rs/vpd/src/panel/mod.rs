@@ -1,3 +1,4 @@
+mod background;
 mod guide;
 mod input;
 mod label;
@@ -9,6 +10,9 @@ mod parameter;
 mod widget;
 mod xy;
 
+pub use background::Background;
+pub use background::RGB;
+pub use background::RGBA;
 pub use guide::Guide;
 pub use input::Input;
 pub use label::Label;

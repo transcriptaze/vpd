@@ -1,6 +1,21 @@
   <defs>
-    <linearGradient id="background">
+    <linearGradient id="rgb">
+      <stop offset="0%"   stop-color="#ff0000" />
+      <stop offset="100%" stop-color="#00ff00" />
+    </linearGradient>
+    <linearGradient id="rgba">
+      <stop offset="0%"   stop-color="#ff000040" />
+      <stop offset="100%" stop-color="#00ff0080" />
+    </linearGradient>
+    <linearGradient id="foundation">
       <stop offset="0%"   stop-color="#ebebeb" />
       <stop offset="100%" stop-color="#e1e1e1" />
     </linearGradient>
+    {% for v in backgrounds -%}
+    <linearGradient id="{{ v.id }}">
+      {% for stop in v.stops -%}
+      <stop offset="{{ stop.offset }}%" stop-color="{{ stop.colour }}" />
+      {%- endfor %}
+    </linearGradient>
+    {%- endfor %}
   </defs>

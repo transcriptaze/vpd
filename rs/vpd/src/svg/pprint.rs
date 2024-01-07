@@ -3,11 +3,11 @@ use regex::Regex;
 pub struct PrettyPrinter {}
 
 impl PrettyPrinter {
-    pub fn _new() -> PrettyPrinter {
+    pub fn new() -> PrettyPrinter {
         PrettyPrinter {}
     }
 
-    pub fn _prettify(&self, svg: &str) -> String {
+    pub fn prettify(&self, svg: &str) -> String {
         // ... remove trailing whitespace
         let clean0 = Regex::new(r#"(?m)\s+$"#).unwrap().replace_all(svg, "");
 

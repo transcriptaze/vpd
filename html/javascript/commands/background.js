@@ -8,14 +8,16 @@ export function set (node) {
   for (const child of node.namedChildren) {
     if (child.type === 'rgb') {
       object.background.rgb = child.text
+      object.background.background = 'rgb'
     }
 
     if (child.type === 'rgba') {
       object.background.rgba = child.text
+      object.background.background = 'rgba'
     }
 
     if (child.type === 'name') {
-      object.background.name = child.text
+      object.background.background = child.text
     }
   }
 

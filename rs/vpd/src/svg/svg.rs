@@ -3,11 +3,12 @@ use tera::Context;
 use tera::Tera;
 
 use crate::svg::Circle;
+use crate::svg::Gradient;
 use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
-// use crate::svg::PrettyPrinter;
 use crate::svg::Rect;
+use crate::svg::Stop;
 use crate::svg::Style;
 use crate::svg::Text;
 
@@ -19,7 +20,8 @@ pub struct SVG {
     viewport: Rect,
     panel: Rect,
     styles: Option<Vec<Style>>,
-    background: Option<Rect>,
+    backgrounds: Vec<Gradient>,
+    background: String,
     outline: Option<Rect>,
     origin: Option<Point>,
     guidelines: Option<Vec<GuideLine>>,
@@ -43,7 +45,8 @@ impl SVG {
             viewport: viewport.clone(),
             panel: panel.clone(),
             styles: None,
-            background: None,
+            backgrounds: Vec::new(),
+            background: "".to_string(),
             outline: None,
             origin: None,
             guidelines: None,
@@ -63,8 +66,13 @@ impl SVG {
         self
     }
 
-    pub fn background(mut self, bg: Rect) -> Self {
-        self.background = Some(bg);
+    pub fn background(mut self, bg: &str) -> Self {
+        let stop1 = Stop::new(0.0, "#ffff00");
+        let stop2 = Stop::new(100.0, "#00ffff");
+        let gradient = Gradient::new("xxx", stop1, stop2);
+
+        self.backgrounds.push(gradient);
+        self.background = bg.to_string();
         self
     }
 
@@ -147,10 +155,8 @@ impl SVG {
             _ => context.insert("styles", "no"),
         }
 
-        match &self.background {
-            Some(v) => context.insert("background", &v),
-            _ => {}
-        }
+        context.insert("backgrounds", &self.backgrounds);
+        context.insert("background", &self.background);
 
         match &self.outline {
             Some(v) => context.insert("outline", &v),
@@ -205,10 +211,6 @@ impl SVG {
         let svg = tera.render("panel", &context).unwrap();
 
         return Ok(svg.to_string());
-
-        // let pp = PrettyPrinter::new();
-        //
-        // Ok(pp.prettify(&svg))
     }
 }
 

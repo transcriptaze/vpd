@@ -37,25 +37,23 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
 
 3. Create a sample panel by either:
-   - Downloading [_bodacious.vpd_](/doc/examples/bodacious.vpd) project file and opening it by clicking on the _Load_ 
-     button <img width="24" src="doc/images/load.png"> (or alternatively by executing the _load project_ command)
+   - Downloading the [_bodacious.vpd_](/doc/examples/bodacious.vpd) project file and opening it by clicking on the _Load_ 
+     <img width="20" src="doc/images/load.png"> button (or alternatively by executing the _load project_ command)
 
      -- OR --
 
    - Downloading the [_bodacious.vpx_](/doc/examples/bodacious.vpx) script file and opening it by alt-clicking on the _Load_ 
-     button (<img width="24" src="doc/images/load.png">) (or alternatively by executing the _load script_ command)
+     <img width="20" src="doc/images/load.png"> button (or alternatively by executing the _load script_ command)
 
      -- OR --
 
    - Following the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_
 
 4. Export the SVG files to the plugin `res` folder using either the _Export SVG_ buttons 
-   <img width="24" src="doc/images/export-svg-light.png"> <img width="24" src="doc/images/export-svg-dark.png"> or 
+   <img width="20" src="doc/images/export-svg-light.png"> <img width="20" src="doc/images/export-svg-dark.png"> or 
    the commands:
    ```
    export panel svg
-   ```
-   ```
    export panel svg dark
    ```
 5. Generate a module using the [VCV helper script](https://vcvrack.com/manual/Panel):

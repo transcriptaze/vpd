@@ -1,9 +1,11 @@
 use std::collections::HashMap;
+use std::error::Error;
 
 use serde::{Deserialize, Serialize};
 
 use wasm_bindgen::prelude::*;
 
+use crate::panel::Background;
 use crate::panel::Guide;
 use crate::panel::Input;
 use crate::panel::Label;
@@ -28,15 +30,17 @@ pub const H: f32 = 5.08; // 1 'horizontal' unit
 pub struct Panel {
     pub width: f32,
     pub height: f32,
-    pub gutter: f32,
-    pub origin: Origin,
-    pub guides: HashMap<String, Guide>,
+    pub background: Background,
     pub inputs: Vec<Input>,
     pub outputs: Vec<Output>,
     pub parameters: Vec<Parameter>,
     pub lights: Vec<Light>,
     pub widgets: Vec<Widget>,
     pub labels: Vec<Label>,
+
+    pub gutter: f32,
+    pub origin: Origin,
+    pub guides: HashMap<String, Guide>,
 }
 
 impl Panel {
@@ -46,26 +50,28 @@ impl Panel {
         return Panel {
             width: w * H,
             height: 128.5,
-            gutter: 5.0,
-            origin: Origin::new(),
-            guides: HashMap::new(),
+            background: Background::new_rgb("default", "#00ff00"),
             inputs: Vec::new(),
             outputs: Vec::new(),
             parameters: Vec::new(),
             lights: Vec::new(),
             widgets: Vec::new(),
             labels: Vec::new(),
+
+            gutter: 5.0,
+            origin: Origin::new(),
+            guides: HashMap::new(),
         };
     }
 
     #[allow(non_snake_case)]
-    pub fn to_SVG(&self, theme: &str) -> Result<String, JsValue> {
+    pub fn to_SVG(&self, theme: &str) -> Result<String, Box<dyn Error>> {
         let w = self.width + 2.0 * self.gutter;
         let h = self.height + 2.0 * self.gutter;
         let viewport = self.viewport();
         let panel = Rect::new(0.0, 0.0, self.width, self.height);
         let styles = self.styles();
-        let background = Rect::new(0.0, 0.0, self.width, self.height);
+        let background = &self.background.background;
         let origin = self.origin();
         let guidelines = self.guidelines();
         let inputs = self.inputs(theme);
@@ -78,7 +84,7 @@ impl Panel {
 
         let svg = SVG::new(w, h, &viewport, &panel)
             .styles(styles)
-            .background(background)
+            .background(background.as_str())
             .outline(&panel)
             .origin(origin)
             .guidelines(guidelines)
@@ -91,10 +97,7 @@ impl Panel {
             .parts(parts)
             .overlay(true);
 
-        match svg.to_SVG(theme) {
-            Ok(v) => Ok(v),
-            Err(e) => Err(JsValue::from(format!("{}", e))),
-        }
+        svg.to_SVG(theme)
     }
 
     #[allow(non_snake_case)]
@@ -103,7 +106,7 @@ impl Panel {
         let h = self.height;
         let viewport = Rect::new(0.0, 0.0, self.width, self.height);
         let panel = Rect::new(0.0, 0.0, self.width, self.height);
-        let background = Rect::new(0.0, 0.0, self.width, self.height);
+        let background = &self.background.background;
         let inputs = self.inputs(theme);
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
@@ -111,7 +114,7 @@ impl Panel {
         let labels = self.labels(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
-            .background(background)
+            .background(background.as_str())
             .inputs(inputs)
             .outputs(outputs)
             .parameters(parameters)

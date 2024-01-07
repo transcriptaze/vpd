@@ -12,8 +12,8 @@ use crate::commands::NewModuleCommand;
 use crate::commands::NewOutputCommand;
 use crate::commands::NewParameterCommand;
 use crate::commands::NewWidgetCommand;
-use crate::commands::SetOriginCommand;
 use crate::commands::SetBackgroundCommand;
+use crate::commands::SetOriginCommand;
 
 pub trait Command {
     fn apply(&self, m: &mut Module);
