@@ -37,12 +37,12 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
 
 3. Create a sample panel by either:
-   - Downloading the [_bodacious.vpd_](/doc/examples/bodacious.vpd) project file and opening it by clicking on the _Load_ 
+   - Downloading the [_quickstart.vpd_](/doc/examples/quickstart.vpd) project file and opening it by clicking on the _Load_ 
      <img width="20" src="doc/images/load.png"> button (or alternatively by executing the _load project_ command)
 
      -- OR --
 
-   - Downloading the [_bodacious.vpx_](/doc/examples/bodacious.vpx) script file and opening it by alt-clicking on the _Load_ 
+   - Downloading the [_quickstart.vpx_](/doc/examples/quickstart.vpx) script file and opening it by alt-clicking on the _Load_ 
      <img width="20" src="doc/images/load.png"> button (or alternatively by executing the _load script_ command)
 
      -- OR --

@@ -3,7 +3,8 @@
 ### Contents
 
 - [Getting started](#getting-started)
-
+- [Commands](#commands)
+   - [set-background](#set-background)
 
 ## Getting started
 
@@ -70,7 +71,7 @@ Command options:
 ```
   rgb    RGB colour hex value e.g. #ff0000
   rgba   RGBA colour hex value e.g. #ff000040
-  name   Name of a preloaded background definition
+  name   Name of a preloaded background definition (optionally surrounded by single or double quotes)
 ```
 
 _Notes:_
@@ -85,5 +86,5 @@ set background #ff00ff
 set background #ff00ff,#00ff00
 set background #ff00ff40
 set background #ff00ff40,#00ff0080
-set background "foundation"
+set background foundation
 ````
