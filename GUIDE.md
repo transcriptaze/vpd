@@ -4,6 +4,7 @@
 
 - [Getting started](#getting-started)
 - [Commands](#commands)
+   - [`new module`](#new-module)
    - [`set-background`](#set-background)
 
 ## Getting started
@@ -59,9 +60,50 @@
    new output "Q" v3,h3         PJ301M
    ```
 
+7. Create the parameters:
+   ```
+   new parameter "E" v2,h1 RoundBlackKnob
+   ```
+   ```
+   new parameter "V" v3,h2 RoundBlackKnob
+   ```
+
+8. Create the lights:
+   ```
+   new light "ok" centre,middle GreenLED
+   ```
+   ```
+   new light "recording" centre,middle+12.7mm RedLED
+   ```
+
+
 ## Commands
 
-### `set-background`
+### `new module`
+
+```new module <name> [height] <width>```
+
+Creates and initialises new module.
+
+_Command options:_
+```
+  name     Module name (optionally surrounded by single or double quotes)
+  height   (optional) panel height. The only valid values are 1U or 128.5mm
+  width    Panel width, in mm or _horizontal units_ (H) of 5.08mm. The width in mm 
+           is rounded to the nearest integer multiple of 5.08mm (e.g. a value of 45mm
+           is rounded 45.72mm)
+```
+
+_Notes:_
+
+_Examples:_
+```
+new module bodacious 1U 5H
+new module bodacious 1U 45mm
+new module bodacious 45.72mm
+````
+
+### `set background`
 
 ```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
 

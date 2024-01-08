@@ -64,8 +64,62 @@
         "part": "PJ301M"
       }
     ],
-    "parameters": [],
-    "lights": [],
+    "parameters": [
+      {
+        "id": "p1",
+        "name": "\"E\"",
+        "x": {
+          "reference": "v2",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h1",
+          "offset": 0.0
+        },
+        "part": "RoundBlackKnob"
+      },
+      {
+        "id": "p2",
+        "name": "\"V\"",
+        "x": {
+          "reference": "v3",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h2",
+          "offset": 0.0
+        },
+        "part": "RoundBlackKnob"
+      }
+    ],
+    "lights": [
+      {
+        "id": "l1",
+        "name": "\"ok\"",
+        "x": {
+          "reference": "centre",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "middle",
+          "offset": 0.0
+        },
+        "part": "GreenLED"
+      },
+      {
+        "id": "l2",
+        "name": "\"recording\"",
+        "x": {
+          "reference": "centre",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "middle",
+          "offset": 12.7
+        },
+        "part": "RedLED"
+      }
+    ],
     "widgets": [],
     "labels": [],
     "gutter": 5.0,
@@ -80,10 +134,15 @@
       }
     },
     "guides": {
+      "v1": {
+        "orientation": "vertical",
+        "reference": "absolute",
+        "offset": 10.16
+      },
       "h2": {
         "orientation": "",
         "reference": "h1",
-        "offset": 10.16
+        "offset": 15.24
       },
       "v3": {
         "orientation": "",
@@ -95,10 +154,10 @@
         "reference": "v3",
         "offset": 10.16
       },
-      "v1": {
-        "orientation": "vertical",
-        "reference": "absolute",
-        "offset": 10.16
+      "h1": {
+        "orientation": "horizontal",
+        "reference": "origin",
+        "offset": 20.32
       },
       "g1": {
         "orientation": "horizontal",
@@ -109,11 +168,6 @@
         "orientation": "",
         "reference": "v1",
         "offset": 10.16
-      },
-      "h1": {
-        "orientation": "horizontal",
-        "reference": "origin",
-        "offset": 20.32
       }
     }
   }

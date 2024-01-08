@@ -61,6 +61,7 @@
       - [ ] `export script`
       - [ ] `export script timestamp`
       - [ ] `export panel svg [light|dark]`
+      - [ ] replace spaces with underscores
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
