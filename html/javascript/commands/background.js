@@ -7,12 +7,22 @@ export function set (node) {
 
   for (const child of node.namedChildren) {
     if (child.type === 'rgb') {
-      object.background.rgb = child.text
+      if (object.background.rgb == null) {
+        object.background.rgb = [child.text, child.text]
+      } else {
+        object.background.rgb[1] = child.text
+      }
+
       object.background.background = 'rgb'
     }
 
     if (child.type === 'rgba') {
-      object.background.rgba = child.text
+      if (object.background.rgba == null) {
+        object.background.rgba = [child.text, child.text]
+      } else {
+        object.background.rgba[1] = child.text
+      }
+
       object.background.background = 'rgba'
     }
 

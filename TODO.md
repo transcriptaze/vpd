@@ -84,8 +84,8 @@
       - [x] `set background <rgb>`
       - [x] `set background <rgba>`
       - [x] `set background <name>`
-      - [ ] `set background <rgb>,<rgb>`
-      - [ ] `set background <rgba>,<rgba>`
+      - [x] `set background <rgb>,<rgb>`
+      - [x] `set background <rgba>,<rgba>`
       - [ ] help
       - [x] user guide
       - [x] default background

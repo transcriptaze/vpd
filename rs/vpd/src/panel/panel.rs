@@ -52,7 +52,7 @@ impl Panel {
         return Panel {
             width: w * H,
             height: 128.5,
-            background: Background::new_rgb("default", "#ffffff00"),
+            background: Background::new_rgb("default", "#ffffff", "#222222"),
             inputs: Vec::new(),
             outputs: Vec::new(),
             parameters: Vec::new(),
@@ -160,20 +160,34 @@ impl Panel {
         return list;
     }
 
-    pub fn background(&self, _theme: &str) -> (String, Option<Gradient>) {
+    pub fn background(&self, theme: &str) -> (String, Option<Gradient>) {
         let background = &self.background.background;
-        let gradient = match (&self.background.rgb, &self.background.rgba) {
-            (Some(v), _) => {
-                let stop1 = Stop::new(0.0, &v.colour);
-                let stop2 = Stop::new(100.0, &v.colour);
+        let gradient = match (&self.background.rgb, &self.background.rgba, theme) {
+            (Some(v), _, "dark") => {
+                let stop1 = Stop::new(0.0, &v.colour[1]);
+                let stop2 = Stop::new(100.0, &v.colour[1]);
                 Some(Gradient::new(&background, stop1, stop2))
             }
-            (_, Some(v)) => {
-                let stop1 = Stop::new(0.0, &v.colour);
-                let stop2 = Stop::new(100.0, &v.colour);
+
+            (Some(v), _, _) => {
+                let stop1 = Stop::new(0.0, &v.colour[0]);
+                let stop2 = Stop::new(100.0, &v.colour[0]);
                 Some(Gradient::new(&background, stop1, stop2))
             }
-            (_, _) => None,
+
+            (_, Some(v), "dark") => {
+                let stop1 = Stop::new(0.0, &v.colour[1]);
+                let stop2 = Stop::new(100.0, &v.colour[1]);
+                Some(Gradient::new(&background, stop1, stop2))
+            }
+
+            (_, Some(v), _) => {
+                let stop1 = Stop::new(0.0, &v.colour[0]);
+                let stop2 = Stop::new(100.0, &v.colour[0]);
+                Some(Gradient::new(&background, stop1, stop2))
+            }
+
+            (_, _, _) => None,
         };
 
         (background.to_string(), gradient)

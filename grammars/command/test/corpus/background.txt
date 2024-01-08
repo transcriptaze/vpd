@@ -9,6 +9,18 @@ set background #ff00ed
       (rgb))))
 
 
+==============================
+set background #ff00ed,#00ffed
+==============================
+set background #ff00ed,#00ffed
+---
+(command
+  (set
+    (background
+      (rgb)
+      (rgb))))
+
+
 ========================
 set background #ff00ed40
 ========================
@@ -17,6 +29,18 @@ set background #ff00ed40
 (command
   (set
     (background
+      (rgba))))
+
+
+==================================
+set background #ff00ed40,#00ffed40
+==================================
+set background #ff00ed40,#00ffed40
+---
+(command
+  (set
+    (background
+      (rgba)
       (rgba))))
 
 

@@ -4,7 +4,7 @@
 
 - [Getting started](#getting-started)
 - [Commands](#commands)
-   - [set-background](#set-background)
+   - [`set-background`](#set-background)
 
 ## Getting started
 
@@ -65,9 +65,9 @@
 
 ```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
 
-Sets the panel background to either a plain RGB colour or the name of a preloaded backround.
+Sets the panel background to either a plain colour or the name of a preloaded backround.
 
-Command options:
+_Command options:_
 ```
   rgb    RGB colour hex value e.g. #ff0000
   rgba   RGBA colour hex value e.g. #ff000040
@@ -77,10 +77,10 @@ Command options:
 _Notes:_
 1. The default background is a transparent rectangle
 2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
-3. The preloaded background definitions are:
+3. The preloaded background are:
    - `foundation`
 
-Examples:
+_Examples:_
 ```
 set background #ff00ff
 set background #ff00ff,#00ff00

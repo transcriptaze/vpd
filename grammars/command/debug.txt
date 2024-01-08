@@ -1,1 +1,1 @@
-# new widget channels @10mm,10mm
+set background #ff00ed,#00ffed

@@ -12,7 +12,7 @@ It has been tested on:
 - Opera
 - Safari
 
-(but mostly on Chrome).
+(_but mostly on Chrome_).
 
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands.
@@ -142,18 +142,15 @@ You need a **bunch** of tools:
 ### Build instructions
 
 1. Clone the repository
-
-```
-git clone https://github.com/transcriptaze/vpd
-cd vpd
-```
-
+   ```
+   git clone https://github.com/transcriptaze/vpd
+   cd vpd
+   ```
 2. Start docker
-
 3. Build everything:
-```
-make build-all
-```
+   ```
+   make build-all
+   ```
 
 
 ## Attribution

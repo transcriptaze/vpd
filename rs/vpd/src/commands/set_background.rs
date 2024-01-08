@@ -7,8 +7,8 @@ use crate::panel::Background;
 
 #[derive(Deserialize)]
 pub struct SetBackgroundCommand {
-    rgb: Option<String>,
-    rgba: Option<String>,
+    rgb: Option<[String; 2]>,
+    rgba: Option<[String; 2]>,
     background: String,
 }
 
@@ -31,8 +31,12 @@ impl Command for SetBackgroundCommand {
         let rgba = &self.rgba;
 
         match (rgb, rgba) {
-            (Some(v), _) => m.panel.background = Background::new_rgb(&self.background, &v),
-            (_, Some(v)) => m.panel.background = Background::new_rgba(&self.background, v.as_str()),
+            (Some(v), _) => {
+                m.panel.background = Background::new_rgb(&self.background, &v[0], &v[1])
+            }
+            (_, Some(v)) => {
+                m.panel.background = Background::new_rgba(&self.background, &v[0], &v[1])
+            }
             (_, _) => m.panel.background = Background::new(&self.background),
         }
     }

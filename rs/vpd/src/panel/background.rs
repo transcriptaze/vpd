@@ -14,27 +14,27 @@ pub struct Background {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RGB {
-    pub colour: String,
+    pub colour: [String; 2],
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RGBA {
-    pub colour: String,
+    pub colour: [String; 2],
 }
 
 impl Background {
-    pub fn new_rgb(id: &str, rgb: &str) -> Background {
+    pub fn new_rgb(id: &str, rgb1: &str, rgb2: &str) -> Background {
         Background {
-            rgb: Some(RGB::new(rgb)),
+            rgb: Some(RGB::new(rgb1, rgb2)),
             rgba: None,
             background: id.to_string(),
         }
     }
 
-    pub fn new_rgba(id: &str, rgba: &str) -> Background {
+    pub fn new_rgba(id: &str, rgba1: &str, rgba2: &str) -> Background {
         Background {
             rgb: None,
-            rgba: Some(RGBA::new(rgba)),
+            rgba: Some(RGBA::new(rgba1, rgba2)),
             background: id.to_string(),
         }
     }
@@ -49,17 +49,17 @@ impl Background {
 }
 
 impl RGB {
-    pub fn new(colour: &str) -> RGB {
+    pub fn new(rgb1: &str, rgb2: &str) -> RGB {
         return RGB {
-            colour: colour.to_string(),
+            colour: [rgb1.to_string(), rgb2.to_string()],
         };
     }
 }
 
 impl RGBA {
-    pub fn new(colour: &str) -> RGBA {
+    pub fn new(rgba1: &str, rgba2: &str) -> RGBA {
         return RGBA {
-            colour: colour.to_string(),
+            colour: [rgba1.to_string(), rgba2.to_string()],
         };
     }
 }
