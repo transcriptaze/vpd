@@ -9,12 +9,12 @@ pub struct Text {
 }
 
 impl Text {
-    pub fn new(x: f32, y: f32, path: String, colour: String) -> Text {
+    pub fn new(x: f32, y: f32, path: &str, colour: &str) -> Text {
         Text {
             x: x,
             y: y,
-            path: path,
-            colour: colour,
+            path: path.to_string(),
+            colour: colour.to_string(),
         }
     }
 }

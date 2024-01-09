@@ -21,40 +21,17 @@ pub trait Command {
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Action {
-    #[serde(rename = "action")]
     action: String,
-
-    #[serde(rename = "module")]
     module: Option<Entity>,
-
-    #[serde(rename = "background")]
     background: Option<Attr>,
-
-    #[serde(rename = "input")]
     input: Option<Entity>,
-
-    #[serde(rename = "output")]
     output: Option<Entity>,
-
-    #[serde(rename = "parameter")]
     parameter: Option<Entity>,
-
-    #[serde(rename = "light")]
     light: Option<Entity>,
-
-    #[serde(rename = "widget")]
     widget: Option<Entity>,
-
-    #[serde(rename = "label")]
     label: Option<Entity>,
-
-    #[serde(rename = "guide")]
     guide: Option<Entity>,
-
-    #[serde(rename = "origin")]
     origin: Option<Attr>,
-
-    #[serde(rename = "svg")]
     svg: Option<Entity>,
 }
 

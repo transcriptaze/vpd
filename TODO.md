@@ -146,14 +146,13 @@
       - [ ] help
       - [ ] `decorate`
 
-- [ ] _text_
-      - [x] `new text <text> <absolute>`
+- [ ] _label__
       - [x] text2path
-      - [ ] anchor
-            - [x] absolute
-            - [ ] relative to origin
-            - [ ] relative to geometry
-            - [ ] relative to guideline
+      - [x] `new label <text> @xy`
+      - [ ] `new label <text> xy`
+      - [ ] `new label <text> <geometry>`
+      - [ ] `new label <text> <guide>`
+      - [ ] `new label <text> <component>`
       - [ ] align left/centre/right
       - [ ] align top/middle/baseline/bottom
       - [ ] font
@@ -163,10 +162,12 @@
       - [ ] generate label ID automatically
       - [ ] error if identifier already exists
       - (?) error if duplicate offset
+      - [ ] help
+      - [ ] user guide
 
 - [ ] _help_
        - [ ] Rework help text as multi-column ul
-       - [ ] Generate help text from grammar/examples
+       - [ ] Auto-generate help text from grammar/examples
 
 
 ### Panel

@@ -173,6 +173,32 @@
         }
       ]
     },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "label"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_string"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "absolute"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_xy"
+            }
+          ]
+        }
+      ]
+    },
     "_component": {
       "type": "SEQ",
       "members": [
@@ -558,23 +584,6 @@
       "type": "PATTERN",
       "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
     },
-    "label": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "label"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "text"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "anchor"
-        }
-      ]
-    },
     "guide": {
       "type": "SEQ",
       "members": [
@@ -870,7 +879,7 @@
         }
       ]
     },
-    "text": {
+    "_string": {
       "type": "SEQ",
       "members": [
         {
@@ -884,7 +893,7 @@
             "value": "[a-zA-Z]([^\"]*?)"
           },
           "named": true,
-          "value": "value"
+          "value": "string"
         },
         {
           "type": "STRING",

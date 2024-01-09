@@ -81,6 +81,11 @@
    new widget "channels" @40.64mm,20.32mm square
    ```
 
+10. Add a title:
+   ```
+   new text "Thing 1" centre,top+5.08mm "StyleScript-Regular" 12pt centre,baseline
+   ```
+
 
 ## Commands
 

@@ -1,21 +1,22 @@
 use serde::{Deserialize, Serialize};
 
+use crate::panel::X;
+use crate::panel::Y;
+
 #[derive(Serialize, Deserialize)]
 pub struct Label {
-    pub id: String,
     pub text: String,
-    pub x: f32,
-    pub y: f32,
+    pub x: X,
+    pub y: Y,
     pub path: String,
 }
 
 impl Label {
-    pub fn new(id: &str, text: &str, x: f32, y: f32, path: &str) -> Label {
+    pub fn new(text: &str, x: &X, y: &Y, path: &str) -> Label {
         Label {
-            id: id.to_string(),
             text: text.to_string(),
-            x: x,
-            y: y,
+            x: x.clone(),
+            y: y.clone(),
             path: path.to_string(),
         }
     }

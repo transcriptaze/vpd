@@ -1,7 +1,7 @@
-=======================
-new module "woot" 1U 3H
-=======================
-new module "woot" 1U 3H
+========================
+new module "thing" 1U 3H
+========================
+new module "thing" 1U 3H
 ---
 (command
   (new
@@ -11,10 +11,36 @@ new module "woot" 1U 3H
       (width))))
 
 
-=======================
-new module 'woot' 1U 3H
-=======================
-new module 'woot' 1U 3H
+========================
+new module 'thing' 1U 3H
+========================
+new module 'thing' 1U 3H
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
+
+======================
+new module thing 1U 3H
+======================
+new module thing 1U 3H
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
+
+===============================
+new module "thing" 128.5mm 50mm
+===============================
+new module "thing" 128.5mm 50mm
 ---
 (command
   (new
@@ -25,35 +51,9 @@ new module 'woot' 1U 3H
 
 
 =====================
-new module woot 1U 3H
+new module "thing" 3H
 =====================
-new module woot 1U 3H
----
-(command
-  (new
-    (module
-      (name)
-      (height)
-      (width))))
-
-
-==============================
-new module "woot" 128.5mm 50mm
-==============================
-new module "woot" 128.5mm 50mm
----
-(command
-  (new
-    (module
-      (name)
-      (height)
-      (width))))
-
-
-====================
-new module "woot" 3H
-====================
-new module "woot" 3H
+new module "thing" 3H
 ---
 (command
   (new

@@ -7,58 +7,29 @@ use wasm_bindgen::prelude::*;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
-use crate::svg::Point;
 
 #[wasm_bindgen(raw_module = "../../javascript/text.js")]
 extern "C" {
     fn text2path(text: &str) -> String;
 }
 
+#[derive(Deserialize)]
 pub struct NewLabelCommand {
-    name: String,
     text: String,
-    anchor: Point,
+    x: panel::X,
+    y: panel::Y,
 }
 
 #[derive(Deserialize)]
 struct Object {
-    #[serde(rename = "label")]
-    label: Label,
-}
-
-#[derive(Deserialize)]
-struct Label {
-    #[serde(rename = "name")]
-    name: Option<String>,
-
-    #[serde(rename = "text")]
-    text: String,
-
-    #[serde(rename = "anchor")]
-    anchor: Anchor,
-}
-
-#[derive(Deserialize)]
-struct Anchor {
-    #[serde(rename = "x")]
-    x: f32,
-
-    #[serde(rename = "y")]
-    y: f32,
+    label: NewLabelCommand,
 }
 
 impl NewLabelCommand {
     pub fn new(json: &str) -> Result<NewLabelCommand, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(NewLabelCommand {
-            name: o.label.name.unwrap_or("".to_string()),
-            text: o.label.text,
-            anchor: Point {
-                x: o.label.anchor.x,
-                y: o.label.anchor.y,
-            },
-        })
+        Ok(o.label)
     }
 }
 
@@ -66,12 +37,8 @@ impl Command for NewLabelCommand {
     fn apply(&self, m: &mut Module) {
         let path = text2path(&self.text).to_string();
 
-        m.panel.labels.push(panel::Label::new(
-            &self.name,
-            &self.text,
-            self.anchor.x,
-            self.anchor.y,
-            &path,
-        ));
+        m.panel
+            .labels
+            .push(panel::Label::new(&self.text, &self.x, &self.y, &path));
     }
 }

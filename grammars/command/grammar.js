@@ -63,6 +63,15 @@ module.exports = grammar({
       $._component,
     ),
 
+    label: $ => seq(
+      'label',
+      $._string,
+      choice (
+        $.absolute,
+        $._xy,
+      ),
+    ),
+
     _component: $ => seq(
       $.name,
       choice (
@@ -157,12 +166,6 @@ module.exports = grammar({
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
     part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
 
-    label: $ => seq(
-      'label',
-      $.text,
-      $.anchor
-    ),
-
     guide: $ => seq(
       'guide',      
       choice(
@@ -218,9 +221,9 @@ module.exports = grammar({
       $.offset,
     ),
 
-    text: $ => seq(
+    _string: $ => seq(
       '"',
-      alias(/[a-zA-Z]([^"]*?)/,$.value),
+      alias(/[a-zA-Z]([^"]*?)/,$.string),
       '"',
     ),
 

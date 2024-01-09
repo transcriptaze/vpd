@@ -277,7 +277,10 @@ impl Panel {
         }
 
         for v in self.labels.iter() {
-            list.push(Text::new(v.x, v.y, v.path.to_string(), colour.to_string()));
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Text::new(x, y, &v.path, &colour));
         }
 
         return list;

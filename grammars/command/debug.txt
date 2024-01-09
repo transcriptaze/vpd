@@ -1,1 +1,1 @@
-set background #ff00ed,#00ffed
+new text "lorem" @10mm,10mm
