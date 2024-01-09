@@ -3,6 +3,9 @@
     <g id="placeholder">
       <circle fill="#444444" cx="0" cy="0" r="4.5" /> 
     </g>
+    <g id="square">
+      <rect fill="#444444" x="-4.5" y="-4.5" width="9" height="9" /> 
+    </g>
 
 {% include "PanelScrew"      %}
 {% include "RoundBlackKnob"  %}

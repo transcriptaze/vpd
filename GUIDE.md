@@ -70,10 +70,15 @@
 
 8. Create the lights:
    ```
-   new light "ok" centre,middle GreenLED
+   new light "ok" centre,middle LED
    ```
    ```
-   new light "recording" centre,middle+12.7mm RedLED
+   new light "recording" centre,middle+12.7mm LED
+   ```
+
+9. Create the custom widget:
+   ```
+   new widget "channels" @40.64mm,20.32mm square
    ```
 
 
