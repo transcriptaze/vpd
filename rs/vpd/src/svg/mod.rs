@@ -1,3 +1,4 @@
+mod background;
 mod circle;
 mod gradient;
 mod guideline;
@@ -9,6 +10,7 @@ mod style;
 mod svg;
 mod text;
 
+pub use background::Background;
 pub use circle::Circle;
 pub use gradient::Gradient;
 pub use gradient::Stop;

@@ -2,6 +2,7 @@ use std::error::Error;
 use tera::Context;
 use tera::Tera;
 
+use crate::svg::Background;
 use crate::svg::Circle;
 use crate::svg::Gradient;
 use crate::svg::GuideLine;
@@ -20,7 +21,7 @@ pub struct SVG {
     panel: Rect,
     styles: Option<Vec<Style>>,
     backgrounds: Vec<Gradient>,
-    background: String,
+    background: Background,
     outline: Option<Rect>,
     origin: Option<Point>,
     guidelines: Option<Vec<GuideLine>>,
@@ -45,7 +46,7 @@ impl SVG {
             panel: panel.clone(),
             styles: None,
             backgrounds: Vec::new(),
-            background: "".to_string(),
+            background: Background::new("default"),
             outline: None,
             origin: None,
             guidelines: None,
@@ -66,7 +67,7 @@ impl SVG {
     }
 
     pub fn background(mut self, bg: &str, gradient: Option<Gradient>) -> Self {
-        self.background = bg.to_string();
+        self.background = Background::new(bg);
 
         match gradient {
             Some(g) => self.backgrounds.push(g),
@@ -156,7 +157,7 @@ impl SVG {
         }
 
         context.insert("backgrounds", &self.backgrounds);
-        context.insert("background", &self.background);
+        context.insert("background", &self.background.template);
 
         match &self.outline {
             Some(v) => context.insert("outline", &v),

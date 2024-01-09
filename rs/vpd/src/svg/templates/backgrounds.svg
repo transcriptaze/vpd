@@ -1,4 +1,9 @@
   <defs>
+    <linearGradient id="default">
+      <stop offset="0%"   stop-color="#ffffff00" />
+      <stop offset="100%" stop-color="#ffffff00" />
+    </linearGradient>
+
     <linearGradient id="foundation">
       <stop offset="0%"   stop-color="#ebebeb" />
       <stop offset="100%" stop-color="#e1e1e1" />
@@ -7,7 +12,7 @@
     <linearGradient id="{{ v.id }}">
       {% for stop in v.stops -%}
       <stop offset="{{ stop.offset }}%" stop-color="{{ stop.colour }}" />
-      {%- endfor %}
+      {% endfor %}
     </linearGradient>
     {%- endfor %}
   </defs>

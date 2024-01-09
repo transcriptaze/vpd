@@ -1,4 +1,4 @@
-{% if overlay -%}
+{% if overlay %}
   <defs>
     <g id="placeholder">
       <circle fill="#444444" cx="0" cy="0" r="4.5" /> 

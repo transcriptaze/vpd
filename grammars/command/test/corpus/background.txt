@@ -74,3 +74,36 @@ set background "foundation"
   (set
     (background
       (name))))
+
+
+===========================
+set background "Foundation"
+===========================
+set background "Foundation"
+---
+(command
+  (set
+    (background
+      (name))))
+
+
+=====================
+set background "BG 2"
+=====================
+set background "BG 2"
+---
+(command
+  (set
+    (background
+      (name))))
+
+
+=====================
+set background "BG-2"
+=====================
+set background "BG-2"
+---
+(command
+  (set
+    (background
+      (name))))

@@ -88,6 +88,7 @@
       - [x] `set background <rgb>,<rgb>`
       - [x] `set background <rgba>,<rgba>`
       - [ ] help
+      - [x] case and space insensitive names
       - [x] user guide
       - [x] default background
 

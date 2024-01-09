@@ -304,6 +304,11 @@
     }
   },
   {
+    "type": "name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "new",
     "named": true,
     "fields": {},
@@ -430,6 +435,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "part",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "reference",
@@ -634,10 +644,6 @@
     "named": false
   },
   {
-    "type": "name",
-    "named": true
-  },
-  {
     "type": "new",
     "named": false
   },
@@ -652,10 +658,6 @@
   {
     "type": "output",
     "named": false
-  },
-  {
-    "type": "part",
-    "named": true
   },
   {
     "type": "rgb",

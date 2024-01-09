@@ -65,7 +65,7 @@
    new parameter "E" v2,h1 RoundBlackKnob
    ```
    ```
-   new parameter "V" v3,h2 RoundBlackKnob
+   new parameter "V" v2,h2 RoundBlackKnob
    ```
 
 8. Create the lights:
@@ -79,19 +79,19 @@
 
 ## Commands
 
-### `new module`
+#### `new module`
 
 ```new module <name> [height] <width>```
 
-Creates and initialises new module.
+Creates and initialises a new module.
 
 _Command options:_
 ```
-  name     Module name (optionally surrounded by single or double quotes)
-  height   (optional) panel height. The only valid values are 1U or 128.5mm
-  width    Panel width, in mm or _horizontal units_ (H) of 5.08mm. The width in mm 
-           is rounded to the nearest integer multiple of 5.08mm (e.g. a value of 45mm
-           is rounded 45.72mm)
+name     Module name, optionally surrounded by single or double quotes
+height   (optional) panel height. The only valid values are 1U or 128.5mm
+width    Panel width, in mm or _horizontal units_ (H) of 5.08mm. The width in mm 
+         is rounded to the nearest integer multiple of 5.08mm (e.g. a value of 45mm
+         is rounded 45.72mm)
 ```
 
 _Notes:_
@@ -103,7 +103,7 @@ new module bodacious 1U 45mm
 new module bodacious 45.72mm
 ````
 
-### `set background`
+#### `set background`
 
 ```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
 
@@ -111,15 +111,16 @@ Sets the panel background to either a plain colour or the name of a preloaded ba
 
 _Command options:_
 ```
-  rgb    RGB colour hex value e.g. #ff0000
-  rgba   RGBA colour hex value e.g. #ff000040
-  name   Name of a preloaded background definition (optionally surrounded by single or double quotes)
+rgb    RGB colour hex value e.g. #ff0000
+rgba   RGBA colour hex value e.g. #ff000040
+name   Name of a preloaded background definition, optionally surrounded by single or double quotes
 ```
 
 _Notes:_
 1. The default background is a transparent rectangle
 2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
-3. The preloaded background are:
+3. The background name is case- and space-insensitive
+4. The preloaded background are:
    - `foundation`
 
 _Examples:_
