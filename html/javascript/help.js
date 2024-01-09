@@ -49,6 +49,31 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'background', 'rgb'],
+    help: ['set', 'background', '#ff00ff'],
+    min: 1
+  },
+  {
+    command: ['set', 'background', 'rgb'],
+    help: ['set', 'background', '#ff00ff,#00ffff'],
+    min: 1
+  },
+  {
+    command: ['set', 'background', 'rgba'],
+    help: ['set', 'background', '#ff00ff40'],
+    min: 1
+  },
+  {
+    command: ['set', 'background', 'rgba'],
+    help: ['set', 'background', '#ff00ff40,#00ffff20'],
+    min: 1
+  },
+  {
+    command: ['set', 'background', 'name'],
+    help: ['set', 'background', '&lt;name&gt;'],
+    min: 1
+  },
+  {
     command: ['export', 'module', 'svg'],
     help: ['export', 'module', 'svg'],
     min: 1

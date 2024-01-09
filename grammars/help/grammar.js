@@ -17,7 +17,12 @@ module.exports = grammar({
 
     set: $ => seq(
       'set',
-      optional($._attribute),
+      optional (
+        choice (
+          $.origin,
+          $.background,
+        ),
+      )
     ),
 
     export: $ => seq(
@@ -31,10 +36,6 @@ module.exports = grammar({
       $.module,
       $.guide,
       $.label,
-    ),
-
-    _attribute: $ => choice(
-      $.origin,
     ),
 
     _exportable: $ => seq(
@@ -83,6 +84,17 @@ module.exports = grammar({
       ),
     ),
 
+    background: $ => seq(
+      'background',
+      optional (
+        choice (
+          seq ($.rgb, optional (seq (',', $.rgb))),
+          seq ($.rgba, optional (seq (',', $.rgba))),
+          $.name,
+        )
+      ),
+    ),
+
     absolute: $ => seq(
       '@',
       optional(
@@ -119,5 +131,8 @@ module.exports = grammar({
     ),
 
     offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    rgb: $ => /#[a-fA-F0-9]{6}/,
+    rgba: $ => /#[a-fA-F0-9]{8}/,
   }
 });

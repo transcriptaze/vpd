@@ -19,6 +19,29 @@
     }
   },
   {
+    "type": "background",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "rgb",
+          "named": true
+        },
+        {
+          "type": "rgba",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "command",
     "named": true,
     "fields": {},
@@ -136,6 +159,10 @@
       "required": false,
       "types": [
         {
+          "type": "background",
+          "named": true
+        },
+        {
           "type": "origin",
           "named": true
         }
@@ -208,6 +235,10 @@
     "named": false
   },
   {
+    "type": "background",
+    "named": false
+  },
+  {
     "type": "dark",
     "named": true
   },
@@ -232,6 +263,10 @@
     "named": false
   },
   {
+    "type": "name",
+    "named": true
+  },
+  {
     "type": "new",
     "named": false
   },
@@ -245,6 +280,14 @@
   },
   {
     "type": "reference",
+    "named": true
+  },
+  {
+    "type": "rgb",
+    "named": true
+  },
+  {
+    "type": "rgba",
     "named": true
   },
   {

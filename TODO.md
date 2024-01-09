@@ -81,13 +81,13 @@
       - [ ] `list`
       - (?) error if duplicate offset
 
-- [ ] _background_
+- [x] _background_
       - [x] `set background <rgb>`
       - [x] `set background <rgba>`
       - [x] `set background <name>`
       - [x] `set background <rgb>,<rgb>`
       - [x] `set background <rgba>,<rgba>`
-      - [ ] help
+      - [x] help
       - [x] case and space insensitive names
       - [x] user guide
       - [x] default background
