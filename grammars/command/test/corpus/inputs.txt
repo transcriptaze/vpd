@@ -12,74 +12,88 @@ new input e @10mm,10mm
         (y)))))
 
 
-========================
-new input 'e' @10mm,10mm
-========================
-new input 'e' @10mm,10mm
+=====================
+new input e 10mm,10mm
+=====================
+new input e 10mm,10mm
 ---
 (command
   (new
     (input
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-========================
-new input "e" @10mm,10mm
-========================
-new input "e" @10mm,10mm
+=======================
+new input 'e' 10mm,10mm
+=======================
+new input 'e' 10mm,10mm
 ---
 (command
   (new
     (input
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-===============================
-new input "e" @10mm,10mm PJ301M
-===============================
-new input "e" @10mm,10mm PJ301M
+=======================
+new input "e" 10mm,10mm
+=======================
+new input "e" 10mm,10mm
 ---
 (command
   (new
     (input
       (name)
-      (absolute
+      (relative
+        (x)
+        (y)))))
+
+
+==============================
+new input "e" 10mm,10mm PJ301M
+==============================
+new input "e" 10mm,10mm PJ301M
+---
+(command
+  (new
+    (input
+      (name)
+      (relative
         (x)
         (y))
       (part))))
 
 
-=================================
-new input "e" @10mm,10mm 'PJ301M'
-=================================
-new input "e" @10mm,10mm 'PJ301M'
+================================
+new input "e" 10mm,10mm 'PJ301M'
+================================
+new input "e" 10mm,10mm 'PJ301M'
 ---
 (command
   (new
     (input
       (name)
-      (absolute
+      (relative
         (x)
         (y))
       (part))))
 
 
-=================================
-new input "e" @10mm,10mm "PJ301M"
-=================================
-new input "e" @10mm,10mm "PJ301M"
+================================
+new input "e" 10mm,10mm "PJ301M"
+================================
+new input "e" 10mm,10mm "PJ301M"
 ---
 (command
   (new
     (input
       (name)
-      (absolute
+      (relative
         (x)
         (y))
       (part))))

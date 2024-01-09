@@ -12,74 +12,88 @@ new output u @10mm,10mm
         (y)))))
 
 
-=========================
-new output 'u' @10mm,10mm
-=========================
-new output 'u' @10mm,10mm
+======================
+new output u 10mm,10mm
+======================
+new output u 10mm,10mm
 ---
 (command
   (new
     (output
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-=========================
-new output "u" @10mm,10mm
-=========================
-new output "u" @10mm,10mm
+========================
+new output 'u' 10mm,10mm
+========================
+new output 'u' 10mm,10mm
 ---
 (command
   (new
     (output
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-================================
-new output "u" @10mm,10mm PJ301M
-================================
-new output "u" @10mm,10mm PJ301M
+========================
+new output "u" 10mm,10mm
+========================
+new output "u" 10mm,10mm
 ---
 (command
   (new
     (output
       (name)
-      (absolute
+      (relative
+        (x)
+        (y)))))
+
+
+===============================
+new output "u" 10mm,10mm PJ301M
+===============================
+new output "u" 10mm,10mm PJ301M
+---
+(command
+  (new
+    (output
+      (name)
+      (relative
         (x)
         (y))
         (part))))
 
 
-==================================
-new output "u" @10mm,10mm 'PJ301M'
-==================================
-new output "u" @10mm,10mm 'PJ301M'
+=================================
+new output "u" 10mm,10mm 'PJ301M'
+=================================
+new output "u" 10mm,10mm 'PJ301M'
 ---
 (command
   (new
     (output
       (name)
-      (absolute
+      (relative
         (x)
         (y))
         (part))))
 
 
-==================================
-new output "u" @10mm,10mm "PJ301M"
-==================================
-new output "u" @10mm,10mm "PJ301M"
+=================================
+new output "u" 10mm,10mm "PJ301M"
+=================================
+new output "u" 10mm,10mm "PJ301M"
 ---
 (command
   (new
     (output
       (name)
-      (absolute
+      (relative
         (x)
         (y))
         (part))))

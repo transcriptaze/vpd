@@ -12,88 +12,102 @@ new param "E" @10mm,10mm
         (y)))))
 
 
-==========================
-new parameter E @10mm,10mm
-==========================
-new parameter E @10mm,10mm
+=======================
+new param "E" 10mm,10mm
+=======================
+new param "E" 10mm,10mm
 ---
 (command
   (new
     (parameter
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-============================
-new parameter 'E' @10mm,10mm
-============================
-new parameter 'E' @10mm,10mm
+=========================
+new parameter E 10mm,10mm
+=========================
+new parameter E 10mm,10mm
 ---
 (command
   (new
     (parameter
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-============================
-new parameter "E" @10mm,10mm
-============================
-new parameter "E" @10mm,10mm
+===========================
+new parameter 'E' 10mm,10mm
+===========================
+new parameter 'E' 10mm,10mm
 ---
 (command
   (new
     (parameter
       (name)
-      (absolute
+      (relative
         (x)
         (y)))))
 
 
-===========================================
-new parameter "E" @10mm,10mm RoundBlackKnob
-===========================================
-new parameter "E" @10mm,10mm RoundBlackKnob
+===========================
+new parameter "E" 10mm,10mm
+===========================
+new parameter "E" 10mm,10mm
 ---
 (command
   (new
     (parameter
       (name)
-      (absolute
+      (relative
+        (x)
+        (y)))))
+
+
+==========================================
+new parameter "E" 10mm,10mm RoundBlackKnob
+==========================================
+new parameter "E" 10mm,10mm RoundBlackKnob
+---
+(command
+  (new
+    (parameter
+      (name)
+      (relative
         (x)
         (y))
       (part))))
 
 
-===============================================
-new parameter "E" @10mm,10mm 'Round Black Knob'
-===============================================
-new parameter "E" @10mm,10mm 'Round Black Knob'
+==============================================
+new parameter "E" 10mm,10mm 'Round Black Knob'
+==============================================
+new parameter "E" 10mm,10mm 'Round Black Knob'
 ---
 (command
   (new
     (parameter
       (name)
-      (absolute
+      (relative
         (x)
         (y))
       (part))))
 
 
-===============================================
-new parameter "E" @10mm,10mm "Round Black Knob"
-===============================================
-new parameter "E" @10mm,10mm "Round Black Knob"
+==============================================
+new parameter "E" 10mm,10mm "Round Black Knob"
+==============================================
+new parameter "E" 10mm,10mm "Round Black Knob"
 ---
 (command
   (new
     (parameter
       (name)
-      (absolute
+      (relative
         (x)
         (y))
       (part))))

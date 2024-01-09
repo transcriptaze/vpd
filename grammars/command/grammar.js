@@ -77,7 +77,8 @@ module.exports = grammar({
       $.name,
       choice (
         $.absolute,
-        $._xy,
+        $.relative,
+        seq( $.x, ',', $.y ),
       ),
       optional($.part),
     ),

@@ -197,6 +197,10 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
@@ -256,6 +260,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "relative",
           "named": true
         },
         {
@@ -388,6 +396,10 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
@@ -416,6 +428,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "relative",
           "named": true
         },
         {
@@ -533,6 +549,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "relative",
           "named": true
         },
         {

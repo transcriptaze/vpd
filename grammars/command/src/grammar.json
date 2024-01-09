@@ -232,7 +232,24 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_xy"
+              "name": "relative"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "x"
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "y"
+                }
+              ]
             }
           ]
         },
