@@ -68,7 +68,8 @@ module.exports = grammar({
       $._string,
       choice (
         $.absolute,
-        $._xy,
+        $.relative,
+        seq( $.x, ',', $.y ),
       ),
     ),
 
@@ -227,15 +228,14 @@ module.exports = grammar({
       '"',
     ),
 
-    anchor: $ => seq(
+    absolute: $ => seq(
       '@',
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
       ',',
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
     ),
 
-    absolute: $ => seq(
-      '@',
+    relative: $ => seq(
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
       ',',
       alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),

@@ -93,7 +93,8 @@
       - [x] default background
 
 - [ ] _inputs_
-      - [x] `new input <name> <absolute>`
+      - [x] `new input <name> @xy`
+      - [ ] `new input <name> xy`
       - [x] `new input <name> <geometry>`
       - [x] `new input <name> <guidelines>`
       - [x] `new input <name> <absolute|geometry|guidelines> [part]`
@@ -104,7 +105,8 @@
       - [ ] `decorate`
 
 - [ ] _outputs_
-      - [x] `new output <name> <absolute>`
+      - [x] `new output <name> @xy`
+      - [ ] `new output <name> xy`
       - [x] `new output <name> <geometry>`
       - [x] `new output <name> <guidelines>`
       - [x] `new output <name> <absolute|geometry|guidelines> [part]`
@@ -115,7 +117,8 @@
       - [ ] `decorate`
 
 - [ ] _parameters_
-      - [x] `new parameter <name> <absolute>`
+      - [x] `new parameter <name> @xy`
+      - [ ] `new parameter <name> xy`
       - [x] `new parameter <name> <geometry>`
       - [x] `new parameter <name> <guidelines>`
       - [x] `new parameter <name> <absolute|geometry|guidelines> [part]`
@@ -126,7 +129,8 @@
       - [ ] `decorate`
 
 - [ ] _lights_
-      - [x] `new light <name> <absolute>`
+      - [x] `new light <name> @xy`
+      - [ ] `new light <name> xy`
       - [x] `new light <name> <geometry>`
       - [x] `new light <name> <guidelines>`
       - [x] `new light <name> <absolute|geometry|guidelines> [part]`
@@ -137,7 +141,8 @@
       - [ ] `decorate`
 
 - [ ] _widget_
-      - [x] `new widget <name> <absolute>`
+      - [x] `new widget <name> @xy`
+      - [ ] `new widget <name> xy`
       - [x] `new widget <name> <geometry>`
       - [x] `new widget <name> <guidelines>`
       - [x] `new widget <name> <absolute|geometry|guidelines> [part]`

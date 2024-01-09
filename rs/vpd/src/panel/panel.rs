@@ -144,7 +144,9 @@ impl Panel {
     }
 
     pub fn origin(&self) -> Point {
-        self.origin.to_point(&self)
+        let xy = self.origin.resolve(&self);
+
+        Point::new(xy.0, xy.1)
     }
 
     fn guidelines(&self) -> Vec<GuideLine> {

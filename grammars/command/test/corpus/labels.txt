@@ -12,3 +12,32 @@ new label "lorem" @10mm,10mm
         (y)))))
 
 
+===========================
+new label "lorem" 10mm,10mm
+===========================
+new label "lorem" 10mm,10mm
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y)))))
+
+
+===============================
+new label "lorem" centre,middle
+===============================
+new label "lorem" centre,middle
+---
+(command
+  (new
+    (label
+      (string)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+

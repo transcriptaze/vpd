@@ -6,16 +6,19 @@ new guide v2+10.16mm
 new guide v3+10.16mm
 new guide horizontal top+20.32mm
 new guide h1+3H
+new guide top+10.16mm
 new guide bottom-15.24mm
 
 set background "foundation"
 
 new input "e" v1,h1 PJ301M
 new input "v" v1,h2 PJ301M
-new output "P" v4,g1-10.16mm PJ301M
-new output "Q" v4,g1 PJ301M
+new output "P" v4,g2-10.16mm PJ301M
+new output "Q" v4,g2 PJ301M
 new parameter "E" v2,h1 RoundBlackKnob
 new parameter "V" v2,h2 RoundBlackKnob
 new light "ok" centre,middle LED
 new light "recording" centre,middle+12.7mm LED
 new widget "channels" @40.64mm,20.32mm "square"
+
+new label "Thing 1" centre,g1

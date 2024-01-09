@@ -193,7 +193,24 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_xy"
+              "name": "relative"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "x"
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "y"
+                }
+              ]
             }
           ]
         }
@@ -901,7 +918,7 @@
         }
       ]
     },
-    "anchor": {
+    "absolute": {
       "type": "SEQ",
       "members": [
         {
@@ -932,13 +949,9 @@
         }
       ]
     },
-    "absolute": {
+    "relative": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "STRING",
-          "value": "@"
-        },
         {
           "type": "ALIAS",
           "content": {

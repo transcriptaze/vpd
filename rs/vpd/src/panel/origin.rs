@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::panel::Panel;
-use crate::svg::Point;
+// use crate::svg::Point;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Origin {
@@ -39,7 +39,7 @@ impl Origin {
         self.y.offset = offset;
     }
 
-    pub fn to_point(&self, panel: &Panel) -> Point {
+    pub fn resolve(&self, panel: &Panel) -> (f32, f32) {
         let w: f32 = panel.width;
         let h: f32 = panel.height;
 
@@ -60,6 +60,6 @@ impl Origin {
             _ => 0.0,
         };
 
-        Point { x: x, y: y }
+        (x, y)
     }
 }

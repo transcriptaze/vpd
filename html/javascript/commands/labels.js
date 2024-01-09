@@ -29,6 +29,24 @@ export function newLabel (node) {
       }
     }
 
+    if (child.type === 'relative') {
+      for (const v of child.namedChildren) {
+        if (v.type === 'x') {
+          object.label.x = {
+            reference: 'origin',
+            offset: mm(v.text)
+          }
+        }
+
+        if (v.type === 'y') {
+          object.label.y = {
+            reference: 'origin',
+            offset: mm(v.text)
+          }
+        }
+      }
+    }
+
     if (child.type === 'x') {
       object.label.x = {
         reference: reference(child),

@@ -18,6 +18,7 @@ impl X {
 
         match reference {
             "absolute" => self.offset,
+            "origin" => panel.origin.resolve(panel).0 + self.offset,
             "left" => self.offset,
             "centre" => w / 2.0 + self.offset,
             "center" => w / 2.0 + self.offset,
@@ -56,6 +57,7 @@ impl Y {
 
         match self.reference.as_str() {
             "absolute" => self.offset,
+            "origin" => panel.origin.resolve(panel).1 + self.offset,
             "top" => self.offset,
             "middle" => h / 2.0 + self.offset,
             "bottom" => h + self.offset,

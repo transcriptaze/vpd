@@ -220,6 +220,10 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -434,6 +438,25 @@
     "type": "reference",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "relative",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "set",

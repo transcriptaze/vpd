@@ -83,7 +83,7 @@
 
 10. Add a title:
    ```
-   new text "Thing 1" centre,top+5.08mm "StyleScript-Regular" 12pt centre,baseline
+   new label "Thing 1" centre,top+5.08mm "StyleScript-Regular" 12pt centre,baseline
    ```
 
 
