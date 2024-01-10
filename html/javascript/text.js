@@ -10,18 +10,16 @@ const FONTS = [
   { name: 'StyleScript-Regular', url: '/fonts/StyleScript-Regular.ttf' }
 ]
 
-const DEFAULT = {
-  name: 'RobotoMono-Bold',
-  bytes: []
-}
-
+const DEFAULT = 'RobotoMono-Bold'
 const fonts = new Map()
 
 export async function init () {
   // ... get default font
-  fetch('/fonts/RobotoMono-Bold.ttf')
+  fetch(FONTS.get(DEFAULT).url)
     .then((response) => response.arrayBuffer())
-    .then((bytes) => DEFAULT.bytes = bytes)
+    .then((bytes) => {
+      fonts.set(DEFAULT, bytes)
+    })
     .catch((err) => console.error(err))
 
   // ... load other font
@@ -54,7 +52,7 @@ export function text2path (text, fontName) {
     decimalPlaces: 3
   }
 
-  const bytes = fonts.has(fontName) ? fonts.get(fontName) : DEFAULT.bytes
+  const bytes = fonts.has(fontName) ? fonts.get(fontName) : fonts.get(DEFAULT)
   const fontSize = points2mm(12)
   const font = opentype.parse(bytes)
   const path = font.getPath(text, 0, 0, fontSize, {})

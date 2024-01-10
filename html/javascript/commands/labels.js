@@ -4,7 +4,7 @@ export function newLabel (node) {
   const object = {
     action: 'new',
     label: {
-      font: 'RobotoMono-Bold',
+      font: 'RobotoMono-Bold'
     }
   }
 
