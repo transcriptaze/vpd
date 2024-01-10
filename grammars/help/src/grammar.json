@@ -16,6 +16,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "load"
+          },
+          {
+            "type": "SYMBOL",
             "name": "export"
           }
         ]
@@ -64,6 +68,32 @@
                   "name": "background"
                 }
               ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "load": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "load"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "script"
+              },
+              "named": true,
+              "value": "script"
             },
             {
               "type": "BLANK"

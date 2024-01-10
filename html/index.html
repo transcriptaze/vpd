@@ -124,7 +124,10 @@
       VPD.initialise()
     })()
 
-    window.onLoad = VPD.onLoad
+    window.onLoad = (event) => {
+      VPD.onLoad(event.altKey ? 'vpx' : 'vpd')
+    }
+
     window.onSave = VPD.onSave
     window.onExport = VPD.onExport
 

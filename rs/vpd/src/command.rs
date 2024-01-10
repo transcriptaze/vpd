@@ -4,6 +4,7 @@ use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
 use crate::commands::ExportSVGCommand;
+use crate::commands::LoadScript;
 use crate::commands::NewGuideCommand;
 use crate::commands::NewInputCommand;
 use crate::commands::NewLabelCommand;
@@ -32,6 +33,8 @@ struct Action {
     label: Option<Entity>,
     guide: Option<Entity>,
     origin: Option<Attr>,
+
+    script: Option<Entity>,
     svg: Option<Entity>,
 }
 
@@ -64,6 +67,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(SetOriginCommand::new(json)?))
     } else if v.action == "set" && v.background.is_some() {
         Ok(Box::new(SetBackgroundCommand::new(json)?))
+    } else if v.action == "load" && v.script.is_some() {
+        Ok(Box::new(LoadScript::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {
         Ok(Box::new(ExportSVGCommand::new(json)?))
     } else {

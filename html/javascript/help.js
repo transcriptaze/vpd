@@ -74,6 +74,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['load', 'script'],
+    help: ['load', 'script'],
+    min: 1
+  },
+  {
     command: ['export', 'module', 'svg'],
     help: ['export', 'module', 'svg'],
     min: 1

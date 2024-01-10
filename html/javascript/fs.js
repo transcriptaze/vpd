@@ -1,3 +1,9 @@
+import { onLoad } from './VPD.js'
+
+export function load (filetype) {
+  onLoad(filetype)
+}
+
 export function save (filename, svg) {
   const blob = new Blob([svg], { type: 'image/svg+xml' })
 

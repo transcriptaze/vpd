@@ -1,5 +1,6 @@
-import * as commands from './commands/commands.js'
+import * as _new from './commands/new.js'
 import * as _set from './commands/set.js'
+import * as _load from './commands/load.js'
 import * as _export from './commands/export.js'
 let parser
 
@@ -45,10 +46,13 @@ export function parseNode (node) {
       return null
 
     case 'new':
-      return _new(node)
+      return _new.parse(node)
 
     case 'set':
       return _set.parse(node)
+
+    case 'load':
+      return _load.parse(node)
 
     case 'export':
       return _export.parse(node)
@@ -62,39 +66,39 @@ export function parseNode (node) {
   }
 }
 
-function _new (node) {
-  if (node.namedChildCount > 0) {
-    const entity = node.namedChildren[0]
+// function _new (node) {
+//   if (node.namedChildCount > 0) {
+//     const entity = node.namedChildren[0]
 
-    switch (entity.type) {
-      case 'module':
-        return commands.newModule(entity)
+//     switch (entity.type) {
+//       case 'module':
+//         return commands.newModule(entity)
 
-      case 'input':
-        return commands.newInput(entity)
+//       case 'input':
+//         return commands.newInput(entity)
 
-      case 'output':
-        return commands.newOutput(entity)
+//       case 'output':
+//         return commands.newOutput(entity)
 
-      case 'parameter':
-        return commands.newParameter(entity)
+//       case 'parameter':
+//         return commands.newParameter(entity)
 
-      case 'light':
-        return commands.newLight(entity)
+//       case 'light':
+//         return commands.newLight(entity)
 
-      case 'widget':
-        return commands.newWidget(entity)
+//       case 'widget':
+//         return commands.newWidget(entity)
 
-      case 'label':
-        return commands.newLabel(entity)
+//       case 'label':
+//         return commands.newLabel(entity)
 
-      case 'guide':
-        return commands.newGuide(entity)
+//       case 'guide':
+//         return commands.newGuide(entity)
 
-      default:
-        throw new Error(`unknown 'new' entity <<${entity.type}>>`)
-    }
-  }
+//       default:
+//         throw new Error(`unknown 'new' entity <<${entity.type}>>`)
+//     }
+//   }
 
-  throw new Error("invalid 'new' command")
-}
+//   throw new Error("invalid 'new' command")
+// }

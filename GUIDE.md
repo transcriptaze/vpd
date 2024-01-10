@@ -5,7 +5,8 @@
 - [Getting started](#getting-started)
 - [Commands](#commands)
    - [`new module`](#new-module)
-   - [`set-background`](#set-background)
+   - [`set background`](#set-background)
+   - [`load script`](#load-script)
 
 ## Getting started
 
@@ -86,6 +87,26 @@
    new label "Thing 1" centre,top+5.08mm "StyleScript-Regular" 12pt centre,baseline
    ```
 
+## VPX files
+
+A _.vpx_ script file is simply a text file of VPD commands (one per line) that can be loaded (or dropped on to the panel design area) 
+to recreate a module, e.g.
+```
+new module "bodacious" 1U 10H
+
+new guide vertical @10.16mm
+new guide v1+10.16mm
+new guide v2+10.16mm
+...
+```
+
+To load a _.vpx_ file:
+
+- On the user interface _Alt-click_ (_Option-click_ on MacOS) the _File Load_ button (<img width="20" src="doc/images/load.png">) to open
+  a file chooser dialog.
+- Drag 'n drop a _.vpx_ file on to the user interface panels.
+- Execute the `load script` command to open a file chooser dialog.
+
 
 ## Commands
 
@@ -140,4 +161,15 @@ set background #ff00ff,#00ff00
 set background #ff00ff40
 set background #ff00ff40,#00ff0080
 set background foundation
+````
+
+#### `load script`
+
+```load script```
+
+Opens a file chooser to load a `.vpx` script file.
+
+_Example:_
+```
+load script
 ````

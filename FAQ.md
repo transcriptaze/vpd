@@ -16,7 +16,12 @@
    Cthulhu is **so** coming to get you...
 
 
-4. _Why can't I do X?_
+4. _Can I put a 'load script' command in a script file?_
+
+   Absolutely no idea. Try it and if you live through the experience please file an issue to update the FAQ.
+
+
+5. _Why can't I do X?_
 
    _"Because it's wrong!"_ - [_BTVS_](https://youtu.be/QrluNqSjoHg?si=z_XZRsL5lh8OuUj7&t=29).
 

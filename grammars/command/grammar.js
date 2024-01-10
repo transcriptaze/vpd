@@ -8,6 +8,7 @@ module.exports = grammar({
         $.new,
         $.set,
         $.export,
+        $.load,
       ),
     ),
 
@@ -142,7 +143,12 @@ module.exports = grammar({
     rgb: $ => /#[a-fA-F0-9]{6}/,
     rgba: $ => /#[a-fA-F0-9]{8}/,
 
-    // ... export
+    // ... files
+    load: $ => seq (
+      'load',
+      alias('script',$.script),
+    ),
+
     export: $ => seq (
       'export',
       alias($._exportable,$.module)

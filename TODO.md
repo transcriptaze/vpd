@@ -16,7 +16,7 @@
       - [x] Drag 'n drop
       - [x] Firefox/Safari (browser without file API picker)
       - [x] Alt-load
-      - [ ] User guide
+      - [x] User guide
 
 - [ ] **Show errors**
 
@@ -28,6 +28,7 @@
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Maybe use CSS ??????
 - [x] Embed HTML in Go binary
+- [ ] Initialise _help_ on page load
 
 
 ### Overlay
@@ -53,6 +54,9 @@
 - [ ] _load_
       - [ ] `load project`
       - [ ] `load script`
+            - [ ] Don't return JSON from exec
+            - [x] User guide
+            - [ ] help
 
 - [ ] _export_
       - [ ] `export project`

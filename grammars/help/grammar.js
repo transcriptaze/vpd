@@ -6,6 +6,7 @@ module.exports = grammar({
       choice(
         $.new,
         $.set,
+        $.load,
         $.export,
       ),
     ),
@@ -23,6 +24,13 @@ module.exports = grammar({
           $.background,
         ),
       )
+    ),
+
+    load: $ => seq(
+      'load',
+      optional(
+        alias('script', $.script),
+      ),
     ),
 
     export: $ => seq(

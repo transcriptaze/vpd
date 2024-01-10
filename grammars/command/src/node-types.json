@@ -58,6 +58,10 @@
           "named": true
         },
         {
+          "type": "load",
+          "named": true
+        },
+        {
           "type": "new",
           "named": true
         },
@@ -272,6 +276,21 @@
         },
         {
           "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "load",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "script",
           "named": true
         }
       ]
@@ -657,6 +676,10 @@
     "named": false
   },
   {
+    "type": "load",
+    "named": false
+  },
+  {
     "type": "module",
     "named": false
   },
@@ -682,6 +705,10 @@
   },
   {
     "type": "rgba",
+    "named": true
+  },
+  {
+    "type": "script",
     "named": true
   },
   {

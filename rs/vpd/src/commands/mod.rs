@@ -11,6 +11,7 @@ mod set_background;
 mod set_origin;
 
 mod export_svg;
+mod load_script;
 
 pub use new_guide::NewGuideCommand;
 pub use new_input::NewInputCommand;
@@ -25,3 +26,4 @@ pub use set_background::SetBackgroundCommand;
 pub use set_origin::SetOriginCommand;
 
 pub use export_svg::ExportSVGCommand;
+pub use load_script::LoadScript;

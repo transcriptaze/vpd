@@ -63,9 +63,7 @@ export async function initialise () {
   // }
 }
 
-export function onLoad (event) {
-  const type = event.altKey ? 'vpx' : 'vpd'
-
+export function onLoad (type) {
   if (window.showOpenFilePicker) {
     const options = {
       id: 'vpd',

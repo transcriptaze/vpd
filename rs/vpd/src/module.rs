@@ -12,6 +12,7 @@ use crate::warnf;
 
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {
+    fn load(filetype: &str);
     fn save(text: &str, blob: &str);
 }
 
@@ -47,6 +48,10 @@ impl Module {
             height: self.panel.height,
             width: self.panel.width,
         }
+    }
+
+    pub fn load_script(&self) {
+        load("vpx");
     }
 
     pub fn export_svg(&self, theme: &str) {

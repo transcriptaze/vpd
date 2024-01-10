@@ -54,6 +54,10 @@
           "named": true
         },
         {
+          "type": "load",
+          "named": true
+        },
+        {
           "type": "new",
           "named": true
         },
@@ -88,6 +92,21 @@
     "type": "label",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "load",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "script",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "module",
@@ -259,6 +278,10 @@
     "named": true
   },
   {
+    "type": "load",
+    "named": false
+  },
+  {
     "type": "module",
     "named": false
   },
@@ -288,6 +311,10 @@
   },
   {
     "type": "rgba",
+    "named": true
+  },
+  {
+    "type": "script",
     "named": true
   },
   {

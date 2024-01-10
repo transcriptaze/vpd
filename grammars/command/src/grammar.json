@@ -21,6 +21,10 @@
           {
             "type": "SYMBOL",
             "name": "export"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "load"
           }
         ]
       }
@@ -530,6 +534,24 @@
     "rgba": {
       "type": "PATTERN",
       "value": "#[a-fA-F0-9]{8}"
+    },
+    "load": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "load"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "script"
+          },
+          "named": true,
+          "value": "script"
+        }
+      ]
     },
     "export": {
       "type": "SEQ",
