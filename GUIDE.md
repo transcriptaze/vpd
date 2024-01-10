@@ -3,8 +3,10 @@
 ### Contents
 
 - [Getting started](#getting-started)
+- [Scripts][#vpx-files]
 - [Commands](#commands)
    - [`new module`](#new-module)
+   - [`new label`](#new-label)
    - [`set background`](#set-background)
    - [`load script`](#load-script)
 
@@ -84,10 +86,10 @@
 
 10. Add a title:
    ```
-   new label "Thing 1" centre,top+5.08mm "StyleScript-Regular" 12pt centre,baseline
+   new label "Thing 1" centre,g1 "StyleScript-Regular" 12pt centre,baseline
    ```
 
-## VPX files
+## Scripts
 
 A _.vpx_ script file is simply a text file of VPD commands (one per line) that can be loaded (or dropped on to the panel design area) 
 to recreate a module, e.g.
@@ -98,13 +100,15 @@ new guide vertical @10.16mm
 new guide v1+10.16mm
 new guide v2+10.16mm
 ...
+...
 ```
 
 To load a _.vpx_ file:
-
 - On the user interface _Alt-click_ (_Option-click_ on MacOS) the _File Load_ button (<img width="20" src="doc/images/load.png">) to open
   a file chooser dialog.
+  -- or --
 - Drag 'n drop a _.vpx_ file on to the user interface panels.
+  -- or --
 - Execute the `load script` command to open a file chooser dialog.
 
 
@@ -133,6 +137,48 @@ new module bodacious 1U 5H
 new module bodacious 1U 45mm
 new module bodacious 45.72mm
 ````
+
+#### `new label`
+
+```new label <text> <xy> [font] [font-size] [halign] [valign] [colour]```
+
+Creates a text label and converts it to an SVG path.
+
+_Command options:_
+```
+text       Label text, optionally surrounded by single or double quotes
+xy         Location, either as absolute co-ordinates, relative to the origin or relative to the 
+           geometry of the panel.
+font       (optional) name of preloaded font. Defaults to RobotoMono-Bold.
+font-size  (optional) font size (points). Defaults to 12pt.
+halign     (optional) horizontal alignment (left, centre or right). Defaults to left.
+valign     (optional) vertical alignment (top, middle, baseline or bottom). Defaults to bottom.
+colour     (optional) text colour pair. The colour may be either standard colour names (e.g. red, blue),
+                      RGB (e.g. #ff000) or RGBA (e.g. #ff000080). The default colours are #222222 for the
+                      light themed panel and #ebebeb for the dark themed panel.
+```
+
+_Notes:_
+1. The preloaded fonts are:
+   - Lato-Regular
+   - Lato-Bold
+   - RobotoMono-Regular
+   - RobotoMono-Bold
+   - RobotoCondensed-Regular
+   - RobotoCondensed-Bold
+   - StyleScript-Regular
+2. Font names are case- and space-insensitive
+
+
+_Examples:_
+```
+new label "Lorem Ipsum" centre, top+10.16mm
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline red
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline #ffff0080
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline #ff0000,#00ff00
+````
+
 
 #### `set background`
 

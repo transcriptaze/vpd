@@ -7,7 +7,7 @@ use crate::commands::ExportSVGCommand;
 use crate::commands::LoadScript;
 use crate::commands::NewGuideCommand;
 use crate::commands::NewInputCommand;
-use crate::commands::NewLabelCommand;
+use crate::commands::NewLabel;
 use crate::commands::NewLightCommand;
 use crate::commands::NewModuleCommand;
 use crate::commands::NewOutputCommand;
@@ -60,7 +60,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     } else if v.action == "new" && v.widget.is_some() {
         Ok(Box::new(NewWidgetCommand::new(json)?))
     } else if v.action == "new" && v.label.is_some() {
-        Ok(Box::new(NewLabelCommand::new(json)?))
+        Ok(Box::new(NewLabel::new(json)?))
     } else if v.action == "new" && v.guide.is_some() {
         Ok(Box::new(NewGuideCommand::new(json)?))
     } else if v.action == "set" && v.origin.is_some() {

@@ -1,4 +1,4 @@
-import { mm } from './commands.js'
+import { string, mm } from './commands.js'
 
 export function newModule (node) {
   const object = {
@@ -8,14 +8,7 @@ export function newModule (node) {
 
   for (const child of node.namedChildren) {
     if (child.type === 'name') {
-      const name = child.text.trim()
-      const match = name.match(/"(.*?)"/)
-
-      if (match && match.length > 1) {
-        object.module.name = match[1]
-      } else {
-        object.module.name = name
-      }
+      object.module.name = string(child)
     } else if (child.type === 'height') {
       object.module.height = mm(child.text)
     } else if (child.type === 'width') {

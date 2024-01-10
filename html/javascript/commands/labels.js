@@ -1,9 +1,11 @@
-import { reference, offset, mm } from './commands.js'
+import { string, reference, offset, mm } from './commands.js'
 
 export function newLabel (node) {
   const object = {
     action: 'new',
-    label: {}
+    label: {
+      font: 'RobotoMono-Bold',
+    }
   }
 
   for (const child of node.namedChildren) {
@@ -59,6 +61,10 @@ export function newLabel (node) {
         reference: reference(child),
         offset: offset(child)
       }
+    }
+
+    if (child.type === 'font') {
+      object.label.font = string(child)
     }
   }
 

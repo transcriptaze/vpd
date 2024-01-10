@@ -215,6 +215,87 @@
         }
       ]
     },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "label"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_string"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "absolute"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "relative"
+                            },
+                            {
+                              "type": "SEQ",
+                              "members": [
+                                {
+                                  "type": "SYMBOL",
+                                  "name": "x"
+                                },
+                                {
+                                  "type": "STRING",
+                                  "value": ","
+                                },
+                                {
+                                  "type": "SYMBOL",
+                                  "name": "y"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "font"
+                            },
+                            {
+                              "type": "BLANK"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "origin": {
       "type": "SEQ",
       "members": [
@@ -403,6 +484,57 @@
         }
       ]
     },
+    "guide": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "guide"
+        }
+      ]
+    },
+    "_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([^\"]*?)"
+          },
+          "named": true,
+          "value": "string"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
+    "offset": {
+      "type": "PATTERN",
+      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+    },
+    "name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
+    "rgb": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{6}"
+    },
+    "rgba": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{8}"
+    },
+    "font": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
     "absolute": {
       "type": "SEQ",
       "members": [
@@ -453,6 +585,54 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "relative": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?mm"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[0-9]+(?:\\.[0-9]*)?mm"
+                      },
+                      "named": true,
+                      "value": "y"
                     },
                     {
                       "type": "BLANK"
@@ -519,40 +699,6 @@
           ]
         }
       ]
-    },
-    "guide": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "guide"
-        }
-      ]
-    },
-    "label": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "label"
-        }
-      ]
-    },
-    "offset": {
-      "type": "PATTERN",
-      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
-    },
-    "name": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
-    },
-    "rgb": {
-      "type": "PATTERN",
-      "value": "#[a-fA-F0-9]{6}"
-    },
-    "rgba": {
-      "type": "PATTERN",
-      "value": "#[a-fA-F0-9]{8}"
     }
   },
   "extras": [

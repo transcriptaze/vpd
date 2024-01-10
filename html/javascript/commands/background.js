@@ -1,3 +1,5 @@
+import { string } from './commands.js'
+
 export function set (node) {
   const object = {
     action: 'set',
@@ -27,14 +29,7 @@ export function set (node) {
     }
 
     if (child.type === 'name') {
-      const name = child.text.trim()
-      const match = name.match(/"(.*?)"/)
-
-      if (match && match.length > 1) {
-        object.background.background = match[1]
-      } else {
-        object.background.background = child.text
-      }
+      object.background.background = string(child)
     }
   }
 

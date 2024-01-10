@@ -65,6 +65,11 @@ module.exports = grammar({
       'module',
     ),
 
+    label: $ => seq(
+      'label',
+      $._string,
+    ),
+
     origin: $ => seq(
       'origin',
       optional(
@@ -103,6 +108,43 @@ module.exports = grammar({
       ),
     ),
 
+    guide: $ => seq(
+      'guide',
+    ),
+
+    label: $ => seq(
+      'label',
+      optional(
+        seq(
+          $._string,
+          optional(
+            seq(
+              choice (
+                $.absolute,
+                $.relative,
+                seq( $.x, ',', $.y ),
+              ),
+              optional(
+                $.font
+              ),
+            )
+          ),
+        ),
+      ),
+    ),
+
+    _string: $ => seq(
+      '"',
+      alias(/[a-zA-Z]([^"]*?)/,$.string),
+      '"',
+    ),
+
+    offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    rgb: $ => /#[a-fA-F0-9]{6}/,
+    rgba: $ => /#[a-fA-F0-9]{8}/,
+    font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+
     absolute: $ => seq(
       '@',
       optional(
@@ -120,6 +162,18 @@ module.exports = grammar({
       ),
     ),
 
+    relative: $ => seq(
+      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
+      optional(
+        seq(
+          ',',
+          optional(
+            alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+          ),
+        ),
+      ),
+    ),
+
     x: $ => seq(
       alias(/left|centre|center|right/,$.reference),
       optional($.offset),
@@ -129,18 +183,5 @@ module.exports = grammar({
       alias (/top|middle|bottom/,$.reference), 
       optional($.offset),
     ),
-
-    guide: $ => seq(
-      'guide',
-    ),
-
-    label: $ => seq(
-      'label',
-    ),
-
-    offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
-    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
-    rgb: $ => /#[a-fA-F0-9]{6}/,
-    rgba: $ => /#[a-fA-F0-9]{8}/,
   }
 });

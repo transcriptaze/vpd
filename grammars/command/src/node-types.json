@@ -88,6 +88,11 @@
     }
   },
   {
+    "type": "font",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "geometry",
     "named": true,
     "fields": {},
@@ -225,6 +230,10 @@
       "types": [
         {
           "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "font",
           "named": true
         },
         {

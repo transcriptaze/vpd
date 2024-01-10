@@ -84,6 +84,11 @@
     }
   },
   {
+    "type": "font",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "guide",
     "named": true,
     "fields": {}
@@ -91,7 +96,37 @@
   {
     "type": "label",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "font",
+          "named": true
+        },
+        {
+          "type": "relative",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "load",
@@ -122,6 +157,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "new",
@@ -158,6 +198,25 @@
           "type": "absolute",
           "named": true
         },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "relative",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
         {
           "type": "x",
           "named": true
@@ -246,6 +305,10 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
@@ -286,10 +349,6 @@
     "named": false
   },
   {
-    "type": "name",
-    "named": true
-  },
-  {
     "type": "new",
     "named": false
   },
@@ -320,6 +379,10 @@
   {
     "type": "set",
     "named": false
+  },
+  {
+    "type": "string",
+    "named": true
   },
   {
     "type": "svg",

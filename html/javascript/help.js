@@ -19,8 +19,18 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['new', 'label'],
-    help: ['new', 'label'],
+    command: ['new', 'label', 'absolute', 'font'],
+    help: ['new', 'label', '@10.16mm,12.7mm', '"Lato-Bold"'],
+    min: 1
+  },
+  {
+    command: ['new', 'label', 'relative', 'font'],
+    help: ['new', 'label', '10.16mm,12.7mm', '"Lato-Bold"'],
+    min: 1
+  },
+  {
+    command: ['new', 'label', 'geometry', 'font'],
+    help: ['new', 'label', 'centre,middle', '"Lato-Bold"'],
     min: 1
   },
   {

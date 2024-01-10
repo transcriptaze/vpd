@@ -15,7 +15,7 @@ mod load_script;
 
 pub use new_guide::NewGuideCommand;
 pub use new_input::NewInputCommand;
-pub use new_label::NewLabelCommand;
+pub use new_label::NewLabel;
 pub use new_light::NewLightCommand;
 pub use new_module::NewModuleCommand;
 pub use new_output::NewOutputCommand;

@@ -1,3 +1,23 @@
+=========
+new label
+=========
+new label
+---
+(command
+  (new
+    (label)))
+
+=================
+new label "lorem"
+=================
+new label "lorem"
+---
+(command
+  (new
+    (label
+      (string))))
+
+
 ============================
 new label "lorem" @10mm,10mm
 ============================
@@ -39,55 +59,6 @@ new label "lorem" centre,middle
         (reference))
       (y
         (reference)))))
-
-
-=========================================
-new label "lorem" centre+10mm,middle-10mm
-=========================================
-new label "lorem" centre+10mm,middle-10mm
----
-(command
-  (new
-    (label
-      (string)
-      (x
-        (reference)
-        (offset))
-      (y
-        (reference)
-        (offset)))))
-
-
-=======================
-new label "lorem" v1,h1
-=======================
-new label "lorem" v1,h1
----
-(command
-  (new
-    (label
-      (string)
-      (x
-        (reference))
-      (y
-        (reference)))))
-
-
-=================================
-new label "lorem" v1+10mm,h1-10mm
-=================================
-new label "lorem" v1+10mm,h1-10mm
----
-(command
-  (new
-    (label
-      (string)
-      (x
-        (reference)
-        (offset))
-      (y
-        (reference)
-        (offset)))))
 
 
 =======================================

@@ -5,13 +5,13 @@
 
 - [x] Load project file
       - [ ] web component
-      - [ ] https://thenounproject.com/search/icons/?q=open
+      - [x] https://thenounproject.com/search/icons/?q=open
 
 - [ ] Save project/script file
       - [ ] set filename
       - [ ] ctrl-click to save as timestamped
 
-- [ ] VPX
+- [x] VPX
       - [x] Load and run file
       - [x] Drag 'n drop
       - [x] Firefox/Safari (browser without file API picker)
@@ -29,6 +29,10 @@
       - [ ] Maybe use CSS ??????
 - [x] Embed HTML in Go binary
 - [ ] Initialise _help_ on page load
+- [ ] Preferences
+      - show/hide screws
+      - default font
+      - default font alignment
 
 
 ### Overlay
@@ -100,79 +104,76 @@
       - [x] `new input <name> @xy`
       - [x] `new input <name> xy`
       - [x] `new input <name> <geometry>`
-      - [x] `new input <name> <guidelines>`
       - [x] `new input <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] user guide
 
 - [ ] _outputs_
       - [x] `new output <name> @xy`
       - [x] `new output <name> xy`
       - [x] `new output <name> <geometry>`
-      - [x] `new output <name> <guidelines>`
       - [x] `new output <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] user guide
 
 - [ ] _parameters_
       - [x] `new parameter <name> @xy`
       - [x] `new parameter <name> xy`
       - [x] `new parameter <name> <geometry>`
-      - [x] `new parameter <name> <guidelines>`
       - [x] `new parameter <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] user guide
 
 - [ ] _lights_
       - [x] `new light <name> @xy`
       - [x] `new light <name> xy`
       - [x] `new light <name> <geometry>`
-      - [x] `new light <name> <guidelines>`
       - [x] `new light <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] user guide
 
 - [ ] _widget_
       - [x] `new widget <name> @xy`
       - [x] `new widget <name> xy`
       - [x] `new widget <name> <geometry>`
-      - [x] `new widget <name> <guidelines>`
       - [x] `new widget <name> <absolute|geometry|guidelines> [part]`
       - [ ] delete
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] user guide
 
 - [ ] _label__
       - [x] text2path
-      - [x] `new label <text> @xy`
-      - [ ] `new label <text> xy`
-      - [ ] `new label <text> <geometry>`
-      - [ ] `new label <text> <guide>`
+      - [x] `new label <text> @xy [font]`
+      - [x] `new label <text> xy [font]`
+      - [x] `new label <text> <geometry> [font]`
       - [ ] `new label <text> <component>`
       - [ ] align left/centre/right
       - [ ] align top/middle/baseline/bottom
       - [ ] font
+            - [ ] case and space insensitive names
       - [ ] fontsize
       - [ ] colour
-      - [ ] optional label ID
       - [ ] generate label ID automatically
-      - [ ] error if identifier already exists
-      - (?) error if duplicate offset
       - [ ] help
-      - [ ] user guide
+      - [x] user guide
 
 - [ ] _help_
        - [ ] Rework help text as multi-column ul

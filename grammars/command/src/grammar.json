@@ -217,6 +217,18 @@
               ]
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "font"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -637,6 +649,10 @@
       "value": "[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm"
     },
     "part": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
+    "font": {
       "type": "PATTERN",
       "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
     },

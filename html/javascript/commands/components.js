@@ -1,18 +1,11 @@
-import { reference, offset, clean, mm } from './commands.js'
+import { string, reference, offset, clean, mm } from './commands.js'
 
 export function parse (node) {
   const object = {}
 
   for (const child of node.namedChildren) {
     if (child.type === 'name') {
-      const name = child.text.trim()
-      const match = name.match(/"(.*?)"/)
-
-      if (match && match.length > 1) {
-        object.name = match[1]
-      } else {
-        object.name = name
-      }
+      object.name = string(child)
     }
 
     if (child.type === 'absolute') {

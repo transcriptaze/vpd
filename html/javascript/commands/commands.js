@@ -1,3 +1,14 @@
+export function string (node) {
+  const text = node.text.trim()
+  const match = text.match(/"(.*?)"/)
+
+  if (match && match.length > 1) {
+    return match[1]
+  } else {
+    return text
+  }
+}
+
 export function reference (node) {
   for (const child of node.namedChildren) {
     if (child.type === 'reference') {
