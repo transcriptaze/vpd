@@ -19,18 +19,18 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['new', 'label', 'absolute', 'font'],
-    help: ['new', 'label', '@10.16mm,12.7mm', '"Lato-Bold"'],
+    command: ['new', 'label', 'string', 'xy', 'font'],
+    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"'],
     min: 1
   },
   {
-    command: ['new', 'label', 'relative', 'font'],
-    help: ['new', 'label', '10.16mm,12.7mm', '"Lato-Bold"'],
+    command: ['new', 'label', 'string', 'xy', 'font'],
+    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"'],
     min: 1
   },
   {
-    command: ['new', 'label', 'geometry', 'font'],
-    help: ['new', 'label', 'centre,middle', '"Lato-Bold"'],
+    command: ['new', 'label', 'string', 'xy', 'font'],
+    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"'],
     min: 1
   },
   {
@@ -105,6 +105,7 @@ const COMMANDS = [
   }
 ]
 
+// new label "lorem" 10mm,4mm
 export function help (prompt, text) {
   const tokens = []
   const src = `${text}`

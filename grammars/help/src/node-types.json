@@ -98,31 +98,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "absolute",
-          "named": true
-        },
-        {
-          "type": "font",
-          "named": true
-        },
-        {
-          "type": "relative",
-          "named": true
-        },
-        {
           "type": "string",
-          "named": true
-        },
-        {
-          "type": "x",
-          "named": true
-        },
-        {
-          "type": "y",
           "named": true
         }
       ]
@@ -187,6 +167,11 @@
     }
   },
   {
+    "type": "offset",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "origin",
     "named": true,
     "fields": {},
@@ -198,25 +183,6 @@
           "type": "absolute",
           "named": true
         },
-        {
-          "type": "x",
-          "named": true
-        },
-        {
-          "type": "y",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "relative",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
         {
           "type": "x",
           "named": true
@@ -242,6 +208,21 @@
         },
         {
           "type": "origin",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "xy",
           "named": true
         }
       ]
@@ -280,6 +261,21 @@
         },
         {
           "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "xy",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "font",
           "named": true
         }
       ]
@@ -353,10 +349,6 @@
     "named": false
   },
   {
-    "type": "offset",
-    "named": true
-  },
-  {
     "type": "origin",
     "named": false
   },
@@ -379,10 +371,6 @@
   {
     "type": "set",
     "named": false
-  },
-  {
-    "type": "string",
-    "named": true
   },
   {
     "type": "svg",

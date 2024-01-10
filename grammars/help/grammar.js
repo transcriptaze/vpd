@@ -65,11 +65,6 @@ module.exports = grammar({
       'module',
     ),
 
-    label: $ => seq(
-      'label',
-      $._string,
-    ),
-
     origin: $ => seq(
       'origin',
       optional(
@@ -115,31 +110,22 @@ module.exports = grammar({
     label: $ => seq(
       'label',
       optional(
-        seq(
-          $._string,
-          optional(
-            seq(
-              choice (
-                $.absolute,
-                $.relative,
-                seq( $.x, ',', $.y ),
-              ),
-              optional(
-                $.font
-              ),
-            )
-          ),
-        ),
+        alias($._label_string, $.string),
       ),
     ),
 
-    _string: $ => seq(
-      '"',
-      alias(/[a-zA-Z]([^"]*?)/,$.string),
-      '"',
+    _label_string: $ => seq(
+      $._string,
+      optional(
+        alias($._label_xy, $.xy)
+      ),
     ),
 
-    offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+    _label_xy: $ => seq(
+      choice ($._absolute, $._relative, $._geometry),
+      optional( $.font ),
+    ),
+
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     rgb: $ => /#[a-fA-F0-9]{6}/,
     rgba: $ => /#[a-fA-F0-9]{8}/,
@@ -162,16 +148,33 @@ module.exports = grammar({
       ),
     ),
 
-    relative: $ => seq(
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
-      optional(
-        seq(
-          ',',
-          optional(
-            alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
-          ),
-        ),
-      ),
+    _absolute: $ => seq(
+      '@',
+      /([0-9]+)([.][0-9]*)?(mm|h|H)/,
+      ',',
+      /([0-9]+)([.][0-9]*)?(mm|h|H)/,
+    ),
+
+    _relative: $ => seq(
+      /[0-9]+(?:\.[0-9]*)?mm/,
+      ',',
+      /[0-9]+(?:\.[0-9]*)?mm/
+    ),
+
+    _geometry: $ => seq(
+      $._x,
+      ',',
+      $._y,
+    ),
+
+    _x: $ => seq(
+      /left|centre|center|right/,
+      optional($._offset),
+    ),
+
+    _y: $ => seq(
+      /top|middle|bottom/,
+      optional($._offset),
     ),
 
     x: $ => seq(
@@ -182,6 +185,16 @@ module.exports = grammar({
     y: $ => seq(
       alias (/top|middle|bottom/,$.reference), 
       optional($.offset),
+    ),
+
+    _offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+
+    offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+
+    _string: $ => seq(
+      '"',
+      /[a-zA-Z]([^"]*?)/,
+      '"',
     ),
   }
 });

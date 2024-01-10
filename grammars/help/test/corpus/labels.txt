@@ -26,12 +26,9 @@ new label "lorem" @10mm,10mm
 (command
   (new
     (label
-      (string)
-      (absolute
-        (x)
-        (y)))))
-
-
+      (string
+        (xy)))))
+        
 ===========================
 new label "lorem" 10mm,10mm
 ===========================
@@ -40,10 +37,8 @@ new label "lorem" 10mm,10mm
 (command
   (new
     (label
-      (string)
-      (relative
-        (x)
-        (y)))))
+      (string
+        (xy)))))
 
 
 ===============================
@@ -54,11 +49,8 @@ new label "lorem" centre,middle
 (command
   (new
     (label
-      (string)
-      (x
-        (reference))
-      (y
-        (reference)))))
+      (string
+        (xy)))))
 
 
 =======================================
@@ -69,10 +61,8 @@ new label "lorem" 10mm,10mm "Lato-Bold"
 (command
   (new
     (label
-      (string)
-      (relative
-        (x)
-        (y))
-      (font))))
+      (string
+        (xy
+          (font))))))
 
 

@@ -215,87 +215,6 @@
         }
       ]
     },
-    "label": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "label"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_string"
-                },
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "absolute"
-                            },
-                            {
-                              "type": "SYMBOL",
-                              "name": "relative"
-                            },
-                            {
-                              "type": "SEQ",
-                              "members": [
-                                {
-                                  "type": "SYMBOL",
-                                  "name": "x"
-                                },
-                                {
-                                  "type": "STRING",
-                                  "value": ","
-                                },
-                                {
-                                  "type": "SYMBOL",
-                                  "name": "y"
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "font"
-                            },
-                            {
-                              "type": "BLANK"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BLANK"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
     "origin": {
       "type": "SEQ",
       "members": [
@@ -493,31 +412,91 @@
         }
       ]
     },
-    "_string": {
+    "label": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "\""
+          "value": "label"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[a-zA-Z]([^\"]*?)"
-          },
-          "named": true,
-          "value": "string"
-        },
-        {
-          "type": "STRING",
-          "value": "\""
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_label_string"
+              },
+              "named": true,
+              "value": "string"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
-    "offset": {
-      "type": "PATTERN",
-      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+    "_label_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_string"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_label_xy"
+              },
+              "named": true,
+              "value": "xy"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_label_xy": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_absolute"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_relative"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_geometry"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "font"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "name": {
       "type": "PATTERN",
@@ -600,46 +579,95 @@
         }
       ]
     },
-    "relative": {
+    "_absolute": {
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[0-9]+(?:\\.[0-9]*)?mm"
-          },
-          "named": true,
-          "value": "x"
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "PATTERN",
+          "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "PATTERN",
+          "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
+        }
+      ]
+    },
+    "_relative": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?mm"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?mm"
+        }
+      ]
+    },
+    "_geometry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_y"
+        }
+      ]
+    },
+    "_x": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "left|centre|center|right"
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ","
-                },
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "ALIAS",
-                      "content": {
-                        "type": "PATTERN",
-                        "value": "[0-9]+(?:\\.[0-9]*)?mm"
-                      },
-                      "named": true,
-                      "value": "y"
-                    },
-                    {
-                      "type": "BLANK"
-                    }
-                  ]
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_y": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "top|middle|bottom"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_offset"
             },
             {
               "type": "BLANK"
@@ -697,6 +725,31 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_offset": {
+      "type": "PATTERN",
+      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+    },
+    "offset": {
+      "type": "PATTERN",
+      "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
+    },
+    "_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z]([^\"]*?)"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
         }
       ]
     }
