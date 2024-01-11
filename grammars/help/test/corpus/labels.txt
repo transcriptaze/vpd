@@ -27,7 +27,7 @@ new label "lorem" @10mm,10mm
   (new
     (label
       (string
-        (xy)))))
+        (absolute)))))
         
 ===========================
 new label "lorem" 10mm,10mm
@@ -38,7 +38,7 @@ new label "lorem" 10mm,10mm
   (new
     (label
       (string
-        (xy)))))
+        (relative)))))
 
 
 ===============================
@@ -50,7 +50,7 @@ new label "lorem" centre,middle
   (new
     (label
       (string
-        (xy)))))
+        (geometry)))))
 
 
 =======================================
@@ -62,7 +62,7 @@ new label "lorem" 10mm,10mm "Lato-Bold"
   (new
     (label
       (string
-        (xy
+        (relative
           (font))))))
 
 

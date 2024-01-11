@@ -19,18 +19,18 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['new', 'label', 'string', 'xy', 'font'],
-    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"'],
+    command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize'],
+    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt'],
     min: 1
   },
   {
-    command: ['new', 'label', 'string', 'xy', 'font'],
-    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"'],
+    command: ['new', 'label', 'string', 'relative', 'font', 'fontsize'],
+    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"', '12pt'],
     min: 1
   },
   {
-    command: ['new', 'label', 'string', 'xy', 'font'],
-    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"'],
+    command: ['new', 'label', 'string', 'geometry', 'font', 'fontsize'],
+    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"', '12pt'],
     min: 1
   },
   {
@@ -116,7 +116,7 @@ export function help (prompt, text) {
     tokens.push(...walk(root.namedChildren[0]))
   }
 
-  // console.log(tokens)
+  console.log(tokens)
 
   const list = new Set()
 

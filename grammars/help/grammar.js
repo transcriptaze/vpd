@@ -117,14 +117,36 @@ module.exports = grammar({
     _label_string: $ => seq(
       $._string,
       optional(
-        alias($._label_xy, $.xy)
+        choice (
+          alias($._label_absolute, $.absolute),
+          alias($._label_relative, $.relative),
+          alias($._label_geometry, $.geometry),
+        ),
       ),
     ),
 
-    _label_xy: $ => seq(
-      choice ($._absolute, $._relative, $._geometry),
+    _label_absolute: $ => seq(
+      '@',
+      /([0-9]+)([.][0-9]*)?(mm|h|H)/,
+      ',',
+      /([0-9]+)([.][0-9]*)?(mm|h|H)/,
       optional( $.font ),
     ),
+
+    _label_relative: $ => seq(
+      /[0-9]+(?:\.[0-9]*)?mm/,
+      ',',
+      /[0-9]+(?:\.[0-9]*)?mm/,
+      optional( $.font ),
+    ),
+
+    _label_geometry: $ => seq(
+      $._x,
+      ',',
+      $._y,
+      optional( $.font ),
+    ),
+
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     rgb: $ => /#[a-fA-F0-9]{6}/,
@@ -146,25 +168,6 @@ module.exports = grammar({
           ),
         ),
       ),
-    ),
-
-    _absolute: $ => seq(
-      '@',
-      /([0-9]+)([.][0-9]*)?(mm|h|H)/,
-      ',',
-      /([0-9]+)([.][0-9]*)?(mm|h|H)/,
-    ),
-
-    _relative: $ => seq(
-      /[0-9]+(?:\.[0-9]*)?mm/,
-      ',',
-      /[0-9]+(?:\.[0-9]*)?mm/
-    ),
-
-    _geometry: $ => seq(
-      $._x,
-      ',',
-      $._y,
     ),
 
     _x: $ => seq(

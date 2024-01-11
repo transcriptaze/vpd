@@ -449,13 +449,36 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_label_xy"
-              },
-              "named": true,
-              "value": "xy"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_label_absolute"
+                  },
+                  "named": true,
+                  "value": "absolute"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_label_relative"
+                  },
+                  "named": true,
+                  "value": "relative"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_label_geometry"
+                  },
+                  "named": true,
+                  "value": "geometry"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -464,25 +487,82 @@
         }
       ]
     },
-    "_label_xy": {
+    "_label_absolute": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "PATTERN",
+          "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "PATTERN",
+          "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
+        },
         {
           "type": "CHOICE",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_absolute"
+              "name": "font"
             },
             {
-              "type": "SYMBOL",
-              "name": "_relative"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_geometry"
+              "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_label_relative": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?mm"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?mm"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "font"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_label_geometry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_y"
         },
         {
           "type": "CHOICE",
@@ -576,61 +656,6 @@
               "type": "BLANK"
             }
           ]
-        }
-      ]
-    },
-    "_absolute": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "@"
-        },
-        {
-          "type": "PATTERN",
-          "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "PATTERN",
-          "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
-        }
-      ]
-    },
-    "_relative": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[0-9]+(?:\\.[0-9]*)?mm"
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "PATTERN",
-          "value": "[0-9]+(?:\\.[0-9]*)?mm"
-        }
-      ]
-    },
-    "_geometry": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_x"
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_y"
         }
       ]
     },

@@ -8,6 +8,10 @@
       "required": false,
       "types": [
         {
+          "type": "font",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
@@ -87,6 +91,21 @@
     "type": "font",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "geometry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "font",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "guide",
@@ -195,6 +214,21 @@
     }
   },
   {
+    "type": "relative",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "font",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "set",
     "named": true,
     "fields": {},
@@ -222,7 +256,15 @@
       "required": false,
       "types": [
         {
-          "type": "xy",
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "geometry",
+          "named": true
+        },
+        {
+          "type": "relative",
           "named": true
         }
       ]
@@ -261,21 +303,6 @@
         },
         {
           "type": "reference",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "xy",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "font",
           "named": true
         }
       ]
