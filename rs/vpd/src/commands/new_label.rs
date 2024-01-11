@@ -9,10 +9,11 @@ use crate::module::Module;
 use crate::panel;
 
 const FONT: &str = "RobotoMono-Bold";
+const FONTSIZE: f32 = 12.0;
 
 #[wasm_bindgen(raw_module = "../../javascript/text.js")]
 extern "C" {
-    fn text2path(text: &str, font: &str) -> String;
+    fn text2path(text: &str, font: &str, fontsize: f32) -> String;
 }
 
 #[derive(Deserialize)]
@@ -21,6 +22,7 @@ pub struct NewLabel {
     x: panel::X,
     y: panel::Y,
     font: Option<String>,
+    fontsize: Option<f32>,
 }
 
 #[derive(Deserialize)]
@@ -38,9 +40,11 @@ impl NewLabel {
 
 impl Command for NewLabel {
     fn apply(&self, m: &mut Module) {
-        let path = match &self.font {
-            Some(font) => text2path(&self.text,&font),
-            None => text2path(&self.text, FONT),
+        let path = match (&self.font,self.fontsize) {
+            (Some(font),Some(fontsize)) => text2path(&self.text,&font, fontsize),
+            (Some(font),_) => text2path(&self.text,&font, FONTSIZE),
+            (_,Some(fontsize)) => text2path(&self.text,FONT, fontsize),
+            (_,_) => text2path(&self.text, FONT, FONTSIZE),
         }.to_string();
 
         m.panel

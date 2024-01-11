@@ -237,6 +237,10 @@
           "named": true
         },
         {
+          "type": "fontsize",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -659,6 +663,10 @@
   {
     "type": "export",
     "named": false
+  },
+  {
+    "type": "fontsize",
+    "named": true
   },
   {
     "type": "guide",

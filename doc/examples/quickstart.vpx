@@ -21,4 +21,4 @@ new light "ok" centre,middle LED
 new light "recording" centre,middle+12.7mm LED
 new widget "channels" @40.64mm,20.32mm "square"
 
-new label "Thing 1" centre,g1 "StyleScript-Regular"
+new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt

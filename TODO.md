@@ -11,13 +11,6 @@
       - [ ] set filename
       - [ ] ctrl-click to save as timestamped
 
-- [x] VPX
-      - [x] Load and run file
-      - [x] Drag 'n drop
-      - [x] Firefox/Safari (browser without file API picker)
-      - [x] Alt-load
-      - [x] User guide
-
 - [ ] **Show errors**
 
 - [x] _info_ panel
@@ -53,6 +46,8 @@
 - [ ] _woff2_
 - [ ] Load/drop font file
 
+- [x] _background_
+- [x] VPX
 
 ### Commands
 - [ ] _load_
@@ -88,17 +83,6 @@
       - [ ] `set`
       - [ ] `list`
       - (?) error if duplicate offset
-
-- [x] _background_
-      - [x] `set background <rgb>`
-      - [x] `set background <rgba>`
-      - [x] `set background <name>`
-      - [x] `set background <rgb>,<rgb>`
-      - [x] `set background <rgba>,<rgba>`
-      - [x] help
-      - [x] case and space insensitive names
-      - [x] user guide
-      - [x] default background
 
 - [ ] _inputs_
       - [x] `new input <name> @xy`

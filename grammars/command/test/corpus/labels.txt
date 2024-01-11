@@ -105,3 +105,34 @@ new label "lorem" 10mm,10mm "Lato-Bold"
       (font))))
 
 
+============================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt
+============================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (font)
+      (fontsize))))
+
+
+================================
+new label "lorem" 10mm,10mm 14pt
+================================
+new label "lorem" 10mm,10mm 14pt
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (fontsize))))
+
+

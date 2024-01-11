@@ -4,7 +4,8 @@ export function newLabel (node) {
   const object = {
     action: 'new',
     label: {
-      font: 'RobotoMono-Bold'
+      font: 'RobotoMono-Bold',
+      fontsize: 12
     }
   }
 
@@ -65,6 +66,16 @@ export function newLabel (node) {
 
     if (child.type === 'font') {
       object.label.font = string(child)
+    }
+
+    if (child.type === 'fontsize') {
+      const match = child.text.match(/([0-9]+(?:[.][0-9]*)?)pt/)
+      if (match.length > 1) {
+        const size = parseFloat(match[1])
+        if (!Number.isNaN(size)) {
+          object.label.fontsize = size
+        }
+      }
     }
   }
 

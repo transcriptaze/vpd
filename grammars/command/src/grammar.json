@@ -229,6 +229,18 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "fontsize"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -655,6 +667,10 @@
     "font": {
       "type": "PATTERN",
       "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
+    "fontsize": {
+      "type": "PATTERN",
+      "value": "[1-9][0-9]*([.][0-9]*)?pt"
     },
     "guide": {
       "type": "SEQ",

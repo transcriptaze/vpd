@@ -73,6 +73,7 @@ module.exports = grammar({
         seq( $.x, ',', $.y ),
       ),
       optional($.font),
+      optional($.fontsize),
     ),
 
     _component: $ => seq(
@@ -174,7 +175,9 @@ module.exports = grammar({
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
     part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+
     font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    fontsize: $ => /[1-9][0-9]*([.][0-9]*)?pt/,
 
     guide: $ => seq(
       'guide',      
