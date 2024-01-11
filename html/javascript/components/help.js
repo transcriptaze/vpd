@@ -36,7 +36,7 @@ export class HelpText extends HTMLElement {
 
   display (help) {
     const shadow = this.shadowRoot
-    const div = shadow.querySelector('div.vpd-help-text')
+    const div = shadow.querySelector('div.vpd-help-text div.ul')
 
     div.replaceChildren()
     for (const v of help) {

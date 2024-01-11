@@ -46,10 +46,16 @@ div.vpd-help-text {
   background: white;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+div.vpd-help-text div.ul {
+  height: 100%;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto;
   grid-auto-flow: column;
+  column-gap: 24px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 4px;
