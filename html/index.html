@@ -42,7 +42,7 @@
         <div id="controls">
           <div class="files">
             <button onclick="onLoad(event)"><img src="./images/load.svg" /></button>
-            <button onclick="onSave(event)"><img src="./images/save.svg" /></button>
+            <button onclick="onSave(event)" oncontextmenu="onSave(event)"><img src="./images/save.svg" /></button>
             <button class="light" onclick="onExport(event,'light')"><img src="./images/download.svg" /></button>
             <button class="dark"  onclick="onExport(event,'dark')"><img src="./images/download.svg" /></button>
           </div>
@@ -128,7 +128,11 @@
       VPD.onLoad(event.altKey ? 'vpx' : 'vpd')
     }
 
-    window.onSave = VPD.onSave
+    window.onSave = (event) => {
+      event.preventDefault()
+      VPD.onSave(event.altKey ? 'vpx' : 'vpd', event.ctrlKey)
+    }
+
     window.onExport = VPD.onExport
 
     document.querySelector('vpd-drop')

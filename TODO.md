@@ -8,8 +8,9 @@
       - [x] https://thenounproject.com/search/icons/?q=open
 
 - [ ] Save project/script file
-      - [ ] set filename
-      - [ ] ctrl-click to save as timestamped
+      - [ ] alt-click to save script
+      - [x] set filename
+      - [x] ctrl-click to save as timestamped
 
 - [ ] **Show errors**
 

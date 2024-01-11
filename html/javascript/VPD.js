@@ -128,8 +128,6 @@ export function onLoad (type) {
 }
 
 export function onDropped (file) {
-  console.log(file)
-
   if (file.type === 'application/json' || file.name.endsWith('.vpd')) {
     load(file, 'vpd')
   }
@@ -139,11 +137,31 @@ export function onDropped (file) {
   }
 }
 
-export function onSave () {
+export function onSave (type, timestamped) {
   const json = serialize('project')
   const blob = new Blob([json], { type: 'application/json' })
 
-  save(blob)
+  const now = new Date()
+  const year = `${now.getFullYear()}`.padStart(4, '0')
+  const month = `${now.getMonth() + 1}`.padStart(2, '0')
+  const day = `${now.getDate()}`.padStart(2, '0')
+  const hour = `${now.getHours()}`.padStart(2, '0')
+  const minute = `${now.getMinutes()}`.padStart(2, '0')
+  const second = `${now.getSeconds()}`.padStart(2, '0')
+  const timestamp = `${year}-${month}-${day} ${hour}.${minute}.${second}`
+
+  let filename = timestamped ? `VPD ${timestamp}.vpd` : 'VPD.vpd'
+
+  try {
+    const object = JSON.parse(json)    
+    if (Object.hasOwn(object,'name')) {
+      filename = timestamped ? `${object.name} ${timestamp}.vpd` : `${object.name}.vpd`
+    }
+  } catch(err) {
+    console.error(err)
+  }
+
+  save(blob, filename)
 }
 
 export function onExport (event, theme) {
@@ -194,9 +212,7 @@ function redraw () {
   }
 }
 
-async function save (blob) {
-  const filename = 'vpd.json'
-
+async function save (blob, filename) {
   if (window.showSaveFilePicker) {
     saveWithPicker(blob, filename)
   } else {
@@ -204,7 +220,7 @@ async function save (blob) {
     const anchor = document.querySelector('a#save')
 
     anchor.href = url
-    anchor.download = 'vpd.json'
+    anchor.download = filename
     anchor.click()
 
     URL.revokeObjectURL(url)
@@ -251,7 +267,7 @@ async function saveWithPicker (blob, filename) {
       types: [
         {
           description: 'VPD project file',
-          accept: { 'application/json': ['.json'] }
+          accept: { 'application/json': ['.vpd'] }
         }
       ]
     }

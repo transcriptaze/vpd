@@ -3,6 +3,7 @@
 ### Contents
 
 - [Getting started](#getting-started)
+- [User interface][#user-interface]
 - [Scripts][#vpx-files]
 - [Commands](#commands)
    - [`new module`](#new-module)
@@ -88,6 +89,23 @@
    ```
    new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt
    ```
+
+## User Interface
+
+### <img width="24" src="doc/images/load.png"> Load
+
+- Clicking on the _load_ button loads and renders a module saved as a _.vpd_ file.
+- Alt-click on the _load_ button loads and renders a _.vpx_ script file.
+
+
+### <img width="24" src="doc/images/save.png"> Save
+
+- Clicking on the _save_ button saves the current project as a _.vpd_ file, using the module name as a filename. Ctrl-click will save 
+  the project with a timestamped filename.
+
+- Alt-click on the _save_ button saves the command history a _.vpx_ script file, using the module name as a filename. Ctrl-click will save 
+  the script with a timestamped filename.
+
 
 ## Scripts
 
