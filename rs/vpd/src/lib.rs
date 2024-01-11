@@ -43,15 +43,17 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;
 
-            cmd.apply(module);
+            if cmd.apply(module) {
+                let info = module.info();
+                let object = serde_json::to_string(&info).unwrap();
+                set("module", &object);
 
-            let info = module.info();
-            let object = serde_json::to_string(&info).unwrap();
-            set("module", &object);
+                let serialized = serde_json::to_string(&module).unwrap();
 
-            let serialized = serde_json::to_string(&module).unwrap();
-
-            Ok(serialized)
+                Ok(serialized)
+            } else {
+                Ok("".to_string())
+            }
         }
 
         Err(e) => Err(JsValue::from(format!("{}", e))),

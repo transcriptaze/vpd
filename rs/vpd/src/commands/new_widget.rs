@@ -29,11 +29,13 @@ impl NewWidgetCommand {
 }
 
 impl Command for NewWidgetCommand {
-    fn apply(&self, m: &mut Module) {
+    fn apply(&self, m: &mut Module) -> bool {
         let id = m.new_widget_id();
 
         m.panel.widgets.push(panel::Widget::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
+
+        true
     }
 }

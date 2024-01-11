@@ -52,10 +52,14 @@
 ### Commands
 - [ ] _load_
       - [ ] `load project`
-      - [ ] `load script`
             - [ ] Don't return JSON from exec
-            - [x] User guide
+            - [ ] User guide
             - [ ] help
+
+      - [x] `load script`
+            - [x] Don't return JSON from exec
+            - [x] User guide
+            - [x] help
 
 - [ ] _export_
       - [ ] `export project`

@@ -28,11 +28,13 @@ impl NewInputCommand {
 }
 
 impl Command for NewInputCommand {
-    fn apply(&self, m: &mut Module) {
+    fn apply(&self, m: &mut Module) -> bool {
         let id = m.new_input_id();
 
         m.panel.inputs.push(panel::Input::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
+
+        true
     }
 }

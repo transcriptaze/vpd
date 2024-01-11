@@ -57,7 +57,7 @@ export function text2path (text, fontName, size) {
   }
 
   let bytes = fonts.get(DEFAULT.name)
-  for (const [k,v] of fonts) {
+  for (const [k, v] of fonts) {
     if (normalise(k) === normalise(fontName)) {
       bytes = v
       break
@@ -81,5 +81,5 @@ function points2mm (pts) {
 }
 
 export function normalise (v) {
-  return `${v}`.replaceAll(/[^a-zA-Z0-9]+/g,'').toLowerCase()
+  return `${v}`.replaceAll(/[^a-zA-Z0-9]+/g, '').toLowerCase()
 }

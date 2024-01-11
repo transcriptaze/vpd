@@ -57,8 +57,10 @@ impl SetOriginCommand {
 }
 
 impl Command for SetOriginCommand {
-    fn apply(&self, m: &mut Module) {
+    fn apply(&self, m: &mut Module) -> bool {
         m.panel.origin.set_x(&self.x.reference, self.x.offset);
         m.panel.origin.set_y(&self.y.reference, self.y.offset);
+
+        true
     }
 }

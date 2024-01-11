@@ -39,16 +39,19 @@ impl NewLabel {
 }
 
 impl Command for NewLabel {
-    fn apply(&self, m: &mut Module) {
-        let path = match (&self.font,self.fontsize) {
-            (Some(font),Some(fontsize)) => text2path(&self.text,&font, fontsize),
-            (Some(font),_) => text2path(&self.text,&font, FONTSIZE),
-            (_,Some(fontsize)) => text2path(&self.text,FONT, fontsize),
-            (_,_) => text2path(&self.text, FONT, FONTSIZE),
-        }.to_string();
+    fn apply(&self, m: &mut Module) -> bool {
+        let path = match (&self.font, self.fontsize) {
+            (Some(font), Some(fontsize)) => text2path(&self.text, &font, fontsize),
+            (Some(font), _) => text2path(&self.text, &font, FONTSIZE),
+            (_, Some(fontsize)) => text2path(&self.text, FONT, fontsize),
+            (_, _) => text2path(&self.text, FONT, FONTSIZE),
+        }
+        .to_string();
 
         m.panel
             .labels
             .push(panel::Label::new(&self.text, &self.x, &self.y, &path));
+
+        true
     }
 }

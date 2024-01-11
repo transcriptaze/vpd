@@ -30,7 +30,7 @@ impl NewGuideCommand {
 }
 
 impl Command for NewGuideCommand {
-    fn apply(&self, m: &mut Module) {
+    fn apply(&self, m: &mut Module) -> bool {
         let id = match &self.name {
             Some(v) => v.to_string(),
             None => m.new_guide_id(&self.orientation, &self.reference),
@@ -64,6 +64,8 @@ impl Command for NewGuideCommand {
                 .entry(id)
                 .or_insert(Guide::new(&orientation, &reference, self.offset));
         }
+
+        true
     }
 }
 

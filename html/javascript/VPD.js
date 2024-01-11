@@ -159,8 +159,10 @@ function execute (cmd) {
 
       const serialized = exec(JSON.stringify(command))
 
-      store(PROJECT, serialized)
-      redraw()
+      if (serialized !== '') {
+        store(PROJECT, serialized)
+        redraw()
+      }
     }
   } catch (err) {
     console.error(err)

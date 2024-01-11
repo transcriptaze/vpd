@@ -28,11 +28,13 @@ impl NewParameterCommand {
 }
 
 impl Command for NewParameterCommand {
-    fn apply(&self, m: &mut Module) {
+    fn apply(&self, m: &mut Module) -> bool {
         let id = m.new_parameter_id();
 
         m.panel.parameters.push(panel::Parameter::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
+
+        true
     }
 }

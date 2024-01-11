@@ -13,7 +13,6 @@ pub struct Label {
 
 impl Label {
     pub fn new(text: &str, x: &X, y: &Y, path: &str) -> Label {
-
         Label {
             text: text.to_string(),
             x: x.clone(),

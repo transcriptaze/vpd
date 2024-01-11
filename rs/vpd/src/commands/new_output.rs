@@ -28,11 +28,13 @@ impl NewOutputCommand {
 }
 
 impl Command for NewOutputCommand {
-    fn apply(&self, m: &mut Module) {
+    fn apply(&self, m: &mut Module) -> bool {
         let id = m.new_output_id();
 
         m.panel.outputs.push(panel::Output::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
+
+        true
     }
 }
