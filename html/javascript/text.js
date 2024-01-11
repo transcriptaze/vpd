@@ -56,7 +56,14 @@ export function text2path (text, fontName, size) {
     decimalPlaces: 3
   }
 
-  const bytes = fonts.has(fontName) ? fonts.get(fontName) : fonts.get(DEFAULT)
+  let bytes = fonts.get(DEFAULT.name)
+  for (const [k,v] of fonts) {
+    if (normalise(k) === normalise(fontName)) {
+      bytes = v
+      break
+    }
+  }
+
   const fontSize = points2mm(size)
   const font = opentype.parse(bytes)
   const path = font.getPath(text, 0, 0, fontSize, {})
@@ -71,4 +78,8 @@ export function text2path (text, fontName, size) {
 
 function points2mm (pts) {
   return 25.4 * pts / 72
+}
+
+export function normalise (v) {
+  return `${v}`.replaceAll(/[^a-zA-Z0-9]+/g,'').toLowerCase()
 }

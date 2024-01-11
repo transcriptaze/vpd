@@ -173,10 +173,10 @@ _Notes:_
 _Examples:_
 ```
 new label "Lorem Ipsum" centre, top+10.16mm
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline red
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline #ffff0080
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14pt centre baseline #ff0000,#00ff00
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline red
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline #ffff0080
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline #ff0000,#00ff00
 ````
 
 

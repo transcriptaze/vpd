@@ -145,15 +145,15 @@
 
 - [ ] _label__
       - [x] text2path
-      - [x] `new label <text> @xy [font]`
-      - [x] `new label <text> xy [font]`
-      - [x] `new label <text> <geometry> [font]`
+      - [x] `new label <text> @xy [font] [fonsize]`
+      - [x] `new label <text> xy [font] [fontsize]`
+      - [x] `new label <text> <geometry> [font] [fontsize]`
       - [ ] `new label <text> <component>`
       - [ ] align left/centre/right
       - [ ] align top/middle/baseline/bottom
-      - [ ] font
-            - [ ] case and space insensitive names
-      - [ ] fontsize
+      - [x] font
+            - [x] case and space insensitive names
+      - [x] fontsize
       - [ ] colour
       - [ ] generate label ID automatically
       - [ ] help
