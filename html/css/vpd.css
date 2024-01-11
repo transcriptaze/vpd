@@ -63,7 +63,6 @@ header {
 main {
   grid-row: 1/3;
   grid-column: 1/4;
-  padding-top: 32px;
   padding-bottom: 32px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -73,6 +72,7 @@ main {
 main div.panel {
   min-width: 100mm;
   height: 100%;
+  margin-top: 32px;
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 16px;
@@ -94,6 +94,38 @@ main div.panel object {
 main div.panel object.visible {
   visibility: visible;
   opacity: 1;
+}
+main div#message {
+  grid-column: 1/3;
+  grid-row: 1;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+main div#message div {
+  max-width: 1024px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 16px;
+  margin-right: 16px;
+  color: #d00000;
+  font-size: 0.9em;
+  font-style: italic;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+main div#message img {
+  height: 18px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  border: 1px solid red;
+  border-radius: 3px;
 }
 main div#left {
   grid-column: 1;
@@ -126,6 +158,7 @@ main div#right div.panel object {
 main div#info {
   height: 128px;
   width: fit-content;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   row-gap: 4px;
@@ -163,6 +196,7 @@ main div#info fieldset.visible {
   display: grid;
 }
 main div#controls {
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   row-gap: 4px;

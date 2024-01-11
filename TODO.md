@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] Initialise _help_ on page load
+
 - [x] github 'cloudflare' build
       - [ ] bundle
 
@@ -20,9 +22,7 @@
 - [ ] `undo`
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
-      - [ ] Maybe use CSS ??????
-- [x] Embed HTML in Go binary
-- [ ] Initialise _help_ on page load
+      - [ ] Can't reference to /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Preferences
       - show/hide screws
       - default font
@@ -41,16 +41,15 @@
 
 
 ### Fonts 
-- [ ] load all on startup
+- [x] fetch preloaded fonts on startup
+- [x] _woff_
 - [ ] `load font...`
-- [ ] _woff_
 - [ ] _woff2_
 - [ ] Load/drop font file
 
-- [x] _background_
-- [x] VPX
-
 ### Commands
+- [x] _set background_
+
 - [ ] _load_
       - [ ] `load project`
             - [ ] Don't return JSON from exec
@@ -79,8 +78,10 @@
       - [ ] user guide
 
 - [ ] _origin_
-      - [ ] `set origin absolute`
-      - [ ] `set origin relative`
+      - [x] `set origin <absolute>`
+      - [x] `set origin <geometry>`
+      - [ ] help
+      - [ ] user guide
 
 - [ ] _guidelines_
       - [ ] help
@@ -154,18 +155,17 @@
       - [x] `new label <text> xy [font] [fontsize]`
       - [x] `new label <text> <geometry> [font] [fontsize]`
       - [ ] `new label <text> <component>`
+      - [x] font
+      - [x] fontsize
       - [ ] align left/centre/right
       - [ ] align top/middle/baseline/bottom
-      - [x] font
-            - [x] case and space insensitive names
-      - [x] fontsize
       - [ ] colour
       - [ ] generate label ID automatically
       - [ ] help
       - [x] user guide
 
 - [ ] _help_
-       - [ ] Rework help text as multi-column ul
+       - [x] Rework help text as grid
        - [ ] Auto-generate help text from grammar/examples
 
 
