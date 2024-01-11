@@ -153,11 +153,11 @@ export function onSave (type, timestamped) {
   let filename = timestamped ? `VPD ${timestamp}.vpd` : 'VPD.vpd'
 
   try {
-    const object = JSON.parse(json)    
-    if (Object.hasOwn(object,'name')) {
+    const object = JSON.parse(json)
+    if (Object.hasOwn(object, 'name')) {
       filename = timestamped ? `${object.name} ${timestamp}.vpd` : `${object.name}.vpd`
     }
-  } catch(err) {
+  } catch (err) {
     console.error(err)
   }
 
