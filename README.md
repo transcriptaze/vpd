@@ -151,6 +151,8 @@ You need a **bunch** of tools:
 - [_wasm-bindgen_](https://github.com/rustwasm/wasm-bindgen)
 - [_npm 1.16.32+_](https://www.npmjs.com/get-npm)
 - [_sass_](https://sass-lang.com)
+- [_rollup_](https://rollupjs.org)
+- [_terser_](https://www.npmjs.com/package/@rollup/plugin-terser)
 - [_eslint_](https://eslint.org)
 - [_eslint-config-standard_](https://www.npmjs.com/package/eslint-config-standard)
 - [_Docker_](https://www.docker.com)

@@ -13,14 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/twystd/vpd.git"
   },
+  "type": "module",
   "bugs": {
     "url": "https://github.com/twystd/vpd/issues"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-n": "^16.3.1",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint-plugin-promise": "^6.1.1",
+    "rollup": "^4.9.5"
   }
 }

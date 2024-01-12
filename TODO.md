@@ -1,9 +1,15 @@
 # TODO
 
 - [x] Initialise _help_ on page load
+- [x] svg: convert objects to mm
+- [x] SVG pretty printer
+      - [x] blank lines
+      - [x] 3 digits
+
 
 - [x] github 'cloudflare' build
       - [ ] bundle
+      - [ ] Fix wasm .gitignore, LICENSE etc
 
 - [x] Load project file
       - [ ] web component
@@ -63,7 +69,7 @@
       - [ ] `export project gzip`
       - [ ] `export script`
       - [ ] `export script timestamp`
-      - [ ] `export panel svg [light|dark]`
+      - [x] `export panel svg [light|dark]`
       - [ ] replace spaces with underscores
       - [ ] help
       - [ ] user guide
@@ -129,9 +135,9 @@
 
 - [ ] _label__
       - [x] text2path
-      - [x] `new label <text> @xy [font] [fonsize]`
-      - [x] `new label <text> xy [font] [fontsize]`
-      - [x] `new label <text> <geometry> [font] [fontsize]`
+      - [x] `new label <text> @xy`
+      - [x] `new label <text> xy`
+      - [x] `new label <text> <geometry>`
       - [ ] `new label <text> <component>`
       - [x] font
       - [x] fontsize
@@ -149,12 +155,6 @@
 
 ### Panel
 - [ ] Robust JSON deserialization i.e. accomodate missing fields
-
-### SVG
-- [x] Convert objects to mm
-- [ ] SVG pretty printer
-      - [ ] blank lines
-      - [ ] 3 digits
 
 ### Tests
 - https://playwright.dev/docs/intro

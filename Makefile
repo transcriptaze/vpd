@@ -1,5 +1,6 @@
 .PHONY: format
 .PHONY: sass
+.PHONY: cloudflare
 
 .DEFAULT_GOAL = build
 
@@ -37,11 +38,18 @@ build-release: build-all
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
 
-cloudflare: build-release
-	rm -rf dist/cloudflare
-	mkdir -p dist/cloudflare
-	cp -r  ./html/*        dist/cloudflare
+cloudflare: 
+	rm    -rf dist/cloudflare
+	mkdir -p  dist/cloudflare
+	rsync -av --progress html/* dist/cloudflare --exclude html/javascript
 	cp -r  ./cloudflare/*  dist/cloudflare
+	npx rollup --config rollup-vpd.js
+	npx rollup --config rollup-components.js
+	sed -i '' 's#VPD\.js#bundle\.js#'                       dist/cloudflare/index.html
+	sed -i '' 's#command\.js#bundle\.js#'                   dist/cloudflare/index.html
+	sed -i '' 's#help\.js#bundle\.js#'                      dist/cloudflare/index.html
+	sed -i '' 's#text\.js#bundle\.js#'                      dist/cloudflare/index.html
+	sed -i '' 's#components/components\.js#components\.js#' dist/cloudflare/index.html
 
 run-python:
 	python3 -m http.server 9876 -d html
