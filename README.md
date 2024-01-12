@@ -17,6 +17,7 @@ It has been tested on:
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands.
 
+**Status**: _very much still in development_
 
 ### Raison d’être
 
@@ -38,30 +39,28 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 
 3. Create a sample panel by either:
    - Downloading the [_quickstart.vpd_](/doc/examples/quickstart.vpd) project file and opening it by clicking on the _Load_ 
-     <img width="20" src="doc/images/load.png"> button (or alternatively by executing the _load project_ command)
+     (<img width="20" src="doc/images/load.png">) button (or alternatively by executing the _load project_ command)
 
      -- OR --
 
-   - Downloading the [_quickstart.vpx_](/doc/examples/quickstart.vpx) script file and opening it by alt-clicking on the _Load_ 
-     <img width="20" src="doc/images/load.png"> button (or alternatively by executing the _load script_ command)
+   - Downloading the [_quickstart.vpx_](/doc/examples/quickstart.vpx) script file and opening it by **Alt-clicking** on the _Load_ 
+     (<img width="20" src="doc/images/load.png">) button (or alternatively by executing the _load script_ command)
 
      -- OR --
 
    - Following the [_Getting started_](GUIDE.md#getting-started) instructions in the _User Guide_
 
 4. Export the SVG files to the plugin `res` folder using either the _Export SVG_ buttons 
-   <img width="20" src="doc/images/export-svg-light.png"> <img width="20" src="doc/images/export-svg-dark.png"> or 
+   (<img width="20" src="doc/images/export-svg-light.png"> <img width="20" src="doc/images/export-svg-dark.png">) or 
    the commands:
    ```
    export panel svg
    export panel svg dark
    ```
-5. Generate a module using the [VCV helper script](https://vcvrack.com/manual/Panel):
+5. Generate a module using the [VCV helper script](https://vcvrack.com/manual/Panel) and add the module to the _plugin_:
    ```
    $RACK_DIR/helper.py createmodule bodacious res/bodacious.svg src/bodacious.cpp
    ```
-   and add the module to the _plugin_:
-
    _plugin.hpp_
    ```
    #pragma once
@@ -72,7 +71,6 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
    extern Plugin* pluginInstance;
    extern Model* modelBodacious;
    ```
-
    _plugin.cpp_
    ```
    #include "plugin.hpp"
@@ -94,7 +92,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 
 ### Releases
 
-## _web-app_
+## _web app_
 
 The [VPD](https://vpd.pages.dev) web app is currently hosted on _Cloudflare Pages_.
 
@@ -106,8 +104,8 @@ The [VPD](https://vpd.pages.dev) web app is currently hosted on _Cloudflare Page
 1. Download the _vpd_ executable archive from a [release](https://github.com/transcriptaze/vpd/releases) or the latest
    [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and extract it to a folder of 
    your choice.
-2. Open the `vpd` application in a terminal window - on a Mac you may have to Ctrl-Open the file the first time to grant
-   it permissions to run.
+2. Open the `vpd` application in a terminal window (on a Mac you may have to Ctrl-Open the file the first time to grant
+   it permissions to run).
 3. Open [http://localhost:9876](http://localhost:9876) in your browser.
 4. Voilá, you're good to go!
 
@@ -118,9 +116,9 @@ vpd [--debug] [--port <port>] [--html <folder>]
 Options:
 --debug          Enables verbose internal debug logging
 --port <port>    Serves the web application on the specifed port (the default port is 9876)
---html <folder>  External folder for the HTML files - by default it serves the web application embedded in
-                 the executable. A tar.gz file with the base version of the HTML can be downloaded from the 
-                 Github releases or the latest 'nightly' build.
+--html <folder>  External folder for the HTML files - by default it serves the web application
+                 embedded in the executable. A tar.gz file with the base version of the HTML
+                 can be downloaded from the Github releases or the latest 'nightly' build.
 ```
 
 ### Python

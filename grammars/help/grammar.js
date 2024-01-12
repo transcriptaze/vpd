@@ -36,7 +36,7 @@ module.exports = grammar({
     export: $ => seq(
       'export',
       optional(
-        alias($._exportable, $.module),
+        $.panel,
       ),
     ),
 
@@ -46,8 +46,8 @@ module.exports = grammar({
       $.label,
     ),
 
-    _exportable: $ => seq(
-      'module',
+    panel: $ => seq(
+      'panel',
       optional($.svg),
     ),
 

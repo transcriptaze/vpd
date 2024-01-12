@@ -3,7 +3,7 @@ export function parse (node) {
     const entity = node.namedChildren[0]
 
     switch (entity.type) {
-      case 'module':
+      case 'panel':
         if (entity.namedChildCount > 0 && entity.namedChildren[0].type === 'svg') {
           return exportSVG(entity.namedChildren[0])
         }

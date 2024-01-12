@@ -10,6 +10,7 @@
    - [`new label`](#new-label)
    - [`set background`](#set-background)
    - [`load script`](#load-script)
+   - [`export panel`](#export-panel)
 
 ## Getting started
 
@@ -237,3 +238,26 @@ _Example:_
 ```
 load script
 ````
+
+#### `export panel`
+
+```export panel svg [light|dark]```
+
+Exports the panel as an SVG for use as a plugin resource file.
+
+_Command options:_
+```
+svg    (required) exports SVG file
+light  (optional) exports the default panel SVG
+dark   (optional) exports the dark themed SVG
+```
+
+_Notes:_
+
+_Examples:_
+```
+export panel svg
+export panel svg light
+export panel svg dark
+````
+

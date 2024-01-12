@@ -51,15 +51,11 @@
 - [x] _set background_
 
 - [ ] _load_
+      - [x] `load script`
       - [ ] `load project`
             - [ ] Don't return JSON from exec
             - [ ] User guide
             - [ ] help
-
-      - [x] `load script`
-            - [x] Don't return JSON from exec
-            - [x] User guide
-            - [x] help
 
 - [ ] _export_
       - [ ] `export project`
@@ -69,6 +65,8 @@
       - [ ] `export script timestamp`
       - [ ] `export panel svg [light|dark]`
       - [ ] replace spaces with underscores
+      - [ ] help
+      - [ ] user guide
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
@@ -91,10 +89,6 @@
       - (?) error if duplicate offset
 
 - [ ] _inputs_
-      - [x] `new input <name> @xy`
-      - [x] `new input <name> xy`
-      - [x] `new input <name> <geometry>`
-      - [x] `new input <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -103,10 +97,6 @@
       - [ ] user guide
 
 - [ ] _outputs_
-      - [x] `new output <name> @xy`
-      - [x] `new output <name> xy`
-      - [x] `new output <name> <geometry>`
-      - [x] `new output <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -115,10 +105,6 @@
       - [ ] user guide
 
 - [ ] _parameters_
-      - [x] `new parameter <name> @xy`
-      - [x] `new parameter <name> xy`
-      - [x] `new parameter <name> <geometry>`
-      - [x] `new parameter <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -127,10 +113,6 @@
       - [ ] user guide
 
 - [ ] _lights_
-      - [x] `new light <name> @xy`
-      - [x] `new light <name> xy`
-      - [x] `new light <name> <geometry>`
-      - [x] `new light <name> <absolute|geometry|guidelines> [part]`
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
@@ -139,10 +121,6 @@
       - [ ] user guide
 
 - [ ] _widget_
-      - [x] `new widget <name> @xy`
-      - [x] `new widget <name> xy`
-      - [x] `new widget <name> <geometry>`
-      - [x] `new widget <name> <absolute|geometry|guidelines> [part]`
       - [ ] delete
       - [ ] set
       - [ ] help

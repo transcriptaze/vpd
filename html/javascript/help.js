@@ -89,18 +89,18 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['export', 'module', 'svg'],
-    help: ['export', 'module', 'svg'],
+    command: ['export', 'panel', 'svg'],
+    help: ['export', 'panel', 'svg'],
     min: 1
   },
   {
-    command: ['export', 'module', 'svg', 'light'],
-    help: ['export', 'module', 'svg', 'light'],
+    command: ['export', 'panel', 'svg', 'light'],
+    help: ['export', 'panel', 'svg', 'light'],
     min: 1
   },
   {
-    command: ['export', 'module', 'svg', 'dark'],
-    help: ['export', 'module', 'svg', 'dark'],
+    command: ['export', 'panel', 'svg', 'dark'],
+    help: ['export', 'panel', 'svg', 'dark'],
     min: 1
   }
 ]

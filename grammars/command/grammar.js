@@ -154,11 +154,11 @@ module.exports = grammar({
 
     export: $ => seq (
       'export',
-      alias($._exportable,$.module)
+      $.panel
     ),
 
-    _exportable: $ => seq(
-      'module',
+    panel: $ => seq(
+      'panel',
       $.svg,
     ),
 

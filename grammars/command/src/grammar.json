@@ -597,22 +597,17 @@
           "value": "export"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_exportable"
-          },
-          "named": true,
-          "value": "module"
+          "type": "SYMBOL",
+          "name": "panel"
         }
       ]
     },
-    "_exportable": {
+    "panel": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "module"
+          "value": "panel"
         },
         {
           "type": "SYMBOL",

@@ -167,7 +167,7 @@ export function onSave (type, timestamped) {
 }
 
 export function onExport (event, theme) {
-  execute(`export module svg ${theme}`)
+  execute(`export panel svg ${theme}`)
 }
 
 function execute (cmd) {

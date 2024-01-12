@@ -26,47 +26,47 @@ export
   (export))
 
 
-=============
-export module
-=============
-export module
+============
+export panel
+============
+export panel
 ---
 (command
   (export
-    (module)))
+    (panel)))
 
 
-=================
-export module svg
-=================
-export module svg
+================
+export panel svg
+================
+export panel svg
 ---
 (command
   (export
-    (module
+    (panel
       (svg))))
 
 
-=======================
-export module svg light
-=======================
-export module svg light
+======================
+export panel svg light
+======================
+export panel svg light
 ---
 (command
   (export
-    (module
+    (panel
       (svg
         (light)))))
 
 
-=======================
-export module svg dark
-=======================
-export module svg dark
+======================
+export panel svg dark
+======================
+export panel svg dark
 ---
 (command
   (export
-    (module
+    (panel
       (svg
         (dark)))))
 

@@ -113,13 +113,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_exportable"
-              },
-              "named": true,
-              "value": "module"
+              "type": "SYMBOL",
+              "name": "panel"
             },
             {
               "type": "BLANK"
@@ -145,12 +140,12 @@
         }
       ]
     },
-    "_exportable": {
+    "panel": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "module"
+          "value": "panel"
         },
         {
           "type": "CHOICE",

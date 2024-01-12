@@ -2,30 +2,30 @@
     {% if inputs -%}
     {% for v in inputs -%}
     <circle inkscape:label="{{v.name}}" cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if outputs -%}
     {% for v in outputs -%}
     <circle inkscape:label="{{v.name}}" cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if parameters -%}
     {% for v in parameters -%}
     <circle inkscape:label="{{v.name}}" cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if lights -%}
     {% for v in lights -%}
     <circle inkscape:label="{{v.name}}" cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if widgets -%}
     {% for v in widgets -%}
     <circle inkscape:label="{{v.name}}" cx="{{v.x}}" cy="{{v.y}}" r="{{v.r}}" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
   </g>
