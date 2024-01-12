@@ -157,7 +157,7 @@
       - [ ] `new label <text> <component>`
       - [x] font
       - [x] fontsize
-      - [ ] align left/centre/right
+      - [x] align left/centre/right
       - [ ] align top/middle/baseline/bottom
       - [ ] colour
       - [ ] generate label ID automatically

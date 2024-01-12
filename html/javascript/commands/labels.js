@@ -5,7 +5,8 @@ export function newLabel (node) {
     action: 'new',
     label: {
       font: 'RobotoMono-Bold',
-      fontsize: 12
+      fontsize: 12,
+      halign: 'left'
     }
   }
 
@@ -76,6 +77,10 @@ export function newLabel (node) {
           object.label.fontsize = size
         }
       }
+    }
+
+    if (child.type === 'halign') {
+      object.label.halign = string(child)
     }
   }
 

@@ -66,3 +66,31 @@ new label "lorem" 10mm,10mm "Lato-Bold"
           (font))))))
 
 
+============================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt
+============================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt
+---
+(command
+  (new
+    (label
+      (string
+        (relative
+          (font
+            (fontsize)))))))
+
+
+===================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre
+===================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre
+---
+(command
+  (new
+    (label
+      (string
+        (relative
+          (font
+            (fontsize
+              (halign))))))))
+

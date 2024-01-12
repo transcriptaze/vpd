@@ -151,7 +151,23 @@ module.exports = grammar({
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     rgb: $ => /#[a-fA-F0-9]{6}/,
     rgba: $ => /#[a-fA-F0-9]{8}/,
-    font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+
+    font: $ => seq (
+      /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+      optional ($.fontsize),
+    ),
+
+    fontsize: $ => seq(
+      /[1-9][0-9]*([.][0-9]*)?pt/,
+      optional ($.halign),
+    ),
+
+    halign: $ => choice(
+      'left',
+      'centre',
+      'center',
+      'right',
+    ),
 
     absolute: $ => seq(
       '@',

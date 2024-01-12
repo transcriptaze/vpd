@@ -5,7 +5,7 @@ use super::serde::{Deserialize, Serialize};
 
 use crate::commands::ExportSVGCommand;
 use crate::commands::LoadScript;
-use crate::commands::NewGuideCommand;
+use crate::commands::NewGuide;
 use crate::commands::NewInputCommand;
 use crate::commands::NewLabel;
 use crate::commands::NewLightCommand;
@@ -62,7 +62,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     } else if v.action == "new" && v.label.is_some() {
         Ok(Box::new(NewLabel::new(json)?))
     } else if v.action == "new" && v.guide.is_some() {
-        Ok(Box::new(NewGuideCommand::new(json)?))
+        Ok(Box::new(NewGuide::new(json)?))
     } else if v.action == "set" && v.origin.is_some() {
         Ok(Box::new(SetOriginCommand::new(json)?))
     } else if v.action == "set" && v.background.is_some() {

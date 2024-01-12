@@ -70,10 +70,11 @@ export function text2path (text, fontName, size) {
   const bounds = path.getBoundingBox()
   const advance = font.getAdvanceWidth(text, fontSize, options)
 
-  console.log('>>>>>>>>>', bounds)
-  console.log('>>>>>>>>>', advance)
-
-  return `${path.toSVG()}`
+  return {
+    path: `${path.toSVG()}`,
+    bounds,
+    advance
+  }
 }
 
 function points2mm (pts) {

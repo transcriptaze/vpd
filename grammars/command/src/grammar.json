@@ -241,6 +241,18 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "halign"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -671,6 +683,27 @@
     "fontsize": {
       "type": "PATTERN",
       "value": "[1-9][0-9]*([.][0-9]*)?pt"
+    },
+    "halign": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "left"
+        },
+        {
+          "type": "STRING",
+          "value": "centre"
+        },
+        {
+          "type": "STRING",
+          "value": "center"
+        },
+        {
+          "type": "STRING",
+          "value": "right"
+        }
+      ]
     },
     "guide": {
       "type": "SEQ",

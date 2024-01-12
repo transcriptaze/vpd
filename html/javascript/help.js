@@ -20,17 +20,17 @@ const COMMANDS = [
   },
   {
     command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize'],
-    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt'],
+    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre'],
     min: 1
   },
   {
     command: ['new', 'label', 'string', 'relative', 'font', 'fontsize'],
-    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"', '12pt'],
+    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre'],
     min: 1
   },
   {
     command: ['new', 'label', 'string', 'geometry', 'font', 'fontsize'],
-    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"', '12pt'],
+    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"', '12pt', 'centre'],
     min: 1
   },
   {

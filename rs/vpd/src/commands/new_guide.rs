@@ -9,7 +9,7 @@ use crate::utils::log;
 use crate::warnf;
 
 #[derive(Deserialize)]
-pub struct NewGuideCommand {
+pub struct NewGuide {
     name: Option<String>,
     orientation: String,
     reference: String,
@@ -18,18 +18,18 @@ pub struct NewGuideCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    guide: NewGuideCommand,
+    guide: NewGuide,
 }
 
-impl NewGuideCommand {
-    pub fn new(json: &str) -> Result<NewGuideCommand, Box<dyn Error>> {
+impl NewGuide {
+    pub fn new(json: &str) -> Result<NewGuide, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(o.guide)
     }
 }
 
-impl Command for NewGuideCommand {
+impl Command for NewGuide {
     fn apply(&self, m: &mut Module) -> bool {
         let id = match &self.name {
             Some(v) => v.to_string(),

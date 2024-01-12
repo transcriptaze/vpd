@@ -279,8 +279,16 @@ impl Panel {
         }
 
         for v in self.labels.iter() {
-            let x = v.x.resolve(&self);
+            let mut x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
+
+            x += match v.halign.as_str() {
+                "left" => 0.0,
+                "centre" => -(v.bounds.x1 + v.bounds.x2) / 2.0,
+                "center" => -(v.bounds.x1 + v.bounds.x2) / 2.0,
+                "right" => -v.bounds.x2,
+                _ => 0.0,
+            };
 
             list.push(Text::new(x, y, &v.path, &colour));
         }

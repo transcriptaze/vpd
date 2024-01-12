@@ -162,6 +162,11 @@
     }
   },
   {
+    "type": "halign",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "horizontal",
     "named": true,
     "fields": {},
@@ -238,6 +243,10 @@
         },
         {
           "type": "fontsize",
+          "named": true
+        },
+        {
+          "type": "halign",
           "named": true
         },
         {
@@ -653,6 +662,14 @@
     "named": false
   },
   {
+    "type": "center",
+    "named": false
+  },
+  {
+    "type": "centre",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
@@ -686,6 +703,10 @@
   },
   {
     "type": "label",
+    "named": false
+  },
+  {
+    "type": "left",
     "named": false
   },
   {
@@ -723,6 +744,10 @@
   {
     "type": "rgba",
     "named": true
+  },
+  {
+    "type": "right",
+    "named": false
   },
   {
     "type": "script",

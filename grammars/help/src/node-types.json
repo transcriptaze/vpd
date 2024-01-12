@@ -90,7 +90,32 @@
   {
     "type": "font",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "fontsize",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fontsize",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "halign",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "geometry",
@@ -109,6 +134,11 @@
   },
   {
     "type": "guide",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "halign",
     "named": true,
     "fields": {}
   },
@@ -344,6 +374,14 @@
     "named": false
   },
   {
+    "type": "center",
+    "named": false
+  },
+  {
+    "type": "centre",
+    "named": false
+  },
+  {
     "type": "dark",
     "named": true
   },
@@ -357,6 +395,10 @@
   },
   {
     "type": "label",
+    "named": false
+  },
+  {
+    "type": "left",
     "named": false
   },
   {
@@ -390,6 +432,10 @@
   {
     "type": "rgba",
     "named": true
+  },
+  {
+    "type": "right",
+    "named": false
   },
   {
     "type": "script",

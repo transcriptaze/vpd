@@ -74,6 +74,7 @@ module.exports = grammar({
       ),
       optional($.font),
       optional($.fontsize),
+      optional($.halign),
     ),
 
     _component: $ => seq(
@@ -178,6 +179,12 @@ module.exports = grammar({
 
     font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     fontsize: $ => /[1-9][0-9]*([.][0-9]*)?pt/,
+    halign: $ => choice(
+          "left",
+          "centre",
+          "center",
+          "right",
+    ),
 
     guide: $ => seq(
       'guide',      

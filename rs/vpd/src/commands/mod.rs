@@ -13,7 +13,7 @@ mod set_origin;
 mod export_svg;
 mod load_script;
 
-pub use new_guide::NewGuideCommand;
+pub use new_guide::NewGuide;
 pub use new_input::NewInputCommand;
 pub use new_label::NewLabel;
 pub use new_light::NewLightCommand;

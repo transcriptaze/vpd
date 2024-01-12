@@ -136,3 +136,49 @@ new label "lorem" 10mm,10mm 14pt
       (fontsize))))
 
 
+===================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre
+===================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (font)
+      (fontsize)
+      (halign))))
+
+
+=======================================
+new label "lorem" 10mm,10mm 14pt centre
+=======================================
+new label "lorem" 10mm,10mm 14pt centre
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (fontsize)
+      (halign))))
+
+
+==================================
+new label "lorem" 10mm,10mm centre
+==================================
+new label "lorem" 10mm,10mm centre
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (halign))))

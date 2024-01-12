@@ -2,6 +2,7 @@ use std::error::Error;
 
 use serde::Deserialize;
 
+use serde_wasm_bindgen;
 use wasm_bindgen::prelude::*;
 
 use crate::command::Command;
@@ -10,10 +11,26 @@ use crate::panel;
 
 const FONT: &str = "RobotoMono-Bold";
 const FONTSIZE: f32 = 12.0;
+const LEFT: &str = "left";
 
 #[wasm_bindgen(raw_module = "../../javascript/text.js")]
 extern "C" {
-    fn text2path(text: &str, font: &str, fontsize: f32) -> String;
+    fn text2path(text: &str, font: &str, fontsize: f32) -> JsValue;
+}
+
+#[derive(Deserialize, Debug)]
+struct Path {
+    pub path: String,
+    pub bounds: BoundingBox,
+    pub advance: f32,
+}
+
+#[derive(Deserialize, Debug)]
+struct BoundingBox {
+    pub x1: f32,
+    pub y1: f32,
+    pub x2: f32,
+    pub y2: f32,
 }
 
 #[derive(Deserialize)]
@@ -23,6 +40,7 @@ pub struct NewLabel {
     y: panel::Y,
     font: Option<String>,
     fontsize: Option<f32>,
+    halign: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -40,18 +58,45 @@ impl NewLabel {
 
 impl Command for NewLabel {
     fn apply(&self, m: &mut Module) -> bool {
-        let path = match (&self.font, self.fontsize) {
-            (Some(font), Some(fontsize)) => text2path(&self.text, &font, fontsize),
-            (Some(font), _) => text2path(&self.text, &font, FONTSIZE),
-            (_, Some(fontsize)) => text2path(&self.text, FONT, fontsize),
-            (_, _) => text2path(&self.text, FONT, FONTSIZE),
-        }
-        .to_string();
+        let font = match &self.font {
+            Some(v) => v,
+            None => FONT,
+        };
 
-        m.panel
-            .labels
-            .push(panel::Label::new(&self.text, &self.x, &self.y, &path));
+        let size = match self.fontsize {
+            Some(v) => v,
+            None => FONTSIZE,
+        };
+
+        let halign = match &self.halign {
+            Some(v) => v,
+            None => LEFT,
+        };
+
+        let result = text2path(&self.text, font, size);
+        let path: Path = serde_wasm_bindgen::from_value(result).unwrap();
+
+        m.panel.labels.push(panel::Label::new(
+            &self.text,
+            &self.x,
+            &self.y,
+            halign,
+            &path.path,
+            &path.bounds.to_bounds(),
+            path.advance,
+        ));
 
         true
+    }
+}
+
+impl BoundingBox {
+    pub fn to_bounds(&self) -> panel::Bounds {
+        panel::Bounds {
+            x1: self.x1,
+            y1: self.y1,
+            x2: self.x2,
+            y2: self.y2,
+        }
     }
 }

@@ -15,6 +15,7 @@ pub use background::RGB;
 pub use background::RGBA;
 pub use guide::Guide;
 pub use input::Input;
+pub use label::Bounds;
 pub use label::Label;
 pub use light::Light;
 pub use origin::Origin;
