@@ -61,6 +61,8 @@ export async function initialise () {
   // } catch (err) {
   //   console.error(err)
   // }
+
+  help(helpText, '')
 }
 
 export function onLoad (type) {

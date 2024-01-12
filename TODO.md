@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Initialise _help_ on page load
+- [x] Initialise _help_ on page load
 
 - [x] github 'cloudflare' build
       - [ ] bundle
@@ -43,9 +43,9 @@
 ### Fonts 
 - [x] fetch preloaded fonts on startup
 - [x] _woff_
-- [ ] `load font...`
 - [ ] _woff2_
 - [ ] Load/drop font file
+- [ ] `load font...`
 
 ### Commands
 - [x] _set background_
