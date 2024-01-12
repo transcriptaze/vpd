@@ -88,10 +88,10 @@
 
 9. Add a title:
    ```
-   new text title "QST" centre,top+5.08mm "Lato-Bold" 12pt centered,baseline
+   new label "Thing 1" centre,top+10.16mm "StyleScript-Regular" 16pt
    ```
 
-10. Label the parameters and inputs:
+10. Label the parameters, inputs and light:
    ```
    new text label1 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
    ```

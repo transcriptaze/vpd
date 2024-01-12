@@ -60,9 +60,36 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
    ```
    $RACK_DIR/helper.py createmodule bodacious res/bodacious.svg src/bodacious.cpp
    ```
-6. Compile and link:
+   and add the module to the _plugin_:
+
+   _plugin.hpp_
+   ```
+   #pragma once
+   #include <rack.hpp>
+
+   using namespace rack;
+
+   extern Plugin* pluginInstance;
+   extern Model* modelBodacious;
+   ```
+
+   _plugin.cpp_
+   ```
+   #include "plugin.hpp"
+
+   Plugin* pluginInstance;
+
+   void init(Plugin* p) {
+       pluginInstance = p;
+
+       p->addModel(modelBodacious);
+   }
+   ```
+
+6. Compile and link and (optionally) install:
    ```
    make
+   make install
    ```
 
 ### Releases

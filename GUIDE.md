@@ -87,7 +87,7 @@
 
 10. Add a title:
    ```
-   new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt
+   new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre
    ```
 
 ## User Interface

@@ -204,7 +204,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(x, y, radius, &colour));
+            list.push(Circle::new(&v.name,x, y, radius, &colour));
         }
 
         return list;
@@ -219,7 +219,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(x, y, radius, &colour));
+            list.push(Circle::new(&v.name,x, y, radius, &colour));
         }
 
         return list;
@@ -234,7 +234,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(x, y, radius, &colour));
+            list.push(Circle::new(&v.name, x, y, radius, &colour));
         }
 
         return list;
@@ -249,7 +249,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(x, y, radius, &colour));
+            list.push(Circle::new(&v.name, x, y, radius, &colour));
         }
 
         return list;
@@ -264,7 +264,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(x, y, radius, &colour));
+            list.push(Circle::new(&v.name, x, y, radius, &colour));
         }
 
         return list;
