@@ -3,8 +3,6 @@
 - [x] Initialise _help_ on page load
 - [x] svg: convert objects to mm
 - [x] SVG pretty printer
-      - [x] blank lines
-      - [x] 3 digits
       - [ ] Fix double blank lines
 
 - [x] github 'cloudflare' build
@@ -15,9 +13,9 @@
       - [x] https://thenounproject.com/search/icons/?q=open
 
 - [ ] Save project/script file
-      - [ ] alt-click to save script
       - [x] set filename
       - [x] ctrl-click to save as timestamped
+      - [ ] alt-click to save script
 
 - [ ] **Show errors**
 
@@ -53,8 +51,6 @@
 - [ ] `load font...`
 
 ### Commands
-- [x] _set background_
-
 - [ ] _load_
       - [x] `load script`
       - [ ] `load project`
@@ -99,7 +95,8 @@
       - [ ] set
       - [ ] help
       - [ ] `decorate`
-      - [ ] user guide
+      - [ ] hover
+      - [x] user guide
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
@@ -107,6 +104,7 @@
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] hover
       - [ ] user guide
 
 - [ ] _parameters_
@@ -115,6 +113,7 @@
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] hover
       - [ ] user guide
 
 - [ ] _lights_
@@ -123,6 +122,7 @@
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] hover
       - [ ] user guide
 
 - [ ] _widget_
@@ -130,6 +130,7 @@
       - [ ] set
       - [ ] help
       - [ ] `decorate`
+      - [ ] hover
       - [ ] user guide
 
 - [ ] _label__
@@ -142,19 +143,22 @@
       - [x] fontsize
       - [x] align left/centre/right
       - [x] align top/middle/baseline/bottom
-      - [ ] colour
-      - [ ] generate label ID automatically
-      - [ ] help
+      - [x] colour
+      - [x] help
       - [x] user guide
+      - [ ] generate label ID automatically
+      - [ ] delete
+      - [ ] set
+      - [ ] hover
 
 - [ ] _help_
-       - [x] Rework help text as grid
        - [ ] Auto-generate help text from grammar/examples
 
 
 ### TO BE DONE
 - [ ] Robust JSON deserialization i.e. accomodate missing fields
 - [ ] bundle with rollup.js
+- [ ] standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
 

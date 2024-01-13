@@ -46,6 +46,11 @@
     }
   },
   {
+    "type": "colour",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "command",
     "named": true,
     "fields": {},
@@ -274,6 +279,16 @@
     }
   },
   {
+    "type": "rgb",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "rgba",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "set",
     "named": true,
     "fields": {},
@@ -337,7 +352,17 @@
   {
     "type": "valign",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "colour",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "x",
@@ -459,14 +484,6 @@
   },
   {
     "type": "reference",
-    "named": true
-  },
-  {
-    "type": "rgb",
-    "named": true
-  },
-  {
-    "type": "rgba",
     "named": true
   },
   {

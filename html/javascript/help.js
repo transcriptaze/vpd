@@ -19,18 +19,18 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize'],
-    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,basline'],
+    command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize', 'halign', 'valign', 'colour'],
+    help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
     min: 1
   },
   {
-    command: ['new', 'label', 'string', 'relative', 'font', 'fontsize'],
-    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline'],
+    command: ['new', 'label', 'string', 'relative', 'font', 'fontsize', 'halign', 'valign', 'colour'],
+    help: ['new', 'label', '"lorem"', '10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
     min: 1
   },
   {
-    command: ['new', 'label', 'string', 'geometry', 'font', 'fontsize'],
-    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"', '12pt', 'centre,baseline'],
+    command: ['new', 'label', 'string', 'geometry', 'font', 'fontsize', 'halign', 'valign', 'colour'],
+    help: ['new', 'label', '"lorem"', 'centre,middle', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
     min: 1
   },
   {

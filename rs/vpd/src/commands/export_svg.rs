@@ -4,7 +4,7 @@ use std::error::Error;
 use crate::command::Command;
 use crate::module::Module;
 
-pub struct ExportSVGCommand {
+pub struct ExportSVG {
     theme: String,
 }
 
@@ -20,15 +20,15 @@ struct SVG {
     theme: String,
 }
 
-impl ExportSVGCommand {
-    pub fn new(json: &str) -> Result<ExportSVGCommand, Box<dyn Error>> {
+impl ExportSVG {
+    pub fn new(json: &str) -> Result<ExportSVG, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(ExportSVGCommand { theme: o.svg.theme })
+        Ok(ExportSVG { theme: o.svg.theme })
     }
 }
 
-impl Command for ExportSVGCommand {
+impl Command for ExportSVG {
     fn apply(&self, m: &mut Module) -> bool {
         m.export_svg(&self.theme);
         false

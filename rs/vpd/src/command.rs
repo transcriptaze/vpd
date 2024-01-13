@@ -3,12 +3,12 @@ use std::error::Error;
 use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
-use crate::commands::ExportSVGCommand;
+use crate::commands::ExportSVG;
 use crate::commands::LoadScript;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
 use crate::commands::NewLabel;
-use crate::commands::NewLightCommand;
+use crate::commands::NewLight;
 use crate::commands::NewModuleCommand;
 use crate::commands::NewOutput;
 use crate::commands::NewParameterCommand;
@@ -56,7 +56,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     } else if v.action == "new" && v.parameter.is_some() {
         Ok(Box::new(NewParameterCommand::new(json)?))
     } else if v.action == "new" && v.light.is_some() {
-        Ok(Box::new(NewLightCommand::new(json)?))
+        Ok(Box::new(NewLight::new(json)?))
     } else if v.action == "new" && v.widget.is_some() {
         Ok(Box::new(NewWidgetCommand::new(json)?))
     } else if v.action == "new" && v.label.is_some() {
@@ -70,7 +70,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     } else if v.action == "load" && v.script.is_some() {
         Ok(Box::new(LoadScript::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {
-        Ok(Box::new(ExportSVGCommand::new(json)?))
+        Ok(Box::new(ExportSVG::new(json)?))
     } else {
         Err("unknown command".into())
     }

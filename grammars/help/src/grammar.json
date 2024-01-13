@@ -663,25 +663,98 @@
       ]
     },
     "valign": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "top"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "top"
+            },
+            {
+              "type": "STRING",
+              "value": "middle"
+            },
+            {
+              "type": "STRING",
+              "value": "baseline"
+            },
+            {
+              "type": "STRING",
+              "value": "bottom"
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": "middle"
-        },
-        {
-          "type": "STRING",
-          "value": "baseline"
-        },
-        {
-          "type": "STRING",
-          "value": "bottom"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "colour"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
+    },
+    "colour": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_rgb"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_rgba"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_rgb"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_rgba"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_rgb": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{6}"
+    },
+    "_rgba": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{8}"
     },
     "name": {
       "type": "PATTERN",

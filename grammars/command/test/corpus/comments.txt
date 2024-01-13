@@ -1,8 +1,22 @@
 =======
 comment
 =======
-# new module "woot" 1U 3H
+;; new module "woot" 1U 3H
 ---
 (command
   (comment))
 
+
+=======
+comment
+=======
+;; new module "woot" 1U 3H
+new module "woot" 1U 3H
+---
+(command
+  (comment)
+  (new
+    (module
+      (name)
+      (height)
+      (width))))

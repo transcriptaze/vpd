@@ -16,7 +16,7 @@ mod load_script;
 pub use new_guide::NewGuide;
 pub use new_input::NewInput;
 pub use new_label::NewLabel;
-pub use new_light::NewLightCommand;
+pub use new_light::NewLight;
 pub use new_module::NewModuleCommand;
 pub use new_output::NewOutput;
 pub use new_parameter::NewParameterCommand;
@@ -25,5 +25,5 @@ pub use new_widget::NewWidgetCommand;
 pub use set_background::SetBackgroundCommand;
 pub use set_origin::SetOriginCommand;
 
-pub use export_svg::ExportSVGCommand;
+pub use export_svg::ExportSVG;
 pub use load_script::LoadScript;

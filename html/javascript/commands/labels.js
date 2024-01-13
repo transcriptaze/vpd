@@ -7,7 +7,11 @@ export function newLabel (node) {
       font: 'RobotoMono-Bold',
       fontsize: 12,
       halign: 'left',
-      valign: 'baseline'
+      valign: 'baseline',
+      colour: {
+        light: '#222222',
+        dark: '#ebebeb'
+      }
     }
   }
 
@@ -86,6 +90,27 @@ export function newLabel (node) {
 
     if (child.type === 'valign') {
       object.label.valign = string(child)
+    }
+
+    if (child.type === 'colour') {
+      if (child.namedChildCount > 1) {
+        const light = child.namedChildren[0]
+        const dark = child.namedChildren[1]
+
+        if (light.type === 'rgb' || light.type === 'rgba') {
+          object.label.colour.light = string(light)
+        }
+
+        if (dark.type === 'rgb' || dark.type === 'rgba') {
+          object.label.colour.dark = string(dark)
+        }
+      } else if (child.namedChildCount > 0) {
+        const colour = child.namedChildren[0]
+        if (colour.type === 'rgb' || colour.type === 'rgba') {
+          object.label.colour.light = string(colour)
+          object.label.colour.dark = string(colour)
+        }
+      }
     }
   }
 

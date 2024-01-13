@@ -31,7 +31,7 @@
     },
     "comment": {
       "type": "PATTERN",
-      "value": "#.*"
+      "value": ";;(.*?)"
     },
     "new": {
       "type": "SEQ",
@@ -326,8 +326,28 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "colour"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
+    },
+    "font": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
+    "fontsize": {
+      "type": "PATTERN",
+      "value": "[1-9][0-9]*([.][0-9]*)?pt"
     },
     "_align": {
       "type": "CHOICE",
@@ -394,14 +414,6 @@
         }
       ]
     },
-    "font": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
-    },
-    "fontsize": {
-      "type": "PATTERN",
-      "value": "[1-9][0-9]*([.][0-9]*)?pt"
-    },
     "halign": {
       "type": "CHOICE",
       "members": [
@@ -441,6 +453,54 @@
         {
           "type": "STRING",
           "value": "bottom"
+        }
+      ]
+    },
+    "colour": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rgb"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rgba"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "rgb"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "rgba"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

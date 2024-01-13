@@ -167,12 +167,34 @@ module.exports = grammar({
       optional(seq(',', $.valign))
     ),
 
-    valign: $ => choice(
-      'top',
-       'middle',
-      'baseline',
-      'bottom',
+    valign: $ => seq (
+      choice(
+        'top',
+        'middle',
+        'baseline',
+        'bottom',
+      ),
+      optional ($.colour),
     ),
+
+    colour: $ => seq(
+      choice(
+        $._rgb,
+        $._rgba,
+      ),
+      optional(
+        seq (
+          ',',
+          choice (
+            $._rgb,
+            $._rgba,
+          ),
+        ),
+      ),
+    ),
+
+    _rgb: $ => /#[a-fA-F0-9]{6}/,
+    _rgba: $ => /#[a-fA-F0-9]{8}/,
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     rgb: $ => /#[a-fA-F0-9]{6}/,

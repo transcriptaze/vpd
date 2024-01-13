@@ -147,6 +147,15 @@ To load a _.vpx_ file:
 
 ## Commands
 
+##### Comments
+
+A command starting with a double semi-colon is a comment - this is mostly for use in scripts but it's occasionally useful
+when assigning a command to a macro key. e.g:
+
+```
+;; new module bodacious 1U 5H
+```
+
 ##### Location formats
 
 | Type     | `<xy>`   | Description                                                                | Example             |
@@ -194,6 +203,7 @@ new module bodacious 1U 45mm
 new module bodacious 45.72mm
 ````
 
+
 #### `new input`
 
 ```new input <name> <xy> [part]```
@@ -216,10 +226,13 @@ _Notes:_
 
 _Examples:_
 ```
-new module bodacious 1U 5H
-new module bodacious 1U 45mm
-new module bodacious 45.72mm
+new input audio @10.16mm,10.16mm
+new input audio @10.16mm,10.16mm PJ301M
+new input audio  10.16mm,10.16mm PJ301M
+new input audio left+5.08mm,top+2H PJ301M
+new input audio v1+5.08mm,v2+7.62mm PJ301M
 ````
+
 
 #### `new label`
 
@@ -260,6 +273,7 @@ new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline red
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ffff0080
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ff0000,#00ff00
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" baseline #ff0000,#00ff00
 ````
 
 

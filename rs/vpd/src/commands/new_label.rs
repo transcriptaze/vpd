@@ -13,27 +13,12 @@ const FONT: &str = "RobotoMono-Bold";
 const FONTSIZE: f32 = 12.0;
 const LEFT: &str = "left";
 const BASELINE: &str = "baseline";
+const LIGHT: &str = "#222222";
+const DARK: &str = "#ebebeb";
 
 #[wasm_bindgen(raw_module = "../../javascript/text.js")]
 extern "C" {
     fn text2path(text: &str, font: &str, fontsize: f32) -> JsValue;
-}
-
-#[derive(Deserialize, Debug)]
-struct Path {
-    pub path: String,
-    pub bounds: BoundingBox,
-    pub ascender: f32,
-    pub descender: f32,
-    pub advance: f32,
-}
-
-#[derive(Deserialize, Debug)]
-struct BoundingBox {
-    pub x1: f32,
-    pub y1: f32,
-    pub x2: f32,
-    pub y2: f32,
 }
 
 #[derive(Deserialize)]
@@ -45,11 +30,35 @@ pub struct NewLabel {
     fontsize: Option<f32>,
     halign: Option<String>,
     valign: Option<String>,
+    colour: Option<Colour>,
 }
 
 #[derive(Deserialize)]
 struct Object {
     label: NewLabel,
+}
+
+#[derive(Deserialize)]
+struct Colour {
+    pub light: String,
+    pub dark: Option<String>,
+}
+
+#[derive(Deserialize)]
+struct Path {
+    pub path: String,
+    pub bounds: BoundingBox,
+    pub ascender: f32,
+    pub descender: f32,
+    pub advance: f32,
+}
+
+#[derive(Deserialize)]
+struct BoundingBox {
+    pub x1: f32,
+    pub y1: f32,
+    pub x2: f32,
+    pub y2: f32,
 }
 
 impl NewLabel {
@@ -82,6 +91,11 @@ impl Command for NewLabel {
             None => BASELINE,
         };
 
+        let colour = match &self.colour {
+            Some(v) => v.to_colour(),
+            _ => panel::Colour::new(LIGHT, DARK),
+        };
+
         let result = text2path(&self.text, font, size);
         let path: Path = serde_wasm_bindgen::from_value(result).unwrap();
 
@@ -91,11 +105,14 @@ impl Command for NewLabel {
             &self.y,
             halign,
             valign,
-            &path.path,
-            &path.bounds.to_bounds(),
-            path.ascender,
-            path.descender,
-            path.advance,
+            &panel::Path::new(
+                &path.path,
+                &path.bounds.to_bounds(),
+                path.ascender,
+                path.descender,
+                path.advance,
+            ),
+            &colour,
         ));
 
         true
@@ -109,6 +126,15 @@ impl BoundingBox {
             y1: self.y1,
             x2: self.x2,
             y2: self.y2,
+        }
+    }
+}
+
+impl Colour {
+    pub fn to_colour(&self) -> panel::Colour {
+        match &self.dark {
+            Some(v) => panel::Colour::new(&self.light, &v),
+            _ => panel::Colour::new(&self.light, &self.light),
         }
     }
 }

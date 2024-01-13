@@ -10,6 +10,12 @@ pub struct Label {
     pub y: Y,
     pub halign: String,
     pub valign: String,
+    pub path: Path,
+    pub colour: Colour,
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+pub struct Path {
     pub path: String,
     pub bounds: Bounds,
     pub ascender: f32,
@@ -25,6 +31,12 @@ pub struct Bounds {
     pub y2: f32,
 }
 
+#[derive(Serialize, Deserialize, Clone)]
+pub struct Colour {
+    pub light: String,
+    pub dark: String,
+}
+
 impl Label {
     pub fn new(
         text: &str,
@@ -32,11 +44,8 @@ impl Label {
         y: &Y,
         halign: &str,
         valign: &str,
-        path: &str,
-        bounds: &Bounds,
-        ascender: f32,
-        descender: f32,
-        advance: f32,
+        path: &Path,
+        colour: &Colour,
     ) -> Label {
         Label {
             text: text.to_string(),
@@ -44,11 +53,29 @@ impl Label {
             y: y.clone(),
             halign: halign.to_string(),
             valign: valign.to_string(),
+            path: path.clone(),
+            colour: colour.clone(),
+        }
+    }
+}
+
+impl Path {
+    pub fn new(path: &str, bounds: &Bounds, ascender: f32, descender: f32, advance: f32) -> Path {
+        Path {
             path: path.to_string(),
             bounds: bounds.clone(),
             ascender: ascender,
             descender: descender,
             advance: advance,
+        }
+    }
+}
+
+impl Colour {
+    pub fn new(light: &str, dark: &str) -> Colour {
+        Colour {
+            light: light.to_string(),
+            dark: dark.to_string(),
         }
     }
 }

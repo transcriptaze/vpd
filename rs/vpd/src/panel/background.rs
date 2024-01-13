@@ -2,13 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Background {
-    #[serde(rename = "rgb,omitempty")]
     pub rgb: Option<RGB>,
-
-    #[serde(rename = "rgba,omitempty")]
     pub rgba: Option<RGBA>,
-
-    #[serde(rename = "background,omitempty")]
     pub background: String,
 }
 

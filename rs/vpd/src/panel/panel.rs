@@ -272,33 +272,32 @@ impl Panel {
 
     fn labels(&self, theme: &str) -> Vec<Text> {
         let mut list: Vec<Text> = Vec::new();
-        let mut colour = "#222222";
-
-        if theme == "dark" {
-            colour = "#ebebeb";
-        }
 
         for v in self.labels.iter() {
             let mut x = v.x.resolve(&self);
             let mut y = v.y.resolve(&self);
+            let colour = match theme {
+                "dark" => v.colour.dark.as_str(),
+                _ => v.colour.light.as_str(),
+            };
 
             x += match v.halign.as_str() {
                 "left" => 0.0,
-                "centre" => -(v.bounds.x1 + v.bounds.x2) / 2.0,
-                "center" => -(v.bounds.x1 + v.bounds.x2) / 2.0,
-                "right" => -v.bounds.x2,
+                "centre" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
+                "center" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
+                "right" => -v.path.bounds.x2,
                 _ => 0.0,
             };
 
             y += match v.valign.as_str() {
-                "top" => -v.bounds.y1,
-                "middle" => -(v.bounds.y1 + v.bounds.y2) / 2.0,
+                "top" => -v.path.bounds.y1,
+                "middle" => -(v.path.bounds.y1 + v.path.bounds.y2) / 2.0,
                 "baseline" => 0.0,
-                "bottom" => -v.bounds.y2,
+                "bottom" => -v.path.bounds.y2,
                 _ => 0.0,
             };
 
-            list.push(Text::new(x, y, &v.path, &colour));
+            list.push(Text::new(x, y, &v.path.path, &colour));
         }
 
         return list;

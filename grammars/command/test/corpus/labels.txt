@@ -265,3 +265,243 @@ new label "lorem" 10mm,10mm baseline
         (y))
       (valign))))
 
+
+====================================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline #ff0000
+====================================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline #ff0000
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (font)
+      (fontsize)
+      (halign)
+      (valign)
+      (colour
+        (rgb)))))
+
+
+======================================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline #ff0000aa
+======================================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline #ff0000aa
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (font)
+      (fontsize)
+      (halign)
+      (valign)
+      (colour
+        (rgba)))))
+
+
+========================================================
+new label "lorem" 10mm,10mm 14pt centre,baseline #ff0000
+========================================================
+new label "lorem" 10mm,10mm 14pt centre,baseline #ff0000
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (fontsize)
+      (halign)
+      (valign)
+      (colour 
+        (rgb)))))
+
+
+===================================================
+new label "lorem" 10mm,10mm centre,baseline #ff0000
+===================================================
+new label "lorem" 10mm,10mm centre,baseline #ff0000
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (halign)
+      (valign)
+      (colour 
+        (rgb)))))
+
+
+==========================================
+new label "lorem" 10mm,10mm centre #ff0000
+==========================================
+new label "lorem" 10mm,10mm centre #ff0000
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (halign)
+      (colour
+        (rgb)))))
+
+
+============================================
+new label "lorem" 10mm,10mm baseline #ff0000
+============================================
+new label "lorem" 10mm,10mm baseline #ff0000
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (valign)
+      (colour 
+        (rgb)))))
+
+
+===================================
+new label "lorem" 10mm,10mm #ff0000
+===================================
+new label "lorem" 10mm,10mm #ff0000
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (colour
+        (rgb)))))
+
+
+============================================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline #ff0000,#00ff00
+============================================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline #ff0000,#00ff00
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (font)
+      (fontsize)
+      (halign)
+      (valign)
+      (colour
+        (rgb)
+        (rgb)))))
+
+
+================================================================
+new label "lorem" 10mm,10mm 14pt centre,baseline #ff0000,#00ff00
+================================================================
+new label "lorem" 10mm,10mm 14pt centre,baseline #ff0000,#00ff00
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (fontsize)
+      (halign)
+      (valign)
+      (colour
+        (rgb)
+        (rgb)))))
+
+
+===========================================================
+new label "lorem" 10mm,10mm centre,baseline #ff0000,#00ff00
+===========================================================
+new label "lorem" 10mm,10mm centre,baseline #ff0000,#00ff00
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (halign)
+      (valign)
+      (colour
+        (rgb)
+        (rgb)))))
+
+
+==================================================
+new label "lorem" 10mm,10mm centre #ff0000,#00ff00
+==================================================
+new label "lorem" 10mm,10mm centre #ff0000,#00ff00
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (halign)
+      (colour
+        (rgb)
+        (rgb)))))
+
+
+====================================================
+new label "lorem" 10mm,10mm baseline #ff0000,#00ff00
+====================================================
+new label "lorem" 10mm,10mm baseline #ff0000,#00ff00
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (valign)
+      (colour
+        (rgb)
+        (rgb)))))
+
+
+===========================================
+new label "lorem" 10mm,10mm #ff0000,#00ff00
+===========================================
+new label "lorem" 10mm,10mm #ff0000,#00ff00
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (colour
+        (rgb)
+        (rgb)))))
+

@@ -42,6 +42,25 @@
     }
   },
   {
+    "type": "colour",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "rgb",
+          "named": true
+        },
+        {
+          "type": "rgba",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "command",
     "named": true,
     "fields": {},
@@ -235,6 +254,10 @@
       "types": [
         {
           "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "colour",
           "named": true
         },
         {

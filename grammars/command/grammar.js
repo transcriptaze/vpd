@@ -13,7 +13,7 @@ module.exports = grammar({
     ),
 
     // ... comments
-    comment: $ => /#.*/,
+    comment: $ => /;;(.*?)/,
 
     // ... actions
     new: $ => seq(
@@ -97,7 +97,11 @@ module.exports = grammar({
       optional($.font),
       optional($.fontsize),
       optional($._align),
+      optional($.colour),
     ),
+
+    font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    fontsize: $ => /[1-9][0-9]*([.][0-9]*)?pt/,
 
     _align: $ => choice (
       seq (
@@ -110,19 +114,34 @@ module.exports = grammar({
       ),
     ),
 
-    font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
-    fontsize: $ => /[1-9][0-9]*([.][0-9]*)?pt/,
-    halign: $ => choice(
+    halign: $ => choice (
           "left",
           "centre",
           "center",
           "right",
     ),
-    valign: $ => choice(
+
+    valign: $ => choice (
           "top",
           "middle",
           "baseline",
           "bottom",
+    ),
+
+    colour: $ => seq (
+      choice (
+        $.rgb,
+        $.rgba
+      ),
+      optional (
+        seq (
+          ',',
+          choice (
+            $.rgb,
+            $.rgba
+          ),
+        ),
+      )
     ),
 
     // ... origin
