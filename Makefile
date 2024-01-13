@@ -26,30 +26,31 @@ build-all: test
 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 	cd go               && make build-all
 
-build-release: build-all
-	mkdir -p dist/darwin/vpd
-	mkdir -p dist/linux/vpd
-	mkdir -p dist/windows/vpd
-	mkdir -p dist/html
+build-release: 
+	rm    -rf dist/html
+	mkdir -p  dist/darwin/vpd
+	mkdir -p  dist/linux/vpd
+	mkdir -p  dist/windows/vpd
+	mkdir -p  dist/html
 	cd rs/vpd && wasm-pack build --target web --release --out-dir ../../html/wasm/vpd
 	cd go     && make build-all
-	cp -r html/* dist/html/
+	rsync -av --exclude *.gitignore \
+	          --exclude LICENSE \
+	          --exclude package.json \
+	          html/* \
+	          dist/html
 
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
 
-cloudflare: 
+cloudflare: build-release
 	rm    -rf dist/cloudflare
 	mkdir -p  dist/cloudflare
-	rsync -av --progress html/* dist/cloudflare --exclude html/javascript
-	cp -r  ./cloudflare/*  dist/cloudflare
-	npx rollup --config rollup-vpd.js
-	npx rollup --config rollup-components.js
-	sed -i '' 's#VPD\.js#bundle\.js#'                       dist/cloudflare/index.html
-	sed -i '' 's#command\.js#bundle\.js#'                   dist/cloudflare/index.html
-	sed -i '' 's#help\.js#bundle\.js#'                      dist/cloudflare/index.html
-	sed -i '' 's#text\.js#bundle\.js#'                      dist/cloudflare/index.html
-	sed -i '' 's#components/components\.js#components\.js#' dist/cloudflare/index.html
+	rsync -av --exclude *.gitignore \
+	          --exclude LICENSE \
+	          --exclude package.json \
+	          html/* \
+	          dist/cloudflare
 
 run-python:
 	python3 -m http.server 9876 -d html

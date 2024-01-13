@@ -1,9 +1,14 @@
-import { help } from './help.js'
-import { parse, parseVPX } from './command.js'
+import * as help from './help.js'
+import * as text from './text.js'
+import * as command from './command.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
 import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
 
-export async function initialise () {
+export async function initialise (parser) {
+  await command.init(parser)
+  await help.init(parser)
+  await text.init()
+
   // ... 'command' handler
   const input = document.getElementById('command')
   const helpText = document.getElementById('help-text')
@@ -11,7 +16,7 @@ export async function initialise () {
   input.focus()
 
   input.oninput = (event) => {
-    help(helpText, input.value)
+    help.help(helpText, input.value)
   }
 
   input.onkeypress = (event) => {
@@ -62,7 +67,7 @@ export async function initialise () {
   //   console.error(err)
   // }
 
-  help(helpText, '')
+  help.help(helpText, '')
 }
 
 export function onLoad (type) {
@@ -170,14 +175,14 @@ export function onExport (event, theme) {
   execute(`export panel svg ${theme}`)
 }
 
-function execute (cmd) {
+function execute (v) {
   try {
-    const command = parse(cmd)
+    const cmd = command.parse(v)
 
-    if (command != null) {
-      console.log(command)
+    if (cmd != null) {
+      console.log(cmd)
 
-      const serialized = exec(JSON.stringify(command))
+      const serialized = exec(JSON.stringify(cmd))
 
       if (serialized !== '') {
         store(PROJECT, serialized)
@@ -246,10 +251,10 @@ async function load (file, type) {
 
   if (type === 'vpx') {
     file.text()
-      .then((text) => parseVPX(text))
+      .then((text) => command.parseVPX(text))
       .then((script) => {
-        for (const command of script) {
-          const serialized = exec(JSON.stringify(command))
+        for (const cmd of script) {
+          const serialized = exec(JSON.stringify(cmd))
           store(PROJECT, serialized)
         }
       })

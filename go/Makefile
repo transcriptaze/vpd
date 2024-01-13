@@ -10,7 +10,11 @@ format:
 	go fmt ./...
 
 build: format
-	cp -r ../html .
+	rsync -av --exclude *.gitignore \
+	          --exclude LICENSE \
+	          --exclude package.json \
+	          ../html/* \
+	          html
 	go build -o bin/ ./...
 
 test: build

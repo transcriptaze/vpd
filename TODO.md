@@ -5,11 +5,10 @@
 - [x] SVG pretty printer
       - [x] blank lines
       - [x] 3 digits
-
+      - [ ] Fix double blank lines
 
 - [x] github 'cloudflare' build
-      - [ ] bundle
-      - [ ] Fix wasm .gitignore, LICENSE etc
+      - [x] Fix wasm .gitignore, LICENSE etc
 
 - [x] Load project file
       - [ ] web component
@@ -153,11 +152,11 @@
        - [ ] Auto-generate help text from grammar/examples
 
 
-### Panel
+### TO BE DONE
 - [ ] Robust JSON deserialization i.e. accomodate missing fields
-
-### Tests
-- https://playwright.dev/docs/intro
+- [ ] bundle with rollup.js
+- [ ] Integration tests
+      - https://playwright.dev/docs/intro
 
 
 ## Notes

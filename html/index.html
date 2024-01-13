@@ -113,20 +113,13 @@
   <script type="module">
     import { default as vpd_init } from './wasm/vpd/vpd.js'
     import * as VPD from "./javascript/VPD.js"
-    import * as command from "./javascript/command.js"
-    import * as help from "./javascript/help.js"
-    import * as text from "./javascript/text.js"
 
     (async () => {
       const Parser = window.TreeSitter
 
       await vpd_init()
       await Parser.init()
-      await command.init(Parser)
-      await help.init(Parser)
-      await text.init()
-
-      VPD.initialise()
+      await VPD.initialise(Parser)
     })()
 
     window.onLoad = (event) => {

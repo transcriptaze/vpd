@@ -151,8 +151,6 @@ You need a **bunch** of tools:
 - [_wasm-bindgen_](https://github.com/rustwasm/wasm-bindgen)
 - [_npm 1.16.32+_](https://www.npmjs.com/get-npm)
 - [_sass_](https://sass-lang.com)
-- [_rollup_](https://rollupjs.org)
-- [_terser_](https://www.npmjs.com/package/@rollup/plugin-terser)
 - [_eslint_](https://eslint.org)
 - [_eslint-config-standard_](https://www.npmjs.com/package/eslint-config-standard)
 - [_Docker_](https://www.docker.com)
@@ -164,6 +162,8 @@ You need a **bunch** of tools:
 1. `apt install sass` on _Ubuntu_ installs `ruby-sass` which was marked **[obsolete](https://sass-lang.com/ruby-sass)**
    in 2019. Please follow the installation instructions on the [Sass homepage](https://sass-lang.com) to install
    the current version.
+
+2. The web-app is not bundled because I cannot for the life of figure out how to resolve all the wasm dependencies.
 
 
 ### Build instructions
