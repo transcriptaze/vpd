@@ -58,16 +58,21 @@
             - [ ] User guide
             - [ ] help
 
-- [ ] _export_
-      - [ ] `export project`
-      - [ ] `export project timestamp`
-      - [ ] `export project gzip`
-      - [ ] `export script`
-      - [ ] `export script timestamp`
-      - [x] `export panel svg [light|dark]`
+- [ ] _save_
+      - [ ] `save project`
+      - [ ] `save project timestamp`
+      - [ ] `save project gzip`
+      - [ ] `save script`
+      - [ ] `save script timestamp`
       - [ ] replace spaces with underscores
       - [ ] help
       - [ ] user guide
+
+- [x] _export_
+      - [x] `export panel svg [light|dark]`
+      - [x] replace spaces with underscores
+      - [x] user guide
+      - [x] help
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`

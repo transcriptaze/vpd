@@ -321,7 +321,8 @@ load script
 
 ```export panel svg [light|dark]```
 
-Exports the panel as an SVG for use as a plugin resource file.
+Exports the panel as an SVG for use as a plugin resource file, using the module name as the suggested filename (with a 
+`-dark` suffix for the dark theme SVG).
 
 _Command options:_
 ```
@@ -331,6 +332,7 @@ dark   (optional) exports the dark themed SVG
 ```
 
 _Notes:_
+1. Non-alphanumeric characters in the module name are replaced with underscores.
 
 _Examples:_
 ```

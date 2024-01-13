@@ -7,6 +7,11 @@ export function load (filetype) {
 export function save (filename, svg) {
   const blob = new Blob([svg], { type: 'image/svg+xml' })
 
+  const match = `${filename}`.match(/(.*?)(\.svg)/)
+  if (match.length > 2) {
+    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.svg`
+  }
+
   if (window.showSaveFilePicker) {
     saveWithPicker(filename, blob)
   } else {
