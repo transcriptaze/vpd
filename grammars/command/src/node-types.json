@@ -258,6 +258,10 @@
           "named": true
         },
         {
+          "type": "valign",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
@@ -565,6 +569,11 @@
     }
   },
   {
+    "type": "valign",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "vertical",
     "named": true,
     "fields": {},
@@ -673,6 +682,14 @@
     "named": false
   },
   {
+    "type": "baseline",
+    "named": false
+  },
+  {
+    "type": "bottom",
+    "named": false
+  },
+  {
     "type": "center",
     "named": false
   },
@@ -729,6 +746,10 @@
     "named": false
   },
   {
+    "type": "middle",
+    "named": false
+  },
+  {
     "type": "module",
     "named": false
   },
@@ -778,6 +799,10 @@
   },
   {
     "type": "svg",
+    "named": false
+  },
+  {
+    "type": "top",
     "named": false
   },
   {

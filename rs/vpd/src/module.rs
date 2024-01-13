@@ -7,10 +7,10 @@ use super::serde::{Deserialize, Serialize};
 
 use wasm_bindgen::prelude::*;
 
-use svg::PrettyPrinter;
 use crate::svg;
 use crate::utils::log;
 use crate::warnf;
+use svg::PrettyPrinter;
 
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {

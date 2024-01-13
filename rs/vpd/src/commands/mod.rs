@@ -14,11 +14,11 @@ mod export_svg;
 mod load_script;
 
 pub use new_guide::NewGuide;
-pub use new_input::NewInputCommand;
+pub use new_input::NewInput;
 pub use new_label::NewLabel;
 pub use new_light::NewLightCommand;
 pub use new_module::NewModuleCommand;
-pub use new_output::NewOutputCommand;
+pub use new_output::NewOutput;
 pub use new_parameter::NewParameterCommand;
 pub use new_widget::NewWidgetCommand;
 

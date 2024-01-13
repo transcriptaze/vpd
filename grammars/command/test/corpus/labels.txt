@@ -182,3 +182,86 @@ new label "lorem" 10mm,10mm centre
         (x)
         (y))
       (halign))))
+
+
+============================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline
+============================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (font)
+      (fontsize)
+      (halign)
+      (valign))))
+
+
+================================================
+new label "lorem" 10mm,10mm 14pt centre,baseline
+================================================
+new label "lorem" 10mm,10mm 14pt centre,baseline
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (fontsize)
+      (halign)
+      (valign))))
+
+
+===========================================
+new label "lorem" 10mm,10mm centre,baseline
+===========================================
+new label "lorem" 10mm,10mm centre,baseline
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (halign)
+      (valign))))
+
+
+===========================================
+new label "lorem" 10mm,10mm baseline,centre
+===========================================
+new label "lorem" 10mm,10mm baseline,centre
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (valign)
+      (halign))))
+
+
+====================================
+new label "lorem" 10mm,10mm baseline
+====================================
+new label "lorem" 10mm,10mm baseline
+---
+(command
+  (new
+    (label
+      (string)
+      (relative
+        (x)
+        (y))
+      (valign))))
+

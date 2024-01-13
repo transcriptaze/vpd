@@ -573,18 +573,6 @@
         }
       ]
     },
-    "name": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
-    },
-    "rgb": {
-      "type": "PATTERN",
-      "value": "#[a-fA-F0-9]{6}"
-    },
-    "rgba": {
-      "type": "PATTERN",
-      "value": "#[a-fA-F0-9]{8}"
-    },
     "font": {
       "type": "SEQ",
       "members": [
@@ -628,25 +616,84 @@
       ]
     },
     "halign": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "left"
+            },
+            {
+              "type": "STRING",
+              "value": "centre"
+            },
+            {
+              "type": "STRING",
+              "value": "center"
+            },
+            {
+              "type": "STRING",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "valign"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "valign": {
       "type": "CHOICE",
       "members": [
         {
           "type": "STRING",
-          "value": "left"
+          "value": "top"
         },
         {
           "type": "STRING",
-          "value": "centre"
+          "value": "middle"
         },
         {
           "type": "STRING",
-          "value": "center"
+          "value": "baseline"
         },
         {
           "type": "STRING",
-          "value": "right"
+          "value": "bottom"
         }
       ]
+    },
+    "name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
+    "rgb": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{6}"
+    },
+    "rgba": {
+      "type": "PATTERN",
+      "value": "#[a-fA-F0-9]{8}"
     },
     "absolute": {
       "type": "SEQ",

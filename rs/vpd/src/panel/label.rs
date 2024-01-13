@@ -9,8 +9,11 @@ pub struct Label {
     pub x: X,
     pub y: Y,
     pub halign: String,
+    pub valign: String,
     pub path: String,
     pub bounds: Bounds,
+    pub ascender: f32,
+    pub descender: f32,
     pub advance: f32,
 }
 
@@ -28,8 +31,11 @@ impl Label {
         x: &X,
         y: &Y,
         halign: &str,
+        valign: &str,
         path: &str,
         bounds: &Bounds,
+        ascender: f32,
+        descender: f32,
         advance: f32,
     ) -> Label {
         Label {
@@ -37,8 +43,11 @@ impl Label {
             x: x.clone(),
             y: y.clone(),
             halign: halign.to_string(),
+            valign: valign.to_string(),
             path: path.to_string(),
             bounds: bounds.clone(),
+            ascender: ascender,
+            descender: descender,
             advance: advance,
         }
     }

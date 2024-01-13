@@ -140,7 +140,17 @@
   {
     "type": "halign",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "valign",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "label",
@@ -325,6 +335,11 @@
     }
   },
   {
+    "type": "valign",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "x",
     "named": true,
     "fields": {},
@@ -379,6 +394,14 @@
     "named": false
   },
   {
+    "type": "baseline",
+    "named": false
+  },
+  {
+    "type": "bottom",
+    "named": false
+  },
+  {
     "type": "center",
     "named": false
   },
@@ -412,6 +435,10 @@
   },
   {
     "type": "load",
+    "named": false
+  },
+  {
+    "type": "middle",
     "named": false
   },
   {
@@ -456,6 +483,10 @@
   },
   {
     "type": "svg",
+    "named": false
+  },
+  {
+    "type": "top",
     "named": false
   }
 ]

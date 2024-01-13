@@ -51,7 +51,7 @@ export async function init () {
     })
 }
 
-export function text2path (text, fontName, size) {
+export function text2path (text, fontName, points) {
   const options = {
     decimalPlaces: 3
   }
@@ -64,15 +64,26 @@ export function text2path (text, fontName, size) {
     }
   }
 
-  const fontSize = points2mm(size)
+  const fontSize = points2mm(points)
   const font = opentype.parse(bytes)
+  const unitsPerEm = font.unitsPerEm
+  const ascender = points2mm(points * font.ascender / unitsPerEm)
+  const descender = points2mm(points * font.descender / unitsPerEm)
   const path = font.getPath(text, 0, 0, fontSize, {})
   const bounds = path.getBoundingBox()
   const advance = font.getAdvanceWidth(text, fontSize, options)
 
+  // console.log('>> bounds', bounds)
+  // console.log('>> advance', advance)
+  // console.log('>> unitsPerEm', unitsPerEm)
+  // console.log('>> ascender', ascender)
+  // console.log('>> descender', descender)
+
   return {
     path: `${path.toSVG()}`,
     bounds,
+    ascender,
+    descender,
     advance
   }
 }

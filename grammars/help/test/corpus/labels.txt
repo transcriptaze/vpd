@@ -94,3 +94,19 @@ new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre
             (fontsize
               (halign))))))))
 
+
+============================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline
+============================================================
+new label "lorem" 10mm,10mm "Lato-Bold" 14pt centre,baseline
+---
+(command
+  (new
+    (label
+      (string
+        (relative
+          (font
+            (fontsize
+              (halign
+                (valign)))))))))
+

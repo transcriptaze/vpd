@@ -6,11 +6,11 @@ use super::serde::{Deserialize, Serialize};
 use crate::commands::ExportSVGCommand;
 use crate::commands::LoadScript;
 use crate::commands::NewGuide;
-use crate::commands::NewInputCommand;
+use crate::commands::NewInput;
 use crate::commands::NewLabel;
 use crate::commands::NewLightCommand;
 use crate::commands::NewModuleCommand;
-use crate::commands::NewOutputCommand;
+use crate::commands::NewOutput;
 use crate::commands::NewParameterCommand;
 use crate::commands::NewWidgetCommand;
 use crate::commands::SetBackgroundCommand;
@@ -50,9 +50,9 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     if v.action == "new" && v.module.is_some() {
         Ok(Box::new(NewModuleCommand::new(json)?))
     } else if v.action == "new" && v.input.is_some() {
-        Ok(Box::new(NewInputCommand::new(json)?))
+        Ok(Box::new(NewInput::new(json)?))
     } else if v.action == "new" && v.output.is_some() {
-        Ok(Box::new(NewOutputCommand::new(json)?))
+        Ok(Box::new(NewOutput::new(json)?))
     } else if v.action == "new" && v.parameter.is_some() {
         Ok(Box::new(NewParameterCommand::new(json)?))
     } else if v.action == "new" && v.light.is_some() {

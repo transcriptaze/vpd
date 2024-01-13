@@ -147,11 +147,6 @@ module.exports = grammar({
       optional( $.font ),
     ),
 
-
-    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
-    rgb: $ => /#[a-fA-F0-9]{6}/,
-    rgba: $ => /#[a-fA-F0-9]{8}/,
-
     font: $ => seq (
       /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
       optional ($.fontsize),
@@ -162,12 +157,26 @@ module.exports = grammar({
       optional ($.halign),
     ),
 
-    halign: $ => choice(
-      'left',
-      'centre',
-      'center',
-      'right',
+    halign: $ => seq(
+      choice(
+        'left',
+        'centre',
+        'center',
+        'right',
+      ),
+      optional(seq(',', $.valign))
     ),
+
+    valign: $ => choice(
+      'top',
+       'middle',
+      'baseline',
+      'bottom',
+    ),
+
+    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    rgb: $ => /#[a-fA-F0-9]{6}/,
+    rgba: $ => /#[a-fA-F0-9]{8}/,
 
     absolute: $ => seq(
       '@',

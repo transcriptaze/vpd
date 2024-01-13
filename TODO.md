@@ -141,7 +141,7 @@
       - [x] font
       - [x] fontsize
       - [x] align left/centre/right
-      - [ ] align top/middle/baseline/bottom
+      - [x] align top/middle/baseline/bottom
       - [ ] colour
       - [ ] generate label ID automatically
       - [ ] help

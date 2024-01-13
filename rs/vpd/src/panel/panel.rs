@@ -204,7 +204,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(&v.name,x, y, radius, &colour));
+            list.push(Circle::new(&v.name, x, y, radius, &colour));
         }
 
         return list;
@@ -219,7 +219,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Circle::new(&v.name,x, y, radius, &colour));
+            list.push(Circle::new(&v.name, x, y, radius, &colour));
         }
 
         return list;
@@ -280,13 +280,21 @@ impl Panel {
 
         for v in self.labels.iter() {
             let mut x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
+            let mut y = v.y.resolve(&self);
 
             x += match v.halign.as_str() {
                 "left" => 0.0,
                 "centre" => -(v.bounds.x1 + v.bounds.x2) / 2.0,
                 "center" => -(v.bounds.x1 + v.bounds.x2) / 2.0,
                 "right" => -v.bounds.x2,
+                _ => 0.0,
+            };
+
+            y += match v.valign.as_str() {
+                "top" => -v.bounds.y1,
+                "middle" => -(v.bounds.y1 + v.bounds.y2) / 2.0,
+                "baseline" => 0.0,
+                "bottom" => -v.bounds.y2,
                 _ => 0.0,
             };
 

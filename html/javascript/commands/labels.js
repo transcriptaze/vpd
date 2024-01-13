@@ -6,7 +6,8 @@ export function newLabel (node) {
     label: {
       font: 'RobotoMono-Bold',
       fontsize: 12,
-      halign: 'left'
+      halign: 'left',
+      valign: 'baseline'
     }
   }
 
@@ -81,6 +82,10 @@ export function newLabel (node) {
 
     if (child.type === 'halign') {
       object.label.halign = string(child)
+    }
+
+    if (child.type === 'valign') {
+      object.label.valign = string(child)
     }
   }
 

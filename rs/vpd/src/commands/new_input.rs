@@ -7,7 +7,7 @@ use crate::module::Module;
 use crate::panel;
 
 #[derive(Deserialize)]
-pub struct NewInputCommand {
+pub struct NewInput {
     name: String,
     x: panel::X,
     y: panel::Y,
@@ -16,18 +16,18 @@ pub struct NewInputCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    input: NewInputCommand,
+    input: NewInput,
 }
 
-impl NewInputCommand {
-    pub fn new(json: &str) -> Result<NewInputCommand, Box<dyn Error>> {
+impl NewInput {
+    pub fn new(json: &str) -> Result<NewInput, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(o.input)
     }
 }
 
-impl Command for NewInputCommand {
+impl Command for NewInput {
     fn apply(&self, m: &mut Module) -> bool {
         let id = m.new_input_id();
 

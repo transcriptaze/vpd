@@ -88,7 +88,7 @@
 
 10. Add a title:
     ```
-    new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre
+    new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline
     ```
 
 ## User Interface
@@ -159,7 +159,7 @@ new module bodacious 45.72mm
 
 #### `new label`
 
-```new label <text> <xy> [font] [font-size] [halign] [valign] [colour]```
+```new label <text> <xy> [font] [font-size] [halign,valign] [colour]```
 
 Creates a text label and converts it to an SVG path.
 
@@ -171,7 +171,7 @@ xy         Location, either as absolute co-ordinates, relative to the origin or 
 font       (optional) name of preloaded font. Defaults to RobotoMono-Bold.
 font-size  (optional) font size (points). Defaults to 12pt.
 halign     (optional) horizontal alignment (left, centre or right). Defaults to left.
-valign     (optional) vertical alignment (top, middle, baseline or bottom). Defaults to bottom.
+valign     (optional) vertical alignment (top, middle, baseline or bottom). Defaults to baseline.
 colour     (optional) text colour pair. The colour may be either standard colour names (e.g. red, blue),
                       RGB (e.g. #ff000) or RGBA (e.g. #ff000080). The default colours are #222222 for the
                       light themed panel and #ebebeb for the dark themed panel.
@@ -188,14 +188,14 @@ _Notes:_
    - StyleScript-Regular
 2. Font names are case- and space-insensitive
 
-
 _Examples:_
 ```
 new label "Lorem Ipsum" centre, top+10.16mm
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline red
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline #ffff0080
-new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre baseline #ff0000,#00ff00
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline red
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ffff0080
+new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ff0000,#00ff00
 ````
 
 

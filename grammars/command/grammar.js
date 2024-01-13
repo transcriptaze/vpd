@@ -15,10 +15,19 @@ module.exports = grammar({
     // ... comments
     comment: $ => /#.*/,
 
-    // ... new
+    // ... actions
     new: $ => seq(
       'new',
       $._entity,
+    ),
+
+    // ... set
+    set: $ => seq(
+      'set',
+      choice (
+        $.origin,
+        $.background,
+      )
     ),
 
     _entity: $ => choice(
@@ -32,6 +41,7 @@ module.exports = grammar({
       $.guide,
     ),
 
+    // ... module
     module: $ => seq(
       'module',
       $.name,
@@ -39,6 +49,7 @@ module.exports = grammar({
       $.width,
     ),
 
+    // ... components
     input: $ => seq(
       'input',
       $._component,
@@ -64,19 +75,6 @@ module.exports = grammar({
       $._component,
     ),
 
-    label: $ => seq(
-      'label',
-      $._string,
-      choice (
-        $.absolute,
-        $.relative,
-        seq( $.x, ',', $.y ),
-      ),
-      optional($.font),
-      optional($.fontsize),
-      optional($.halign),
-    ),
-
     _component: $ => seq(
       $.name,
       choice (
@@ -87,15 +85,47 @@ module.exports = grammar({
       optional($.part),
     ),
 
-    // ... set
-    set: $ => seq(
-      'set',
+    // ... labels
+    label: $ => seq(
+      'label',
+      $._string,
       choice (
-        $.origin,
-        $.background,
-      )
+        $.absolute,
+        $.relative,
+        seq( $.x, ',', $.y ),
+      ),
+      optional($.font),
+      optional($.fontsize),
+      optional($._align),
     ),
 
+    _align: $ => choice (
+      seq (
+        $.halign,
+        optional ( seq ( ',', $.valign )),
+      ),
+      seq (
+        $.valign,
+        optional ( seq ( ',', $.halign )),
+      ),
+    ),
+
+    font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    fontsize: $ => /[1-9][0-9]*([.][0-9]*)?pt/,
+    halign: $ => choice(
+          "left",
+          "centre",
+          "center",
+          "right",
+    ),
+    valign: $ => choice(
+          "top",
+          "middle",
+          "baseline",
+          "bottom",
+    ),
+
+    // ... origin
     origin: $ => seq(
       'origin',
       choice(
@@ -176,15 +206,6 @@ module.exports = grammar({
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
     part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
-
-    font: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
-    fontsize: $ => /[1-9][0-9]*([.][0-9]*)?pt/,
-    halign: $ => choice(
-          "left",
-          "centre",
-          "center",
-          "right",
-    ),
 
     guide: $ => seq(
       'guide',      

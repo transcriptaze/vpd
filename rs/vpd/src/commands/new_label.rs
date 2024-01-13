@@ -12,6 +12,7 @@ use crate::panel;
 const FONT: &str = "RobotoMono-Bold";
 const FONTSIZE: f32 = 12.0;
 const LEFT: &str = "left";
+const BASELINE: &str = "baseline";
 
 #[wasm_bindgen(raw_module = "../../javascript/text.js")]
 extern "C" {
@@ -22,6 +23,8 @@ extern "C" {
 struct Path {
     pub path: String,
     pub bounds: BoundingBox,
+    pub ascender: f32,
+    pub descender: f32,
     pub advance: f32,
 }
 
@@ -41,6 +44,7 @@ pub struct NewLabel {
     font: Option<String>,
     fontsize: Option<f32>,
     halign: Option<String>,
+    valign: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -73,6 +77,11 @@ impl Command for NewLabel {
             None => LEFT,
         };
 
+        let valign = match &self.valign {
+            Some(v) => v,
+            None => BASELINE,
+        };
+
         let result = text2path(&self.text, font, size);
         let path: Path = serde_wasm_bindgen::from_value(result).unwrap();
 
@@ -81,8 +90,11 @@ impl Command for NewLabel {
             &self.x,
             &self.y,
             halign,
+            valign,
             &path.path,
             &path.bounds.to_bounds(),
+            path.ascender,
+            path.descender,
             path.advance,
         ));
 
