@@ -7,6 +7,7 @@
 - [Scripts][#vpx-files]
 - [Commands](#commands)
    - [`new module`](#new-module)
+   - [`new input`](#new-input)
    - [`new label`](#new-label)
    - [`set background`](#set-background)
    - [`load script`](#load-script)
@@ -107,6 +108,15 @@
 - Alt-click on the _save_ button saves the command history a _.vpx_ script file, using the module name as a filename. Ctrl-click will save 
   the script with a timestamped filename.
 
+### <img width="24" src="doc/images/export-svg-light.png"> Export SVG
+
+- Clicking on the _export SVG_ button saves the current panel as an SVG file that can be used as a resource.
+
+### <img width="24" src="doc/images/export-svg-dark.png"> Export SVG (dark)
+
+- Clicking on the _export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
+  saved with a _-dark_ suffix.
+
 
 ## Scripts
 
@@ -133,6 +143,29 @@ To load a _.vpx_ file:
 
 ## Commands
 
+##### Location formats
+
+| Type     | `<xy>`   | Description                                                                | Example           |
+|----------|----------|----------------------------------------------------------------------------|-------------------|
+| **absolute** | `@x,y` | Absolute x,y location in mm relative to the top left corner of the panel | @4.5mm,7.6mm      |
+| **relative** | `x,y`  | x,y location in mm relative to the origin                                | 4.5mm,7.6mm       |
+| **geometry** | h,v    | x,y location relative to the geometry of the panel                       | left+4mm,top+10mm |
+| **guides**   | h,v    | x,y location relative to the guidelines                                  | v1+4mm,h1-10mm    |
+   
+The location units can be:
+- mm (millimeters)
+- H (standard horizontal units of 5.08mm)
+- h (half-standard horizontal units of 2.54mm)
+
+#### Parts
+
+Components can be displayed on the _overlay_ layer as the physical representation of the component. The current list of
+parts comprises:
+- RoundBlackKnob
+- PJ301M
+
+An unknown part will be displayed as an anonymous grey circle devoid of personality or future.
+
 #### `new module`
 
 ```new module <name> [height] <width>```
@@ -146,6 +179,33 @@ height   (optional) panel height. The only valid values are 1U or 128.5mm
 width    Panel width, in mm or _horizontal units_ (H) of 5.08mm. The width in mm 
          is rounded to the nearest integer multiple of 5.08mm (e.g. a value of 45mm
          is rounded 45.72mm)
+```
+
+_Notes:_
+
+_Examples:_
+```
+new module bodacious 1U 5H
+new module bodacious 1U 45mm
+new module bodacious 45.72mm
+````
+
+#### `new input`
+
+```new input <name> <xy> [part]```
+
+Creates an input component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
+input on the _overlay_ layer. The _overlay_ is for display only and is not exportedn to the resource SVGs when exported.
+
+_Command options:_
+```
+name     Input name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts to 
+         generate the module skeleton. Should be unique unless you're deliberately trying to make the C++ compiler
+         miserable.
+xy       Location of the centre of the input component. Must be one of the supported location formats (described 
+         [above](#location-formats)).
+part     (optional) Physical part to display on the overlay - a red circle is displayed on the overlay if a part is not
+         provided.
 ```
 
 _Notes:_

@@ -4,7 +4,6 @@
 
 - [Getting started](#getting-started)
 - [Projects](#projects)
-- [Scripts](#scripts)
 - [Fonts](#fonts)
 - [Guidelines](#guidelines)
 - [Macro keys](#macro-keys)
@@ -144,11 +143,6 @@ export module [timestamp] [gzip]
 ```
 - `timestamp` will include the current datetime in the filename
 - `gzip` will download the JSON project file compressed with gzip
-
-
-## Scripts
-
-A _.vps_ script file is a text file of VPD commands (one per line) that can be loaded (or dropped on to the panel design area) to recreate a module.
 
 
 ## Fonts
