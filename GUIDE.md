@@ -3,8 +3,8 @@
 ### Contents
 
 - [Getting started](#getting-started)
-- [User interface][#user-interface]
-- [Scripts][#vpx-files]
+- [User interface](#user-interface)
+- [Scripts](#vpx-files)
 - [Commands](#commands)
    - [`new module`](#new-module)
    - [`new input`](#new-input)
@@ -96,25 +96,25 @@
 
 ### <img width="24" src="doc/images/load.png"> Load
 
-- Clicking on the _load_ button loads and renders a module saved as a _.vpd_ file.
-- Alt-click on the _load_ button loads and renders a _.vpx_ script file.
+- Clicking on the _Load_ button loads and renders a module saved as a _.vpd_ file.
+- Alt-click on the _Load_ button loads and renders a _.vpx_ script file.
 
 
 ### <img width="24" src="doc/images/save.png"> Save
 
-- Clicking on the _save_ button saves the current project as a _.vpd_ file, using the module name as a filename. Ctrl-click will save 
-  the project with a timestamped filename.
+- Clicking on the _Save_ button saves the current project as a _.vpd_ file, using the module name as a filename. `ctrl-click` will 
+  save the project with a timestamped filename.
 
-- Alt-click on the _save_ button saves the command history a _.vpx_ script file, using the module name as a filename. Ctrl-click will save 
-  the script with a timestamped filename.
+- `alt-click` on the _Save_ button saves the command history as a _.vpx_ script file, using the module name as a filename. 
+  `ctrl-alt-click` will save the script with a timestamped filename.
 
 ### <img width="24" src="doc/images/export-svg-light.png"> Export SVG
 
-- Clicking on the _export SVG_ button saves the current panel as an SVG file that can be used as a resource.
+- Clicking on the _Export SVG_ button saves the current panel as an SVG file that can be used as a resource.
 
 ### <img width="24" src="doc/images/export-svg-dark.png"> Export SVG (dark)
 
-- Clicking on the _export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
+- Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
   saved with a _-dark_ suffix.
 
 
@@ -135,9 +135,13 @@ new guide v2+10.16mm
 To load a _.vpx_ file:
 - On the user interface _Alt-click_ (_Option-click_ on MacOS) the _File Load_ button (<img width="20" src="doc/images/load.png">) to open
   a file chooser dialog.
+
   -- or --
+
 - Drag 'n drop a _.vpx_ file on to the user interface panels.
+
   -- or --
+
 - Execute the `load script` command to open a file chooser dialog.
 
 
@@ -145,26 +149,26 @@ To load a _.vpx_ file:
 
 ##### Location formats
 
-| Type     | `<xy>`   | Description                                                                | Example           |
-|----------|----------|----------------------------------------------------------------------------|-------------------|
-| **absolute** | `@x,y` | Absolute x,y location in mm relative to the top left corner of the panel | @4.5mm,7.6mm      |
-| **relative** | `x,y`  | x,y location in mm relative to the origin                                | 4.5mm,7.6mm       |
-| **geometry** | h,v    | x,y location relative to the geometry of the panel                       | left+4mm,top+10mm |
-| **guides**   | h,v    | x,y location relative to the guidelines                                  | v1+4mm,h1-10mm    |
+| Type     | `<xy>`   | Description                                                                | Example             |
+|----------|----------|----------------------------------------------------------------------------|---------------------|
+| **absolute** | `@x,y` | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.6mm`      |
+| **relative** | `x,y`  | x,y location in mm relative to the origin                                | `4.5mm,7.6mm`       |
+| **geometry** | `h,v`  | x,y location relative to the geometry of the panel                       | `left+4mm,top+10mm` |
+| **guides**   | `h,v`  | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`    |
    
 The location units can be:
-- mm (millimeters)
-- H (standard horizontal units of 5.08mm)
-- h (half-standard horizontal units of 2.54mm)
+- `mm` (millimeters)
+- `H` (standard horizontal units of 5.08mm)
+- `h` (half-standard horizontal units of 2.54mm)
 
 #### Parts
 
 Components can be displayed on the _overlay_ layer as the physical representation of the component. The current list of
 parts comprises:
-- RoundBlackKnob
-- PJ301M
+- `RoundBlackKnob`
+- `PJ301M`
 
-An unknown part will be displayed as an anonymous grey circle devoid of personality or future.
+An _unknown_ part will be displayed as an anonymous grey circle devoid of personality or future.
 
 #### `new module`
 
@@ -199,13 +203,13 @@ input on the _overlay_ layer. The _overlay_ is for display only and is not expor
 
 _Command options:_
 ```
-name     Input name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts to 
-         generate the module skeleton. Should be unique unless you're deliberately trying to make the C++ compiler
-         miserable.
+name     Input name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts
+         to generate the module skeleton. Should be unique unless you're deliberately trying to make the C++ \
+         compiler miserable.
 xy       Location of the centre of the input component. Must be one of the supported location formats (described 
          [above](#location-formats)).
-part     (optional) Physical part to display on the overlay - a red circle is displayed on the overlay if a part is not
-         provided.
+part     (optional) Physical part to display on the overlay - a red circle is displayed on the overlay if a part
+         is not provided.
 ```
 
 _Notes:_
@@ -239,13 +243,13 @@ colour     (optional) text colour pair. The colour may be either standard colour
 
 _Notes:_
 1. The preloaded fonts are:
-   - Lato-Regular
-   - Lato-Bold
-   - RobotoMono-Regular
-   - RobotoMono-Bold
-   - RobotoCondensed-Regular
-   - RobotoCondensed-Bold
-   - StyleScript-Regular
+   - `Lato-Regular`
+   - `Lato-Bold`
+   - `RobotoMono-Regular`
+   - `RobotoMono-Bold`
+   - `RobotoCondensed-Regular`
+   - `RobotoCondensed-Bold`
+   - `StyleScript-Regular`
 2. Font names are case- and space-insensitive
 
 _Examples:_
