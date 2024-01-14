@@ -5,6 +5,7 @@ use super::serde::{Deserialize, Serialize};
 
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
+use crate::commands::SaveProject;
 use crate::commands::LoadScript;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
@@ -71,6 +72,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(SetBackgroundCommand::new(json)?))
     } else if v.action == "load" && v.project.is_some() {
         Ok(Box::new(LoadProject::new(json)?))
+    } else if v.action == "save" && v.project.is_some() {
+        Ok(Box::new(SaveProject::new(json)?))
     } else if v.action == "load" && v.script.is_some() {
         Ok(Box::new(LoadScript::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {

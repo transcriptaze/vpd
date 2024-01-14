@@ -41,13 +41,18 @@ module.exports = grammar({
     save: $ => seq (
       'save',
       choice (
-        alias('project',$.project),
+        $.project,
       ),
     ),
 
     export: $ => seq (
       'export',
       $.panel
+    ),
+
+    project: $ => seq(
+      'project',
+      optional (alias('timestamp', $.timestamp)),
     ),
 
     // ... new

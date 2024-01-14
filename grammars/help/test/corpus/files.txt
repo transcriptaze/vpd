@@ -45,6 +45,15 @@ save project
   (save
     (project)))
 
+======================
+save project timestamp
+======================
+save project timestamp
+---
+(command
+  (save
+    (project
+      (timestamp))))
 
 ======
 export

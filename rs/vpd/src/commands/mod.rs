@@ -12,6 +12,7 @@ mod set_origin;
 
 mod export_svg;
 mod load_project;
+mod save_project;
 mod load_script;
 
 pub use new_guide::NewGuide;
@@ -28,4 +29,5 @@ pub use set_origin::SetOriginCommand;
 
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;
+pub use save_project::SaveProject;
 pub use load_script::LoadScript;

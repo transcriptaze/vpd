@@ -115,13 +115,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "STRING",
-                "value": "project"
-              },
-              "named": true,
-              "value": "project"
+              "type": "SYMBOL",
+              "name": "project"
             }
           ]
         }
@@ -137,6 +132,32 @@
         {
           "type": "SYMBOL",
           "name": "panel"
+        }
+      ]
+    },
+    "project": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "project"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "timestamp"
+              },
+              "named": true,
+              "value": "timestamp"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

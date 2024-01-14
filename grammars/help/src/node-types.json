@@ -272,6 +272,21 @@
     }
   },
   {
+    "type": "project",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "timestamp",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "relative",
     "named": true,
     "fields": {},
@@ -507,7 +522,7 @@
   },
   {
     "type": "project",
-    "named": true
+    "named": false
   },
   {
     "type": "reference",
@@ -532,6 +547,10 @@
   {
     "type": "svg",
     "named": false
+  },
+  {
+    "type": "timestamp",
+    "named": true
   },
   {
     "type": "top",

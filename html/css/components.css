@@ -56,6 +56,7 @@ div.vpd-help-text div.ul {
   grid-template-rows: auto auto auto;
   grid-auto-flow: column;
   column-gap: 24px;
+  row-gap: 2px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 4px;

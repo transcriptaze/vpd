@@ -30,20 +30,6 @@
 - macro keys
 - command area
 
-## Projects
-
-A _.vpd_ project file is a human readable JSON file and a _.vpz_ file is the same JSON file gzipped that can be loaded (or dropped on to the panel design
-area) to recreate a module.
-
-The current state of a project is saved in the browser local storage and the application will do its level best to resume where you last left off, but really
-you should export and save the project file:
-```
-export module [timestamp] [gzip]
-```
-- `timestamp` will include the current datetime in the filename
-- `gzip` will download the JSON project file compressed with gzip
-
-
 ## Fonts
 
 VPD is a static web app and as such, CORS restrictions mean it cannot load external fonts from e.g. Google Fonts. The following fonts

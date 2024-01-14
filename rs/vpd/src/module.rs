@@ -56,6 +56,9 @@ impl Module {
         load("vpd");
     }
 
+    pub fn save_project(&self, _timestamp: bool) {
+    }
+
     pub fn load_script(&self) {
         load("vpx");
     }

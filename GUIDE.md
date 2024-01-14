@@ -3,16 +3,19 @@
 ### Contents
 
 - [Getting started](#getting-started)
+- [Projects](#projects)
+- [Scripts](#scripts)
 - [User interface](#user-interface)
-- [Scripts](#vpx-files)
 - [Commands](#commands)
    - [`new module`](#new-module)
    - [`new input`](#new-input)
    - [`new label`](#new-label)
    - [`set background`](#set-background)
    - [`load project`](#load-project)
+   - [`save project`](#save-project)
    - [`load script`](#load-script)
    - [`export panel`](#export-panel)
+
 
 ## Getting started
 
@@ -93,30 +96,36 @@
     new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline
     ```
 
-## User Interface
+## Projects
 
-### <img width="24" src="doc/images/load.png"> Load
+The current state of a project is saved in the browser local storage and the application will do its level best
+to resume where you last left off, but **really** you should save a project if it contains any significant work.
 
-- Clicking on the _Load_ button loads and renders a module saved as a _.vpd_ file.
-- Alt-click on the _Load_ button loads and renders a _.vpx_ script file.
+A VPD project file is a just a human readable JSON file that can be loaded (or dropped on to the panel design
+area) to recreate a module.
 
+1. To load a _.vpd_ file:
 
-### <img width="24" src="doc/images/save.png"> Save
+   - On the user interface _click_ the _File Load_ button (<img width="20" src="doc/images/load.png">) to open
+     a file chooser dialog.
 
-- Clicking on the _Save_ button saves the current project as a _.vpd_ file, using the module name as a filename. `ctrl-click` will 
-  save the project with a timestamped filename.
+     -- or --
 
-- `alt-click` on the _Save_ button saves the command history as a _.vpx_ script file, using the module name as a filename. 
-  `ctrl-alt-click` will save the script with a timestamped filename.
+   - Drag 'n drop a _.vpd_ file on to the user interface panels.
 
-### <img width="24" src="doc/images/export-svg-light.png"> Export SVG
+     -- or --
 
-- Clicking on the _Export SVG_ button saves the current panel as an SVG file that can be used as a resource.
+   - Execute the `load project` command to open a file chooser dialog.
 
-### <img width="24" src="doc/images/export-svg-dark.png"> Export SVG (dark)
+2. To save a project to a _.vpd_ file:
 
-- Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
-  saved with a _-dark_ suffix.
+   - On the user interface _click_ the _File Save_ button (<img width="20" src="doc/images/save.png">) to open
+     a file chooser dialog (on Chrome - on other browsers the file will be automatically downloaded).
+
+     -- or --
+
+   - Execute the `save project` command which will either open a file chooser dialog (_Chrome_) or just download
+     and save the file.
 
 
 ## Scripts
@@ -144,6 +153,32 @@ To load a _.vpx_ file:
   -- or --
 
 - Execute the `load script` command to open a file chooser dialog.
+
+
+## User Interface
+
+### <img width="24" src="doc/images/load.png"> Load
+
+- Clicking on the _Load_ button loads and renders a module saved as a _.vpd_ file.
+- Alt-click on the _Load_ button loads and renders a _.vpx_ script file.
+
+
+### <img width="24" src="doc/images/save.png"> Save
+
+- Clicking on the _Save_ button saves the current project as a _.vpd_ file, using the module name as a filename. `ctrl-click` will 
+  save the project with a timestamped filename.
+
+- `alt-click` on the _Save_ button saves the command history as a _.vpx_ script file, using the module name as a filename. 
+  `ctrl-alt-click` will save the script with a timestamped filename.
+
+### <img width="24" src="doc/images/export-svg-light.png"> Export SVG
+
+- Clicking on the _Export SVG_ button saves the current panel as an SVG file that can be used as a resource.
+
+### <img width="24" src="doc/images/export-svg-dark.png"> Export SVG (dark)
+
+- Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
+  saved with a _-dark_ suffix.
 
 
 ## Commands
@@ -320,6 +355,29 @@ load project
 ````
 
 
+#### `save project`
+
+```save project [timestamp]```
+
+Saves the current project to a `.vpd` project file, using the module name as the suggested filename. On Chrome it 
+opens a file chooser to save the file - on Firefox and most other browsers the file is downloaded automatically.
+
+_Command options:_
+```
+timestamp  (optional) the suggested file name is suffixed with the current date and time
+```
+
+_Notes:_
+1. Non-alphanumeric characters in the module name are replaced with underscores.
+
+
+_Example:_
+```
+save project
+save project timestamp
+````
+
+
 #### `load script`
 
 ```load script```
@@ -336,8 +394,8 @@ load script
 
 ```export panel svg [light|dark]```
 
-Exports the panel as an SVG for use as a plugin resource file, using the module name as the suggested filename (with a 
-`-dark` suffix for the dark theme SVG).
+Exports the panel as an SVG for use as a plugin resource file, using the module name as the suggested
+filename (with a `-dark` suffix for the dark theme SVG).
 
 _Command options:_
 ```

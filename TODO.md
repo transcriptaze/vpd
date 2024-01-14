@@ -43,6 +43,7 @@
 
 ### Fonts 
 - [x] fetch preloaded fonts on startup
+- [ ] lazy fetch
 - [x] _woff_
 - [ ] _woff2_
 - [ ] Load/drop font file
@@ -63,8 +64,8 @@
       - [ ] `save script`
       - [ ] `save script timestamp`
       - [ ] replace spaces with underscores
-      - [ ] help
-      - [ ] user guide
+      - [x] help
+      - [x] user guide
 
 - [x] _export_
       - [x] `export panel svg [light|dark]`

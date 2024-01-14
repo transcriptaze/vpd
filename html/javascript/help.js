@@ -94,6 +94,16 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['save', 'project', 'timestamp'],
+    help: ['save', 'project'],
+    min: 1
+  },
+  {
+    command: ['save', 'project', 'timestamp'],
+    help: ['save', 'project', 'timestamp'],
+    min: 1
+  },
+  {
     command: ['export', 'panel', 'svg'],
     help: ['export', 'panel', 'svg'],
     min: 1

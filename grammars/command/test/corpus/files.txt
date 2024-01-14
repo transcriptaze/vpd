@@ -18,6 +18,17 @@ save project
     (project)))
 
 
+======================
+save project timestamp
+======================
+save project timestamp
+---
+(command
+  (save
+    (project
+      (timestamp))))
+
+
 ===========
 load script
 ===========
