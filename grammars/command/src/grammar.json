@@ -20,11 +20,15 @@
           },
           {
             "type": "SYMBOL",
-            "name": "export"
+            "name": "load"
           },
           {
             "type": "SYMBOL",
-            "name": "load"
+            "name": "save"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "export"
           }
         ]
       }
@@ -65,6 +69,74 @@
               "name": "background"
             }
           ]
+        }
+      ]
+    },
+    "load": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "load"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "project"
+              },
+              "named": true,
+              "value": "project"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "script"
+              },
+              "named": true,
+              "value": "script"
+            }
+          ]
+        }
+      ]
+    },
+    "save": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "save"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "project"
+              },
+              "named": true,
+              "value": "project"
+            }
+          ]
+        }
+      ]
+    },
+    "export": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "panel"
         }
       ]
     },
@@ -745,37 +817,6 @@
     "rgba": {
       "type": "PATTERN",
       "value": "#[a-fA-F0-9]{8}"
-    },
-    "load": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "load"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "script"
-          },
-          "named": true,
-          "value": "script"
-        }
-      ]
-    },
-    "export": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "export"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "panel"
-        }
-      ]
     },
     "panel": {
       "type": "SEQ",

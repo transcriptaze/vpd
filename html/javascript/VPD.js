@@ -176,6 +176,8 @@ export function onExport (event, theme) {
 }
 
 function execute (v) {
+  onError(null)
+
   try {
     const cmd = command.parse(v)
 
@@ -190,7 +192,24 @@ function execute (v) {
       }
     }
   } catch (err) {
+    onError(err)
     console.error(err)
+  }
+}
+
+export function onError (err) {
+  const div = document.querySelector('div#message')
+  const span = div.querySelector('div')
+
+  if (err == null) {
+    span.innerHTML = ''
+    div.classList.remove('visible')
+  } else if (err instanceof Error) {
+    span.innerHTML = `${err.message}`
+    div.classList.add('visible')
+  } else {
+    span.innerHTML = `${err}`
+    div.classList.add('visible')
   }
 }
 

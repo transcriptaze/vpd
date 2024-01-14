@@ -20,6 +20,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "save"
+          },
+          {
+            "type": "SYMBOL",
             "name": "export"
           }
         ]
@@ -36,8 +40,21 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "_entity"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "module"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "guide"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "label"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -87,13 +104,58 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "STRING",
-                "value": "script"
-              },
-              "named": true,
-              "value": "script"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "project"
+                  },
+                  "named": true,
+                  "value": "project"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "script"
+                  },
+                  "named": true,
+                  "value": "script"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "save": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "save"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "project"
+                  },
+                  "named": true,
+                  "value": "project"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -120,23 +182,6 @@
               "type": "BLANK"
             }
           ]
-        }
-      ]
-    },
-    "_entity": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "module"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "guide"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "label"
         }
       ]
     },

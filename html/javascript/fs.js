@@ -32,7 +32,7 @@ async function saveWithPicker (filename, blob) {
       suggestedName: filename,
       types: [
         {
-          description: 'VCV module SVG',
+          description: 'VCV panel SVG',
           accept: { 'image/svg+xml': ['.svg'] }
         }
       ]

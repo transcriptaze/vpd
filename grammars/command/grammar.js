@@ -7,8 +7,9 @@ module.exports = grammar({
         $.comment,
         $.new,
         $.set,
-        $.export,
         $.load,
+        $.save,
+        $.export,
       ),
     ),
 
@@ -21,7 +22,6 @@ module.exports = grammar({
       $._entity,
     ),
 
-    // ... set
     set: $ => seq(
       'set',
       choice (
@@ -30,6 +30,27 @@ module.exports = grammar({
       )
     ),
 
+    load: $ => seq (
+      'load',
+      choice (
+        alias('project',$.project),
+        alias('script',$.script),
+      ),
+    ),
+
+    save: $ => seq (
+      'save',
+      choice (
+        alias('project',$.project),
+      ),
+    ),
+
+    export: $ => seq (
+      'export',
+      $.panel
+    ),
+
+    // ... new
     _entity: $ => choice(
       $.module,
       $.input,
@@ -196,16 +217,6 @@ module.exports = grammar({
     rgba: $ => /#[a-fA-F0-9]{8}/,
 
     // ... files
-    load: $ => seq (
-      'load',
-      alias('script',$.script),
-    ),
-
-    export: $ => seq (
-      'export',
-      $.panel
-    ),
-
     panel: $ => seq(
       'panel',
       $.svg,

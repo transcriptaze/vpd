@@ -1,6 +1,7 @@
 import * as _new from './commands/new.js'
 import * as _set from './commands/set.js'
 import * as _load from './commands/load.js'
+import * as _save from './commands/save.js'
 import * as _export from './commands/export.js'
 let parser
 
@@ -12,12 +13,16 @@ export async function init (Parser) {
 }
 
 export function parse (cmd) {
-  const src = `${cmd}`
-  const tree = parser.parse(src)
-  const root = tree.rootNode
+  try {
+    const src = `${cmd}`
+    const tree = parser.parse(src)
+    const root = tree.rootNode
 
-  if (root.childCount > 0) {
-    return parseNode(root.children[0])
+    if (root.childCount > 0) {
+      return parseNode(root.children[0])
+    }
+  } catch (err) {
+    console.error(err)
   }
 
   throw new Error('invalid command')
@@ -54,6 +59,9 @@ export function parseNode (node) {
     case 'load':
       return _load.parse(node)
 
+    case 'save':
+      return _save.parse(node)
+
     case 'export':
       return _export.parse(node)
 
@@ -65,40 +73,3 @@ export function parseNode (node) {
       throw new Error(`unknown command ${node.type}`)
   }
 }
-
-// function _new (node) {
-//   if (node.namedChildCount > 0) {
-//     const entity = node.namedChildren[0]
-
-//     switch (entity.type) {
-//       case 'module':
-//         return commands.newModule(entity)
-
-//       case 'input':
-//         return commands.newInput(entity)
-
-//       case 'output':
-//         return commands.newOutput(entity)
-
-//       case 'parameter':
-//         return commands.newParameter(entity)
-
-//       case 'light':
-//         return commands.newLight(entity)
-
-//       case 'widget':
-//         return commands.newWidget(entity)
-
-//       case 'label':
-//         return commands.newLabel(entity)
-
-//       case 'guide':
-//         return commands.newGuide(entity)
-
-//       default:
-//         throw new Error(`unknown 'new' entity <<${entity.type}>>`)
-//     }
-//   }
-
-//   throw new Error("invalid 'new' command")
-// }

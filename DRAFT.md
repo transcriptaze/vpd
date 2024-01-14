@@ -1,94 +1,4 @@
-# User Guide
-
-### Contents
-
-- [Getting started](#getting-started)
-- [Projects](#projects)
-- [Fonts](#fonts)
-- [Guidelines](#guidelines)
-- [Macro keys](#macro-keys)
-- [Commands](#commands)
-  - [Modules](#modules)
-  - [Inputs](#inputs)
-  - [Outputs](#outputs)
-  - [Parameters](#parameters)
-  - [Lights](#lights)
-  - [Labels](#labels)
-  - [Backgrounds](#backgrounds)
-
-## Getting started
-
-1. Create a new module that is 50.8mm (10 units) wide
-   ```
-   new module "bodacious" 1U 10H
-   ```
-
-2. Create vertical guidelines to locate inputs, outputs and parameters:
-   ```
-   new guide vertical @10.16mm
-   ```
-   ```
-   new guide v1+10.16mm
-   ```
-   ```
-   new guide v2+10.16mm
-   ```
-   ```
-   new guide v3+10.16mm
-   ```
-
-3. Add a horizontal guideline to locate inputs, outputs and parameters:
-   ```
-   new guide horizontal top+20.32mm
-   ```
-   ```
-   new guide h1+2H
-   ```
-   ```
-   new guide bottom-15.24mm
-   ```
-
-4. Set the background:
-   ```
-   set background "foundation"
-   ```
-
-5. Create the inputs:
-   ```
-   new input "e" v1,h1 PJ301M
-   ```
-   ```
-   new input "v" v1,h2 PJ301M
-   ```
-
-6. Create the outputs:
-   ```
-   new output "P" v3,h3-10.16mm PJ301M
-   ```
-   ```
-   new output "Q" v3,h3         PJ301M
-   ```
-
-7. Create the parameters:
-   ```
-   new parameter "E" v2,h1 RoundBlackKnob
-   ```
-   ```
-   new parameter "V" v2,h2 RoundBlackKnob
-   ```
-
-8. Create the lights:
-   ```
-   new light "ok" v2,h1 GreenLED
-   ```
-   ```
-   new light "recording" v2,h2 RedLED
-   ```
-
-9. Add a title:
-   ```
-   new label "Thing 1" centre,top+10.16mm "StyleScript-Regular" 16pt
-   ```
+...
 
 10. Label the parameters, inputs and light:
    ```
@@ -106,27 +16,16 @@
     decorate parameter "V" graduations 7.5mm
     ```
 
-12. Export the project files:
+12. Save the project files:
     ```
-    export project
-    ```
-    ```
-    export script
-    ```
-
-13. Export the SVG file:
-    ```
-    export panel svg
+    save project
     ```
     ```
-    export panel svg dark
+    save script
     ```
 
 ## User interface
 
-- load project/script
-- save project/script
-- export light/dark SVG
 - undo/redo
 - macro keys
 - command area
@@ -284,47 +183,3 @@ new guide vertical v1+H
 new guide horizontal middle
 new guide H0+7.62mm
 ```   
-
-### Inputs
-
-`new input "name" <location> [symbol]`
-
-Adds an _input_ circle to the component layer of the SVG file.
-
-1. The location can be:
-   - _absolute_ e.g. `new input "e" @4.5mm,4.5mm`
-   - _relative to the geometry_ e.g. `new input "e" centre,top+4.5mm`
-   - _relative to the guidelines_ e.g. `new input "e" v1,h2-4.5mm`
-
-2. The optional _symbol_ set the physical symbol displayed on the overlay. Defaults to a red dot if none. The currently included
-   symbols are:
-   - _PJ301M_
-
-_Examples_
-```
-new input "e" @10mm,10mm
-new input "e" @10mm,10mm PJ301M
-new input "e" left+10.16mm,middle
-new input "e" v1+10.16mm,v2  PJ301M
-```
-
-### Outputs
-
-### Parameters
-
-`new parameter "name" <location>`
-
-1. `parameter` can be abbreviated to `param`
-2. The location can be:
-   - _absolute_ e.g. `new parameter "E" @4.5mm,4.5mm`
-
-_Examples_
-```
-new parameter "E" @10mm,10mm
-new param "E" @10mm,10mm
-```
-
-### Lights
-
-### Label s  
-

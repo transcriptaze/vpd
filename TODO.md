@@ -1,23 +1,23 @@
 # TODO
 
-- [x] Initialise _help_ on page load
-- [x] svg: convert objects to mm
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
+      - [ ] Remove hover text
 
 - [x] github 'cloudflare' build
       - [x] Fix wasm .gitignore, LICENSE etc
+      - [ ] cloudflare branch
 
 - [x] Load project file
       - [ ] web component
-      - [x] https://thenounproject.com/search/icons/?q=open
 
 - [ ] Save project/script file
       - [x] set filename
       - [x] ctrl-click to save as timestamped
       - [ ] alt-click to save script
+      - [ ] ctrl-alt-click to save script as timestamped
 
-- [ ] **Show errors**
+- [x] Show errors
 
 - [x] _info_ panel
 - [ ] _command_ web component
@@ -38,8 +38,6 @@
       - [x] dark theme
       - [ ] create in SVG for panel width
       - [ ] 'show/hide panel screws'
-- [x] Use placeholder for unknown parts
-- [x] Themed PJ301M
 - [ ] Only add used widgets to defs
 
 

@@ -13,14 +13,17 @@
     <header>
       <vpd-logo id="logo"></vpd-logo>
     </header>
-  
+
+    <div id="message">
+      <div>-- message --</div>
+      <button onclick="onError(event)">
+        <img src="./images/x.svg" />
+      </button>
+    </div>
+
     <main>
       <a id="save" href="" style="display:none" download></a>
       <input id="picker" type="file" accept="application/json, .vpd" style="display:none;" />
-
-      <div id="message">
-        <div>-- message --</div><img src="./images/x.svg" />
-      </div>
 
       <div id="left">
         <div id="info">
@@ -71,6 +74,7 @@
       </div>
       <div id="drop">
         <vpd-drop></vpd-drop>
+      </div>
     </main>
   
     <footer>
@@ -132,6 +136,10 @@
     }
 
     window.onExport = VPD.onExport
+
+    window.onError = (event) => {
+      VPD.onError(null)
+    }
 
     document.querySelector('vpd-drop')
             .addEventListener('dropped', (e) => {

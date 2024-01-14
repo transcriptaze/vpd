@@ -7,15 +7,25 @@ module.exports = grammar({
         $.new,
         $.set,
         $.load,
+        $.save,
         $.export,
       ),
     ),
 
+    // ... new
     new: $ => seq(
       'new',
-      optional($._entity),
+      optional(
+        choice(
+          $.module,
+          $.guide,
+          $.label,
+        ),
+      ),
     ),
 
+
+    // ... set
     set: $ => seq(
       'set',
       optional (
@@ -26,26 +36,34 @@ module.exports = grammar({
       )
     ),
 
+    // ... load
     load: $ => seq(
       'load',
       optional(
-        alias('script', $.script),
+        choice (
+          alias('project', $.project),
+          alias('script', $.script),
+        ),
       ),
     ),
 
+    // ... save
+    save: $ => seq(
+      'save',
+      optional(
+        choice (
+          alias('project', $.project),
+        ),
+      ),
+    ),
+
+    // ... export
     export: $ => seq(
       'export',
       optional(
         $.panel,
       ),
     ),
-
-    _entity: $ => choice(
-      $.module,
-      $.guide,
-      $.label,
-    ),
-
     panel: $ => seq(
       'panel',
       optional($.svg),
