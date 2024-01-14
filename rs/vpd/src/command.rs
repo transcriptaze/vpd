@@ -10,7 +10,7 @@ use crate::commands::NewGuide;
 use crate::commands::NewInput;
 use crate::commands::NewLabel;
 use crate::commands::NewLight;
-use crate::commands::NewModuleCommand;
+use crate::commands::NewModule;
 use crate::commands::NewOutput;
 use crate::commands::NewParameter;
 use crate::commands::NewWidgetCommand;
@@ -51,7 +51,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" && v.module.is_some() {
-        Ok(Box::new(NewModuleCommand::new(json)?))
+        Ok(Box::new(NewModule::new(json)?))
     } else if v.action == "new" && v.input.is_some() {
         Ok(Box::new(NewInput::new(json)?))
     } else if v.action == "new" && v.output.is_some() {

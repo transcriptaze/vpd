@@ -19,7 +19,7 @@ pub use new_guide::NewGuide;
 pub use new_input::NewInput;
 pub use new_label::NewLabel;
 pub use new_light::NewLight;
-pub use new_module::NewModuleCommand;
+pub use new_module::NewModule;
 pub use new_output::NewOutput;
 pub use new_parameter::NewParameter;
 pub use new_widget::NewWidgetCommand;

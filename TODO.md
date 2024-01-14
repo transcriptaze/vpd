@@ -51,9 +51,6 @@
 
 ### Commands
 - [x] _load_
-      - [x] `load script`
-      - [x] `load project`
-
 - [ ] _save_
       - [x] `save project`
       - [x] `save project timestamp`
@@ -65,10 +62,6 @@
       - [x] user guide
 
 - [x] _export_
-      - [x] `export panel svg [light|dark]`
-      - [x] replace spaces with underscores
-      - [x] user guide
-      - [x] help
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
