@@ -50,20 +50,17 @@
 - [ ] `load font...`
 
 ### Commands
-- [ ] _load_
+- [x] _load_
       - [x] `load script`
       - [x] `load project`
-            - [x] Don't return JSON from exec
-            - [x] User guide
-            - [x] help
 
 - [ ] _save_
-      - [ ] `save project`
-      - [ ] `save project timestamp`
+      - [x] `save project`
+      - [x] `save project timestamp`
       - [ ] `save project gzip`
       - [ ] `save script`
       - [ ] `save script timestamp`
-      - [ ] replace spaces with underscores
+      - [ ] commonalise save code
       - [x] help
       - [x] user guide
 

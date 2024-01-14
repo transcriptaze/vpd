@@ -6,7 +6,7 @@ use crate::module::Module;
 
 #[derive(Deserialize)]
 pub struct SaveProject {
-    timestamp: Option<bool>
+    timestamp: Option<bool>,
 }
 
 #[derive(Deserialize)]
@@ -27,10 +27,10 @@ impl Command for SaveProject {
         match self.timestamp {
             Some(v) => {
                 m.save_project(v);
-            },
+            }
             _ => {
                 m.save_project(false);
-            },
+            }
         }
 
         false

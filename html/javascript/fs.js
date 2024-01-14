@@ -19,25 +19,11 @@ export function load (filetype, file) {
   }
 }
 
-export function save (filename, svg) {
-  const blob = new Blob([svg], { type: 'image/svg+xml' })
-
-  const match = `${filename}`.match(/(.*?)(\.svg)/)
-  if (match.length > 2) {
-    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.svg`
-  }
-
-  if (window.showSaveFilePicker) {
-    saveWithPicker(filename, blob)
-  } else {
-    const url = URL.createObjectURL(blob)
-    const anchor = document.querySelector('a#save')
-
-    anchor.href = url
-    anchor.download = filename
-    anchor.click()
-
-    URL.revokeObjectURL(url)
+export function save (filetype, filename, blob) {
+  if (filetype === 'vpd') {
+    saveVPD(filename, blob)
+  } else if (filetype === 'svg') {
+    saveSVG(filename, blob)
   }
 }
 
@@ -164,18 +150,67 @@ async function loadVPX (file) {
     })
 }
 
-async function saveWithPicker (filename, blob) {
-  try {
+function saveVPD (filename, json) {
+  const blob = new Blob([json], { type: 'application/json' })
+
+  if (window.showSaveFilePicker) {
     const options = {
       suggestedName: filename,
       types: [
         {
-          description: 'VCV panel SVG',
+          description: 'VPD project',
+          accept: { 'application/json': ['.vpd'] }
+        }
+      ]
+    }
+
+    saveWithPicker(blob, options)
+  } else {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.querySelector('a#save')
+
+    anchor.href = url
+    anchor.download = filename
+    anchor.click()
+
+    URL.revokeObjectURL(url)
+  }
+}
+
+function saveSVG (filename, svg) {
+  const blob = new Blob([svg], { type: 'image/svg+xml' })
+
+  const match = `${filename}`.match(/(.*?)(\.svg)/)
+  if (match.length > 2) {
+    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.svg`
+  }
+
+  if (window.showSaveFilePicker) {
+    const options = {
+      suggestedName: filename,
+      types: [
+        {
+          description: 'VPD panel SVG',
           accept: { 'image/svg+xml': ['.svg'] }
         }
       ]
     }
 
+    saveWithPicker(blob, options)
+  } else {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.querySelector('a#save')
+
+    anchor.href = url
+    anchor.download = filename
+    anchor.click()
+
+    URL.revokeObjectURL(url)
+  }
+}
+
+async function saveWithPicker (blob, options) {
+  try {
     const handle = await window.showSaveFilePicker(options)
     const stream = await handle.createWritable()
 
@@ -187,3 +222,15 @@ async function saveWithPicker (filename, blob) {
     }
   }
 }
+
+// function datetime() {
+//   const now = new Date()
+//   const year = `${now.getFullYear()}`.padStart(4, '0')
+//   const month = `${now.getMonth() + 1}`.padStart(2, '0')
+//   const day = `${now.getDate()}`.padStart(2, '0')
+//   const hour = `${now.getHours()}`.padStart(2, '0')
+//   const minute = `${now.getMinutes()}`.padStart(2, '0')
+//   const second = `${now.getSeconds()}`.padStart(2, '0')
+// 
+//   return `${year}-${month}-${day} ${hour}.${minute}.${second}`
+// }

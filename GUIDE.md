@@ -99,9 +99,10 @@
 ## Projects
 
 The current state of a project is saved in the browser local storage and the application will do its level best
-to resume where you last left off, but **really** you should save a project if it contains any significant work.
+to resume where you last left off, but **really** you should save a project if it contains any significant work
+or changes.
 
-A VPD project file is a just a human readable JSON file that can be loaded (or dropped on to the panel design
+A _.vpd_ project file is a just a human readable JSON file that can be loaded (or dropped on to the panel design
 area) to recreate a module.
 
 1. To load a _.vpd_ file:
@@ -111,11 +112,11 @@ area) to recreate a module.
 
      -- or --
 
-   - Drag 'n drop a _.vpd_ file on to the user interface panels.
+   - Drag 'n drop a _.vpd_ file on to the panels design area of the user interface.
 
      -- or --
 
-   - Execute the `load project` command to open a file chooser dialog.
+   - Execute the `load project` command to open a file picker.
 
 2. To save a project to a _.vpd_ file:
 
@@ -185,12 +186,13 @@ To load a _.vpx_ file:
 
 ##### Comments
 
-A command starting with a double semi-colon is a comment - this is mostly for use in scripts but it's occasionally useful
-when assigning a command to a macro key. e.g:
-
+A command starting with a double semi-colon is a comment, e,.g,
 ```
 ;; new module bodacious 1U 5H
 ```
+
+This is mostly for use in scripts but it's occasionally useful when assigning a command to a macro key.
+
 
 ##### Location formats
 
@@ -213,7 +215,7 @@ parts comprises:
 - `RoundBlackKnob`
 - `PJ301M`
 
-An _unknown_ part will be displayed as an anonymous grey circle devoid of personality or future.
+An _unknown_ part will be displayed as an anonymous grey circle devoid of personality, joy or future.
 
 #### `new module`
 
@@ -359,8 +361,8 @@ load project
 
 ```save project [timestamp]```
 
-Saves the current project to a `.vpd` project file, using the module name as the suggested filename. On Chrome it 
-opens a file chooser to save the file - on Firefox and most other browsers the file is downloaded automatically.
+Saves the current project to a `.vpd` project file, using the module name as the suggested filename. On _Chrome_ it 
+opens a file chooser to save the file - on _Firefox_ and most other browsers the file is downloaded automatically.
 
 _Command options:_
 ```
@@ -368,7 +370,6 @@ timestamp  (optional) the suggested file name is suffixed with the current date 
 ```
 
 _Notes:_
-1. Non-alphanumeric characters in the module name are replaced with underscores.
 
 
 _Example:_

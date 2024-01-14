@@ -1,3 +1,4 @@
+use chrono::Local;
 use regex::Regex;
 
 use super::panel::Panel;
@@ -15,7 +16,7 @@ use svg::PrettyPrinter;
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {
     fn load(filetype: &str);
-    fn save(text: &str, blob: &str);
+    fn save(filetype: &str, filename: &str, blob: &str);
 }
 
 #[derive(Serialize, Deserialize)]
@@ -56,7 +57,20 @@ impl Module {
         load("vpd");
     }
 
-    pub fn save_project(&self, _timestamp: bool) {
+    pub fn save_project(&self, timestamp: bool) {
+        let filename = match timestamp {
+            true => {
+                let now = Local::now();
+                let timestamp = now.format("%Y-%m-%d %H.%M.%S");
+                format!("{} {}.vpd", self.name, &timestamp)
+            }
+
+            _ => format!("{}.vpd", self.name),
+        };
+
+        let blob = serde_json::to_string_pretty(self).unwrap();
+
+        save("vpd", &filename, &blob);
     }
 
     pub fn load_script(&self) {
@@ -74,7 +88,7 @@ impl Module {
                     _ => format!("{}.svg", self.name),
                 };
 
-                save(&filename, &blob);
+                save("svg", &filename, &blob);
             }
             Err(e) => warnf!("error generating SVG '{:?}'", e),
         }

@@ -5,7 +5,6 @@ use super::serde::{Deserialize, Serialize};
 
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
-use crate::commands::SaveProject;
 use crate::commands::LoadScript;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
@@ -15,6 +14,7 @@ use crate::commands::NewModuleCommand;
 use crate::commands::NewOutput;
 use crate::commands::NewParameter;
 use crate::commands::NewWidgetCommand;
+use crate::commands::SaveProject;
 use crate::commands::SetBackgroundCommand;
 use crate::commands::SetOriginCommand;
 
