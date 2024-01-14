@@ -4,6 +4,7 @@ use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
 use crate::commands::ExportSVG;
+use crate::commands::LoadProject;
 use crate::commands::LoadScript;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
@@ -11,7 +12,7 @@ use crate::commands::NewLabel;
 use crate::commands::NewLight;
 use crate::commands::NewModuleCommand;
 use crate::commands::NewOutput;
-use crate::commands::NewParameterCommand;
+use crate::commands::NewParameter;
 use crate::commands::NewWidgetCommand;
 use crate::commands::SetBackgroundCommand;
 use crate::commands::SetOriginCommand;
@@ -34,6 +35,7 @@ struct Action {
     guide: Option<Entity>,
     origin: Option<Attr>,
 
+    project: Option<Entity>,
     script: Option<Entity>,
     svg: Option<Entity>,
 }
@@ -54,7 +56,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     } else if v.action == "new" && v.output.is_some() {
         Ok(Box::new(NewOutput::new(json)?))
     } else if v.action == "new" && v.parameter.is_some() {
-        Ok(Box::new(NewParameterCommand::new(json)?))
+        Ok(Box::new(NewParameter::new(json)?))
     } else if v.action == "new" && v.light.is_some() {
         Ok(Box::new(NewLight::new(json)?))
     } else if v.action == "new" && v.widget.is_some() {
@@ -67,6 +69,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(SetOriginCommand::new(json)?))
     } else if v.action == "set" && v.background.is_some() {
         Ok(Box::new(SetBackgroundCommand::new(json)?))
+    } else if v.action == "load" && v.project.is_some() {
+        Ok(Box::new(LoadProject::new(json)?))
     } else if v.action == "load" && v.script.is_some() {
         Ok(Box::new(LoadScript::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {

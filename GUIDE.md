@@ -10,6 +10,7 @@
    - [`new input`](#new-input)
    - [`new label`](#new-label)
    - [`set background`](#set-background)
+   - [`load project`](#load-project)
    - [`load script`](#load-script)
    - [`export panel`](#export-panel)
 
@@ -306,6 +307,19 @@ set background #ff00ff40,#00ff0080
 set background foundation
 ````
 
+
+#### `load project`
+
+```load project```
+
+Opens a file chooser to load a `.vpd` project file.
+
+_Example:_
+```
+load project
+````
+
+
 #### `load script`
 
 ```load script```
@@ -316,6 +330,7 @@ _Example:_
 ```
 load script
 ````
+
 
 #### `export panel`
 

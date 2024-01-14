@@ -51,10 +51,10 @@
 ### Commands
 - [ ] _load_
       - [x] `load script`
-      - [ ] `load project`
-            - [ ] Don't return JSON from exec
-            - [ ] User guide
-            - [ ] help
+      - [x] `load project`
+            - [x] Don't return JSON from exec
+            - [x] User guide
+            - [x] help
 
 - [ ] _save_
       - [ ] `save project`

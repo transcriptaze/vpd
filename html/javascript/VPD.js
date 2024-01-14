@@ -1,8 +1,9 @@
 import * as help from './help.js'
 import * as text from './text.js'
 import * as command from './command.js'
+import * as fs from './fs.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
-import { exec, restore, render, serialize } from '../wasm/vpd/vpd.js'
+import { exec, render, serialize } from '../wasm/vpd/vpd.js'
 
 export async function initialise (parser) {
   await command.init(parser)
@@ -71,76 +72,16 @@ export async function initialise (parser) {
 }
 
 export function onLoad (type) {
-  if (window.showOpenFilePicker) {
-    const options = {
-      id: 'vpd',
-      multiple: false,
-      types: []
-    }
-
-    if (type === 'vpd') {
-      options.types.push(
-        {
-          description: 'VPD project file',
-          accept: {
-            'application/json': ['.vpd']
-          }
-        })
-    }
-
-    if (type === 'vpx') {
-      options.types.push(
-        {
-          description: 'VPD script file',
-          accept: {
-            'text/plain': ['.vpx']
-          }
-        })
-    }
-
-    window.showOpenFilePicker(options)
-      .then((files) => {
-        return files.length > 0 ? files[0].getFile() : null
-      })
-      .then((file) => {
-        if (file != null) {
-          load(file, type)
-        }
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  } else {
-    const file = document.getElementById('picker')
-
-    if (type === 'vpd') {
-      file.accept = 'application/json, .vpd'
-    }
-
-    if (type === 'vpx') {
-      file.accept = 'text/plain, .vpx'
-    }
-
-    file.onchange = async (e) => {
-      const files = e.target.files
-
-      if (files.length > 0) {
-        load(files.item(0), type)
-      }
-    }
-
-    file.value = null
-    file.click()
-  }
+  fs.load(type)
 }
 
 export function onDropped (file) {
   if (file.type === 'application/json' || file.name.endsWith('.vpd')) {
-    load(file, 'vpd')
+    fs.load('vpd', file)
   }
 
   if (file.type === 'text/plain' || file.name.endsWith('.vpx')) {
-    load(file, 'vpx')
+    fs.load('vpx', file)
   }
 }
 
@@ -213,7 +154,8 @@ export function onError (err) {
   }
 }
 
-function redraw () {
+// FIXME interimly exported for refactoring file load stuff
+export function redraw () {
   if (redraw.buffer == null) {
     redraw.buffer = 0
   }
@@ -250,39 +192,6 @@ async function save (blob, filename) {
     anchor.click()
 
     URL.revokeObjectURL(url)
-  }
-}
-
-async function load (file, type) {
-  if (type === 'vpd') {
-    file.text()
-      .then((b) => JSON.parse(b))
-      .then((object) => {
-        const serialized = JSON.stringify(object)
-        restore(serialized)
-        store(PROJECT, serialized)
-        redraw()
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }
-
-  if (type === 'vpx') {
-    file.text()
-      .then((text) => command.parseVPX(text))
-      .then((script) => {
-        for (const cmd of script) {
-          const serialized = exec(JSON.stringify(cmd))
-          store(PROJECT, serialized)
-        }
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-      .finally(() => {
-        redraw()
-      })
   }
 }
 

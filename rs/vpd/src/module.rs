@@ -52,6 +52,10 @@ impl Module {
         }
     }
 
+    pub fn load_project(&self) {
+        load("vpd");
+    }
+
     pub fn load_script(&self) {
         load("vpx");
     }
