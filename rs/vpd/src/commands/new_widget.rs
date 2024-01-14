@@ -7,7 +7,7 @@ use crate::module::Module;
 use crate::panel;
 
 #[derive(Deserialize)]
-pub struct NewWidgetCommand {
+pub struct NewWidget {
     name: String,
     x: panel::X,
     y: panel::Y,
@@ -17,18 +17,18 @@ pub struct NewWidgetCommand {
 #[derive(Deserialize)]
 struct Object {
     #[serde(rename = "widget")]
-    widget: NewWidgetCommand,
+    widget: NewWidget,
 }
 
-impl NewWidgetCommand {
-    pub fn new(json: &str) -> Result<NewWidgetCommand, Box<dyn Error>> {
+impl NewWidget {
+    pub fn new(json: &str) -> Result<NewWidget, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(o.widget)
     }
 }
 
-impl Command for NewWidgetCommand {
+impl Command for NewWidget {
     fn apply(&self, m: &mut Module) -> bool {
         let id = m.new_widget_id();
 

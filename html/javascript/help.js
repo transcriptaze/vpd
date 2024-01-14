@@ -94,13 +94,28 @@ const COMMANDS = [
     min: 1
   },
   {
-    command: ['save', 'project', 'timestamp'],
+    command: ['save', 'project'],
     help: ['save', 'project'],
     min: 1
   },
   {
     command: ['save', 'project', 'timestamp'],
     help: ['save', 'project', 'timestamp'],
+    min: 1
+  },
+  {
+    command: ['save', 'project', 'gzip'],
+    help: ['save', 'project', 'gzip'],
+    min: 1
+  },
+  {
+    command: ['save', 'project', 'timestamp', 'gzip'],
+    help: ['save', 'project', 'timestamp,gzip'],
+    min: 1
+  },
+  {
+    command: ['save', 'project', 'gzip', 'timestamp'],
+    help: ['save', 'project', 'timestamp,gzip'],
     min: 1
   },
   {

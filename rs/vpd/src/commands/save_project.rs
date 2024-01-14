@@ -7,6 +7,7 @@ use crate::module::Module;
 #[derive(Deserialize)]
 pub struct SaveProject {
     timestamp: Option<bool>,
+    gzip: Option<bool>,
 }
 
 #[derive(Deserialize)]
@@ -24,14 +25,17 @@ impl SaveProject {
 
 impl Command for SaveProject {
     fn apply(&self, m: &mut Module) -> bool {
-        match self.timestamp {
-            Some(v) => {
-                m.save_project(v);
-            }
-            _ => {
-                m.save_project(false);
-            }
-        }
+        let timestamp = match self.timestamp {
+            Some(v) => v,
+            _ => false,
+        };
+
+        let gzip = match self.gzip {
+            Some(v) => v,
+            _ => false,
+        };
+
+        m.save_project(timestamp, gzip);
 
         false
     }

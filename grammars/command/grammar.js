@@ -52,7 +52,18 @@ module.exports = grammar({
 
     project: $ => seq(
       'project',
-      optional (alias('timestamp', $.timestamp)),
+      optional (
+        choice(
+          seq(
+            alias('timestamp', $.timestamp),
+            optional ( seq (',', alias('gzip', $.gzip))),
+          ),
+          seq(
+            alias('gzip', $.gzip),
+            optional ( seq (',', alias('timestamp', $.timestamp))),
+          ),
+        ),
+      ),
     ),
 
     // ... new

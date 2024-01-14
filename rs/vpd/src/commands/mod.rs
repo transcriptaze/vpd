@@ -22,7 +22,7 @@ pub use new_light::NewLight;
 pub use new_module::NewModule;
 pub use new_output::NewOutput;
 pub use new_parameter::NewParameter;
-pub use new_widget::NewWidgetCommand;
+pub use new_widget::NewWidget;
 
 pub use set_background::SetBackgroundCommand;
 pub use set_origin::SetOriginCommand;

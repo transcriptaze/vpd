@@ -542,9 +542,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "gzip",
+          "named": true
+        },
         {
           "type": "timestamp",
           "named": true
@@ -777,6 +781,10 @@
   {
     "type": "guide",
     "named": false
+  },
+  {
+    "type": "gzip",
+    "named": true
   },
   {
     "type": "height",

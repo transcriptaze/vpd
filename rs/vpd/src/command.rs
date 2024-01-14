@@ -13,7 +13,7 @@ use crate::commands::NewLight;
 use crate::commands::NewModule;
 use crate::commands::NewOutput;
 use crate::commands::NewParameter;
-use crate::commands::NewWidgetCommand;
+use crate::commands::NewWidget;
 use crate::commands::SaveProject;
 use crate::commands::SetBackgroundCommand;
 use crate::commands::SetOriginCommand;
@@ -61,7 +61,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     } else if v.action == "new" && v.light.is_some() {
         Ok(Box::new(NewLight::new(json)?))
     } else if v.action == "new" && v.widget.is_some() {
-        Ok(Box::new(NewWidgetCommand::new(json)?))
+        Ok(Box::new(NewWidget::new(json)?))
     } else if v.action == "new" && v.label.is_some() {
         Ok(Box::new(NewLabel::new(json)?))
     } else if v.action == "new" && v.guide.is_some() {

@@ -1,4 +1,8 @@
+use std::io::Write;
+
 use chrono::Local;
+use flate2::write::GzEncoder;
+use flate2::Compression;
 use regex::Regex;
 
 use super::panel::Panel;
@@ -16,7 +20,7 @@ use svg::PrettyPrinter;
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {
     fn load(filetype: &str);
-    fn save(filetype: &str, filename: &str, blob: &str);
+    fn save(filetype: &str, filename: &str, blob: &[u8]);
 }
 
 #[derive(Serialize, Deserialize)]
@@ -57,20 +61,36 @@ impl Module {
         load("vpd");
     }
 
-    pub fn save_project(&self, timestamp: bool) {
-        let filename = match timestamp {
-            true => {
+    pub fn save_project(&self, timestamp: bool, gzip: bool) {
+        let filename = match (timestamp, gzip) {
+            (true, true) => {
+                let now = Local::now();
+                let timestamp = now.format("%Y-%m-%d %H.%M.%S");
+                format!("{} {}.vpz", self.name, &timestamp)
+            }
+
+            (true, false) => {
                 let now = Local::now();
                 let timestamp = now.format("%Y-%m-%d %H.%M.%S");
                 format!("{} {}.vpd", self.name, &timestamp)
             }
 
-            _ => format!("{}.vpd", self.name),
+            (_, true) => format!("{}.vpz", self.name),
+            (_, _) => format!("{}.vpd", self.name),
         };
 
         let blob = serde_json::to_string_pretty(self).unwrap();
 
-        save("vpd", &filename, &blob);
+        match gzip {
+            true => {
+                let mut e = GzEncoder::new(Vec::new(), Compression::default());
+                e.write_all(blob.as_bytes()).unwrap();
+                let bytes = e.finish().unwrap();
+                save("vpz", &filename, &bytes);
+            }
+
+            _ => save("vpd", &filename, blob.as_bytes()),
+        }
     }
 
     pub fn load_script(&self) {
@@ -88,7 +108,7 @@ impl Module {
                     _ => format!("{}.svg", self.name),
                 };
 
-                save("svg", &filename, &blob);
+                save("svg", &filename, blob.as_bytes());
             }
             Err(e) => warnf!("error generating SVG '{:?}'", e),
         }

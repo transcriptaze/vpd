@@ -29,6 +29,41 @@ save project timestamp
       (timestamp))))
 
 
+=================
+save project gzip
+=================
+save project gzip
+---
+(command
+  (save
+    (project
+      (gzip))))
+
+
+===========================
+save project timestamp,gzip
+===========================
+save project timestamp,gzip
+---
+(command
+  (save
+    (project
+      (timestamp)
+      (gzip))))
+
+
+===========================
+save project gzip,timestamp
+===========================
+save project gzip,timestamp
+---
+(command
+  (save
+    (project
+      (gzip)
+      (timestamp))))
+
+
 ===========
 load script
 ===========

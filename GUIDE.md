@@ -367,15 +367,19 @@ opens a file chooser to save the file - on _Firefox_ and most other browsers the
 _Command options:_
 ```
 timestamp  (optional) the suggested file name is suffixed with the current date and time
+gzip       (optional) compresses the project with gzip
 ```
 
 _Notes:_
+1. Compressed projects have a _.vpz_ extension.
 
 
 _Example:_
 ```
 save project
 save project timestamp
+save project gzip
+save project timestamp,gzip
 ````
 
 

@@ -50,11 +50,13 @@
 - [ ] `load font...`
 
 ### Commands
-- [x] _load_
+- [] _load_
+      - [ ] load _.vpz_ file
+
 - [ ] _save_
       - [x] `save project`
       - [x] `save project timestamp`
-      - [ ] `save project gzip`
+      - [X] `save project gzip`
       - [ ] `save script`
       - [ ] `save script timestamp`
       - [ ] commonalise save code
@@ -90,6 +92,7 @@
       - [ ] help
       - [ ] `decorate`
       - [ ] hover
+            - https://stackoverflow.com/questions/41768657/display-text-over-svg-element-on-hover#41769075
       - [x] user guide
 
 - [ ] _outputs_

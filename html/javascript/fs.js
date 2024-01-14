@@ -22,6 +22,8 @@ export function load (filetype, file) {
 export function save (filetype, filename, blob) {
   if (filetype === 'vpd') {
     saveVPD(filename, blob)
+  } else if (filetype === 'vpz') {
+    saveVPZ(filename, blob)
   } else if (filetype === 'svg') {
     saveSVG(filename, blob)
   }
@@ -177,6 +179,33 @@ function saveVPD (filename, json) {
   }
 }
 
+function saveVPZ (filename, bytes) {
+  const blob = new Blob([bytes], { type: 'application/gzip' })
+
+  if (window.showSaveFilePicker) {
+    const options = {
+      suggestedName: filename,
+      types: [
+        {
+          description: 'VPD compressed project',
+          accept: { 'application/gzip': ['.vpz'] }
+        }
+      ]
+    }
+
+    saveWithPicker(blob, options)
+  } else {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.querySelector('a#save')
+
+    anchor.href = url
+    anchor.download = filename
+    anchor.click()
+
+    URL.revokeObjectURL(url)
+  }
+}
+
 function saveSVG (filename, svg) {
   const blob = new Blob([svg], { type: 'image/svg+xml' })
 
@@ -231,6 +260,6 @@ async function saveWithPicker (blob, options) {
 //   const hour = `${now.getHours()}`.padStart(2, '0')
 //   const minute = `${now.getMinutes()}`.padStart(2, '0')
 //   const second = `${now.getSeconds()}`.padStart(2, '0')
-// 
+//
 //   return `${year}-${month}-${day} ${hour}.${minute}.${second}`
 // }
