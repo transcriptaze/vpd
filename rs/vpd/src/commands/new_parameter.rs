@@ -28,12 +28,17 @@ impl NewParameter {
 }
 
 impl Command for NewParameter {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let id = m.new_parameter_id();
 
         m.panel.parameters.push(panel::Parameter::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
+
+        match line {
+            Some(v) => m.script.push(v.to_string()),
+            _ => {}
+        }
 
         true
     }

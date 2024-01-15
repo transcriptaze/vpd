@@ -26,9 +26,14 @@ impl NewModule {
 }
 
 impl Command for NewModule {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         m.name = self.name.clone().into();
         m.panel = Panel::new(self.width, self.height);
+
+        match line {
+            Some(v) => m.script.push(v.to_string()),
+            _ => {}
+        }
 
         true
     }

@@ -27,17 +27,13 @@ extern "C" {
 pub struct Module {
     pub name: Box<str>,
     pub panel: Panel,
+    pub script: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ModuleInfo {
-    #[serde(rename = "name")]
     pub name: String,
-
-    #[serde(rename = "height")]
     pub height: f32,
-
-    #[serde(rename = "width")]
     pub width: f32,
 }
 
@@ -45,6 +41,7 @@ pub fn new() -> Module {
     return Module {
         name: "unknown".into(),
         panel: Panel::new(DEFAULT_WIDTH, DEFAULT_HEIGHT),
+        script: Vec::new(),
     };
 }
 

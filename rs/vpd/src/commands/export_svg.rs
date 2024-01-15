@@ -29,7 +29,7 @@ impl ExportSVG {
 }
 
 impl Command for ExportSVG {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
         m.export_svg(&self.theme);
         false
     }

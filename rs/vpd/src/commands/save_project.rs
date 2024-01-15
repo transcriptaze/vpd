@@ -24,7 +24,7 @@ impl SaveProject {
 }
 
 impl Command for SaveProject {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
         let timestamp = match self.timestamp {
             Some(v) => v,
             _ => false,

@@ -125,7 +125,7 @@ function execute (v) {
     if (cmd != null) {
       console.log(cmd)
 
-      const serialized = exec(JSON.stringify(cmd))
+      const serialized = exec(JSON.stringify(cmd), `${v}`)
 
       if (serialized !== '') {
         store(PROJECT, serialized)

@@ -19,7 +19,7 @@ use crate::commands::SetBackgroundCommand;
 use crate::commands::SetOriginCommand;
 
 pub trait Command {
-    fn apply(&self, m: &mut Module) -> bool;
+    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
 }
 
 #[derive(Serialize, Deserialize, Debug)]

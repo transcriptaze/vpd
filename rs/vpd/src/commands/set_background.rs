@@ -26,7 +26,7 @@ impl SetBackgroundCommand {
 }
 
 impl Command for SetBackgroundCommand {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let rgb = &self.rgb;
         let rgba = &self.rgba;
 
@@ -38,6 +38,11 @@ impl Command for SetBackgroundCommand {
                 m.panel.background = Background::new_rgba(&self.background, &v[0], &v[1])
             }
             (_, _) => m.panel.background = Background::new(&self.background),
+        }
+
+        match line {
+            Some(v) => m.script.push(v.to_string()),
+            _ => {}
         }
 
         true
