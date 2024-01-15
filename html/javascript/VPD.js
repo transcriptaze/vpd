@@ -86,30 +86,30 @@ export function onDropped (file) {
 }
 
 export function onSave (type, timestamped) {
-  const json = serialize('project')
-  const blob = new Blob([json], { type: 'application/json' })
-
-  const now = new Date()
-  const year = `${now.getFullYear()}`.padStart(4, '0')
-  const month = `${now.getMonth() + 1}`.padStart(2, '0')
-  const day = `${now.getDate()}`.padStart(2, '0')
-  const hour = `${now.getHours()}`.padStart(2, '0')
-  const minute = `${now.getMinutes()}`.padStart(2, '0')
-  const second = `${now.getSeconds()}`.padStart(2, '0')
-  const timestamp = `${year}-${month}-${day} ${hour}.${minute}.${second}`
-
-  let filename = timestamped ? `VPD ${timestamp}.vpd` : 'VPD.vpd'
-
   try {
+    const json = serialize('project')
     const object = JSON.parse(json)
+
+    const now = new Date()
+    const year = `${now.getFullYear()}`.padStart(4, '0')
+    const month = `${now.getMonth() + 1}`.padStart(2, '0')
+    const day = `${now.getDate()}`.padStart(2, '0')
+    const hour = `${now.getHours()}`.padStart(2, '0')
+    const minute = `${now.getMinutes()}`.padStart(2, '0')
+    const second = `${now.getSeconds()}`.padStart(2, '0')
+    const timestamp = `${year}-${month}-${day} ${hour}.${minute}.${second}`
+
+    let filename = timestamped ? `VPD ${timestamp}.vpd` : 'VPD.vpd'
+
     if (Object.hasOwn(object, 'name')) {
       filename = timestamped ? `${object.name} ${timestamp}.vpd` : `${object.name}.vpd`
     }
+
+    fs.save('vpd', filename, json)
   } catch (err) {
     console.error(err)
+    onError(err)
   }
-
-  save(blob, filename)
 }
 
 export function onExport (event, theme) {
@@ -177,44 +177,5 @@ export function redraw () {
     object.classList.add('visible')
 
     URL.revokeObjectURL(old)
-  }
-}
-
-async function save (blob, filename) {
-  if (window.showSaveFilePicker) {
-    saveWithPicker(blob, filename)
-  } else {
-    const url = URL.createObjectURL(blob)
-    const anchor = document.querySelector('a#save')
-
-    anchor.href = url
-    anchor.download = filename
-    anchor.click()
-
-    URL.revokeObjectURL(url)
-  }
-}
-
-async function saveWithPicker (blob, filename) {
-  try {
-    const options = {
-      suggestedName: filename,
-      types: [
-        {
-          description: 'VPD project file',
-          accept: { 'application/json': ['.vpd'] }
-        }
-      ]
-    }
-
-    const handle = await window.showSaveFilePicker(options)
-    const stream = await handle.createWritable()
-
-    await stream.write(blob)
-    await stream.close()
-  } catch (err) {
-    if (err.name !== 'AbortError') {
-      console.error(err)
-    }
   }
 }
