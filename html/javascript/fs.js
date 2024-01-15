@@ -37,7 +37,7 @@ function pickVPD () {
       {
         description: 'VPD project file',
         accept: {
-          'application/json': ['.vpd']
+          'application/json': ['.vpd', '.vpz']
         }
       }
     ]
@@ -48,7 +48,9 @@ function pickVPD () {
       return files.length > 0 ? files[0].getFile() : null
     })
     .then((file) => {
-      if (file != null) {
+      if (file != null && file.name.endsWith('.vpz')) {
+        loadVPZ(file)
+      } else {
         loadVPD(file)
       }
     })
@@ -60,12 +62,14 @@ function pickVPD () {
 function chooseVPD () {
   const file = document.getElementById('picker')
 
-  file.accept = 'application/json, .vpd'
+  file.accept = 'application/json, .vpd, .vpz'
 
   file.onchange = async (e) => {
     const files = e.target.files
 
-    if (files.length > 0) {
+    if (files.length > 0 && files.item[0].name.endsWith('.vpz')) {
+      loadVPZ(files.item(0))
+    } else {
       loadVPD(files.item(0))
     }
   }
@@ -133,6 +137,44 @@ async function loadVPD (file) {
     .finally(() => {
       redraw()
     })
+}
+
+async function loadVPZ (file) {
+  const gzip = new DecompressionStream('gzip')
+  const reader = file.stream().pipeThrough(gzip).getReader()
+  const decoder = new TextDecoder('utf-8')
+  let json = ''
+
+  const f = function () {
+    reader
+      .read()
+      .then(({ done, value }) => {
+        const chunk = value != null ? value : new Uint8Array()
+
+        json = json.concat(decoder.decode(chunk, { stream: !done }))
+
+        if (done) {
+          return JSON.parse(json.concat(chunk))
+        } else {
+          f()
+        }
+      })
+      .then((object) => {
+        if (object != null) {
+          const serialized = JSON.stringify(object)
+          restore(serialized)
+          store(PROJECT, serialized)
+          redraw()
+        }
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+      .finally(() => {
+      })
+  }
+
+  f()
 }
 
 async function loadVPX (file) {

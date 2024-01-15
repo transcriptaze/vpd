@@ -50,8 +50,8 @@
 - [ ] `load font...`
 
 ### Commands
-- [] _load_
-      - [ ] load _.vpz_ file
+- [x] _load_
+      - [x] load _.vpz_ file
 
 - [ ] _save_
       - [x] `save project`
