@@ -131,19 +131,8 @@
       - [ ] user guide
 
 - [ ] _label__
-      - [x] text2path
-      - [x] `new label <text> @xy`
-      - [x] `new label <text> xy`
-      - [x] `new label <text> <geometry>`
+      - [x] generate label ID automatically
       - [ ] `new label <text> <component>`
-      - [x] font
-      - [x] fontsize
-      - [x] align left/centre/right
-      - [x] align top/middle/baseline/bottom
-      - [x] colour
-      - [x] help
-      - [x] user guide
-      - [ ] generate label ID automatically
       - [ ] delete
       - [ ] set
       - [ ] hover

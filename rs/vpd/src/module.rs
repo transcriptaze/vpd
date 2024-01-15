@@ -224,6 +224,28 @@ impl Module {
         format!("w{}", ix + 1)
     }
 
+    pub fn new_label_id(&self) -> String {
+        let re = Regex::new(r"(l)(\d+)").unwrap();
+        let mut ix: i32 = 0;
+
+        for k in &self.panel.labels {
+            match re.captures(&k.id) {
+                Some(captures) => {
+                    let v = captures.get(2).unwrap().as_str();
+                    let i = v.parse::<i32>().unwrap();
+
+                    if i > ix {
+                        ix = i;
+                    }
+                }
+
+                None => {}
+            }
+        }
+
+        format!("l{}", ix + 1)
+    }
+
     pub fn new_guide_id(&self, orientation: &str, reference: &str) -> String {
         let re = match (orientation, reference) {
             ("vertical", _) => Regex::new(r"(v)(\d+)").unwrap(),

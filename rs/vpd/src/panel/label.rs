@@ -5,6 +5,7 @@ use crate::panel::Y;
 
 #[derive(Serialize, Deserialize)]
 pub struct Label {
+    pub id: String,
     pub text: String,
     pub x: X,
     pub y: Y,
@@ -39,6 +40,7 @@ pub struct Colour {
 
 impl Label {
     pub fn new(
+        id: &str,
         text: &str,
         x: &X,
         y: &Y,
@@ -48,6 +50,7 @@ impl Label {
         colour: &Colour,
     ) -> Label {
         Label {
+            id: id.to_string(),
             text: text.to_string(),
             x: x.clone(),
             y: y.clone(),

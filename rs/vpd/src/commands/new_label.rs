@@ -71,6 +71,8 @@ impl NewLabel {
 
 impl Command for NewLabel {
     fn apply(&self, m: &mut Module) -> bool {
+        let id = m.new_label_id();
+
         let font = match &self.font {
             Some(v) => v,
             None => FONT,
@@ -100,6 +102,7 @@ impl Command for NewLabel {
         let path: Path = serde_wasm_bindgen::from_value(result).unwrap();
 
         m.panel.labels.push(panel::Label::new(
+            &id,
             &self.text,
             &self.x,
             &self.y,
