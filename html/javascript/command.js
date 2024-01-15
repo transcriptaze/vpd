@@ -38,7 +38,10 @@ export function parseVPX (vpx) {
     const v = parseNode(node)
 
     if (v != null) {
-      script.push(parseNode(node))
+      script.push({
+        command: parseNode(node),
+        line: node.text
+      })
     }
   }
 
