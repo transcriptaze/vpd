@@ -185,8 +185,7 @@ async function loadVPX (file) {
     .then((script) => {
       for (const object of script) {
         const json = JSON.stringify(object.command)
-        const line = object.line
-        const serialized = exec(json, line)
+        const serialized = exec(json)
         store(PROJECT, serialized)
       }
     })

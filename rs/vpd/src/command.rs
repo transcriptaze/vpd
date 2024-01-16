@@ -23,7 +23,7 @@ pub trait Command {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
 }
 
-struct Wrapper {
+pub struct Wrapper {
     command: Box<dyn Command>,
     src: Option<String>,
 }
@@ -54,7 +54,7 @@ struct Entity {}
 #[derive(Serialize, Deserialize, Debug)]
 struct Attr {}
 
-pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
+pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" && v.module.is_some() {
@@ -62,7 +62,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.input.is_some() {
@@ -70,7 +70,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.output.is_some() {
@@ -78,7 +78,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.parameter.is_some() {
@@ -86,7 +86,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.light.is_some() {
@@ -94,7 +94,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.widget.is_some() {
@@ -102,7 +102,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.label.is_some() {
@@ -110,7 +110,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "new" && v.guide.is_some() {
@@ -118,7 +118,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "set" && v.origin.is_some() {
@@ -126,7 +126,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "set" && v.background.is_some() {
@@ -134,7 +134,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "load" && v.project.is_some() {
@@ -142,7 +142,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "save" && v.project.is_some() {
@@ -150,7 +150,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "load" && v.script.is_some() {
@@ -158,7 +158,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "save" && v.script.is_some() {
@@ -166,7 +166,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     if v.action == "export" && v.svg.is_some() {
@@ -174,7 +174,7 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(Box::new(wrapper));
+        return Ok(wrapper);
     }
 
     return Err("unknown command".into());
@@ -187,10 +187,8 @@ impl Wrapper {
             src: src,
         }
     }
-}
 
-impl Command for Wrapper {
-    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
+    pub fn apply(&self, m: &mut Module) -> bool {
         self.command.apply(m, &self.src)
     }
 }

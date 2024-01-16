@@ -45,13 +45,13 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(json: &str, line: Option<String>) -> Result<String, JsValue> {
+pub fn exec(json: &str) -> Result<String, JsValue> {
     match command::new(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;
 
-            if cmd.apply(module, &line) {
+            if cmd.apply(module) {
                 let info = module.info();
                 let object = serde_json::to_string(&info).unwrap();
                 set("module", &object);
