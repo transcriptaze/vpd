@@ -91,6 +91,28 @@ save project gzip,timestamp
       (gzip)
       (timestamp))))
 
+
+============
+save script
+============
+save script
+---
+(command
+  (save
+    (script)))
+
+
+=====================
+save script timestamp
+=====================
+save script timestamp
+---
+(command
+  (save
+    (script
+      (timestamp))))
+
+
 ======
 export
 ======

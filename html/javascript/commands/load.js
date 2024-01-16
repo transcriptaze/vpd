@@ -1,13 +1,16 @@
+import * as project from './project.js'
+import * as script from './script.js'
+
 export function parse (node) {
   if (node.namedChildCount > 0) {
     const child = node.namedChildren[0]
 
     switch (child.type) {
       case 'project':
-        return loadProject()
+        return project.loadProject(child)
 
       case 'script':
-        return loadScript()
+        return script.loadScript(child)
 
       default:
         throw new Error(`unknown 'load' entity <<${child.type}>>`)
@@ -15,24 +18,4 @@ export function parse (node) {
   }
 
   throw new Error("invalid 'load' command")
-}
-
-function loadProject (node) {
-  const object = {
-    action: 'load',
-    project: {
-    }
-  }
-
-  return object
-}
-
-function loadScript (node) {
-  const object = {
-    action: 'load',
-    script: {
-    }
-  }
-
-  return object
 }

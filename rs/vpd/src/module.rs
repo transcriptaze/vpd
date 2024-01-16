@@ -94,6 +94,22 @@ impl Module {
         load("vpx");
     }
 
+    pub fn save_script(&self, timestamp: bool) {
+        let filename = match timestamp {
+            true => {
+                let now = Local::now();
+                let timestamp = now.format("%Y-%m-%d %H.%M.%S");
+                format!("{} {}.vpx", self.name, &timestamp)
+            }
+
+            _ => format!("{}.vpx", self.name),
+        };
+
+        let blob = &self.script.join("\n");
+
+        save("vpx", &filename, blob.as_bytes());
+    }
+
     pub fn export_svg(&self, theme: &str) {
         match self.panel.export_SVG(theme) {
             Ok(svg) => {

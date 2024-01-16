@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] Replace splashscreens
+
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
       - [ ] Remove hover text
@@ -51,19 +53,17 @@
 
 ### Commands
 - [x] _load_
-      - [x] load _.vpz_ file
-
 - [ ] _save_
       - [x] `save project`
       - [x] `save project timestamp`
       - [X] `save project gzip`
-      - [ ] `save script`
-      - [ ] `save script timestamp`
+      - [x] `save script`
+      - [x] `save script timestamp`
       - [x] commonalise save code
       - [x] help
       - [x] user guide
 
-- [x] _export_
+- [x] _export panel svg_
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
@@ -138,6 +138,7 @@
       - [ ] hover
 
 - [ ] _help_
+       - (?) Rework grammar as `new`, `new module`, etc
        - [ ] Auto-generate help text from grammar/examples
 
 

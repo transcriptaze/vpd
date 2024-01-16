@@ -149,6 +149,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "project"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "script"
                 }
               ]
             },
@@ -260,6 +264,32 @@
                   "type": "BLANK"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    "script": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "script"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "timestamp"
+              },
+              "named": true,
+              "value": "timestamp"
+            },
+            {
+              "type": "BLANK"
             }
           ]
         }

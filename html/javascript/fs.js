@@ -24,6 +24,8 @@ export function save (filetype, filename, blob) {
     saveVPD(filename, blob)
   } else if (filetype === 'vpz') {
     saveVPZ(filename, blob)
+  } else if (filetype === 'vpx') {
+    saveVPX(filename, blob)
   } else if (filetype === 'svg') {
     saveSVG(filename, blob)
   }
@@ -233,6 +235,33 @@ function saveVPZ (filename, bytes) {
         {
           description: 'VPD compressed project',
           accept: { 'application/gzip': ['.vpz'] }
+        }
+      ]
+    }
+
+    saveWithPicker(blob, options)
+  } else {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.querySelector('a#save')
+
+    anchor.href = url
+    anchor.download = filename
+    anchor.click()
+
+    URL.revokeObjectURL(url)
+  }
+}
+
+function saveVPX (filename, json) {
+  const blob = new Blob([json], { type: 'text/plain' })
+
+  if (window.showSaveFilePicker) {
+    const options = {
+      suggestedName: filename,
+      types: [
+        {
+          description: 'VPX script',
+          accept: { 'text/plain': ['.vpx'] }
         }
       ]
     }

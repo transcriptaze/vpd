@@ -42,6 +42,7 @@ module.exports = grammar({
       'save',
       choice (
         $.project,
+        $.script,
       ),
     ),
 
@@ -63,6 +64,13 @@ module.exports = grammar({
             optional ( seq (',', alias('timestamp', $.timestamp))),
           ),
         ),
+      ),
+    ),
+
+    script: $ => seq(
+      'script',
+      optional (
+        alias('timestamp', $.timestamp),
       ),
     ),
 

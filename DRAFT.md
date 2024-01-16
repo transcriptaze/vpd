@@ -2,26 +2,15 @@
 
 10. Label the parameters, inputs and light:
    ```
-   new text label1 "E" v1-2.54mm, h1+5.08mm RobotoCondensed
+   decorate "recording" with label "REC" v1-2.54mm, h1+5.08mm RobotoCondensed
    ```
    ```
-   new text label2 "V" v2-2.54mm, h1+5.08mm RobotoCondensed
+   decorate "volume" with label "VOL" v2-2.54mm, h1+5.08mm RobotoCondensed
    ```
 
 11. Add the graduations for the parameters:
     ```
-    decorate parameter "E" graduations 7.5mm
-    ```
-    ```
-    decorate parameter "V" graduations 7.5mm
-    ```
-
-12. Save the project files:
-    ```
-    save project
-    ```
-    ```
-    save script
+    decorate "volume" with graduations 7.5mm
     ```
 
 ## User interface

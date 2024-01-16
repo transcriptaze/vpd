@@ -14,6 +14,7 @@
    - [`load project`](#load-project)
    - [`save project`](#save-project)
    - [`load script`](#load-script)
+   - [`save script`](#save-script)
    - [`export panel`](#export-panel)
 
 
@@ -95,6 +96,15 @@
     ```
     new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline
     ```
+
+11. Save the project files:
+    ```
+    save project
+    ```
+    ```
+    save script
+    ```
+
 
 ## Projects
 
@@ -359,7 +369,7 @@ load project
 
 #### `save project`
 
-```save project [timestamp]```
+```save project [timestamp] [gzip]```
 
 Saves the current project to a `.vpd` project file, using the module name as the suggested filename. On _Chrome_ it 
 opens a file chooser to save the file - on _Firefox_ and most other browsers the file is downloaded automatically.
@@ -392,6 +402,28 @@ Opens a file chooser to load a `.vpx` script file.
 _Example:_
 ```
 load script
+````
+
+
+#### `save script`
+
+```save script [timestamp]```
+
+Saves the commands required to recreate the current project to a `.vpx` script file, using the module name as the suggested filename. On
+ _Chrome_ it opens a file chooser to save the file - on _Firefox_ and most other browsers the file is downloaded automatically.
+
+_Command options:_
+```
+timestamp  (optional) the suggested file name is suffixed with the current date and time
+```
+
+_Notes:_
+
+
+_Example:_
+```
+save script
+save script timestamp
 ````
 
 

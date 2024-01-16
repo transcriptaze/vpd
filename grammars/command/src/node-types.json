@@ -591,6 +591,25 @@
         {
           "type": "project",
           "named": true
+        },
+        {
+          "type": "script",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "script",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "timestamp",
+          "named": true
         }
       ]
     }
@@ -864,7 +883,7 @@
   },
   {
     "type": "script",
-    "named": true
+    "named": false
   },
   {
     "type": "set",

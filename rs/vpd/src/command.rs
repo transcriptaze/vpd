@@ -15,6 +15,7 @@ use crate::commands::NewOutput;
 use crate::commands::NewParameter;
 use crate::commands::NewWidget;
 use crate::commands::SaveProject;
+use crate::commands::SaveScript;
 use crate::commands::SetBackgroundCommand;
 use crate::commands::SetOriginCommand;
 
@@ -76,6 +77,8 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         Ok(Box::new(SaveProject::new(json)?))
     } else if v.action == "load" && v.script.is_some() {
         Ok(Box::new(LoadScript::new(json)?))
+    } else if v.action == "save" && v.script.is_some() {
+        Ok(Box::new(SaveScript::new(json)?))
     } else if v.action == "export" && v.svg.is_some() {
         Ok(Box::new(ExportSVG::new(json)?))
     } else {

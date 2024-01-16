@@ -14,6 +14,7 @@ mod export_svg;
 mod load_project;
 mod load_script;
 mod save_project;
+mod save_script;
 
 pub use new_guide::NewGuide;
 pub use new_input::NewInput;
@@ -31,3 +32,4 @@ pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;
 pub use load_script::LoadScript;
 pub use save_project::SaveProject;
+pub use save_script::SaveScript;

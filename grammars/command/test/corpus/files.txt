@@ -74,6 +74,17 @@ load script
     (script)))
 
 
+=====================
+save script timestamp
+=====================
+save script timestamp
+---
+(command
+  (save
+    (script
+      (timestamp))))
+
+
 ================
 export panel svg
 ================
