@@ -5,16 +5,24 @@ mod panel;
 mod svg;
 mod utils;
 
+use wasm_bindgen::prelude::*;
+
 use crate::utils::log;
 use once_cell::sync::Lazy;
 use serde;
+use serde_wasm_bindgen;
 use std::sync::Mutex;
-use wasm_bindgen::prelude::*;
 
 use svg::PrettyPrinter;
 
 pub struct State {
     pub module: module::Module,
+}
+
+#[derive(serde::Serialize)]
+struct Serialized {
+    pub name: String,
+    pub serialized: String,
 }
 
 static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
@@ -61,15 +69,64 @@ pub fn exec(json: &str, line: Option<String>) -> Result<String, JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn serialize(object: &str) -> Result<String, JsValue> {
-    if object == "project" {
-        let state = STATE.lock().unwrap();
-        let module = &state.module;
-        let serialized = serde_json::to_string_pretty(&module).unwrap();
+pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
+    let state = STATE.lock().unwrap();
+    let module = &state.module;
 
-        Ok(serialized)
-    } else {
-        Err(JsValue::from(format!("unknown object {}", object)))
+    match object {
+        "project" => {
+            let serialized = Serialized {
+                name: module.name.to_string(),
+                serialized: serde_json::to_string_pretty(&module).unwrap(),
+            };
+
+            let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+            Ok(value)
+        }
+
+        "script" => {
+            let serialized = Serialized {
+                name: module.name.to_string(),
+                serialized: module.script.join("\n"),
+            };
+
+            let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+            Ok(value)
+        }
+
+        "panel" => match module.panel.export_SVG("light") {
+            Ok(svg) => {
+                let pp = PrettyPrinter::new();
+                let blob = pp.prettify(&svg);
+                let serialized = Serialized {
+                    name: module.name.to_string(),
+                    serialized: blob,
+                };
+
+                let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+                Ok(value)
+            }
+
+            Err(e) => Err(JsValue::from(format!("error generating SVG '{:?}'", e))),
+        },
+
+        "panel-dark" => match module.panel.export_SVG("dark") {
+            Ok(svg) => {
+                let pp = PrettyPrinter::new();
+                let blob = pp.prettify(&svg);
+                let serialized = Serialized {
+                    name: module.name.to_string(),
+                    serialized: blob,
+                };
+
+                let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+                Ok(value)
+            }
+
+            Err(e) => Err(JsValue::from(format!("error generating SVG '{:?}'", e))),
+        },
+
+        _ => Err(JsValue::from(format!("unknown object {}", object))),
     }
 }
 

@@ -16,7 +16,6 @@
 ## User interface
 
 - undo/redo
-- macro keys
 - command area
 
 ## Fonts

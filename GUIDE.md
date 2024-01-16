@@ -182,20 +182,20 @@ To load a _.vpx_ file:
 
 ### <img width="24" src="doc/images/save.png"> Save
 
-- Clicking on the _Save_ button saves the current project as a _.vpd_ file, using the module name as a filename. `ctrl-click` will 
-  save the project with a timestamped filename.
+- Clicking on the _Save_ button saves the current project as a _.vpd_ file, using the module name as a filename. 
+  `ctrl-click` will save the project with a timestamped filename.
 
 - `alt-click` on the _Save_ button saves the command history as a _.vpx_ script file, using the module name as a filename. 
   `ctrl-alt-click` will save the script with a timestamped filename.
 
 ### <img width="24" src="doc/images/export-svg-light.png"> Export SVG
 
-- Clicking on the _Export SVG_ button saves the current panel as an SVG file that can be used as a resource.
+- Clicking on the _Export SVG_ button saves the current panel as an SVG file that can be used as a plugin resource.
 
 ### <img width="24" src="doc/images/export-svg-dark.png"> Export SVG (dark)
 
-- Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
-  saved with a _-dark_ suffix.
+- Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a plugin resource. The
+  SVG file is saved with a _-dark_ suffix.
 
 
 ### Macro keys

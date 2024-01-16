@@ -135,7 +135,9 @@
       VPD.onSave(event.altKey ? 'vpx' : 'vpd', event.ctrlKey)
     }
 
-    window.onExport = VPD.onExport
+    window.onExport = (event, theme) => {
+      VPD.onExport(theme)
+    }
 
     window.onError = (event) => {
       VPD.onError(null)

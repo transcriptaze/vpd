@@ -13,11 +13,11 @@
 - [x] Load project file
       - [ ] web component
 
-- [ ] Save project/script file
+- [x] Save project/script file
       - [x] set filename
       - [x] ctrl-click to save as timestamped
-      - [ ] alt-click to save script
-      - [ ] ctrl-alt-click to save script as timestamped
+      - [x] alt-click to save script
+      - [x] ctrl-alt-click to save script as timestamped
 
 - [x] Show errors
 
@@ -64,6 +64,7 @@
       - [x] user guide
 
 - [x] _export panel svg_
+      - (?) Remove input layer, etc
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`

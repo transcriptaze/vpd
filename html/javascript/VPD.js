@@ -86,34 +86,56 @@ export function onDropped (file) {
 }
 
 export function onSave (type, timestamped) {
+  const timestamp = yyyymmddhhmmss()
+
   try {
-    const json = serialize('project')
-    const object = JSON.parse(json)
+    if (type === 'vpd') {
+      const serialized = serialize('project')
+      const name = serialized.name
+      const json = serialized.serialized
+      const filename = timestamped ? `${name} ${timestamp}.vpd` : `${name}.vpd`
 
-    const now = new Date()
-    const year = `${now.getFullYear()}`.padStart(4, '0')
-    const month = `${now.getMonth() + 1}`.padStart(2, '0')
-    const day = `${now.getDate()}`.padStart(2, '0')
-    const hour = `${now.getHours()}`.padStart(2, '0')
-    const minute = `${now.getMinutes()}`.padStart(2, '0')
-    const second = `${now.getSeconds()}`.padStart(2, '0')
-    const timestamp = `${year}-${month}-${day} ${hour}.${minute}.${second}`
-
-    let filename = timestamped ? `VPD ${timestamp}.vpd` : 'VPD.vpd'
-
-    if (Object.hasOwn(object, 'name')) {
-      filename = timestamped ? `${object.name} ${timestamp}.vpd` : `${object.name}.vpd`
+      fs.save('vpd', filename, json)
     }
 
-    fs.save('vpd', filename, json)
+    if (type === 'vpx') {
+      const serialized = serialize('script')
+      const name = serialized.name
+      const text = serialized.serialized
+      const filename = timestamped ? `${name} ${timestamp}.vpx` : `${name}.vpx`
+
+      fs.save('vpx', filename, text)
+    }
+
   } catch (err) {
     console.error(err)
     onError(err)
   }
 }
 
-export function onExport (event, theme) {
-  execute(`export panel svg ${theme}`)
+export function onExport (theme) {
+  try {
+    if (theme === 'dark') {
+      const serialized = serialize('panel-dark')
+      const name = serialized.name
+      const svg = serialized.serialized
+      const filename = `${name}-dark.svg`
+
+      fs.save('svg', filename, svg)
+
+    }else {
+      const serialized = serialize('panel')
+      const name = serialized.name
+      const svg = serialized.serialized
+      const filename = `${name}.svg`
+
+      fs.save('svg', filename, svg)
+    }
+
+  } catch (err) {
+    console.error(err)
+    onError(err)
+  }
 }
 
 function execute (v) {
@@ -178,4 +200,16 @@ export function redraw () {
 
     URL.revokeObjectURL(old)
   }
+}
+
+function yyyymmddhhmmss () {
+  const now = new Date()
+  const year = `${now.getFullYear()}`.padStart(4, '0')
+  const month = `${now.getMonth() + 1}`.padStart(2, '0')
+  const day = `${now.getDate()}`.padStart(2, '0')
+  const hour = `${now.getHours()}`.padStart(2, '0')
+  const minute = `${now.getMinutes()}`.padStart(2, '0')
+  const second = `${now.getSeconds()}`.padStart(2, '0')
+
+  return `${year}-${month}-${day} ${hour}.${minute}.${second}`
 }

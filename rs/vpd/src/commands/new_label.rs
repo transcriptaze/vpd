@@ -1,9 +1,9 @@
 use std::error::Error;
 
-use serde::Deserialize;
-
-use serde_wasm_bindgen;
 use wasm_bindgen::prelude::*;
+
+use serde::Deserialize;
+use serde_wasm_bindgen;
 
 use crate::command::Command;
 use crate::module::Module;
