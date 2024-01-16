@@ -104,7 +104,7 @@ The [VPD](https://vpd.pages.dev) web app is currently hosted on _Cloudflare Page
 1. Download the _vpd_ executable archive from a [release](https://github.com/transcriptaze/vpd/releases) or the latest
    [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and extract it to a folder of 
    your choice.
-2. Open the `vpd` application in a terminal window (on a Mac you may have to Ctrl-Open the file the first time to grant
+2. Open the `vpd` application in a terminal window (on a _Mac_ you may have to _Ctrl-Open_ the file the first time to grant
    it permissions to run).
 3. Open [http://localhost:9876](http://localhost:9876) in your browser.
 4. Voilá, you're good to go!
@@ -163,7 +163,7 @@ You need a **bunch** of tools:
    in 2019. Please follow the installation instructions on the [Sass homepage](https://sass-lang.com) to install
    the current version.
 
-2. The web-app is not bundled because I cannot for the life of figure out how to resolve all the wasm dependencies.
+2. The _web app_ is not bundled because I cannot for the life of me figure out how to resolve all the wasm dependencies.
 
 
 ### Build instructions

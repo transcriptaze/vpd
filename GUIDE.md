@@ -1,17 +1,14 @@
 # User Guide
 
 ### Contents
-
 - [Getting started](#getting-started)
 - [Projects](#projects)
 - [Scripts](#scripts)
-
 - [User interface](#user-interface)
    - [_Load_](#load)
    - [_Save_](#save)
    - [_Export SVG_](#export-svg)
    - [_Macro keys_](#macro-keys)
-
 - [Commands](#commands)
    - [`new module`](#new-module)
    - [`new input`](#new-input)
@@ -26,12 +23,12 @@
 
 ## Getting started
 
-1. Create a new module that is 50.8mm (10 units) wide
+1. Create a new _module_ that is 50.8mm (10 units) wide
    ```
    new module "bodacious" 1U 10H
    ```
 
-2. Create vertical guidelines to locate inputs, outputs and parameters:
+2. Create _vertical guidelines_ to position inputs, outputs and parameters:
    ```
    new guide vertical @10.16mm
    ```
@@ -45,7 +42,7 @@
    new guide v3+10.16mm
    ```
 
-3. Add a horizontal guideline to locate inputs, outputs and parameters:
+3. Add a _horizontal guideline_ to position inputs, outputs and parameters:
    ```
    new guide horizontal top+20.32mm
    ```
@@ -56,12 +53,12 @@
    new guide bottom-15.24mm
    ```
 
-4. Set the background:
+4. Set the _background_:
    ```
    set background "foundation"
    ```
 
-5. Create the inputs:
+5. Create the _inputs_:
    ```
    new input "e" v1,h1 PJ301M
    ```
@@ -69,7 +66,7 @@
    new input "v" v1,h2 PJ301M
    ```
 
-6. Create the outputs:
+6. Create the _outputs_:
    ```
    new output "P" v3,h3-10.16mm PJ301M
    ```
@@ -77,7 +74,7 @@
    new output "Q" v3,h3         PJ301M
    ```
 
-7. Create the parameters:
+7. Create the _parameters_:
    ```
    new parameter "E" v2,h1 RoundBlackKnob
    ```
@@ -85,7 +82,7 @@
    new parameter "V" v2,h2 RoundBlackKnob
    ```
 
-8. Create the lights:
+8. Create the _lights_:
    ```
    new light "ok" centre,middle LED
    ```
@@ -93,12 +90,12 @@
    new light "recording" centre,middle+12.7mm LED
    ```
 
-9. Create the custom widget:
+9. Create the _custom widget_:
    ```
    new widget "channels" @40.64mm,20.32mm square
    ```
 
-10. Add a title:
+10. Add a _title_:
     ```
     new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline
     ```

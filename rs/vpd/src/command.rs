@@ -23,6 +23,11 @@ pub trait Command {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
 }
 
+struct Wrapper {
+    command: Box<dyn Command>,
+    src: Option<String>,
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct Action {
     src: Option<String>,
@@ -53,37 +58,140 @@ pub fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" && v.module.is_some() {
-        Ok(Box::new(NewModule::new(json)?))
-    } else if v.action == "new" && v.input.is_some() {
-        Ok(Box::new(NewInput::new(json)?))
-    } else if v.action == "new" && v.output.is_some() {
-        Ok(Box::new(NewOutput::new(json)?))
-    } else if v.action == "new" && v.parameter.is_some() {
-        Ok(Box::new(NewParameter::new(json)?))
-    } else if v.action == "new" && v.light.is_some() {
-        Ok(Box::new(NewLight::new(json)?))
-    } else if v.action == "new" && v.widget.is_some() {
-        Ok(Box::new(NewWidget::new(json)?))
-    } else if v.action == "new" && v.label.is_some() {
-        Ok(Box::new(NewLabel::new(json)?))
-    } else if v.action == "new" && v.guide.is_some() {
-        Ok(Box::new(NewGuide::new(json)?))
-    } else if v.action == "set" && v.origin.is_some() {
-        Ok(Box::new(SetOriginCommand::new(json)?))
-    } else if v.action == "set" && v.background.is_some() {
-        Ok(Box::new(SetBackgroundCommand::new(json)?))
-    } else if v.action == "load" && v.project.is_some() {
-        Ok(Box::new(LoadProject::new(json)?))
-    } else if v.action == "save" && v.project.is_some() {
-        Ok(Box::new(SaveProject::new(json)?))
-    } else if v.action == "load" && v.script.is_some() {
-        Ok(Box::new(LoadScript::new(json)?))
-    } else if v.action == "save" && v.script.is_some() {
-        Ok(Box::new(SaveScript::new(json)?))
-    } else if v.action == "export" && v.svg.is_some() {
-        Ok(Box::new(ExportSVG::new(json)?))
-    } else {
-        Err("unknown command".into())
+        let command = NewModule::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.input.is_some() {
+        let command = NewInput::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.output.is_some() {
+        let command = NewOutput::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.parameter.is_some() {
+        let command = NewParameter::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.light.is_some() {
+        let command = NewLight::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.widget.is_some() {
+        let command = NewWidget::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.label.is_some() {
+        let command = NewLabel::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "new" && v.guide.is_some() {
+        let command = NewGuide::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "set" && v.origin.is_some() {
+        let command = SetOriginCommand::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "set" && v.background.is_some() {
+        let command = SetBackgroundCommand::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "load" && v.project.is_some() {
+        let command = LoadProject::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "save" && v.project.is_some() {
+        let command = SaveProject::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "load" && v.script.is_some() {
+        let command = LoadScript::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "save" && v.script.is_some() {
+        let command = SaveScript::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    if v.action == "export" && v.svg.is_some() {
+        let command = ExportSVG::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(Box::new(wrapper));
+    }
+
+    return Err("unknown command".into());
+}
+
+impl Wrapper {
+    pub fn new(command: Box<dyn Command>, src: Option<String>) -> Wrapper {
+        Wrapper {
+            command: command,
+            src: src,
+        }
+    }
+}
+
+impl Command for Wrapper {
+    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
+        self.command.apply(m, &self.src)
     }
 }
 
