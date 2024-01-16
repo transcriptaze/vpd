@@ -18,7 +18,7 @@ struct Object {
 }
 
 impl NewModule {
-    pub fn new(json: &str) -> Result<NewModule, Box<dyn Error>> {
+    pub fn new(json: &str) -> Result<Self, Box<dyn Error>> {
         let object: Object = serde_json::from_str(json)?;
 
         Ok(object.module)
@@ -26,6 +26,12 @@ impl NewModule {
 }
 
 impl Command for NewModule {
+    // fn new(json: &str) -> Result<Self, Box<dyn Error>> {
+    //     let object: Object = serde_json::from_str(json)?;
+
+    //     Ok(object.module)
+    // }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         m.name = self.name.clone().into();
         m.panel = Panel::new(self.width, self.height);

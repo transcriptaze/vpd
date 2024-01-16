@@ -21,6 +21,10 @@ use crate::commands::SetOriginCommand;
 
 pub trait Command {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
+
+    // fn new(data: &str) -> Result<Self, Box<dyn Error>>;
+    // where
+    //     Self: Sized;
 }
 
 pub struct Wrapper {
@@ -179,6 +183,81 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
     return Err("unknown command".into());
 }
+
+// fn create_command_and_wrapper<T: Command>(
+//     json: &str,
+//     src: Option<String>,
+// ) -> Result<T, Box<dyn Error>> {
+//     let command = T::new(json)?;
+//     // let boxed = Box::new(command) as Box<dyn Command>;
+//     // Ok(Wrapper::new(boxed, src))
+// }
+
+// pub fn parse(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
+//     let v: Action = serde_json::from_str(json)?;
+//
+//     if v.action == "new" && v.module.is_some() {
+//         return Ok(Box::new(NewModule::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.input.is_some() {
+//         return Ok(Box::new(NewInput::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.output.is_some() {
+//         return Ok(Box::new(NewOutput::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.parameter.is_some() {
+//         return Ok(Box::new(NewParameter::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.light.is_some() {
+//         return Ok(Box::new(NewLight::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.widget.is_some() {
+//         return Ok(Box::new(NewWidget::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.label.is_some() {
+//         return Ok(Box::new(NewLabel::new(json)?));
+//     }
+//
+//     if v.action == "new" && v.guide.is_some() {
+//         return Ok(Box::new(NewGuide::new(json)?));
+//     }
+//
+//     if v.action == "set" && v.origin.is_some() {
+//         return Ok(Box::new(SetOriginCommand::new(json)?));
+//     }
+//
+//     if v.action == "set" && v.background.is_some() {
+//         return Ok(Box::new(SetBackgroundCommand::new(json)?));
+//     }
+//
+//     if v.action == "load" && v.project.is_some() {
+//         return Ok(Box::new(LoadProject::new(json)?));
+//     }
+//
+//     if v.action == "save" && v.project.is_some() {
+//         return Ok(Box::new(SaveProject::new(json)?));
+//     }
+//
+//     if v.action == "load" && v.script.is_some() {
+//         return Ok(Box::new(LoadScript::new(json)?));
+//     }
+//
+//     if v.action == "save" && v.script.is_some() {
+//         return Ok(Box::new(SaveScript::new(json)?));
+//     }
+//
+//     if v.action == "export" && v.svg.is_some() {
+//         return Ok(Box::new(ExportSVG::new(json)?));
+//     }
+//
+//     return Err("unknown command".into());
+// }
 
 impl Wrapper {
     pub fn new(command: Box<dyn Command>, src: Option<String>) -> Wrapper {
