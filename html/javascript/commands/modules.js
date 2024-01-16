@@ -1,7 +1,8 @@
 import { string, mm } from './commands.js'
 
-export function newModule (node) {
+export function newModule (node, src) {
   const object = {
+    src: `${src}`,
     action: 'new',
     module: {}
   }

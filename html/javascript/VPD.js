@@ -106,7 +106,6 @@ export function onSave (type, timestamped) {
 
       fs.save('vpx', filename, text)
     }
-
   } catch (err) {
     console.error(err)
     onError(err)
@@ -122,8 +121,7 @@ export function onExport (theme) {
       const filename = `${name}-dark.svg`
 
       fs.save('svg', filename, svg)
-
-    }else {
+    } else {
       const serialized = serialize('panel')
       const name = serialized.name
       const svg = serialized.serialized
@@ -131,7 +129,6 @@ export function onExport (theme) {
 
       fs.save('svg', filename, svg)
     }
-
   } catch (err) {
     console.error(err)
     onError(err)

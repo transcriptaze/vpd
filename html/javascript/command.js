@@ -19,7 +19,10 @@ export function parse (cmd) {
     const root = tree.rootNode
 
     if (root.childCount > 0) {
-      return parseNode(root.children[0])
+      const node = root.children[0]
+      const object = parseNode(node)
+
+      return object
     }
   } catch (err) {
     console.error(err)
@@ -35,11 +38,11 @@ export function parseVPX (vpx) {
   const script = []
 
   for (const node of root.namedChildren) {
-    const v = parseNode(node)
+    const object = parseNode(node)
 
-    if (v != null) {
+    if (object != null) {
       script.push({
-        command: parseNode(node),
+        command: object,
         line: node.text
       })
     }

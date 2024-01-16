@@ -1,7 +1,8 @@
 import { string, reference, offset, mm } from './commands.js'
 
-export function newLabel (node) {
+export function newLabel (node, src) {
   const object = {
+    src: `${src}`,
     action: 'new',
     label: {
       font: 'RobotoMono-Bold',

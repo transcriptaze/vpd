@@ -1,7 +1,8 @@
 import { mm } from './commands.js'
 
-export function newGuide (node) {
+export function newGuide (node, src) {
   const object = {
+    src: `${src}`,
     action: 'new',
     guide: {}
   }

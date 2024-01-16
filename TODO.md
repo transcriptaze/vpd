@@ -28,11 +28,6 @@
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference to /fonts because it's in a blob URL - maybe use CSS ??????
-- [ ] Preferences
-      - show/hide screws
-      - default font
-      - default font alignment
-
 
 ### Overlay
 - [ ] panel screws
@@ -149,6 +144,11 @@
 - [ ] standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
+- [ ] Preferences
+      - show/hide screws
+      - default font
+      - default font alignment
+
 
 
 ## Notes

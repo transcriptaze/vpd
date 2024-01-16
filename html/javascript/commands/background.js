@@ -1,7 +1,8 @@
 import { string } from './commands.js'
 
-export function set (node) {
+export function set (node, src) {
   const object = {
+    src: `${src}`,
     action: 'set',
     background: {
     }

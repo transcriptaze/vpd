@@ -1,5 +1,6 @@
-export function loadScript (node) {
+export function loadScript (node, src) {
   const object = {
+    src: `${src}`,
     action: 'load',
     script: {
     }
@@ -8,8 +9,9 @@ export function loadScript (node) {
   return object
 }
 
-export function saveScript (node) {
+export function saveScript (node, src) {
   const object = {
+    src: `${src}`,
     action: 'save',
     script: {
       timestamp: false

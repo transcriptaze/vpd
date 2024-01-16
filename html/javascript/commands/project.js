@@ -1,5 +1,6 @@
-export function loadProject (node) {
+export function loadProject (node, src) {
   const object = {
+    src: `${src}`,
     action: 'load',
     project: {
     }
@@ -8,8 +9,9 @@ export function loadProject (node) {
   return object
 }
 
-export function saveProject (node) {
+export function saveProject (node, src) {
   const object = {
+    src: `${src}`,
     action: 'save',
     project: {
       timestamp: false,

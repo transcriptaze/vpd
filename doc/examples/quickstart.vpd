@@ -137,6 +137,7 @@
     ],
     "labels": [
       {
+        "id": "l1",
         "text": "Thing 1",
         "x": {
           "reference": "centre",
@@ -183,19 +184,19 @@
         "reference": "v2",
         "offset": 10.16
       },
-      "h1": {
+      "g2": {
         "orientation": "horizontal",
-        "reference": "origin",
-        "offset": 20.32
+        "reference": "bottom",
+        "offset": -15.24
       },
       "g1": {
         "orientation": "horizontal",
         "reference": "top",
         "offset": 10.16
       },
-      "v2": {
-        "orientation": "",
-        "reference": "v1",
+      "v1": {
+        "orientation": "vertical",
+        "reference": "absolute",
         "offset": 10.16
       },
       "h2": {
@@ -208,16 +209,36 @@
         "reference": "v3",
         "offset": 10.16
       },
-      "v1": {
-        "orientation": "vertical",
-        "reference": "absolute",
-        "offset": 10.16
-      },
-      "g2": {
+      "h1": {
         "orientation": "horizontal",
-        "reference": "bottom",
-        "offset": -15.24
+        "reference": "origin",
+        "offset": 20.32
+      },
+      "v2": {
+        "orientation": "",
+        "reference": "v1",
+        "offset": 10.16
       }
     }
-  }
+  },
+  "script": [
+    "new module \"bodacious\" 1U 10H",
+    "new guide vertical @10.16mm",
+    "new guide v1+10.16mm",
+    "new guide v2+10.16mm",
+    "new guide v3+10.16mm",
+    "new guide horizontal top+20.32mm",
+    "new guide h1+3H",
+    "new guide top+10.16mm",
+    "new guide bottom-15.24mm",
+    "set background \"foundation\"",
+    "new input \"e\" v1,h1 PJ301M",
+    "new input \"v\" v1,h2 PJ301M",
+    "new output \"P\" v4,g2-10.16mm PJ301M",
+    "new output \"Q\" v4,g2 PJ301M",
+    "new parameter \"E\" v2,h1 RoundBlackKnob",
+    "new parameter \"V\" v2,h2 RoundBlackKnob",
+    "new widget \"channels\" @40.64mm,20.32mm \"square\"",
+    "new label \"Thing 1\" centre,g1 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000"
+  ]
 }

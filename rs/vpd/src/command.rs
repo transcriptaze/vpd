@@ -25,6 +25,7 @@ pub trait Command {
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Action {
+    src: Option<String>,
     action: String,
     module: Option<Entity>,
     background: Option<Attr>,

@@ -1,11 +1,12 @@
 export function parse (node) {
   if (node.namedChildCount > 0) {
     const entity = node.namedChildren[0]
+    const src = node.text
 
     switch (entity.type) {
       case 'panel':
         if (entity.namedChildCount > 0 && entity.namedChildren[0].type === 'svg') {
-          return exportSVG(entity.namedChildren[0])
+          return exportSVG(entity.namedChildren[0], src)
         }
         break
 
@@ -17,8 +18,9 @@ export function parse (node) {
   throw new Error("invalid 'export' command")
 }
 
-function exportSVG (node) {
+function exportSVG (node, src) {
   const object = {
+    src: `${src}`,
     action: 'export',
     svg: {
       theme: 'light'
