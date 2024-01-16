@@ -5,7 +5,13 @@
 - [Getting started](#getting-started)
 - [Projects](#projects)
 - [Scripts](#scripts)
+
 - [User interface](#user-interface)
+   - [_Load_](#load)
+   - [_Save_](#save)
+   - [_Export SVG_](#export-svg)
+   - [_Macro keys_](#macro-keys)
+
 - [Commands](#commands)
    - [`new module`](#new-module)
    - [`new input`](#new-input)
@@ -190,6 +196,21 @@ To load a _.vpx_ file:
 
 - Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a resource. The SVG file is 
   saved with a _-dark_ suffix.
+
+
+### Macro keys
+
+The macro keys (_Ctrl-1_ to _Ctrl-0_) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a
+macro key (or pressing e.g. `ctrl-1`) will paste the command into the command area where it can be edited and then executed with _Enter_.
+
+To assign a command to a macro key:
+
+1. Type the command into the command area
+2. _Alt_-click (_Option_-click on a _Mac_) on the macro key button to assign the command to that key.
+3. A macro key command can be viewed by hovering over the key (or of course, just click on it to paste the command into the command
+area)
+
+The macro keys assignments are stored only in the browser local storage and are not included in the project file. 
 
 
 ## Commands

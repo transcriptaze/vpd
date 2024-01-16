@@ -45,20 +45,6 @@ The font will be stored more-or-less permanently in the browser local storage.
 - To remove a font, type `delete font <name>`
 
 
-## Macro keys
-
-The macro keys (Ctrl-1 to Ctrl-0) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a macro key (or 
-pressing e.g. Ctrl-1) will paste the command into the command area where it can be edited and then executed with _Enter_.
-
-To assign a command to a macro key:
-
-1. Type the command into the command area
-2. _Alt_-click (_Option_-click on a Mac) on the macro key button to assign the command to that key.
-3. A macro key command can be viewed by hovering over the key (or of course, just click on it to paste the command into the command area)
-
-The macro keys assignments are stored only in the browser local storage and are not included in the project file. 
-
-
 ## Commands
 
 1. Measurement units can be specified in:

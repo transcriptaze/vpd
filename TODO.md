@@ -53,7 +53,7 @@
 
 ### Commands
 - [x] _load_
-- [ ] _save_
+- [x] _save_
       - [x] `save project`
       - [x] `save project timestamp`
       - [X] `save project gzip`
