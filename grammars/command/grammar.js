@@ -138,6 +138,7 @@ module.exports = grammar({
         $.absolute,
         $.relative,
         seq( $.x, ',', $.y ),
+        $.decorate,
       ),
       optional($.font),
       optional($.fontsize),
@@ -310,6 +311,7 @@ module.exports = grammar({
     ),
 
     offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
+    _offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
     
     guideline: $ => seq(
       alias($.identifier, $.reference),
@@ -330,9 +332,29 @@ module.exports = grammar({
     ),
 
     relative: $ => seq(
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
+      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.x),
       ',',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
+    ),
+
+    decorate: $ => seq(
+      '(',
+      choice(
+        alias('input', $.input),
+        alias('output', $.output),
+        alias('parameter', $.parameter),
+        alias('light', $.light),
+        alias('widget' ,$.widget),
+      ),
+      $.name,
+      $._relative,
+      ')',
+    ),
+
+    _relative: $ => seq(
+      alias($._offset, $.dx),
+      ',',
+      alias($._offset, $.dy),
     ),
 
     _xy: $ => seq(

@@ -57,6 +57,33 @@ export function newLabel (node, src) {
       }
     }
 
+    if (child.type === 'decorate') {
+      object.label.x = {}
+      object.label.y = {}
+
+      let reference = 'component'
+      for (const v of child.namedChildren) {
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          reference = `${v.type}`
+        }
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'name') {
+          object.label.x.reference = `${reference}<${v.text.trim()}>`
+          object.label.y.reference = `${reference}<${v.text.trim()}>`
+        }
+
+        if (v.type === 'dx') {
+          object.label.x.offset = mm(v.text)
+        }
+
+        if (v.type === 'dy') {
+          object.label.y.offset = mm(v.text)
+        }
+      }
+    }
+
     if (child.type === 'x') {
       object.label.x = {
         reference: reference(child),

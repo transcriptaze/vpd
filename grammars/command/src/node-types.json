@@ -96,6 +96,59 @@
     }
   },
   {
+    "type": "decorate",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dx",
+          "named": true
+        },
+        {
+          "type": "dy",
+          "named": true
+        },
+        {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
+          "named": true
+        },
+        {
+          "type": "widget",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dx",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "dy",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "export",
     "named": true,
     "fields": {},
@@ -219,7 +272,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "absolute",
@@ -262,6 +315,10 @@
         },
         {
           "type": "colour",
+          "named": true
+        },
+        {
+          "type": "decorate",
           "named": true
         },
         {
@@ -425,6 +482,11 @@
     }
   },
   {
+    "type": "offset",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "origin",
     "named": true,
     "fields": {},
@@ -453,7 +515,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "absolute",
@@ -503,7 +565,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "absolute",
@@ -682,7 +744,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "absolute",
@@ -751,6 +813,14 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
     "named": false
   },
   {
@@ -844,10 +914,6 @@
   {
     "type": "new",
     "named": false
-  },
-  {
-    "type": "offset",
-    "named": true
   },
   {
     "type": "origin",

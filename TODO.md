@@ -14,11 +14,6 @@
       - [ ] web component
 
 - [x] Save project/script file
-      - [x] set filename
-      - [x] ctrl-click to save as timestamped
-      - [x] alt-click to save script
-      - [x] ctrl-alt-click to save script as timestamped
-
 - [x] Show errors
 
 - [x] _info_ panel
@@ -49,14 +44,6 @@
 ### Commands
 - [x] _load_
 - [x] _save_
-      - [x] `save project`
-      - [x] `save project timestamp`
-      - [X] `save project gzip`
-      - [x] `save script`
-      - [x] `save script timestamp`
-      - [x] commonalise save code
-      - [x] help
-      - [x] user guide
 
 - [x] _export panel svg_
       - (?) Remove input layer, etc
@@ -128,11 +115,11 @@
 
 - [ ] _label__
       - [x] generate label ID automatically
-      - [ ] `new label <text> <component>`
+      - [ ] `new label <text> (<component>) ...`
       - [ ] delete
       - [ ] set
       - [ ] hover
-
+ 
 - [ ] _help_
        - (?) Rework grammar as `new`, `new module`, etc
        - [ ] Auto-generate help text from grammar/examples

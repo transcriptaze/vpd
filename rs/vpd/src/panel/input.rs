@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::panel::X;
 use crate::panel::Y;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Input {
     pub id: String,
     pub name: String,

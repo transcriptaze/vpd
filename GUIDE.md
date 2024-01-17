@@ -197,7 +197,7 @@ To load a _.vpx_ file:
 
 ### Macro keys
 
-The macro keys (_Ctrl-1_ to _Ctrl-0_) can be programmed with commonly used commands (e.g `export module timestamp gzip`). Clicking on a
+The macro keys (_Ctrl-1_ to _Ctrl-0_) can be programmed with commonly used commands (e.g `save project timestamp gzip`). Clicking on a
 macro key (or pressing e.g. `ctrl-1`) will paste the command into the command area where it can be edited and then executed with _Enter_.
 
 To assign a command to a macro key:
