@@ -10,8 +10,14 @@
    - [_Export SVG_](#export-svg)
    - [_Macro keys_](#macro-keys)
 - [Commands](#commands)
+       - [Comments](#comments)
+       - [Uints](#units)
+       - [Location formats](#location-formats)
+       - [Parts](#parts)
    - [`new module`](#new-module)
    - [`new input`](#new-input)
+   - [`new output`](#new-output)
+   - [`new parameter`](#new-parameter)
    - [`new label`](#new-label)
    - [`set background`](#set-background)
    - [`load project`](#load-project)
@@ -100,7 +106,15 @@
     new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline
     ```
 
-11. Save the project files:
+11. Label the parameters:
+    ```
+    new label "FREQ" (parameter E +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+    ```
+    ```
+    new label "VOL" (parameter V +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+    ```
+
+12. Save the project files:
     ```
     save project
     ```
@@ -222,6 +236,17 @@ A command starting with a double semi-colon is a comment, e,.g,
 This is mostly for use in scripts but it's occasionally useful when assigning a command to a macro key.
 
 
+##### Units
+
+VPD supports the following units of measurement:
+- `mm` (millimeters)
+- `H` (standard horizontal units of 5.08mm)
+- `h` (half-standard horizontal units of 2.54mm)
+
+Also, the height of a panel can be expressed in standard rack units (1U or 128.5mm) but TBH it's there for aesthetics only
+because a panel height may be 1U only, no more no less.
+
+
 ##### Location formats
 
 | Type     | `<xy>`   | Description                                                                | Example             |
@@ -231,10 +256,6 @@ This is mostly for use in scripts but it's occasionally useful when assigning a 
 | **geometry** | `h,v`  | x,y location relative to the geometry of the panel                       | `left+4mm,top+10mm` |
 | **guides**   | `h,v`  | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`    |
    
-The location units can be:
-- `mm` (millimeters)
-- `H` (standard horizontal units of 5.08mm)
-- `h` (half-standard horizontal units of 2.54mm)
 
 #### Parts
 
@@ -274,13 +295,13 @@ new module bodacious 45.72mm
 
 ```new input <name> <xy> [part]```
 
-Creates an input component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
-input on the _overlay_ layer. The _overlay_ is for display only and is not exportedn to the resource SVGs when exported.
+Creates an `input` component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
+input on the _overlay_ layer. The _overlay_ is for display only and is not exported to the resource SVGs when exported.
 
 _Command options:_
 ```
 name     Input name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts
-         to generate the module skeleton. Should be unique unless you're deliberately trying to make the C++ \
+         to generate the module skeleton. Should be unique unless you're deliberately trying to make the C++ 
          compiler miserable.
 xy       Location of the centre of the input component. Must be one of the supported location formats (described 
          [above](#location-formats)).
@@ -292,11 +313,68 @@ _Notes:_
 
 _Examples:_
 ```
-new input audio @10.16mm,10.16mm
-new input audio @10.16mm,10.16mm PJ301M
-new input audio  10.16mm,10.16mm PJ301M
-new input audio left+5.08mm,top+2H PJ301M
-new input audio v1+5.08mm,v2+7.62mm PJ301M
+new input frequency @10.16mm,10.16mm
+new input frequency @10.16mm,10.16mm PJ301M
+new input frequency 10.16mm,10.16mm PJ301M
+new input frequency left+5.08mm,top+2H PJ301M
+new input frequency v1+5.08mm,v2+7.62mm PJ301M
+````
+
+#### `new output`
+
+```new output <name> <xy> [part]```
+
+Creates an `output` component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
+input on the _overlay_ layer. The _overlay_ is for display only and is not exported to the resource SVGs when exported.
+
+_Command options:_
+```
+name     Output name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts
+         to generate the module skeleton. Should be unique unless you have a really good reason for it not to be.
+xy       Location of the centre of the output component. Must be one of the supported location formats (described 
+         [above](#location-formats)).
+part     (optional) Physical part to display on the overlay - a red circle is displayed on the overlay if a part
+         is not provided.
+```
+
+_Notes:_
+
+_Examples:_
+```
+new output audio @10.16mm,10.16mm
+new output audio @10.16mm,10.16mm PJ301M
+new output audio 10.16mm,10.16mm PJ301M
+new output audio left+5.08mm,top+2H PJ301M
+new output audio v1+5.08mm,v2+7.62mm PJ301M
+````
+
+
+#### `new parameter`
+
+```new parameter <name> <xy> [part]```
+
+Creates a `parameter` component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
+input on the _overlay_ layer. The _overlay_ is for display only and is not exported to the resource SVGs when exported.
+
+_Command options:_
+```
+name     Parameter name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts
+         to generate the module skeleton. Should be unique but the compiler will barf if you mess it up.
+xy       Location of the centre of the parameter component. Must be one of the supported location formats (described 
+         [above](#location-formats)).
+part     (optional) Physical part to display on the overlay - a red circle is displayed on the overlay if a part
+         is not provided.
+```
+
+_Notes:_
+
+_Examples:_
+```
+new parameter volume @10.16mm,10.16mm
+new parameter volume @10.16mm,10.16mm PJ301M
+new parameter volume 10.16mm,10.16mm PJ301M
+new parameter volume left+5.08mm,top+2H PJ301M
+new parameter volume v1+5.08mm,v2+7.62mm PJ301M
 ````
 
 

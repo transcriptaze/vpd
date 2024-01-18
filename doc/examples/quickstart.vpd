@@ -165,6 +165,66 @@
           "light": "#c000ff",
           "dark": "#00e000"
         }
+      },
+      {
+        "id": "l2",
+        "text": "FREQ",
+        "x": {
+          "reference": "parameter<E>",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "parameter<E>",
+          "offset": -5.08
+        },
+        "halign": "centre",
+        "valign": "baseline",
+        "path": {
+          "path": "<path d=\"M0.22-2.01L0.47-2.01L0.47 0L0.22 0L0.22-2.01ZM0.42-1.10L1.15-1.10L1.15-0.89L0.42-0.89L0.42-1.10ZM0.42-2.01L1.26-2.01L1.26-1.79L0.42-1.79L0.42-2.01ZM1.58 0L1.58-2.01L2.14-2.01Q2.33-2.01 2.46-1.94Q2.60-1.87 2.67-1.73Q2.73-1.60 2.73-1.40L2.73-1.40Q2.73-1.27 2.69-1.15Q2.64-1.04 2.56-0.96Q2.47-0.88 2.35-0.84L2.35-0.84L2.28-0.81L1.78-0.81L1.77-1.03L2.13-1.03Q2.25-1.03 2.33-1.08Q2.40-1.13 2.44-1.22Q2.48-1.30 2.48-1.40L2.48-1.40Q2.48-1.52 2.45-1.61Q2.41-1.69 2.34-1.74Q2.26-1.79 2.14-1.79L2.14-1.79L1.83-1.79L1.83 0L1.58 0ZM2.81 0L2.54 0L2.14-0.91L2.40-0.91L2.81-0.02L2.81 0ZM3.28-0.22L4.15-0.22L4.15 0L3.28 0L3.28-0.22ZM3.07-2.01L3.33-2.01L3.33 0L3.07 0L3.07-2.01ZM3.28-1.14L4.03-1.14L4.03-0.93L3.28-0.93L3.28-1.14ZM3.28-2.01L4.14-2.01L4.14-1.79L3.28-1.79L3.28-2.01ZM5.19-0.06L5.35-0.23L5.80 0.17L5.62 0.34L5.19-0.06ZM5.77-1.18L5.77-1.18L5.77-0.83Q5.77-0.62 5.72-0.46Q5.68-0.29 5.59-0.19Q5.50-0.08 5.38-0.03Q5.25 0.03 5.09 0.03L5.09 0.03Q4.94 0.03 4.82-0.03Q4.70-0.08 4.61-0.19Q4.52-0.29 4.47-0.46Q4.42-0.62 4.42-0.83L4.42-0.83L4.42-1.18Q4.42-1.39 4.47-1.55Q4.52-1.71 4.61-1.82Q4.69-1.93 4.82-1.98Q4.94-2.03 5.09-2.03L5.09-2.03Q5.25-2.03 5.37-1.98Q5.50-1.93 5.59-1.82Q5.67-1.71 5.72-1.55Q5.77-1.39 5.77-1.18ZM5.52-0.83L5.52-0.83L5.52-1.18Q5.52-1.34 5.49-1.46Q5.46-1.58 5.41-1.66Q5.35-1.73 5.28-1.77Q5.20-1.81 5.09-1.81L5.09-1.81Q5.00-1.81 4.92-1.77Q4.84-1.73 4.79-1.66Q4.73-1.58 4.70-1.46Q4.67-1.34 4.67-1.18L4.67-1.18L4.67-0.83Q4.67-0.66 4.70-0.54Q4.73-0.42 4.79-0.35Q4.84-0.27 4.92-0.23Q5.00-0.20 5.09-0.20L5.09-0.20Q5.20-0.20 5.28-0.23Q5.36-0.27 5.41-0.35Q5.46-0.42 5.49-0.54Q5.52-0.66 5.52-0.83Z\"/>",
+          "bounds": {
+            "x1": 0.216352,
+            "y1": -2.0339844,
+            "x2": 5.7960286,
+            "y2": 0.3389974
+          },
+          "ascender": 2.6182725,
+          "descender": -0.6890191,
+          "advance": 5.954503
+        },
+        "colour": {
+          "light": "#222222",
+          "dark": "#ebebeb"
+        }
+      },
+      {
+        "id": "l3",
+        "text": "VOL",
+        "x": {
+          "reference": "parameter<V>",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "parameter<V>",
+          "offset": -5.08
+        },
+        "halign": "centre",
+        "valign": "baseline",
+        "path": {
+          "path": "<path d=\"M0.71 0L0.77-0.30L1.25-2.01L1.53-2.01L0.90 0L0.71 0ZM0.06-2.01L0.33-2.01L0.81-0.30L0.88 0L0.68 0L0.06-2.01ZM3.10-1.18L3.10-1.18L3.10-0.83Q3.10-0.62 3.06-0.46Q3.01-0.29 2.92-0.19Q2.83-0.08 2.71-0.03Q2.59 0.03 2.43 0.03L2.43 0.03Q2.28 0.03 2.16-0.03Q2.03-0.08 1.94-0.19Q1.85-0.29 1.80-0.46Q1.76-0.62 1.76-0.83L1.76-0.83L1.76-1.18Q1.76-1.39 1.80-1.55Q1.85-1.71 1.94-1.82Q2.03-1.93 2.16-1.98Q2.28-2.03 2.43-2.03L2.43-2.03Q2.59-2.03 2.71-1.98Q2.83-1.93 2.92-1.82Q3.01-1.71 3.06-1.55Q3.10-1.39 3.10-1.18ZM2.85-0.83L2.85-0.83L2.85-1.18Q2.85-1.34 2.82-1.46Q2.80-1.58 2.74-1.66Q2.69-1.73 2.61-1.77Q2.53-1.81 2.43-1.81L2.43-1.81Q2.33-1.81 2.25-1.77Q2.18-1.73 2.12-1.66Q2.07-1.58 2.04-1.46Q2.01-1.34 2.01-1.18L2.01-1.18L2.01-0.83Q2.01-0.66 2.04-0.54Q2.07-0.42 2.12-0.35Q2.18-0.27 2.26-0.23Q2.33-0.20 2.43-0.20L2.43-0.20Q2.53-0.20 2.61-0.23Q2.69-0.27 2.75-0.35Q2.80-0.42 2.83-0.54Q2.85-0.66 2.85-0.83ZM3.70-0.22L4.54-0.22L4.54 0L3.70 0L3.70-0.22ZM3.49-2.01L3.75-2.01L3.75 0L3.49 0L3.49-2.01Z\"/>",
+          "bounds": {
+            "x1": 0.05925564,
+            "y1": -2.0339844,
+            "x2": 4.535124,
+            "y2": 0.027560763
+          },
+          "ascender": 2.6182725,
+          "descender": -0.6890191,
+          "advance": 4.620562
+        },
+        "colour": {
+          "light": "#222222",
+          "dark": "#ebebeb"
+        }
       }
     ],
     "gutter": 5.0,
@@ -179,34 +239,29 @@
       }
     },
     "guides": {
-      "v3": {
-        "orientation": "",
-        "reference": "v2",
-        "offset": 10.16
-      },
       "g2": {
         "orientation": "horizontal",
         "reference": "bottom",
         "offset": -15.24
-      },
-      "g1": {
-        "orientation": "horizontal",
-        "reference": "top",
-        "offset": 10.16
       },
       "v1": {
         "orientation": "vertical",
         "reference": "absolute",
         "offset": 10.16
       },
-      "h2": {
+      "v2": {
         "orientation": "",
-        "reference": "h1",
-        "offset": 15.24
+        "reference": "v1",
+        "offset": 10.16
       },
-      "v4": {
+      "v3": {
         "orientation": "",
-        "reference": "v3",
+        "reference": "v2",
+        "offset": 10.16
+      },
+      "g1": {
+        "orientation": "horizontal",
+        "reference": "top",
         "offset": 10.16
       },
       "h1": {
@@ -214,10 +269,15 @@
         "reference": "origin",
         "offset": 20.32
       },
-      "v2": {
+      "v4": {
         "orientation": "",
-        "reference": "v1",
+        "reference": "v3",
         "offset": 10.16
+      },
+      "h2": {
+        "orientation": "",
+        "reference": "h1",
+        "offset": 15.24
       }
     }
   },
@@ -239,6 +299,46 @@
     "new parameter \"E\" v2,h1 RoundBlackKnob",
     "new parameter \"V\" v2,h2 RoundBlackKnob",
     "new widget \"channels\" @40.64mm,20.32mm \"square\"",
-    "new label \"Thing 1\" centre,g1 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000"
+    "new label \"Thing 1\" centre,g1 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000",
+    "new module \"bodacious\" 1U 10H",
+    "new guide vertical @10.16mm",
+    "new guide v1+10.16mm",
+    "new guide v2+10.16mm",
+    "new guide v3+10.16mm",
+    "new guide horizontal top+20.32mm",
+    "new guide h1+3H",
+    "new guide top+10.16mm",
+    "new guide bottom-15.24mm",
+    "set background \"foundation\"",
+    "new input \"e\" v1,h1 PJ301M",
+    "new input \"v\" v1,h2 PJ301M",
+    "new output \"P\" v4,g2-10.16mm PJ301M",
+    "new output \"Q\" v4,g2 PJ301M",
+    "new parameter \"E\" v2,h1 RoundBlackKnob",
+    "new parameter \"V\" v2,h2 RoundBlackKnob",
+    "new widget \"channels\" @40.64mm,20.32mm \"square\"",
+    "new label \"Thing 1\" centre,g1 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000",
+    "new label \"FREQ\" (parameter E +0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new label \"VOL\" (parameter V +5.08mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new module \"bodacious\" 1U 10H",
+    "new guide vertical @10.16mm",
+    "new guide v1+10.16mm",
+    "new guide v2+10.16mm",
+    "new guide v3+10.16mm",
+    "new guide horizontal top+20.32mm",
+    "new guide h1+3H",
+    "new guide top+10.16mm",
+    "new guide bottom-15.24mm",
+    "set background \"foundation\"",
+    "new input \"e\" v1,h1 PJ301M",
+    "new input \"v\" v1,h2 PJ301M",
+    "new output \"P\" v4,g2-10.16mm PJ301M",
+    "new output \"Q\" v4,g2 PJ301M",
+    "new parameter \"E\" v2,h1 RoundBlackKnob",
+    "new parameter \"V\" v2,h2 RoundBlackKnob",
+    "new widget \"channels\" @40.64mm,20.32mm \"square\"",
+    "new label \"Thing 1\" centre,g1 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000",
+    "new label \"FREQ\" (parameter E +0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new label \"VOL\"  (parameter V +0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline"
   ]
 }

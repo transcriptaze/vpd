@@ -31,7 +31,7 @@ impl X {
                     warnf!("missing reference  '{}'", reference);
                     0.0
                 }
-            }
+            },
         }
     }
 }
@@ -60,7 +60,7 @@ impl Y {
                     warnf!("missing reference  '{}'", reference);
                     0.0
                 }
-            }
+            },
         }
     }
 }
@@ -79,9 +79,13 @@ fn resolve_x(panel: &Panel, reference: &str) -> Option<f32> {
         },
 
         None => {
-            let re = Regex::new(r"(input)<(.*?)>").unwrap();
+            let re = Regex::new(r"(input|parameter)<(.*?)>").unwrap();
             return match re.captures(reference) {
-                Some(captures) => resolve_input_x(panel, captures.get(2).unwrap().as_str()),
+                Some(captures) => match captures.get(1).unwrap().as_str() {
+                    "input" => resolve_input_x(panel, captures.get(2).unwrap().as_str()),
+                    "parameter" => resolve_parameter_x(panel, captures.get(2).unwrap().as_str()),
+                    _ => None,
+                },
                 None => None,
             };
         }
@@ -102,9 +106,13 @@ fn resolve_y(panel: &Panel, reference: &str) -> Option<f32> {
         },
 
         None => {
-            let re = Regex::new(r"(input)<(.*?)>").unwrap();
+            let re = Regex::new(r"(input|parameter)<(.*?)>").unwrap();
             return match re.captures(reference) {
-                Some(captures) => resolve_input_y(panel, captures.get(2).unwrap().as_str()),
+                Some(captures) => match captures.get(1).unwrap().as_str() {
+                    "input" => resolve_input_y(panel, captures.get(2).unwrap().as_str()),
+                    "parameter" => resolve_parameter_y(panel, captures.get(2).unwrap().as_str()),
+                    _ => None,
+                },
                 None => None,
             };
         }
@@ -123,6 +131,26 @@ fn resolve_input_x(panel: &Panel, reference: &str) -> Option<f32> {
 
 fn resolve_input_y(panel: &Panel, reference: &str) -> Option<f32> {
     for v in &panel.inputs {
+        if v.id == reference || v.name == reference {
+            return Some(v.y.resolve(panel));
+        }
+    }
+
+    None
+}
+
+fn resolve_parameter_x(panel: &Panel, reference: &str) -> Option<f32> {
+    for v in &panel.parameters {
+        if v.id == reference || v.name == reference {
+            return Some(v.x.resolve(panel));
+        }
+    }
+
+    None
+}
+
+fn resolve_parameter_y(panel: &Panel, reference: &str) -> Option<f32> {
+    for v in &panel.parameters {
         if v.id == reference || v.name == reference {
             return Some(v.y.resolve(panel));
         }

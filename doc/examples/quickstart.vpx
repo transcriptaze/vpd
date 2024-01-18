@@ -24,3 +24,5 @@ new light "recording" centre,middle+12.7mm LED
 new widget "channels" @40.64mm,20.32mm "square"
 
 new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline #c000ff,#00e000
+new label "FREQ" (parameter E +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+new label "VOL"  (parameter V +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline

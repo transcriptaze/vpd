@@ -9,6 +9,7 @@
 - [x] github 'cloudflare' build
       - [x] Fix wasm .gitignore, LICENSE etc
       - [ ] cloudflare branch
+      - [ ] Trigger nightly builds on push to cloudflare branch
 
 - [x] Load project file
       - [ ] web component
@@ -116,10 +117,16 @@
 - [ ] _label__
       - [x] generate label ID automatically
       - [ ] `new label <text> (<component>) ...`
+             - [ ] Allow name to be quoted
+             - [x] input
+             - [ ] output
+             - [x] parameter
+             - [ ] light
+             - [ ] widget
       - [ ] delete
       - [ ] set
       - [ ] hover
- 
+
 - [ ] _help_
        - (?) Rework grammar as `new`, `new module`, etc
        - [ ] Auto-generate help text from grammar/examples

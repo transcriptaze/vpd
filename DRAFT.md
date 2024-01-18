@@ -44,51 +44,6 @@ The font will be stored more-or-less permanently in the browser local storage.
 - To remove a font, type `delete font <name>`
 
 
-## Commands
-
-1. Measurement units can be specified in:
-   - _mm_ (millimeters)
-   - _H_  (standard panel units, 5.08mm or 0.2")
-   - _h_ (standard panel half units, 2.54mm or 0.1")
-
-2. Locations can be:
-   - _absolute_, measured from the top left corner of the panel. Absolute locations are prefixed with an '@' (e.g. `@10mmm,12.5mm`)
-   - _relative to the origin_, e.g. +10mm,-12.5mm. By default the origin is located at the top left corner of the panel but it can be
-      relocated with a `set origin` command. 
-   - _relative to the geometry_ where _geometry_ means the sides or centres of the panel (e.g. left+10mm,middle-12.5mm)
-   - _relative to the guidelines_ e.g. v1+10mm,h1-12.5mm
-
-   _Examples:_
-   ```
-   new input "e" @10mm,12.5mm
-   new input "e" +10mm,-12.5mm
-   new input "e" left,middle
-   new input "e" centre+10mm,middle-12.5mm
-   new input "e" v1,h1
-   new input "e" v1+10mm,h1-12.5mm
-   ```
-
-### Modules
-
-`new module <name> [height] <width>`
-
-1. The name must be in quotes (e.g. "vpd")
-2. The _height_ is optional and must be _1U_ if provided.
-3. The width can be in either _mm _or _H_ (standard panel units of 5.08mm). Widths in _mm_ will be rounded to the nearest multiple
-   of _5.08mm_.
-
-_Examples:_
-```
-new module "vpd" 1U 10H
-new module "vpd" 50mm
-```
-
-`export module project [gzip]`
-
-`export module script`
-
-`export module svg [light|dark]`
-
 ### Origin
 
 By default, most elements are located relative to the _origin_ which is normally located at the top left corner of the panel. 
