@@ -73,6 +73,10 @@
           "named": true
         },
         {
+          "type": "decorate",
+          "named": true
+        },
+        {
           "type": "export",
           "named": true
         },
@@ -103,6 +107,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "decoration",
+          "named": true
+        },
         {
           "type": "dx",
           "named": true
@@ -137,6 +145,21 @@
         },
         {
           "type": "widget",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decoration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
           "named": true
         }
       ]
@@ -864,6 +887,10 @@
     "named": true
   },
   {
+    "type": "decorate",
+    "named": false
+  },
+  {
     "type": "export",
     "named": false
   },
@@ -932,6 +959,10 @@
     "named": false
   },
   {
+    "type": "parameter",
+    "named": false
+  },
+  {
     "type": "project",
     "named": false
   },
@@ -986,5 +1017,9 @@
   {
     "type": "width",
     "named": true
+  },
+  {
+    "type": "with",
+    "named": false
   }
 ]

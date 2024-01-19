@@ -7,6 +7,7 @@ module.exports = grammar({
         $.comment,
         $.new,
         $.set,
+        $.decorate,
         $.load,
         $.save,
         $.export,
@@ -28,6 +29,19 @@ module.exports = grammar({
         $.origin,
         $.background,
       )
+    ),
+
+    decorate: $ => seq(
+      'decorate',
+      choice (
+        alias ($._input,     $.input),
+        alias ($._output,    $.output),
+        alias ($._parameter, $.parameter),
+        alias ($._light,     $.light),
+        alias ($._widget,    $.widget),
+      ),
+      'with',
+      $.decoration,
     ),
 
     load: $ => seq (
@@ -74,7 +88,7 @@ module.exports = grammar({
       ),
     ),
 
-    // ... new
+    // ... entities
     _entity: $ => choice(
       $.module,
       $.input,
@@ -84,6 +98,31 @@ module.exports = grammar({
       $.widget,
       $.label,
       $.guide,
+    ),
+
+    _input: $ => seq (
+      'input',
+      $.name,
+    ),
+
+    _output: $ => seq (
+      'output',
+      $.name,
+    ),
+
+    _parameter: $ => seq (
+      'parameter',
+      $.name,
+    ),
+
+    _light: $ => seq (
+      'light',
+      $.name,
+    ),
+
+    _widget: $ => seq (
+      'widget',
+      $.name,
     ),
 
     // ... module
@@ -138,7 +177,7 @@ module.exports = grammar({
         $.absolute,
         $.relative,
         seq( $.x, ',', $.y ),
-        $.decorate,
+        alias($._decorate,$.decorate),
       ),
       optional($.font),
       optional($.fontsize),
@@ -188,6 +227,11 @@ module.exports = grammar({
           ),
         ),
       )
+    ),
+
+    // ... decoration
+    decoration: $ => seq (
+      $.name
     ),
 
     // ... origin
@@ -359,7 +403,7 @@ module.exports = grammar({
       alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
     ),
 
-    decorate: $ => seq(
+    _decorate: $ => seq(
       '(',
       choice(
         alias('input', $.input),

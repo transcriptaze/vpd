@@ -20,6 +20,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "decorate"
+          },
+          {
+            "type": "SYMBOL",
             "name": "load"
           },
           {
@@ -69,6 +73,73 @@
               "name": "background"
             }
           ]
+        }
+      ]
+    },
+    "decorate": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "decorate"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_input"
+              },
+              "named": true,
+              "value": "input"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_output"
+              },
+              "named": true,
+              "value": "output"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_parameter"
+              },
+              "named": true,
+              "value": "parameter"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_light"
+              },
+              "named": true,
+              "value": "light"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_widget"
+              },
+              "named": true,
+              "value": "widget"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "with"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decoration"
         }
       ]
     },
@@ -304,6 +375,71 @@
         }
       ]
     },
+    "_input": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "input"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        }
+      ]
+    },
+    "_output": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "output"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        }
+      ]
+    },
+    "_parameter": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "parameter"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        }
+      ]
+    },
+    "_light": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "light"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        }
+      ]
+    },
+    "_widget": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "widget"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        }
+      ]
+    },
     "module": {
       "type": "SEQ",
       "members": [
@@ -489,8 +625,13 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "decorate"
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_decorate"
+              },
+              "named": true,
+              "value": "decorate"
             }
           ]
         },
@@ -704,6 +845,15 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "decoration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "name"
         }
       ]
     },
@@ -1418,7 +1568,7 @@
         }
       ]
     },
-    "decorate": {
+    "_decorate": {
       "type": "SEQ",
       "members": [
         {

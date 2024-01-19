@@ -1,0 +1,11 @@
+==============================================
+decorate input "in" with "CircularGraduations"
+==============================================
+decorate input "in" with "CircularGraduations"
+---
+(command
+  (decorate
+    (input
+      (name))
+    (decoration
+      (name))))
