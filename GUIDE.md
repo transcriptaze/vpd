@@ -14,6 +14,7 @@
        - [Uints](#units)
        - [Location formats](#location-formats)
        - [Parts](#parts)
+   - [`new guide`](#new-guide)
    - [`new module`](#new-module)
    - [`new input`](#new-input)
    - [`new output`](#new-output)
@@ -249,12 +250,13 @@ because a panel height may be 1U only, no more no less.
 
 ##### Location formats
 
-| Type     | `<xy>`   | Description                                                                | Example             |
-|----------|----------|----------------------------------------------------------------------------|---------------------|
-| **absolute** | `@x,y` | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.6mm`      |
-| **relative** | `x,y`  | x,y location in mm relative to the origin                                | `4.5mm,7.6mm`       |
-| **geometry** | `h,v`  | x,y location relative to the geometry of the panel                       | `left+4mm,top+10mm` |
-| **guides**   | `h,v`  | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`    |
+| Type         | `<xy>`    | Description                                                              | Example                         |
+|--------------|-----------|--------------------------------------------------------------------------|---------------------------------|
+| **absolute** | `@x,y`    | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.6mm`                  |
+| **relative** | `x,y`     | x,y location in mm relative to the origin                                | `4.5mm,7.6mm`                   |
+| **geometry** | `h,v`     | x,y location relative to the geometry of the panel                       | `left+4mm,top+10mm`             |
+| **guides**   | `h,v`     | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`                |
+| **decorate** | `(e x,y)` | x,y location relative to the component _e_                               | `(input "audio" +4.5mm,-4.5mm)` |
    
 
 #### Parts
@@ -265,6 +267,43 @@ parts comprises:
 - `PJ301M`
 
 An _unknown_ part will be displayed as an anonymous grey circle devoid of personality, joy or future.
+
+
+#### `set guideline`
+
+```new guide [label] vertical|horizontal <location>```
+
+Creates a construction guideline that can be used to locate or align inputs, outputs, etc. The components that reference the guide will
+will be relocated if the guideline is moved. 
+
+_Notes:_
+1. The label is optional and if a user specified label is not present one will be generated automatically.
+2. The location can be:
+   - _absolute_ e.g. `new guide vertical @4.5mm`
+   - _relative to the origin_ e.g. `new guide vertical +4.5mm`
+   - _relative to the geometry_ e.g. `new guide vertical centre`
+   - _relative to another guide_ e.g. `new guide v1+4.5mm`
+3. Geometry values are:
+   - `left | centre | right` for vertical guidelines
+   - `top  | middle | bottom` for horizontal guidelines
+4. `vertical` and `horizontal` are optional for guidelines that reference the panel geometry.
+5. `V0` and `H0` can be used to reference the vertical and horizontal guides at the origin, i.e.
+   `new guide V0+4.5mm` is the same as `new guide vertical +4.5mm`
+
+_Examples_
+
+```
+new guide v1 vertical @4.5mm
+new guide vertical +4.5mm
+new guide vertical -4.5mm
+new guide vertical left
+new guide center
+new guide vertical v1+H
+
+new guide horizontal middle
+new guide middle
+new guide H0+7.62mm
+```   
 
 #### `new module`
 

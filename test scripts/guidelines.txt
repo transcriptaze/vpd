@@ -1,0 +1,9 @@
+;; label "ipsum" (label "lorem" +5mm,+5mm) 
+
+new module "test" 1U 10H
+set background "foundation"
+new guide centre
+new guide middle
+
+new label "lorem" g1,g2 "RobotoMono-Bold" 12pt centre,baseline
+

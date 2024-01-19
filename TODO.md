@@ -63,6 +63,7 @@
       - [ ] user guide
 
 - [ ] _guidelines_
+      - [ ] V0 and H0
       - [ ] help
       - [ ] `delete`
       - [ ] `set`
@@ -116,13 +117,13 @@
 
 - [ ] _label__
       - [x] generate label ID automatically
-      - [ ] `new label <text> (<component>) ...`
-             - [ ] Allow name to be quoted
+      - [x] `new label <text> (<component>) ...`
+             - [x] Allow name to be quoted
              - [x] input
-             - [ ] output
+             - [x] output
              - [x] parameter
-             - [ ] light
-             - [ ] widget
+             - [x] light
+             - [x] widget
       - [ ] delete
       - [ ] set
       - [ ] hover
