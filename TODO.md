@@ -64,6 +64,9 @@
 
 - [ ] _guidelines_
       - [ ] V0 and H0
+      - [x] `new guide vertical centre`
+      - [x] `new guide horizontal middle`
+      - [ ] Replace `g` ids with `v` or `h`
       - [ ] help
       - [ ] `delete`
       - [ ] `set`

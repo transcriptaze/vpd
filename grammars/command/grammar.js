@@ -263,13 +263,13 @@ module.exports = grammar({
     part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
 
     guide: $ => seq(
-      'guide',      
+      'guide',
+      optional($.identifier),
       choice(
-        seq(optional($.identifier),$.vertical), 
-        seq(optional($.identifier),$.horizontal), 
-        seq(optional($.identifier),$.geometry),
+        $.vertical, 
+        $.horizontal, 
         $.geometry,
-        seq(optional($.identifier),$.guideline),
+        $.guideline,
       ),
     ),
 
@@ -277,35 +277,57 @@ module.exports = grammar({
 
     vertical: $ => seq(
       'vertical',
-      optional('origin'),
-      optional(alias('@', $.absolute)),
       choice (
-        alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
-        $.offset,
+        seq(
+          alias('@',$.absolute),
+          alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+        ),
+        seq(
+          optional('origin'),
+          choice (
+            alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+            $.offset,
+          ),
+        ),
       ),
     ),
 
     horizontal: $ => seq(
       'horizontal',
-      optional('origin'),
-      optional(alias('@', $.absolute)),
       choice (
-        alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
-        $.offset,
+        seq(
+          alias('@',$.absolute),
+          alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+        ),
+        seq(
+          optional('origin'),
+          choice (
+            alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.offset),
+            $.offset,
+          ),
+        ),
       ),
     ),
 
     geometry: $ => seq(
-      alias(
-        choice(
-          "left",
-          "centre",
-          "center",
-          "right",
-          "top",
-          "middle",
-          "bottom",
-        ), $.reference,
+      choice(
+        seq(
+          optional('vertical'),
+          alias(choice(
+            'left',
+            "centre",
+            "center",
+            "right",
+          ), $.reference),
+        ),
+        seq(
+          optional('horizontal'),
+          alias(choice(
+            "top",
+            "middle",
+            "bottom",
+          ), $.reference),
+        ),
       ),
       optional($.offset),
     ),

@@ -1,65 +1,6 @@
- ====================================
-new guide vertical <relative offset>
-====================================
-new guide vertical 4.5mm
----
-(command
-  (new
-    (guide
-        (vertical
-          (offset)))))
-
-
-=============================================
-new guide vertical <positive relative offset>
-=============================================
-new guide vertical +4.5mm
----
-(command
-  (new
-    (guide
-        (vertical
-          (offset)))))
-
-
-=============================================
-new guide vertical <negative relative offset>
-=============================================
-new guide vertical -4.5mm
----
-(command
-  (new
-    (guide
-        (vertical
-          (offset)))))
-
-
-===========================================
-new guide vertical <relative offset>
-===========================================
-new guide vertical -4.5mm
----
-(command
-  (new
-      (guide
-        (vertical
-          (offset)))))
-
-==================================
-new guide vertical origin <offset>
-==================================
-new guide vertical origin+4.5mm
----
-(command
-  (new
-    (guide
-        (vertical
-          (offset)))))
-
-
-===========================================
-new guide vertical <absolute offset>
-===========================================
+=========================
+new guide vertical @4.5mm
+=========================
 new guide vertical @4.5mm
 ---
 (command
@@ -70,9 +11,58 @@ new guide vertical @4.5mm
           (offset)))))
 
 
-===========================================
-new guide <name> vertical <relative offset>
-===========================================
+========================
+new guide vertical 4.5mm
+========================
+new guide vertical 4.5mm
+---
+(command
+  (new
+    (guide
+        (vertical
+          (offset)))))
+
+
+=========================
+new guide vertical +4.5mm
+=========================
+new guide vertical +4.5mm
+---
+(command
+  (new
+    (guide
+        (vertical
+          (offset)))))
+
+
+=========================
+new guide vertical -4.5mm
+=========================
+new guide vertical -4.5mm
+---
+(command
+  (new
+    (guide
+        (vertical
+          (offset)))))
+
+
+===============================
+new guide vertical origin+4.5mm
+===============================
+new guide vertical origin+4.5mm
+---
+(command
+  (new
+    (guide
+        (vertical
+          (offset)))))
+
+
+
+============================
+new guide v1 vertical +4.5mm
+============================
 new guide v1 vertical +4.5mm
 ---
 (command
@@ -148,6 +138,18 @@ new guide v1 horizontal +4.5mm
 new guide left
 ==============
 new guide left
+---
+(command
+  (new
+    (guide
+      (geometry
+        (reference)))))
+
+
+=======================
+new guide vertical left
+=======================
+new guide vertical left
 ---
 (command
   (new
