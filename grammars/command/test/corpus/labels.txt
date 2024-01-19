@@ -122,6 +122,22 @@ new label "lorem" (parameter E +10mm,-10mm)
         (dy)))))
 
 
+=============================================
+new label "lorem" (label "lorem" +10mm,-10mm)
+=============================================
+new label "lorem" (label "lorem" +10mm,-10mm)
+---
+(command
+  (new
+    (label
+      (string)
+      (decorate
+        (label)
+        (name)
+        (dx)
+        (dy)))))
+
+
 =======================================
 new label "lorem" 10mm,10mm "Lato-Bold"
 =======================================

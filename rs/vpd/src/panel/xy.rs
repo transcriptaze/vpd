@@ -14,24 +14,70 @@ pub struct X {
 
 impl X {
     pub fn resolve(&self, panel: &Panel) -> f32 {
+        match self._resolve(panel, Vec::new()) {
+            Some(v) => v,
+            None => 0.0,
+        }
+    }
+
+    fn _resolve<'a>(&'a self, panel: &Panel, mut stack: Vec<&'a str>) -> Option<f32> {
         let reference = self.reference.as_str();
         let w = panel.width;
 
-        match reference {
-            "absolute" => self.offset,
-            "origin" => panel.origin.resolve(panel).0 + self.offset,
-            "left" => self.offset,
-            "centre" => w / 2.0 + self.offset,
-            "center" => w / 2.0 + self.offset,
-            "right" => w + self.offset,
+        if stack.contains(&reference) {
+            warnf!("resolve(X): circular reference {}", reference);
+            return None;
+        }
 
-            _ => match resolve_x(panel, reference) {
-                Some(v) => self.offset + v,
-                None => {
-                    warnf!("missing reference  '{}'", reference);
-                    0.0
+        if stack.len() > 25 {
+            warnf!("resolve(X): recursion depth exceeded");
+            return None;
+        }
+
+        stack.push(reference);
+
+        match reference {
+            "absolute" => Some(self.offset),
+            "origin" => Some(panel.origin.resolve(panel).0 + self.offset),
+            "left" => Some(self.offset),
+            "centre" => Some(w / 2.0 + self.offset),
+            "center" => Some(w / 2.0 + self.offset),
+            "right" => Some(w + self.offset),
+
+            _ => {
+                // ... component reference?
+                let re = Regex::new(r"(input|output|parameter|light|widget|label)<(.*?)>").unwrap();
+
+                match re.captures(reference) {
+                    Some(captures) => {
+                        let itype = captures.get(1).unwrap().as_str();
+                        let id = captures.get(2).unwrap().as_str();
+
+                        match find(panel, itype, id) {
+                            (Some(x), _) => match x._resolve(panel, stack) {
+                                Some(v) => Some(v + self.offset),
+                                None => None,
+                            },
+                            (_, _) => None,
+                        }
+                    }
+
+                    // ... guideline?
+                    None => match panel.guides.get(reference) {
+                        Some(g) => match g.resolve(reference, &panel, 0) {
+                            Some((orientation, offset)) => {
+                                if orientation.as_str() == "vertical" {
+                                    Some(offset + self.offset)
+                                } else {
+                                    None
+                                }
+                            }
+                            None => None,
+                        },
+                        None => None,
+                    },
                 }
-            },
+            }
         }
     }
 }
@@ -44,117 +90,123 @@ pub struct Y {
 
 impl Y {
     pub fn resolve(&self, panel: &Panel) -> f32 {
+        match self._resolve(panel, Vec::new()) {
+            Some(v) => v,
+            None => 0.0,
+        }
+    }
+
+    fn _resolve<'a>(&'a self, panel: &Panel, mut stack: Vec<&'a str>) -> Option<f32> {
         let reference = self.reference.as_str();
         let h = panel.height;
 
+        if stack.contains(&reference) {
+            warnf!("resolve(Y): circular reference {}", reference);
+            return None;
+        }
+
+        if stack.len() > 25 {
+            warnf!("resolve(Y): recursion depth exceeded");
+            return None;
+        }
+
+        stack.push(reference);
+
         match self.reference.as_str() {
-            "absolute" => self.offset,
-            "origin" => panel.origin.resolve(panel).1 + self.offset,
-            "top" => self.offset,
-            "middle" => h / 2.0 + self.offset,
-            "bottom" => h + self.offset,
+            "absolute" => Some(self.offset),
+            "origin" => Some(panel.origin.resolve(panel).1 + self.offset),
+            "top" => Some(self.offset),
+            "middle" => Some(h / 2.0 + self.offset),
+            "bottom" => Some(h + self.offset),
 
-            _ => match resolve_y(panel, reference) {
-                Some(v) => self.offset + v,
-                None => {
-                    warnf!("missing reference  '{}'", reference);
-                    0.0
-                }
-            },
-        }
-    }
-}
+            _ => {
+                // ... component reference?
+                let re = Regex::new(r"(input|output|parameter|light|widget|label)<(.*?)>").unwrap();
 
-fn resolve_x(panel: &Panel, reference: &str) -> Option<f32> {
-    match panel.guides.get(reference) {
-        Some(g) => match g.resolve(reference, &panel, 0) {
-            Some((orientation, offset)) => {
-                if orientation.as_str() == "vertical" {
-                    Some(offset)
-                } else {
-                    None
-                }
-            }
-            None => None,
-        },
+                match re.captures(reference) {
+                    Some(captures) => {
+                        let itype = captures.get(1).unwrap().as_str();
+                        let id = captures.get(2).unwrap().as_str();
 
-        None => {
-            let re = Regex::new(r"(input|parameter)<(.*?)>").unwrap();
-            return match re.captures(reference) {
-                Some(captures) => match captures.get(1).unwrap().as_str() {
-                    "input" => resolve_input_x(panel, captures.get(2).unwrap().as_str()),
-                    "parameter" => resolve_parameter_x(panel, captures.get(2).unwrap().as_str()),
-                    _ => None,
-                },
-                None => None,
-            };
-        }
-    }
-}
+                        match find(panel, itype, id) {
+                            (_, Some(y)) => match y._resolve(panel, stack) {
+                                Some(v) => Some(v + self.offset),
+                                None => None,
+                            },
+                            (_, _) => None,
+                        }
+                    }
 
-fn resolve_y(panel: &Panel, reference: &str) -> Option<f32> {
-    match panel.guides.get(reference) {
-        Some(g) => match g.resolve(reference, &panel, 0) {
-            Some((orientation, offset)) => {
-                if orientation.as_str() == "horizontal" {
-                    Some(offset)
-                } else {
-                    None
+                    // ... guideline?
+                    None => match panel.guides.get(reference) {
+                        Some(g) => match g.resolve(reference, &panel, 0) {
+                            Some((orientation, offset)) => {
+                                if orientation.as_str() == "horizontal" {
+                                    Some(offset + self.offset)
+                                } else {
+                                    None
+                                }
+                            }
+                            None => None,
+                        },
+                        None => None,
+                    },
                 }
             }
-            None => None,
-        },
-
-        None => {
-            let re = Regex::new(r"(input|parameter)<(.*?)>").unwrap();
-            return match re.captures(reference) {
-                Some(captures) => match captures.get(1).unwrap().as_str() {
-                    "input" => resolve_input_y(panel, captures.get(2).unwrap().as_str()),
-                    "parameter" => resolve_parameter_y(panel, captures.get(2).unwrap().as_str()),
-                    _ => None,
-                },
-                None => None,
-            };
         }
     }
 }
 
-fn resolve_input_x(panel: &Panel, reference: &str) -> Option<f32> {
-    for v in &panel.inputs {
-        if v.id == reference || v.name == reference {
-            return Some(v.x.resolve(panel));
+fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
+    match itype {
+        "input" => {
+            let mut it = panel.inputs.iter();
+            match it.find(|&v| v.id == reference || v.name == reference) {
+                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                None => (None, None),
+            }
         }
-    }
 
-    None
-}
-
-fn resolve_input_y(panel: &Panel, reference: &str) -> Option<f32> {
-    for v in &panel.inputs {
-        if v.id == reference || v.name == reference {
-            return Some(v.y.resolve(panel));
+        "output" => {
+            let mut it = panel.outputs.iter();
+            match it.find(|&v| v.id == reference || v.name == reference) {
+                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                None => (None, None),
+            }
         }
-    }
 
-    None
-}
-
-fn resolve_parameter_x(panel: &Panel, reference: &str) -> Option<f32> {
-    for v in &panel.parameters {
-        if v.id == reference || v.name == reference {
-            return Some(v.x.resolve(panel));
+        "parameter" => {
+            let mut it = panel.parameters.iter();
+            match it.find(|&v| v.id == reference || v.name == reference) {
+                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                None => (None, None),
+            }
         }
-    }
 
-    None
-}
-
-fn resolve_parameter_y(panel: &Panel, reference: &str) -> Option<f32> {
-    for v in &panel.parameters {
-        if v.id == reference || v.name == reference {
-            return Some(v.y.resolve(panel));
+        "light" => {
+            let mut it = panel.lights.iter();
+            match it.find(|&v| v.id == reference || v.name == reference) {
+                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                None => (None, None),
+            }
         }
-    }
 
-    None
+        "widget" => {
+            let mut it = panel.widgets.iter();
+            match it.find(|&v| v.id == reference || v.name == reference) {
+                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                None => (None, None),
+            }
+        }
+
+        "label" => {
+            let mut it = panel.labels.iter();
+            match it.find(|&v| v.id == reference || v.text == reference) {
+                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                None => (None, None),
+            }
+        }
+
+        _ => (None, None),
+    }
 }

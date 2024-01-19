@@ -345,6 +345,7 @@ module.exports = grammar({
         alias('parameter', $.parameter),
         alias('light', $.light),
         alias('widget' ,$.widget),
+        alias('label' ,$.label),
       ),
       $.name,
       $._relative,

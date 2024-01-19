@@ -63,15 +63,15 @@ export function newLabel (node, src) {
 
       let reference = 'component'
       for (const v of child.namedChildren) {
-        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+        if (['input', 'output', 'parameter', 'light', 'widget', 'label'].includes(v.type)) {
           reference = `${v.type}`
         }
       }
 
       for (const v of child.namedChildren) {
         if (v.type === 'name') {
-          object.label.x.reference = `${reference}<${v.text.trim()}>`
-          object.label.y.reference = `${reference}<${v.text.trim()}>`
+          object.label.x.reference = `${reference}<${string(v)}>`
+          object.label.y.reference = `${reference}<${string(v)}>`
         }
 
         if (v.type === 'dx') {
