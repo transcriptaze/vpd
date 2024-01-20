@@ -1,24 +1,40 @@
 use serde::{Deserialize, Serialize};
 
 use crate::panel::Panel;
+use crate::panel::X;
+use crate::panel::Y;
 use crate::svg::GuideLine;
 
 use crate::utils::log;
 use crate::warnf;
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Guide {
     pub orientation: String,
     pub reference: String,
     pub offset: f32,
+    pub x: Option<X>,
+    pub y: Option<Y>,
 }
 
 impl Guide {
     pub fn new(orientation: &str, reference: &str, offset: f32) -> Guide {
+        let x = match orientation {
+            "vertical" => Some(X::new(reference, offset)),
+            _ => None,
+        };
+
+        let y = match orientation {
+            "horizontal" => Some(Y::new(reference, offset)),
+            _ => None,
+        };
+
         Guide {
             orientation: orientation.to_string(),
             reference: reference.to_string(),
             offset: offset,
+            x: x,
+            y: y,
         }
     }
 

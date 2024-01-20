@@ -13,6 +13,13 @@ pub struct X {
 }
 
 impl X {
+    pub fn new(reference: &str, offset: f32) -> X {
+        X {
+            reference: reference.to_string(),
+            offset: offset,
+        }
+    }
+
     pub fn resolve(&self, panel: &Panel) -> f32 {
         match self._resolve(panel, Vec::new()) {
             Some(v) => v,
@@ -45,10 +52,10 @@ impl X {
             "right" => Some(w + self.offset),
 
             _ => {
-                // ... component reference?
                 let re = Regex::new(r"(input|output|parameter|light|widget|label)<(.*?)>").unwrap();
 
                 match re.captures(reference) {
+                    // ... component reference?
                     Some(captures) => {
                         let itype = captures.get(1).unwrap().as_str();
                         let id = captures.get(2).unwrap().as_str();
@@ -64,14 +71,11 @@ impl X {
 
                     // ... guideline?
                     None => match panel.guides.get(reference) {
-                        Some(g) => match g.resolve(reference, &panel, 0) {
-                            Some((orientation, offset)) => {
-                                if orientation.as_str() == "vertical" {
-                                    Some(offset + self.offset)
-                                } else {
-                                    None
-                                }
-                            }
+                        Some(g) => match &g.x {
+                            Some(x) => match x._resolve(panel, stack) {
+                                Some(v) => Some(v + self.offset),
+                                None => None,
+                            },
                             None => None,
                         },
                         None => None,
@@ -89,6 +93,13 @@ pub struct Y {
 }
 
 impl Y {
+    pub fn new(reference: &str, offset: f32) -> Y {
+        Y {
+            reference: reference.to_string(),
+            offset: offset,
+        }
+    }
+
     pub fn resolve(&self, panel: &Panel) -> f32 {
         match self._resolve(panel, Vec::new()) {
             Some(v) => v,
@@ -120,10 +131,10 @@ impl Y {
             "bottom" => Some(h + self.offset),
 
             _ => {
-                // ... component reference?
                 let re = Regex::new(r"(input|output|parameter|light|widget|label)<(.*?)>").unwrap();
 
                 match re.captures(reference) {
+                    // ... component reference?
                     Some(captures) => {
                         let itype = captures.get(1).unwrap().as_str();
                         let id = captures.get(2).unwrap().as_str();
@@ -139,14 +150,11 @@ impl Y {
 
                     // ... guideline?
                     None => match panel.guides.get(reference) {
-                        Some(g) => match g.resolve(reference, &panel, 0) {
-                            Some((orientation, offset)) => {
-                                if orientation.as_str() == "horizontal" {
-                                    Some(offset + self.offset)
-                                } else {
-                                    None
-                                }
-                            }
+                        Some(g) => match &g.y {
+                            Some(y) => match y._resolve(panel, stack) {
+                                Some(v) => Some(v + self.offset),
+                                None => None,
+                            },
                             None => None,
                         },
                         None => None,
