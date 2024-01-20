@@ -56,11 +56,11 @@
       - [ ] help
       - [ ] user guide
 
-- [ ] _origin_
+- [x] _origin_
       - [x] `set origin <absolute>`
       - [x] `set origin <geometry>`
-      - [ ] help
-      - [ ] user guide
+      - [x] help
+      - [x] user guide
 
 - [ ] _guidelines_
       - [ ] V0 and H0
@@ -71,6 +71,7 @@
       - [ ] `delete`
       - [ ] `set`
       - [ ] `list`
+      - [ ] Replace Guide::to_svg() resolution with XY::resolve
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) error if duplicate offset

@@ -28,11 +28,10 @@
 
 6. _I forgot to save the project as a script and now I want to run the script and ..._
 
-   Oooops! 
+   Oh no!! Woe is you! 
 
-   Well, it happens to the best of us but luckily the project _.vpd_ is straight JSON and it so
-   happens the script is also stored in that so as long as you have the project file all is not
-   lost.
+   Well, actually it happens to the best of us but luckily the project _.vpd_ is straight JSON and it so happens
+   the script is also stored in that so as long as you have the project file all is not lost.
 
    If you have [_jq_](https://github.com/jqlang/jq) installed then the command to extract the script is:
    ```
@@ -41,9 +40,9 @@
 
    _.vpz_ files are just gzipped versions of _.vpd_ files so you just need to gunzip them first:
    ```
-   gunzip --uncompress --keep --suffix vpz -c <<vpz file>> > <<vpd file>>
-   jq -r '.script[]' <<vpd file>>
+   gunzip --uncompress --keep --suffix vpz -c [vpz file] > [vpd file]
+   jq -r '.script[]' [vpd file]
    ```
    
-   If you don't have _jq_ installed any text editor can will do - the script lines are right at the 
-   bottom of the file - you'll have do some cleaning up though. Probably easier just to install _jq_.
+   If you don't have _jq_ installed any text editor (but not _emacs_) will do - the script lines are right at the 
+   bottom of the file but you'll have do some cleaning up. Probably easier just to install _jq_.

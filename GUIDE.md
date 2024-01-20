@@ -8,7 +8,9 @@
    - [_Load_](#load)
    - [_Save_](#save)
    - [_Export SVG_](#export-svg)
+   - [_Undo/Redo_](#undo-rdo)
    - [_Macro keys_](#macro-keys)
+   - [_Command line_](#command-line)
 - [Commands](#commands)
        - [Comments](#comments)
        - [Uints](#units)
@@ -210,6 +212,8 @@ To load a _.vpx_ file:
   SVG file is saved with a _-dark_ suffix.
 
 
+### Undo/Redo
+
 ### Macro keys
 
 The macro keys (_Ctrl-1_ to _Ctrl-0_) can be programmed with commonly used commands (e.g `save project timestamp gzip`). Clicking on a
@@ -223,6 +227,8 @@ To assign a command to a macro key:
 area)
 
 The macro keys assignments are stored only in the browser local storage and are not included in the project file. 
+
+### Command line
 
 
 ## Commands
@@ -269,12 +275,44 @@ parts comprises:
 An _unknown_ part will be displayed as an anonymous grey circle devoid of personality, joy or future.
 
 
+#### `set origin`
+
+```set origin <xy>```
+
+The origin is the default _relative_ reference point for locating elements and guidelines.  By default the _origin_ is located at the 
+top left corner of the panel - the `set origin` command moves the origin to the `<xy>` location and all elements referencing the 
+origin will be relocated relative to the new position.
+
+_Command options:_
+```
+xy   New origin location. May be an absolute location or a reference to the geometry of the panel.
+```
+
+Examples:
+```
+set origin @10mm,10mm
+set origin centre,middle
+set origin left+2.54mm,top+10.16mm
+```
+
 #### `set guideline`
 
-```new guide [label] vertical|horizontal <location>```
+```new guide [label] [vertical|horizontal] <location>```
 
-Creates a construction guideline that can be used to locate or align inputs, outputs, etc. The components that reference the guide will
+Creates a construction guideline that can be used to locate or align inputs, outputs, etc. The components that reference the guideline
 will be relocated if the guideline is moved. 
+
+_Command options:_
+```
+label         (optional) guideline label. Must be unique - default labels (prefixed with a 'v' for vertical guidelines and an
+              'h' for horizontal) guidelines will be automatically generated if an explicit label is not provided.
+
+orientation   'vertical' or 'horizontal'. Required if the guideline is located using either an absolute location or a location
+              relative to the origin, otherwise is derived from the referenced guideline or geometry.
+
+location      Location of the guideline, either as an absolute offset from the top/left of the panel, an offset from the origin
+              or an offset from the geometry of the panel.              
+```
 
 _Notes:_
 1. The label is optional and if a user specified label is not present one will be generated automatically.
@@ -290,6 +328,7 @@ _Notes:_
 5. `V0` and `H0` can be used to reference the vertical and horizontal guides at the origin, i.e.
    `new guide V0+4.5mm` is the same as `new guide vertical +4.5mm`
 
+
 _Examples_
 
 ```
@@ -298,7 +337,8 @@ new guide vertical +4.5mm
 new guide vertical -4.5mm
 new guide vertical left
 new guide center
-new guide vertical v1+H
+new guide v1+10.16mm
+new guide vertical v1+2H
 
 new guide horizontal middle
 new guide middle
