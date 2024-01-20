@@ -11,20 +11,23 @@
    - [_Undo/Redo_](#undoredo)
    - [_Macro keys_](#macro-keys)
    - [_Command line_](#command-line)
+---
 - [Commands](#commands)
-       - [Comments](#comments)
-       - [Uints](#units)
-       - [Location formats](#location-formats)
-       - [Parts](#parts)
+   - General
+      - [comments](#comments)
+      - [units](#units)
+      - [location formats](#location-formats)
+      - [parts](#parts)
+  ---
    - [`new guide`](#new-guide)
    - [`new module`](#new-module)
+   - [`set background`](#set-background)
    - [`new input`](#new-input)
    - [`new output`](#new-output)
    - [`new parameter`](#new-parameter)
    - [`new light`](#new-light)
    - [`new widget`](#new-widget)
    - [`new label`](#new-label)
-   - [`set background`](#set-background)
    - [`load project`](#load-project)
    - [`save project`](#save-project)
    - [`load script`](#load-script)
@@ -96,7 +99,7 @@
    new parameter "distortion" v2,h2 RoundBlackKnob
    ```
 
-8. Create the _lights_:
+8. Create some _lights_:
    ```
    new light "ok" centre,middle LED
    ```
@@ -104,7 +107,7 @@
    new light "recording" centre,middle+12.7mm LED
    ```
 
-9. Create the _custom widget_:
+9. Create a _custom widget_:
    ```
    new widget "channels" @40.64mm,20.32mm square
    ```
@@ -403,6 +406,36 @@ new module bodacious 45.72mm
 ````
 
 
+#### `set background`
+
+```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
+
+Sets the panel background to either a plain colour or the name of a preloaded backround.
+
+_Command options:_
+```
+rgb    RGB colour hex value e.g. #ff0000
+rgba   RGBA colour hex value e.g. #ff000040
+name   Name of a preloaded background definition, optionally surrounded by single or double quotes
+```
+
+_Notes:_
+1. The default background is a transparent rectangle
+2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
+3. The background name is case- and space-insensitive
+4. The preloaded background are:
+   - `foundation`
+
+_Examples:_
+```
+set background #ff00ff
+set background #ff00ff,#00ff00
+set background #ff00ff40
+set background #ff00ff40,#00ff0080
+set background foundation
+````
+
+
 #### `new input`
 
 ```new input <name> <xy> [part]```
@@ -545,7 +578,7 @@ new widget channels  @10.16mm,10.16mm "ChDsp"
 new widget channels  10.16mm,10.16mm  "ChDsp"
 new widget channels  left+5.08mm,top+2H "ChDsp"
 new widget channels  v1+5.08mm,v2+7.62mm "ChDsp"
-
+```
 
 #### `new label`
 
@@ -587,36 +620,6 @@ new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline r
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ffff0080
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ff0000,#00ff00
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" baseline #ff0000,#00ff00
-````
-
-
-#### `set background`
-
-```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
-
-Sets the panel background to either a plain colour or the name of a preloaded backround.
-
-_Command options:_
-```
-rgb    RGB colour hex value e.g. #ff0000
-rgba   RGBA colour hex value e.g. #ff000040
-name   Name of a preloaded background definition, optionally surrounded by single or double quotes
-```
-
-_Notes:_
-1. The default background is a transparent rectangle
-2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
-3. The background name is case- and space-insensitive
-4. The preloaded background are:
-   - `foundation`
-
-_Examples:_
-```
-set background #ff00ff
-set background #ff00ff,#00ff00
-set background #ff00ff40
-set background #ff00ff40,#00ff0080
-set background foundation
 ````
 
 
