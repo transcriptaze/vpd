@@ -4,12 +4,12 @@ use serde::Deserialize;
 
 use crate::command::Command;
 use crate::module::Module;
-use crate::panel;
+// use crate::panel;
 
 #[derive(Deserialize)]
 pub struct NewDecoration {
-    entity: String,
-    name: String,
+    _entity: String,
+    _name: String,
 }
 
 #[derive(Deserialize)]
@@ -26,7 +26,7 @@ impl NewDecoration {
 }
 
 impl Command for NewDecoration {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, _m: &mut Module, _line: &Option<String>) -> bool {
         // let id = m.new_input_id();
         //
         // m.panel.inputs.push(panel::Input::new(

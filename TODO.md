@@ -69,7 +69,7 @@
       - [ ] help
       - [ ] `delete`
       - [ ] `set`
-      - [ ] Replace Guide::to_svg() resolution with XY::resolve
+      - [x] Replace Guide::to_svg() resolution with XY::resolve
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) error if duplicate offset
