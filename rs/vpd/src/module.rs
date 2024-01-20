@@ -260,6 +260,7 @@ impl Module {
     }
 
     pub fn new_guide_id(&self, orientation: &str, reference: &str) -> String {
+        warnf!(">> new guide {},{}", orientation, reference);
         let re = match (orientation, reference) {
             ("vertical", _) => Regex::new(r"(v)(\d+)").unwrap(),
             ("horizontal", _) => Regex::new(r"(h)(\d+)").unwrap(),

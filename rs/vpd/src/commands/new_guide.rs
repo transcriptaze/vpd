@@ -31,11 +31,6 @@ impl NewGuide {
 
 impl Command for NewGuide {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
-        let id = match &self.name {
-            Some(v) => v.to_string(),
-            None => m.new_guide_id(&self.orientation, &self.reference),
-        };
-
         let reference = self.reference.as_str();
         let orientation = match (self.orientation.as_str(), reference) {
             ("", "left") => "vertical",
@@ -47,15 +42,21 @@ impl Command for NewGuide {
             ("", "middle") => "horizontal",
             ("", "bottom") => "horizontal",
 
-            // ("", v) => match m.panel.guides.get(v) {
-            //     Some(g) => match g.orientation.as_str() {
-            //         "vertical" => "vertical",
-            //         "horizontal" => "horizontal",
-            //         _ => "",
-            //     },
-            //     _ => "",
-            // },
+            ("", v) => match m.panel.guides.get(v) {
+                Some(g) => match (&g.x, &g.y) {
+                    (Some(_), None) => "vertical",
+                    (None, Some(_)) => "horizontal",
+                    _ => "",
+                },
+                _ => "",
+            },
+
             (o, _) => o,
+        };
+
+        let id = match &self.name {
+            Some(v) => v.to_string(),
+            None => m.new_guide_id(&orientation, &reference),
         };
 
         if validate(&id, &reference, &m) {

@@ -6,7 +6,10 @@ new guide centre+10.16mm
 new guide middle
 
 new guide vertical @5.08mm
-new guide v1+10.16mm
+new guide v2+10.16mm
+
+new guide horizontal top+20.32mm
+new guide h2+3H
 
 new label "lorem" g1,g2 "RobotoMono-Bold" 12pt centre,baseline
 
