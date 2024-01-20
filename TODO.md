@@ -1,10 +1,12 @@
 # TODO
 
 - [ ] Replace splashscreens
+- [ ] Resolve names to IDs in apply()
+- [ ] Derive Scriptable
+- [ ] Genericize ID generation
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
-      - [ ] Remove hover text
 
 - [x] github 'cloudflare' build
       - [x] Fix wasm .gitignore, LICENSE etc
@@ -46,16 +48,16 @@
 - [x] _load_
 - [x] _save_
 - [x] _set origin_
-
 - [x] _export panel svg_
-      - (?) Remove input layer, etc
 
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
       - [x] `new module <name> [1U] 50mm`
       - [x] help
       - [x] user guide
-      - [ ] `set` module name/width/height
+      - [ ] `set module name`
+      - [ ] `set module width`
+      - [ ] `set module height`
 
 - [ ] `set background none`
 
@@ -77,7 +79,6 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] `decorate`
       - [ ] hover
             - https://stackoverflow.com/questions/41768657/display-text-over-svg-element-on-hover#41769075
       - [x] user guide
@@ -87,7 +88,6 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] `decorate`
       - [ ] hover
       - [x] user guide
 
@@ -96,7 +96,6 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] `decorate`
       - [ ] hover
       - [x] user guide
 
@@ -105,7 +104,6 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] `decorate`
       - [ ] hover
       - [x] user guide
 
@@ -113,7 +111,6 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] `decorate`
       - [ ] hover
       - [x] user guide
 
@@ -121,6 +118,17 @@
       - [ ] delete
       - [ ] set
       - [ ] hover
+
+- [ ] _decorate_
+      - [ ] inputs
+      - [ ] outputs
+      - [ ] parameters
+      - [ ] lights
+      - [ ] widgets
+      - [ ] help
+      - [ ] user guide
+      - [ ] set
+      - [ ] delete
 
 - [ ] _help_
        - (?) Rework grammar as `new`, `new module`, etc

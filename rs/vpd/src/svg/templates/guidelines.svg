@@ -6,12 +6,8 @@
     {% if origin -%}
     <g id="origin">
       <polygon points="{{origin.x-2.5}},{{origin.y}} {{origin.x}},{{origin.y+2.5}} {{origin.x+2.5}},{{origin.y}} {{origin.x}},{{origin.y-2.5}}" class="origin" />
-      <line x1="{{origin.x}}" y1="{{viewport.y}}" 
-            x2="{{origin.x}}" y2="{{viewport.y + viewport.height}}" 
-            class="guideline" />
-      <line x1="{{viewport.x}}" y1="{{origin.y}}" 
-            x2="{{viewport.x + viewport.width}}" y2="{{origin.y}}" 
-            class="guideline" />
+      <line x1="{{origin.x}}" y1="{{viewport.y}}" x2="{{origin.x}}" y2="{{viewport.y + viewport.height}}" class="guideline" />
+      <line x1="{{viewport.x}}" y1="{{origin.y}}" x2="{{viewport.x + viewport.width}}" y2="{{origin.y}}" class="guideline" />
     </g>
     {%- endif %}
 
