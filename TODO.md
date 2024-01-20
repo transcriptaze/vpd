@@ -53,9 +53,9 @@
 - [ ] _module_
       - [x] `new module <name> [1U] 10H`
       - [x] `new module <name> [1U] 50mm`
+      - [x] help
+      - [x] user guide
       - [ ] `set` module name/width/height
-      - [ ] help
-      - [ ] user guide
 
 - [ ] `set background none`
 
@@ -89,7 +89,7 @@
       - [ ] help
       - [ ] `decorate`
       - [ ] hover
-      - [ ] user guide
+      - [x] user guide
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
@@ -98,7 +98,7 @@
       - [ ] help
       - [ ] `decorate`
       - [ ] hover
-      - [ ] user guide
+      - [x] user guide
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
@@ -107,7 +107,7 @@
       - [ ] help
       - [ ] `decorate`
       - [ ] hover
-      - [ ] user guide
+      - [x] user guide
 
 - [ ] _widget_
       - [ ] delete
@@ -115,17 +115,9 @@
       - [ ] help
       - [ ] `decorate`
       - [ ] hover
-      - [ ] user guide
+      - [x] user guide
 
-- [ ] _label__
-      - [x] generate label ID automatically
-      - [x] `new label <text> (<component>) ...`
-             - [x] Allow name to be quoted
-             - [x] input
-             - [x] output
-             - [x] parameter
-             - [x] light
-             - [x] widget
+- [ ] _label_
       - [ ] delete
       - [ ] set
       - [ ] hover

@@ -8,7 +8,7 @@
    - [_Load_](#load)
    - [_Save_](#save)
    - [_Export SVG_](#export-svg)
-   - [_Undo/Redo_](#undo-redo)
+   - [_Undo/Redo_](#undoredo)
    - [_Macro keys_](#macro-keys)
    - [_Command line_](#command-line)
 - [Commands](#commands)
@@ -21,6 +21,8 @@
    - [`new input`](#new-input)
    - [`new output`](#new-output)
    - [`new parameter`](#new-parameter)
+   - [`new light`](#new-light)
+   - [`new widget`](#new-widget)
    - [`new label`](#new-label)
    - [`set background`](#set-background)
    - [`load project`](#load-project)
@@ -329,35 +331,34 @@ set origin left+2.54mm,top+10.16mm
 
 #### `set guideline`
 
-```new guide [label] [vertical|horizontal] <location>```
+```new guide [label] [orientation] <location>```
 
 Creates a construction guideline that can be used to locate or align inputs, outputs, etc. The components that reference the guideline
 will be relocated if the guideline is moved. 
 
 _Command options:_
 ```
-label         (optional) guideline label. Must be unique - default labels (prefixed with a 'v' for vertical guidelines and an
-              'h' for horizontal) guidelines will be automatically generated if an explicit label is not provided.
+label         (optional) guideline label. Must be unique - default labels will be automatically generated if an explicit label is not
+              provided, as _vNN_ for vertical guidelines (e.g. _v1_) and _hNN_ for horizontal guidelines (e.g. _h2_).
 
 orientation   'vertical' or 'horizontal'. Required if the guideline is located using either an absolute location or a location
-              relative to the origin, otherwise is derived from the referenced guideline or geometry.
+              relative to the origin, otherwise it is automatically derived from the referenced guideline or geometry.
 
 location      Location of the guideline, either as an absolute offset from the top/left of the panel, an offset from the origin
               or an offset from the geometry of the panel.              
 ```
 
 _Notes:_
-1. The label is optional and if a user specified label is not present one will be generated automatically.
-2. The location can be:
+1. The location can be:
    - _absolute_ e.g. `new guide vertical @4.5mm`
    - _relative to the origin_ e.g. `new guide vertical +4.5mm`
-   - _relative to the geometry_ e.g. `new guide vertical centre`
+   - _relative to the geometry_ e.g. `new guide centre`
    - _relative to another guide_ e.g. `new guide v1+4.5mm`
-3. Geometry values are:
+2. Geometry values are:
    - `left | centre | right` for vertical guidelines
    - `top  | middle | bottom` for horizontal guidelines
-4. `vertical` and `horizontal` are optional for guidelines that reference the panel geometry.
-5. `V0` and `H0` can be used to reference the vertical and horizontal guides at the origin, i.e.
+3. `vertical` and `horizontal` are optional for guidelines that reference the panel geometry.
+4. `V0` and `H0` can be used to reference the vertical and horizontal guides at the origin, i.e.
    `new guide V0+4.5mm` is the same as `new guide vertical +4.5mm`
 
 
@@ -487,6 +488,63 @@ new parameter volume 10.16mm,10.16mm PJ301M
 new parameter volume left+5.08mm,top+2H PJ301M
 new parameter volume v1+5.08mm,v2+7.62mm PJ301M
 ````
+
+
+#### `new light`
+
+```new light <name> <xy> [part]```
+
+Creates a `light` component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
+input on the _overlay_ layer. The _overlay_ is for display only and is not exported to the resource SVGs when exported.
+
+_Command options:_
+```
+name     Light name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts
+         to generate the module skeleton. Should be unique but really it's up to you.
+xy       Location of the centre of the light component. Must be one of the supported location formats (described 
+         [above](#location-formats)).
+part     (optional) Physical part to display on the overlay - a purple circle is displayed on the overlay if a part
+         is not provided.
+```
+
+_Notes:_
+
+_Examples:_
+```
+new light "on" @10.16mm,10.16mm
+new light on @10.16mm,10.16mm LED
+new light on 10.16mm,10.16mm LED
+new light recording left+5.08mm,top+2H "Red LED"
+new light recording v1+5.08mm,v2+7.62mm "Red LED"
+````
+
+
+#### `new widgets`
+
+```new widget <name> <xy> [part]```
+
+Creates a `widget` component _placeholder_ in the _components_ layer of the SVG and (optionally) displays the physical
+input on the _overlay_ layer. The _overlay_ is for display only and is not exported to the resource SVGs when exported.
+
+_Command options:_
+```
+name     Widget name, optionally surrounded by single or double quotes and used by the VCV plugin helper scripts
+         to generate the module skeleton. Should be unique otherwise you won't be able to tell them apart.
+xy       Location of the centre of the widget component. Must be one of the supported location formats (described 
+         [above](#location-formats)).
+part     (optional) Physical part to display on the overlay - a yellow circle is displayed on the overlay if a part
+         is not provided.
+```
+
+_Notes:_
+
+_Examples:_
+```
+new widget "channels" @10.16mm,10.16mm
+new widget channels  @10.16mm,10.16mm "ChDsp"
+new widget channels  10.16mm,10.16mm  "ChDsp"
+new widget channels  left+5.08mm,top+2H "ChDsp"
+new widget channels  v1+5.08mm,v2+7.62mm "ChDsp"
 
 
 #### `new label`
