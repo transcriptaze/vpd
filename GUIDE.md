@@ -8,7 +8,7 @@
    - [_Load_](#load)
    - [_Save_](#save)
    - [_Export SVG_](#export-svg)
-   - [_Undo/Redo_](#undo-rdo)
+   - [_Undo/Redo_](#undo-redo)
    - [_Macro keys_](#macro-keys)
    - [_Command line_](#command-line)
 - [Commands](#commands)
@@ -53,10 +53,13 @@
 
 3. Add a _horizontal guideline_ to position inputs, outputs and parameters:
    ```
-   new guide horizontal top+20.32mm
+   new guide horizontal @20.32mm
    ```
    ```
-   new guide h1+2H
+   new guide h1+3H
+   ```
+   ```
+   new guide top+10.16mm
    ```
    ```
    new guide bottom-15.24mm
@@ -67,28 +70,28 @@
    set background "foundation"
    ```
 
-5. Create the _inputs_:
+5. Create some _inputs_:
    ```
-   new input "e" v1,h1 PJ301M
-   ```
-   ```
-   new input "v" v1,h2 PJ301M
-   ```
-
-6. Create the _outputs_:
-   ```
-   new output "P" v3,h3-10.16mm PJ301M
+   new input "frequency"  v1,h1 PJ301M
    ```
    ```
-   new output "Q" v3,h3         PJ301M
+   new input "volume" v1,h2 PJ301M
    ```
 
-7. Create the _parameters_:
+6. Create some _outputs_:
    ```
-   new parameter "E" v2,h1 RoundBlackKnob
+   new output "left" v4,h4-10.16mm PJ301M
    ```
    ```
-   new parameter "V" v2,h2 RoundBlackKnob
+   new output "right" v4,h4 PJ301M
+   ```
+
+7. Create some _parameters_:
+   ```
+   new parameter "volume" v2,h1 RoundBlackKnob
+   ```
+   ```
+   new parameter "distortion" v2,h2 RoundBlackKnob
    ```
 
 8. Create the _lights_:
@@ -106,18 +109,26 @@
 
 10. Add a _title_:
     ```
-    new label "Thing 1" centre,g1 "StyleScript-Regular" 16pt centre,baseline
+    new label "Thing 1" centre,h3 "StyleScript-Regular" 16pt centre,baseline #c000ff,#00e000
     ```
 
-11. Label the parameters:
+11. Label the inputs:
     ```
-    new label "FREQ" (parameter E +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+    new label "FREQ"  (input "frequency"+0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
     ```
     ```
-    new label "VOL" (parameter V +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+    new label "VOL"   (input "volume"   +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
     ```
 
-12. Save the project files:
+12. Label the outputs:
+    ```
+    new label "LEFT"  (output "left"    -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle
+    ```
+    ```
+    new label "RIGHT" (output "right"   -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle
+    ```
+
+13. Save the project files:
     ```
     save project
     ```
@@ -186,6 +197,15 @@ To load a _.vpx_ file:
 - Execute the `load script` command to open a file chooser dialog.
 
 
+To save a project as a _.vpx_ file:
+- On the user interface _Alt-click_ (_Option-click_ on MacOS) the _File Save_ button (<img width="20" src="doc/images/save.png">) to open
+  a file chooser dialog.
+
+  -- or --
+
+- Execute the `save script` command to open a file chooser dialog.
+
+
 ## User Interface
 
 ### <img width="24" src="doc/images/load.png"> Load
@@ -213,6 +233,8 @@ To load a _.vpx_ file:
 
 
 ### Undo/Redo
+
+_-- one of these days ---_
 
 ### Macro keys
 
@@ -249,18 +271,27 @@ VPD supports the following units of measurement:
 - `mm` (millimeters)
 - `H` (standard horizontal units of 5.08mm)
 - `h` (half-standard horizontal units of 2.54mm)
+- 'U' (standard rack unit height, 128.5mm)
 
-Also, the height of a panel can be expressed in standard rack units (1U or 128.5mm) but TBH it's there for aesthetics only
+The `U` unit is the height of a panel and is only be used with the `new module` command - and TBH it's there for aesthetics only
 because a panel height may be 1U only, no more no less.
+
+Examples:
+```
+10.16mm
+2.5H
+3.5h
+1U
+```
 
 
 ##### Location formats
 
 | Type         | `<xy>`    | Description                                                              | Example                         |
 |--------------|-----------|--------------------------------------------------------------------------|---------------------------------|
-| **absolute** | `@x,y`    | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.6mm`                  |
-| **relative** | `x,y`     | x,y location in mm relative to the origin                                | `4.5mm,7.6mm`                   |
-| **geometry** | `h,v`     | x,y location relative to the geometry of the panel                       | `left+4mm,top+10mm`             |
+| **absolute** | `@x,y`    | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.62mm`                 |
+| **relative** | `x,y`     | x,y location in mm relative to the origin                                | `4.5mm,-7.62mm`                 |
+| **geometry** | `h,v`     | x,y location relative to the geometry of the panel                       | `left+4mm,top+10.16mm`          |
 | **guides**   | `h,v`     | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`                |
 | **decorate** | `(e x,y)` | x,y location relative to the component _e_                               | `(input "audio" +4.5mm,-4.5mm)` |
    
@@ -274,6 +305,7 @@ parts comprises:
 
 An _unknown_ part will be displayed as an anonymous grey circle devoid of personality, joy or future.
 
+--- 
 
 #### `set origin`
 

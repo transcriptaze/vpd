@@ -1,3 +1,4 @@
+mod new_decoration;
 mod new_guide;
 mod new_input;
 mod new_label;
@@ -16,6 +17,7 @@ mod load_script;
 mod save_project;
 mod save_script;
 
+pub use new_decoration::NewDecoration;
 pub use new_guide::NewGuide;
 pub use new_input::NewInput;
 pub use new_label::NewLabel;

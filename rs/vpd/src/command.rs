@@ -6,6 +6,7 @@ use super::serde::{Deserialize, Serialize};
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
+use crate::commands::NewDecoration;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
 use crate::commands::NewLabel;
@@ -44,6 +45,7 @@ struct Action {
     light: Option<Entity>,
     widget: Option<Entity>,
     label: Option<Entity>,
+    decoration: Option<Entity>,
     guide: Option<Entity>,
     origin: Option<Attr>,
 
@@ -111,6 +113,14 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
     if v.action == "new" && v.label.is_some() {
         let command = NewLabel::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "new" && v.decoration.is_some() {
+        let command = NewDecoration::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 

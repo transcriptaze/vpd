@@ -12,7 +12,7 @@ It has been tested on:
 - Opera
 - Safari
 
-(_but mostly on Chrome_).
+(_but TBH, mostly on Chrome_).
 
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands.

@@ -45,6 +45,7 @@
 ### Commands
 - [x] _load_
 - [x] _save_
+- [x] _set origin_
 
 - [x] _export panel svg_
       - (?) Remove input layer, etc
@@ -56,11 +57,7 @@
       - [ ] help
       - [ ] user guide
 
-- [x] _origin_
-      - [x] `set origin <absolute>`
-      - [x] `set origin <geometry>`
-      - [x] help
-      - [x] user guide
+- [ ] `set background none`
 
 - [ ] _guidelines_
       - [ ] V0 and H0
@@ -70,7 +67,6 @@
       - [ ] help
       - [ ] `delete`
       - [ ] `set`
-      - [ ] `list`
       - [ ] Replace Guide::to_svg() resolution with XY::resolve
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
