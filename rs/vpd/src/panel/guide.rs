@@ -160,7 +160,7 @@ impl Guide {
                 "horizontal".to_string(),
             )),
 
-            ("vertical", _) => Some(GuideLine::new(
+            ("vertical", "origin") => Some(GuideLine::new(
                 label,
                 offset,
                 -gutter,
@@ -169,7 +169,7 @@ impl Guide {
                 "vertical".to_string(),
             )),
 
-            ("horizontal", _) => Some(GuideLine::new(
+            ("horizontal", "origin") => Some(GuideLine::new(
                 label,
                 -gutter,
                 offset,
@@ -178,7 +178,7 @@ impl Guide {
                 "horizontal".to_string(),
             )),
 
-            (_, r) => {
+            (o, r) => {
                 for (k, v) in panel.guides.iter() {
                     if k != label && k == r {
                         return match v.to_svg(k, panel, depth + 1) {
@@ -188,7 +188,28 @@ impl Guide {
                     }
                 }
 
-                None
+                // ... desperation catch-all
+                match o {
+                    "vertical" => Some(GuideLine::new(
+                        label,
+                        offset,
+                        -gutter,
+                        offset,
+                        height + gutter,
+                        "vertical".to_string(),
+                    )),
+
+                    "horizontal" => Some(GuideLine::new(
+                        label,
+                        -gutter,
+                        offset,
+                        width + gutter,
+                        offset,
+                        "horizontal".to_string(),
+                    )),
+
+                    _ => None,
+                }
             }
         }
     }

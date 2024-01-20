@@ -71,6 +71,8 @@
       - [ ] `delete`
       - [ ] `set`
       - [ ] `list`
+      - [ ] clean up Module::new_guide_id
+      - [ ] clean up NewGuide::apply
       - (?) error if duplicate offset
 
 - [ ] _inputs_

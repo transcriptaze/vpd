@@ -2,14 +2,16 @@
 
 new module "test" 1U 10H
 set background "foundation"
-new guide centre+10.16mm
-new guide middle
 
+new guide vertical 25.4mm
 new guide vertical @5.08mm
+new guide centre+10.16mm
 new guide v2+10.16mm
 
+new guide horizontal 25.4mm
 new guide horizontal top+20.32mm
-new guide h2+3H
+new guide middle
+new guide h3+3H
 
-new label "lorem" g1,g2 "RobotoMono-Bold" 12pt centre,baseline
+new label "lorem" v1,h1 "RobotoMono-Bold" 12pt centre,baseline
 
