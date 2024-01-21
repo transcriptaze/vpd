@@ -20,6 +20,7 @@
       - [parts](#parts)
       - [fonts](#fonts)
   ---
+   - [`set origin`](#set-origin)
    - [`new guide`](#new-guide)
    - [`new module`](#new-module)
    - [`set background`](#set-background)
@@ -29,7 +30,8 @@
    - [`new light`](#new-light)
    - [`new widget`](#new-widget)
    - [`new label`](#new-label)
-   - [`decorate`](#decorate)
+   - [`decorate ...`](#decorate)
+  ---
    - [`load project`](#load-project)
    - [`save project`](#save-project)
    - [`load script`](#load-script)
@@ -322,14 +324,14 @@ An _unknown_ part will be displayed as an anonymous grey circle devoid of person
 VPD is a static web app and CORS restrictions mean it cannot load external fonts from e.g. Google Fonts. The following fonts
 are included in the app:
 
-- Lato-Regular
-- Lato-Semibold
-- Lato-Bold
-- RobotoMono-Regular
-- RobotoMono-Bold
-- RobotoCondensed-Regular
-- RobotoCondensed-Bold
-- StyleScript-Regular
+- _Lato-Regular_
+- _Lato-Semibold_
+- _Lato-Bold_
+- _RobotoMono-Regular_
+- _RobotoMono-Bold_
+- _RobotoCondensed-Regular_
+- _RobotoCondensed-Bold_
+- _StyleScript-Regular_
 
 --- 
 
@@ -353,7 +355,7 @@ set origin centre,middle
 set origin left+2.54mm,top+10.16mm
 ```
 
-#### `set guideline`
+#### `new guide`
 
 ```new guide [label] [orientation] <location>```
 
@@ -653,10 +655,10 @@ Adds a _decoration_ (e.g. graduations, output pad) to an input, output, paramete
 _Command options:_
 ```
 component    input, output, parameter, light or widget. Used to disambiguate component references.
-name         name (or ID) of the component to decorate.
-decoration   name of predefined decoration.
-scale        (optional) amount by which to scale decoration so that it matches the physical rendering
-                        of the component on the panel.
+name         name or ID of the component to decorate.
+decoration   name of a predefined decoration.
+scale        (optional) amount by which to scale the decoration so that it matches the size of the
+                        of the component when rendered on the panel.
 ```
 
 _Notes:_
@@ -670,8 +672,8 @@ decorate parameter "volume" with "CircularGraduations"
 decorate parameter "volume" with "CircularGraduations" (scale 1.1)
 ````
 
-
-#### `load project`
+---
+  #### `load project`
 
 ```load project```
 
