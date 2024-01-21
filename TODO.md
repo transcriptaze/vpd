@@ -137,7 +137,10 @@
 
 
 ### TO BE DONE
-- [ ] Robust JSON deserialization i.e. accomodate missing fields
+- [ ] Robust JSON deserialization 
+      - Accomodate missing fields
+      - Versioning
+
 - [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests

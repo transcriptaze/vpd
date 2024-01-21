@@ -155,11 +155,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "scale",
           "named": true
         }
       ]
@@ -983,6 +987,14 @@
     "named": false
   },
   {
+    "type": "scale",
+    "named": false
+  },
+  {
+    "type": "scale",
+    "named": true
+  },
+  {
     "type": "script",
     "named": false
   },
@@ -1005,6 +1017,10 @@
   {
     "type": "top",
     "named": false
+  },
+  {
+    "type": "value",
+    "named": true
   },
   {
     "type": "vertical",

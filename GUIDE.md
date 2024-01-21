@@ -47,13 +47,10 @@
    new guide vertical @10.16mm
    ```
    ```
-   new guide v1+10.16mm
+   new guide v1+12.7mm
    ```
    ```
-   new guide v2+10.16mm
-   ```
-   ```
-   new guide v3+10.16mm
+   new guide right-10.16mm
    ```
 
 3. Add a _horizontal guideline_ to position inputs, outputs and parameters:
@@ -85,10 +82,10 @@
 
 6. Create some _outputs_:
    ```
-   new output "left" v4,h4-10.16mm PJ301M
+   new output "left" v3,h4-10.16mm PJ301M
    ```
    ```
-   new output "right" v4,h4 PJ301M
+   new output "right" v3,h4 PJ301M
    ```
 
 7. Create some _parameters_:
@@ -127,10 +124,18 @@
 
 12. Label the outputs:
     ```
-    new label "LEFT"  (output "left"    -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle
+    new label "LEFT"  (output "left" -5.08mm,+0mm) "RobotoCondensed-Bold" 8pt right,middle
     ```
     ```
-    new label "RIGHT" (output "right"   -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle
+    new label "RIGHT" (output "right" -5.08mm,+0mm) "RobotoCondensed-Bold" 8pt right,middle
+    ```
+
+13. Decorate the parameter knowbs:
+    ```
+    decorate parameter "volume" with "CircularGraduations" (scale 1.1)
+    ```
+    ```
+    decorate parameter "distortion" with "CircularGraduations" (scale 1.1)
     ```
 
 13. Save the project files:

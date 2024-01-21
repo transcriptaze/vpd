@@ -9,6 +9,7 @@ use crate::panel;
 #[derive(Deserialize)]
 pub struct NewDecoration {
     name: String,
+    scale: f32,
     component: String,
 }
 
@@ -37,6 +38,7 @@ impl Command for NewDecoration {
             &self.component,
             &x,
             &y,
+            self.scale,
         ));
 
         match line {

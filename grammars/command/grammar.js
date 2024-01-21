@@ -231,7 +231,22 @@ module.exports = grammar({
 
     // ... decoration
     decoration: $ => seq (
-      $.name
+      $.name,
+      optional(
+        seq (
+          '(',
+          'scale',
+          alias(/[0-9]+([.][0-9]*)?/,$.scale),
+          ')',
+        ),
+      ),
+    ),
+
+    scale: $ => seq (
+      '(',
+      'scale',
+      alias(/[0-9]+([.][0-9]*)?/,$.value),
+      ')',
     ),
 
     // ... origin

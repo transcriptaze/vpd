@@ -57,7 +57,9 @@ function pickVPD () {
       }
     })
     .catch((err) => {
-      console.error(err)
+      if (err.name !== 'AbortError') {
+        console.error(err)
+      }
     })
 }
 

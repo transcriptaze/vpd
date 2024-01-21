@@ -10,16 +10,18 @@ pub struct Decoration {
     pub component: String,
     pub x: X,
     pub y: Y,
+    pub scale: f32,
 }
 
 impl Decoration {
-    pub fn new(id: &str, name: &str, component: &str, x: &X, y: &Y) -> Decoration {
+    pub fn new(id: &str, name: &str, component: &str, x: &X, y: &Y, scale: f32) -> Decoration {
         Decoration {
             id: id.to_string(),
             name: name.to_string(),
             component: component.to_string(),
             x: x.clone(),
             y: y.clone(),
+            scale: scale,
         }
     }
 }

@@ -316,7 +316,7 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
 
-            list.push(Snippet::new(&v.name, x, y, &v.component));
+            list.push(Snippet::new(&v.name, x, y, v.scale, &v.component));
         }
 
         return list;

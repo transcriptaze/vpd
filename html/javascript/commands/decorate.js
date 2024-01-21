@@ -31,6 +31,7 @@ function newDecoration (component, node, src) {
     action: 'new',
     decoration: {
       component: `${component.type}<${string(component)}>`,
+      scale: 1.0,
     }
   }
 
@@ -39,6 +40,13 @@ function newDecoration (component, node, src) {
       for (const attr of child.namedChildren) {
         if (attr.type === 'name') {
           object.decoration.name = string(attr)
+        }
+
+        if (attr.type === 'scale') {
+          const v = parseFloat(attr.text)
+          if (!Number.isNaN(v)) {
+            object.decoration.scale = v
+          }
         }
       }
 

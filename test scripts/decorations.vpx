@@ -2,4 +2,4 @@ new module "quickstart" 1U 9H
 new guide vertical +20.32mm
 new guide horizontal +20.32mm
 new parameter "V" v1,h1 RoundBlackKnob
-decorate parameter "V" with "CircularGraduations"
+decorate parameter "V" with "CircularGraduations" (scale 1.2)
