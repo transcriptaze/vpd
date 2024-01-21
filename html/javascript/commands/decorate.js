@@ -30,7 +30,7 @@ function newDecoration (component, node, src) {
     src: `${src}`,
     action: 'new',
     decoration: {
-      component: `${component.type}`
+      component: `${component.type}<${string(component)}>`,
     }
   }
 

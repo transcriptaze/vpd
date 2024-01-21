@@ -1,4 +1,5 @@
 new module "quickstart" 1U 9H
-new guide vertical +15.24mm
-new guide horizontal +15.24mm
-new input "e" v1,h1 PJ301M
+new guide vertical +20.32mm
+new guide horizontal +20.32mm
+new parameter "V" v1,h1 RoundBlackKnob
+decorate parameter "V" with "CircularGraduations"

@@ -1,4 +1,4 @@
-{% if overlay -%}
+{% if overlay %}
   <g inkscape:groupmode="layer" inkscape:label="overlay">    
     <use href="#panel-screw" transform="translate(7.62, 2.54)" />
     <use href="#panel-screw" transform="translate({{panel.width-7.62}},2.54)" />

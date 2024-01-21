@@ -22,6 +22,7 @@ use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Snippet;
 use crate::svg::Stop;
 use crate::svg::Style;
 use crate::svg::Text;
@@ -85,6 +86,7 @@ impl Panel {
         let lights = self.lights(theme);
         let widgets = self.widgets(theme);
         let labels = self.labels(theme);
+        let decorations = self.decorations(theme);
         let parts = self.parts(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
@@ -99,6 +101,7 @@ impl Panel {
             .lights(lights)
             .widgets(widgets)
             .labels(labels)
+            .decorations(decorations)
             .parts(parts)
             .overlay(true);
 
@@ -301,6 +304,19 @@ impl Panel {
             };
 
             list.push(Text::new(x, y, &v.path.path, &colour));
+        }
+
+        return list;
+    }
+
+    fn decorations(&self, _theme: &str) -> Vec<Snippet> {
+        let mut list: Vec<Snippet> = Vec::new();
+
+        for v in self.decorations.iter() {
+            let x = v.x.resolve(&self);
+            let y = v.y.resolve(&self);
+
+            list.push(Snippet::new(&v.name, x, y, &v.component));
         }
 
         return list;

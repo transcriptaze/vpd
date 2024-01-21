@@ -17,10 +17,15 @@
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="title"></g>
-  <g inkscape:groupmode="layer" inkscape:label="controls"></g>
   <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
   <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="parameters"></g>
+  <g inkscape:groupmode="layer" inkscape:label="lights"></g>
+  <g inkscape:groupmode="layer" inkscape:label="widgets"></g>
+
 {% include "labels"     %}
+{% include "decorations" %}    
+
 {% include "guidelines" %}
 {% include "overlay"    %}
 </svg>

@@ -1,0 +1,7 @@
+{% if decorations -%}
+  <g inkscape:groupmode="layer" inkscape:label="decorations">    
+    {% for v in decorations -%}
+    <circle cx="{{v.x}}" cy="{{v.y}}" r="10" fill="orange" />
+    {%- endfor %}
+  </g>
+{%- endif %}

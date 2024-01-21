@@ -4,14 +4,16 @@ use serde::{Deserialize, Serialize};
 const DECORATIONS: [&'static str; 1] = ["CircularGraduations"];
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Decoration {
+pub struct Snippet {
+    pub name: String,
     pub x: f32,
     pub y: f32,
     pub template: String,
+    pub layer: String,
 }
 
-impl Decoration {
-    pub fn new(name: &str, x: f32, y: f32) -> Decoration {
+impl Snippet {
+    pub fn new(name: &str, x: f32, y: f32, layer: &str) -> Snippet {
         let template = match DECORATIONS
             .iter()
             .find(|v| normalise(*v) == normalise(&name))
@@ -20,10 +22,12 @@ impl Decoration {
             None => "placeholder",
         };
 
-        Decoration {
+        Snippet {
+            name: name.to_string(),
             x: x,
             y: y,
             template: template.to_string(),
+            layer: layer.to_string(),
         }
     }
 }

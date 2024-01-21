@@ -9,6 +9,7 @@ use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
+use crate::svg::Snippet;
 use crate::svg::Style;
 use crate::svg::Text;
 
@@ -31,6 +32,7 @@ pub struct SVG {
     lights: Option<Vec<Circle>>,
     widgets: Option<Vec<Circle>>,
     labels: Option<Vec<Text>>,
+    decorations: Option<Vec<Snippet>>,
     parts: Option<Vec<Part>>,
     overlay: bool,
 }
@@ -56,6 +58,7 @@ impl SVG {
             lights: None,
             widgets: None,
             labels: None,
+            decorations: None,
             parts: None,
             overlay: true,
         }
@@ -124,6 +127,11 @@ impl SVG {
 
     pub fn labels(mut self, labels: Vec<Text>) -> Self {
         self.labels = Some(labels);
+        self
+    }
+
+    pub fn decorations(mut self, decorations: Vec<Snippet>) -> Self {
+        self.decorations = Some(decorations);
         self
     }
 
@@ -204,6 +212,11 @@ impl SVG {
             _ => {}
         }
 
+        match &self.decorations {
+            Some(v) => context.insert("decorations", &v),
+            _ => {}
+        }
+
         match &self.parts {
             Some(v) => context.insert("parts", &v),
             _ => {}
@@ -222,8 +235,11 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     let mut backgrounds = include_str!("templates/backgrounds.svg");
     let guidelines = include_str!("templates/guidelines.svg");
     let labels = include_str!("templates/labels.svg");
+    let decorations = include_str!("templates/decorations.svg");
     let overlay = include_str!("templates/overlay.svg");
     let mut widgets = include_str!("templates/widgets.svg");
+
+    let mut circular_graduations = include_str!("templates/decorations/CircularGraduations.svg");
 
     let mut screw = include_str!("templates/components/PanelScrew.svg");
     let mut rbk = include_str!("templates/components/RoundBlackKnob.svg");
@@ -233,6 +249,8 @@ fn load_templates(tera: &mut Tera, theme: &str) {
         styles = include_str!("templates/dark/styles.svg");
         backgrounds = include_str!("templates/dark/backgrounds.svg");
         widgets = include_str!("templates/dark/widgets.svg");
+
+        circular_graduations = include_str!("templates/decorations/dark/CircularGraduations.svg");
 
         screw = include_str!("templates/components/dark/PanelScrew.svg");
         rbk = include_str!("templates/components/dark/RoundBlackKnob.svg");
@@ -244,9 +262,13 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("components", &components).unwrap();
     tera.add_raw_template("backgrounds", &backgrounds).unwrap();
     tera.add_raw_template("labels", &labels).unwrap();
+    tera.add_raw_template("decorations", &decorations).unwrap();
     tera.add_raw_template("guidelines", &guidelines).unwrap();
     tera.add_raw_template("overlay", &overlay).unwrap();
     tera.add_raw_template("widgets", &widgets).unwrap();
+
+    tera.add_raw_template("CircularGraduations", &circular_graduations)
+        .unwrap();
 
     tera.add_raw_template("PanelScrew", &screw).unwrap();
     tera.add_raw_template("RoundBlackKnob", &rbk).unwrap();
