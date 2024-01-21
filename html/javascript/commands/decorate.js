@@ -1,49 +1,50 @@
 import { string } from './commands.js'
 
 export function parse (node) {
-  if (node.namedChildCount > 1) {
-    const entity = node.namedChildren[0]
-    const decoration = node.namedChildren[1]
+  for (const child of node.namedChildren) {
     const src = node.text
 
-    switch (entity.type) {
+    switch (child.type) {
       case 'input':
-        return newDecoration(entity, decoration, src)
+        return newDecoration(child, node, src)
 
       case 'output':
-        return newDecoration(entity, decoration, src)
+        return newDecoration(child, node, src)
 
       case 'parameter':
-        return newDecoration(entity, decoration, src)
+        return newDecoration(child, node, src)
 
       case 'light':
-        return newDecoration(entity, decoration, src)
+        return newDecoration(child, node, src)
 
       case 'widget':
-        return newDecoration(entity, decoration, src)
-
-      default:
-        throw new Error(`unknown 'decorate' entity <<${entity.type}>>`)
+        return newDecoration(child, node, src)
     }
   }
 
   throw new Error("invalid 'decorate' command")
 }
 
-function newDecoration (entity, decoration, src) {
+function newDecoration (component, node, src) {
   const object = {
     src: `${src}`,
     action: 'new',
     decoration: {
-      entity: `${entity.type}`
+      component: `${component.type}`
     }
   }
 
-  for (const child of decoration.namedChildren) {
-    if (child.type === 'name') {
-      object.decoration.name = string(child)
+  for (const child of node.namedChildren) {
+    if (child.type === 'decoration') {
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'name') {
+          object.decoration.name = string(attr)
+        }
+      }
+
+      return object
     }
   }
 
-  return object
+  throw new Error("invalid 'decorate' command")
 }

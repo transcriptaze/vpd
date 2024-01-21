@@ -4,12 +4,12 @@ use serde::Deserialize;
 
 use crate::command::Command;
 use crate::module::Module;
-// use crate::panel;
+use crate::panel;
 
 #[derive(Deserialize)]
 pub struct NewDecoration {
-    _entity: String,
-    _name: String,
+    name: String,
+    component: String,
 }
 
 #[derive(Deserialize)]
@@ -26,17 +26,23 @@ impl NewDecoration {
 }
 
 impl Command for NewDecoration {
-    fn apply(&self, _m: &mut Module, _line: &Option<String>) -> bool {
-        // let id = m.new_input_id();
-        //
-        // m.panel.inputs.push(panel::Input::new(
-        //     &id, &self.name, &self.x, &self.y, &self.part,
-        // ));
-        //
-        // match line {
-        //     Some(v) => m.script.push(v.to_string()),
-        //     _ => {}
-        // }
+    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+        let id = m.new_decoration_id();
+        let x = panel::X::new(&self.component, 0.0);
+        let y = panel::Y::new(&self.component, 0.0);
+
+        m.panel.decorations.push(panel::Decoration::new(
+            &id,
+            &self.name,
+            &self.component,
+            &x,
+            &y,
+        ));
+
+        match line {
+            Some(v) => m.script.push(v.to_string()),
+            _ => {}
+        }
 
         true
     }

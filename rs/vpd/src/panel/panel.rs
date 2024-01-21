@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 
 use crate::panel::Background;
+use crate::panel::Decoration;
 use crate::panel::Guide;
 use crate::panel::Input;
 use crate::panel::Label;
@@ -39,6 +40,7 @@ pub struct Panel {
     pub lights: Vec<Light>,
     pub widgets: Vec<Widget>,
     pub labels: Vec<Label>,
+    pub decorations: Vec<Decoration>,
 
     pub gutter: f32,
     pub origin: Origin,
@@ -59,6 +61,7 @@ impl Panel {
             lights: Vec::new(),
             widgets: Vec::new(),
             labels: Vec::new(),
+            decorations: Vec::new(),
 
             gutter: 5.0,
             origin: Origin::new(),

@@ -4,6 +4,7 @@
 - [ ] Resolve names to IDs in apply()
 - [ ] Derive Scriptable
 - [ ] Genericize ID generation
+- [ ] Windmill on load
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
@@ -137,12 +138,14 @@
 
 ### TO BE DONE
 - [ ] Robust JSON deserialization i.e. accomodate missing fields
-- [ ] bundle with rollup.js
-- [ ] standard HTML colour names
+- [ ] Bundle with rollup.js
+- [ ] Standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
 - [ ] Preferences
       - show/hide screws
+      - show/hide guidelines
+      - show/hide origin
       - default font
       - default font alignment
 
