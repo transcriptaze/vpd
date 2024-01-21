@@ -4,10 +4,10 @@
      viewBox="0 0 60 60">
   <g transform="scale(1,-1) translate(0,-60)">
     <g transform="matrix(1.6768 0 0 1.6331 -137.75 1.7444)">
-      <path style="stroke-linejoin:round;stroke:#ffffff;stroke-linecap:round;stroke-width:6.043;fill:none"
-            d="m114.58 5.0546c-7.89 17.304-21.247 13.233-21.374 13.233v-5.726l-7.699 9.225 7.762 7.761v-5.789s18.511 4.326 21.311-18.704z" />
-      <path style="stroke-linejoin:round;fill-rule:evenodd;stroke:#000000;stroke-linecap:round;stroke-width:3.0215;fill:#000000"
-            d="m114.58 5.0546c-7.89 17.304-21.247 13.233-21.374 13.233v-5.726l-7.699 9.225 7.762 7.761v-5.789s18.511 4.326 21.311-18.704z" />
+      <path stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="6.043" fill="none"
+            d="M114.58 5.0546c-7.89 17.304-21.247 13.233-21.374 13.233v-5.726l-7.699 9.225 7.762 7.761v-5.789s18.511 4.326 21.311-18.704z" />
+      <path stroke="currentColor" stroke-width="3.0215" stroke-linejoin="round" stroke-linecap="round" fill="currentColor"
+            d="M114.58 5.0546c-7.89 17.304-21.247 13.233-21.374 13.233v-5.726l-7.699 9.225 7.762 7.761v-5.789s18.511 4.326 21.311-18.704z" />
     </g>
   </g>
 </svg>

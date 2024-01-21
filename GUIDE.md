@@ -18,6 +18,7 @@
       - [units](#units)
       - [location formats](#location-formats)
       - [parts](#parts)
+      - [fonts](#fonts)
   ---
    - [`new guide`](#new-guide)
    - [`new module`](#new-module)
@@ -28,6 +29,7 @@
    - [`new light`](#new-light)
    - [`new widget`](#new-widget)
    - [`new label`](#new-label)
+   - [`decorate`](#decorate)
    - [`load project`](#load-project)
    - [`save project`](#save-project)
    - [`load script`](#load-script)
@@ -314,6 +316,20 @@ parts comprises:
 - `PJ301M`
 
 An _unknown_ part will be displayed as an anonymous grey circle devoid of personality, joy or future.
+
+#### Fonts
+
+VPD is a static web app and CORS restrictions mean it cannot load external fonts from e.g. Google Fonts. The following fonts
+are included in the app:
+
+- Lato-Regular
+- Lato-Semibold
+- Lato-Bold
+- RobotoMono-Regular
+- RobotoMono-Bold
+- RobotoCondensed-Regular
+- RobotoCondensed-Bold
+- StyleScript-Regular
 
 --- 
 
@@ -625,6 +641,33 @@ new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline r
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ffff0080
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ff0000,#00ff00
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" baseline #ff0000,#00ff00
+````
+
+
+#### `decorate`
+
+```decorate <component> <name> with <decoration> [scale]```
+
+Adds a _decoration_ (e.g. graduations, output pad) to an input, output, parameter, light or widget.
+
+_Command options:_
+```
+component    input, output, parameter, light or widget. Used to disambiguate component references.
+name         name (or ID) of the component to decorate.
+decoration   name of predefined decoration.
+scale        (optional) amount by which to scale decoration so that it matches the physical rendering
+                        of the component on the panel.
+```
+
+_Notes:_
+1. The predefined decorations are:
+   - `CircularGraduations`
+2. Decoration names are case- and space-insensitive
+
+_Examples:_
+```
+decorate parameter "volume" with "CircularGraduations"
+decorate parameter "volume" with "CircularGraduations" (scale 1.1)
 ````
 
 

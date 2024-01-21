@@ -263,7 +263,7 @@ main div#controls div.undo button img {
   width: 24px;
 }
 main div#controls div.undo button:disabled img {
-  filter: invert(59%) sepia(0%) saturate(1850%) hue-rotate(204deg) brightness(85%) contrast(77%);
+  filter: invert(96%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(87%) contrast(113%);
 }
 main div#controls div.macros {
   display: grid;

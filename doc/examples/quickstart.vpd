@@ -41,7 +41,7 @@
         "id": "o1",
         "name": "left",
         "x": {
-          "reference": "v4",
+          "reference": "v3",
           "offset": 0.0
         },
         "y": {
@@ -54,7 +54,7 @@
         "id": "o2",
         "name": "right",
         "x": {
-          "reference": "v4",
+          "reference": "v3",
           "offset": 0.0
         },
         "y": {
@@ -287,6 +287,36 @@
         }
       }
     ],
+    "decorations": [
+      {
+        "id": "d1",
+        "name": "CircularGraduations",
+        "component": "parameter<volume>",
+        "x": {
+          "reference": "parameter<volume>",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "parameter<volume>",
+          "offset": 0.0
+        },
+        "scale": 1.1
+      },
+      {
+        "id": "d2",
+        "name": "CircularGraduations",
+        "component": "parameter<distortion>",
+        "x": {
+          "reference": "parameter<distortion>",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "parameter<distortion>",
+          "offset": 0.0
+        },
+        "scale": 1.1
+      }
+    ],
     "gutter": 5.0,
     "origin": {
       "x": {
@@ -299,76 +329,53 @@
       }
     },
     "guides": {
-      "v2": {
-        "reference": "v1",
-        "offset": 10.16,
-        "x": {
-          "reference": "v1",
-          "offset": 10.16
-        },
-        "y": null
-      },
-      "v3": {
-        "reference": "v2",
-        "offset": 10.16,
-        "x": {
-          "reference": "v2",
-          "offset": 10.16
-        },
-        "y": null
-      },
       "v1": {
-        "reference": "absolute",
-        "offset": 10.16,
         "x": {
           "reference": "absolute",
           "offset": 10.16
         },
         "y": null
       },
-      "h2": {
-        "reference": "h1",
-        "offset": 15.24,
-        "x": null,
-        "y": {
-          "reference": "h1",
-          "offset": 15.24
-        }
-      },
-      "v4": {
-        "reference": "v3",
-        "offset": 10.16,
+      "v3": {
         "x": {
-          "reference": "v3",
-          "offset": 10.16
+          "reference": "right",
+          "offset": -10.16
         },
         "y": null
       },
       "h1": {
-        "reference": "absolute",
-        "offset": 20.32,
         "x": null,
         "y": {
           "reference": "absolute",
           "offset": 20.32
         }
       },
-      "h4": {
-        "reference": "bottom",
-        "offset": -15.24,
+      "h2": {
         "x": null,
         "y": {
-          "reference": "bottom",
-          "offset": -15.24
+          "reference": "h1",
+          "offset": 15.24
         }
       },
+      "v2": {
+        "x": {
+          "reference": "v1",
+          "offset": 12.7
+        },
+        "y": null
+      },
       "h3": {
-        "reference": "top",
-        "offset": 10.16,
         "x": null,
         "y": {
           "reference": "top",
           "offset": 10.16
+        }
+      },
+      "h4": {
+        "x": null,
+        "y": {
+          "reference": "bottom",
+          "offset": -15.24
         }
       }
     }
@@ -376,9 +383,9 @@
   "script": [
     "new module \"bodacious\" 1U 10H",
     "new guide vertical @10.16mm",
-    "new guide v1+10.16mm",
-    "new guide v2+10.16mm",
-    "new guide v3+10.16mm",
+    "new guide v1+12.7mm",
+    "new guide centre",
+    "new guide right-10.16mm",
     "new guide horizontal @20.32mm",
     "new guide h1+3H",
     "new guide top+10.16mm",
@@ -386,15 +393,40 @@
     "set background \"foundation\"",
     "new input \"frequency\" v1,h1 PJ301M",
     "new input \"volume\" v1,h2 PJ301M",
-    "new output \"left\" v4,h4-10.16mm PJ301M",
-    "new output \"right\" v4,h4 PJ301M",
+    "new output \"left\" v3,h4-10.16mm PJ301M",
+    "new output \"right\" v3,h4 PJ301M",
     "new parameter \"volume\" v2,h1 RoundBlackKnob",
     "new parameter \"distortion\" v2,h2 RoundBlackKnob",
     "new widget \"channels\" @40.64mm,20.32mm square",
     "new label \"Thing 1\" centre,h3 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000",
-    "new label \"FREQ\"  (input \"frequency\"+0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
-    "new label \"VOL\"   (input \"volume\"   +0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
-    "new label \"LEFT\"  (output \"left\"    -5.08mm,+0mm) \"RobotoCondensed-Bold\"    8pt right,middle",
-    "new label \"RIGHT\" (output \"right\"   -5.08mm,+0mm) \"RobotoCondensed-Bold\"    8pt right,middle"
+    "new label \"FREQ\"  (input  \"frequency\"+0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new label \"VOL\"   (input  \"volume\"   +0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new label \"LEFT\"  (output \"left\"     -5.08mm,+0mm) \"RobotoCondensed-Bold\"    8pt right,middle",
+    "new label \"RIGHT\" (output \"right\"    -5.08mm,+0mm) \"RobotoCondensed-Bold\"    8pt right,middle",
+    "decorate parameter \"volume\"     with \"CircularGraduations\" (scale 1.1)",
+    "decorate parameter \"distortion\" with \"CircularGraduations\" (scale 1.1)",
+    "new module \"bodacious\" 1U 10H",
+    "new guide vertical @10.16mm",
+    "new guide v1+12.7mm",
+    "new guide right-10.16mm",
+    "new guide horizontal @20.32mm",
+    "new guide h1+3H",
+    "new guide top+10.16mm",
+    "new guide bottom-15.24mm",
+    "set background \"foundation\"",
+    "new input \"frequency\" v1,h1 PJ301M",
+    "new input \"volume\" v1,h2 PJ301M",
+    "new output \"left\" v3,h4-10.16mm PJ301M",
+    "new output \"right\" v3,h4 PJ301M",
+    "new parameter \"volume\" v2,h1 RoundBlackKnob",
+    "new parameter \"distortion\" v2,h2 RoundBlackKnob",
+    "new widget \"channels\" @40.64mm,20.32mm square",
+    "new label \"Thing 1\" centre,h3 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000",
+    "new label \"FREQ\"  (input  \"frequency\"+0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new label \"VOL\"   (input  \"volume\"   +0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",
+    "new label \"LEFT\"  (output \"left\"     -5.08mm,+0mm) \"RobotoCondensed-Bold\"    8pt right,middle",
+    "new label \"RIGHT\" (output \"right\"    -5.08mm,+0mm) \"RobotoCondensed-Bold\"    8pt right,middle",
+    "decorate parameter \"volume\"     with \"CircularGraduations\" (scale 1.1)",
+    "decorate parameter \"distortion\" with \"CircularGraduations\" (scale 1.1)"
   ]
 }

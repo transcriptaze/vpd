@@ -121,15 +121,17 @@
       - [ ] hover
 
 - [ ] _decorate_
-      - [ ] inputs
-      - [ ] outputs
-      - [ ] parameters
-      - [ ] lights
-      - [ ] widgets
+      - [x] inputs
+      - [x] outputs
+      - [x] parameters
+      - [x] lights
+      - [x] widgets
       - [ ] help
-      - [ ] user guide
+      - [x] user guide
       - [ ] set
       - [ ] delete
+      - [x] CircularGraduations
+      - [ ] Rectangle
 
 - [ ] _help_
        - (?) Rework grammar as `new`, `new module`, etc
