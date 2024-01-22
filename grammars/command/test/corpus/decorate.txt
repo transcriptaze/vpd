@@ -23,3 +23,19 @@ decorate input "in" with "CircularGraduations" (scale 1.5)
     (decoration
       (name)
       (scale))))
+
+
+================================================================
+decorate input "in" with "CircularGraduations" (stretch 1.5,2.5)
+================================================================
+decorate input "in" with "CircularGraduations" (stretch 1.5,2.5)
+---
+(command
+  (decorate
+    (input
+      (name))
+    (decoration
+      (name)
+      (stretch
+        (x)
+        (y)))))

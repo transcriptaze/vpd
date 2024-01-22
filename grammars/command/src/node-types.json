@@ -165,6 +165,10 @@
         {
           "type": "scale",
           "named": true
+        },
+        {
+          "type": "stretch",
+          "named": true
         }
       ]
     }
@@ -727,6 +731,25 @@
     }
   },
   {
+    "type": "stretch",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "svg",
     "named": true,
     "fields": {},
@@ -1003,6 +1026,10 @@
     "named": false
   },
   {
+    "type": "stretch",
+    "named": false
+  },
+  {
     "type": "string",
     "named": true
   },
@@ -1017,10 +1044,6 @@
   {
     "type": "top",
     "named": false
-  },
-  {
-    "type": "value",
-    "named": true
   },
   {
     "type": "vertical",

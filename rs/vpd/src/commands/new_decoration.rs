@@ -9,13 +9,20 @@ use crate::panel;
 #[derive(Deserialize)]
 pub struct NewDecoration {
     name: String,
-    scale: f32,
     component: String,
+    scale: f32,
+    stretch: Stretch,
 }
 
 #[derive(Deserialize)]
 struct Object {
     decoration: NewDecoration,
+}
+
+#[derive(Deserialize)]
+struct Stretch {
+    x: f32,
+    y: f32,
 }
 
 impl NewDecoration {
@@ -39,6 +46,7 @@ impl Command for NewDecoration {
             &x,
             &y,
             self.scale,
+            &panel::Stretch::new(self.stretch.x,self.stretch.y),
         ));
 
         match line {

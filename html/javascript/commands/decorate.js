@@ -32,6 +32,10 @@ function newDecoration (component, node, src) {
     decoration: {
       component: `${component.type}<${string(component)}>`,
       scale: 1.0,
+      stretch: {
+        x: 1.0,
+        y: 1.0
+      }
     }
   }
 
@@ -46,6 +50,24 @@ function newDecoration (component, node, src) {
           const v = parseFloat(attr.text)
           if (!Number.isNaN(v)) {
             object.decoration.scale = v
+          }
+        }
+
+        if (attr.type === 'stretch') {
+          for (const xy of attr.namedChildren) {
+            if (xy.type === 'x') {
+              const v = parseFloat(xy.text)
+              if (!Number.isNaN(v)) {
+                object.decoration.stretch.x = v
+              }
+            }
+
+            if (xy.type === 'y') {
+              const v = parseFloat(xy.text)
+              if (!Number.isNaN(v)) {
+                object.decoration.stretch.y = v
+              }
+            }
           }
         }
       }

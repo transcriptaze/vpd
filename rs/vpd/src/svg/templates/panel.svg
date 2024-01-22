@@ -23,8 +23,8 @@
   <g inkscape:groupmode="layer" inkscape:label="lights"></g>
   <g inkscape:groupmode="layer" inkscape:label="widgets"></g>
 
-{% include "labels"     %}
 {% include "decorations" %}    
+{% include "labels"     %}
 
 {% include "guidelines" %}
 {% include "overlay"    %}

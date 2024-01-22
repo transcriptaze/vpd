@@ -859,30 +859,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "("
-                },
-                {
-                  "type": "STRING",
-                  "value": "scale"
-                },
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[0-9]+([.][0-9]*)?"
-                  },
-                  "named": true,
-                  "value": "scale"
-                },
-                {
-                  "type": "STRING",
-                  "value": ")"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_scale"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "stretch"
             },
             {
               "type": "BLANK"
@@ -891,7 +881,7 @@
         }
       ]
     },
-    "scale": {
+    "_scale": {
       "type": "SEQ",
       "members": [
         {
@@ -909,7 +899,46 @@
             "value": "[0-9]+([.][0-9]*)?"
           },
           "named": true,
-          "value": "value"
+          "value": "scale"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "stretch": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": "stretch"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+([.][0-9]*)?"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+([.][0-9]*)?"
+          },
+          "named": true,
+          "value": "y"
         },
         {
           "type": "STRING",

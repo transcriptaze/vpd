@@ -21,6 +21,7 @@ use crate::svg::Gradient;
 use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
+use crate::svg::Stretch;
 use crate::svg::Rect;
 use crate::svg::Snippet;
 use crate::svg::Stop;
@@ -120,6 +121,7 @@ impl Panel {
         let parameters = self.parameters(theme);
         let lights = self.lights(theme);
         let labels = self.labels(theme);
+        let decorations = self.decorations(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
             .background(&background.0, background.1)
@@ -128,6 +130,7 @@ impl Panel {
             .parameters(parameters)
             .lights(lights)
             .labels(labels)
+            .decorations(decorations)
             .overlay(false);
 
         match svg.to_SVG(theme) {
@@ -315,8 +318,9 @@ impl Panel {
         for v in self.decorations.iter() {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
+            let stretch = Stretch::new(v.stretch.x,v.stretch.y);
 
-            list.push(Snippet::new(&v.name, x, y, v.scale, &v.component));
+            list.push(Snippet::new(&v.name, x, y, v.scale, &stretch, &v.component));
         }
 
         return list;

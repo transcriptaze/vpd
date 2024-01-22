@@ -21,6 +21,7 @@ pub use point::Point;
 pub use pprint::PrettyPrinter;
 pub use rect::Rect;
 pub use snippet::Snippet;
+pub use snippet::Stretch;
 pub use style::Style;
 pub use svg::SVG;
 pub use text::Text;

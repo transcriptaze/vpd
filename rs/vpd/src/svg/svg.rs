@@ -240,6 +240,7 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     let mut widgets = include_str!("templates/widgets.svg");
 
     let mut circular_graduations = include_str!("templates/decorations/CircularGraduations.svg");
+    let mut pad = include_str!("templates/decorations/Pad.svg");
 
     let mut screw = include_str!("templates/components/PanelScrew.svg");
     let mut rbk = include_str!("templates/components/RoundBlackKnob.svg");
@@ -251,6 +252,7 @@ fn load_templates(tera: &mut Tera, theme: &str) {
         widgets = include_str!("templates/dark/widgets.svg");
 
         circular_graduations = include_str!("templates/decorations/dark/CircularGraduations.svg");
+        pad = include_str!("templates/decorations/dark/Pad.svg");
 
         screw = include_str!("templates/components/dark/PanelScrew.svg");
         rbk = include_str!("templates/components/dark/RoundBlackKnob.svg");
@@ -267,8 +269,8 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("overlay", &overlay).unwrap();
     tera.add_raw_template("widgets", &widgets).unwrap();
 
-    tera.add_raw_template("CircularGraduations", &circular_graduations)
-        .unwrap();
+    tera.add_raw_template("CircularGraduations", &circular_graduations).unwrap();
+    tera.add_raw_template("Pad", &pad).unwrap();
 
     tera.add_raw_template("PanelScrew", &screw).unwrap();
     tera.add_raw_template("RoundBlackKnob", &rbk).unwrap();

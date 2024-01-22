@@ -1,0 +1,3 @@
+    <g fill="#ebebeb" transform="translate({{x}} {{y}}) scale({{scale}})">
+        <rect x="-{{10.16*sx/2.0}}" y="-{{10.16*sy/2.0}}" width="{{sx*10.16}}" height="{{sy*10.16}}" rx="0.75" />
+    </g>

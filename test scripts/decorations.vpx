@@ -1,5 +1,14 @@
 new module "quickstart" 1U 9H
-new guide vertical +20.32mm
-new guide horizontal +20.32mm
-new parameter "V" v1,h1 RoundBlackKnob
-decorate parameter "V" with "CircularGraduations" (scale 1.2)
+new guide v1 vertical +10.16mm
+new guide v2 vertical +25.4mm
+new guide v3 vertical right-10.16mm
+
+new guide h1 horizontal +20.32mm
+new guide h2 horizontal bottom-20.32mm
+
+new input     "freq"   v1,h1 PJ301M
+new parameter "volume" v2,h1 RoundBlackKnob
+new output    "audio"  v3,h2 PJ301M
+
+decorate parameter "volume" with CircularGraduations (scale 1.2)
+decorate output    "audio"  with Pad (stretch 1,1.5)
