@@ -2,9 +2,8 @@
 
 - [ ] Replace splashscreens
 - [ ] Resolve names to IDs in apply()
-- [ ] Derive Scriptable
 - [ ] Genericize ID generation
-- [ ] Windmill on load
+- [x] Windmill on load
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines

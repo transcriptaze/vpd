@@ -312,3 +312,63 @@ footer vpd-help-text {
   border: 1px solid #a7a7a7;
   border-radius: 4px;
 }
+
+#windmill {
+  grid-column: 1/4;
+  grid-row: 1/5;
+  justify-self: center;
+  align-self: start;
+  display: none;
+  margin-top: 250px;
+  margin-left: -150px;
+  z-index: 5;
+}
+
+#windmill.visible {
+  display: block;
+}
+
+#windmill:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-top: 12px solid gold;
+  border-right: 2px solid transparent;
+  animation: windmill 1.25s linear infinite;
+}
+
+#windmill.visible {
+  display: block;
+  visibility: visible;
+}
+
+@keyframes windmill {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

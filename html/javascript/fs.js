@@ -128,6 +128,8 @@ function chooseVPX (filetype) {
 }
 
 async function loadVPD (file) {
+  busy()
+
   file.text()
     .then((b) => JSON.parse(b))
     .then((object) => {
@@ -140,6 +142,7 @@ async function loadVPD (file) {
     })
     .finally(() => {
       redraw()
+      unbusy()
     })
 }
 
@@ -150,6 +153,8 @@ async function loadVPZ (file) {
   let json = ''
 
   const f = function () {
+    busy()
+
     reader
       .read()
       .then(({ done, value }) => {
@@ -175,6 +180,7 @@ async function loadVPZ (file) {
         console.error(err)
       })
       .finally(() => {
+        unbusy()
       })
   }
 
@@ -182,6 +188,8 @@ async function loadVPZ (file) {
 }
 
 async function loadVPX (file) {
+  busy()
+
   file.text()
     .then((text) => command.parseVPX(text))
     .then((script) => {
@@ -196,6 +204,7 @@ async function loadVPX (file) {
     })
     .finally(() => {
       redraw()
+      unbusy()
     })
 }
 
@@ -326,14 +335,14 @@ async function saveWithPicker (blob, options) {
   }
 }
 
-// function datetime() {
-//   const now = new Date()
-//   const year = `${now.getFullYear()}`.padStart(4, '0')
-//   const month = `${now.getMonth() + 1}`.padStart(2, '0')
-//   const day = `${now.getDate()}`.padStart(2, '0')
-//   const hour = `${now.getHours()}`.padStart(2, '0')
-//   const minute = `${now.getMinutes()}`.padStart(2, '0')
-//   const second = `${now.getSeconds()}`.padStart(2, '0')
-//
-//   return `${year}-${month}-${day} ${hour}.${minute}.${second}`
-// }
+function busy () {
+  const windmill = document.querySelector('#windmill')
+
+  windmill.classList.add('visible')
+}
+
+function unbusy () {
+  const windmill = document.querySelector('#windmill')
+
+  windmill.classList.remove('visible')
+}
