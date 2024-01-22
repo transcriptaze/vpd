@@ -10,7 +10,7 @@
    - [_Export SVG_](#export-svg)
    - [_Undo/Redo_](#undoredo)
    - [_Macro keys_](#macro-keys)
-   - [_Command line_](#command-line)
+   - [_Command area_](#command-area)
 ---
 - [Commands](#commands)
    - General
@@ -272,7 +272,12 @@ area)
 
 The macro keys assignments are stored only in the browser local storage and are not included in the project file. 
 
-### Command line
+### Command area
+
+The command area comprises two components:
+
+- the _command line_, for entering a VPD command. Commands are executed by pressing _Enter_.
+- the _hint_ area, which displays the possible command variations starting from the current command line.
 
 
 ## Commands

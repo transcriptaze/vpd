@@ -19,14 +19,14 @@
 
 - [x] Save project/script file
 - [x] Show errors
-
-- [x] _info_ panel
+- [x] _project info_ panel
+- [ ] _component info_ panel
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
 - [ ] `undo`
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
-      - [ ] Can't reference to /fonts because it's in a blob URL - maybe use CSS ??????
+      - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 
 ### Overlay
 - [ ] panel screws
@@ -131,7 +131,7 @@
       - [ ] set
       - [ ] delete
       - [x] CircularGraduations
-      - [ ] Rectangle
+      - [x] Pad
 
 - [ ] _help_
        - (?) Rework grammar as `new`, `new module`, etc
