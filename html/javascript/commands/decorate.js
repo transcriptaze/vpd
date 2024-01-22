@@ -6,17 +6,9 @@ export function parse (node) {
 
     switch (child.type) {
       case 'input':
-        return newDecoration(child, node, src)
-
       case 'output':
-        return newDecoration(child, node, src)
-
       case 'parameter':
-        return newDecoration(child, node, src)
-
       case 'light':
-        return newDecoration(child, node, src)
-
       case 'widget':
         return newDecoration(child, node, src)
     }
@@ -30,11 +22,31 @@ function newDecoration (component, node, src) {
     src: `${src}`,
     action: 'new',
     decoration: {
-      component: `${component.type}<${string(component)}>`,
+      reference: `${component.type}<${string(component)}>`,
+      offset: {
+        x: 0.0,
+        y: 0.0
+      },
       scale: 1.0,
       stretch: {
         x: 1.0,
         y: 1.0
+      }
+    }
+  }
+
+  for (const attr of component.namedChildren) {
+    if (attr.type === 'dx') {
+      const v = parseFloat(attr.text)
+      if (!Number.isNaN(v)) {
+        object.decoration.offset.x = v
+      }
+    }
+
+    if (attr.type === 'dy') {
+      const v = parseFloat(attr.text)
+      if (!Number.isNaN(v)) {
+        object.decoration.offset.y = v
       }
     }
   }

@@ -84,6 +84,10 @@
           "value": "decorate"
         },
         {
+          "type": "STRING",
+          "value": "("
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
@@ -132,6 +136,10 @@
               "value": "widget"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
         },
         {
           "type": "STRING",
@@ -385,6 +393,18 @@
         {
           "type": "SYMBOL",
           "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_relative"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -398,6 +418,18 @@
         {
           "type": "SYMBOL",
           "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_relative"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -411,6 +443,18 @@
         {
           "type": "SYMBOL",
           "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_relative"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -424,6 +468,18 @@
         {
           "type": "SYMBOL",
           "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_relative"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -437,6 +493,18 @@
         {
           "type": "SYMBOL",
           "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_relative"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

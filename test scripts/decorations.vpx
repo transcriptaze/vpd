@@ -10,5 +10,5 @@ new input     "freq"   v1,h1 PJ301M
 new parameter "volume" v2,h1 RoundBlackKnob
 new output    "audio"  v3,h2 PJ301M
 
-decorate parameter "volume" with CircularGraduations (scale 1.2)
-decorate output    "audio"  with Pad (stretch 1,1.5)
+decorate (parameter "volume") with CircularGraduations (scale 1.2)
+decorate (output    "audio" +0.0mm,-2.54mm)  with Pad (stretch 1,1.5)

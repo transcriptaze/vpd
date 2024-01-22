@@ -134,12 +134,20 @@
     new label "RIGHT" (output "right" -5.08mm,+0mm) "RobotoCondensed-Bold" 8pt right,middle
     ```
 
-13. Decorate the parameter knowbs:
+13. Decorate the parameter knobs with graduations:
     ```
-    decorate parameter "volume" with "CircularGraduations" (scale 1.1)
+    decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
     ```
     ```
-    decorate parameter "distortion" with "CircularGraduations" (scale 1.1)
+    decorate (parameter "distortion") with "CircularGraduations" (scale 1.1)
+    ```
+
+14. Decorate the outputs with rectangular pads:
+    ```
+    decorate (output "left"  -3.54mm,+0.0mm) with Pad (stretch 2,0.9)
+    ```
+    ```
+    decorate (output "right" -3.54mm,+0.0mm) with Pad (stretch 2,0.9)
     ```
 
 13. Save the project files:
@@ -648,7 +656,7 @@ new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" baseline #ff0000,#00ff00
 
 #### `decorate`
 
-```decorate <component> <name> with <decoration> [scale]```
+```decorate (<component> <name> <offset>)with <decoration> [scale] [stretch]```
 
 Adds a _decoration_ (e.g. graduations, output pad) to an input, output, parameter, light or widget.
 
@@ -656,20 +664,26 @@ _Command options:_
 ```
 component    input, output, parameter, light or widget. Used to disambiguate component references.
 name         name or ID of the component to decorate.
+offset       (optional) xy offset by which to adjust decoration. Defaults to (0.0,0.0).
 decoration   name of a predefined decoration.
 scale        (optional) amount by which to scale the decoration so that it matches the size of the
                         of the component when rendered on the panel.
+stretch      (optional) stretches the decoration vertically and/or horizontally without changing the
+                        appearance (e.g. rounded corners keep the same radius). Defaults to (1,1)
 ```
 
 _Notes:_
 1. The predefined decorations are:
-   - `CircularGraduations`
-2. Decoration names are case- and space-insensitive
+   - `CircularGraduations`, a graduations decoration for parameter knobs.
+   - `Pad`, a rectangular pad to highlight outputs.
+2. Decoration names are case- and space-insensitive.
+3. The decorations will only _scale_ or _stretch_ if they have the capability.
 
 _Examples:_
 ```
-decorate parameter "volume" with "CircularGraduations"
-decorate parameter "volume" with "CircularGraduations" (scale 1.1)
+decorate (parameter "volume") with "CircularGraduations"
+decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
+decorate (output "audio" +0.0mm,-2.54mm) with Pad (stretch 1,1.5)
 ````
 
 ---

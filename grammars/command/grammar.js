@@ -33,6 +33,7 @@ module.exports = grammar({
 
     decorate: $ => seq(
       'decorate',
+      '(',
       choice (
         alias ($._input,     $.input),
         alias ($._output,    $.output),
@@ -40,6 +41,7 @@ module.exports = grammar({
         alias ($._light,     $.light),
         alias ($._widget,    $.widget),
       ),
+      ')',
       'with',
       $.decoration,
     ),
@@ -103,26 +105,31 @@ module.exports = grammar({
     _input: $ => seq (
       'input',
       $.name,
+      optional ($._relative),
     ),
 
     _output: $ => seq (
       'output',
       $.name,
+      optional ($._relative),
     ),
 
     _parameter: $ => seq (
       'parameter',
       $.name,
+      optional ($._relative),
     ),
 
     _light: $ => seq (
       'light',
       $.name,
+      optional ($._relative),
     ),
 
     _widget: $ => seq (
       'widget',
       $.name,
+      optional ($._relative),
     ),
 
     // ... module

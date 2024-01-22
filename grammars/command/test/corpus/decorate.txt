@@ -1,7 +1,7 @@
-==============================================
-decorate input "in" with "CircularGraduations"
-==============================================
-decorate input "in" with "CircularGraduations"
+================================================
+decorate (input "in") with "CircularGraduations"
+================================================
+decorate (input "in") with "CircularGraduations"
 ---
 (command
   (decorate
@@ -11,10 +11,25 @@ decorate input "in" with "CircularGraduations"
       (name))))
 
 
-==========================================================
-decorate input "in" with "CircularGraduations" (scale 1.5)
-==========================================================
-decorate input "in" with "CircularGraduations" (scale 1.5)
+================================================================
+decorate (input "in" +5.08mm,-5.08mm) with "CircularGraduations"
+================================================================
+decorate (input "in" +5.08mm,-5.08mm) with "CircularGraduations"
+---
+(command
+  (decorate
+    (input
+      (name)
+      (dx)
+      (dy))
+    (decoration
+      (name))))
+
+
+============================================================
+decorate (input "in") with "CircularGraduations" (scale 1.5)
+============================================================
+decorate (input "in") with "CircularGraduations" (scale 1.5)
 ---
 (command
   (decorate
@@ -25,10 +40,10 @@ decorate input "in" with "CircularGraduations" (scale 1.5)
       (scale))))
 
 
-================================================================
-decorate input "in" with "CircularGraduations" (stretch 1.5,2.5)
-================================================================
-decorate input "in" with "CircularGraduations" (stretch 1.5,2.5)
+==================================================================
+decorate (input "in") with "CircularGraduations" (stretch 1.5,2.5)
+==================================================================
+decorate (input "in") with "CircularGraduations" (stretch 1.5,2.5)
 ---
 (command
   (decorate

@@ -314,6 +314,14 @@
           "named": true
         },
         {
+          "type": "dx",
+          "named": true
+        },
+        {
+          "type": "dy",
+          "named": true
+        },
+        {
           "type": "name",
           "named": true
         },
@@ -401,6 +409,14 @@
       "types": [
         {
           "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "dx",
+          "named": true
+        },
+        {
+          "type": "dy",
           "named": true
         },
         {
@@ -557,6 +573,14 @@
           "named": true
         },
         {
+          "type": "dx",
+          "named": true
+        },
+        {
+          "type": "dy",
+          "named": true
+        },
+        {
           "type": "name",
           "named": true
         },
@@ -604,6 +628,14 @@
       "types": [
         {
           "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "dx",
+          "named": true
+        },
+        {
+          "type": "dy",
           "named": true
         },
         {
@@ -802,6 +834,14 @@
       "types": [
         {
           "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "dx",
+          "named": true
+        },
+        {
+          "type": "dy",
           "named": true
         },
         {
