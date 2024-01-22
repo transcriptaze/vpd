@@ -17,6 +17,8 @@ use crate::utils::log;
 use crate::warnf;
 use svg::PrettyPrinter;
 
+const VERSION: &str = "v0.0.0";
+
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {
     fn load(filetype: &str);
@@ -25,6 +27,7 @@ extern "C" {
 
 #[derive(Serialize, Deserialize)]
 pub struct Module {
+    pub version: String,
     pub name: Box<str>,
     pub panel: Panel,
     pub script: Vec<String>,
@@ -39,6 +42,7 @@ pub struct ModuleInfo {
 
 pub fn new() -> Module {
     return Module {
+        version: VERSION.to_string(),
         name: "unknown".into(),
         panel: Panel::new(DEFAULT_WIDTH, DEFAULT_HEIGHT),
         script: Vec::new(),

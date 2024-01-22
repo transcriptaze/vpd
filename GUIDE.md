@@ -682,7 +682,7 @@ _Notes:_
    - `CircularGraduations`, a graduations decoration for parameter knobs.
    - `Pad`, a rectangular pad to highlight outputs.
 2. Decoration names are case- and space-insensitive.
-3. The decorations will only _scale_ or _stretch_ if they have the capability.
+3. Not all decorations support _scale_ and/or _stretch_.
 
 _Examples:_
 ```
