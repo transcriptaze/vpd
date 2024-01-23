@@ -4,7 +4,7 @@
 
 # VPD: VCV Rack 2 Panel Designer
 
-VPD is a browser application to create the SVG files for a basic VCV module panel. 
+VPD is a [web application](https://vpdx.pages.dev) to create the SVG files for a basic VCV module panel. 
 
 It has been tested on:
 - Chrome
@@ -35,7 +35,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
    cd bodacious
    make
    ```
-2. Open the VPD [web application](https://vpd.pages.dev) in your browser.
+2. Open the VPD [web application](https://vpdx.pages.dev) in your browser.
 
 3. Create a sample panel by either:
    - Downloading the [_quickstart.vpd_](/doc/examples/quickstart.vpd) project file and opening it by clicking on the _Load_ 
@@ -94,7 +94,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
 
 ## _web app_
 
-The [VPD](https://vpd.pages.dev) web app is currently hosted on _Cloudflare Pages_.
+The [VPD](https://vpdx.pages.dev) web app is currently hosted on _Cloudflare Pages_.
 
 
 ## Running locally
