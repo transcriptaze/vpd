@@ -3,7 +3,8 @@ import * as text from './text.js'
 import * as command from './command.js'
 import * as fs from './fs.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
-import { exec, render, serialize } from '../wasm/vpd/vpd.js'
+import { exec, render, serialize, restore } from '../wasm/vpd/vpd.js'
+
 
 export async function initialise (parser) {
   await command.init(parser)
@@ -56,17 +57,17 @@ export async function initialise (parser) {
     v.onchanged = m
   }
 
-  // // ... restore project
-  // try {
-  //   const json = retrieve(PROJECT)
-  //
-  //   if (json != null) {
-  //     restore(json)
-  //     redraw()
-  //   }
-  // } catch (err) {
-  //   console.error(err)
-  // }
+  // ... restore project
+  try {
+    const json = retrieve(PROJECT)
+  
+    if (json != null) {
+      restore(json)
+      redraw()
+    }
+  } catch (err) {
+    console.error(err)
+  }
 
   help.help(helpText, '')
 }
