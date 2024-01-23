@@ -1,0 +1,79 @@
+;; Splashscreens
+
+new module "splashscreen" 1U 10H
+
+new guide v1 vertical @10.16mm
+new guide v2 v1+15.24mm
+new guide v3 right-10.16mm
+
+new guide h0 top+10.16mm
+new guide h1 horizontal @20.32mm
+new guide h2 h1+12.7mm
+new guide h3 h2+12.7mm
+new guide h4 h3+12.7mm
+new guide h5 h4+12.7mm
+new guide h6 h5+12.7mm
+new guide h7 h6+12.7mm
+new guide h8 h7+12.7mm
+
+set background "foundation"
+
+new input "e"        v1,h1 PJ301M
+new input "s"        v1,h2 PJ301M
+new input "theta"    v1,h3 PJ301M
+new input "a"        v1,h4 PJ301M
+new input "dx"       v1,h5 PJ301M
+new input "dy"       v1,h6 PJ301M
+new input "freq"     v3,h2 PJ301M
+new input "velocity" v3,h3 PJ301M
+
+new parameter "e"      v2,h1 RoundBlackKnob
+new parameter "s"      v2,h2 RoundBlackKnob
+new parameter "theta"  v2,h3 RoundBlackKnob
+new parameter "a"      v2,h4 RoundBlackKnob
+new parameter "dx"     v2,h5 RoundBlackKnob
+new parameter "dy"     v2,h6 RoundBlackKnob
+new parameter "m"      v2,h7 RoundBlackKnob
+
+new output "aux"      v3,h5 PJ301M
+new output "trigger"  v3,h6 PJ301M
+new output "left"     v3,h7 PJ301M
+new output "right"    v3,h8 PJ301M
+
+new widget "channels" v3,h1 square
+
+new label "SN-VCO" centre,h0 "RobotoMono-Bold" 12pt centre,baseline #222222,#ebebeb
+new label "e"  (parameter "e"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "s"  (parameter "s"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "t"  (parameter "theta" -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "a"  (parameter "a"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "dx" (parameter "dx"    -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "dy" (parameter "dy"    -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "m"  (parameter "m"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+
+new label "FREQ"  (input "freq"     -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle
+new label "VEL"   (input "velocity" -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle
+
+new label "AUX"   (output "aux"     -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
+new label "TRIG"  (output "trigger" -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
+new label "LEFT"  (output "left"    -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
+new label "RIGHT" (output "right"   -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
+
+decorate (parameter "e")     with "CircularGraduations" (scale 1.1)
+decorate (parameter "s")     with "CircularGraduations" (scale 1.1)
+decorate (parameter "theta") with "CircularGraduations" (scale 1.1)
+decorate (parameter "a")     with "CircularGraduations" (scale 1.1)
+decorate (parameter "dx")    with "CircularGraduations" (scale 1.1)
+decorate (parameter "dy")    with "CircularGraduations" (scale 1.1)
+decorate (parameter "m")     with "CircularGraduations" (scale 1.1)
+
+ decorate (output "aux"  +0mm,+5.08mm) with Pad (stretch 1,2.4)
+ decorate (output "left" +0mm,+5.08mm) with Pad (stretch 1,2.4)
+
+
+;; "ε"
+;; "s"
+;; "θ"
+;; "a"
+;; "δx"
+;; "δy"

@@ -4,6 +4,8 @@
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
 - [x] Windmill on load
+- [ ] Windmill on restore
+- [ ] Greek characters
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
