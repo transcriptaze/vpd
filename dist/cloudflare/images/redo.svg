@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     version="1.1"
+     viewBox="0 0 60 60">
+  <g transform="matrix(-1.6768 0 0 -1.6331 197.75 58.256)">
+    <path stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="6.043" fill="none"
+          d="M114.58,5.0546 c-7.89,17.304,-21.247,13.233,-21.374,13.233 v-5.726 l-7.699,9.225 l7.762,7.761 v-5.789 s18.511,4.326,21.311,-18.704 z" />
+    <path stroke="currentColor" stroke-width="3.0215" stroke-linejoin="round" stroke-linecap="round" fill="currentColor"
+          d="M114.58,5.0546 c-7.89,17.304,-21.247,13.233,-21.374,13.233 v-5.726 l-7.699,9.225 l7.762,7.761 v-5.789 s18.511,4.326,21.311,-18.704 z" />
+  </g>
+</svg>

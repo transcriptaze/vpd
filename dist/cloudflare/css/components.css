@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/Lato-Bold.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Lato-Semibold.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/Lato-Regular.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/Lato-Bold.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Lato-Semibold.woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/Lato-Regular.woff2");
+}
+* {
+  background: transparent;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Lato";
+}
+
+div.vpd-help-text {
+  background: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+div.vpd-help-text div.ul {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-auto-flow: column;
+  column-gap: 24px;
+  row-gap: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: none;
+  border-radius: 4px;
+}
+div.vpd-help-text div.li {
+  color: #808080;
+  font-size: 0.8em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+div.vpd-drop {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+div.vpd-drop img {
+  grid-column: 1;
+  grid-row: 1;
+  width: 128px;
+  visibility: hidden;
+}
+div.vpd-drop div.overlay {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 64px;
+  z-index: 2;
+}
+
+div.vpd-drop.dropping {
+  filter: contrast(170%) brightness(500%);
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.2) 60%, transparent 90%), url("/images/dropbg.svg");
+}
+div.vpd-drop.dropping img {
+  visibility: visible;
+}
+
+button.vpd-macro-key {
+  width: 48px;
+  height: 48px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+}
+
+img.vpd-logo {
+  height: 80px;
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 1s linear, opacity 1s ease-in-out;
+}
+
+img.vpd-logo.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.25s linear, opacity 0.25s ease-in-out;
+}
