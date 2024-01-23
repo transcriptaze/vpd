@@ -150,6 +150,13 @@ main div.panel object.visible {
   visibility: visible;
   opacity: 1;
 }
+main div.panel div.clickable {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
 main div#left {
   grid-column: 1;
   grid-row: 1;

@@ -135,6 +135,15 @@ export function onExport (theme) {
   }
 }
 
+export function onClickPanel (panel, x, y) {
+  const bounds = panel.getBoundingClientRect()
+  const dx = x/bounds.width
+  const dy = y/bounds.height
+
+  console.log(panel, {x}, {dx}, dx*(50.8+10.16)-5.08)
+  console.log(panel, {y}, {dy}, dy*(128.5+10.16)-5.08)
+}
+
 function execute (v) {
   onError(null)
 

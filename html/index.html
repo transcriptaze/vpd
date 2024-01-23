@@ -37,7 +37,8 @@
         
         <div class="panel">
           <object id="light0" class="visible" data="./images/panel-light.svg" width="193" height="400"></object>
-          <object id="light1"                 data="./images/panel-dark.svg" width="193" height="400"></object>
+          <object id="light1"                 data="./images/panel-dark.svg"  width="193" height="400"></object>
+          <div class="clickable light"></div>
         </div>
       </div>
 
@@ -45,6 +46,7 @@
         <div class="panel">
           <object id="dark0" class="visible" data="./images/panel-dark.svg" width="193" height="400"></object>
           <object id="dark1"                 data="./images/panel-dark.svg" width="193" height="400"></object>
+          <div class="clickable dark"></div>
         </div>
 
         <div id="controls">
@@ -147,6 +149,22 @@
     document.querySelector('vpd-drop')
             .addEventListener('dropped', (e) => {
               VPD.onDropped(e.detail.file)
+            })
+
+    document.querySelector('main')
+            .addEventListener('click', (e) => {
+              const x = e.clientX
+              const y = e.clientY
+
+              document.querySelectorAll('div.clickable').forEach((p) => {
+                const bounds = p.getBoundingClientRect()
+                const xʼ = x - bounds.left
+                const yʼ = y - bounds.top
+
+                if (bounds.left < x && bounds.right > x && bounds.top < y && bounds.bottom > y) {
+                    VPD.onClickPanel(p,xʼ,yʼ)
+                }
+              })
             })
 
   </script>

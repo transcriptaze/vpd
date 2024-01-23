@@ -1,4 +1,5 @@
 {
+  "version": "v0.0.0",
   "name": "bodacious",
   "panel": {
     "width": 50.8,
@@ -373,12 +374,19 @@
       }
     },
     "guides": {
-      "v1": {
-        "x": {
-          "reference": "absolute",
+      "h3": {
+        "x": null,
+        "y": {
+          "reference": "top",
           "offset": 10.16
-        },
-        "y": null
+        }
+      },
+      "h4": {
+        "x": null,
+        "y": {
+          "reference": "bottom",
+          "offset": -15.24
+        }
       },
       "h2": {
         "x": null,
@@ -386,6 +394,13 @@
           "reference": "h1",
           "offset": 15.24
         }
+      },
+      "v1": {
+        "x": {
+          "reference": "absolute",
+          "offset": 10.16
+        },
+        "y": null
       },
       "v3": {
         "x": {
@@ -399,20 +414,6 @@
         "y": {
           "reference": "absolute",
           "offset": 20.32
-        }
-      },
-      "h3": {
-        "x": null,
-        "y": {
-          "reference": "top",
-          "offset": 10.16
-        }
-      },
-      "h4": {
-        "x": null,
-        "y": {
-          "reference": "bottom",
-          "offset": -15.24
         }
       },
       "v2": {

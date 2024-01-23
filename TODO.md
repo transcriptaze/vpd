@@ -26,6 +26,7 @@
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
+- [ ] Windmill intermittently doesn't appear
 
 ### Overlay
 - [ ] panel screws
