@@ -324,10 +324,6 @@ footer vpd-help-text {
   z-index: 5;
 }
 
-#windmill.visible {
-  display: block;
-}
-
 #windmill:before {
   content: "";
   box-sizing: border-box;
