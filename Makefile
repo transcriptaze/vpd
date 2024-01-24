@@ -50,8 +50,6 @@ cloudflare:
 	rm -f dist/cloudflare/.gitignore
 	rm -f dist/cloudflare/LICENSE
 	rm -f dist/cloudflare/package.json
-	ls -1 dist
-	ls -1 dist/cloudflare
 
 run-python:
 	python3 -m http.server 9876 -d html
