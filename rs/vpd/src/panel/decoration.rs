@@ -21,7 +21,15 @@ pub struct Stretch {
 }
 
 impl Decoration {
-    pub fn new(id: &str, name: &str, component: &str, x: &X, y: &Y, scale: f32, stretch: &Stretch) -> Decoration {
+    pub fn new(
+        id: &str,
+        name: &str,
+        component: &str,
+        x: &X,
+        y: &Y,
+        scale: f32,
+        stretch: &Stretch,
+    ) -> Decoration {
         Decoration {
             id: id.to_string(),
             name: name.to_string(),
@@ -35,10 +43,7 @@ impl Decoration {
 }
 
 impl Stretch {
-    pub fn  new(x: f32,y: f32) -> Stretch {
-        Stretch{
-            x:x,
-            y:y,
-        }
+    pub fn new(x: f32, y: f32) -> Stretch {
+        Stretch { x: x, y: y }
     }
 }

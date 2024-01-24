@@ -46,11 +46,10 @@ sass:
 cloudflare: 
 	rm    -rf dist/cloudflare
 	mkdir -p  dist/cloudflare
-	rsync -av --exclude *.gitignore \
-	          --exclude LICENSE \
-	          --exclude package.json \
-	          html/* \
-	          dist/cloudflare
+	cp -r html/* dist/cloudflare/
+	rm -f dist/cloudflare/.gitignore
+	rm -f dist/cloudflare/LICENSE
+	rm -f dist/cloudflare/package.json
 
 run-python:
 	python3 -m http.server 9876 -d html

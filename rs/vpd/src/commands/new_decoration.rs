@@ -54,7 +54,7 @@ impl Command for NewDecoration {
             &x,
             &y,
             self.scale,
-            &panel::Stretch::new(self.stretch.x,self.stretch.y),
+            &panel::Stretch::new(self.stretch.x, self.stretch.y),
         ));
 
         match line {
