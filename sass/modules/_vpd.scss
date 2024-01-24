@@ -314,6 +314,17 @@ main {
       grid-row-gap: 4px;
       grid-column-gap: 4px;
     }
+
+    div.trash {
+      margin-top: auto;
+      button img {
+        width: 24px;
+      }
+
+      button:disabled img {
+        filter: invert(96%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(87%) contrast(113%);
+      }
+    }
   }
 
   div#drop {

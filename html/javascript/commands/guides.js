@@ -51,7 +51,7 @@ function reference (node) {
 function offset (node) {
   for (const child of node.namedChildren) {
     if (child.type === 'offset') {
-      return mm(child.text)
+      return mm(child)
     }
   }
 

@@ -1,3 +1,14 @@
+================
+new module thing
+================
+new module thing
+---
+(command
+  (new
+    (module
+      (name)
+      (MISSING width))))
+
 ========================
 new module "thing" 1U 3H
 ========================

@@ -26,7 +26,7 @@ export function parse (cmd) {
       return object
     }
   } catch (err) {
-    console.error(err)
+    throw new Error(`${err}`)
   }
 
   throw new Error('invalid command')

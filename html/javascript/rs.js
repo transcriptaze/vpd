@@ -29,7 +29,9 @@ function setModuleInfo (object) {
     }
   }
 
-  if (name.innerHTML !== '' || width.innerHTML !== '') {
+  if (Object.entries(object).length === 0) {
+    info.classList.remove('visible')
+  } else if (name.innerHTML !== '' || width.innerHTML !== '') {
     info.classList.add('visible')
   } else {
     info.classList.remove('visible')

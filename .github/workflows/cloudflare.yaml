@@ -50,5 +50,8 @@ jobs:
         cargo install wasm-pack
         wasm-pack --version
 
-    - name: Build
+    - name: Build release version
+      run: make build-release
+
+    - name: Build cloudflare dist
       run: make cloudflare
