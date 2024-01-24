@@ -1,1 +1,1 @@
-new module qwerty
+new module thing 3H

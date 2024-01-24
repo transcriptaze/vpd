@@ -61,7 +61,7 @@ export async function initialise (parser) {
   try {
     const trash = document.querySelector('#trash')
     const json = retrieve(PROJECT)
-  
+
     if (json != null) {
       restore(json)
       redraw()
