@@ -67,11 +67,3 @@ decorate (parameter "m")     with "CircularGraduations" (scale 1.1)
 
 ;; decorate (output "aux"  +0mm,+5.08mm) with Pad (stretch 1,2.4)
 decorate (output "left" +0mm,+5.08mm) with Pad (stretch 1,2.4)
-
-
-;; "ε"
-;; "s"
-;; "θ"
-;; "a"
-;; "δx"
-;; "δy"

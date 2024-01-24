@@ -5,7 +5,7 @@
 - [ ] Genericize ID generation
 - [x] Windmill on load
 - [ ] Windmill on restore
-- [ ] Greek characters
+- [x] Unicode characters
 - [ ] Check hasError/isMissing
 
 - [x] SVG pretty printer
