@@ -51,6 +51,8 @@ cloudflare:
 	          --exclude package.json \
 	          html/* \
 	          dist/cloudflare
+	ls -1 dist
+	ls -1 dist/cloudflare
 
 run-python:
 	python3 -m http.server 9876 -d html
