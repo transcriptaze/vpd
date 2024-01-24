@@ -1,10 +1,7 @@
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 
-const DECORATIONS: [&'static str; 2] = [
-"CircularGraduations",
-"Pad",
-];
+const DECORATIONS: [&'static str; 2] = ["CircularGraduations", "Pad"];
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Snippet {
@@ -46,11 +43,8 @@ impl Snippet {
 }
 
 impl Stretch {
-    pub fn new(x: f32, y:f32) -> Stretch {
-        Stretch{
-            x:x,
-            y:y,
-        }
+    pub fn new(x: f32, y: f32) -> Stretch {
+        Stretch { x: x, y: y }
     }
 }
 

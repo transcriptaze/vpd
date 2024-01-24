@@ -21,10 +21,10 @@ use crate::svg::Gradient;
 use crate::svg::GuideLine;
 use crate::svg::Part;
 use crate::svg::Point;
-use crate::svg::Stretch;
 use crate::svg::Rect;
 use crate::svg::Snippet;
 use crate::svg::Stop;
+use crate::svg::Stretch;
 use crate::svg::Style;
 use crate::svg::Text;
 use crate::svg::SVG;
@@ -318,7 +318,7 @@ impl Panel {
         for v in self.decorations.iter() {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
-            let stretch = Stretch::new(v.stretch.x,v.stretch.y);
+            let stretch = Stretch::new(v.stretch.x, v.stretch.y);
 
             list.push(Snippet::new(&v.name, x, y, v.scale, &stretch, &v.component));
         }

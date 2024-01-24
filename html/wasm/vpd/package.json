@@ -1,0 +1,23 @@
+{
+  "name": "vpd",
+  "collaborators": [
+    "twystd <twystd@users.noreply.github.com>"
+  ],
+  "description": "WASM functions for VCV panel designer",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twystd/vcv-panel-designer.git"
+  },
+  "files": [
+    "vpd_bg.wasm",
+    "vpd.js",
+    "vpd.d.ts"
+  ],
+  "module": "vpd.js",
+  "types": "vpd.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

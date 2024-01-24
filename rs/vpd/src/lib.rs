@@ -132,12 +132,11 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
 
 #[wasm_bindgen]
 pub fn clear() -> Result<(), JsValue> {
-            let mut state = STATE.lock().unwrap();
+    let mut state = STATE.lock().unwrap();
 
-            state.module = module::new();
-            Ok(())
+    state.module = module::new();
+    Ok(())
 }
-
 
 #[wasm_bindgen]
 pub fn restore(json: &str) -> Result<(), JsValue> {

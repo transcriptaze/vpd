@@ -269,7 +269,8 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("overlay", &overlay).unwrap();
     tera.add_raw_template("widgets", &widgets).unwrap();
 
-    tera.add_raw_template("CircularGraduations", &circular_graduations).unwrap();
+    tera.add_raw_template("CircularGraduations", &circular_graduations)
+        .unwrap();
     tera.add_raw_template("Pad", &pad).unwrap();
 
     tera.add_raw_template("PanelScrew", &screw).unwrap();
