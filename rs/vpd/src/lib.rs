@@ -131,6 +131,15 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
 }
 
 #[wasm_bindgen]
+pub fn clear() -> Result<(), JsValue> {
+            let mut state = STATE.lock().unwrap();
+
+            state.module = module::new();
+            Ok(())
+}
+
+
+#[wasm_bindgen]
 pub fn restore(json: &str) -> Result<(), JsValue> {
     let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
 
@@ -162,21 +171,3 @@ pub fn render(theme: &str) -> Result<String, JsValue> {
         Err(e) => Err(JsValue::from(format!("{}", e))),
     }
 }
-
-// #[cfg(test)]
-// mod tests {
-//     // Note this useful idiom: importing names from outer (for mod tests) scope.
-//     // use super::*;
-//
-//     #[test]
-//     fn test_add() {
-//         assert_eq!(1+2, 3);
-//     }
-//
-//     #[test]
-//     fn test_bad_add() {
-//         // This assert would fire and test will fail.
-//         // Please note, that private functions can be tested too!
-//         assert_eq!(4-1, 3);
-//     }
-// }

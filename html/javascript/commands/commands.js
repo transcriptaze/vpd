@@ -22,14 +22,20 @@ export function reference (node) {
 export function offset (node) {
   for (const child of node.namedChildren) {
     if (child.type === 'offset') {
-      return mm(child.text)
+      return mm(child)
     }
   }
 
   return 0.0
 }
 
-export function mm (v) {
+export function mm (node) {
+  if (node.hasError() || node.isMissing()) {
+      throw new Error(node.toString())
+  } 
+
+  const v = node.text
+
   let match = `${v}`.match(/([0-9]+)U/)
   if (match != null && match.length > 1) {
     return 128.5 * parseInt(match[1])

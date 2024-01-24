@@ -26,14 +26,14 @@ export function newLabel (node, src) {
         if (v.type === 'x') {
           object.label.x = {
             reference: 'absolute',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
 
         if (v.type === 'y') {
           object.label.y = {
             reference: 'absolute',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
       }
@@ -44,14 +44,14 @@ export function newLabel (node, src) {
         if (v.type === 'x') {
           object.label.x = {
             reference: 'origin',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
 
         if (v.type === 'y') {
           object.label.y = {
             reference: 'origin',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
       }
@@ -75,11 +75,11 @@ export function newLabel (node, src) {
         }
 
         if (v.type === 'dx') {
-          object.label.x.offset = mm(v.text)
+          object.label.x.offset = mm(v)
         }
 
         if (v.type === 'dy') {
-          object.label.y.offset = mm(v.text)
+          object.label.y.offset = mm(v)
         }
       }
     }

@@ -3,7 +3,7 @@ import * as text from './text.js'
 import * as command from './command.js'
 import * as fs from './fs.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
-import { exec, render, serialize, restore } from '../wasm/vpd/vpd.js'
+import { exec, render, serialize, clear, restore } from '../wasm/vpd/vpd.js'
 
 
 export async function initialise (parser) {
@@ -59,11 +59,13 @@ export async function initialise (parser) {
 
   // ... restore project
   try {
+    const trash = document.querySelector('#trash')
     const json = retrieve(PROJECT)
   
     if (json != null) {
       restore(json)
       redraw()
+      trash.disabled = false
     }
   } catch (err) {
     console.error(err)
@@ -136,16 +138,42 @@ export function onExport (theme) {
   }
 }
 
+export function onTrash () {
+  const trash = document.querySelector('#trash')
+  const info = document.querySelector('fieldset#module')
+
+  try {
+    clear()
+    store(PROJECT, null)
+
+    document.querySelectorAll('div.panel.light object').forEach((o) => {
+      o.data = './images/panel-light.svg'
+    })
+
+    document.querySelectorAll('div.panel.dark object').forEach((o) => {
+      o.data = './images/panel-dark.svg'
+    })
+
+    info.classList.remove('visible')
+
+    trash.disabled = true
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export function onClickPanel (panel, x, y) {
   const bounds = panel.getBoundingClientRect()
-  const dx = x/bounds.width
-  const dy = y/bounds.height
+  const dx = x / bounds.width
+  const dy = y / bounds.height
 
-  console.log(panel, {x}, {dx}, dx*(50.8+10.16)-5.08)
-  console.log(panel, {y}, {dy}, dy*(128.5+10.16)-5.08)
+  console.log(panel, { x }, { dx }, dx * (50.8 + 10.16) - 5.08)
+  console.log(panel, { y }, { dy }, dy * (128.5 + 10.16) - 5.08)
 }
 
 function execute (v) {
+  const trash = document.querySelector('#trash')
+
   onError(null)
 
   try {
@@ -159,6 +187,7 @@ function execute (v) {
       if (serialized !== '') {
         store(PROJECT, serialized)
         redraw()
+        trash.disabled = false
       }
     }
   } catch (err) {

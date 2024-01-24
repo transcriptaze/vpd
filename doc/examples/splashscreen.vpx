@@ -35,14 +35,12 @@ new parameter "dx"     v2,h5 RoundBlackKnob
 new parameter "dy"     v2,h6 RoundBlackKnob
 new parameter "m"      v2,h7 RoundBlackKnob
 
-new output "aux"      v3,h5 PJ301M
-new output "trigger"  v3,h6 PJ301M
+;; new output "aux"      v3,h5 PJ301M
+;; new output "trigger"  v3,h6 PJ301M
 new output "left"     v3,h7 PJ301M
 new output "right"    v3,h8 PJ301M
 
-new widget "channels" v3,h1 square
-
-new label "SN-VCO" centre,h0 "RobotoMono-Bold" 12pt centre,baseline #222222,#ebebeb
+new label "VPD" centre,h0 "RobotoMono-Bold" 12pt centre,baseline #222222,#ebebeb
 new label "e"  (parameter "e"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
 new label "s"  (parameter "s"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
 new label "t"  (parameter "theta" -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
@@ -54,8 +52,8 @@ new label "m"  (parameter "m"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt c
 new label "FREQ"  (input "freq"     -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle
 new label "VEL"   (input "velocity" -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle
 
-new label "AUX"   (output "aux"     -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
-new label "TRIG"  (output "trigger" -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
+;; new label "AUX"   (output "aux"     -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
+;; new label "TRIG"  (output "trigger" -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
 new label "LEFT"  (output "left"    -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
 new label "RIGHT" (output "right"   -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
 
@@ -67,8 +65,8 @@ decorate (parameter "dx")    with "CircularGraduations" (scale 1.1)
 decorate (parameter "dy")    with "CircularGraduations" (scale 1.1)
 decorate (parameter "m")     with "CircularGraduations" (scale 1.1)
 
- decorate (output "aux"  +0mm,+5.08mm) with Pad (stretch 1,2.4)
- decorate (output "left" +0mm,+5.08mm) with Pad (stretch 1,2.4)
+;; decorate (output "aux"  +0mm,+5.08mm) with Pad (stretch 1,2.4)
+decorate (output "left" +0mm,+5.08mm) with Pad (stretch 1,2.4)
 
 
 ;; "ε"

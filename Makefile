@@ -43,7 +43,7 @@ build-release:
 sass: 
 	find sass -name "*.scss" | entr sass --no-source-map sass/themes:html/css
 
-cloudflare: build-release
+cloudflare: 
 	rm    -rf dist/cloudflare
 	mkdir -p  dist/cloudflare
 	rsync -av --exclude *.gitignore \

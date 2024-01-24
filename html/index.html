@@ -35,15 +35,15 @@
           </fieldset>
         </div>
         
-        <div class="panel">
+        <div class="panel light">
           <object id="light0" class="visible" data="./images/panel-light.svg" width="193" height="400"></object>
-          <object id="light1"                 data="./images/panel-dark.svg"  width="193" height="400"></object>
+          <object id="light1"                 data="./images/panel-light.svg"  width="193" height="400"></object>
           <div class="clickable light"></div>
         </div>
       </div>
 
       <div id="right">
-        <div class="panel">
+        <div class="panel dark">
           <object id="dark0" class="visible" data="./images/panel-dark.svg" width="193" height="400"></object>
           <object id="dark1"                 data="./images/panel-dark.svg" width="193" height="400"></object>
           <div class="clickable dark"></div>
@@ -71,6 +71,9 @@
             <vpd-macro-key id="macro8"  label="Ctrl₈" key="ctrl-8" command=''></vpd-macro-key>
             <vpd-macro-key id="macro9"  label="Ctrl₉" key="ctrl-9" command=''></vpd-macro-key>
             <vpd-macro-key id="macro10" label="Ctrl₀" key="ctrl-0" command=''></vpd-macro-key>
+          </div>
+          <div class="trash">
+            <button id="trash" onclick="onTrash(event)" disabled><img src="./images/trash.svg" /></button>
           </div>
         </div>
 
@@ -140,6 +143,10 @@
 
     window.onExport = (event, theme) => {
       VPD.onExport(theme)
+    }
+
+    window.onTrash = (event) => {
+      VPD.onTrash()
     }
 
     window.onError = (event) => {

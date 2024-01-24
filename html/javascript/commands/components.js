@@ -13,14 +13,14 @@ export function parse (node) {
         if (v.type === 'x') {
           object.x = {
             reference: 'absolute',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
 
         if (v.type === 'y') {
           object.y = {
             reference: 'absolute',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
       }
@@ -31,14 +31,14 @@ export function parse (node) {
         if (v.type === 'x') {
           object.x = {
             reference: 'origin',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
 
         if (v.type === 'y') {
           object.y = {
             reference: 'origin',
-            offset: mm(v.text)
+            offset: mm(v)
           }
         }
       }

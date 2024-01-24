@@ -1,19 +1,21 @@
 # TODO
 
-- [ ] Replace splashscreens
+- [x] Replace splashscreens
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
 - [x] Windmill on load
 - [ ] Windmill on restore
 - [ ] Greek characters
+- [ ] Check hasError/isMissing
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
 
 - [x] github 'cloudflare' build
       - [x] Fix wasm .gitignore, LICENSE etc
-      - [ ] cloudflare branch
-      - [ ] Trigger nightly builds on push to cloudflare branch
+      - [x] cloudflare branch
+      - [x] Trigger nightly builds on push to cloudflare branch
+      - [ ] Create _dist/cloudflare_ from Makefile
 
 - [x] Load project file
       - [ ] web component
@@ -21,6 +23,7 @@
 - [x] Save project/script file
 - [x] Show errors
 - [x] _project info_ panel
+- [x] Trash
 - [ ] _component info_ panel
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width

@@ -14,14 +14,14 @@ export function set (node, src) {
         if (child.type === 'x') {
           object.origin.x = {
             reference: 'absolute',
-            offset: mm(child.text)
+            offset: mm(child)
           }
         }
 
         if (child.type === 'y') {
           object.origin.y = {
             reference: 'absolute',
-            offset: mm(child.text)
+            offset: mm(child)
           }
         }
       }
@@ -54,7 +54,7 @@ function xy (node) {
     }
 
     if (child.type === 'offset') {
-      object.offset = mm(child.text)
+      object.offset = mm(child)
     }
   }
 

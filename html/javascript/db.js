@@ -4,7 +4,11 @@ export const MACROS = 'vpd.macros'
 export function store (tag, object) {
   switch (tag) {
     case PROJECT:
-      localStorage.setItem(tag, object)
+      if (object == null) {
+        localStorage.removeItem(PROJECT)
+      } else {
+        localStorage.setItem(PROJECT, object)
+      }
       break
 
     default:

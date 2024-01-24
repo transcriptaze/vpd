@@ -128,6 +128,8 @@ function chooseVPX (filetype) {
 }
 
 async function loadVPD (file) {
+  const trash = document.querySelector('#trash')
+
   busy()
 
   file.text()
@@ -136,6 +138,7 @@ async function loadVPD (file) {
       const serialized = JSON.stringify(object)
       restore(serialized)
       store(PROJECT, serialized)
+      trash.disabled = false
     })
     .catch((err) => {
       console.error(err)
@@ -147,6 +150,7 @@ async function loadVPD (file) {
 }
 
 async function loadVPZ (file) {
+  const trash = document.querySelector('#trash')
   const gzip = new DecompressionStream('gzip')
   const reader = file.stream().pipeThrough(gzip).getReader()
   const decoder = new TextDecoder('utf-8')
@@ -174,6 +178,7 @@ async function loadVPZ (file) {
           restore(serialized)
           store(PROJECT, serialized)
           redraw()
+          trash.disabled = false
         }
       })
       .catch((err) => {
@@ -188,6 +193,7 @@ async function loadVPZ (file) {
 }
 
 async function loadVPX (file) {
+  const trash = document.querySelector('#trash')
   busy()
 
   file.text()
@@ -197,6 +203,7 @@ async function loadVPX (file) {
         const json = JSON.stringify(object.command)
         const serialized = exec(json)
         store(PROJECT, serialized)
+        trash.disabled = false
       }
     })
     .catch((err) => {
