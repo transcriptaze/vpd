@@ -15,10 +15,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.13.2]
-
     steps:
     - name: Setup npm
       uses: actions/setup-node@v4
@@ -48,17 +44,8 @@ jobs:
       with:
         version: 'latest'
 
-    - name: List versions
-      run: |
-        rustc       --version
-        tree-sitter --version
-        wasm-pack   --version
-        npx eslint  --version
-        sass        --version
-        go            version
-
     - name: Build release version
-      run: make build-all
+      run: make build-release
 
     - name: Build cloudflare dist
       run: make cloudflare
