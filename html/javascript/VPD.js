@@ -5,7 +5,6 @@ import * as fs from './fs.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
 import { exec, render, serialize, clear, restore } from '../wasm/vpd/vpd.js'
 
-
 export async function initialise (parser) {
   await command.init(parser)
   await help.init(parser)
