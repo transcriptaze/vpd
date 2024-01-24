@@ -5,6 +5,7 @@ export function newModule (node, src) {
     src: `${src}`,
     action: 'new',
     module: {
+      height: 128.5,
     }
   }
 
@@ -14,7 +15,7 @@ export function newModule (node, src) {
     } else if (child.type === 'height') {
       object.module.height = mm(child)
     } else if (child.type === 'width') {
-      object.module.width = mm(child)        
+      object.module.width = mm(child)
     }
   }
 

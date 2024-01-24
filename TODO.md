@@ -15,7 +15,7 @@
       - [x] Fix wasm .gitignore, LICENSE etc
       - [x] cloudflare branch
       - [x] Trigger nightly builds on push to cloudflare branch
-      - [ ] Create _dist/cloudflare_ from Makefile
+      - [x] Create _dist/cloudflare_ from Makefile
 
 - [x] Load project file
       - [ ] web component

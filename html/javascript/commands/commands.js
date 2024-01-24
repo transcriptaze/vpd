@@ -31,8 +31,8 @@ export function offset (node) {
 
 export function mm (node) {
   if (node.hasError() || node.isMissing()) {
-      throw new Error(node.toString())
-  } 
+    throw new Error(node.toString())
+  }
 
   const v = node.text
 
