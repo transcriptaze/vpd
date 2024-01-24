@@ -41,12 +41,12 @@ new output "left"     v3,h7 PJ301M
 new output "right"    v3,h8 PJ301M
 
 new label "VPD" centre,h0 "RobotoMono-Bold" 12pt centre,baseline #222222,#ebebeb
-new label "e"  (parameter "e"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "ε"  (parameter "e"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
 new label "s"  (parameter "s"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
-new label "t"  (parameter "theta" -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "θ"  (parameter "theta" -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
 new label "a"  (parameter "a"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
-new label "dx" (parameter "dx"    -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
-new label "dy" (parameter "dy"    -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "δx" (parameter "dx"    -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
+new label "δy" (parameter "dy"    -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
 new label "m"  (parameter "m"     -8.89mm,+0mm) "RobotoCondensed-Regular" 11pt centre,middle
 
 new label "FREQ"  (input "freq"     -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle

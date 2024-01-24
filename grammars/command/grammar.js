@@ -403,10 +403,9 @@ module.exports = grammar({
       $.offset,
     ),
 
-    _string: $ => seq(
-      '"',
-      alias(/[a-zA-Z]([^"]*?)/,$.string),
-      '"',
+    _string: $ => choice(
+      seq('"',  alias(/\p{L}*([^"]*?)/,$.string),  '"'),
+      seq( "'", alias(/\p{L}*([^'']*?)/,$.string), "'"),
     ),
 
     absolute: $ => seq(
