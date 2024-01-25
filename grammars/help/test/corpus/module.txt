@@ -1,0 +1,109 @@
+==========
+new module
+==========
+new module
+---
+(command
+  (new
+    (module)))
+
+
+=================
+new module Thing1
+=================
+new module Thing1
+---
+(command
+  (new
+    (module
+      (name))))
+
+
+====================
+new module "Thing 1"
+====================
+new module "Thing 1"
+---
+(command
+  (new
+    (module
+      (name))))
+
+
+====================
+new module 'Thing 1'
+====================
+new module 'Thing 1'
+---
+(command
+  (new
+    (module
+      (name))))
+
+
+====================
+new module Thing1 1U
+====================
+new module Thing1 1U
+---
+(command
+  (new
+    (module
+      (name)
+      (height))))
+
+
+=========================
+new module Thing1 1U 50mm
+=========================
+new module Thing1 1U 50mm
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
+
+==========
+set module
+==========
+set module
+---
+(command
+  (set
+    (module)))
+
+
+=========================
+set module name "Thing 1"
+=========================
+set module name "Thing 1"
+---
+(command
+  (set
+    (module
+      (name))))
+
+
+=========================
+set module height 128.5mm
+=========================
+set module height 128.5mm
+---
+(command
+  (set
+    (module
+      (height))))
+
+
+====================
+set module width 10H
+====================
+set module width 10H
+---
+(command
+  (set
+    (module
+      (width))))

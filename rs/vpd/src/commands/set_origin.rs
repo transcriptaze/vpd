@@ -4,7 +4,7 @@ use std::error::Error;
 use crate::command::Command;
 use crate::module::Module;
 
-pub struct SetOriginCommand {
+pub struct SetOrigin {
     x: XY,
     y: XY,
 }
@@ -39,11 +39,11 @@ struct xy {
     offset: f32,
 }
 
-impl SetOriginCommand {
-    pub fn new(json: &str) -> Result<SetOriginCommand, Box<dyn Error>> {
+impl SetOrigin {
+    pub fn new(json: &str) -> Result<SetOrigin, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(SetOriginCommand {
+        Ok(SetOrigin {
             x: XY {
                 reference: o.origin.x.reference,
                 offset: o.origin.x.offset,
@@ -56,7 +56,7 @@ impl SetOriginCommand {
     }
 }
 
-impl Command for SetOriginCommand {
+impl Command for SetOrigin {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         m.panel.origin.set_x(&self.x.reference, self.x.offset);
         m.panel.origin.set_y(&self.y.reference, self.y.offset);

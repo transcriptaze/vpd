@@ -10,13 +10,13 @@
   </head>
 
   <body>
-    <span id="windmill"></span>
+    <span id="windmill" class="visible"></span>
     <header>
       <vpd-logo id="logo"></vpd-logo>
     </header>
 
-    <div id="message">
-      <div>-- message --</div>
+    <div id="message" class="visible">
+      <div>loading...</div>
       <button onclick="onError(event)">
         <img src="./images/x.svg" />
       </button>
@@ -36,8 +36,8 @@
         </div>
         
         <div class="panel light">
-          <object id="light0" class="visible" data="./images/panel-light.svg" width="193" height="400"></object>
-          <object id="light1"                 data="./images/panel-light.svg"  width="193" height="400"></object>
+          <object id="light0" class="visible" data="./images/panel-light.png" width="193" height="400"></object>
+          <object id="light1"                 data="./images/panel-light.png"  width="193" height="400"></object>
           <div class="clickable light"></div>
         </div>
       </div>

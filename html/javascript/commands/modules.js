@@ -21,3 +21,24 @@ export function newModule (node, src) {
 
   return object
 }
+
+export function set (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'set',
+    module: {
+    }
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'name') {
+      object.module.name = string(child)
+    } else if (child.type === 'height') {
+      object.module.height = mm(child)
+    } else if (child.type === 'width') {
+      object.module.width = mm(child)
+    }
+  }
+
+  return object
+}

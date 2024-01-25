@@ -756,6 +756,10 @@
           "named": true
         },
         {
+          "type": "module",
+          "named": true
+        },
+        {
           "type": "origin",
           "named": true
         }
@@ -1011,6 +1015,10 @@
   },
   {
     "type": "module",
+    "named": false
+  },
+  {
+    "type": "name",
     "named": false
   },
   {

@@ -1,13 +1,4 @@
 ===
-new
-===
-new
----
-(command
-  (new))
-
-
-===
 set
 ===
 set

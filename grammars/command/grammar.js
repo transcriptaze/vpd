@@ -17,20 +17,30 @@ module.exports = grammar({
     // ... comments
     comment: $ => /;;(.*?)/,
 
-    // ... actions
+    // ... new
     new: $ => seq(
       'new',
       $._entity,
     ),
 
+    // ... set
     set: $ => seq(
       'set',
       choice (
         $.origin,
         $.background,
+        alias($._module_attr,$.module),
       )
     ),
 
+    _module_attr: $ => seq(
+      'module',
+      choice(
+        seq('name', $.name),
+      )
+    ),
+
+    // ... decorate
     decorate: $ => seq(
       'decorate',
       '(',
@@ -404,8 +414,8 @@ module.exports = grammar({
     ),
 
     _string: $ => choice(
-      seq('"',  alias(/\p{L}*([^"]*?)/,$.string),  '"'),
-      seq( "'", alias(/\p{L}*([^'']*?)/,$.string), "'"),
+      seq('"', alias(/[^"]*/,$.string), '"'),
+      seq("'", alias(/[^']*/,$.string), "'"),
     ),
 
     absolute: $ => seq(

@@ -71,6 +71,42 @@
             {
               "type": "SYMBOL",
               "name": "background"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_module_attr"
+              },
+              "named": true,
+              "value": "module"
+            }
+          ]
+        }
+      ]
+    },
+    "_module_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "module"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "name"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "name"
+                }
+              ]
             }
           ]
         }
@@ -1659,7 +1695,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "PATTERN",
-                "value": "\\p{L}*([^\"]*?)"
+                "value": "[^\"]*"
               },
               "named": true,
               "value": "string"
@@ -1681,7 +1717,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "PATTERN",
-                "value": "\\p{L}*([^'']*?)"
+                "value": "[^']*"
               },
               "named": true,
               "value": "string"
