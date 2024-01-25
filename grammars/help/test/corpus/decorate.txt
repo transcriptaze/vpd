@@ -1,0 +1,42 @@
+========
+decorate
+========
+decorate
+---
+(command
+  (decorate))
+
+
+===============
+decorate (input
+===============
+decorate (input
+---
+(command
+  (decorate
+  (component)))
+
+
+=====================
+decorate (input audio
+=====================
+decorate (input audio
+---
+(command
+  (decorate
+  (component
+    (name))))
+
+
+===============================
+decorate (input audio) with Pad
+===============================
+decorate (input audio) with Pad
+---
+(command
+  (decorate
+    (component
+      (name)
+      (decoration
+        (name)))))
+

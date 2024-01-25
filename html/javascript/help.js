@@ -84,6 +84,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['decorate', 'component', 'name', 'decoration', 'name'],
+    help: ['decorate', '(component', '&lt;name&gt;)', 'with &lt;decoration&gt;'],
+    min: 1
+  },
+  {
     command: ['load', 'project'],
     help: ['load', 'project'],
     min: 1

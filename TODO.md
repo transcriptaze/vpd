@@ -131,7 +131,7 @@
       - [x] parameters
       - [x] lights
       - [x] widgets
-      - [ ] help
+      - [x] help
       - [x] user guide
       - [ ] set
       - [ ] delete

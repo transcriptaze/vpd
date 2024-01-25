@@ -16,6 +16,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "decorate"
+          },
+          {
+            "type": "SYMBOL",
             "name": "load"
           },
           {
@@ -90,6 +94,112 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "decorate": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "decorate"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_component"
+              },
+              "named": true,
+              "value": "component"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_component": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "input"
+            },
+            {
+              "type": "STRING",
+              "value": "output"
+            },
+            {
+              "type": "STRING",
+              "value": "parameter"
+            },
+            {
+              "type": "STRING",
+              "value": "light"
+            },
+            {
+              "type": "STRING",
+              "value": "widget"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "name"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "decoration"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "decoration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "STRING",
+          "value": "with"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
         }
       ]
     },

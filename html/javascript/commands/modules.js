@@ -5,7 +5,7 @@ export function newModule (node, src) {
     src: `${src}`,
     action: 'new',
     module: {
-      height: 128.5,
+      height: 128.5
     }
   }
 

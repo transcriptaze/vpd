@@ -62,12 +62,18 @@ export async function initialise (parser) {
     const json = retrieve(PROJECT)
 
     if (json != null) {
+      busy()
       restore(json)
       redraw()
+
       trash.disabled = false
     }
+
+    onError(null)
   } catch (err) {
     console.error(err)
+  } finally {
+    unbusy()
   }
 
   help.help(helpText, '')
@@ -247,4 +253,16 @@ function yyyymmddhhmmss () {
   const second = `${now.getSeconds()}`.padStart(2, '0')
 
   return `${year}-${month}-${day} ${hour}.${minute}.${second}`
+}
+
+function busy () {
+  const windmill = document.querySelector('#windmill')
+
+  windmill.classList.add('visible')
+}
+
+function unbusy () {
+  const windmill = document.querySelector('#windmill')
+
+  windmill.classList.remove('visible')
 }

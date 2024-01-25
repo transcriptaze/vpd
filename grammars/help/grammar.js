@@ -6,6 +6,7 @@ module.exports = grammar({
       choice(
         $.new,
         $.set,
+        $.decorate,
         $.load,
         $.save,
         $.export,
@@ -34,6 +35,31 @@ module.exports = grammar({
           $.background,
         ),
       )
+    ),
+
+    // ... decorate
+    decorate: $ => seq(
+      'decorate',
+      optional(
+        alias($._component, $.component),
+      ),
+    ),
+
+    _component: $ => seq (
+      '(', 
+      choice('input', 'output', 'parameter', 'light', 'widget'), 
+      optional(
+        seq (
+          $.name, 
+          optional ($.decoration),
+        ),
+      ),
+    ),
+
+    decoration: $ => seq (
+      ')',
+      'with',
+      $.name,
     ),
 
     // ... load

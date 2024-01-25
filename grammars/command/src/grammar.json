@@ -1659,7 +1659,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "PATTERN",
-                "value": "\\p{L}*([^\"]*?)"
+                "value": "[^\"]*"
               },
               "named": true,
               "value": "string"
@@ -1681,7 +1681,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "PATTERN",
-                "value": "\\p{L}*([^'']*?)"
+                "value": "[^']*"
               },
               "named": true,
               "value": "string"

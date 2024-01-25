@@ -404,8 +404,8 @@ module.exports = grammar({
     ),
 
     _string: $ => choice(
-      seq('"',  alias(/\p{L}*([^"]*?)/,$.string),  '"'),
-      seq( "'", alias(/\p{L}*([^'']*?)/,$.string), "'"),
+      seq('"', alias(/[^"]*/,$.string), '"'),
+      seq("'", alias(/[^']*/,$.string), "'"),
     ),
 
     absolute: $ => seq(
