@@ -251,7 +251,25 @@
   {
     "type": "module",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "height",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "width",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "name",
@@ -412,6 +430,10 @@
       "types": [
         {
           "type": "background",
+          "named": true
+        },
+        {
+          "type": "module",
           "named": true
         },
         {
@@ -577,6 +599,14 @@
     "named": true
   },
   {
+    "type": "height",
+    "named": true
+  },
+  {
+    "type": "height",
+    "named": false
+  },
+  {
     "type": "input",
     "named": false
   },
@@ -606,6 +636,10 @@
   },
   {
     "type": "module",
+    "named": false
+  },
+  {
+    "type": "name",
     "named": false
   },
   {
@@ -667,6 +701,14 @@
   {
     "type": "widget",
     "named": false
+  },
+  {
+    "type": "width",
+    "named": false
+  },
+  {
+    "type": "width",
+    "named": true
   },
   {
     "type": "with",

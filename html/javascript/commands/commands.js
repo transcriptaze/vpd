@@ -1,4 +1,8 @@
 export function string (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
   const text = node.text.trim()
   const match = text.match(/"(.*?)"/)
 

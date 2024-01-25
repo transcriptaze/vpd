@@ -9,6 +9,7 @@ mod new_parameter;
 mod new_widget;
 
 mod set_background;
+mod set_module;
 mod set_origin;
 
 mod export_svg;
@@ -27,8 +28,9 @@ pub use new_output::NewOutput;
 pub use new_parameter::NewParameter;
 pub use new_widget::NewWidget;
 
-pub use set_background::SetBackgroundCommand;
-pub use set_origin::SetOriginCommand;
+pub use set_background::SetBackground;
+pub use set_module::SetModule;
+pub use set_origin::SetOrigin;
 
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;

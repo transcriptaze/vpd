@@ -6,7 +6,7 @@ use crate::module::Module;
 use crate::panel::Background;
 
 #[derive(Deserialize)]
-pub struct SetBackgroundCommand {
+pub struct SetBackground {
     rgb: Option<[String; 2]>,
     rgba: Option<[String; 2]>,
     background: String,
@@ -14,18 +14,18 @@ pub struct SetBackgroundCommand {
 
 #[derive(Deserialize)]
 struct Object {
-    background: SetBackgroundCommand,
+    background: SetBackground,
 }
 
-impl SetBackgroundCommand {
-    pub fn new(json: &str) -> Result<SetBackgroundCommand, Box<dyn Error>> {
+impl SetBackground {
+    pub fn new(json: &str) -> Result<SetBackground, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
         Ok(o.background)
     }
 }
 
-impl Command for SetBackgroundCommand {
+impl Command for SetBackground {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let rgb = &self.rgb;
         let rgba = &self.rgba;

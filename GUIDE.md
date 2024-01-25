@@ -23,6 +23,7 @@
    - [`set origin`](#set-origin)
    - [`new guide`](#new-guide)
    - [`new module`](#new-module)
+   - [`set module name`](#set-module-name)
    - [`set background`](#set-background)
    - [`new input`](#new-input)
    - [`new output`](#new-output)
@@ -439,6 +440,27 @@ _Examples:_
 new module bodacious 1U 5H
 new module bodacious 1U 45mm
 new module bodacious 45.72mm
+````
+
+
+#### `set module name <name>`
+
+```set module name <string>```
+
+Sets the module name.
+
+_Command options:_
+```
+name     Module name, optionally surrounded by single or double quotes. 
+```
+
+_Notes:_
+
+_Examples:_
+```
+set module name Thing1
+set module name 'Thing 1'
+set module name "Thing 1"
 ````
 
 

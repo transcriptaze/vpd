@@ -61,7 +61,7 @@
       - [x] `new module <name> [1U] 50mm`
       - [x] help
       - [x] user guide
-      - [ ] `set module name`
+      - [x] `set module name`
       - [ ] `set module width`
       - [ ] `set module height`
 

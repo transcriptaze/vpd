@@ -84,3 +84,12 @@ new module "thing" 3H
       (width))))
 
 
+=======================
+set module name "thing"
+=======================
+set module name "thing"
+---
+(command
+  (set
+    (module
+      (name))))

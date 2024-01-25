@@ -28,7 +28,7 @@ extern "C" {
 #[derive(Serialize, Deserialize)]
 pub struct Module {
     pub version: String,
-    pub name: Box<str>,
+    pub name: String,
     pub panel: Panel,
     pub script: Vec<String>,
 }

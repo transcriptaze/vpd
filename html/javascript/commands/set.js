@@ -1,4 +1,5 @@
 import * as origin from './origin.js'
+import * as module from './modules.js'
 import * as background from './background.js'
 
 export function parse (node) {
@@ -9,6 +10,9 @@ export function parse (node) {
     switch (child.type) {
       case 'origin':
         return origin.set(child, src)
+
+      case 'module':
+        return module.set(child, src)
 
       case 'background':
         return background.set(child, src)

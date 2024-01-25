@@ -25,6 +25,19 @@ module.exports = grammar({
       ),
     ),
 
+    module: $ => seq(
+      'module',
+      optional(
+        seq(
+          $.name,
+          optional($.height),
+          optional($.width),
+        ),
+      )
+    ),
+
+    height: $ => /1U|128.5mm/,
+    width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
 
     // ... set
     set: $ => seq(
@@ -32,9 +45,21 @@ module.exports = grammar({
       optional (
         choice (
           $.origin,
+          alias($._module_attr,$.module),
           $.background,
         ),
       )
+    ),
+
+    _module_attr: $ => seq(
+      'module',
+      optional(
+        choice(
+          seq('name', $.name),
+          seq('height', $.height),
+          seq('width', $.width),
+        ),
+      ),
     ),
 
     // ... decorate
@@ -131,10 +156,6 @@ module.exports = grammar({
           alias('dark', $.dark),
         ),
       ),
-    ),
-
-    module: $ => seq(
-      'module',
     ),
 
     origin: $ => seq(

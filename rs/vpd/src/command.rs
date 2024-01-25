@@ -17,8 +17,9 @@ use crate::commands::NewParameter;
 use crate::commands::NewWidget;
 use crate::commands::SaveProject;
 use crate::commands::SaveScript;
-use crate::commands::SetBackgroundCommand;
-use crate::commands::SetOriginCommand;
+use crate::commands::SetBackground;
+use crate::commands::SetModule;
+use crate::commands::SetOrigin;
 
 pub trait Command {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
@@ -136,7 +137,15 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     }
 
     if v.action == "set" && v.origin.is_some() {
-        let command = SetOriginCommand::new(json)?;
+        let command = SetOrigin::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "set" && v.module.is_some() {
+        let command = SetModule::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
@@ -144,7 +153,7 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     }
 
     if v.action == "set" && v.background.is_some() {
-        let command = SetBackgroundCommand::new(json)?;
+        let command = SetBackground::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 
