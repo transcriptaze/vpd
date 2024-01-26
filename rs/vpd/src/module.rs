@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::io::Write;
 
 use chrono::Local;
@@ -11,6 +12,8 @@ use super::panel::DEFAULT_WIDTH;
 use super::serde::{Deserialize, Serialize};
 
 use wasm_bindgen::prelude::*;
+
+use crate::panel::Input;
 
 use crate::svg;
 use crate::utils::log;
@@ -38,6 +41,14 @@ pub struct ModuleInfo {
     pub name: String,
     pub height: f32,
     pub width: f32,
+}
+
+#[derive(Serialize)]
+pub struct Item {
+    pub itype: String,
+    pub id: String,
+    pub name: String,
+    pub attributes: HashMap<String, String>,
 }
 
 pub fn new() -> Module {
@@ -326,6 +337,34 @@ impl Module {
                 Some(v) => format!("{}{}", v.get(1).unwrap().as_str(), ix + 1),
                 None => format!("g{}", ix + 1),
             },
+        }
+    }
+
+    pub fn query(&self, x: f32, y: f32) -> Vec<Item> {
+        let panel = &self.panel;
+        let mut rs = Vec::<Item>::new();
+
+        for v in &self.panel.inputs {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < 2.5 {
+                rs.push(Item::from_input(&v));
+            }
+        }
+
+        return rs;
+    }
+}
+
+impl Item {
+    pub fn from_input(input: &Input) -> Item {
+        Item {
+            itype: "input".to_string(),
+            id: input.id.clone(),
+            name: input.name.clone(),
+            attributes: HashMap::new(),
         }
     }
 }

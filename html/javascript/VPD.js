@@ -3,7 +3,7 @@ import * as text from './text.js'
 import * as command from './command.js'
 import * as fs from './fs.js'
 import { store, retrieve, PROJECT, MACROS } from './db.js'
-import { exec, render, serialize, clear, restore } from '../wasm/vpd/vpd.js'
+import { exec, render, serialize, clear, restore, query } from '../wasm/vpd/vpd.js'
 
 export async function initialise (parser) {
   await command.init(parser)
@@ -172,8 +172,20 @@ export function onClickPanel (panel, x, y) {
   const dx = x / bounds.width
   const dy = y / bounds.height
 
-  console.log(panel, { x }, { dx }, dx * (50.8 + 10.16) - 5.08)
-  console.log(panel, { y }, { dy }, dy * (128.5 + 10.16) - 5.08)
+  // console.log(panel, { x }, { dx }, dx * (50.8 + 10.16) - 5.08)
+  // console.log(panel, { y }, { dy }, dy * (128.5 + 10.16) - 5.08)
+
+  try {
+    const rs = query(dx,dy)
+
+    if (rs != null) {
+      const object = JSON.parse(rs)
+
+      console.log(object)
+    }
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 function execute (v) {
