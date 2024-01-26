@@ -93,3 +93,25 @@ set module name "thing"
   (set
     (module
       (name))))
+
+
+====================
+set module height 1U
+====================
+set module height 1U
+---
+(command
+  (set
+    (module
+      (height))))
+
+
+=====================
+set module width 50mm
+=====================
+set module width 50mm
+---
+(command
+  (set
+    (module
+      (width))))

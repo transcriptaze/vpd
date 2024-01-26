@@ -2,18 +2,27 @@
 
 # Load/Save
 
-| _Command_                     | _Description_                                                                |
-|-------------------------------|------------------------------------------------------------------------------|
-| `load project`                | Opens a file picker to load a _.vpd_ or _.vpz_ project file                  |
-| `save project`                | Opens a file picker to save project as a _.vpd_ file                         |
-| `save project timestamp`      | Opens a file picker to save project as a timestamped _.vpd_ file             |
-| `save project gzip`           | Opens a file picker to save project as a gzipped _.vpz_ file                 |
-| `save project timestamp gzip` | Opens a file picker to save project as a compressed, timestamped _.vpz_ file |
+| _Command_                         | _Examples_                          |
+|-----------------------------------|-------------------------------------|
+| `load project`                    | _load project_                      |
+| `save project [timestamp] [gzip]` | _save project_                      |
+|                                   | _save project timestamp_            |
+|                                   | _save project gzip_                 |
+|                                   | _save project timestamp gzip_       |
 
 
-| _Command_                     | _Description_                                                                |
-|-------------------------------|------------------------------------------------------------------------------|
-| `load script`                 | Opens a file picker to load a _.vpx_ script file                             |
-| `save script`                 | Opens a file picker to save project as a _.vpx_ script file                  |
-| `save script timestamp`       | Opens a file picker to save project as a timestamped _.vpx_ script file      |
+| _Command_                         | _Examples_                          |
+|-----------------------------------|-------------------------------------|
+| `load script`                     | _load script_                       |
+| `save script [timestamp]`         | _save script_                       |
+|                                   | _save script timestamp_             |
 
+
+# _module_
+
+| _Command_                            | _Example_                        |
+|--------------------------------------|----------------------------------|
+| `new module <name> <height> <width>` | _new module "Thing 1" 1U 50mm_   |
+| `set module name <name>`             | _set module name "Thing 1_       |
+| `set module height <height>`         | _set module height 1U_           |
+| `set module width <width>`           | _set module width 50mm_          | 

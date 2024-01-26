@@ -35,7 +35,7 @@ Assuming that you have already installed the [VCV plugin SDK](https://vcvrack.co
    cd bodacious
    make
    ```
-2. Open the VPD [web application](https://vpdx.pages.dev) in your browser.
+2. Open the VPD [web application](https://vpdx.pages.dev) in a browser.
 
 3. Create a sample panel by either:
    - Downloading the [_quickstart.vpd_](/doc/examples/quickstart.vpd) project file and opening it by clicking on the _Load_ 

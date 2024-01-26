@@ -55,15 +55,14 @@
 - [x] _save_
 - [x] _set origin_
 - [x] _export panel svg_
-
-- [ ] _module_
+- [x] _module_
       - [x] `new module <name> [1U] 10H`
       - [x] `new module <name> [1U] 50mm`
       - [x] help
       - [x] user guide
       - [x] `set module name`
-      - [ ] `set module width`
-      - [ ] `set module height`
+      - [x] `set module width`
+      - [x] `set module height`
 
 - [ ] `set background none`
 

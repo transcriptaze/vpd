@@ -22,8 +22,12 @@
   ---
    - [`set origin`](#set-origin)
    - [`new guide`](#new-guide)
+  ---
    - [`new module`](#new-module)
    - [`set module name`](#set-module-name)
+   - [`set module height`](#set-module-height)
+   - [`set module width`](#set-module-width)
+  ---
    - [`set background`](#set-background)
    - [`new input`](#new-input)
    - [`new output`](#new-output)
@@ -418,6 +422,8 @@ new guide middle
 new guide H0+7.62mm
 ```   
 
+--- 
+
 #### `new module`
 
 ```new module <name> [height] <width>```
@@ -445,13 +451,13 @@ new module bodacious 45.72mm
 
 #### `set module name <name>`
 
-```set module name <string>```
+```set module name <name>```
 
 Sets the module name.
 
 _Command options:_
 ```
-name     Module name, optionally surrounded by single or double quotes. 
+name    Module name, optionally surrounded by single or double quotes. 
 ```
 
 _Notes:_
@@ -463,6 +469,46 @@ set module name 'Thing 1'
 set module name "Thing 1"
 ````
 
+#### `set module height <height>`
+
+```set module height <height>```
+
+Sets the module panel height.
+
+_Command options:_
+```
+height     Module panel height (128.5mm or 1U). 
+```
+
+_Notes:_
+
+_Examples:_
+```
+set module height 1U
+set module height 128.5mm
+````
+
+#### `set module width <width>`
+
+```set module width <width>```
+
+Sets the module panel width.
+
+_Command options:_
+```
+width   Module panel width in either mm or H (standard horizontal units of 5.08mm). A module width
+        in mm is rounded to the nearest multiple of 5.08mm.
+```
+
+_Notes:_
+
+_Examples:_
+```
+set module width 50mm
+set module width 10H
+````
+
+--- 
 
 #### `set background`
 

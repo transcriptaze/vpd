@@ -986,6 +986,10 @@
     "named": true
   },
   {
+    "type": "height",
+    "named": false
+  },
+  {
     "type": "horizontal",
     "named": false
   },
@@ -1103,6 +1107,10 @@
   },
   {
     "type": "widget",
+    "named": false
+  },
+  {
+    "type": "width",
     "named": false
   },
   {
