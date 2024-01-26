@@ -25,6 +25,12 @@ export function restore(json: string): void;
 * @returns {string}
 */
 export function render(theme: string): string;
+/**
+* @param {number} dx
+* @param {number} dy
+* @returns {string}
+*/
+export function query(dx: number, dy: number): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -36,6 +42,7 @@ export interface InitOutput {
   readonly clear: (a: number) => void;
   readonly restore: (a: number, b: number, c: number) => void;
   readonly render: (a: number, b: number, c: number) => void;
+  readonly query: (a: number, b: number, c: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;

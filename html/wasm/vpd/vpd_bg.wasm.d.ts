@@ -7,6 +7,7 @@ export function serialize(a: number, b: number, c: number): void;
 export function clear(a: number): void;
 export function restore(a: number, b: number, c: number): void;
 export function render(a: number, b: number, c: number): void;
+export function query(a: number, b: number, c: number): void;
 export function __wbindgen_malloc(a: number, b: number): number;
 export function __wbindgen_realloc(a: number, b: number, c: number, d: number): number;
 export function __wbindgen_add_to_stack_pointer(a: number): number;
