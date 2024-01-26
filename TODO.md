@@ -1,29 +1,25 @@
 # TODO
 
 - [x] Replace splashscreens
-- [ ] Resolve names to IDs in apply()
-- [ ] Genericize ID generation
 - [x] Windmill on load
-- [ ] Windmill on restore
+- [x] Windmill on restore
 - [x] Unicode characters
-- [ ] Check hasError/isMissing
-
-- [x] SVG pretty printer
-      - [ ] Fix double blank lines
-
 - [x] github 'cloudflare' build
-      - [x] Fix wasm .gitignore, LICENSE etc
-      - [x] cloudflare branch
-      - [x] Trigger nightly builds on push to cloudflare branch
-      - [x] Create _dist/cloudflare_ from Makefile
-
-- [x] Load project file
-      - [ ] web component
-
 - [x] Save project/script file
 - [x] Show errors
 - [x] _project info_ panel
 - [x] Trash
+
+- [ ] Check hasError/isMissing
+- [ ] Resolve names to IDs in apply()
+- [ ] Genericize ID generation
+
+- [x] SVG pretty printer
+      - [ ] Fix double blank lines
+
+- [x] Load project file
+      - [ ] web component
+
 - [ ] _component info_ panel
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
@@ -55,15 +51,14 @@
 - [x] _save_
 - [x] _set origin_
 - [x] _export panel svg_
-
-- [ ] _module_
+- [x] _module_
       - [x] `new module <name> [1U] 10H`
       - [x] `new module <name> [1U] 50mm`
       - [x] help
       - [x] user guide
       - [x] `set module name`
-      - [ ] `set module width`
-      - [ ] `set module height`
+      - [x] `set module width`
+      - [x] `set module height`
 
 - [ ] `set background none`
 
@@ -126,17 +121,8 @@
       - [ ] hover
 
 - [ ] _decorate_
-      - [x] inputs
-      - [x] outputs
-      - [x] parameters
-      - [x] lights
-      - [x] widgets
-      - [x] help
-      - [x] user guide
       - [ ] set
       - [ ] delete
-      - [x] CircularGraduations
-      - [x] Pad
 
 - [ ] _help_
        - (?) Rework grammar as `new`, `new module`, etc

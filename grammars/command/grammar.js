@@ -37,6 +37,8 @@ module.exports = grammar({
       'module',
       choice(
         seq('name', $.name),
+        seq('height', $.height),
+        seq('width', $.width),
       )
     ),
 

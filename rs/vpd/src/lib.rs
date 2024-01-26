@@ -170,3 +170,19 @@ pub fn render(theme: &str) -> Result<String, JsValue> {
         Err(e) => Err(JsValue::from(format!("{}", e))),
     }
 }
+
+#[wasm_bindgen]
+pub fn query(dx: f32, dy: f32) -> Result<String, JsValue> {
+    let state = STATE.lock().unwrap();
+    let module = &state.module;
+    let w = module.panel.width + 2.0 * module.panel.gutter;
+    let h = module.panel.height + 2.0 * module.panel.gutter;
+    let offset = module.panel.gutter;
+    let x = dx * w - offset;
+    let y = dy * h - offset;
+
+    let rs = module.query(x, y);
+    let json = serde_json::to_string(&rs).unwrap();
+
+    Ok(json)
+}

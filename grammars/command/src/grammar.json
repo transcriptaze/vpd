@@ -107,6 +107,32 @@
                   "name": "name"
                 }
               ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "height"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "height"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "width"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "width"
+                }
+              ]
             }
           ]
         }

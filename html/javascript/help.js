@@ -64,6 +64,16 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'module', 'height'],
+    help: ['set', 'module', 'height 1U'],
+    min: 1
+  },
+  {
+    command: ['set', 'module', 'width'],
+    help: ['set', 'module', 'width <em>&lt;width&gt;</em>'],
+    min: 1
+  },
+  {
     command: ['set', 'background', 'rgb'],
     help: ['set', 'background', '#ff00ff'],
     min: 1
