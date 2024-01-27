@@ -1,10 +1,28 @@
 ===
+new
+===
+new
+---
+(command
+  (new))
+
+
+===
 set
 ===
 set
 ---
 (command
   (set))
+
+
+======
+delete
+======
+delete
+---
+(command
+  (delete))
 
 
 ======

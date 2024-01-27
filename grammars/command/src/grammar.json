@@ -24,6 +24,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "delete"
+          },
+          {
+            "type": "SYMBOL",
             "name": "load"
           },
           {
@@ -210,6 +214,42 @@
         {
           "type": "SYMBOL",
           "name": "decoration"
+        }
+      ]
+    },
+    "delete": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "delete"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_guideline"
+              },
+              "named": true,
+              "value": "guide"
+            }
+          ]
+        }
+      ]
+    },
+    "_guideline": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "guide"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         }
       ]
     },

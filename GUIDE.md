@@ -22,6 +22,7 @@
   ---
    - [`set origin`](#set-origin)
    - [`new guide`](#new-guide)
+   - [`delete guide`](#delete-guide)
   ---
    - [`new module`](#new-module)
    - [`set module name`](#set-module-name)
@@ -420,6 +421,29 @@ new guide vertical v1+2H
 new guide horizontal middle
 new guide middle
 new guide H0+7.62mm
+```   
+
+#### `delete guide`
+
+```delete guide <id>```
+
+Removes a construction guideline. 
+
+_Command options:_
+```
+id   Label identifiying guideline to delete
+```
+
+_Notes:_
+1. Quite happily deletes guidelines that do not exist.
+2. Deleting a guideline referenced by other guidelines or components will set those entities adrift to 
+   wander in space and time. Creating a new guideline with the missing identifier (`new guideline <label> ...`)
+   will anchor them to the new reality.
+
+_Examples_
+
+```
+delete guide v1
 ```   
 
 --- 

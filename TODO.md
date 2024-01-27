@@ -9,11 +9,11 @@
 - [x] Show errors
 - [x] _project info_ panel
 - [x] Trash
+- [x] Convert cheatsheet to TeX/PDF
 
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
-- [ ] Convert cheatsheet to TeX/PDF
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
@@ -62,13 +62,9 @@
 
 - [ ] _guidelines_
       - [ ] V0 and H0
-      - [x] `new guide vertical centre`
-      - [x] `new guide horizontal middle`
-      - [x] Replace `g` ids with `v` or `h`
       - [ ] help
-      - [ ] `delete`
+      - [x] `delete`
       - [ ] `set`
-      - [x] Replace Guide::to_svg() resolution with XY::resolve
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) error if duplicate offset

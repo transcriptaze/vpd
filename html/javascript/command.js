@@ -1,6 +1,7 @@
 import * as _new from './commands/new.js'
 import * as _set from './commands/set.js'
 import * as _decorate from './commands/decorate.js'
+import * as _delete from './commands/delete.js'
 import * as _load from './commands/load.js'
 import * as _save from './commands/save.js'
 import * as _export from './commands/export.js'
@@ -65,6 +66,9 @@ export function parseNode (node) {
 
     case 'decorate':
       return _decorate.parse(node)
+
+    case 'delete':
+      return _delete.parse(node)
 
     case 'load':
       return _load.parse(node)

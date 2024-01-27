@@ -177,8 +177,7 @@ impl SVG {
                 context.insert("backgrounds", &self.backgrounds);
                 context.insert("background", &v.template);
             }
-            _ => {
-            }
+            _ => {}
         }
 
         match &self.outline {

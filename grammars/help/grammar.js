@@ -7,6 +7,7 @@ module.exports = grammar({
         $.new,
         $.set,
         $.decorate,
+        $.delete,
         $.load,
         $.save,
         $.export,
@@ -85,6 +86,21 @@ module.exports = grammar({
       ')',
       'with',
       $.name,
+    ),
+
+    // ... delete
+    delete: $ => seq(
+      'delete',
+      optional(
+        choice (
+          alias($._guideline, $.guide)
+        ),
+      ),
+    ),
+
+    _guideline: $ => seq(
+      'guide',
+      optional($.identifier),
     ),
 
     // ... load
@@ -339,5 +355,7 @@ module.exports = grammar({
       /[a-zA-Z]([^"]*?)/,
       '"',
     ),
+
+    identifier: $ => /[a-zA-Z][a-zA-Z0-9]*/,
   }
 });

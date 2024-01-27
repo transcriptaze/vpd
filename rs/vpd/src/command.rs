@@ -3,6 +3,7 @@ use std::error::Error;
 use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
+use crate::commands::DeleteGuide;
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
@@ -154,6 +155,14 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
     if v.action == "set" && v.background.is_some() {
         let command = SetBackground::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "delete" && v.guide.is_some() {
+        let command = DeleteGuide::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 

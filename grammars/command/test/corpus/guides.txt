@@ -296,3 +296,17 @@ new guide v2 v1+4.5mm
         (reference)
         (offset)))))
 
+
+===============
+delete guide v1
+===============
+delete guide v1
+---
+(command
+  (delete
+    (guide
+      (identifier))))
+
+        
+
+

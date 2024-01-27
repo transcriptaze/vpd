@@ -12,6 +12,8 @@ mod set_background;
 mod set_module;
 mod set_origin;
 
+mod delete_guide;
+
 mod export_svg;
 mod load_project;
 mod load_script;
@@ -31,6 +33,8 @@ pub use new_widget::NewWidget;
 pub use set_background::SetBackground;
 pub use set_module::SetModule;
 pub use set_origin::SetOrigin;
+
+pub use delete_guide::DeleteGuide;
 
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;
