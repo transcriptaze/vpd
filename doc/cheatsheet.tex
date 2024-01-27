@@ -1,0 +1,57 @@
+\documentclass[a4paper,10pt,oneside]{article}
+\usepackage[landscape,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage[export]{adjustbox}
+
+\setmainfont{Lato-Regular.ttf} [
+   BoldFont = Lato-Bold.ttf,
+   ItalicFont = Lato-Italic.ttf
+]
+
+\pagestyle{empty}
+
+\begin{document}
+\textbf{load/save}
+
+load project
+
+save project \textit{[timestamp]} \textit{[gzip]}
+                                                  
+load script
+
+save script \textit{[timestamp]}
+
+\textbf{module}
+
+new module        \textit{<name>} \textit{[height]} \textit{<width>}
+
+set module name   \textit{<name>}
+
+set module height \textit{<height>}
+
+set module width  \textit{<width>}
+
+
+\textbf{background}
+
+set background none
+
+set background \textit{<rgb>}
+
+set background \textit{<rgb>},\textit{<rgb>}
+
+set background \textit{<rgba>}
+
+set background \textit{<rgba>},\textit{<rgba>}
+
+set background \textit{<gradient>}
+
+\end{document}
+
