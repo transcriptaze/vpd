@@ -74,6 +74,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'background', 'none'],
+    help: ['set', 'background', 'none'],
+    min: 1
+  },
+  {
     command: ['set', 'background', 'rgb'],
     help: ['set', 'background', '#ff00ff'],
     min: 1

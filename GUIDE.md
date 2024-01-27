@@ -512,26 +512,28 @@ set module width 10H
 
 #### `set background`
 
-```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
+```set background none|<rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
 
 Sets the panel background to either a plain colour or the name of a preloaded backround.
 
 _Command options:_
 ```
+none   Removes the background from the SVG
 rgb    RGB colour hex value e.g. #ff0000
 rgba   RGBA colour hex value e.g. #ff000040
-name   Name of a preloaded background definition, optionally surrounded by single or double quotes
+name   Name of a predefined background, optionally surrounded by single or double quotes
 ```
 
 _Notes:_
 1. The default background is a transparent rectangle
 2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
 3. The background name is case- and space-insensitive
-4. The preloaded background are:
+4. The predefined backgrounds are:
    - `foundation`
 
 _Examples:_
 ```
+set background none
 set background #ff00ff
 set background #ff00ff,#00ff00
 set background #ff00ff40

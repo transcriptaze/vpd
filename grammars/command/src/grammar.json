@@ -1243,6 +1243,15 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "none"
+              },
+              "named": true,
+              "value": "none"
+            },
+            {
               "type": "SEQ",
               "members": [
                 {

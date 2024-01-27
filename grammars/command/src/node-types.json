@@ -31,6 +31,10 @@
           "named": true
         },
         {
+          "type": "none",
+          "named": true
+        },
+        {
           "type": "rgb",
           "named": true
         },
@@ -983,11 +987,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "horizontal",
@@ -1028,6 +1032,10 @@
   {
     "type": "new",
     "named": false
+  },
+  {
+    "type": "none",
+    "named": true
   },
   {
     "type": "origin",

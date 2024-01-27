@@ -35,7 +35,7 @@ pub const H: f32 = 5.08; // 1 'horizontal' unit
 pub struct Panel {
     pub width: f32,
     pub height: f32,
-    pub background: Background,
+    pub background: Option<Background>,
     pub inputs: Vec<Input>,
     pub outputs: Vec<Output>,
     pub parameters: Vec<Parameter>,
@@ -56,7 +56,7 @@ impl Panel {
         return Panel {
             width: w * H,
             height: 128.5,
-            background: Background::new_rgb("default", "#ffffff", "#222222"),
+            background: Some(Background::default()),
             inputs: Vec::new(),
             outputs: Vec::new(),
             parameters: Vec::new(),
@@ -92,7 +92,7 @@ impl Panel {
 
         let svg = SVG::new(w, h, &viewport, &panel)
             .styles(styles)
-            .background(&background.0, background.1)
+            .background(background)
             .outline(&panel)
             .origin(origin)
             .guidelines(guidelines)
@@ -124,7 +124,7 @@ impl Panel {
         let decorations = self.decorations(theme);
 
         let svg = SVG::new(w, h, &viewport, &panel)
-            .background(&background.0, background.1)
+            .background(background)
             .inputs(inputs)
             .outputs(outputs)
             .parameters(parameters)
@@ -171,37 +171,43 @@ impl Panel {
         return list;
     }
 
-    pub fn background(&self, theme: &str) -> (String, Option<Gradient>) {
-        let background = &self.background.background;
-        let gradient = match (&self.background.rgb, &self.background.rgba, theme) {
-            (Some(v), _, "dark") => {
-                let stop1 = Stop::new(0.0, &v.colour[1]);
-                let stop2 = Stop::new(100.0, &v.colour[1]);
-                Some(Gradient::new(&background, stop1, stop2))
+    pub fn background(&self, theme: &str) -> Option<(String, Option<Gradient>)> {
+        match &self.background {
+            Some(bg) => {
+                let background = &bg.background;
+                let gradient = match (&bg.rgb, &bg.rgba, theme) {
+                    (Some(v), _, "dark") => {
+                        let stop1 = Stop::new(0.0, &v.colour[1]);
+                        let stop2 = Stop::new(100.0, &v.colour[1]);
+                        Some(Gradient::new(&background, stop1, stop2))
+                    }
+
+                    (Some(v), _, _) => {
+                        let stop1 = Stop::new(0.0, &v.colour[0]);
+                        let stop2 = Stop::new(100.0, &v.colour[0]);
+                        Some(Gradient::new(&background, stop1, stop2))
+                    }
+
+                    (_, Some(v), "dark") => {
+                        let stop1 = Stop::new(0.0, &v.colour[1]);
+                        let stop2 = Stop::new(100.0, &v.colour[1]);
+                        Some(Gradient::new(&background, stop1, stop2))
+                    }
+
+                    (_, Some(v), _) => {
+                        let stop1 = Stop::new(0.0, &v.colour[0]);
+                        let stop2 = Stop::new(100.0, &v.colour[0]);
+                        Some(Gradient::new(&background, stop1, stop2))
+                    }
+
+                    (_, _, _) => None,
+                };
+
+                Some((background.to_string(), gradient))
             }
 
-            (Some(v), _, _) => {
-                let stop1 = Stop::new(0.0, &v.colour[0]);
-                let stop2 = Stop::new(100.0, &v.colour[0]);
-                Some(Gradient::new(&background, stop1, stop2))
-            }
-
-            (_, Some(v), "dark") => {
-                let stop1 = Stop::new(0.0, &v.colour[1]);
-                let stop2 = Stop::new(100.0, &v.colour[1]);
-                Some(Gradient::new(&background, stop1, stop2))
-            }
-
-            (_, Some(v), _) => {
-                let stop1 = Stop::new(0.0, &v.colour[0]);
-                let stop2 = Stop::new(100.0, &v.colour[0]);
-                Some(Gradient::new(&background, stop1, stop2))
-            }
-
-            (_, _, _) => None,
-        };
-
-        (background.to_string(), gradient)
+            None => None,
+        }
     }
 
     fn inputs(&self, _theme: &str) -> Vec<Circle> {

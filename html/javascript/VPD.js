@@ -176,7 +176,7 @@ export function onClickPanel (panel, x, y) {
   // console.log(panel, { y }, { dy }, dy * (128.5 + 10.16) - 5.08)
 
   try {
-    const rs = query(dx,dy)
+    const rs = query(dx, dy)
 
     if (rs != null) {
       const object = JSON.parse(rs)

@@ -52,15 +52,11 @@
 - [x] _set origin_
 - [x] _export panel svg_
 - [x] _module_
-      - [x] `new module <name> [1U] 10H`
-      - [x] `new module <name> [1U] 50mm`
-      - [x] help
-      - [x] user guide
-      - [x] `set module name`
-      - [x] `set module width`
-      - [x] `set module height`
 
-- [ ] `set background none`
+- [x] `set background none`
+      - [ ] Only include used background gradients 
+      - [ ] Add `default` in code (themed)
+      - [ ] Add `foundation` in code (themed)
 
 - [ ] _guidelines_
       - [ ] V0 and H0

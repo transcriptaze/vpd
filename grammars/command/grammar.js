@@ -301,6 +301,7 @@ module.exports = grammar({
     background: $ => seq(
       'background',
       choice(
+        alias('none', $.none),
         seq(
           $.rgb,
           optional(seq(',',$.rgb))
