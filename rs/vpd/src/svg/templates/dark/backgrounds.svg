@@ -9,6 +9,7 @@
       <stop offset="100%" stop-color="#171717" />
     </linearGradient>
 
+    {% if backgrounds -%}
     {% for v in backgrounds -%}
     <linearGradient id="{{ v.id }}">
       {% for stop in v.stops -%}
@@ -16,4 +17,5 @@
       {%- endfor %}
     </linearGradient>
     {%- endfor %}
+    {%- endif %}
   </defs>

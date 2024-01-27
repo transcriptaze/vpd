@@ -9,6 +9,17 @@ set background #ff00ed
       (rgb))))
 
 
+===================
+set background none
+===================
+set background none
+---
+(command
+  (set
+    (background
+      (none))))
+
+
 ==============================
 set background #ff00ed,#00ffed
 ==============================

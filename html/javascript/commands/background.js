@@ -9,11 +9,15 @@ export function set (node, src) {
   }
 
   for (const child of node.namedChildren) {
+    if (child.type === 'none') {
+      // NOTHING TO DO
+    }
+
     if (child.type === 'rgb') {
       if (object.background.rgb == null) {
-        object.background.rgb = [child.text, child.text]
+        object.background.rgb = [rgb(child), rgb(child)]
       } else {
-        object.background.rgb[1] = child.text
+        object.background.rgb[1] = rgb(child)
       }
 
       object.background.background = 'rgb'
@@ -21,9 +25,9 @@ export function set (node, src) {
 
     if (child.type === 'rgba') {
       if (object.background.rgba == null) {
-        object.background.rgba = [child.text, child.text]
+        object.background.rgba = [rgba(child), rgba(child)]
       } else {
-        object.background.rgba[1] = child.text
+        object.background.rgba[1] = rgba(child)
       }
 
       object.background.background = 'rgba'
@@ -35,4 +39,20 @@ export function set (node, src) {
   }
 
   return object
+}
+
+function rgb (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  return node.text
+}
+
+function rgba (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  return node.text
 }

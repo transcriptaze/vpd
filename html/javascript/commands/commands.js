@@ -13,7 +13,19 @@ export function string (node) {
   }
 }
 
+export function identifier (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  return node.text.trim()
+}
+
 export function reference (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
   for (const child of node.namedChildren) {
     if (child.type === 'reference') {
       return child.text.trim()
@@ -24,6 +36,10 @@ export function reference (node) {
 }
 
 export function offset (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
   for (const child of node.namedChildren) {
     if (child.type === 'offset') {
       return mm(child)

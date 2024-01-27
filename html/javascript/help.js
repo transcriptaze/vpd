@@ -74,6 +74,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'background', 'none'],
+    help: ['set', 'background', 'none'],
+    min: 1
+  },
+  {
     command: ['set', 'background', 'rgb'],
     help: ['set', 'background', '#ff00ff'],
     min: 1
@@ -101,6 +106,11 @@ const COMMANDS = [
   {
     command: ['decorate', 'component', 'name', 'decoration', 'name'],
     help: ['decorate', '(component', '&lt;name&gt;)', 'with &lt;decoration&gt;'],
+    min: 1
+  },
+  {
+    command: ['delete', 'guide', 'identifier'],
+    help: ['delete', 'guide', '<em>&lt;id&gt;</em>'],
     min: 1
   },
   {

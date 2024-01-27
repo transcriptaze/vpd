@@ -9,6 +9,7 @@
 - [x] Show errors
 - [x] _project info_ panel
 - [x] Trash
+- [x] Convert cheatsheet to TeX/PDF
 
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
@@ -52,25 +53,18 @@
 - [x] _set origin_
 - [x] _export panel svg_
 - [x] _module_
-      - [x] `new module <name> [1U] 10H`
-      - [x] `new module <name> [1U] 50mm`
-      - [x] help
-      - [x] user guide
-      - [x] `set module name`
-      - [x] `set module width`
-      - [x] `set module height`
 
-- [ ] `set background none`
+- [ ] _background_
+      - [x] `set background none`
+      - [ ] Only include used background gradients 
+      - [ ] Add `default` in code (themed)
+      - [ ] Add `foundation` in code (themed)
 
 - [ ] _guidelines_
       - [ ] V0 and H0
-      - [x] `new guide vertical centre`
-      - [x] `new guide horizontal middle`
-      - [x] Replace `g` ids with `v` or `h`
       - [ ] help
-      - [ ] `delete`
+      - [x] `delete`
       - [ ] `set`
-      - [x] Replace Guide::to_svg() resolution with XY::resolve
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) error if duplicate offset
@@ -80,40 +74,29 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-            - https://stackoverflow.com/questions/41768657/display-text-over-svg-element-on-hover#41769075
-      - [x] user guide
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _widget_
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _label_
       - [ ] delete
@@ -138,13 +121,13 @@
 - [ ] Standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
+
 - [ ] Preferences
       - show/hide screws
       - show/hide guidelines
       - show/hide origin
       - default font
       - default font alignment
-
 
 
 ## Notes

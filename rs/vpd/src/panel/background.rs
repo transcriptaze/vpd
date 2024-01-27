@@ -41,6 +41,10 @@ impl Background {
             background: background.to_string(),
         }
     }
+
+    pub fn default() -> Background {
+        Background::new_rgb("default", "#ffffff", "#222222")
+    }
 }
 
 impl RGB {

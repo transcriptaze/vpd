@@ -22,13 +22,14 @@
   ---
    - [`set origin`](#set-origin)
    - [`new guide`](#new-guide)
+   - [`delete guide`](#delete-guide)
   ---
    - [`new module`](#new-module)
    - [`set module name`](#set-module-name)
    - [`set module height`](#set-module-height)
    - [`set module width`](#set-module-width)
-  ---
    - [`set background`](#set-background)
+  ---
    - [`new input`](#new-input)
    - [`new output`](#new-output)
    - [`new parameter`](#new-parameter)
@@ -422,6 +423,29 @@ new guide middle
 new guide H0+7.62mm
 ```   
 
+#### `delete guide`
+
+```delete guide <id>```
+
+Removes a construction guideline. 
+
+_Command options:_
+```
+id   Label identifiying guideline to delete
+```
+
+_Notes:_
+1. Quite happily deletes guidelines that do not exist.
+2. Deleting a guideline referenced by other guidelines or components will set those entities adrift to 
+   wander in space and time. Creating a new guideline with the missing identifier (`new guideline <label> ...`)
+   will anchor them to the new reality.
+
+_Examples_
+
+```
+delete guide v1
+```   
+
 --- 
 
 #### `new module`
@@ -508,30 +532,30 @@ set module width 50mm
 set module width 10H
 ````
 
---- 
-
 #### `set background`
 
-```set background <rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
+```set background none|<rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
 
 Sets the panel background to either a plain colour or the name of a preloaded backround.
 
 _Command options:_
 ```
+none   Removes the background from the SVG
 rgb    RGB colour hex value e.g. #ff0000
 rgba   RGBA colour hex value e.g. #ff000040
-name   Name of a preloaded background definition, optionally surrounded by single or double quotes
+name   Name of a predefined background, optionally surrounded by single or double quotes
 ```
 
 _Notes:_
 1. The default background is a transparent rectangle
 2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
 3. The background name is case- and space-insensitive
-4. The preloaded background are:
+4. The predefined backgrounds are:
    - `foundation`
 
 _Examples:_
 ```
+set background none
 set background #ff00ff
 set background #ff00ff,#00ff00
 set background #ff00ff40
@@ -539,6 +563,7 @@ set background #ff00ff40,#00ff0080
 set background foundation
 ````
 
+--- 
 
 #### `new input`
 

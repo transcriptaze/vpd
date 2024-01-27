@@ -8,6 +8,7 @@ module.exports = grammar({
         $.new,
         $.set,
         $.decorate,
+        $.delete,
         $.load,
         $.save,
         $.export,
@@ -58,6 +59,20 @@ module.exports = grammar({
       $.decoration,
     ),
 
+    // ... delete
+    delete: $ => seq(
+      'delete',
+      choice (
+        alias($._guideline, $.guide)
+      )
+    ),
+
+    _guideline: $ => seq(
+      'guide',
+      $.identifier
+    ),
+
+    // ... load
     load: $ => seq (
       'load',
       choice (
@@ -301,6 +316,7 @@ module.exports = grammar({
     background: $ => seq(
       'background',
       choice(
+        alias('none', $.none),
         seq(
           $.rgb,
           optional(seq(',',$.rgb))

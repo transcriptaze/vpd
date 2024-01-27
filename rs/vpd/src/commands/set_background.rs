@@ -9,7 +9,7 @@ use crate::panel::Background;
 pub struct SetBackground {
     rgb: Option<[String; 2]>,
     rgba: Option<[String; 2]>,
-    background: String,
+    background: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -29,16 +29,14 @@ impl Command for SetBackground {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let rgb = &self.rgb;
         let rgba = &self.rgba;
+        let background = &self.background;
 
-        match (rgb, rgba) {
-            (Some(v), _) => {
-                m.panel.background = Background::new_rgb(&self.background, &v[0], &v[1])
-            }
-            (_, Some(v)) => {
-                m.panel.background = Background::new_rgba(&self.background, &v[0], &v[1])
-            }
-            (_, _) => m.panel.background = Background::new(&self.background),
-        }
+        m.panel.background = match (rgb, rgba, background) {
+            (Some(v), _, _) => Some(Background::new_rgb("rgb", &v[0], &v[1])),
+            (_, Some(v), _) => Some(Background::new_rgba("rgba", &v[0], &v[1])),
+            (_, _, Some(v)) => Some(Background::new(v)),
+            (_, _, _) => None,
+        };
 
         match line {
             Some(v) => m.script.push(v.to_string()),

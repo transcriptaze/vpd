@@ -1,0 +1,23 @@
+============
+delete guide
+============
+delete guide
+---
+(command
+  (delete
+    (guide)))
+
+
+===============
+delete guide v1
+===============
+delete guide v1
+---
+(command
+  (delete
+    (guide
+      (identifier))))
+
+        
+
+

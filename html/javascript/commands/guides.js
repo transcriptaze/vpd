@@ -1,4 +1,4 @@
-import { mm } from './commands.js'
+import { identifier, mm } from './commands.js'
 
 export function newGuide (node, src) {
   const object = {
@@ -28,6 +28,22 @@ export function newGuide (node, src) {
       object.guide.orientation = ''
       object.guide.reference = reference(child)
       object.guide.offset = offset(child)
+    }
+  }
+
+  return object
+}
+
+export function deleteGuide (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'delete',
+    guide: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.guide.id = identifier(child)
     }
   }
 

@@ -31,6 +31,10 @@
           "named": true
         },
         {
+          "type": "none",
+          "named": true
+        },
+        {
           "type": "rgb",
           "named": true
         },
@@ -74,6 +78,10 @@
         },
         {
           "type": "decorate",
+          "named": true
+        },
+        {
+          "type": "delete",
           "named": true
         },
         {
@@ -168,6 +176,21 @@
         },
         {
           "type": "stretch",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "guide",
           "named": true
         }
       ]
@@ -966,6 +989,10 @@
     "named": false
   },
   {
+    "type": "delete",
+    "named": false
+  },
+  {
     "type": "export",
     "named": false
   },
@@ -1030,6 +1057,10 @@
     "named": false
   },
   {
+    "type": "none",
+    "named": true
+  },
+  {
     "type": "origin",
     "named": false
   },
@@ -1067,11 +1098,11 @@
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "script",

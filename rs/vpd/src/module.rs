@@ -13,14 +13,13 @@ use super::serde::{Deserialize, Serialize};
 
 use wasm_bindgen::prelude::*;
 
-use crate::panel::Input;
-
 use crate::svg;
 use crate::utils::log;
 use crate::warnf;
 use svg::PrettyPrinter;
 
 const VERSION: &str = "v0.0.0";
+const RADIUS: f32 = 2.5;
 
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {
@@ -41,6 +40,10 @@ pub struct ModuleInfo {
     pub name: String,
     pub height: f32,
     pub width: f32,
+}
+
+pub trait IItem {
+    fn as_item(&self) -> Item;
 }
 
 #[derive(Serialize)]
@@ -349,22 +352,21 @@ impl Module {
             let dy = v.y.resolve(panel) - y;
             let r = (dx * dx + dy * dy).sqrt();
 
-            if r < 2.5 {
-                rs.push(Item::from_input(&v));
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.outputs {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
             }
         }
 
         return rs;
-    }
-}
-
-impl Item {
-    pub fn from_input(input: &Input) -> Item {
-        Item {
-            itype: "input".to_string(),
-            id: input.id.clone(),
-            name: input.name.clone(),
-            attributes: HashMap::new(),
-        }
     }
 }

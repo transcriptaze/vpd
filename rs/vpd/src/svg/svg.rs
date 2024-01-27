@@ -22,7 +22,7 @@ pub struct SVG {
     panel: Rect,
     styles: Option<Vec<Style>>,
     backgrounds: Vec<Gradient>,
-    background: Background,
+    background: Option<Background>,
     outline: Option<Rect>,
     origin: Option<Point>,
     guidelines: Option<Vec<GuideLine>>,
@@ -41,14 +41,16 @@ pub struct SVG {
 //      https://crates.io/crates/include_dir
 impl SVG {
     pub fn new(width: f32, height: f32, viewport: &Rect, panel: &Rect) -> SVG {
+        let backgrounds: Vec<Gradient> = Vec::new();
+
         SVG {
             width: width,
             height: height,
             viewport: viewport.clone(),
             panel: panel.clone(),
             styles: None,
-            backgrounds: Vec::new(),
-            background: Background::new("default"),
+            backgrounds: backgrounds,
+            background: Some(Background::new("default")),
             outline: None,
             origin: None,
             guidelines: None,
@@ -69,12 +71,18 @@ impl SVG {
         self
     }
 
-    pub fn background(mut self, bg: &str, gradient: Option<Gradient>) -> Self {
-        self.background = Background::new(bg);
+    pub fn background(mut self, bg: Option<(String, Option<Gradient>)>) -> Self {
+        match bg {
+            Some((name, Some(gradient))) => {
+                self.background = Some(Background::new(name.as_str()));
+                self.backgrounds.push(gradient);
+            }
 
-        match gradient {
-            Some(g) => self.backgrounds.push(g),
-            None => {}
+            Some((name, None)) => {
+                self.background = Some(Background::new(name.as_str()));
+            }
+
+            None => self.background = None,
         }
 
         self
@@ -164,8 +172,13 @@ impl SVG {
             _ => context.insert("styles", "no"),
         }
 
-        context.insert("backgrounds", &self.backgrounds);
-        context.insert("background", &self.background.template);
+        match &self.background {
+            Some(v) => {
+                context.insert("backgrounds", &self.backgrounds);
+                context.insert("background", &v.template);
+            }
+            _ => {}
+        }
 
         match &self.outline {
             Some(v) => context.insert("outline", &v),
