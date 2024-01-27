@@ -26,3 +26,15 @@
 | `set module name <name>`             | _set module name "Thing 1_       |
 | `set module height <height>`         | _set module height 1U_           |
 | `set module width <width>`           | _set module width 50mm_          | 
+
+
+# _background_
+
+| _Command_                            | _Example_                            |
+|--------------------------------------|--------------------------------------|
+| `set background none`                | _set background none_                | 
+| `set background <rgb>`               | _set background #ff0000_             | 
+| `set background <rgb>,<rgb>`         | _set background #ff0000,#00ff00_     | 
+| `set background <rgba>`              | _set background #ff000040_           | 
+| `set background <rgba>,<rgba>`       | _set background #ff000040,#00ff0080_ | 
+| `set background <gradient>`          | _set background "foundation"_        | 

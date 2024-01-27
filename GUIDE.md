@@ -27,8 +27,8 @@
    - [`set module name`](#set-module-name)
    - [`set module height`](#set-module-height)
    - [`set module width`](#set-module-width)
-  ---
    - [`set background`](#set-background)
+  ---
    - [`new input`](#new-input)
    - [`new output`](#new-output)
    - [`new parameter`](#new-parameter)
@@ -508,8 +508,6 @@ set module width 50mm
 set module width 10H
 ````
 
---- 
-
 #### `set background`
 
 ```set background none|<rgb>[,<rgb>]|<rgba>[,<rgba>]|name```
@@ -541,6 +539,7 @@ set background #ff00ff40,#00ff0080
 set background foundation
 ````
 
+--- 
 
 #### `new input`
 
