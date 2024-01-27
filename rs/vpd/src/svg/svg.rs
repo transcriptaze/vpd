@@ -13,9 +13,6 @@ use crate::svg::Snippet;
 use crate::svg::Style;
 use crate::svg::Text;
 
-use crate::utils::log;
-use crate::warnf;
-
 const OUTLINE_STROKE: f32 = 0.125;
 
 pub struct SVG {
@@ -177,13 +174,10 @@ impl SVG {
 
         match &self.background {
             Some(v) => {
-                warnf!("gotta background");
-
                 context.insert("backgrounds", &self.backgrounds);
                 context.insert("background", &v.template);
             }
             _ => {
-                warnf!("ain't got no background");
             }
         }
 

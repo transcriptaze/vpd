@@ -13,6 +13,7 @@
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
+- [ ] Convert cheatsheet to TeX/PDF
 
 - [x] SVG pretty printer
       - [ ] Fix double blank lines
@@ -53,7 +54,8 @@
 - [x] _export panel svg_
 - [x] _module_
 
-- [x] `set background none`
+- [ ] _background_
+      - [x] `set background none`
       - [ ] Only include used background gradients 
       - [ ] Add `default` in code (themed)
       - [ ] Add `foundation` in code (themed)
@@ -76,40 +78,29 @@
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-            - https://stackoverflow.com/questions/41768657/display-text-over-svg-element-on-hover#41769075
-      - [x] user guide
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _widget_
       - [ ] delete
       - [ ] set
       - [ ] help
-      - [ ] hover
-      - [x] user guide
 
 - [ ] _label_
       - [ ] delete
@@ -134,13 +125,13 @@
 - [ ] Standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
+
 - [ ] Preferences
       - show/hide screws
       - show/hide guidelines
       - show/hide origin
       - default font
       - default font alignment
-
 
 
 ## Notes

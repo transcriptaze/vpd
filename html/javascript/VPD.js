@@ -172,16 +172,29 @@ export function onClickPanel (panel, x, y) {
   const dx = x / bounds.width
   const dy = y / bounds.height
 
-  // console.log(panel, { x }, { dx }, dx * (50.8 + 10.16) - 5.08)
-  // console.log(panel, { y }, { dy }, dy * (128.5 + 10.16) - 5.08)
+  const template = document.querySelector('template#template-info-item')
+  const ul = document.querySelector('div#info ul')
+
+  ul.replaceChildren()
 
   try {
     const rs = query(dx, dy)
 
     if (rs != null) {
-      const object = JSON.parse(rs)
+      const array = JSON.parse(rs)
 
-      console.log(object)
+      if (array != null && Array.isArray(array)) {
+        for (const v of array) {
+          const clone = template.content.cloneNode(true)
+          const li = clone.querySelector('li')
+
+          li.querySelector('fieldset legend').innerHTML = `${v.itype}`.toUpperCase()
+          li.querySelector('p[data-tag="item.id"]').innerHTML = `${v.id}`
+          li.querySelector('p[data-tag="item.name"]').innerHTML = `${v.name}`
+
+          ul.append(clone)
+        }
+      }
     }
   } catch (err) {
     console.error(err)
