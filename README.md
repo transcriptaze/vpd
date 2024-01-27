@@ -19,6 +19,8 @@ describes all the available commands.
 
 **Status**: _very much still in development_
 
+<img width="800" src="doc/images/screenshot.png">
+
 ### Raison d’être
 
 VPD was created mostly as an experiment in implementing a command interface using _tree-sitter_, but also because having to
