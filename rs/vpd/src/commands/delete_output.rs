@@ -24,7 +24,19 @@ impl DeleteOutput {
 
 impl Command for DeleteOutput {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
-        m.panel.outputs.retain(|v| v.id != self.id);
+        match m.panel.outputs.iter().position(|v| v.id == self.id) {
+            Some(ix) => {
+                m.panel.outputs.remove(ix);
+            }
+
+            None => match m.panel.outputs.iter().position(|v| v.name == self.id) {
+                Some(ix) => {
+                    m.panel.outputs.remove(ix);
+                }
+
+                None => {}
+            },
+        }
 
         match line {
             Some(v) => m.script.push(v.to_string()),

@@ -253,5 +253,36 @@ delete output left_1
       (identifier))))
 
         
+======================
+delete output "left_1"
+=====================
+delete output "left_1"
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+
+======================
+delete output 'left-1'
+======================
+delete output 'left-1'
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+
+======================
+delete output 'left 1'
+======================
+delete output 'left 1'
+---
+(command
+  (delete
+    (output
+      (identifier))))
 
 

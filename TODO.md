@@ -10,6 +10,7 @@
 - [x] _project info_ panel
 - [x] Trash
 - [x] Convert cheatsheet to TeX/PDF
+      - https://www.overleaf.com/learn/latex/Multiple_columns
 
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()

@@ -2,12 +2,7 @@
 \usepackage[landscape,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
 \usepackage{tcolorbox}
 \usepackage{fontspec}
-\usepackage{graphicx}
 \usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{makecell}
-\usepackage{siunitx}
-\usepackage[export]{adjustbox}
 
 \setmainfont{Lato-Regular.ttf} [
    BoldFont = Lato-Bold.ttf,
@@ -21,8 +16,8 @@
 \fboxsep=0.25cm
 
 \begin{tabularx}{\textwidth}{lll}
-  % module
-  \begin{minipage}{7.5cm}
+  % left
+  \begin{minipage}[t]{7.5cm}
     \begin{tcolorbox}
       \begin{flushleft}
         \textbf{module} \\
@@ -32,64 +27,68 @@
         set module width  \textit{<width>}
       \end{flushleft}
     \end{tcolorbox}
+
+    \begin{tcolorbox}[width=7.5cm]
+      \begin{flushleft}
+      \textbf{background} \\
+      set background none \\
+      set background \textit{<rgb>}[,\textit{<rgb>}] \\
+      set background \textit{<rgba>}[,\textit{<rgba>}] \\
+      set background \textit{<gradient>} \\
+      \end{flushleft}
+    \end{tcolorbox}
   \end{minipage} &
 
-  % inputs
-  \begin{minipage}{7.5cm}
+  % middle
+  \begin{minipage}[t]{7.5cm}
     \begin{tcolorbox}[width=7.5cm]
-    \begin{flushleft}
-    \textbf{inputs} \\
-    new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
-    delete input \textit{<id>|<name>}\\
-    \end{flushleft}
+      \begin{flushleft}
+      \textbf{inputs} \\
+      new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete input \textit{<id>|<name>}\\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[width=7.5cm]
+      \begin{flushleft}
+      \textbf{outputs} \\
+      new output \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete output \textit{<id>|<name>}\\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[width=7.5cm]
+      \begin{flushleft}
+      \textbf{parameters} \\
+      new parameter \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[width=7.5cm]
+      \begin{flushleft}
+      \textbf{lights} \\
+      new light \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[width=7.5cm]
+      \begin{flushleft}
+      \textbf{widgets} \\
+      new widget \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      \end{flushleft}
     \end{tcolorbox}
   \end{minipage} &
   
-  % load/save  
-  \begin{minipage}{7.5cm}
+  % right
+  \begin{minipage}[t]{7.5cm}
     \begin{tcolorbox}
-    \begin{flushleft}
-      \textbf{load/save} \\
-      load project \\
-      save project \textit{[timestamp]} \textit{[gzip]} \\
-      load script \\
-      save script \textit{[timestamp]} \\
-    \end{flushleft}
-    \end{tcolorbox}
-  \end{minipage} \\
-
-  % background
-  \begin{minipage}{7.5cm}
-    \begin{tcolorbox}[width=7.5cm]
-    \begin{flushleft}
-    \textbf{background} \\
-    set background none \\
-    set background \textit{<rgb>}[,\textit{<rgb>}] \\
-    set background \textit{<rgba>}[,\textit{<rgba>}] \\
-    set background \textit{<gradient>} \\
-    \end{flushleft}
-    \end{tcolorbox}
-  \end{minipage} &
-
-  % outputs
-  \begin{minipage}{7.5cm}
-    \begin{tcolorbox}[width=7.5cm]
-    \begin{flushleft}
-    \textbf{outputs} \\
-    new output \textit{<name>} \textit{<xy>} \textit{[part]} \\
-    delete output \textit{<id>|<name>}\\
-    \end{flushleft}
-    \end{tcolorbox}
-  \end{minipage} &
-
-  % guides
-  \begin{minipage}{7.5cm}
-    \begin{tcolorbox}[width=7.5cm]
-    \begin{flushleft}
-    \textbf{guides} \\
-    new guide \textit{[label]} \textit{[orientation]} \textit{<location>} \\
-    delete guide \textit{<id>}\\
-    \end{flushleft}
+      \begin{flushleft}
+        \textbf{load/save} \\
+        load project \\
+        save project \textit{[timestamp]} \textit{[gzip]} \\
+        load script \\
+        save script \textit{[timestamp]} \\
+      \end{flushleft}
     \end{tcolorbox}
   \end{minipage}
 

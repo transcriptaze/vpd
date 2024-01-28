@@ -18,7 +18,7 @@ export function identifier (node) {
     throw new Error(node.toString())
   }
 
-  return node.text.trim()
+  return clean(node.text)
 }
 
 export function reference (node) {
