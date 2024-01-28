@@ -243,3 +243,18 @@ new input "e" v1+4.5mm,h1+4.5mm "PJ301M"
         (reference)
         (offset))
         (part))))
+
+
+===============
+delete input i1
+===============
+delete input i1
+---
+(command
+  (delete
+    (input
+      (identifier))))
+
+        
+
+

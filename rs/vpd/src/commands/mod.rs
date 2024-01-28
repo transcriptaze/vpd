@@ -13,6 +13,7 @@ mod set_module;
 mod set_origin;
 
 mod delete_guide;
+mod delete_input;
 
 mod export_svg;
 mod load_project;
@@ -35,6 +36,7 @@ pub use set_module::SetModule;
 pub use set_origin::SetOrigin;
 
 pub use delete_guide::DeleteGuide;
+pub use delete_input::DeleteInput;
 
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;
