@@ -63,19 +63,25 @@ module.exports = grammar({
     delete: $ => seq(
       'delete',
       choice (
-        alias($._delete_guideline, $.guide),
-        alias($._delete_input, $.input),
+        alias($._guideline_id, $.guide),
+        alias($._input_id, $.input),
+        alias($._output_id, $.output),
       )
     ),
 
-    _delete_guideline: $ => seq(
+    _guideline_id: $ => seq(
       'guide',
       $.identifier
     ),
 
-    _delete_input: $ => seq(
+    _input_id: $ => seq(
       'input',
-      $.identifier
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _output_id: $ => seq(
+      'output',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
     ),
 
     // ... load

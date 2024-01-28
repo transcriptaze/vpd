@@ -231,7 +231,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_delete_guideline"
+                "name": "_guideline_id"
               },
               "named": true,
               "value": "guide"
@@ -240,16 +240,25 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_delete_input"
+                "name": "_input_id"
               },
               "named": true,
               "value": "input"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_output_id"
+              },
+              "named": true,
+              "value": "output"
             }
           ]
         }
       ]
     },
-    "_delete_guideline": {
+    "_guideline_id": {
       "type": "SEQ",
       "members": [
         {
@@ -262,7 +271,7 @@
         }
       ]
     },
-    "_delete_input": {
+    "_input_id": {
       "type": "SEQ",
       "members": [
         {
@@ -270,8 +279,31 @@
           "value": "input"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+          },
+          "named": true,
+          "value": "identifier"
+        }
+      ]
+    },
+    "_output_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "output"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+          },
+          "named": true,
+          "value": "identifier"
         }
       ]
     },

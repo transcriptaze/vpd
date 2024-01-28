@@ -153,6 +153,10 @@
         {
           "type": "input",
           "named": true
+        },
+        {
+          "type": "output",
+          "named": true
         }
       ]
     }
@@ -278,6 +282,11 @@
     }
   },
   {
+    "type": "light",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "load",
     "named": true,
     "fields": {},
@@ -337,11 +346,31 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
           "type": "label",
           "named": true
         },
         {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "module",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         }
       ]
@@ -376,6 +405,21 @@
     }
   },
   {
+    "type": "output",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "panel",
     "named": true,
     "fields": {},
@@ -389,6 +433,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "parameter",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "project",
@@ -549,6 +598,11 @@
     }
   },
   {
+    "type": "widget",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "x",
     "named": true,
     "fields": {},
@@ -673,10 +727,6 @@
   {
     "type": "left",
     "named": false
-  },
-  {
-    "type": "light",
-    "named": true
   },
   {
     "type": "light",

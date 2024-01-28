@@ -78,7 +78,7 @@
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] delete
       - [ ] set
       - [ ] help
 

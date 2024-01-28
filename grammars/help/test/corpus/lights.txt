@@ -1,0 +1,8 @@
+=========
+new light 
+=========
+new light
+---
+(command
+  (new
+    (light)))

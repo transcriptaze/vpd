@@ -1,0 +1,33 @@
+=========
+new output 
+=========
+new output
+---
+(command
+  (new
+    (output)))
+
+
+=============
+delete output
+=============
+delete output
+---
+(command
+  (delete
+    (output)))
+
+
+================
+delete output v1
+================
+delete output v1
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+        
+
+

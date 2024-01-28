@@ -256,5 +256,12 @@ delete input i1
       (identifier))))
 
         
-
-
+====================
+delete input audio_1
+====================
+delete input audio_1
+---
+(command
+  (delete
+    (input
+      (identifier))))

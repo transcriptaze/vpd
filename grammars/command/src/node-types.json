@@ -196,6 +196,10 @@
         {
           "type": "input",
           "named": true
+        },
+        {
+          "type": "output",
+          "named": true
         }
       ]
     }
@@ -609,6 +613,10 @@
         },
         {
           "type": "dy",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {

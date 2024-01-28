@@ -21,6 +21,11 @@ module.exports = grammar({
         choice(
           $.module,
           $.guide,
+          $.input,
+          $.output,
+          $.parameter,
+          $.light,
+          $.widget,
           $.label,
         ),
       ),
@@ -93,19 +98,25 @@ module.exports = grammar({
       'delete',
       optional(
         choice (
-          alias($._delete_guideline, $.guide),
-          alias($._delete_input, $.input),
+          alias($._guideline_id, $.guide),
+          alias($._input_id, $.input),
+          alias($._output_id, $.output),
         ),
       ),
     ),
 
-    _delete_guideline: $ => seq(
+    _guideline_id: $ => seq(
       'guide',
       optional($.identifier),
     ),
 
-    _delete_input: $ => seq(
+    _input_id: $ => seq(
       'input',
+      optional($.identifier),
+    ),
+
+    _output_id: $ => seq(
+      'output',
       optional($.identifier),
     ),
 
@@ -222,6 +233,32 @@ module.exports = grammar({
       'guide',
     ),
 
+    // ... input
+    input: $ => seq(
+      'input',
+    ),
+
+    // ... output
+    output: $ => seq(
+      'output',
+    ),
+
+    // ... parameter
+    parameter: $ => seq(
+      'parameter',
+    ),
+
+    // ... light
+    light: $ => seq(
+      'light',
+    ),
+
+    // ... widget
+    widget: $ => seq(
+      'widget',
+    ),
+
+    // ... label
     label: $ => seq(
       'label',
       optional(

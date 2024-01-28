@@ -1,5 +1,6 @@
 import * as guide from './guides.js'
 import * as input from './inputs.js'
+import * as output from './outputs.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -12,6 +13,9 @@ export function parse (node) {
 
       case 'input':
         return input.deleteInput(child, src)
+
+      case 'output':
+        return output.deleteOutput(child, src)
 
       default:
         throw new Error(`unknown 'delete' entity <<${child.type}>>`)

@@ -1,3 +1,13 @@
+=========
+new input 
+=========
+new input
+---
+(command
+  (new
+    (input)))
+
+
 ============
 delete input
 ============

@@ -3,15 +3,6 @@ use std::error::Error;
 use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
-use crate::commands::DeleteGuide;
-use crate::commands::DeleteInput;
-
-use crate::commands::ExportSVG;
-use crate::commands::LoadProject;
-use crate::commands::LoadScript;
-use crate::commands::SaveProject;
-use crate::commands::SaveScript;
-
 use crate::commands::NewDecoration;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
@@ -25,6 +16,16 @@ use crate::commands::NewWidget;
 use crate::commands::SetBackground;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
+
+use crate::commands::DeleteGuide;
+use crate::commands::DeleteInput;
+use crate::commands::DeleteOutput;
+
+use crate::commands::ExportSVG;
+use crate::commands::LoadProject;
+use crate::commands::LoadScript;
+use crate::commands::SaveProject;
+use crate::commands::SaveScript;
 
 pub trait Command {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
@@ -165,20 +166,8 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
-    if v.action == "delete" && v.guide.is_some() {
-        let command = DeleteGuide::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
-    }
-
-    if v.action == "delete" && v.input.is_some() {
-        let command = DeleteInput::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+    if v.action == "delete" {
+        return delete(json);
     }
 
     if v.action == "load" && v.project.is_some() {
@@ -222,6 +211,36 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     }
 
     return Err("unknown command".into());
+}
+
+pub fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+    let v: Action = serde_json::from_str(json)?;
+
+    if v.action == "delete" && v.guide.is_some() {
+        let command = DeleteGuide::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "delete" && v.input.is_some() {
+        let command = DeleteInput::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "delete" && v.output.is_some() {
+        let command = DeleteOutput::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    return Err("invalid 'delete' command".into());
 }
 
 // fn create_command_and_wrapper<T: Command>(

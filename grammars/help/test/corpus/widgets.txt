@@ -1,0 +1,8 @@
+==========
+new widget
+==========
+new widget
+---
+(command
+  (new
+    (widget)))

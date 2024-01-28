@@ -20,9 +20,34 @@
 \fboxrule=0.5mm
 \fboxsep=0.25cm
 
-% load/save
-\begin{tcolorbox}[width=7.5cm]
+\begin{tabularx}{\textwidth}{lll}
+  % module
   \begin{minipage}{7.5cm}
+    \begin{tcolorbox}
+      \begin{flushleft}
+        \textbf{module} \\
+        new module \textit{<name>} \textit{[height]} \textit{<width>} \\
+        set module name \textit{<name>} \\
+        set module height \textit{<height>} \\
+        set module width  \textit{<width>}
+      \end{flushleft}
+    \end{tcolorbox}
+  \end{minipage} &
+
+  % inputs
+  \begin{minipage}{7.5cm}
+    \begin{tcolorbox}[width=7.5cm]
+    \begin{flushleft}
+    \textbf{inputs} \\
+    new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
+    delete input \textit{<id>|<name>}\\
+    \end{flushleft}
+    \end{tcolorbox}
+  \end{minipage} &
+  
+  % load/save  
+  \begin{minipage}{7.5cm}
+    \begin{tcolorbox}
     \begin{flushleft}
       \textbf{load/save} \\
       load project \\
@@ -30,25 +55,12 @@
       load script \\
       save script \textit{[timestamp]} \\
     \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
+    \end{tcolorbox}
+  \end{minipage} \\
 
-% module
-\begin{tcolorbox}[width=7.5cm]
+  % background
   \begin{minipage}{7.5cm}
-    \begin{flushleft}
-      \textbf{module} \\
-      new module \textit{<name>} \textit{[height]} \textit{<width>} \\
-      set module name \textit{<name>} \\
-      set module height \textit{<height>} \\
-      set module width  \textit{<width>}
-    \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
-
-% background
-\begin{tcolorbox}[width=7.5cm]
-  \begin{minipage}{7.5cm}
+    \begin{tcolorbox}[width=7.5cm]
     \begin{flushleft}
     \textbf{background} \\
     set background none \\
@@ -56,30 +68,32 @@
     set background \textit{<rgba>}[,\textit{<rgba>}] \\
     set background \textit{<gradient>} \\
     \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
+    \end{tcolorbox}
+  \end{minipage} &
 
-% inputs
-\begin{tcolorbox}[width=7.5cm]
+  % outputs
   \begin{minipage}{7.5cm}
+    \begin{tcolorbox}[width=7.5cm]
     \begin{flushleft}
-    \textbf{inputs} \\
-    new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
-    delete input \textit{<id>|<name>}\\
+    \textbf{outputs} \\
+    new output \textit{<name>} \textit{<xy>} \textit{[part]} \\
+    delete output \textit{<id>|<name>}\\
     \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
+    \end{tcolorbox}
+  \end{minipage} &
 
-% guides
-\begin{tcolorbox}[width=7.5cm]
+  % guides
   \begin{minipage}{7.5cm}
+    \begin{tcolorbox}[width=7.5cm]
     \begin{flushleft}
     \textbf{guides} \\
     new guide \textit{[label]} \textit{[orientation]} \textit{<location>} \\
     delete guide \textit{<id>}\\
     \end{flushleft}
+    \end{tcolorbox}
   \end{minipage}
-\end{tcolorbox}
+
+\end{tabularx}
 
 \end{document}
 
