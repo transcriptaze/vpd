@@ -1,0 +1,23 @@
+============
+delete input
+============
+delete input
+---
+(command
+  (delete
+    (input)))
+
+
+===============
+delete input v1
+===============
+delete input v1
+---
+(command
+  (delete
+    (input
+      (identifier))))
+
+        
+
+

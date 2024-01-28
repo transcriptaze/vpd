@@ -31,6 +31,8 @@
    - [`set background`](#set-background)
   ---
    - [`new input`](#new-input)
+   - [`delete input`](#delete-input)
+  ---
    - [`new output`](#new-output)
    - [`new parameter`](#new-parameter)
    - [`new light`](#new-light)
@@ -594,6 +596,33 @@ new input frequency left+5.08mm,top+2H PJ301M
 new input frequency v1+5.08mm,v2+7.62mm PJ301M
 ````
 
+
+#### `delete input`
+
+```delete input <id>|<name>```
+
+Removes an _input_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new input` command.
+
+_Command options:_
+```
+id     Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
+name   Name of input.
+```
+
+_Notes:_
+1. Blissfully ignores the command if the input does not exist.
+2. Deleting an input referenced by other components will set those entities adrift to drift around aimlessly,
+   so hopefully it was what you really wanted to do and also have a backup handy.
+
+_Examples_
+
+```
+delete input i1
+delete input audio
+```   
+
+--- 
 #### `new output`
 
 ```new output <name> <xy> [part]```

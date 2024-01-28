@@ -149,6 +149,10 @@
         {
           "type": "guide",
           "named": true
+        },
+        {
+          "type": "input",
+          "named": true
         }
       ]
     }
@@ -238,6 +242,21 @@
       "types": [
         {
           "type": "valign",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "input",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]

@@ -352,10 +352,19 @@
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_guideline"
+                    "name": "_delete_guideline"
                   },
                   "named": true,
                   "value": "guide"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_delete_input"
+                  },
+                  "named": true,
+                  "value": "input"
                 }
               ]
             },
@@ -366,12 +375,33 @@
         }
       ]
     },
-    "_guideline": {
+    "_delete_guideline": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
           "value": "guide"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_delete_input": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "input"
         },
         {
           "type": "CHOICE",

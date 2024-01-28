@@ -63,12 +63,18 @@ module.exports = grammar({
     delete: $ => seq(
       'delete',
       choice (
-        alias($._guideline, $.guide)
+        alias($._delete_guideline, $.guide),
+        alias($._delete_input, $.input),
       )
     ),
 
-    _guideline: $ => seq(
+    _delete_guideline: $ => seq(
       'guide',
+      $.identifier
+    ),
+
+    _delete_input: $ => seq(
+      'input',
       $.identifier
     ),
 

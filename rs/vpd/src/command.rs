@@ -4,9 +4,14 @@ use super::module::Module;
 use super::serde::{Deserialize, Serialize};
 
 use crate::commands::DeleteGuide;
+use crate::commands::DeleteInput;
+
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
+use crate::commands::SaveProject;
+use crate::commands::SaveScript;
+
 use crate::commands::NewDecoration;
 use crate::commands::NewGuide;
 use crate::commands::NewInput;
@@ -16,8 +21,7 @@ use crate::commands::NewModule;
 use crate::commands::NewOutput;
 use crate::commands::NewParameter;
 use crate::commands::NewWidget;
-use crate::commands::SaveProject;
-use crate::commands::SaveScript;
+
 use crate::commands::SetBackground;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
@@ -163,6 +167,14 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
     if v.action == "delete" && v.guide.is_some() {
         let command = DeleteGuide::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "delete" && v.input.is_some() {
+        let command = DeleteInput::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 

@@ -192,6 +192,10 @@
         {
           "type": "guide",
           "named": true
+        },
+        {
+          "type": "input",
+          "named": true
         }
       ]
     }
@@ -342,6 +346,10 @@
         },
         {
           "type": "dy",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {

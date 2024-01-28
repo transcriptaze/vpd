@@ -71,7 +71,8 @@
 
 - [ ] _inputs_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] `delete <id>`
+      - [ ] `delete <name>`
       - [ ] set
       - [ ] help
 
@@ -108,7 +109,6 @@
       - [ ] delete
 
 - [ ] _help_
-       - (?) Rework grammar as `new`, `new module`, etc
        - [ ] Auto-generate help text from grammar/examples
 
 
