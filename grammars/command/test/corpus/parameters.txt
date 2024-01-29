@@ -242,3 +242,60 @@ new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
         (reference)
         (offset))
       (part))))
+
+
+===================
+delete parameter p1
+===================
+delete parameter p1
+---
+(command
+  (delete
+    (parameter
+      (identifier))))
+
+
+=========================
+delete parameter volume_1
+=========================
+delete parameter volume_1
+---
+(command
+  (delete
+    (parameter
+      (identifier))))
+
+        
+===========================
+delete parameter "volume_1"
+===========================
+delete parameter "volume_1"
+---
+(command
+  (delete
+    (parameter
+      (identifier))))
+
+
+===========================
+delete parameter 'volume-1'
+===========================
+delete parameter 'volume-1'
+---
+(command
+  (delete
+    (parameter
+      (identifier))))
+
+
+===========================
+delete parameter 'volume 1'
+===========================
+delete parameter 'volume 1'
+---
+(command
+  (delete
+    (parameter
+      (identifier))))
+
+

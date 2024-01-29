@@ -8,9 +8,9 @@
 - [x] Save project/script file
 - [x] Show errors
 - [x] _project info_ panel
+- [x] _component info_ panel
 - [x] Trash
 - [x] Convert cheatsheet to TeX/PDF
-      - https://www.overleaf.com/learn/latex/Multiple_columns
 
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
@@ -22,7 +22,6 @@
 - [x] Load project file
       - [ ] web component
 
-- [ ] _component info_ panel
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
 - [ ] `undo`
@@ -36,7 +35,6 @@
       - [x] light theme
       - [x] dark theme
       - [ ] create in SVG for panel width
-      - [ ] 'show/hide panel screws'
 - [ ] Only add used widgets to defs
 
 
@@ -85,7 +83,7 @@
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] delete
       - [ ] set
       - [ ] help
 
@@ -124,7 +122,7 @@
       - https://playwright.dev/docs/intro
 
 - [ ] Preferences
-      - show/hide screws
+      - show/hide panel screws
       - show/hide guidelines
       - show/hide origin
       - default font

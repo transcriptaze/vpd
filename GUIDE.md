@@ -37,6 +37,8 @@
    - [`delete output`](#delete-output)
   ---
    - [`new parameter`](#new-parameter)
+   - [`delete parameter`](#delete-parameter)
+  ---
    - [`new light`](#new-light)
    - [`new widget`](#new-widget)
    - [`new label`](#new-label)
@@ -662,8 +664,9 @@ supplied to the `new output` command.
 
 _Command options:_
 ```
-id     Identifier of the output to delete (the identifier is the automatically generated ID assigned to the input)
-name   Name of input.
+id     Identifier of the output to delete (the identifier is the automatically generated ID assigned
+       to the output)
+name   Name of output.
 ```
 
 _Notes:_
@@ -707,7 +710,32 @@ new parameter volume left+5.08mm,top+2H PJ301M
 new parameter volume v1+5.08mm,v2+7.62mm PJ301M
 ````
 
+#### `delete parameter`
 
+```delete parameter <id>|<name>```
+
+Removes a _parameter_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new parameter` command.
+
+_Command options:_
+```
+id     Identifier of the parameter to delete (the identifier is the automatically generated ID assigned to
+       the parameter)
+name   Name of parameter.
+```
+
+_Notes:_
+1. Unknown parameters IDs or names are silently ignored.
+2. Deleting a parameter referenced by a decoration or another components will be ummm, interesting.
+
+_Examples_
+
+```
+delete parameter p1
+delete parameter 'volume'
+```   
+
+--- 
 #### `new light`
 
 ```new light <name> <xy> [part]```

@@ -1,6 +1,7 @@
-import * as guide from './guides.js'
-import * as input from './inputs.js'
-import * as output from './outputs.js'
+import * as guides from './guides.js'
+import * as inputs from './inputs.js'
+import * as outputs from './outputs.js'
+import * as parameters from './parameters.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -9,13 +10,16 @@ export function parse (node) {
 
     switch (child.type) {
       case 'guide':
-        return guide.deleteGuide(child, src)
+        return guides.deleteGuide(child, src)
 
       case 'input':
-        return input.deleteInput(child, src)
+        return inputs.deleteInput(child, src)
 
       case 'output':
-        return output.deleteOutput(child, src)
+        return outputs.deleteOutput(child, src)
+
+      case 'parameter':
+        return parameters.deleteParameter(child, src)
 
       default:
         throw new Error(`unknown 'delete' entity <<${child.type}>>`)

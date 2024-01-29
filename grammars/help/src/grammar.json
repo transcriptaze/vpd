@@ -394,6 +394,15 @@
                   },
                   "named": true,
                   "value": "output"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_parameter_id"
+                  },
+                  "named": true,
+                  "value": "parameter"
                 }
               ]
             },
@@ -452,6 +461,27 @@
         {
           "type": "STRING",
           "value": "output"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_parameter_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "parameter"
         },
         {
           "type": "CHOICE",

@@ -66,6 +66,7 @@ module.exports = grammar({
         alias($._guideline_id, $.guide),
         alias($._input_id, $.input),
         alias($._output_id, $.output),
+        alias($._parameter_id, $.parameter),
       )
     ),
 
@@ -81,6 +82,11 @@ module.exports = grammar({
 
     _output_id: $ => seq(
       'output',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _parameter_id: $ => seq(
+      'parameter',
       alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
     ),
 

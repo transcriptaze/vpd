@@ -15,6 +15,7 @@ mod set_origin;
 mod delete_guide;
 mod delete_input;
 mod delete_output;
+mod delete_parameter;
 
 mod export_svg;
 mod load_project;
@@ -39,6 +40,7 @@ pub use set_origin::SetOrigin;
 pub use delete_guide::DeleteGuide;
 pub use delete_input::DeleteInput;
 pub use delete_output::DeleteOutput;
+pub use delete_parameter::DeleteParameter;
 
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;

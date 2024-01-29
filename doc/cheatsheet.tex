@@ -1,8 +1,9 @@
 \documentclass[a4paper,10pt,oneside]{article}
-\usepackage[landscape,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage[landscape,left=1.5cm,right=1.5cm,top=1cm,bottom=1.5cm]{geometry}
 \usepackage{tcolorbox}
 \usepackage{fontspec}
 \usepackage{tabularx}
+\usepackage[export]{adjustbox}
 
 \setmainfont{Lato-Regular.ttf} [
    BoldFont = Lato-Bold.ttf,
@@ -15,12 +16,23 @@
 \fboxrule=0.5mm
 \fboxsep=0.25cm
 
+% title
+\noindent
+\begin{tabularx}{\textwidth}{lXr}
+ \\[-1cm]
+ \includegraphics[height=1.5cm, valign=c]{logo.png} &
+ \center{\textbf{\large{VCV Panel Designer Cheatsheet}}} &
+ \textit{\footnotesize{v0.0.0}} \vspace{0.15cm} \\ \hline
+\end{tabularx}
+\vspace{0.25cm}
+
 \begin{tabularx}{\textwidth}{lll}
   % left
   \begin{minipage}[t]{7.5cm}
+    \vspace{0pt}
     \begin{tcolorbox}
       \begin{flushleft}
-        \textbf{module} \\
+        \textbf{module} \\ \vspace{4pt}
         new module \textit{<name>} \textit{[height]} \textit{<width>} \\
         set module name \textit{<name>} \\
         set module height \textit{<height>} \\
@@ -30,7 +42,7 @@
 
     \begin{tcolorbox}[width=7.5cm]
       \begin{flushleft}
-      \textbf{background} \\
+      \textbf{background} \\ \vspace{4pt}
       set background none \\
       set background \textit{<rgb>}[,\textit{<rgb>}] \\
       set background \textit{<rgba>}[,\textit{<rgba>}] \\
@@ -41,9 +53,10 @@
 
   % middle
   \begin{minipage}[t]{7.5cm}
+    \vspace{0pt}
     \begin{tcolorbox}[width=7.5cm]
       \begin{flushleft}
-      \textbf{inputs} \\
+      \textbf{inputs} \\ \vspace{4pt}
       new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
       delete input \textit{<id>|<name>}\\
       \end{flushleft}
@@ -51,29 +64,30 @@
 
     \begin{tcolorbox}[width=7.5cm]
       \begin{flushleft}
-      \textbf{outputs} \\
+      \textbf{outputs} \\ \vspace{4pt}
       new output \textit{<name>} \textit{<xy>} \textit{[part]} \\
-      delete output \textit{<id>|<name>}\\
+      delete output \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm]
       \begin{flushleft}
-      \textbf{parameters} \\
+      \textbf{parameters} \\ \vspace{4pt}
       new parameter \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete parameter \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm]
       \begin{flushleft}
-      \textbf{lights} \\
+      \textbf{lights} \\ \vspace{4pt}
       new light \textit{<name>} \textit{<xy>} \textit{[part]} \\
       \end{flushleft}
     \end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm]
       \begin{flushleft}
-      \textbf{widgets} \\
+      \textbf{widgets} \\ \vspace{4pt}
       new widget \textit{<name>} \textit{<xy>} \textit{[part]} \\
       \end{flushleft}
     \end{tcolorbox}
@@ -81,13 +95,44 @@
   
   % right
   \begin{minipage}[t]{7.5cm}
+    \vspace{0pt}
     \begin{tcolorbox}
       \begin{flushleft}
-        \textbf{load/save} \\
+        \textbf{load/save} \\ \vspace{4pt}
         load project \\
         save project \textit{[timestamp]} \textit{[gzip]} \\
         load script \\
         save script \textit{[timestamp]} \\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}
+      \begin{flushleft}
+        \textbf{fonts} \\ \vspace{4pt}
+        Lato-Regular \\
+        Lato-Semibold \\
+        Lato-Bold \\
+        RobotoMono-Regular \\
+        RobotoMono-Bold \\
+        RobotoCondensed-Regular \\
+        RobotoCondensed-Bold \\
+        StyleScript-Regular \\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}
+      \begin{flushleft}
+        \textbf{parts} \\ \vspace{4pt}
+        RoundBlackKnob \\
+        PJ301M \\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}
+      \begin{flushleft}
+        \textbf{decorations} \\ \vspace{4pt}
+        CircularGraduations \\
+        Pad \\
       \end{flushleft}
     \end{tcolorbox}
   \end{minipage}

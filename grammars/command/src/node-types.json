@@ -200,6 +200,10 @@
         {
           "type": "output",
           "named": true
+        },
+        {
+          "type": "parameter",
+          "named": true
         }
       ]
     }
@@ -675,6 +679,10 @@
         },
         {
           "type": "dy",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {

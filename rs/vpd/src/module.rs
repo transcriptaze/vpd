@@ -367,6 +367,16 @@ impl Module {
             }
         }
 
+        for v in &self.panel.parameters {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
         return rs;
     }
 }
