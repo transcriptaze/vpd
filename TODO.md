@@ -31,10 +31,10 @@
 - [ ] Windmill intermittently doesn't appear
 
 ### Overlay
-- [ ] panel screws
+- [x] panel screws
       - [x] light theme
       - [x] dark theme
-      - [ ] create in SVG for panel width
+      - [x] create in SVG for panel width
 - [ ] Only add used widgets to defs
 
 

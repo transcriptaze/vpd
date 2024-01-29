@@ -6,6 +6,7 @@ use crate::svg::Background;
 use crate::svg::Circle;
 use crate::svg::Gradient;
 use crate::svg::GuideLine;
+use crate::svg::PanelScrew;
 use crate::svg::Part;
 use crate::svg::Point;
 use crate::svg::Rect;
@@ -34,6 +35,7 @@ pub struct SVG {
     labels: Option<Vec<Text>>,
     decorations: Option<Vec<Snippet>>,
     parts: Option<Vec<Part>>,
+    screws: Option<Vec<PanelScrew>>,
     overlay: bool,
 }
 
@@ -62,6 +64,7 @@ impl SVG {
             labels: None,
             decorations: None,
             parts: None,
+            screws: None,
             overlay: true,
         }
     }
@@ -95,6 +98,26 @@ impl SVG {
             width: outline.width,
             height: outline.height,
         });
+
+        let w = outline.width;
+        let h = outline.height;
+
+        let screws: Vec<PanelScrew> = if w <= 15.24 {
+            vec![
+                PanelScrew::new(w / 2.0, 2.54),
+                PanelScrew::new(w / 2.0, h - 2.54),
+            ]
+        } else {
+            vec![
+                PanelScrew::new(7.62, 2.54),
+                PanelScrew::new(w - 7.62, 2.54),
+                PanelScrew::new(7.62, h - 2.54),
+                PanelScrew::new(w - 7.62, h - 2.54),
+            ]
+        };
+
+        self.screws = Some(screws);
+
         self
     }
 
@@ -232,6 +255,11 @@ impl SVG {
 
         match &self.parts {
             Some(v) => context.insert("parts", &v),
+            _ => {}
+        }
+
+        match &self.screws {
+            Some(v) => context.insert("screws", &v),
             _ => {}
         }
 

@@ -1,9 +1,10 @@
 {% if overlay %}
   <g inkscape:groupmode="layer" inkscape:label="overlay">    
-    <use href="#panel-screw" transform="translate(7.62, 2.54)" />
-    <use href="#panel-screw" transform="translate({{panel.width-7.62}},2.54)" />
-    <use href="#panel-screw" transform="translate(7.62, {{panel.height-2.54}})" />
-    <use href="#panel-screw" transform="translate({{panel.width-7.62}}, {{panel.height-2.54}})" />
+    {% if screws -%}
+    {% for v in screws -%}
+    <use href="#panel-screw" transform="translate({{v.x}}, {{v.y}})" />
+    {%- endfor %}
+    {%- endif %}
 
     {% if inputs -%}
     {% for v in inputs -%}
