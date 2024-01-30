@@ -18,6 +18,8 @@
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
 - [ ] Save .h file
+- [ ] Script seems to be accumulating commands
+      - [ ] clean script on new module
 
 ### Overlay
 - [x] panel screws
@@ -53,7 +55,7 @@
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
-      - (?) error if duplicate offset
+      - (?) warn if duplicate offset
 
 - [ ] _inputs_
       - [ ] discard/warn duplicates

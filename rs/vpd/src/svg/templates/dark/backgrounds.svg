@@ -1,21 +1,15 @@
   <defs>
-    <linearGradient id="default">
-      <stop offset="0%"   stop-color="#22222200" />
-      <stop offset="100%" stop-color="#22222200" />
-    </linearGradient>
-
     <linearGradient id="foundation">
       <stop offset="0%"   stop-color="#2a2a2b" />
       <stop offset="100%" stop-color="#171717" />
     </linearGradient>
-
-    {% if backgrounds -%}
-    {% for v in backgrounds -%}
+{% if backgrounds -%}
+    {% for v in backgrounds %}
     <linearGradient id="{{ v.id }}">
       {% for stop in v.stops -%}
       <stop offset="{{ stop.offset }}%" stop-color="{{ stop.colour }}" />
-      {%- endfor %}
+      {% endfor %}
     </linearGradient>
     {%- endfor %}
-    {%- endif %}
+{%- endif %}
   </defs>
