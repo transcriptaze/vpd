@@ -19,6 +19,7 @@ use crate::commands::SetOrigin;
 
 use crate::commands::DeleteGuide;
 use crate::commands::DeleteInput;
+use crate::commands::DeleteLight;
 use crate::commands::DeleteOutput;
 use crate::commands::DeleteParameter;
 
@@ -151,6 +152,24 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
+    if v.action == "set" {
+        return set(json);
+    }
+
+    if v.action == "delete" {
+        return delete(json);
+    }
+
+    if v.action == "load" || v.action == "save" || v.action == "export" {
+        return files(json);
+    }
+
+    return Err("unknown command".into());
+}
+
+fn set(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+    let v: Action = serde_json::from_str(json)?;
+
     if v.action == "set" && v.module.is_some() {
         let command = SetModule::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
@@ -167,18 +186,10 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
-    if v.action == "delete" {
-        return delete(json);
-    }
-
-    if v.action == "load" || v.action == "save" || v.action == "export" {
-        return files(json);
-    }
-
-    return Err("unknown command".into());
+    return Err("invalid 'set' command".into());
 }
 
-pub fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "delete" && v.guide.is_some() {
@@ -213,10 +224,18 @@ pub fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
+    if v.action == "delete" && v.light.is_some() {
+        let command = DeleteLight::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
     return Err("invalid 'delete' command".into());
 }
 
-pub fn files(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+fn files(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "load" && v.project.is_some() {

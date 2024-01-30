@@ -262,6 +262,15 @@
               },
               "named": true,
               "value": "parameter"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_light_id"
+              },
+              "named": true,
+              "value": "light"
             }
           ]
         }
@@ -322,6 +331,24 @@
         {
           "type": "STRING",
           "value": "parameter"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+          },
+          "named": true,
+          "value": "identifier"
+        }
+      ]
+    },
+    "_light_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "light"
         },
         {
           "type": "ALIAS",

@@ -229,3 +229,49 @@ new light "on" v1+4.5mm,h1-12.5mm "LED"
         (reference)
         (offset))
       (part))))
+
+
+===============
+delete light l1
+===============
+delete light l1
+---
+(command
+  (delete
+    (light
+      (identifier))))
+
+
+================
+delete light LED
+================
+delete light LED
+---
+(command
+  (delete
+    (light
+      (identifier))))
+
+        
+==================
+delete light "LED"
+==================
+delete light "LED"
+---
+(command
+  (delete
+    (light
+      (identifier))))
+
+
+==================
+delete light 'LED'
+==================
+delete light 'LED'
+---
+(command
+  (delete
+    (light
+      (identifier))))
+
+

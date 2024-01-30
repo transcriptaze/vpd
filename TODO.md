@@ -1,23 +1,11 @@
 # TODO
 
-- [x] Replace splashscreens
-- [x] Windmill on load
-- [x] Windmill on restore
-- [x] Unicode characters
-- [x] github 'cloudflare' build
-- [x] Save project/script file
-- [x] Show errors
-- [x] _project info_ panel
-- [x] _component info_ panel
-- [x] Trash
-- [x] Convert cheatsheet to TeX/PDF
-
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
 
 - [x] SVG pretty printer
-      - [ ] Fix double blank lines
+      - [x] Fix double blank lines
 
 - [x] Load project file
       - [ ] web component
@@ -29,12 +17,10 @@
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
+- [ ] Save .h file
 
 ### Overlay
 - [x] panel screws
-      - [x] light theme
-      - [x] dark theme
-      - [x] create in SVG for panel width
 - [ ] Only add used widgets to defs
 
 
@@ -52,6 +38,7 @@
 - [x] _set origin_
 - [x] _export panel svg_
 - [x] _module_
+- [x] _help_
 
 - [ ] _background_
       - [x] `set background none`
@@ -70,26 +57,25 @@
 
 - [ ] _inputs_
       - [ ] discard/warn duplicates
-      - [x] `delete <id>`
-      - [ ] `delete <name>`
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
-      - [x] delete
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
-      - [x] delete
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
@@ -107,15 +93,14 @@
       - [ ] set
       - [ ] delete
 
-- [ ] _help_
-       - [ ] Auto-generate help text from grammar/examples
-
 
 ### TO BE DONE
+
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
       - Versioning
 
+- [ ] Auto-generate help text from grammar/examples
 - [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests

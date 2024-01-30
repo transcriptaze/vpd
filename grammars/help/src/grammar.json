@@ -403,6 +403,15 @@
                   },
                   "named": true,
                   "value": "parameter"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_light_id"
+                  },
+                  "named": true,
+                  "value": "light"
                 }
               ]
             },
@@ -482,6 +491,27 @@
         {
           "type": "STRING",
           "value": "parameter"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_light_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "light"
         },
         {
           "type": "CHOICE",

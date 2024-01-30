@@ -6,3 +6,27 @@ new light
 (command
   (new
     (light)))
+
+============
+delete light
+============
+delete light
+---
+(command
+  (delete
+    (light)))
+
+
+===============
+delete light l1
+===============
+delete light l1
+---
+(command
+  (delete
+    (light
+      (identifier))))
+
+        
+
+

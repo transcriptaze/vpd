@@ -28,6 +28,8 @@
 {% include "decorations" %}    
 {% include "labels"     %}
 
+{% if overlay %}
 {% include "guidelines" %}
 {% include "overlay"    %}
+{% endif %}
 </svg>

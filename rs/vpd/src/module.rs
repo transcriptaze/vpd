@@ -256,7 +256,7 @@ impl Module {
     }
 
     pub fn new_label_id(&self) -> String {
-        let re = Regex::new(r"(l)(\d+)").unwrap();
+        let re = Regex::new(r"(t)(\d+)").unwrap();
         let mut ix: i32 = 0;
 
         for k in &self.panel.labels {
@@ -274,7 +274,7 @@ impl Module {
             }
         }
 
-        format!("l{}", ix + 1)
+        format!("t{}", ix + 1)
     }
 
     pub fn new_decoration_id(&self) -> String {
@@ -368,6 +368,16 @@ impl Module {
         }
 
         for v in &self.panel.parameters {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.lights {
             let dx = v.x.resolve(panel) - x;
             let dy = v.y.resolve(panel) - y;
             let r = (dx * dx + dy * dy).sqrt();

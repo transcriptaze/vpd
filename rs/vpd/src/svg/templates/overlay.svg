@@ -1,4 +1,3 @@
-{% if overlay %}
   <g inkscape:groupmode="layer" inkscape:label="overlay">    
     {% if screws -%}
     {% for v in screws -%}
@@ -42,4 +41,3 @@
     {%- endfor %}
     {%- endif %}
   </g>
-{%- endif %}

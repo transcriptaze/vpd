@@ -1,5 +1,8 @@
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
+use crate::module::IItem;
+use crate::module::Item;
 use crate::panel::X;
 use crate::panel::Y;
 
@@ -20,6 +23,17 @@ impl Light {
             x: x.clone(),
             y: y.clone(),
             part: part.clone(),
+        }
+    }
+}
+
+impl IItem for Light {
+    fn as_item(&self) -> Item {
+        Item {
+            itype: "light".to_string(),
+            id: self.id.clone(),
+            name: self.name.clone(),
+            attributes: HashMap::new(),
         }
     }
 }

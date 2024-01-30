@@ -40,6 +40,8 @@
    - [`delete parameter`](#delete-parameter)
   ---
    - [`new light`](#new-light)
+   - [`delete light`](#delete-light)
+  ---
    - [`new widget`](#new-widget)
    - [`new label`](#new-label)
    - [`decorate ...`](#decorate)
@@ -726,7 +728,7 @@ name   Name of parameter.
 
 _Notes:_
 1. Unknown parameters IDs or names are silently ignored.
-2. Deleting a parameter referenced by a decoration or another components will be ummm, interesting.
+2. Deleting a parameter referenced by a decoration or another component will be ummm, interesting.
 
 _Examples_
 
@@ -765,6 +767,33 @@ new light recording v1+5.08mm,v2+7.62mm "Red LED"
 ````
 
 
+#### `delete light`
+
+```delete light <id>|<name>```
+
+Removes a _light_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new light` command.
+
+_Command options:_
+```
+id     Identifier of the light to delete (the identifier is the automatically generated ID assigned to
+       the light)
+name   Name of light.
+```
+
+_Notes:_
+1. Silently ignored if the light does not exist or is otherwise unavailable for comment
+2. Deleting a light referenced by a decoration or another component is ok but probably not what you wanted
+   to do.
+
+_Examples_
+
+```
+delete light p1
+delete light 'LED'
+```   
+
+--- 
 #### `new widgets`
 
 ```new widget <name> <xy> [part]```
