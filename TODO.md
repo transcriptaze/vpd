@@ -3,9 +3,7 @@
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
-
 - [x] SVG pretty printer
-      - [x] Fix double blank lines
 
 - [x] Load project file
       - [ ] web component
@@ -42,11 +40,11 @@
 - [x] _module_
 - [x] _help_
 
-- [ ] _background_
+- [x] _background_
       - [x] `set background none`
-      - [ ] Only include used background gradients 
-      - [ ] Add `default` in code (themed)
-      - [ ] Add `foundation` in code (themed)
+      - [x] Only include used background gradients 
+      - [x] Add `default` in code (themed)
+      - [x] Add `foundation` in code (themed)
 
 - [ ] _guidelines_
       - [ ] V0 and H0

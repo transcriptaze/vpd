@@ -43,7 +43,7 @@ impl Background {
     }
 
     pub fn default() -> Background {
-        Background::new_rgb("default", "#ffffff", "#222222")
+        Background::new("default")
     }
 }
 
