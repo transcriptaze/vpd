@@ -229,3 +229,49 @@ new widget "channels" v1+4.5mm,h1-12.5mm "ChInd"
         (reference)
         (offset))
       (part))))
+
+
+================
+delete widget w1
+================
+delete widget w1
+---
+(command
+  (delete
+    (widget
+      (identifier))))
+
+
+===================
+delete widget ChDsp
+===================
+delete widget ChDsp
+---
+(command
+  (delete
+    (widget
+      (identifier))))
+
+        
+=====================
+delete widget "ChDsp"
+=====================
+delete widget "ChDsp"
+---
+(command
+  (delete
+    (widget
+      (identifier))))
+
+
+=====================
+delete widget 'ChDsp'
+=====================
+delete widget 'ChDsp'
+---
+(command
+  (delete
+    (widget
+      (identifier))))
+
+

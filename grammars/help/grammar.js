@@ -103,6 +103,7 @@ module.exports = grammar({
           alias($._output_id, $.output),
           alias($._parameter_id, $.parameter),
           alias($._light_id, $.light),
+          alias($._widget_id, $.widget),
         ),
       ),
     ),
@@ -129,6 +130,11 @@ module.exports = grammar({
 
     _light_id: $ => seq(
       'light',
+      optional($.identifier),
+    ),
+
+    _widget_id: $ => seq(
+      'widget',
       optional($.identifier),
     ),
 

@@ -208,6 +208,10 @@
         {
           "type": "parameter",
           "named": true
+        },
+        {
+          "type": "widget",
+          "named": true
         }
       ]
     }
@@ -904,6 +908,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "name",
           "named": true
         },
@@ -1042,11 +1050,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "horizontal",
@@ -1174,11 +1182,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",

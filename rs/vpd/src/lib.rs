@@ -46,7 +46,7 @@ pub fn main() -> Result<(), JsValue> {
 
 #[wasm_bindgen]
 pub fn exec(json: &str) -> Result<String, JsValue> {
-    match command::new(json) {
+    match command::parse(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;

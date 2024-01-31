@@ -7,3 +7,11 @@ export function newWidget (node, src) {
     widget: components.parse(node)
   }
 }
+
+export function deleteWidget (node, src) {
+  return {
+    src: `${src}`,
+    action: 'delete',
+    widget: components.parse(node)
+  }
+}

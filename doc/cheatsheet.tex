@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,oneside]{article}
+\documentclass[a4paper,10pt,oneside,dvipsnames]{article}
 \usepackage[landscape,left=1.5cm,right=1.5cm,top=1cm,bottom=1.5cm]{geometry}
 \usepackage{tcolorbox}
 \usepackage{fontspec}
@@ -30,9 +30,8 @@
   % left
   \begin{minipage}[t]{7.5cm}
     \vspace{0pt}
-    \begin{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=black,title=module]
       \begin{flushleft}
-        \textbf{module} \\ \vspace{4pt}
         new module \textit{<name>} \textit{[height]} \textit{<width>} \\
         set module name \textit{<name>} \\
         set module height \textit{<height>} \\
@@ -40,13 +39,26 @@
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}[width=7.5cm]
+    \begin{tcolorbox}[width=7.5cm,colframe=black,title=background]
       \begin{flushleft}
-      \textbf{background} \\ \vspace{4pt}
       set background none \\
       set background \textit{<rgb>}[,\textit{<rgb>}] \\
       set background \textit{<rgba>}[,\textit{<rgba>}] \\
       set background \textit{<gradient>} \\
+      \end{flushleft}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[width=7.5cm,colframe=black,title=guidelines]
+      \begin{flushleft}
+      new guide \textit{[label]} \textit{vertical} \textit{@x} \\
+      new guide \textit{[label]} \textit{horizontal} \textit{@y} \\
+      new guide \textit{[label]} \textit{vertical} \textit{x} \\
+      new guide \textit{[label]} \textit{horizontal} \textit{y} \\
+      new guide \textit{[label]} \textit{<left|centre|right>} \textit{$\delta$x} \\
+      new guide \textit{[label]} \textit{<top|middle|bottom>} \textit{$\delta$y} \\
+      new guide \textit{[label]} \textit{<guide>} \textit{$\delta$x|$\delta$y} \\
+      \vspace{0.25cm}
+      delete guide \textit{<id>|<name>}\\
       \end{flushleft}
     \end{tcolorbox}
   \end{minipage} &
@@ -85,6 +97,7 @@
     \begin{tcolorbox}[width=7.5cm,colframe=yellow!90!black,title=widgets]
       \begin{flushleft}
       new widget \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete widget \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
   \end{minipage} &
@@ -92,9 +105,8 @@
   % right
   \begin{minipage}[t]{7.5cm}
     \vspace{0pt}
-    \begin{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save]
       \begin{flushleft}
-        \textbf{load/save} \\ \vspace{4pt}
         load project \\
         save project \textit{[timestamp]} \textit{[gzip]} \\
         load script \\
@@ -102,9 +114,8 @@
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Bittersweet,title=fonts]
       \begin{flushleft}
-        \textbf{fonts} \\ \vspace{4pt}
         Lato-Regular \\
         Lato-Semibold \\
         Lato-Bold \\
@@ -116,17 +127,15 @@
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Periwinkle,title=parts]
       \begin{flushleft}
-        \textbf{parts} \\ \vspace{4pt}
         RoundBlackKnob \\
         PJ301M \\
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Fuchsia,title=decorations]
       \begin{flushleft}
-        \textbf{decorations} \\ \vspace{4pt}
         CircularGraduations \\
         Pad \\
       \end{flushleft}

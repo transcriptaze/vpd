@@ -17,6 +17,7 @@ mod delete_input;
 mod delete_light;
 mod delete_output;
 mod delete_parameter;
+mod delete_widget;
 
 mod export_svg;
 mod load_project;
@@ -43,6 +44,7 @@ pub use delete_input::DeleteInput;
 pub use delete_light::DeleteLight;
 pub use delete_output::DeleteOutput;
 pub use delete_parameter::DeleteParameter;
+pub use delete_widget::DeleteWidget;
 
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;

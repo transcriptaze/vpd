@@ -43,6 +43,8 @@
    - [`delete light`](#delete-light)
   ---
    - [`new widget`](#new-widget)
+   - [`delete widget`](#delete-widget)
+  ---
    - [`new label`](#new-label)
    - [`decorate ...`](#decorate)
   ---
@@ -794,7 +796,7 @@ delete light 'LED'
 ```   
 
 --- 
-#### `new widgets`
+#### `new widget`
 
 ```new widget <name> <xy> [part]```
 
@@ -822,6 +824,34 @@ new widget channels  left+5.08mm,top+2H "ChDsp"
 new widget channels  v1+5.08mm,v2+7.62mm "ChDsp"
 ```
 
+
+#### `delete widget`
+
+```delete widget <id>|<name>```
+
+Removes a _widget_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new widget` command.
+
+_Command options:_
+```
+id     Identifier of the widget to delete (the identifier is the automatically generated ID assigned to
+       the widget)
+name   Name of widget.
+```
+
+_Notes:_
+1. Widgets that don't exist get deleted anyway.
+2. Deleting a Widgets referenced by a decoration or another component is going to shuffle the panel layout in 
+   very unexpected ways. But it's your panel, you may do what you wish with it...
+
+_Examples_
+
+```
+delete widget w1
+delete widget 'ChDsp'
+```   
+
+--- 
 #### `new label`
 
 ```new label <text> <xy> [font] [font-size] [halign,valign] [colour]```

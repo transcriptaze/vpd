@@ -165,6 +165,10 @@
         {
           "type": "parameter",
           "named": true
+        },
+        {
+          "type": "widget",
+          "named": true
         }
       ]
     }
@@ -628,7 +632,17 @@
   {
     "type": "widget",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "x",

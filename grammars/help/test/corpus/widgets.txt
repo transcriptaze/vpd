@@ -6,3 +6,28 @@ new widget
 (command
   (new
     (widget)))
+
+
+=============
+delete widget
+=============
+delete widget
+---
+(command
+  (delete
+    (widget)))
+
+
+================
+delete widget w1
+================
+delete widget w1
+---
+(command
+  (delete
+    (widget
+      (identifier))))
+
+        
+
+

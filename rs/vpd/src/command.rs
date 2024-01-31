@@ -22,6 +22,7 @@ use crate::commands::DeleteInput;
 use crate::commands::DeleteLight;
 use crate::commands::DeleteOutput;
 use crate::commands::DeleteParameter;
+use crate::commands::DeleteWidget;
 
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
@@ -69,7 +70,29 @@ struct Entity {}
 #[derive(Serialize, Deserialize, Debug)]
 struct Attr {}
 
-pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+    let v: Action = serde_json::from_str(json)?;
+
+    if v.action == "new" {
+        return new(json);
+    }
+
+    if v.action == "set" {
+        return set(json);
+    }
+
+    if v.action == "delete" {
+        return delete(json);
+    }
+
+    if v.action == "load" || v.action == "save" || v.action == "export" {
+        return files(json);
+    }
+
+    return Err("unknown command".into());
+}
+
+fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" && v.module.is_some() {
@@ -144,6 +167,12 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
+    return Err("invalid 'new' command".into());
+}
+
+fn set(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+    let v: Action = serde_json::from_str(json)?;
+
     if v.action == "set" && v.origin.is_some() {
         let command = SetOrigin::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
@@ -151,24 +180,6 @@ pub fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
         return Ok(wrapper);
     }
-
-    if v.action == "set" {
-        return set(json);
-    }
-
-    if v.action == "delete" {
-        return delete(json);
-    }
-
-    if v.action == "load" || v.action == "save" || v.action == "export" {
-        return files(json);
-    }
-
-    return Err("unknown command".into());
-}
-
-fn set(json: &str) -> Result<Wrapper, Box<dyn Error>> {
-    let v: Action = serde_json::from_str(json)?;
 
     if v.action == "set" && v.module.is_some() {
         let command = SetModule::new(json)?;
@@ -226,6 +237,14 @@ fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
     if v.action == "delete" && v.light.is_some() {
         let command = DeleteLight::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "delete" && v.widget.is_some() {
+        let command = DeleteWidget::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 

@@ -271,6 +271,15 @@
               },
               "named": true,
               "value": "light"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_widget_id"
+              },
+              "named": true,
+              "value": "widget"
             }
           ]
         }
@@ -349,6 +358,24 @@
         {
           "type": "STRING",
           "value": "light"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+          },
+          "named": true,
+          "value": "identifier"
+        }
+      ]
+    },
+    "_widget_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "widget"
         },
         {
           "type": "ALIAS",

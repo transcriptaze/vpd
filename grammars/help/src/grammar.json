@@ -412,6 +412,15 @@
                   },
                   "named": true,
                   "value": "light"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_widget_id"
+                  },
+                  "named": true,
+                  "value": "widget"
                 }
               ]
             },
@@ -512,6 +521,27 @@
         {
           "type": "STRING",
           "value": "light"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_widget_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "widget"
         },
         {
           "type": "CHOICE",

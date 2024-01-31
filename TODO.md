@@ -82,7 +82,7 @@
       - [ ] help
 
 - [ ] _widget_
-      - [ ] delete
+      - [x] delete
       - [ ] set
       - [ ] help
 
