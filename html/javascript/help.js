@@ -14,8 +14,28 @@ const COMMANDS = [
     min: 3
   },
   {
-    command: ['new', 'guide'],
-    help: ['new', 'guide'],
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'vertical', '@10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'vertical', '10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'horizontal', '@10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'horizontal', '10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'reference', 'offset'],
+    help: ['new', 'guide', 'v1', '+10mm'],
     min: 1
   },
   {

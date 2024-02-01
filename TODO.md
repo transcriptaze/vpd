@@ -39,16 +39,11 @@
 - [x] _export panel svg_
 - [x] _module_
 - [x] _help_
-
 - [x] _background_
-      - [x] `set background none`
-      - [x] Only include used background gradients 
-      - [x] Add `default` in code (themed)
-      - [x] Add `foundation` in code (themed)
 
 - [ ] _guidelines_
-      - [ ] V0 and H0
-      - [ ] help
+      - [x] V0 and H0
+      - [x] help
       - [x] `delete`
       - [ ] `set`
       - [ ] clean up Module::new_guide_id

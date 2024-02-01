@@ -8,7 +8,7 @@ use crate::panel::Guide;
 use crate::utils::log;
 use crate::warnf;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct NewGuide {
     name: Option<String>,
     orientation: String,
@@ -33,6 +33,9 @@ impl Command for NewGuide {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let reference = self.reference.as_str();
         let orientation = match (self.orientation.as_str(), reference) {
+            ("", "V0") => "vertical",
+            ("", "H0") => "horizontal",
+
             ("", "left") => "vertical",
             ("", "centre") => "vertical",
             ("", "center") => "vertical",
@@ -86,8 +89,9 @@ fn validate(id: &str, reference: &str, m: &Module) -> bool {
     match reference {
         "" => false,
 
-        "absolute" | "origin" | "left" | "centre" | "center" | "right" | "top" | "middle"
-        | "bottom" => true,
+        "absolute" | "origin" | "V0" | "H0" => true,
+        "left" | "centre" | "center" | "right" => true,
+        "top" | "middle" | "bottom" => true,
 
         _ => {
             if m.panel.guides.contains_key(reference) {
