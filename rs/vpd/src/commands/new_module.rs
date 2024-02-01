@@ -38,7 +38,7 @@ impl Command for NewModule {
         m.panel = Panel::new(self.width, height);
 
         match line {
-            Some(v) => m.script.push(v.to_string()),
+            Some(v) => m.script = vec![v.to_string()],
             _ => {}
         }
 

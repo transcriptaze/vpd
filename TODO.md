@@ -16,8 +16,7 @@
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
 - [ ] Save .h file
-- [ ] Script seems to be accumulating commands
-      - [ ] clean script on new module
+- [x] Clean script on new module
 
 ### Overlay
 - [x] panel screws

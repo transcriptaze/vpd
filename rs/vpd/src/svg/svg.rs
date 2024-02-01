@@ -102,7 +102,7 @@ impl SVG {
         let w = outline.width;
         let h = outline.height;
 
-        let screws: Vec<PanelScrew> = if w <= 15.24 {
+        let screws: Vec<PanelScrew> = if w <= 20.32 {
             vec![
                 PanelScrew::new(w / 2.0, 2.54),
                 PanelScrew::new(w / 2.0, h - 2.54),
