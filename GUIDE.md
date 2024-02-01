@@ -1,60 +1,38 @@
 # User Guide
 
-### Contents
-- [Getting started](#getting-started)
-- [Projects](#projects)
-- [Scripts](#scripts)
-- [User interface](#user-interface)
-   - [_Load_](#load)
-   - [_Save_](#save)
-   - [_Export SVG_](#export-svg)
-   - [_Undo/Redo_](#undoredo)
-   - [_Macro keys_](#macro-keys)
-   - [_Command area_](#command-area)
----
-- [Commands](#commands)
-   - General
-      - [comments](#comments)
-      - [units](#units)
-      - [location formats](#location-formats)
-      - [parts](#parts)
-      - [fonts](#fonts)
-  ---
-   - [`set origin`](#set-origin)
-   - [`new guide`](#new-guide)
-   - [`delete guide`](#delete-guide)
-  ---
-   - [`new module`](#new-module)
-   - [`set module name`](#set-module-name)
-   - [`set module height`](#set-module-height)
-   - [`set module width`](#set-module-width)
-   - [`set background`](#set-background)
-  ---
-   - [`new input`](#new-input)
-   - [`delete input`](#delete-input)
-  ---
-   - [`new output`](#new-output)
-   - [`delete output`](#delete-output)
-  ---
-   - [`new parameter`](#new-parameter)
-   - [`delete parameter`](#delete-parameter)
-  ---
-   - [`new light`](#new-light)
-   - [`delete light`](#delete-light)
-  ---
-   - [`new widget`](#new-widget)
-   - [`delete widget`](#delete-widget)
-  ---
-   - [`new label`](#new-label)
-   - [`delete label`](#delete-label)
-  ---
-   - [`decorate ...`](#decorate)
-  ---
-   - [`load project`](#load-project)
-   - [`save project`](#save-project)
-   - [`load script`](#load-script)
-   - [`save script`](#save-script)
-   - [`export panel`](#export-panel)
+**Contents**
+
+| General                               | Commands                                  |
+|---------------------------------------|-------------------------------------------|
+| [Getting started](#getting-started)   | [`set origin`](#set-origin)               |
+| [Projects](#projects)                 | [`new guide`](#new-guide)                 |
+| [Scripts](#scripts)                   | [`delete guide`](#delete-guide)           |
+| [User interface](#user-interface)     |                                           |
+|   - [_Load_](#load)                   | [`new module`](#new-module)               |
+|   - [_Save_](#save)                   | [`set module name`](#set-module-name)     |
+|   - [_Export SVG_](#export-svg)       | [`set module height`](#set-module-height) |
+|   - [_Undo/Redo_](#undoredo)          | [`set module width`](#set-module-width)   |
+|   - [_Macro keys_](#macro-keys)       | [`set background`](#set-background)       |
+|   - [_Command area_](#command-area)   |                                           |
+|                                       | [`new input`](#new-input)                 |
+| [comments](#comments)                 | [`delete input`](#delete-input)           |
+| [units](#units)                       |                                           |
+| [location formats](#location-formats) | [`new output`](#new-output)               |
+| [parts](#parts)                       | [`delete output`](#delete-output)         |
+| [fonts](#fonts)                       |                                           |
+|                                       | [`new parameter`](#new-parameter)         |
+| [`load project`](#load-project)       | [`delete parameter`](#delete-parameter)   |
+| [`save project`](#save-project)       |                                           |
+|                                       | [`new light`](#new-light)                 |
+| [`load script`](#load-script)         | [`delete light`](#delete-light)           |
+| [`save script`](#save-script)         |                                           |
+|                                       | [`new widget`](#new-widget)               |
+| [`export panel`](#export-panel)       | [`delete widget`](#delete-widget)         |
+|                                       |                                           |
+|                                       | [`new label`](#new-label)                 |
+|                                       | [`delete label`](#delete-label)           |
+|                                       |                                           |
+|                                       | [`decorate ...`](#decorate)               |
 
 
 ## Getting started
