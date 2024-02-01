@@ -155,6 +155,10 @@
           "named": true
         },
         {
+          "type": "label",
+          "named": true
+        },
+        {
           "type": "light",
           "named": true
         },
@@ -286,6 +290,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
@@ -681,10 +689,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "\"",
-    "named": false
   },
   {
     "type": "(",

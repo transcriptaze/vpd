@@ -280,6 +280,15 @@
               },
               "named": true,
               "value": "widget"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_label_id"
+              },
+              "named": true,
+              "value": "label"
             }
           ]
         }
@@ -385,6 +394,33 @@
           },
           "named": true,
           "value": "identifier"
+        }
+      ]
+    },
+    "_label_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "label"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)"
+              },
+              "named": true,
+              "value": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_string"
+            }
+          ]
         }
       ]
     },

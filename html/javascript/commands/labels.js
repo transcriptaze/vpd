@@ -1,4 +1,4 @@
-import { string, reference, offset, mm } from './commands.js'
+import { identifier, string, reference, offset, mm } from './commands.js'
 
 export function newLabel (node, src) {
   const object = {
@@ -139,6 +139,26 @@ export function newLabel (node, src) {
           object.label.colour.dark = string(colour)
         }
       }
+    }
+  }
+
+  return object
+}
+
+export function deleteLabel (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'delete',
+    label: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.label.id = identifier(child)
+    }
+
+    if (child.type === 'string') {
+      object.label.id = string(child)
     }
   }
 

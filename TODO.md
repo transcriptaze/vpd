@@ -85,13 +85,13 @@
       - [ ] help
 
 - [ ] _label_
-      - [ ] delete
+      - [x] delete
       - [ ] set
       - [ ] hover
 
 - [ ] _decorate_
-      - [ ] set
       - [ ] delete
+      - [ ] set
 
 
 ### TO BE DONE

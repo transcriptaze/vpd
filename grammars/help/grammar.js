@@ -104,6 +104,7 @@ module.exports = grammar({
           alias($._parameter_id, $.parameter),
           alias($._light_id, $.light),
           alias($._widget_id, $.widget),
+          alias($._label_id, $.label),
         ),
       ),
     ),
@@ -136,6 +137,16 @@ module.exports = grammar({
     _widget_id: $ => seq(
       'widget',
       optional($.identifier),
+    ),
+
+    _label_id: $ => seq(
+      'label',
+      optional(
+        choice (
+          $.identifier,
+          $.string,
+        ),
+      ),
     ),
 
     // ... load
@@ -411,10 +422,14 @@ module.exports = grammar({
 
     offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
 
-    _string: $ => seq(
-      '"',
-      /[a-zA-Z]([^"]*?)/,
-      '"',
+    string: $ => choice(
+      /"[^"]*"/,
+      /'[^']*'/,
+    ),
+
+    _string: $ => choice(
+      /"[a-zA-Z]([^"]*?)"/,
+      /'[a-zA-Z]([^']*?)'/,
     ),
 
     identifier: $ => /[a-zA-Z][a-zA-Z0-9]*/,

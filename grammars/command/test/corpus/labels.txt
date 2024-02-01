@@ -581,3 +581,48 @@ new label 'εsθaδxδy' @10mm,10mm
         (x)
         (y)))))
 
+
+================
+delete label t1
+================
+delete label t1
+---
+(command
+  (delete
+    (label
+      (identifier))))
+
+
+===================
+delete label volume
+===================
+delete label volume
+---
+(command
+  (delete
+    (label
+      (identifier))))
+
+        
+=======================
+delete label "εsθaδxδy"
+=======================
+delete label "εsθaδxδy"
+---
+(command
+  (delete
+    (label
+      (string))))
+
+
+=======================
+delete label 'εsθaδxδy'
+=======================
+delete label 'εsθaδxδy'
+---
+(command
+  (delete
+    (label
+      (string))))
+
+

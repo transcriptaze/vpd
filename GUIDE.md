@@ -46,6 +46,8 @@
    - [`delete widget`](#delete-widget)
   ---
    - [`new label`](#new-label)
+   - [`delete label`](#delete-label)
+  ---
    - [`decorate ...`](#decorate)
   ---
    - [`load project`](#load-project)
@@ -893,6 +895,31 @@ new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline #ff0000,#00ff00
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" baseline #ff0000,#00ff00
 ````
+
+
+#### `delete label`
+
+```delete label <id>|<string>```
+
+Removes a text _label_ identified either by the automatically assigned identifier or the label _text_
+supplied to the `new label` command.
+
+_Command options:_
+```
+id     Identifier of the label to delete (the identifier is the automatically generated ID assigned to
+       the label)
+text   Exact label text (in single or double quotes). Case and space sensitive.
+```
+
+_Notes:_
+1. Doesn't matter in the least if you delete a label that doesn't exist.
+
+_Examples_
+
+```
+delete label t1
+delete label 'lorem ipsum'
+```   
 
 
 #### `decorate`

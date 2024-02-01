@@ -1,5 +1,8 @@
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
+use crate::module::IItem;
+use crate::module::Item;
 use crate::panel::X;
 use crate::panel::Y;
 
@@ -58,6 +61,17 @@ impl Label {
             valign: valign.to_string(),
             path: path.clone(),
             colour: colour.clone(),
+        }
+    }
+}
+
+impl IItem for Label {
+    fn as_item(&self) -> Item {
+        Item {
+            itype: "label".to_string(),
+            id: self.id.clone(),
+            name: self.text.clone(),
+            attributes: HashMap::new(),
         }
     }
 }

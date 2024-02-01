@@ -198,6 +198,10 @@
           "named": true
         },
         {
+          "type": "label",
+          "named": true
+        },
+        {
           "type": "light",
           "named": true
         },
@@ -421,6 +425,10 @@
         },
         {
           "type": "halign",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -1050,11 +1058,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "horizontal",
@@ -1182,11 +1190,11 @@
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "with",

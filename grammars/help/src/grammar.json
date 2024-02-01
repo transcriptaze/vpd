@@ -421,6 +421,15 @@
                   },
                   "named": true,
                   "value": "widget"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_label_id"
+                  },
+                  "named": true,
+                  "value": "label"
                 }
               ]
             },
@@ -549,6 +558,36 @@
             {
               "type": "SYMBOL",
               "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_label_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "label"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -1611,20 +1650,29 @@
       "type": "PATTERN",
       "value": "[+-]([0-9]+)(\\.[0-9]*)?(mm|h|H)"
     },
-    "_string": {
-      "type": "SEQ",
+    "string": {
+      "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "PATTERN",
+          "value": "\"[^\"]*\""
         },
         {
           "type": "PATTERN",
-          "value": "[a-zA-Z]([^\"]*?)"
+          "value": "'[^']*'"
+        }
+      ]
+    },
+    "_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\"[a-zA-Z]([^\"]*?)\""
         },
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "PATTERN",
+          "value": "'[a-zA-Z]([^']*?)'"
         }
       ]
     },

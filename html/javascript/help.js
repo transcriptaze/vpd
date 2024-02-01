@@ -139,6 +139,16 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['delete', 'label', 'identifier'],
+    help: ['delete', 'label', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'label', 'string'],
+    help: ['delete', 'label', '"<em>&lt;text&gt;</em>"'],
+    min: 1
+  },
+  {
     command: ['load', 'project'],
     help: ['load', 'project'],
     min: 1

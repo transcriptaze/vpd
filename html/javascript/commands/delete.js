@@ -4,6 +4,7 @@ import * as outputs from './outputs.js'
 import * as parameters from './parameters.js'
 import * as lights from './lights.js'
 import * as widgets from './widgets.js'
+import * as labels from './labels.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -28,6 +29,9 @@ export function parse (node) {
 
       case 'widget':
         return widgets.deleteWidget(child, src)
+
+      case 'label':
+        return labels.deleteLabel(child, src)
 
       default:
         throw new Error(`unknown 'delete' entity <<${child.type}>>`)
