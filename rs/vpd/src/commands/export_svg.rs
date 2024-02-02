@@ -10,13 +10,11 @@ pub struct ExportSVG {
 
 #[derive(Deserialize)]
 struct Object {
-    #[serde(rename = "svg")]
     svg: SVG,
 }
 
 #[derive(Deserialize)]
 struct SVG {
-    #[serde(rename = "theme")]
     theme: String,
 }
 

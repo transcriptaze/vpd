@@ -40,3 +40,60 @@ decorate (input audio) with Pad
       (decoration
         (name)))))
 
+
+=================
+delete decoration
+=================
+delete decoration
+---
+(command
+  (delete
+    (decoration)))
+
+
+====================
+delete decoration d1
+====================
+delete decoration d1
+---
+(command
+  (delete
+    (decoration
+      (identifier))))
+
+        
+============================
+delete decoration (input i1)
+============================
+delete decoration (input i1)
+---
+(command
+  (delete
+    (decoration
+      (input
+        (identifier)))))
+
+
+============================
+delete decoration (input i1)
+============================
+delete decoration (input i1)
+---
+(command
+  (delete
+    (decoration
+      (input
+        (identifier)))))
+
+
+================================================
+delete decoration (input i1) CircularGraduations
+================================================
+delete decoration (input i1) CircularGraduations
+---
+(command
+  (delete
+    (decoration
+      (input
+        (identifier))
+      (name))))

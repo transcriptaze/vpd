@@ -17,6 +17,7 @@ use crate::commands::SetBackground;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
 
+use crate::commands::DeleteDecoration;
 use crate::commands::DeleteGuide;
 use crate::commands::DeleteInput;
 use crate::commands::DeleteLabel;
@@ -254,6 +255,14 @@ fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 
     if v.action == "delete" && v.label.is_some() {
         let command = DeleteLabel::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
+    }
+
+    if v.action == "delete" && v.decoration.is_some() {
+        let command = DeleteDecoration::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
         let wrapper = Wrapper::new(boxed, v.src);
 

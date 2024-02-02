@@ -10,7 +10,7 @@ export function string (node) {
     return match[1]
   } else if (match && match.length > 2 && match[2]) {
     return match[2]
-  }else {
+  } else {
     return text
   }
 }

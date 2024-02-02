@@ -105,6 +105,7 @@ module.exports = grammar({
           alias($._light_id, $.light),
           alias($._widget_id, $.widget),
           alias($._label_id, $.label),
+          alias($._decoration_id, $.decoration),
         ),
       ),
     ),
@@ -147,6 +148,29 @@ module.exports = grammar({
           $.string,
         ),
       ),
+    ),
+
+    _decoration_id: $ => seq(
+      'decoration',
+      optional(
+        choice (
+          $.identifier,
+          $._component_id,
+        ),
+      ),
+    ),
+
+    _component_id: $ => seq(
+      '(',
+      choice(
+        alias($._input_id,     $.input),
+        alias($._output_id,    $.output),
+        alias($._parameter_id, $.parameter),
+        alias($._light_id,     $.light),
+        alias($._widget_id,    $.widget),
+      ),
+      ')',
+      optional($.name),
     ),
 
     // ... load

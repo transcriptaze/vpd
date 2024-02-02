@@ -2,38 +2,24 @@
 
 **Contents**
 
-| General                               | Commands                                  |
-|---------------------------------------|-------------------------------------------|
-| [Getting started](#getting-started)   | [`set origin`](#set-origin)               |
-| [Projects](#projects)                 | [`new guide`](#new-guide)                 |
-| [Scripts](#scripts)                   | [`delete guide`](#delete-guide)           |
-| [User interface](#user-interface)     |                                           |
-|   - [_Load_](#load)                   | [`new module`](#new-module)               |
-|   - [_Save_](#save)                   | [`set module name`](#set-module-name)     |
-|   - [_Export SVG_](#export-svg)       | [`set module height`](#set-module-height) |
-|   - [_Undo/Redo_](#undoredo)          | [`set module width`](#set-module-width)   |
-|   - [_Macro keys_](#macro-keys)       | [`set background`](#set-background)       |
-|   - [_Command area_](#command-area)   |                                           |
-|                                       | [`new input`](#new-input)                 |
-| [comments](#comments)                 | [`delete input`](#delete-input)           |
-| [units](#units)                       |                                           |
-| [location formats](#location-formats) | [`new output`](#new-output)               |
-| [parts](#parts)                       | [`delete output`](#delete-output)         |
-| [fonts](#fonts)                       |                                           |
-|                                       | [`new parameter`](#new-parameter)         |
-| [`load project`](#load-project)       | [`delete parameter`](#delete-parameter)   |
-| [`save project`](#save-project)       |                                           |
-|                                       | [`new light`](#new-light)                 |
-| [`load script`](#load-script)         | [`delete light`](#delete-light)           |
-| [`save script`](#save-script)         |                                           |
-|                                       | [`new widget`](#new-widget)               |
-| [`export panel`](#export-panel)       | [`delete widget`](#delete-widget)         |
-|                                       |                                           |
-|                                       | [`new label`](#new-label)                 |
-|                                       | [`delete label`](#delete-label)           |
-|                                       |                                           |
-|                                       | [`decorate ...`](#decorate)               |
-
+| General                             | Commands                              |                                           |                                           |
+|-------------------------------------|---------------------------------------|-------------------------------------------|-------------------------------------------|
+| [Getting started](#getting-started) | [comments](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)                 |
+| [Projects](#projects)               | [units](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)               |
+| [Scripts](#scripts)                 | [location formats](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter)         |
+|                                     | [parts](#parts)                       |                                           | [`new light`](#new-light)                 |
+| [User interface](#user-interface)   | [fonts](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)               |
+|   - [_Load_](#load)                 |                                       | [`set module name`](#set-module-name)     | [`new label`](#new-label)                 |
+|   - [_Save_](#save)                 | [`load project`](#load-project)       | [`set module height`](#set-module-height) |                                           |
+|   - [_Export SVG_](#export-svg)     | [`save project`](#save-project)       | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)               |
+|   - [_Undo/Redo_](#undoredo)        |                                       | [`set background`](#set-background)       |                                           |
+|   - [_Macro keys_](#macro-keys)     | [`load script`](#load-script)         |                                           | [`delete input`](#delete-input)           |
+|   - [_Command area_](#command-area) | [`save script`](#save-script)         |                                           | [`delete output`](#delete-output)         |
+|                                     |                                       |                                           | [`delete parameter`](#delete-parameter)   |
+|                                     | [`export panel`](#export-panel)       |                                           | [`delete light`](#delete-light)           |
+|                                     |                                       |                                           | [`delete widget`](#delete-widget)         |
+|                                     |                                       |                                           | [`delete label`](#delete-label)           |
+|                                     |                                       |                                           | [`delete decoration`](#delete-decoration) |
 
 ## Getting started
 
@@ -899,7 +885,7 @@ delete label t1
 delete label 'lorem ipsum'
 ```   
 
-
+---
 #### `decorate`
 
 ```decorate (<component> <name> <offset>)with <decoration> [scale] [stretch]```
@@ -931,6 +917,32 @@ decorate (parameter "volume") with "CircularGraduations"
 decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
 decorate (output "audio" +0.0mm,-2.54mm) with Pad (stretch 1,1.5)
 ````
+
+
+#### `delete decoration`
+
+```delete decoration <id>```
+```delete decoration (<component>) <name>```
+
+Removes a _decoration_ from a component. The decoration may be identified either by the automatically assigned
+identifier or the _component_ reference supplied to the `decorate` command.
+
+_Command options:_
+```
+id         Identifier of the widget to delete (the identifier is the automatically generated ID assigned to
+           the widget)
+component  Component type and identifier (e.g. input 'audio')
+name       Name of decoration.
+```
+
+_Notes:_
+
+_Examples_
+
+```
+delete decoration d1
+delete decoration (input 'audio') CircularGraduations
+```   
 
 ---
   #### `load project`

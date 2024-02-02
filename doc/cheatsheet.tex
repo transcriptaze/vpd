@@ -17,14 +17,14 @@
 \fboxsep=0.25cm
 
 % title
-\noindent
-\begin{tabularx}{\textwidth}{lXr}
- \\[-1cm]
- \includegraphics[height=1.5cm, valign=c]{logo.png} &
- \center{\textbf{\large{VCV Panel Designer Cheatsheet}}} &
- \textit{\footnotesize{v0.0.0}} \vspace{0.15cm} \\ \hline
-\end{tabularx}
-\vspace{0.25cm}
+% \noindent
+% \begin{tabularx}{\textwidth}{lXr}
+% \\[-1cm]
+% \includegraphics[height=1.5cm, valign=c]{logo.png} &
+% \center{\textbf{\large{VCV Panel Designer Cheatsheet}}} &
+% \textit{\footnotesize{v0.0.0}} \vspace{0.15cm} \\ \hline
+%\end{tabularx}
+%\vspace{0.25cm}
 
 \begin{tabularx}{\textwidth}{lll}
   % left
@@ -52,8 +52,10 @@
       \begin{flushleft}
       new guide \textit{[label]} \textit{vertical} \textit{@x} \\
       new guide \textit{[label]} \textit{horizontal} \textit{@y} \\
+      \vspace{0.25cm}
       new guide \textit{[label]} \textit{vertical} \textit{x} \\
       new guide \textit{[label]} \textit{horizontal} \textit{y} \\
+      \vspace{0.25cm}
       new guide \textit{[label]} \textit{<left|centre|right>} \textit{$\delta$x} \\
       new guide \textit{[label]} \textit{<top|middle|bottom>} \textit{$\delta$y} \\
       new guide \textit{[label]} \textit{<guide>} \textit{$\delta$x|$\delta$y} \\
@@ -106,7 +108,18 @@
       new label \textit{<text>} \textit{<xy>} \textit{[font]} \textit{[size]} \textit{[halign]} \textit{[valign]} \textit{[colour]} \\
       delete label \textit{<id>|<text>} \\
       \end{flushleft}
-    \end{tcolorbox}  \end{minipage} &
+    \end{tcolorbox} 
+    
+    \begin{tcolorbox}[width=10cm,colframe=BurntOrange,title=decorations]
+      \begin{flushleft}
+      decorate (\textit{<component> <id> <offset>}) with \textit{<decoration>}\\
+      \-\hspace{3.25cm} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
+      \vspace{0.25cm}
+      delete decoration \textit{<id>|(<component> <id>) <name>} \\
+      \end{flushleft}
+    \end{tcolorbox}    
+  \end{minipage} &
+  
   
   % right
   \begin{minipage}[t]{7.5cm}
@@ -114,8 +127,9 @@
     \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save]
       \begin{flushleft}
         load project \\
-        save project \textit{[timestamp]} \textit{[gzip]} \\
         load script \\
+        \vspace{0.25cm}
+        save project \textit{[timestamp]} \textit{[gzip]} \\
         save script \textit{[timestamp]} \\
       \end{flushleft}
     \end{tcolorbox}
@@ -125,10 +139,12 @@
         Lato-Regular \\
         Lato-Semibold \\
         Lato-Bold \\
+        \vspace{0.25cm}
         RobotoMono-Regular \\
         RobotoMono-Bold \\
         RobotoCondensed-Regular \\
         RobotoCondensed-Bold \\
+        \vspace{0.25cm}
         StyleScript-Regular \\
       \end{flushleft}
     \end{tcolorbox}

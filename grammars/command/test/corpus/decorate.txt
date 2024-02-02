@@ -54,3 +54,29 @@ decorate (input "in") with "CircularGraduations" (stretch 1.5,2.5)
       (stretch
         (x)
         (y)))))
+
+
+====================
+delete decoration d1
+====================
+delete decoration d1
+---
+(command
+  (delete
+    (decoration
+      (identifier))))
+
+
+==================================================
+delete decoration (input 'in') CircularGraduations
+==================================================
+delete decoration (input 'in') CircularGraduations
+---
+(command
+  (delete
+    (decoration
+      (input
+        (identifier))
+      (name))))
+
+

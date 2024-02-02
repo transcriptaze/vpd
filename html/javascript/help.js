@@ -169,6 +169,36 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['delete', 'decoration', 'identifier'],
+    help: ['delete', 'decoration', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'input', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(input <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'output', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(output <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'parameter', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(parameter <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'light', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(light <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'widget', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(widget <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
     command: ['load', 'project'],
     help: ['load', 'project'],
     min: 1

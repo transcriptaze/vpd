@@ -3,7 +3,6 @@
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
-- [x] SVG pretty printer
 
 - [x] Load project file
       - [ ] web component
@@ -89,7 +88,7 @@
       - [ ] hover
 
 - [ ] _decorate_
-      - [ ] delete
+      - [x] delete
       - [ ] set
 
 

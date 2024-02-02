@@ -167,7 +167,27 @@
       "required": true,
       "types": [
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         },
         {
@@ -176,6 +196,10 @@
         },
         {
           "type": "stretch",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         }
       ]
@@ -189,6 +213,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "decoration",
+          "named": true
+        },
         {
           "type": "guide",
           "named": true
@@ -1037,6 +1065,10 @@
     "named": false
   },
   {
+    "type": "decoration",
+    "named": false
+  },
+  {
     "type": "delete",
     "named": false
   },
@@ -1190,11 +1222,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",
