@@ -4,11 +4,13 @@ export function string (node) {
   }
 
   const text = node.text.trim()
-  const match = text.match(/"(.*?)"/)
+  const match = text.match(/"(.*?)"|'(.*?)'/)
 
-  if (match && match.length > 1) {
+  if (match && match.length > 1 && match[1]) {
     return match[1]
-  } else {
+  } else if (match && match.length > 2 && match[2]) {
+    return match[2]
+  }else {
     return text
   }
 }

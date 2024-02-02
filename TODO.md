@@ -17,6 +17,9 @@
 - [ ] Windmill intermittently doesn't appear
 - [ ] Save .h file
 - [x] Clean script on new module
+- [x] Allow 'out' for component names
+- [ ] Allow H in decoration offsets
+- [ ] Default to mm in dimensions
 
 ### Overlay
 - [x] panel screws
@@ -38,7 +41,9 @@
 - [x] _export panel svg_
 - [x] _module_
 - [x] _help_
-- [x] _background_
+
+- [ ] _background_
+      - [ ] `set background fundamental` doesn't get exported correctly
 
 - [ ] _guidelines_
       - [x] V0 and H0
