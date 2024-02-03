@@ -15,6 +15,7 @@
 \begin{document}
 \fboxrule=0.5mm
 \fboxsep=0.25cm
+
 % title
 % \noindent
 % \begin{tabularx}{\textwidth}{lXr}
@@ -24,6 +25,7 @@
 % \textit{\footnotesize{v0.0.0}} \vspace{0.15cm} \\ \hline
 %\end{tabularx}
 %\vspace{0.25cm}
+
 \begin{tabularx}{\textwidth}{lll}
   % left
   \begin{minipage}[t]{7.5cm}
@@ -45,10 +47,6 @@
       set background \textit{<gradient>} \\
       \end{flushleft}
     \end{tcolorbox}
-      save script \textit{[timestamp]} \\
-    \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm,colframe=black,title=guidelines]
       \begin{flushleft}
@@ -76,9 +74,6 @@
       delete input \textit{<id>|<name>}\\
       \end{flushleft}
     \end{tcolorbox}
-    \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm,colframe=blue,title=outputs]
       \begin{flushleft}
@@ -86,25 +81,28 @@
       delete output \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
-    delete input \textit{<id>|<name>}\\
+
     \begin{tcolorbox}[width=7.5cm,colframe=red,title=parameters]
       \begin{flushleft}
       new parameter \textit{<name>} \textit{<xy>} \textit{[part]} \\
       delete parameter \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
+
     \begin{tcolorbox}[width=7.5cm,colframe=magenta,title=lights]
       \begin{flushleft}
       new light \textit{<name>} \textit{<xy>} \textit{[part]} \\
       delete light \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
+
     \begin{tcolorbox}[width=7.5cm,colframe=yellow!90!black,title=widgets]
       \begin{flushleft}
       new widget \textit{<name>} \textit{<xy>} \textit{[part]} \\
       delete widget \textit{<id>|<name>} \\
       \end{flushleft}
     \end{tcolorbox}
+
     \begin{tcolorbox}[width=10cm,colframe=MidnightBlue,title=labels]
       \begin{flushleft}
       new label \textit{<text>} \textit{<xy>} \textit{[font]} \textit{[size]} \textit{[halign]} \textit{[valign]} \textit{[colour]} \\
@@ -135,6 +133,7 @@
         save script \textit{[timestamp]} \\
       \end{flushleft}
     \end{tcolorbox}
+
     \begin{tcolorbox}[width=7.5cm,colframe=Bittersweet,title=fonts]
       \begin{flushleft}
         Lato-Regular \\
@@ -149,12 +148,14 @@
         StyleScript-Regular \\
       \end{flushleft}
     \end{tcolorbox}
+
     \begin{tcolorbox}[width=7.5cm,colframe=Periwinkle,title=parts]
       \begin{flushleft}
         RoundBlackKnob \\
         PJ301M \\
       \end{flushleft}
     \end{tcolorbox}
+
     \begin{tcolorbox}[width=7.5cm,colframe=Fuchsia,title=decorations]
       \begin{flushleft}
         CircularGraduations \\
@@ -164,15 +165,6 @@
   \end{minipage}
 
 \end{tabularx}
-\begin{tcolorbox}[width=7.5cm]
-  \begin{minipage}{7.5cm}
-    \begin{flushleft}
-    \textbf{guides} \\
-    new guide \textit{[label]} \textit{[orientation]} \textit{<location>} \\
-    delete guide \textit{<id>}\\
-    \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
 
 \end{document}
 
