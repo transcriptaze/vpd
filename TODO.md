@@ -55,7 +55,6 @@
       - [x] `delete`
       - [x] help
       - [ ] discard/warn duplicates
-      - [ ] `delete <name>`
       - [ ] set
 
 - [ ] _outputs_

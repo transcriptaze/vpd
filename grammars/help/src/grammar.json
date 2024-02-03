@@ -530,27 +530,6 @@
         }
       ]
     },
-    "_delete_input": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "input"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "identifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
     "_input_id": {
       "type": "SEQ",
       "members": [
