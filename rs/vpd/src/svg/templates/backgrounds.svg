@@ -1,15 +1,25 @@
-  <defs>
+{% macro bg(name) %}
+{%- if name == 'default' %}
     <linearGradient id="default">
-      <stop offset="0%"   stop-color="#ffffff00" />
-      <stop offset="100%" stop-color="#ffffff00" />
+      <stop offset="0%"   stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ffffff" />
     </linearGradient>
+{% endif %}
 
+{%- if name == 'foundation' %}
     <linearGradient id="foundation">
       <stop offset="0%"   stop-color="#ebebeb" />
       <stop offset="100%" stop-color="#e1e1e1" />
     </linearGradient>
+{% endif %}
+{% endmacro default %}
+
+  <defs>
+{% if background -%}    
+    {{ self::bg(name=background) }}
+{%- endif %}    
 {% if backgrounds -%}
-    {% for v in backgrounds -%}
+    {% for v in backgrounds %}
     <linearGradient id="{{ v.id }}">
       {% for stop in v.stops -%}
       <stop offset="{{ stop.offset }}%" stop-color="{{ stop.colour }}" />

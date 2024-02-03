@@ -256,7 +256,7 @@ impl Module {
     }
 
     pub fn new_label_id(&self) -> String {
-        let re = Regex::new(r"(l)(\d+)").unwrap();
+        let re = Regex::new(r"(t)(\d+)").unwrap();
         let mut ix: i32 = 0;
 
         for k in &self.panel.labels {
@@ -274,7 +274,7 @@ impl Module {
             }
         }
 
-        format!("l{}", ix + 1)
+        format!("t{}", ix + 1)
     }
 
     pub fn new_decoration_id(&self) -> String {
@@ -358,6 +358,76 @@ impl Module {
         }
 
         for v in &self.panel.outputs {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.parameters {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.lights {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.widgets {
+            let dx = v.x.resolve(panel) - x;
+            let dy = v.y.resolve(panel) - y;
+            let r = (dx * dx + dy * dy).sqrt();
+
+            if r < RADIUS {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.labels {
+            let mut vx = v.x.resolve(panel);
+            let mut vy = v.y.resolve(panel);
+
+            vx += match v.halign.as_str() {
+                "left" => 0.0,
+                "centre" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
+                "center" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
+                "right" => -v.path.bounds.x2,
+                _ => 0.0,
+            };
+
+            vy += match v.valign.as_str() {
+                "top" => -v.path.bounds.y1,
+                "middle" => -(v.path.bounds.y1 + v.path.bounds.y2) / 2.0,
+                "baseline" => 0.0,
+                "bottom" => -v.path.bounds.y2,
+                _ => 0.0,
+            };
+
+            let x1 = vx + v.path.bounds.x1;
+            let x2 = vx + v.path.bounds.x2;
+            let y1 = vy + v.path.bounds.y1;
+            let y2 = vy + v.path.bounds.y2;
+
+            if x >= x1 && x <= x2 && y >= y1 && y <= y2 {
+                rs.push(v.as_item());
+            }
+        }
+
+        for v in &self.panel.decorations {
             let dx = v.x.resolve(panel) - x;
             let dy = v.y.resolve(panel) - y;
             let r = (dx * dx + dy * dy).sqrt();

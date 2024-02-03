@@ -7,7 +7,7 @@ div.vpd-help-text {
   justify-content: flex-start;
 
   div.ul {
-    height: 100%;
+    height: fit-content;
 
     display: grid;
     grid-template-columns: auto;
@@ -16,8 +16,8 @@ div.vpd-help-text {
     column-gap: 24px;
     row-gap: 2px;
 
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     padding-left: 4px;
     padding-right: 4px;
 

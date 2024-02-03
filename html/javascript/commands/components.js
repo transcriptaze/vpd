@@ -1,9 +1,13 @@
-import { string, reference, offset, clean, mm } from './commands.js'
+import { identifier, string, reference, offset, clean, mm } from './commands.js'
 
 export function parse (node) {
   const object = {}
 
   for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.id = identifier(child)
+    }
+
     if (child.type === 'name') {
       object.name = string(child)
     }

@@ -229,3 +229,60 @@ new output "u" v1+4.5mm,h1+4.5mm "PJ301M"
         (reference)
         (offset))
       (part))))
+
+
+================
+delete output o1
+================
+delete output o1
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+
+====================
+delete output left_1
+====================
+delete output left_1
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+        
+======================
+delete output "left_1"
+=====================
+delete output "left_1"
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+
+======================
+delete output 'left-1'
+======================
+delete output 'left-1'
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+
+======================
+delete output 'left 1'
+======================
+delete output 'left 1'
+---
+(command
+  (delete
+    (output
+      (identifier))))
+
+

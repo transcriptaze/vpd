@@ -1,51 +1,25 @@
 # User Guide
 
-### Contents
-- [Getting started](#getting-started)
-- [Projects](#projects)
-- [Scripts](#scripts)
-- [User interface](#user-interface)
-   - [_Load_](#load)
-   - [_Save_](#save)
-   - [_Export SVG_](#export-svg)
-   - [_Undo/Redo_](#undoredo)
-   - [_Macro keys_](#macro-keys)
-   - [_Command area_](#command-area)
----
-- [Commands](#commands)
-   - General
-      - [comments](#comments)
-      - [units](#units)
-      - [location formats](#location-formats)
-      - [parts](#parts)
-      - [fonts](#fonts)
-  ---
-   - [`set origin`](#set-origin)
-   - [`new guide`](#new-guide)
-   - [`delete guide`](#delete-guide)
-  ---
-   - [`new module`](#new-module)
-   - [`set module name`](#set-module-name)
-   - [`set module height`](#set-module-height)
-   - [`set module width`](#set-module-width)
-   - [`set background`](#set-background)
-  ---
-   - [`new input`](#new-input)
-   - [`delete input`](#delete-input)
-  ---
-   - [`new output`](#new-output)
-   - [`new parameter`](#new-parameter)
-   - [`new light`](#new-light)
-   - [`new widget`](#new-widget)
-   - [`new label`](#new-label)
-   - [`decorate ...`](#decorate)
-  ---
-   - [`load project`](#load-project)
-   - [`save project`](#save-project)
-   - [`load script`](#load-script)
-   - [`save script`](#save-script)
-   - [`export panel`](#export-panel)
+**Contents**
 
+| General                             | Commands                              |                                           |                                           |
+|-------------------------------------|---------------------------------------|-------------------------------------------|-------------------------------------------|
+| [Getting started](#getting-started) | [comments](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)                 |
+| [Projects](#projects)               | [units](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)               |
+| [Scripts](#scripts)                 | [location formats](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter)         |
+|                                     | [parts](#parts)                       |                                           | [`new light`](#new-light)                 |
+| [User interface](#user-interface)   | [fonts](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)               |
+|   - [_Load_](#load)                 |                                       | [`set module name`](#set-module-name)     | [`new label`](#new-label)                 |
+|   - [_Save_](#save)                 | [`load project`](#load-project)       | [`set module height`](#set-module-height) |                                           |
+|   - [_Export SVG_](#export-svg)     | [`save project`](#save-project)       | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)               |
+|   - [_Undo/Redo_](#undoredo)        |                                       | [`set background`](#set-background)       |                                           |
+|   - [_Macro keys_](#macro-keys)     | [`load script`](#load-script)         |                                           | [`delete input`](#delete-input)           |
+|   - [_Command area_](#command-area) | [`save script`](#save-script)         |                                           | [`delete output`](#delete-output)         |
+|                                     |                                       |                                           | [`delete parameter`](#delete-parameter)   |
+|                                     | [`export panel`](#export-panel)       |                                           | [`delete light`](#delete-light)           |
+|                                     |                                       |                                           | [`delete widget`](#delete-widget)         |
+|                                     |                                       |                                           | [`delete label`](#delete-label)           |
+|                                     |                                       |                                           | [`delete decoration`](#delete-decoration) |
 
 ## Getting started
 
@@ -612,7 +586,7 @@ name   Name of input.
 
 _Notes:_
 1. Blissfully ignores the command if the input does not exist.
-2. Deleting an input referenced by other components will set those entities adrift to drift around aimlessly,
+2. Deleting an input referenced by other components will set those entities loose to drift around aimlessly,
    so hopefully it was what you really wanted to do and also have a backup handy.
 
 _Examples_
@@ -651,7 +625,33 @@ new output audio left+5.08mm,top+2H PJ301M
 new output audio v1+5.08mm,v2+7.62mm PJ301M
 ````
 
+#### `delete output`
 
+```delete output <id>|<name>```
+
+Removes an _output_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new output` command.
+
+_Command options:_
+```
+id     Identifier of the output to delete (the identifier is the automatically generated ID assigned
+       to the output)
+name   Name of output.
+```
+
+_Notes:_
+1. Unknown output IDs or names are totally acceptable.
+2. Deleting an output referenced by other components will cause irreversible mayhem and chaos, but that's life
+   Jim.
+
+_Examples_
+
+```
+delete output o1
+delete output left
+```   
+
+--- 
 #### `new parameter`
 
 ```new parameter <name> <xy> [part]```
@@ -680,7 +680,32 @@ new parameter volume left+5.08mm,top+2H PJ301M
 new parameter volume v1+5.08mm,v2+7.62mm PJ301M
 ````
 
+#### `delete parameter`
 
+```delete parameter <id>|<name>```
+
+Removes a _parameter_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new parameter` command.
+
+_Command options:_
+```
+id     Identifier of the parameter to delete (the identifier is the automatically generated ID assigned to
+       the parameter)
+name   Name of parameter.
+```
+
+_Notes:_
+1. Unknown parameters IDs or names are silently ignored.
+2. Deleting a parameter referenced by a decoration or another component will be ummm, interesting.
+
+_Examples_
+
+```
+delete parameter p1
+delete parameter 'volume'
+```   
+
+--- 
 #### `new light`
 
 ```new light <name> <xy> [part]```
@@ -710,7 +735,34 @@ new light recording v1+5.08mm,v2+7.62mm "Red LED"
 ````
 
 
-#### `new widgets`
+#### `delete light`
+
+```delete light <id>|<name>```
+
+Removes a _light_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new light` command.
+
+_Command options:_
+```
+id     Identifier of the light to delete (the identifier is the automatically generated ID assigned to
+       the light)
+name   Name of light.
+```
+
+_Notes:_
+1. Silently ignored if the light does not exist or is otherwise unavailable for comment
+2. Deleting a light referenced by a decoration or another component is ok but probably not what you wanted
+   to do.
+
+_Examples_
+
+```
+delete light p1
+delete light 'LED'
+```   
+
+--- 
+#### `new widget`
 
 ```new widget <name> <xy> [part]```
 
@@ -738,6 +790,34 @@ new widget channels  left+5.08mm,top+2H "ChDsp"
 new widget channels  v1+5.08mm,v2+7.62mm "ChDsp"
 ```
 
+
+#### `delete widget`
+
+```delete widget <id>|<name>```
+
+Removes a _widget_ component identified either by the automatically assigned identifier or the _name_
+supplied to the `new widget` command.
+
+_Command options:_
+```
+id     Identifier of the widget to delete (the identifier is the automatically generated ID assigned to
+       the widget)
+name   Name of widget.
+```
+
+_Notes:_
+1. Widgets that don't exist get deleted anyway.
+2. Deleting a Widgets referenced by a decoration or another component is going to shuffle the panel layout in 
+   very unexpected ways. But it's your panel, you may do what you wish with it...
+
+_Examples_
+
+```
+delete widget w1
+delete widget 'ChDsp'
+```   
+
+--- 
 #### `new label`
 
 ```new label <text> <xy> [font] [font-size] [halign,valign] [colour]```
@@ -781,6 +861,31 @@ new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" baseline #ff0000,#00ff00
 ````
 
 
+#### `delete label`
+
+```delete label <id>|<string>```
+
+Removes a text _label_ identified either by the automatically assigned identifier or the label _text_
+supplied to the `new label` command.
+
+_Command options:_
+```
+id     Identifier of the label to delete (the identifier is the automatically generated ID assigned to
+       the label)
+text   Exact label text (in single or double quotes). Case and space sensitive.
+```
+
+_Notes:_
+1. Doesn't matter in the least if you delete a label that doesn't exist.
+
+_Examples_
+
+```
+delete label t1
+delete label 'lorem ipsum'
+```   
+
+---
 #### `decorate`
 
 ```decorate (<component> <name> <offset>)with <decoration> [scale] [stretch]```
@@ -812,6 +917,32 @@ decorate (parameter "volume") with "CircularGraduations"
 decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
 decorate (output "audio" +0.0mm,-2.54mm) with Pad (stretch 1,1.5)
 ````
+
+
+#### `delete decoration`
+
+```delete decoration <id>```
+```delete decoration (<component>) <name>```
+
+Removes a _decoration_ from a component. The decoration may be identified either by the automatically assigned
+identifier or the _component_ reference supplied to the `decorate` command.
+
+_Command options:_
+```
+id         Identifier of the widget to delete (the identifier is the automatically generated ID assigned to
+           the widget)
+component  Component type and identifier (e.g. input 'audio')
+name       Name of decoration.
+```
+
+_Notes:_
+
+_Examples_
+
+```
+delete decoration d1
+delete decoration (input 'audio') CircularGraduations
+```   
 
 ---
   #### `load project`

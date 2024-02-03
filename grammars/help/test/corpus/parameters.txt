@@ -1,0 +1,32 @@
+=============
+new parameter 
+=============
+new parameter
+---
+(command
+  (new
+    (parameter)))
+
+================
+delete parameter
+================
+delete parameter
+---
+(command
+  (delete
+    (parameter)))
+
+
+===================
+delete parameter p1
+===================
+delete parameter p1
+---
+(command
+  (delete
+    (parameter
+      (identifier))))
+
+        
+
+

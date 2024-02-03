@@ -1,12 +1,8 @@
-\documentclass[a4paper,10pt,oneside]{article}
-\usepackage[landscape,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\documentclass[a4paper,10pt,oneside,dvipsnames]{article}
+\usepackage[landscape,left=1.5cm,right=1.5cm,top=1cm,bottom=1.5cm]{geometry}
 \usepackage{tcolorbox}
 \usepackage{fontspec}
-\usepackage{graphicx}
 \usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{makecell}
-\usepackage{siunitx}
 \usepackage[export]{adjustbox}
 
 \setmainfont{Lato-Regular.ttf} [
@@ -19,58 +15,155 @@
 \begin{document}
 \fboxrule=0.5mm
 \fboxsep=0.25cm
+% title
+% \noindent
+% \begin{tabularx}{\textwidth}{lXr}
+% \\[-1cm]
+% \includegraphics[height=1.5cm, valign=c]{logo.png} &
+% \center{\textbf{\large{VCV Panel Designer Cheatsheet}}} &
+% \textit{\footnotesize{v0.0.0}} \vspace{0.15cm} \\ \hline
+%\end{tabularx}
+%\vspace{0.25cm}
+\begin{tabularx}{\textwidth}{lll}
+  % left
+  \begin{minipage}[t]{7.5cm}
+    \vspace{0pt}
+    \begin{tcolorbox}[width=7.5cm,colframe=black,title=module]
+      \begin{flushleft}
+        new module \textit{<name>} \textit{[height]} \textit{<width>} \\
+        set module name \textit{<name>} \\
+        set module height \textit{<height>} \\
+        set module width  \textit{<width>}
+      \end{flushleft}
+    \end{tcolorbox}
 
-% load/save
-\begin{tcolorbox}[width=7.5cm]
-  \begin{minipage}{7.5cm}
-    \begin{flushleft}
-      \textbf{load/save} \\
-      load project \\
-      save project \textit{[timestamp]} \textit{[gzip]} \\
-      load script \\
+    \begin{tcolorbox}[width=7.5cm,colframe=black,title=background]
+      \begin{flushleft}
+      set background none \\
+      set background \textit{<rgb>}[,\textit{<rgb>}] \\
+      set background \textit{<rgba>}[,\textit{<rgba>}] \\
+      set background \textit{<gradient>} \\
+      \end{flushleft}
+    \end{tcolorbox}
       save script \textit{[timestamp]} \\
     \end{flushleft}
   \end{minipage}
 \end{tcolorbox}
 
-% module
-\begin{tcolorbox}[width=7.5cm]
-  \begin{minipage}{7.5cm}
-    \begin{flushleft}
-      \textbf{module} \\
-      new module \textit{<name>} \textit{[height]} \textit{<width>} \\
-      set module name \textit{<name>} \\
-      set module height \textit{<height>} \\
-      set module width  \textit{<width>}
+    \begin{tcolorbox}[width=7.5cm,colframe=black,title=guidelines]
+      \begin{flushleft}
+      new guide \textit{[label]} \textit{vertical} \textit{@x} \\
+      new guide \textit{[label]} \textit{horizontal} \textit{@y} \\
+      \vspace{0.25cm}
+      new guide \textit{[label]} \textit{vertical} \textit{x} \\
+      new guide \textit{[label]} \textit{horizontal} \textit{y} \\
+      \vspace{0.25cm}
+      new guide \textit{[label]} \textit{<left|centre|right>} \textit{$\delta$x} \\
+      new guide \textit{[label]} \textit{<top|middle|bottom>} \textit{$\delta$y} \\
+      new guide \textit{[label]} \textit{<guide>} \textit{$\delta$x|$\delta$y} \\
+      \vspace{0.25cm}
+      delete guide \textit{<id>|<name>}\\
+      \end{flushleft}
+    \end{tcolorbox}
+  \end{minipage} &
+
+  % middle
+  \begin{minipage}[t]{10cm}
+    \vspace{0pt}
+    \begin{tcolorbox}[width=7.5cm,colframe=green!50!black,title=inputs]
+      \begin{flushleft}
+      new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete input \textit{<id>|<name>}\\
+      \end{flushleft}
+    \end{tcolorbox}
     \end{flushleft}
   \end{minipage}
 \end{tcolorbox}
 
-% background
-\begin{tcolorbox}[width=7.5cm]
-  \begin{minipage}{7.5cm}
-    \begin{flushleft}
-    \textbf{background} \\
-    set background none \\
-    set background \textit{<rgb>}[,\textit{<rgb>}] \\
-    set background \textit{<rgba>}[,\textit{<rgba>}] \\
-    set background \textit{<gradient>} \\
-    \end{flushleft}
-  \end{minipage}
-\end{tcolorbox}
-
-% inputs
-\begin{tcolorbox}[width=7.5cm]
-  \begin{minipage}{7.5cm}
-    \begin{flushleft}
-    \textbf{inputs} \\
-    new input \textit{<name>} \textit{<xy>} \textit{[part]} \\
+    \begin{tcolorbox}[width=7.5cm,colframe=blue,title=outputs]
+      \begin{flushleft}
+      new output \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete output \textit{<id>|<name>} \\
+      \end{flushleft}
+    \end{tcolorbox}
     delete input \textit{<id>|<name>}\\
-    \end{flushleft}
+    \begin{tcolorbox}[width=7.5cm,colframe=red,title=parameters]
+      \begin{flushleft}
+      new parameter \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete parameter \textit{<id>|<name>} \\
+      \end{flushleft}
+    \end{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=magenta,title=lights]
+      \begin{flushleft}
+      new light \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete light \textit{<id>|<name>} \\
+      \end{flushleft}
+    \end{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=yellow!90!black,title=widgets]
+      \begin{flushleft}
+      new widget \textit{<name>} \textit{<xy>} \textit{[part]} \\
+      delete widget \textit{<id>|<name>} \\
+      \end{flushleft}
+    \end{tcolorbox}
+    \begin{tcolorbox}[width=10cm,colframe=MidnightBlue,title=labels]
+      \begin{flushleft}
+      new label \textit{<text>} \textit{<xy>} \textit{[font]} \textit{[size]} \textit{[halign]} \textit{[valign]} \textit{[colour]} \\
+      delete label \textit{<id>|<text>} \\
+      \end{flushleft}
+    \end{tcolorbox} 
+    
+    \begin{tcolorbox}[width=10cm,colframe=BurntOrange,title=decorations]
+      \begin{flushleft}
+      decorate (\textit{<component> <id> <offset>}) with \textit{<decoration>}\\
+      \-\hspace{3.25cm} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
+      \vspace{0.25cm}
+      delete decoration \textit{<id>|(<component> <id>) <name>} \\
+      \end{flushleft}
+    \end{tcolorbox}    
+  \end{minipage} &
+  
+  
+  % right
+  \begin{minipage}[t]{7.5cm}
+    \vspace{0pt}
+    \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save]
+      \begin{flushleft}
+        load project \\
+        load script \\
+        \vspace{0.25cm}
+        save project \textit{[timestamp]} \textit{[gzip]} \\
+        save script \textit{[timestamp]} \\
+      \end{flushleft}
+    \end{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Bittersweet,title=fonts]
+      \begin{flushleft}
+        Lato-Regular \\
+        Lato-Semibold \\
+        Lato-Bold \\
+        \vspace{0.25cm}
+        RobotoMono-Regular \\
+        RobotoMono-Bold \\
+        RobotoCondensed-Regular \\
+        RobotoCondensed-Bold \\
+        \vspace{0.25cm}
+        StyleScript-Regular \\
+      \end{flushleft}
+    \end{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Periwinkle,title=parts]
+      \begin{flushleft}
+        RoundBlackKnob \\
+        PJ301M \\
+      \end{flushleft}
+    \end{tcolorbox}
+    \begin{tcolorbox}[width=7.5cm,colframe=Fuchsia,title=decorations]
+      \begin{flushleft}
+        CircularGraduations \\
+        Pad \\
+      \end{flushleft}
+    \end{tcolorbox}
   \end{minipage}
-\end{tcolorbox}
 
-% guides
+\end{tabularx}
 \begin{tcolorbox}[width=7.5cm]
   \begin{minipage}{7.5cm}
     \begin{flushleft}

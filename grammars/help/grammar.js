@@ -21,6 +21,11 @@ module.exports = grammar({
         choice(
           $.module,
           $.guide,
+          alias($._input_entity,$.input),
+          $.output,
+          $.parameter,
+          $.light,
+          $.widget,
           $.label,
         ),
       ),
@@ -37,8 +42,25 @@ module.exports = grammar({
       )
     ),
 
+    _input_entity: $ => seq(
+      'input',
+      optional(
+        seq(
+          $.name,
+          optional(
+            seq(
+              $.xy,
+              optional($.part),
+            ),
+          ),
+        ),
+      ),
+    ),
+
+
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
+
 
     // ... set
     set: $ => seq(
@@ -93,20 +115,79 @@ module.exports = grammar({
       'delete',
       optional(
         choice (
-          alias($._delete_guideline, $.guide),
-          alias($._delete_input, $.input),
+          alias($._guideline_id, $.guide),
+          alias($._input_id, $.input),
+          alias($._output_id, $.output),
+          alias($._parameter_id, $.parameter),
+          alias($._light_id, $.light),
+          alias($._widget_id, $.widget),
+          alias($._label_id, $.label),
+          alias($._decoration_id, $.decoration),
         ),
       ),
     ),
 
-    _delete_guideline: $ => seq(
+    _guideline_id: $ => seq(
       'guide',
       optional($.identifier),
     ),
 
-    _delete_input: $ => seq(
+    _input_id: $ => seq(
       'input',
       optional($.identifier),
+    ),
+
+    _output_id: $ => seq(
+      'output',
+      optional($.identifier),
+    ),
+
+    _parameter_id: $ => seq(
+      'parameter',
+      optional($.identifier),
+    ),
+
+    _light_id: $ => seq(
+      'light',
+      optional($.identifier),
+    ),
+
+    _widget_id: $ => seq(
+      'widget',
+      optional($.identifier),
+    ),
+
+    _label_id: $ => seq(
+      'label',
+      optional(
+        choice (
+          $.identifier,
+          $.string,
+        ),
+      ),
+    ),
+
+    _decoration_id: $ => seq(
+      'decoration',
+      optional(
+        choice (
+          $.identifier,
+          $._component_id,
+        ),
+      ),
+    ),
+
+    _component_id: $ => seq(
+      '(',
+      choice(
+        alias($._input_id,     $.input),
+        alias($._output_id,    $.output),
+        alias($._parameter_id, $.parameter),
+        alias($._light_id,     $.light),
+        alias($._widget_id,    $.widget),
+      ),
+      ')',
+      optional($.name),
     ),
 
     // ... load
@@ -222,6 +303,33 @@ module.exports = grammar({
       'guide',
     ),
 
+    // ... input
+    input: $ => seq(
+      'input',
+      optional($.name),
+    ),
+
+    // ... output
+    output: $ => seq(
+      'output',
+    ),
+
+    // ... parameter
+    parameter: $ => seq(
+      'parameter',
+    ),
+
+    // ... light
+    light: $ => seq(
+      'light',
+    ),
+
+    // ... widget
+    widget: $ => seq(
+      'widget',
+    ),
+
+    // ... label
     label: $ => seq(
       'label',
       optional(
@@ -312,6 +420,7 @@ module.exports = grammar({
     _rgba: $ => /#[a-fA-F0-9]{8}/,
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     rgb: $ => /#[a-fA-F0-9]{6}/,
     rgba: $ => /#[a-fA-F0-9]{8}/,
 
@@ -330,6 +439,19 @@ module.exports = grammar({
           ),
         ),
       ),
+    ),
+
+    _absolute: $ => seq(
+      '@',
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+      ',',
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+    ),
+
+    _relative: $ => seq(
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+      ',',
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
     ),
 
     _x: $ => seq(
@@ -352,14 +474,30 @@ module.exports = grammar({
       optional($.offset),
     ),
 
+    xy: $ => choice(
+      $._absolute,
+      $._relative,
+      $._xy,
+    ),
+
+    _xy: $ => seq(
+      $._x,
+      ',',
+      $._y,
+    ),
+
     _offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
 
     offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,
 
-    _string: $ => seq(
-      '"',
-      /[a-zA-Z]([^"]*?)/,
-      '"',
+    string: $ => choice(
+      /"[^"]*"/,
+      /'[^']*'/,
+    ),
+
+    _string: $ => choice(
+      /"[a-zA-Z]([^"]*?)"/,
+      /'[a-zA-Z]([^']*?)'/,
     ),
 
     identifier: $ => /[a-zA-Z][a-zA-Z0-9]*/,

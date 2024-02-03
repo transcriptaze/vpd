@@ -14,8 +14,43 @@ const COMMANDS = [
     min: 3
   },
   {
-    command: ['new', 'guide'],
-    help: ['new', 'guide'],
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'vertical', '@10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'vertical', '10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'horizontal', '@10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'orientation', 'location'],
+    help: ['new', 'guide', 'horizontal', '10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'guide', 'reference', 'offset'],
+    help: ['new', 'guide', 'v1', '+10mm'],
+    min: 1
+  },
+  {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', '<em>&lt;name&gt;</em>', '@10mm,10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', '<em>&lt;name&gt;</em>', '10mm,10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', '<em>&lt;name&gt;</em>', 'left+10mm,top+10mm', 'PJ301M'],
     min: 1
   },
   {
@@ -111,6 +146,71 @@ const COMMANDS = [
   {
     command: ['delete', 'guide', 'identifier'],
     help: ['delete', 'guide', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'input', 'identifier'],
+    help: ['delete', 'input', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'output', 'identifier'],
+    help: ['delete', 'output', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'parameter', 'identifier'],
+    help: ['delete', 'parameter', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'light', 'identifier'],
+    help: ['delete', 'light', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'widget', 'identifier'],
+    help: ['delete', 'widget', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'label', 'identifier'],
+    help: ['delete', 'label', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'label', 'string'],
+    help: ['delete', 'label', '"<em>&lt;text&gt;</em>"'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'identifier'],
+    help: ['delete', 'decoration', '<em>&lt;id&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'input', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(input <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'output', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(output <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'parameter', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(parameter <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'light', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(light <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['delete', 'decoration', 'widget', 'identifier', 'name'],
+    help: ['delete', 'decoration', '(widget <em>&lt;id&gt;</em>)', '<em>&lt;name&gt;</em>'],
     min: 1
   },
   {

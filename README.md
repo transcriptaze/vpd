@@ -15,7 +15,7 @@ It has been tested on:
 (_but TBH, mostly on Chrome_).
 
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
-describes all the available commands.
+describes all the available commands (along with a summary [cheatsheet](/doc/cheatsheet.pdf))
 
 **Status**: _very much still in development_
 

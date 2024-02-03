@@ -63,19 +63,73 @@ module.exports = grammar({
     delete: $ => seq(
       'delete',
       choice (
-        alias($._delete_guideline, $.guide),
-        alias($._delete_input, $.input),
+        alias($._guideline_id, $.guide),
+        alias($._input_id, $.input),
+        alias($._output_id, $.output),
+        alias($._parameter_id, $.parameter),
+        alias($._light_id, $.light),
+        alias($._widget_id, $.widget),
+        alias($._label_id, $.label),
+        alias($._decoration_id, $.decoration),
       )
     ),
 
-    _delete_guideline: $ => seq(
+    _guideline_id: $ => seq(
       'guide',
       $.identifier
     ),
 
-    _delete_input: $ => seq(
+    _input_id: $ => seq(
       'input',
-      $.identifier
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _output_id: $ => seq(
+      'output',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _parameter_id: $ => seq(
+      'parameter',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _light_id: $ => seq(
+      'light',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _widget_id: $ => seq(
+      'widget',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
+    _label_id: $ => seq(
+      'label',
+      choice (
+        alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)/,$.identifier),
+        $._string,
+      ),
+    ),
+
+    _decoration_id: $ => seq(
+      'decoration',
+      choice (
+        alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)/,$.identifier),
+        seq($._component_id,$.name),
+      ),
+    ),
+
+    _component_id: $ => seq(
+      '(',
+      choice(
+        alias($._input_id,    $.input),
+        alias($._output_id,   $.output),
+        alias($._parameter_id,$.parameter),
+        alias($._light_id,    $.light),
+        alias($._widget_id,   $.widget),
+      ),
+      ')',
     ),
 
     // ... load

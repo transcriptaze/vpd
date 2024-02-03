@@ -1,27 +1,12 @@
 # TODO
 
-- [x] Replace splashscreens
-- [x] Windmill on load
-- [x] Windmill on restore
-- [x] Unicode characters
-- [x] github 'cloudflare' build
-- [x] Save project/script file
-- [x] Show errors
-- [x] _project info_ panel
-- [x] Trash
-- [x] Convert cheatsheet to TeX/PDF
-
 - [ ] Check hasError/isMissing
 - [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
 
-- [x] SVG pretty printer
-      - [ ] Fix double blank lines
-
 - [x] Load project file
       - [ ] web component
 
-- [ ] _component info_ panel
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
 - [ ] `undo`
@@ -29,13 +14,14 @@
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
+- [ ] Save .h file
+- [x] Clean script on new module
+- [x] Allow 'out' for component names
+- [ ] Allow H in decoration offsets
+- [ ] Default to mm in dimensions
 
 ### Overlay
-- [ ] panel screws
-      - [x] light theme
-      - [x] dark theme
-      - [ ] create in SVG for panel width
-      - [ ] 'show/hide panel screws'
+- [x] panel screws
 - [ ] Only add used widgets to defs
 
 
@@ -53,77 +39,74 @@
 - [x] _set origin_
 - [x] _export panel svg_
 - [x] _module_
-
-- [ ] _background_
-      - [x] `set background none`
-      - [ ] Only include used background gradients 
-      - [ ] Add `default` in code (themed)
-      - [ ] Add `foundation` in code (themed)
+- [x] _help_
+- [x] _background_
 
 - [ ] _guidelines_
-      - [ ] V0 and H0
-      - [ ] help
+      - [x] V0 and H0
+      - [x] help
       - [x] `delete`
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
-      - (?) error if duplicate offset
+      - (?) warn if duplicate offset
 
 - [ ] _inputs_
+      - [x] `delete`
+      - [x] help
       - [ ] discard/warn duplicates
-      - [x] `delete <id>`
       - [ ] `delete <name>`
       - [ ] set
-      - [ ] help
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
-      - [ ] delete
+      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _widget_
-      - [ ] delete
+      - [x] delete
       - [ ] set
       - [ ] help
 
 - [ ] _label_
-      - [ ] delete
+      - [x] delete
       - [ ] set
       - [ ] hover
+      - [ ] Export label text too
 
 - [ ] _decorate_
+      - [x] delete
       - [ ] set
-      - [ ] delete
-
-- [ ] _help_
-       - [ ] Auto-generate help text from grammar/examples
+      - [ ] Export decorations in SVG component group
 
 
 ### TO BE DONE
+
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
       - Versioning
 
+- [ ] Auto-generate help text from grammar/examples
 - [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
 
 - [ ] Preferences
-      - show/hide screws
+      - show/hide panel screws
       - show/hide guidelines
       - show/hide origin
       - default font

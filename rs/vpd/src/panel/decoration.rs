@@ -1,5 +1,8 @@
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
+use crate::module::IItem;
+use crate::module::Item;
 use crate::panel::X;
 use crate::panel::Y;
 
@@ -40,10 +43,26 @@ impl Decoration {
             stretch: stretch.clone(),
         }
     }
+
+    pub fn matches(&self, reference: &str, name: &str) -> bool {
+        return (self.x.reference == reference || self.y.reference == reference)
+            && self.name == name;
+    }
 }
 
 impl Stretch {
     pub fn new(x: f32, y: f32) -> Stretch {
         Stretch { x: x, y: y }
+    }
+}
+
+impl IItem for Decoration {
+    fn as_item(&self) -> Item {
+        Item {
+            itype: "decoration".to_string(),
+            id: self.id.clone(),
+            name: self.name.clone(),
+            attributes: HashMap::new(),
+        }
     }
 }

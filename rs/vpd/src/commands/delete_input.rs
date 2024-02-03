@@ -24,7 +24,19 @@ impl DeleteInput {
 
 impl Command for DeleteInput {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
-        m.panel.inputs.retain(|v| v.id != self.id);
+        match m.panel.inputs.iter().position(|v| v.id == self.id) {
+            Some(ix) => {
+                m.panel.inputs.remove(ix);
+            }
+
+            None => match m.panel.inputs.iter().position(|v| v.name == self.id) {
+                Some(ix) => {
+                    m.panel.inputs.remove(ix);
+                }
+
+                None => {}
+            },
+        }
 
         match line {
             Some(v) => m.script.push(v.to_string()),
