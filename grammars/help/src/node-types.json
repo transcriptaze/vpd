@@ -300,11 +300,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "part",
+          "named": true
+        },
+        {
+          "type": "xy",
           "named": true
         }
       ]
@@ -508,6 +520,11 @@
     }
   },
   {
+    "type": "part",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "project",
     "named": true,
     "fields": {},
@@ -700,6 +717,11 @@
     }
   },
   {
+    "type": "xy",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "y",
     "named": true,
     "fields": {},
@@ -784,11 +806,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "identifier",
@@ -888,11 +910,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",

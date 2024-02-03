@@ -15,7 +15,7 @@
   <g inkscape:groupmode="layer" inkscape:label="background">
 {%- if background %}
     <rect x="{{panel.x}}" y="{{panel.y}}" width="{{panel.width}}" height="{{panel.height}}" fill="url(#{{background}})" />
-{% endif -%}    
+{%- endif %}    
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="title"></g>

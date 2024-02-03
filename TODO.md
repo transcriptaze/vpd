@@ -40,9 +40,7 @@
 - [x] _export panel svg_
 - [x] _module_
 - [x] _help_
-
-- [ ] _background_
-      - [ ] `set background fundamental` doesn't get exported correctly
+- [x] _background_
 
 - [ ] _guidelines_
       - [x] V0 and H0
@@ -54,10 +52,10 @@
       - (?) warn if duplicate offset
 
 - [ ] _inputs_
-      - [ ] discard/warn duplicates
       - [x] `delete`
+      - [x] help
+      - [ ] discard/warn duplicates
       - [ ] set
-      - [ ] help
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
@@ -86,10 +84,12 @@
       - [x] delete
       - [ ] set
       - [ ] hover
+      - [ ] Export label text too
 
 - [ ] _decorate_
       - [x] delete
       - [ ] set
+      - [ ] Export decorations in SVG component group
 
 
 ### TO BE DONE

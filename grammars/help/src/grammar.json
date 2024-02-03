@@ -59,8 +59,13 @@
                   "name": "guide"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "input"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_input_entity"
+                  },
+                  "named": true,
+                  "value": "input"
                 },
                 {
                   "type": "SYMBOL",
@@ -126,6 +131,61 @@
                     {
                       "type": "SYMBOL",
                       "name": "width"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_input_entity": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "input"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "name"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "xy"
+                        },
+                        {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "part"
+                            },
+                            {
+                              "type": "BLANK"
+                            }
+                          ]
+                        }
+                      ]
                     },
                     {
                       "type": "BLANK"
@@ -1197,6 +1257,18 @@
         {
           "type": "STRING",
           "value": "input"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "name"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -1589,6 +1661,10 @@
       "type": "PATTERN",
       "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
     },
+    "part": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+    },
     "rgb": {
       "type": "PATTERN",
       "value": "#[a-fA-F0-9]{6}"
@@ -1659,6 +1735,44 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_absolute": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)"
+        }
+      ]
+    },
+    "_relative": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)"
         }
       ]
     },
@@ -1753,6 +1867,40 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "xy": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_absolute"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_relative"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_xy"
+        }
+      ]
+    },
+    "_xy": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_y"
         }
       ]
     },

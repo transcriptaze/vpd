@@ -21,7 +21,7 @@ module.exports = grammar({
         choice(
           $.module,
           $.guide,
-          $.input,
+          alias($._input_entity,$.input),
           $.output,
           $.parameter,
           $.light,
@@ -42,8 +42,25 @@ module.exports = grammar({
       )
     ),
 
+    _input_entity: $ => seq(
+      'input',
+      optional(
+        seq(
+          $.name,
+          optional(
+            seq(
+              $.xy,
+              optional($.part),
+            ),
+          ),
+        ),
+      ),
+    ),
+
+
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
+
 
     // ... set
     set: $ => seq(
@@ -289,6 +306,7 @@ module.exports = grammar({
     // ... input
     input: $ => seq(
       'input',
+      optional($.name),
     ),
 
     // ... output
@@ -402,6 +420,7 @@ module.exports = grammar({
     _rgba: $ => /#[a-fA-F0-9]{8}/,
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+    part: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
     rgb: $ => /#[a-fA-F0-9]{6}/,
     rgba: $ => /#[a-fA-F0-9]{8}/,
 
@@ -422,6 +441,19 @@ module.exports = grammar({
       ),
     ),
 
+    _absolute: $ => seq(
+      '@',
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+      ',',
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+    ),
+
+    _relative: $ => seq(
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+      ',',
+      /[0-9]+(?:\.[0-9]*)?(mm|H)/,
+    ),
+
     _x: $ => seq(
       /left|centre|center|right/,
       optional($._offset),
@@ -440,6 +472,18 @@ module.exports = grammar({
     y: $ => seq(
       alias (/top|middle|bottom/,$.reference), 
       optional($.offset),
+    ),
+
+    xy: $ => choice(
+      $._absolute,
+      $._relative,
+      $._xy,
+    ),
+
+    _xy: $ => seq(
+      $._x,
+      ',',
+      $._y,
     ),
 
     _offset: $ => /[+-]([0-9]+)(\.[0-9]*)?(mm|h|H)/,

@@ -8,7 +8,7 @@
 {% endif %}
 {% endmacro input %}
 
-{% if decorations -%}
+{% if decorations %}
   <g inkscape:groupmode="layer" inkscape:label="decorations">    
   {% for v in decorations -%}
 {{ self::decoration(name=v.name, x=v.x, y=v.y, scale=v.scale, sx=v.stretch.x,sy=v.stretch.y) }}

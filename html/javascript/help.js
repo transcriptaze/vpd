@@ -39,6 +39,21 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', '<em>&lt;name&gt;</em>', '@10mm,10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', '<em>&lt;name&gt;</em>', '10mm,10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', '<em>&lt;name&gt;</em>', 'left+10mm,top+10mm', 'PJ301M'],
+    min: 1
+  },
+  {
     command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize', 'halign', 'valign', 'colour'],
     help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
     min: 1
