@@ -11,7 +11,7 @@ new guide h1+3H
 new guide top+10.16mm
 new guide bottom-15.24mm
 
-set background "foundation"
+set background "fundamental"
 
 new input "e" v1,h1 PJ301M
 new input "v" v1,h2 PJ301M

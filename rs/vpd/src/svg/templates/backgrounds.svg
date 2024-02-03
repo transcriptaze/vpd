@@ -6,8 +6,8 @@
     </linearGradient>
 {% endif %}
 
-{%- if name == 'foundation' %}
-    <linearGradient id="foundation">
+{%- if name == 'fundamental' %}
+    <linearGradient id="fundamental">
       <stop offset="0%"   stop-color="#ebebeb" />
       <stop offset="100%" stop-color="#e1e1e1" />
     </linearGradient>

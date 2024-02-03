@@ -1,7 +1,7 @@
 ;; label "ipsum" (label "lorem" +5mm,+5mm) 
 
 new module "test" 1U 10H
-set background "foundation"
+set background "fundamental"
 new guide vertical @25.4mm
 
 new label "lorem" (label "dolor" +5.08mm,+5.08mm) "RobotoCondensed-Regular" 12pt left,baseline

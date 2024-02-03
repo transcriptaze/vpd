@@ -54,10 +54,10 @@ set background #ff0000ff,#0000ffff
       (rgba))))
 
 
-=========================
-set background foundation
-=========================
-set background foundation
+==========================
+set background fundamental
+==========================
+set background fundamental
 ---
 (command
   (set
@@ -65,10 +65,10 @@ set background foundation
       (name))))
 
 
-===========================
-set background 'foundation'
-===========================
-set background 'foundation'
+============================
+set background 'fundamental'
+============================
+set background 'fundamental'
 ---
 (command
   (set
@@ -76,10 +76,10 @@ set background 'foundation'
       (name))))
 
 
-===========================
-set background "foundation"
-===========================
-set background "foundation"
+============================
+set background "fundamental"
+============================
+set background "fundamental"
 ---
 (command
   (set
