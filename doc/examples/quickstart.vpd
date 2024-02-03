@@ -7,7 +7,7 @@
     "background": {
       "rgb": null,
       "rgba": null,
-      "background": "foundation"
+      "background": "fundamental"
     },
     "inputs": [
       {
@@ -138,7 +138,7 @@
     ],
     "labels": [
       {
-        "id": "l1",
+        "id": "t1",
         "text": "Thing 1",
         "x": {
           "reference": "centre",
@@ -168,7 +168,7 @@
         }
       },
       {
-        "id": "l2",
+        "id": "t2",
         "text": "FREQ",
         "x": {
           "reference": "input<frequency>",
@@ -198,7 +198,7 @@
         }
       },
       {
-        "id": "l3",
+        "id": "t3",
         "text": "VOL",
         "x": {
           "reference": "input<volume>",
@@ -228,7 +228,7 @@
         }
       },
       {
-        "id": "l4",
+        "id": "t4",
         "text": "LEFT",
         "x": {
           "reference": "output<left>",
@@ -258,7 +258,7 @@
         }
       },
       {
-        "id": "l5",
+        "id": "t5",
         "text": "RIGHT",
         "x": {
           "reference": "output<right>",
@@ -374,6 +374,27 @@
       }
     },
     "guides": {
+      "v2": {
+        "x": {
+          "reference": "v1",
+          "offset": 12.7
+        },
+        "y": null
+      },
+      "h1": {
+        "x": null,
+        "y": {
+          "reference": "absolute",
+          "offset": 20.32
+        }
+      },
+      "h2": {
+        "x": null,
+        "y": {
+          "reference": "h1",
+          "offset": 15.24
+        }
+      },
       "h3": {
         "x": null,
         "y": {
@@ -386,13 +407,6 @@
         "y": {
           "reference": "bottom",
           "offset": -15.24
-        }
-      },
-      "h2": {
-        "x": null,
-        "y": {
-          "reference": "h1",
-          "offset": 15.24
         }
       },
       "v1": {
@@ -408,20 +422,6 @@
           "offset": -10.16
         },
         "y": null
-      },
-      "h1": {
-        "x": null,
-        "y": {
-          "reference": "absolute",
-          "offset": 20.32
-        }
-      },
-      "v2": {
-        "x": {
-          "reference": "v1",
-          "offset": 12.7
-        },
-        "y": null
       }
     }
   },
@@ -434,7 +434,7 @@
     "new guide h1+3H",
     "new guide top+10.16mm",
     "new guide bottom-15.24mm",
-    "set background \"foundation\"",
+    "set background fundamental",
     "new input \"frequency\" v1,h1 PJ301M",
     "new input \"volume\" v1,h2 PJ301M",
     "new output \"left\"  v3,h4-10.16mm PJ301M",

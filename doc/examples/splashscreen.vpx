@@ -16,7 +16,7 @@ new guide h6 h5+12.7mm
 new guide h7 h6+12.7mm
 new guide h8 h7+12.7mm
 
-set background "foundation"
+set background "fundamental"
 
 new input "e"        v1,h1 PJ301M
 new input "s"        v1,h2 PJ301M

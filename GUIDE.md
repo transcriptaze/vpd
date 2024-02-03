@@ -2,24 +2,21 @@
 
 **Contents**
 
-| General                             | Commands                              |                                           |                                           |
-|-------------------------------------|---------------------------------------|-------------------------------------------|-------------------------------------------|
-| [Getting started](#getting-started) | [comments](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)                 |
-| [Projects](#projects)               | [units](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)               |
-| [Scripts](#scripts)                 | [location formats](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter)         |
-|                                     | [parts](#parts)                       |                                           | [`new light`](#new-light)                 |
-| [User interface](#user-interface)   | [fonts](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)               |
-|   - [_Load_](#load)                 |                                       | [`set module name`](#set-module-name)     | [`new label`](#new-label)                 |
-|   - [_Save_](#save)                 | [`load project`](#load-project)       | [`set module height`](#set-module-height) |                                           |
-|   - [_Export SVG_](#export-svg)     | [`save project`](#save-project)       | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)               |
-|   - [_Undo/Redo_](#undoredo)        |                                       | [`set background`](#set-background)       |                                           |
-|   - [_Macro keys_](#macro-keys)     | [`load script`](#load-script)         |                                           | [`delete input`](#delete-input)           |
-|   - [_Command area_](#command-area) | [`save script`](#save-script)         |                                           | [`delete output`](#delete-output)         |
-|                                     |                                       |                                           | [`delete parameter`](#delete-parameter)   |
-|                                     | [`export panel`](#export-panel)       |                                           | [`delete light`](#delete-light)           |
-|                                     |                                       |                                           | [`delete widget`](#delete-widget)         |
-|                                     |                                       |                                           | [`delete label`](#delete-label)           |
-|                                     |                                       |                                           | [`delete decoration`](#delete-decoration) |
+| General                             | Commands                                |                                           |                                   |                                           |
+|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|
+| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           |
+| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         |
+| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   |
+|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           |
+| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |
+|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |
+|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |
+|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |
+|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         |                                           |                                   |                                           |
+|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           | [`set background`](#set-background)       |                                   |                                           |
+|   - [_Command area_](#command-area) |                                         |                                           |                                   |                                           |
+|                                     | [`export panel`](#export-panel)         |                                           |                                   |                                           |
+|                                     |                                         |                                           |                                   |                                           |
 
 ## Getting started
 
@@ -55,7 +52,7 @@
 
 4. Set the _background_:
    ```
-   set background "foundation"
+   set background "fundamental"
    ```
 
 5. Create some _inputs_:
@@ -527,7 +524,7 @@ _Notes:_
 2. `rgb` and `rgba` backgrounds can optionally specify a dark mode background colour.
 3. The background name is case- and space-insensitive
 4. The predefined backgrounds are:
-   - `foundation`
+   - `fundamental`
 
 _Examples:_
 ```
@@ -536,7 +533,7 @@ set background #ff00ff
 set background #ff00ff,#00ff00
 set background #ff00ff40
 set background #ff00ff40,#00ff0080
-set background foundation
+set background fundamental
 ````
 
 --- 

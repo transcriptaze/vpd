@@ -41,6 +41,7 @@
 - [x] _module_
 - [x] _help_
 - [x] _background_
+      - [x] rename foundation to _fundamental_
 
 - [ ] _guidelines_
       - [x] V0 and H0

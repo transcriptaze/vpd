@@ -1,7 +1,7 @@
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 
-const BACKGROUNDS: [&'static str; 3] = ["rgb", "rgba", "foundation"];
+const BACKGROUNDS: [&'static str; 3] = ["rgb", "rgba", "fundamental"];
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Background {

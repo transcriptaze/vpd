@@ -34,7 +34,7 @@
       <stop offset="0%"   stop-color="#22222200" />
       <stop offset="100%" stop-color="#22222200" />
     </linearGradient>
-    <linearGradient id="foundation">
+    <linearGradient id="fundamental">
       <stop offset="0%"   stop-color="#2a2a2b" />
       <stop offset="100%" stop-color="#171717" />
     </linearGradient>
@@ -180,7 +180,7 @@
 
 
   <g inkscape:groupmode="layer" inkscape:label="background">
-    <rect x="0" y="0" width="50.8" height="128.5" fill="url(#foundation)" />
+    <rect x="0" y="0" width="50.8" height="128.5" fill="url(#fundamental)" />
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="title"></g>
