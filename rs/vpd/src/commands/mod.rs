@@ -9,6 +9,7 @@ mod new_parameter;
 mod new_widget;
 
 mod set_background;
+mod set_input;
 mod set_module;
 mod set_origin;
 
@@ -38,6 +39,7 @@ pub use new_parameter::NewParameter;
 pub use new_widget::NewWidget;
 
 pub use set_background::SetBackground;
+pub use set_input::SetInput;
 pub use set_module::SetModule;
 pub use set_origin::SetOrigin;
 

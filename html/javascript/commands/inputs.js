@@ -1,4 +1,4 @@
-import { identifier } from './commands.js'
+import { identifier, string } from './commands.js'
 import * as components from './components.js'
 
 export function newInput (node, src) {
@@ -19,6 +19,28 @@ export function deleteInput (node, src) {
   for (const child of node.namedChildren) {
     if (child.type === 'identifier') {
       object.input.id = identifier(child)
+    }
+  }
+
+  return object
+}
+
+export function setInput (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'set',
+    input: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.input.id = identifier(child)
+    }
+  }
+
+  for (const child of node.parent.namedChildren) {
+    if (child.type === 'name') {
+      object.input.name = string(child)
     }
   }
 

@@ -343,6 +343,13 @@ impl Module {
         }
     }
 
+    pub fn find_input(&self, id: &str) -> Option<usize> {
+        match self.panel.inputs.iter().position(|v| v.id == id) {
+            Some(ix) => Some(ix),
+            None => self.panel.inputs.iter().position(|v| v.name == id),
+        }
+    }
+
     pub fn query(&self, x: f32, y: f32) -> Vec<Item> {
         let panel = &self.panel;
         let mut rs = Vec::<Item>::new();

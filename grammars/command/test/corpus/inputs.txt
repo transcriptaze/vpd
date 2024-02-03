@@ -309,3 +309,39 @@ delete input 'audio 1'
   (delete
     (input
       (identifier))))
+
+
+======================
+set input i1 name fghi
+======================
+set input i1 name fghi
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))
+
+
+================================
+set input 'audio' name 'audio-2'
+================================
+set input 'audio' name 'audio-2'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))
+
+
+================================
+set input "audio" name "audio-2"
+================================
+set input "audio" name "audio-2"
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))

@@ -84,6 +84,10 @@
               },
               "named": true,
               "value": "module"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_input_attr"
             }
           ]
         }
@@ -135,6 +139,38 @@
                 {
                   "type": "SYMBOL",
                   "name": "width"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_input_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_input_id"
+          },
+          "named": true,
+          "value": "input"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "name"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "name"
                 }
               ]
             }

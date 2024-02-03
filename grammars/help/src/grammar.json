@@ -238,6 +238,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "background"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_input_attr"
                 }
               ]
             },
@@ -297,6 +301,54 @@
                     {
                       "type": "SYMBOL",
                       "name": "width"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_input_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_input_id"
+          },
+          "named": true,
+          "value": "input"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "name"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "name"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
                     }
                   ]
                 }

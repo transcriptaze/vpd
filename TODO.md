@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] Check hasError/isMissing
-- [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
 
 - [x] Load project file
@@ -19,6 +18,8 @@
 - [x] Allow 'out' for component names
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
+- [ ] Export header file
+
 
 ### Overlay
 - [x] panel screws
@@ -34,6 +35,7 @@
 - [ ] `load font...`
 
 ### Commands
+- [ ] Resolve names to IDs in _new_
 - [x] _load_
 - [x] _save_
 - [x] _set origin_
@@ -41,54 +43,47 @@
 - [x] _module_
 - [x] _help_
 - [x] _background_
-      - [x] rename foundation to _fundamental_
 
 - [ ] _guidelines_
-      - [x] V0 and H0
-      - [x] help
-      - [x] `delete`
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) warn if duplicate offset
 
 - [ ] _inputs_
-      - [x] `delete`
-      - [x] help
       - [ ] discard/warn duplicates
       - [ ] set
+            - [x] name
+            - [ ] x
+            - [ ] y
+            - [ ] xy
+            - [ ] part
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
-      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
-      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
-      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _widget_
-      - [x] delete
       - [ ] set
       - [ ] help
 
 - [ ] _label_
-      - [x] delete
       - [ ] set
       - [ ] hover
       - [ ] Export label text too
 
 - [ ] _decorate_
-      - [x] delete
       - [ ] set
       - [ ] Export decorations in SVG component group
 

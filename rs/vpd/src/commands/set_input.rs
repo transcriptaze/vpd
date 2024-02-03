@@ -5,16 +5,17 @@ use crate::command::Command;
 use crate::module::Module;
 
 #[derive(Deserialize)]
-pub struct DeleteInput {
+pub struct SetInput {
     id: String,
+    name: Option<String>,
 }
 
 #[derive(Deserialize)]
 struct Object {
-    input: DeleteInput,
+    input: SetInput,
 }
 
-impl DeleteInput {
+impl SetInput {
     pub fn new(json: &str) -> Result<Self, Box<dyn Error>> {
         let object: Object = serde_json::from_str(json)?;
 
@@ -22,10 +23,12 @@ impl DeleteInput {
     }
 }
 
-impl Command for DeleteInput {
+impl Command for SetInput {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         if let Some(ix) = m.find_input(&self.id) {
-            m.panel.inputs.remove(ix);
+            if let Some(name) = &self.name {
+                m.panel.inputs[ix].name = name.to_string();
+            }
         }
 
         match line {

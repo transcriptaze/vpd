@@ -1,6 +1,7 @@
 import * as origin from './origin.js'
 import * as module from './modules.js'
 import * as background from './background.js'
+import * as inputs from './inputs.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -16,6 +17,9 @@ export function parse (node) {
 
       case 'background':
         return background.set(child, src)
+
+      case 'input':
+        return inputs.setInput(child, src)
 
       default:
         throw new Error(`unknown 'set' entity <<${child.type}>>`)

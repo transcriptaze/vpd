@@ -70,6 +70,7 @@ module.exports = grammar({
           $.origin,
           alias($._module_attr,$.module),
           $.background,
+          $._input_attr,
         ),
       )
     ),
@@ -81,6 +82,15 @@ module.exports = grammar({
           seq('name', $.name),
           seq('height', $.height),
           seq('width', $.width),
+        ),
+      ),
+    ),
+
+    _input_attr: $ => seq(
+      alias($._input_id, $.input),
+      optional(
+        choice(
+          seq('name', optional($.name)),
         ),
       ),
     ),

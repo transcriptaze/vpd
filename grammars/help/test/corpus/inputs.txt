@@ -64,6 +64,35 @@ delete input v1
     (input
       (identifier))))
 
-        
+
+=========
+set input
+=========
+set input
+---
+(command
+  (set
+    (input)))
 
 
+============
+set input i1
+============
+set input i1
+---
+(command
+  (set
+    (input
+      (identifier))))
+
+
+=========================
+set input i1 name 'audio'
+=========================
+set input i1 name 'audio'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))

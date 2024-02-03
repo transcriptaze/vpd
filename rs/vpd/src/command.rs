@@ -14,6 +14,7 @@ use crate::commands::NewParameter;
 use crate::commands::NewWidget;
 
 use crate::commands::SetBackground;
+use crate::commands::SetInput;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
 
@@ -80,7 +81,10 @@ pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     }
 
     if v.action == "set" {
-        return set(json);
+        let boxed = set(json)?;
+        let wrapper = Wrapper::new(boxed, v.src);
+
+        return Ok(wrapper);
     }
 
     if v.action == "delete" {
@@ -172,31 +176,35 @@ fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     return Err("invalid 'new' command".into());
 }
 
-fn set(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
-    if v.action == "set" && v.origin.is_some() {
+    if v.origin.is_some() {
         let command = SetOrigin::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(wrapper);
+        return Ok(boxed);
     }
 
-    if v.action == "set" && v.module.is_some() {
+    if v.module.is_some() {
         let command = SetModule::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(wrapper);
+        return Ok(boxed);
     }
 
-    if v.action == "set" && v.background.is_some() {
+    if v.background.is_some() {
         let command = SetBackground::new(json)?;
         let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
 
-        return Ok(wrapper);
+        return Ok(boxed);
+    }
+
+    if v.input.is_some() {
+        let command = SetInput::new(json)?;
+        let boxed = Box::new(command) as Box<dyn Command>;
+
+        return Ok(boxed);
     }
 
     return Err("invalid 'set' command".into());
