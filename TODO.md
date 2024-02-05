@@ -92,6 +92,7 @@
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
       - Versioning
+      - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
 - [ ] Auto-generate help text from grammar/examples
 - [ ] Bundle with rollup.js

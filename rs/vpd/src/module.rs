@@ -353,6 +353,15 @@ impl Module {
         }
     }
 
+    pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
+        let old = format!("{}<{}>", tag, from);
+        let new = format!("{}<{}>", tag, to);
+
+        for v in &mut self.panel.decorations {
+            v.migrate(&old, &new);
+        }
+    }
+
     pub fn query(&self, x: f32, y: f32) -> Vec<Item> {
         let panel = &self.panel;
         let mut rs = Vec::<Item>::new();

@@ -42,7 +42,9 @@ impl Command for SetInput {
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         if let Some(ix) = m.find_input(&self.id) {
             if let Some(name) = &self.name {
+                let old = m.panel.inputs[ix].name.clone();
                 m.panel.inputs[ix].name = name.to_string();
+                m.migrate("input", &old, name);
             }
 
             if let Some(part) = &self.part {
