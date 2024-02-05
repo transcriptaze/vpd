@@ -28,10 +28,6 @@ impl NewModule {
 }
 
 impl Command for NewModule {
-    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
-        None
-    }
-
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let height = match self.height {
             Some(h) => h,

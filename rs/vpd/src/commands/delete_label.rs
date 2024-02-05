@@ -23,10 +23,6 @@ impl DeleteLabel {
 }
 
 impl Command for DeleteLabel {
-    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
-        None
-    }
-
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         match m.panel.labels.iter().position(|v| v.id == self.id) {
             Some(ix) => {

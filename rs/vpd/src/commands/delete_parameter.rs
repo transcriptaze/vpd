@@ -23,10 +23,6 @@ impl DeleteParameter {
 }
 
 impl Command for DeleteParameter {
-    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
-        None
-    }
-
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         match m.panel.parameters.iter().position(|v| v.id == self.id) {
             Some(ix) => {

@@ -25,10 +25,6 @@ impl SetModule {
 }
 
 impl Command for SetModule {
-    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
-        None
-    }
-
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         match &self.name {
             Some(v) => {

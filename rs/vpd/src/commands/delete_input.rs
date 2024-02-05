@@ -23,10 +23,6 @@ impl DeleteInput {
 }
 
 impl Command for DeleteInput {
-    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
-        None
-    }
-
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         if let Some(ix) = m.find_input(&self.id) {
             m.panel.inputs.remove(ix);

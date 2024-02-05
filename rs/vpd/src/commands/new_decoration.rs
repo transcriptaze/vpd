@@ -42,10 +42,6 @@ impl NewDecoration {
 }
 
 impl Command for NewDecoration {
-    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
-        None
-    }
-
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let id = m.new_decoration_id();
         let x = panel::X::new(&self.reference, self.offset.x);

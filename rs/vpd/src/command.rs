@@ -34,7 +34,10 @@ use crate::commands::SaveProject;
 use crate::commands::SaveScript;
 
 pub trait Command {
-    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>>;
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
 
     // fn new(data: &str) -> Result<Self, Box<dyn Error>>;
