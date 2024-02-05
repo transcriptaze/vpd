@@ -23,6 +23,10 @@ impl DeleteGuide {
 }
 
 impl Command for DeleteGuide {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         m.panel.guides.remove(&self.id);
 

@@ -606,8 +606,7 @@ value  New attribute value.
 ```
 
 _Notes:_
-1. Other components, labels and decorations that reference the _input_ are not affected because the reference is
-   resolved to the _input_ `ID` which is independent of the _input_ `name`.
+1. Other components, labels and decorations that reference the _input_ by name are migrated automatically.
 
 _Examples:_
 ```

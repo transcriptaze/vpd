@@ -25,6 +25,10 @@ impl DeleteDecoration {
 }
 
 impl Command for DeleteDecoration {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         if let Some(id) = &self.id {
             let mut it = m.panel.decorations.iter();

@@ -23,6 +23,10 @@ impl DeleteOutput {
 }
 
 impl Command for DeleteOutput {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         match m.panel.outputs.iter().position(|v| v.id == self.id) {
             Some(ix) => {

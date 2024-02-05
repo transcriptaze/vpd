@@ -23,6 +23,10 @@ impl DeleteWidget {
 }
 
 impl Command for DeleteWidget {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         match m.panel.widgets.iter().position(|v| v.id == self.id) {
             Some(ix) => {

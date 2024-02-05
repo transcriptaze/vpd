@@ -28,6 +28,10 @@ impl NewParameter {
 }
 
 impl Command for NewParameter {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let id = m.new_parameter_id();
 

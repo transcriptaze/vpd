@@ -26,6 +26,10 @@ impl SetBackground {
 }
 
 impl Command for SetBackground {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let rgb = &self.rgb;
         let rgba = &self.rgba;

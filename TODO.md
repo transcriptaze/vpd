@@ -107,6 +107,9 @@
       - default font
       - default font alignment
 
+- [ ] Rust SVG
+      - https://github.com/RazrFalcon/resvg
+      
 
 ## Notes
 

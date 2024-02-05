@@ -30,6 +30,10 @@ impl NewGuide {
 }
 
 impl Command for NewGuide {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         let reference = self.reference.as_str();
         let orientation = match (self.orientation.as_str(), reference) {

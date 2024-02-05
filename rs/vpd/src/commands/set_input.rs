@@ -24,6 +24,20 @@ impl SetInput {
 }
 
 impl Command for SetInput {
+    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
+        if let Some(ix) = m.find_input(&self.id) {
+            if let Some(name) = &self.name {
+                if let Some(jx) = m.find_input(&name) {
+                    if ix != jx {
+                        return Some(format!("duplicate input name '{}'", name).into());
+                    }
+                }
+            }
+        }
+
+        None
+    }
+
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
         if let Some(ix) = m.find_input(&self.id) {
             if let Some(name) = &self.name {

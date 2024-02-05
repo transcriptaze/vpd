@@ -34,6 +34,7 @@ use crate::commands::SaveProject;
 use crate::commands::SaveScript;
 
 pub trait Command {
+    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>>;
     fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
 
     // fn new(data: &str) -> Result<Self, Box<dyn Error>>;
@@ -407,6 +408,10 @@ impl Wrapper {
             command: command,
             src: src,
         }
+    }
+
+    pub fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
+        self.command.validate(m)
     }
 
     pub fn apply(&self, m: &mut Module) -> bool {

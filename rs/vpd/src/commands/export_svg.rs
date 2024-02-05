@@ -27,6 +27,10 @@ impl ExportSVG {
 }
 
 impl Command for ExportSVG {
+    fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
     fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
         m.export_svg(&self.theme);
         false
