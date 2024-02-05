@@ -593,16 +593,16 @@ delete input audio
 
 #### `set input <attribute>`
 
-```set input <id|name> name <value>```
+```set input <id|name> <attribute> <value>```
 
 Changes the value of an input attribute.
 
 _Command options:_
 ```
-id     Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
-name   Name of input.
-
-value  New attribute value.
+id          Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
+name        Name of input.
+attribute   Input attribute (name or part)
+value       New attribute value.
 ```
 
 _Notes:_
@@ -612,6 +612,8 @@ _Examples:_
 ```
 set input i1   name 'FREQ'
 set input freq name 'FREQ'
+set input freq part PJ301M
+set input freq part none
 ```
 
 --- 

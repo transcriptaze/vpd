@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 use crate::module::IItem;
 use crate::module::Item;
@@ -29,11 +28,17 @@ impl Input {
 
 impl IItem for Input {
     fn as_item(&self) -> Item {
+        let mut attributes = Vec::<(String, String)>::new();
+
+        if let Some(part) = &self.part {
+            attributes.push(("part".to_string(), part.clone()));
+        }
+
         Item {
             itype: "input".to_string(),
             id: self.id.clone(),
             name: self.name.clone(),
-            attributes: HashMap::new(),
+            attributes: attributes,
         }
     }
 }

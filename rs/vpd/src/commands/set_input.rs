@@ -8,6 +8,7 @@ use crate::module::Module;
 pub struct SetInput {
     id: String,
     name: Option<String>,
+    part: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -42,6 +43,14 @@ impl Command for SetInput {
         if let Some(ix) = m.find_input(&self.id) {
             if let Some(name) = &self.name {
                 m.panel.inputs[ix].name = name.to_string();
+            }
+
+            if let Some(part) = &self.part {
+                if part == "" {
+                    m.panel.inputs[ix].part = None;
+                } else {
+                    m.panel.inputs[ix].part = Some(part.to_string());
+                }
             }
         }
 

@@ -345,3 +345,28 @@ set input "audio" name "audio-2"
     (input
       (identifier))
     (name)))
+
+
+===============================
+set input 'audio' part 'PJ301M'
+===============================
+set input 'audio' part 'PJ301M'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (part)))
+
+
+===========================
+set input 'audio' part none
+===========================
+set input 'audio' part none
+---
+(command
+  (set
+    (input
+      (identifier))
+    (part)))
+

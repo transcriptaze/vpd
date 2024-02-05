@@ -184,13 +184,27 @@ export function onClickPanel (panel, x, y) {
       const array = JSON.parse(rs)
 
       if (array != null && Array.isArray(array)) {
-        for (const v of array) {
+        for (const item of array) {
           const clone = template.content.cloneNode(true)
           const li = clone.querySelector('li')
+          const fieldset = li.querySelector('fieldset')
 
-          li.querySelector('fieldset legend').innerHTML = `${v.itype}`.toUpperCase()
-          li.querySelector('p[data-tag="item.id"]').innerHTML = `${v.id}`
-          li.querySelector('p[data-tag="item.name"]').innerHTML = `${v.name}`
+          li.querySelector('fieldset legend').innerHTML = `${item.itype}`.toUpperCase()
+          li.querySelector('p[data-tag="item.id"]').innerHTML = `${item.id}`
+          li.querySelector('p[data-tag="item.name"]').innerHTML = `${item.name}`
+
+          if (item.attributes != null) {
+            for (const [k, v] of item.attributes) {
+              const label = document.createElement('label')
+              const value = document.createElement('p')
+
+              label.innerHTML = `${k}`
+              value.innerHTML = `${v}`
+
+              fieldset.append(label)
+              fieldset.append(value)
+            }
+          }
 
           ul.append(clone)
         }

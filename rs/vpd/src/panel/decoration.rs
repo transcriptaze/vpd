@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 use crate::module::IItem;
 use crate::module::Item;
@@ -62,7 +61,7 @@ impl IItem for Decoration {
             itype: "decoration".to_string(),
             id: self.id.clone(),
             name: self.name.clone(),
-            attributes: HashMap::new(),
+            attributes: Vec::<(String, String)>::new(),
         }
     }
 }

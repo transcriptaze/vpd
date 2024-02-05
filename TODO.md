@@ -35,7 +35,6 @@
 - [ ] `load font...`
 
 ### Commands
-- [ ] Resolve names to IDs in _new_
 - [x] _load_
 - [x] _save_
 - [x] _set origin_

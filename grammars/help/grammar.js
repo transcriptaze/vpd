@@ -91,6 +91,7 @@ module.exports = grammar({
       optional(
         choice(
           seq('name', optional($.name)),
+          seq('part', optional($.part)),
         ),
       ),
     ),

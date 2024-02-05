@@ -173,6 +173,19 @@
                   "name": "name"
                 }
               ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "part"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "part"
+                }
+              ]
             }
           ]
         }

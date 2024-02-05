@@ -48,6 +48,7 @@ module.exports = grammar({
       alias($._input_id, $.input),
       choice(
         seq('name', $.name),
+        seq('part', $.part),
       )
     ),
 

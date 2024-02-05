@@ -865,6 +865,10 @@
         {
           "type": "origin",
           "named": true
+        },
+        {
+          "type": "part",
+          "named": true
         }
       ]
     }
@@ -1162,6 +1166,10 @@
   },
   {
     "type": "parameter",
+    "named": false
+  },
+  {
+    "type": "part",
     "named": false
   },
   {

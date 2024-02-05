@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::io::Write;
 
 use chrono::Local;
@@ -51,7 +50,7 @@ pub struct Item {
     pub itype: String,
     pub id: String,
     pub name: String,
-    pub attributes: HashMap<String, String>,
+    pub attributes: Vec<(String, String)>,
 }
 
 pub fn new() -> Module {
@@ -346,7 +345,11 @@ impl Module {
     pub fn find_input(&self, id: &str) -> Option<usize> {
         match self.panel.inputs.iter().position(|v| v.id == id) {
             Some(ix) => Some(ix),
-            None => self.panel.inputs.iter().position(|v| v.name == id),
+            None => self
+                .panel
+                .inputs
+                .iter()
+                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
         }
     }
 

@@ -42,6 +42,10 @@ export function setInput (node, src) {
     if (child.type === 'name') {
       object.input.name = string(child)
     }
+
+    if (child.type === 'part') {
+      object.input.part = string(child) === 'none' ? '' : string(child)
+    }
   }
 
   return object
