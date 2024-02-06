@@ -70,7 +70,7 @@ impl NewLabel {
 }
 
 impl Command for NewLabel {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         let id = m.new_label_id();
 
         let font = match &self.font {
@@ -117,8 +117,6 @@ impl Command for NewLabel {
             ),
             &colour,
         ));
-
-        true
     }
 }
 

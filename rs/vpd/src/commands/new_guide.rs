@@ -30,7 +30,7 @@ impl NewGuide {
 }
 
 impl Command for NewGuide {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         let reference = self.reference.as_str();
         let orientation = match (self.orientation.as_str(), reference) {
             ("", "V0") => "vertical",
@@ -68,8 +68,6 @@ impl Command for NewGuide {
                 .entry(id)
                 .or_insert(Guide::new(&orientation, &reference, self.offset));
         }
-
-        true
     }
 }
 

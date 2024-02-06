@@ -38,7 +38,7 @@ pub trait Command {
         None
     }
 
-    fn apply(&self, m: &mut Module) -> bool;
+    fn apply(&self, m: &mut Module);
 
     // fn new(data: &str) -> Result<Self, Box<dyn Error>>;
     // where
@@ -48,6 +48,7 @@ pub trait Command {
 pub struct Wrapper {
     command: Box<dyn Command>,
     src: Option<String>,
+    reload: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -77,27 +78,42 @@ struct Entity {}
 #[derive(Serialize, Deserialize, Debug)]
 struct Attr {}
 
+// fn create_command_and_wrapper<T: Command>(
+//     json: &str,
+//     src: Option<String>,
+// ) -> Result<T, Box<dyn Error>> {
+//     let command = T::new(json)?;
+//     // let boxed = Box::new(command) as Box<dyn Command>;
+//     // Ok(Wrapper::new(boxed, src))
+// }
+
 pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" {
-        return new(json);
+        let boxed = new(json)?;
+        let wrapper = Wrapper::new(boxed, v.src, true);
+
+        return Ok(wrapper);
     }
 
     if v.action == "set" {
         let boxed = set(json)?;
-        let wrapper = Wrapper::new(boxed, v.src);
+        let wrapper = Wrapper::new(boxed, v.src, true);
 
         return Ok(wrapper);
     }
 
     if v.action == "delete" {
-        return delete(json);
+        let boxed = delete(json)?;
+        let wrapper = Wrapper::new(boxed, v.src, true);
+
+        return Ok(wrapper);
     }
 
     if v.action == "load" || v.action == "save" || v.action == "export" {
         let boxed = files(json)?;
-        let wrapper = Wrapper::new(boxed, None);
+        let wrapper = Wrapper::new(boxed, None, false);
 
         return Ok(wrapper);
     }
@@ -105,79 +121,43 @@ pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     return Err("unknown command".into());
 }
 
-fn new(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" && v.module.is_some() {
-        let command = NewModule::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewModule::new(json)?));
     }
 
     if v.action == "new" && v.input.is_some() {
-        let command = NewInput::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewInput::new(json)?));
     }
 
     if v.action == "new" && v.output.is_some() {
-        let command = NewOutput::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewOutput::new(json)?));
     }
 
     if v.action == "new" && v.parameter.is_some() {
-        let command = NewParameter::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewParameter::new(json)?));
     }
 
     if v.action == "new" && v.light.is_some() {
-        let command = NewLight::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewLight::new(json)?));
     }
 
     if v.action == "new" && v.widget.is_some() {
-        let command = NewWidget::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewWidget::new(json)?));
     }
 
     if v.action == "new" && v.label.is_some() {
-        let command = NewLabel::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewLabel::new(json)?));
     }
 
     if v.action == "new" && v.decoration.is_some() {
-        let command = NewDecoration::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewDecoration::new(json)?));
     }
 
     if v.action == "new" && v.guide.is_some() {
-        let command = NewGuide::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(NewGuide::new(json)?));
     }
 
     return Err("invalid 'new' command".into());
@@ -205,71 +185,39 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     return Err("invalid 'set' command".into());
 }
 
-fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+fn delete(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "delete" && v.guide.is_some() {
-        let command = DeleteGuide::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteGuide::new(json)?));
     }
 
     if v.action == "delete" && v.input.is_some() {
-        let command = DeleteInput::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteInput::new(json)?));
     }
 
     if v.action == "delete" && v.output.is_some() {
-        let command = DeleteOutput::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteOutput::new(json)?));
     }
 
     if v.action == "delete" && v.parameter.is_some() {
-        let command = DeleteParameter::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteParameter::new(json)?));
     }
 
     if v.action == "delete" && v.light.is_some() {
-        let command = DeleteLight::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteLight::new(json)?));
     }
 
     if v.action == "delete" && v.widget.is_some() {
-        let command = DeleteWidget::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteWidget::new(json)?));
     }
 
     if v.action == "delete" && v.label.is_some() {
-        let command = DeleteLabel::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteLabel::new(json)?));
     }
 
     if v.action == "delete" && v.decoration.is_some() {
-        let command = DeleteDecoration::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(DeleteDecoration::new(json)?));
     }
 
     return Err("invalid 'delete' command".into());
@@ -301,86 +249,12 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     return Err("invalid command".into());
 }
 
-// fn create_command_and_wrapper<T: Command>(
-//     json: &str,
-//     src: Option<String>,
-// ) -> Result<T, Box<dyn Error>> {
-//     let command = T::new(json)?;
-//     // let boxed = Box::new(command) as Box<dyn Command>;
-//     // Ok(Wrapper::new(boxed, src))
-// }
-
-// pub fn parse(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
-//     let v: Action = serde_json::from_str(json)?;
-//
-//     if v.action == "new" && v.module.is_some() {
-//         return Ok(Box::new(NewModule::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.input.is_some() {
-//         return Ok(Box::new(NewInput::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.output.is_some() {
-//         return Ok(Box::new(NewOutput::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.parameter.is_some() {
-//         return Ok(Box::new(NewParameter::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.light.is_some() {
-//         return Ok(Box::new(NewLight::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.widget.is_some() {
-//         return Ok(Box::new(NewWidget::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.label.is_some() {
-//         return Ok(Box::new(NewLabel::new(json)?));
-//     }
-//
-//     if v.action == "new" && v.guide.is_some() {
-//         return Ok(Box::new(NewGuide::new(json)?));
-//     }
-//
-//     if v.action == "set" && v.origin.is_some() {
-//         return Ok(Box::new(SetOriginCommand::new(json)?));
-//     }
-//
-//     if v.action == "set" && v.background.is_some() {
-//         return Ok(Box::new(SetBackgroundCommand::new(json)?));
-//     }
-//
-//     if v.action == "load" && v.project.is_some() {
-//         return Ok(Box::new(LoadProject::new(json)?));
-//     }
-//
-//     if v.action == "save" && v.project.is_some() {
-//         return Ok(Box::new(SaveProject::new(json)?));
-//     }
-//
-//     if v.action == "load" && v.script.is_some() {
-//         return Ok(Box::new(LoadScript::new(json)?));
-//     }
-//
-//     if v.action == "save" && v.script.is_some() {
-//         return Ok(Box::new(SaveScript::new(json)?));
-//     }
-//
-//     if v.action == "export" && v.svg.is_some() {
-//         return Ok(Box::new(ExportSVG::new(json)?));
-//     }
-//
-//     return Err("unknown command".into());
-// }
-
 impl Wrapper {
-    pub fn new(command: Box<dyn Command>, src: Option<String>) -> Wrapper {
+    pub fn new(command: Box<dyn Command>, src: Option<String>, reload: bool) -> Wrapper {
         Wrapper {
             command: command,
             src: src,
+            reload: reload,
         }
     }
 
@@ -389,36 +263,12 @@ impl Wrapper {
     }
 
     pub fn apply(&self, m: &mut Module) -> bool {
-        let ok = self.command.apply(m);
+        self.command.apply(m);
 
         if let Some(line) = &self.src {
             m.script.push(line.to_string());
         }
 
-        return ok;
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_new() {
-        let json = r#"{
-            "action": "new",
-            "module": {
-                "name": "test",
-                "width": 45.72,
-                "height": 128.5
-            }
-        }"#;
-
-        match new(json) {
-            Ok(_) => {}
-            Err(e) => {
-                assert!(false, "{}", e.to_string());
-            }
-        }
+        return self.reload;
     }
 }

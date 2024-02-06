@@ -23,11 +23,9 @@ impl DeleteInput {
 }
 
 impl Command for DeleteInput {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         if let Some(ix) = m.find_input(&self.id) {
             m.panel.inputs.remove(ix);
         }
-
-        true
     }
 }

@@ -25,7 +25,7 @@ impl SetModule {
 }
 
 impl Command for SetModule {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         match &self.name {
             Some(v) => {
                 m.name = v.clone();
@@ -42,7 +42,5 @@ impl Command for SetModule {
             Some(v) => m.panel.width = v,
             _ => {}
         }
-
-        true
     }
 }

@@ -28,7 +28,7 @@ impl NewModule {
 }
 
 impl Command for NewModule {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         let height = match self.height {
             Some(h) => h,
             _ => HEIGHT,
@@ -36,7 +36,5 @@ impl Command for NewModule {
 
         m.name = self.name.clone().into();
         m.panel = Panel::new(self.width, height);
-
-        true
     }
 }

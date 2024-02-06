@@ -26,7 +26,7 @@ impl SetBackground {
 }
 
 impl Command for SetBackground {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         let rgb = &self.rgb;
         let rgba = &self.rgba;
         let background = &self.background;
@@ -37,7 +37,5 @@ impl Command for SetBackground {
             (_, _, Some(v)) => Some(Background::new(v)),
             (_, _, _) => None,
         };
-
-        true
     }
 }

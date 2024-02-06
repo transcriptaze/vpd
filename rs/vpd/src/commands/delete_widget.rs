@@ -23,7 +23,7 @@ impl DeleteWidget {
 }
 
 impl Command for DeleteWidget {
-    fn apply(&self, m: &mut Module) -> bool {
+    fn apply(&self, m: &mut Module) {
         match m.panel.widgets.iter().position(|v| v.id == self.id) {
             Some(ix) => {
                 m.panel.widgets.remove(ix);
@@ -37,7 +37,5 @@ impl Command for DeleteWidget {
                 None => {}
             },
         }
-
-        true
     }
 }
