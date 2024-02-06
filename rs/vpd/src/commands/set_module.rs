@@ -25,7 +25,7 @@ impl SetModule {
 }
 
 impl Command for SetModule {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) -> bool {
         match &self.name {
             Some(v) => {
                 m.name = v.clone();
@@ -40,11 +40,6 @@ impl Command for SetModule {
 
         match self.width {
             Some(v) => m.panel.width = v,
-            _ => {}
-        }
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
             _ => {}
         }
 

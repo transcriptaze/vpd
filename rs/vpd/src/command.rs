@@ -38,7 +38,7 @@ pub trait Command {
         None
     }
 
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool;
+    fn apply(&self, m: &mut Module) -> bool;
 
     // fn new(data: &str) -> Result<Self, Box<dyn Error>>;
     // where
@@ -96,7 +96,10 @@ pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     }
 
     if v.action == "load" || v.action == "save" || v.action == "export" {
-        return files(json);
+        let boxed = files(json)?;
+        let wrapper = Wrapper::new(boxed, None);
+
+        return Ok(wrapper);
     }
 
     return Err("unknown command".into());
@@ -184,31 +187,19 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.origin.is_some() {
-        let command = SetOrigin::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-
-        return Ok(boxed);
+        return Ok(Box::new(SetOrigin::new(json)?));
     }
 
     if v.module.is_some() {
-        let command = SetModule::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-
-        return Ok(boxed);
+        return Ok(Box::new(SetModule::new(json)?));
     }
 
     if v.background.is_some() {
-        let command = SetBackground::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-
-        return Ok(boxed);
+        return Ok(Box::new(SetBackground::new(json)?));
     }
 
     if v.input.is_some() {
-        let command = SetInput::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-
-        return Ok(boxed);
+        return Ok(Box::new(SetInput::new(json)?));
     }
 
     return Err("invalid 'set' command".into());
@@ -284,47 +275,27 @@ fn delete(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     return Err("invalid 'delete' command".into());
 }
 
-fn files(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "load" && v.project.is_some() {
-        let command = LoadProject::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(LoadProject::new(json)?));
     }
 
     if v.action == "save" && v.project.is_some() {
-        let command = SaveProject::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(SaveProject::new(json)?));
     }
 
     if v.action == "load" && v.script.is_some() {
-        let command = LoadScript::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(LoadScript::new(json)?));
     }
 
     if v.action == "save" && v.script.is_some() {
-        let command = SaveScript::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(SaveScript::new(json)?));
     }
 
     if v.action == "export" && v.svg.is_some() {
-        let command = ExportSVG::new(json)?;
-        let boxed = Box::new(command) as Box<dyn Command>;
-        let wrapper = Wrapper::new(boxed, v.src);
-
-        return Ok(wrapper);
+        return Ok(Box::new(ExportSVG::new(json)?));
     }
 
     return Err("invalid command".into());
@@ -418,7 +389,13 @@ impl Wrapper {
     }
 
     pub fn apply(&self, m: &mut Module) -> bool {
-        self.command.apply(m, &self.src)
+        let ok = self.command.apply(m);
+
+        if let Some(line) = &self.src {
+            m.script.push(line.to_string());
+        }
+
+        return ok;
     }
 }
 

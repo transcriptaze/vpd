@@ -23,7 +23,7 @@ impl DeleteOutput {
 }
 
 impl Command for DeleteOutput {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) -> bool {
         match m.panel.outputs.iter().position(|v| v.id == self.id) {
             Some(ix) => {
                 m.panel.outputs.remove(ix);
@@ -36,11 +36,6 @@ impl Command for DeleteOutput {
 
                 None => {}
             },
-        }
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
         }
 
         true

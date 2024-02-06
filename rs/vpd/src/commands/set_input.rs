@@ -39,7 +39,7 @@ impl Command for SetInput {
         None
     }
 
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) -> bool {
         if let Some(ix) = m.find_input(&self.id) {
             if let Some(name) = &self.name {
                 let old = m.panel.inputs[ix].name.clone();
@@ -54,11 +54,6 @@ impl Command for SetInput {
                     m.panel.inputs[ix].part = Some(part.to_string());
                 }
             }
-        }
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
         }
 
         true

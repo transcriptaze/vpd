@@ -23,7 +23,7 @@ impl DeleteLight {
 }
 
 impl Command for DeleteLight {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) -> bool {
         match m.panel.lights.iter().position(|v| v.id == self.id) {
             Some(ix) => {
                 m.panel.lights.remove(ix);
@@ -36,11 +36,6 @@ impl Command for DeleteLight {
 
                 None => {}
             },
-        }
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
         }
 
         true

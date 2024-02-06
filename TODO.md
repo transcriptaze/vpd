@@ -56,7 +56,7 @@
             - [ ] x
             - [ ] y
             - [ ] xy
-            - [ ] part
+            - [x] part
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
