@@ -179,6 +179,24 @@
               "members": [
                 {
                   "type": "STRING",
+                  "value": "x"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_x_attr"
+                  },
+                  "named": true,
+                  "value": "x"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
                   "value": "part"
                 },
                 {
@@ -186,6 +204,148 @@
                   "name": "part"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    "_x_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_absolute_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_relative_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_geometry_x_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_guide_attr"
+            }
+          ]
+        }
+      ]
+    },
+    "_absolute_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@"
+          },
+          "named": true,
+          "value": "absolute"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)?"
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "_relative_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)?"
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "_geometry_x_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "left"
+              },
+              {
+                "type": "STRING",
+                "value": "centre"
+              },
+              {
+                "type": "STRING",
+                "value": "center"
+              },
+              {
+                "type": "STRING",
+                "value": "right"
+              }
+            ]
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[+-][0-9]+(?:\\.[0-9]*)?(mm|H)?"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_guide_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z][a-zA-Z0-9]*"
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[+-][0-9]+(?:\\.[0-9]*)?(mm|H)?"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "BLANK"
             }
           ]
         }

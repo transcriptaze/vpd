@@ -869,6 +869,10 @@
         {
           "type": "part",
           "named": true
+        },
+        {
+          "type": "x",
+          "named": true
         }
       ]
     }
@@ -990,6 +994,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
         {
           "type": "offset",
           "named": true
@@ -1238,14 +1246,18 @@
   },
   {
     "type": "width",
-    "named": false
-  },
-  {
-    "type": "width",
     "named": true
   },
   {
+    "type": "width",
+    "named": false
+  },
+  {
     "type": "with",
+    "named": false
+  },
+  {
+    "type": "x",
     "named": false
   }
 ]

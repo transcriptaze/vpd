@@ -1,4 +1,4 @@
-import { identifier, string } from './commands.js'
+import { identifier, string, mm } from './commands.js'
 import * as components from './components.js'
 
 export function newInput (node, src) {
@@ -41,6 +41,27 @@ export function setInput (node, src) {
   for (const child of node.parent.namedChildren) {
     if (child.type === 'name') {
       object.input.name = string(child)
+    }
+
+    if (child.type === 'x') {
+      object.input.x = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.input.x.reference = 'absolute'
+        }
+
+        if (v.type === 'reference') {
+          object.input.x.reference = identifier(v)
+        }
+
+        if (v.type === 'offset') {
+          object.input.x.offset = mm(v)
+        }
+      }
     }
 
     if (child.type === 'part') {

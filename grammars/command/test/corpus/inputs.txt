@@ -347,6 +347,61 @@ set input "audio" name "audio-2"
     (name)))
 
 
+=========================
+set input 'audio' x @10mm
+=========================
+set input 'audio' x @10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (absolute)
+      (offset))))
+
+
+========================
+set input 'audio' x 10mm
+========================
+set input 'audio' x 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (offset))))
+
+
+=============================
+set input 'audio' x left+10mm
+=============================
+set input 'audio' x left+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+===========================
+set input 'audio' x v1+10mm
+===========================
+set input 'audio' x v1+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
 ===============================
 set input 'audio' part 'PJ301M'
 ===============================

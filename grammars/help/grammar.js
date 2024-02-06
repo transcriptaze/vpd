@@ -91,9 +91,23 @@ module.exports = grammar({
       optional(
         choice(
           seq('name', optional($.name)),
+          seq('x',    optional(alias($._x_attr, $.x))),
           seq('part', optional($.part)),
         ),
       ),
+    ),
+
+    _x_attr: $ => choice(
+      seq('@',/[0-9]+([.][0-9]*)?(mm|H)?/),
+      /[0-9]+([.][0-9]*)?(mm|H)?/,
+      seq(
+          choice('left', 'centre','center', 'right'),
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+      seq(
+          /[a-z][a-z0-9]*/,
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
     ),
 
     // ... decorate

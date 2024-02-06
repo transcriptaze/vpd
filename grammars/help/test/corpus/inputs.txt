@@ -98,6 +98,18 @@ set input i1 name 'audio'
     (name)))
 
 
+===================
+set input i1 x 10mm
+===================
+set input i1 x 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x)))
+
+
 ==========================
 set input in part 'PJ301M'
 ==========================

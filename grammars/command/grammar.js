@@ -48,9 +48,49 @@ module.exports = grammar({
       alias($._input_id, $.input),
       choice(
         seq('name', $.name),
+        seq('x',    alias($._x_attr, $.x)),
         seq('part', $.part),
       )
     ),
+
+    _x_attr: $ => seq(
+      choice(
+        $._absolute_attr,
+        $._relative_attr,
+        $._geometry_x_attr,
+        $._guide_attr,
+      ),
+    ),
+
+    _absolute_attr: $ => seq(
+      alias('@',$.absolute),
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+    ),
+
+    _relative_attr: $ => seq(
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+    ),
+
+    _geometry_x_attr: $ => seq(
+      alias(
+        choice (
+          'left',
+          'centre',
+          'center',
+          'right',
+        ), $.reference),
+      optional(
+        alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      ),
+    ),
+
+    _guide_attr: $ => seq(
+      alias(/[a-zA-Z][a-zA-Z0-9]*/, $.reference),
+      optional(
+        alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      ),
+    ),
+
 
     // ... decorate
     decorate: $ => seq(
