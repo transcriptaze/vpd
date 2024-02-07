@@ -55,8 +55,8 @@
       - [ ] discard/warn duplicates
       - [ ] set
             - [x] name
-            - [ ] x
-            - [ ] y
+            - [x] x
+            - [x] y
             - [ ] xy
             - [x] part
 

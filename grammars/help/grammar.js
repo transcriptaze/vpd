@@ -92,6 +92,7 @@ module.exports = grammar({
         choice(
           seq('name', optional($.name)),
           seq('x',    optional(alias($._x_attr, $.x))),
+          seq('y',    optional(alias($._y_attr, $.y))),
           seq('part', optional($.part)),
         ),
       ),
@@ -102,6 +103,19 @@ module.exports = grammar({
       /[0-9]+([.][0-9]*)?(mm|H)?/,
       seq(
           choice('left', 'centre','center', 'right'),
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+      seq(
+          /[a-z][a-z0-9]*/,
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+    ),
+
+    _y_attr: $ => choice(
+      seq('@',/[0-9]+([.][0-9]*)?(mm|H)?/),
+      /[0-9]+([.][0-9]*)?(mm|H)?/,
+      seq(
+          choice('top', 'middle', 'bottom'),
           optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
         ),
       seq(

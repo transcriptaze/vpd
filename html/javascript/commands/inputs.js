@@ -64,6 +64,27 @@ export function setInput (node, src) {
       }
     }
 
+    if (child.type === 'y') {
+      object.input.y = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.input.y.reference = 'absolute'
+        }
+
+        if (v.type === 'reference') {
+          object.input.y.reference = identifier(v)
+        }
+
+        if (v.type === 'offset') {
+          object.input.y.offset = mm(v)
+        }
+      }
+    }
+
     if (child.type === 'part') {
       object.input.part = string(child) === 'none' ? '' : string(child)
     }

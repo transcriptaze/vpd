@@ -383,6 +383,32 @@
                   "members": [
                     {
                       "type": "STRING",
+                      "value": "y"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "_y_attr"
+                          },
+                          "named": true,
+                          "value": "y"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
                       "value": "part"
                     },
                     {
@@ -449,6 +475,83 @@
                 {
                   "type": "STRING",
                   "value": "right"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[+-][0-9]+([.][0-9]*)?(mm|H)?"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[a-z][a-z0-9]*"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[+-][0-9]+([.][0-9]*)?(mm|H)?"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_y_attr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "@"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[0-9]+([.][0-9]*)?(mm|H)?"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9]+([.][0-9]*)?(mm|H)?"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "top"
+                },
+                {
+                  "type": "STRING",
+                  "value": "middle"
+                },
+                {
+                  "type": "STRING",
+                  "value": "bottom"
                 }
               ]
             },

@@ -601,7 +601,7 @@ _Command options:_
 ```
 id          Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
 name        Name of input.
-attribute   Input attribute (name or part)
+attribute   Input attribute (name,x,y or part)
 value       New attribute value.
 ```
 
@@ -612,6 +612,8 @@ _Examples:_
 ```
 set input i1   name 'FREQ'
 set input freq name 'FREQ'
+set input freq x v1+10mm
+set input freq y @55.5mm
 set input freq part PJ301M
 set input freq part none
 ```

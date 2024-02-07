@@ -110,6 +110,18 @@ set input i1 x 10mm
     (x)))
 
 
+===================
+set input i1 y 10mm
+===================
+set input i1 y 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y)))
+
+
 ==========================
 set input in part 'PJ301M'
 ==========================

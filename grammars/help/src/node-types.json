@@ -637,6 +637,10 @@
         {
           "type": "x",
           "named": true
+        },
+        {
+          "type": "y",
+          "named": true
         }
       ]
     }
@@ -822,11 +826,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "identifier",
@@ -942,6 +946,10 @@
   },
   {
     "type": "x",
+    "named": false
+  },
+  {
+    "type": "y",
     "named": false
   }
 ]

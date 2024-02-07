@@ -10,6 +10,7 @@ pub struct SetInput {
     id: String,
     name: Option<String>,
     x: Option<panel::X>,
+    y: Option<panel::Y>,
     part: Option<String>,
 }
 
@@ -51,6 +52,10 @@ impl Command for SetInput {
 
             if let Some(x) = &self.x {
                 m.panel.inputs[ix].x = x.clone();
+            }
+
+            if let Some(y) = &self.y {
+                m.panel.inputs[ix].y = y.clone();
             }
 
             if let Some(part) = &self.part {

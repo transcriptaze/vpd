@@ -402,6 +402,61 @@ set input 'audio' x v1+10mm
       (offset))))
 
 
+=========================
+set input 'audio' y @10mm
+=========================
+set input 'audio' y @10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (absolute)
+      (offset))))
+
+
+========================
+set input 'audio' y 10mm
+========================
+set input 'audio' y 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (offset))))
+
+
+============================
+set input 'audio' y top+10mm
+============================
+set input 'audio' y top+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===========================
+set input 'audio' y h1+10mm
+===========================
+set input 'audio' y h1+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
 ===============================
 set input 'audio' part 'PJ301M'
 ===============================

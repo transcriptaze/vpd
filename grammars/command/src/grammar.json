@@ -197,6 +197,24 @@
               "members": [
                 {
                   "type": "STRING",
+                  "value": "y"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_y_attr"
+                  },
+                  "named": true,
+                  "value": "y"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
                   "value": "part"
                 },
                 {
@@ -226,6 +244,32 @@
             {
               "type": "SYMBOL",
               "name": "_geometry_x_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_guide_attr"
+            }
+          ]
+        }
+      ]
+    },
+    "_y_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_absolute_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_relative_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_geometry_y_attr"
             },
             {
               "type": "SYMBOL",
@@ -295,6 +339,50 @@
               {
                 "type": "STRING",
                 "value": "right"
+              }
+            ]
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[+-][0-9]+(?:\\.[0-9]*)?(mm|H)?"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_geometry_y_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "top"
+              },
+              {
+                "type": "STRING",
+                "value": "middle"
+              },
+              {
+                "type": "STRING",
+                "value": "bottom"
               }
             ]
           },

@@ -49,6 +49,7 @@ module.exports = grammar({
       choice(
         seq('name', $.name),
         seq('x',    alias($._x_attr, $.x)),
+        seq('y',    alias($._y_attr, $.y)),
         seq('part', $.part),
       )
     ),
@@ -58,6 +59,15 @@ module.exports = grammar({
         $._absolute_attr,
         $._relative_attr,
         $._geometry_x_attr,
+        $._guide_attr,
+      ),
+    ),
+
+    _y_attr: $ => seq(
+      choice(
+        $._absolute_attr,
+        $._relative_attr,
+        $._geometry_y_attr,
         $._guide_attr,
       ),
     ),
@@ -78,6 +88,18 @@ module.exports = grammar({
           'centre',
           'center',
           'right',
+        ), $.reference),
+      optional(
+        alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      ),
+    ),
+
+    _geometry_y_attr: $ => seq(
+      alias(
+        choice (
+          'top',
+          'middle',
+          'bottom',
         ), $.reference),
       optional(
         alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
