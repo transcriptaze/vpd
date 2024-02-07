@@ -1,7 +1,8 @@
 use std::error::Error;
 
 use super::module::Module;
-use super::serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
+use serde_json::value::RawValue;
 
 use crate::commands::NewDecoration;
 use crate::commands::NewGuide;
@@ -52,10 +53,12 @@ pub struct Wrapper {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-struct Action {
+struct Action<'a> {
     src: Option<String>,
     action: String,
-    module: Option<Entity>,
+
+    #[serde(borrow)]
+    module: Option<&'a RawValue>,
     background: Option<Attr>,
     input: Option<Entity>,
     output: Option<Entity>,
