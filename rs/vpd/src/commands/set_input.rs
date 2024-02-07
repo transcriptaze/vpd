@@ -3,11 +3,13 @@ use std::error::Error;
 
 use crate::command::Command;
 use crate::module::Module;
+use crate::panel;
 
 #[derive(Deserialize)]
 pub struct SetInput {
     id: String,
     name: Option<String>,
+    x: Option<panel::X>,
     part: Option<String>,
 }
 
@@ -45,6 +47,10 @@ impl Command for SetInput {
                 let old = m.panel.inputs[ix].name.clone();
                 m.panel.inputs[ix].name = name.to_string();
                 m.migrate("input", &old, name);
+            }
+
+            if let Some(x) = &self.x {
+                m.panel.inputs[ix].x = x.clone();
             }
 
             if let Some(part) = &self.part {

@@ -42,12 +42,14 @@
 - [x] _module_
 - [x] _help_
 - [x] _background_
+      - [ ] Replace RGBA alpha with opacity (_NanoSVG_ doesn't seem to like RGBA)
 
 - [ ] _guidelines_
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) warn if duplicate offset
+      - (?) `new guide horizontal h1+10mm` (i.e. optional vertical/horizontal)
 
 - [ ] _inputs_
       - [ ] discard/warn duplicates
