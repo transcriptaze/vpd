@@ -50,6 +50,7 @@ module.exports = grammar({
         seq('name', $.name),
         seq('x',    alias($._x_attr, $.x)),
         seq('y',    alias($._y_attr, $.y)),
+        seq('xy',   alias($._xy_attr, $.xy)),
         seq('part', $.part),
       )
     ),
@@ -72,13 +73,43 @@ module.exports = grammar({
       ),
     ),
 
+    _xy_attr: $ => seq(
+      choice(
+        $._absolute_xy_attr,
+        $._relative_xy_attr,
+        $._geometry_xy_attr,
+        $._guide_xy_attr,
+      ),
+    ),
+
     _absolute_attr: $ => seq(
       alias('@',$.absolute),
-      alias(/[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _absolute_x_attr: $ => seq(
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _absolute_y_attr: $ => seq(
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _absolute_xy_attr: $ => seq(
+      alias('@',$.absolute),
+      alias($._absolute_x_attr, $.x),
+      ',',
+      alias($._absolute_y_attr, $.y),
     ),
 
     _relative_attr: $ => seq(
-      alias(/[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _relative_xy_attr: $ => seq(
+      alias($._relative_attr, $.x),
+      ',',
+      alias($._relative_attr, $.y),
     ),
 
     _geometry_x_attr: $ => seq(
@@ -90,7 +121,7 @@ module.exports = grammar({
           'right',
         ), $.reference),
       optional(
-        alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
       ),
     ),
 
@@ -102,8 +133,14 @@ module.exports = grammar({
           'bottom',
         ), $.reference),
       optional(
-        alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
       ),
+    ),
+
+    _geometry_xy_attr: $ => seq(
+      alias($._geometry_x_attr,$.x),
+      ',',
+      alias($._geometry_y_attr,$.y),
     ),
 
     _guide_attr: $ => seq(
@@ -111,6 +148,12 @@ module.exports = grammar({
       optional(
         alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
       ),
+    ),
+
+    _guide_xy_attr: $ => seq(
+      alias($._guide_attr,$.x),
+      ',',
+      alias($._guide_attr,$.y),
     ),
 
 

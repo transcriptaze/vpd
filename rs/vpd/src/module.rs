@@ -357,6 +357,13 @@ impl Module {
         let old = format!("{}<{}>", tag, from);
         let new = format!("{}<{}>", tag, to);
 
+        // FIXME migrate inputs
+        // FIXME migrate outputs
+        // FIXME migrate parameters
+        // FIXME migrate lights
+        // FIXME migrate widgets
+        // FIXME migrate labels
+
         for v in &mut self.panel.decorations {
             v.migrate(&old, &new);
         }

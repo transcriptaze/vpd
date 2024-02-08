@@ -215,6 +215,24 @@
               "members": [
                 {
                   "type": "STRING",
+                  "value": "xy"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_xy_attr"
+                  },
+                  "named": true,
+                  "value": "xy"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
                   "value": "part"
                 },
                 {
@@ -279,6 +297,32 @@
         }
       ]
     },
+    "_xy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_absolute_xy_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_relative_xy_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_geometry_xy_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_guide_xy_attr"
+            }
+          ]
+        }
+      ]
+    },
     "_absolute_attr": {
       "type": "SEQ",
       "members": [
@@ -295,10 +339,74 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)?"
+            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H|h)?"
           },
           "named": true,
           "value": "offset"
+        }
+      ]
+    },
+    "_absolute_x_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H|h)?"
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "_absolute_y_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H|h)?"
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "_absolute_xy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@"
+          },
+          "named": true,
+          "value": "absolute"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_absolute_x_attr"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_absolute_y_attr"
+          },
+          "named": true,
+          "value": "y"
         }
       ]
     },
@@ -309,10 +417,37 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "[0-9]+(?:\\.[0-9]*)?(mm|H)?"
+            "value": "[+-]?[0-9]+(?:\\.[0-9]*)?(mm|H|h)?"
           },
           "named": true,
           "value": "offset"
+        }
+      ]
+    },
+    "_relative_xy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_relative_attr"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_relative_attr"
+          },
+          "named": true,
+          "value": "y"
         }
       ]
     },
@@ -352,7 +487,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "PATTERN",
-                "value": "[+-][0-9]+(?:\\.[0-9]*)?(mm|H)?"
+                "value": "[+-]?[0-9]+(?:\\.[0-9]*)?(mm|H)?"
               },
               "named": true,
               "value": "offset"
@@ -396,7 +531,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "PATTERN",
-                "value": "[+-][0-9]+(?:\\.[0-9]*)?(mm|H)?"
+                "value": "[+-]?[0-9]+(?:\\.[0-9]*)?(mm|H)?"
               },
               "named": true,
               "value": "offset"
@@ -405,6 +540,33 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_geometry_xy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_geometry_x_attr"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_geometry_y_attr"
+          },
+          "named": true,
+          "value": "y"
         }
       ]
     },
@@ -436,6 +598,33 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_guide_xy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_guide_attr"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_guide_attr"
+          },
+          "named": true,
+          "value": "y"
         }
       ]
     },

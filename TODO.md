@@ -53,11 +53,11 @@
 
 - [ ] _inputs_
       - [ ] discard/warn duplicates
-      - [ ] set
+      - [x] set
             - [x] name
             - [x] x
             - [x] y
-            - [ ] xy
+            - [x] xy
             - [x] part
 
 - [ ] _outputs_

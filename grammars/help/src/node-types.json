@@ -639,6 +639,10 @@
           "named": true
         },
         {
+          "type": "xy",
+          "named": true
+        },
+        {
           "type": "y",
           "named": true
         }
@@ -946,6 +950,10 @@
   },
   {
     "type": "x",
+    "named": false
+  },
+  {
+    "type": "xy",
     "named": false
   },
   {

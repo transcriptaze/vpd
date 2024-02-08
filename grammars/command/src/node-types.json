@@ -875,6 +875,10 @@
           "named": true
         },
         {
+          "type": "xy",
+          "named": true
+        },
+        {
           "type": "y",
           "named": true
         }
@@ -1008,6 +1012,29 @@
         },
         {
           "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "xy",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -1266,6 +1293,10 @@
   },
   {
     "type": "x",
+    "named": false
+  },
+  {
+    "type": "xy",
     "named": false
   },
   {

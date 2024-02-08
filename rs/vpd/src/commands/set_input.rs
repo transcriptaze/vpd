@@ -5,7 +5,7 @@ use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct SetInput {
     id: String,
     name: Option<String>,

@@ -601,12 +601,13 @@ _Command options:_
 ```
 id          Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
 name        Name of input.
-attribute   Input attribute (name,x,y or part)
+attribute   Input attribute - one of name,x,y,xy or part
 value       New attribute value.
 ```
 
 _Notes:_
-1. Other components, labels and decorations that reference the _input_ by name are migrated automatically.
+1. Other components, labels and decorations that reference the _input_ by name are migrated automatically when the `name`
+   of the input is changed.
 
 _Examples:_
 ```
@@ -614,6 +615,8 @@ set input i1   name 'FREQ'
 set input freq name 'FREQ'
 set input freq x v1+10mm
 set input freq y @55.5mm
+set input freq x v1+10mm
+set input freq xy v1,h1
 set input freq part PJ301M
 set input freq part none
 ```

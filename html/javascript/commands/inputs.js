@@ -85,6 +85,49 @@ export function setInput (node, src) {
       }
     }
 
+    if (child.type === 'xy') {
+      object.input.x = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      object.input.y = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.input.x.reference = 'absolute'
+          object.input.y.reference = 'absolute'
+        }
+
+        if (v.type === 'x') {
+          for (const u of v.namedChildren) {
+            if (u.type === 'reference') {
+              object.input.x.reference = identifier(u)
+            }
+
+            if (u.type === 'offset') {
+              object.input.x.offset = mm(v)
+            }
+          }
+        }
+
+        if (v.type === 'y') {
+          for (const u of v.namedChildren) {
+            if (u.type === 'reference') {
+              object.input.y.reference = identifier(u)
+            }
+
+            if (u.type === 'offset') {
+              object.input.y.offset = mm(v)
+            }
+          }
+        }
+      }
+    }
+
     if (child.type === 'part') {
       object.input.part = string(child) === 'none' ? '' : string(child)
     }
