@@ -135,6 +135,26 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'output', 'identifier', 'name'],
+    help: ['set', 'output', ID, `name ${NAME}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'x'],
+    help: ['set', 'output', ID, `x ${X}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'y'],
+    help: ['set', 'output', ID, `y ${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'part'],
+    help: ['set', 'output', ID, `part ${PART}`],
+    min: 1
+  },
+  {
     command: ['set', 'background', 'none'],
     help: ['set', 'background', 'none'],
     min: 1
@@ -297,6 +317,11 @@ const COMMANDS = [
   {
     command: ['export', 'panel', 'svg', 'dark'],
     help: ['export', 'panel', 'svg', 'dark'],
+    min: 1
+  },
+  {
+    command: ['export', 'panel', 'header'],
+    help: ['export', 'panel', '.h'],
     min: 1
   }
 ]

@@ -19,9 +19,9 @@
 
 - [ ] Export header file
       - [x] UI button
-      - [ ] Command
-      - [ ] Help
-      - [ ] JS
+      - [x] Command
+      - [x] Help
+      - [x] JS
       - [ ] RS
 
 
@@ -58,11 +58,13 @@
 - [x] _inputs_
       - [x] discard/warn duplicates
       - [x] set
+      - [ ] migrate
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
-      - [ ] set
+      - [x] set
       - [ ] help
+      - [ ] migrate
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates

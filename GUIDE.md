@@ -2,20 +2,20 @@
 
 **Contents**
 
-| General                             | Commands                                |                                           |                                   |                                           |                                                 |
-|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|-------------------------------------------------|
-| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute) |
-| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         |                                                 |
-| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   |                                                 |
-|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           |                                                 |
-| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |                                                 |
-|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                 |
-|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                 |
-|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                 |
-|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                 |
-|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                 |
-|   - [_Command area_](#command-area) | [`export panel`](#export-panel)         |                                           |                                   |                                           |                                                 |
-|                                     |                                         |                                           |                                   |                                           |                                                 |
+| General                             | Commands                                |                                           |                                   |                                           |                                                   |
+|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|---------------------------------------------------|
+| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute)   |
+| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute) |
+| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   |                                                   |
+|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           |                                                   |
+| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |                                                   |
+|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                   |
+|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                   |
+|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                   |
+|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                   |
+|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                   |
+|   - [_Command area_](#command-area) | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                   |
+|                                     | [`export panel .h`](#export-panel-h)    |                                           |                                   |                                           |                                                   |
 
 ## Getting started
 
@@ -676,6 +676,36 @@ delete output o1
 delete output left
 ```   
 
+#### `set output <attribute>`
+
+```set output <id|name> <attribute> <value>```
+
+Changes the value of an output attribute.
+
+_Command options:_
+```
+id          Identifier of the output to delete (the identifier is the automatically generated ID assigned to the output)
+name        Name of output.
+attribute   Output attribute - one of name,x,y,xy or part
+value       New attribute value.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _output_ by name are migrated automatically when the `name`
+   of the output is changed.
+
+_Examples:_
+```
+set output o1   name 'LEFT'
+set output left name 'RIGHT'
+set output left x v1+10mm
+set output left y @55.5mm
+set output left x v1+10mm
+set output left xy v1,h1
+set output left part PJ301M
+set output left part none
+```
+
 --- 
 #### `new parameter`
 
@@ -1042,7 +1072,7 @@ save script timestamp
 ````
 
 
-#### `export panel`
+#### `export panel svg`
 
 ```export panel svg [light|dark]```
 
@@ -1064,5 +1094,25 @@ _Examples:_
 export panel svg
 export panel svg light
 export panel svg dark
+````
+
+#### `export panel .h`
+
+```export panel .h```
+
+Exports the panel layout as a C++ .h file with the component locations..
+
+_Command options:_
+```
+.h     (required) exports header file
+dark   (optional) exports the dark themed SVG
+```
+
+_Notes:_
+1. Non-alphanumeric characters in the module name are replaced with underscores.
+
+_Examples:_
+```
+export panel .h
 ````
 

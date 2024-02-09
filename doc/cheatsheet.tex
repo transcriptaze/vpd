@@ -1,5 +1,5 @@
 \documentclass[a4paper,10pt,oneside,dvipsnames]{article}
-\usepackage[landscape,left=1.5cm,right=1.5cm,top=1cm,bottom=1.5cm]{geometry}
+\usepackage[landscape,left=1.25cm,right=1.25cm,top=1cm,bottom=1.5cm]{geometry}
 \usepackage{tcolorbox}
 \usepackage{fontspec}
 \usepackage{tabularx}
@@ -76,10 +76,11 @@
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}[width=7.5cm,colframe=blue,title=outputs]
+    \begin{tcolorbox}[width=10cm,colframe=blue,title=outputs]
       \begin{flushleft}
       new output \textit{<name>} \textit{<xy>} \textit{[part]} \\
       delete output \textit{<id>|<name>} \\
+      set output \textit{<id>|<name>} name|x|y|xy|part \textit{<value>}\\
       \end{flushleft}
     \end{tcolorbox}
 
@@ -113,8 +114,8 @@
     
     \begin{tcolorbox}[width=10cm,colframe=BurntOrange,title=decorations]
       \begin{flushleft}
-      decorate (\textit{<component> <id> <offset>}) with \textit{<decoration>}\\
-      \-\hspace{3.25cm} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
+      decorate (\textit{<component> <id> <offset>}) \\
+      \-\hspace{0.7cm} with \textit{<decoration>} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
       \vspace{0.25cm}
       delete decoration \textit{<id>|(<component> <id>) <name>} \\
       \end{flushleft}
@@ -125,13 +126,16 @@
   % right
   \begin{minipage}[t]{7.5cm}
     \vspace{0pt}
-    \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save]
+    \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save/export]
       \begin{flushleft}
         load project \\
         load script \\
         \vspace{0.25cm}
         save project \textit{[timestamp]} \textit{[gzip]} \\
         save script \textit{[timestamp]} \\
+        \vspace{0.25cm}
+        export panel svg \textit{[light|dark]} \\
+        export panel .h \\
       \end{flushleft}
     \end{tcolorbox}
 

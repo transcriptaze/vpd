@@ -18,6 +18,7 @@ use crate::commands::SetBackground;
 use crate::commands::SetInput;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
+use crate::commands::SetOutput;
 
 use crate::commands::DeleteDecoration;
 use crate::commands::DeleteGuide;
@@ -40,10 +41,6 @@ pub trait Command {
     }
 
     fn apply(&self, m: &mut Module);
-
-    // fn new(data: &str) -> Result<Self, Box<dyn Error>>;
-    // where
-    //     Self: Sized;
 }
 
 pub struct Wrapper {
@@ -80,15 +77,6 @@ struct Entity {}
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Attr {}
-
-// fn create_command_and_wrapper<T: Command>(
-//     json: &str,
-//     src: Option<String>,
-// ) -> Result<T, Box<dyn Error>> {
-//     let command = T::new(json)?;
-//     // let boxed = Box::new(command) as Box<dyn Command>;
-//     // Ok(Wrapper::new(boxed, src))
-// }
 
 pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
@@ -183,6 +171,10 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.input.is_some() {
         return Ok(Box::new(SetInput::new(json)?));
+    }
+
+    if v.output.is_some() {
+        return Ok(Box::new(SetOutput::new(json)?));
     }
 
     return Err("invalid 'set' command".into());

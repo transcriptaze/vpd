@@ -286,3 +286,241 @@ delete output 'left 1'
       (identifier))))
 
 
+=======================
+set output o1 name fghi
+=======================
+set output o1 name fghi
+---
+(command
+  (set
+    (output
+      (identifier))
+    (name)))
+
+
+==============================
+set output 'left' name 'right'
+==============================
+set output 'left' name 'right'
+---
+(command
+  (set
+    (output
+      (identifier))
+    (name)))
+
+
+==============================
+set output "left" name "right"
+==============================
+set output "left" name "right"
+---
+(command
+  (set
+    (output
+      (identifier))
+    (name)))
+
+
+=========================
+set output 'left' x @10mm
+=========================
+set output 'left' x @10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (x
+      (absolute)
+      (offset))))
+
+
+========================
+set output 'left' x 10mm
+========================
+set output 'left' x 10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (x
+      (offset))))
+
+
+=============================
+set output 'left' x left+10mm
+=============================
+set output 'left' x left+10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+===========================
+set output 'left' x v1+10mm
+===========================
+set output 'left' x v1+10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+=========================
+set output 'left' y @10mm
+=========================
+set output 'left' y @10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (y
+      (absolute)
+      (offset))))
+
+
+========================
+set output 'left' y 10mm
+========================
+set output 'left' y 10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (y
+      (offset))))
+
+
+============================
+set output 'left' y top+10mm
+============================
+set output 'left' y top+10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===========================
+set output 'left' y h1+10mm
+===========================
+set output 'left' y h1+10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===============================
+set output 'left' xy @10mm,10mm
+===============================
+set output 'left' xy @10mm,10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (xy
+      (absolute)
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==============================
+set output 'left' xy 10mm,10mm
+==============================
+set output 'left' xy 10mm,10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (xy
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==========================================
+set output 'left' xy left+10mm,middle+10mm
+==========================================
+set output 'left' xy left+10mm,middle+10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+====================================
+set output 'left' xy v1+10mm,h2+10mm
+====================================
+set output 'left' xy v1+10mm,h2+10mm
+---
+(command
+  (set
+    (output
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+===============================
+set output 'left' part 'PJ301M'
+===============================
+set output 'left' part 'PJ301M'
+---
+(command
+  (set
+    (output
+      (identifier))
+    (part)))
+
+
+===========================
+set output 'left' part none
+===========================
+set output 'left' part none
+---
+(command
+  (set
+    (output
+      (identifier))
+    (part)))
+

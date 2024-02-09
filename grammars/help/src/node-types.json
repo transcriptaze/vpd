@@ -296,6 +296,16 @@
     }
   },
   {
+    "type": "header",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "input",
     "named": true,
     "fields": {},
@@ -498,6 +508,10 @@
       "required": false,
       "types": [
         {
+          "type": "header",
+          "named": true
+        },
+        {
           "type": "svg",
           "named": true
         }
@@ -628,6 +642,10 @@
         },
         {
           "type": "origin",
+          "named": true
+        },
+        {
+          "type": "output",
           "named": true
         },
         {
@@ -777,6 +795,10 @@
     "named": false
   },
   {
+    "type": ".h",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
   },
@@ -830,15 +852,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
-  },
-  {
-    "type": "identifier",
-    "named": true
+    "named": false
   },
   {
     "type": "input",
