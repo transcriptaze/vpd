@@ -14,23 +14,28 @@
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
 - [ ] Save .h file
-- [x] Clean script on new module
-- [x] Allow 'out' for component names
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
+
 - [ ] Export header file
+      - [x] UI button
+      - [ ] Command
+      - [ ] Help
+      - [ ] JS
+      - [ ] RS
 
 
 ### Overlay
 - [x] panel screws
 - [ ] Only add used widgets to defs
+- [ ] Fix scaling for _RoundBlackKnob_
 
 
 ### Fonts 
 - [x] fetch preloaded fonts on startup
-- [ ] lazy fetch
 - [x] _woff_
 - [ ] _woff2_
+- [ ] lazy fetch
 - [ ] Load/drop font file
 - [ ] `load font...`
 
@@ -42,7 +47,6 @@
 - [x] _module_
 - [x] _help_
 - [x] _background_
-      - [x] Replace RGBA alpha with stop-opacity
 
 - [ ] _guidelines_
       - [ ] `set`
@@ -51,14 +55,9 @@
       - (?) warn if duplicate offset
       - (?) `new guide horizontal h1+10mm` (i.e. optional vertical/horizontal)
 
-- [ ] _inputs_
-      - [ ] discard/warn duplicates
+- [x] _inputs_
+      - [x] discard/warn duplicates
       - [x] set
-            - [x] name
-            - [x] x
-            - [x] y
-            - [x] xy
-            - [x] part
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
