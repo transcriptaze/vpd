@@ -276,7 +276,7 @@ main {
 
     div.files {
       display: grid;
-      grid-template-columns: repeat(2,auto);
+      grid-template-columns: repeat(3,auto);
       grid-template-rows: repeat(2,auto);
       grid-auto-flow: row;
       grid-row-gap: 4px;
@@ -289,9 +289,14 @@ main {
       }
 
       button.light {
+        grid-column: 1;
         img {
           filter: invert(100%) sepia(3%) saturate(7500%) hue-rotate(195deg) brightness(102%) contrast(104%);        
         }
+      }
+
+      button.include {
+        font-size: 18px;
       }
     }
 
@@ -303,6 +308,7 @@ main {
       grid-row-gap: 4px;
       grid-column-gap: 4px;
 
+      width: fit-content;
       margin-bottom: 8px;
 
       button img {
@@ -318,9 +324,11 @@ main {
       display: grid;
       grid-template-columns: repeat(2,auto);
       grid-template-rows: repeat(5,auto);
-      grid-auto-flow: column;
+      grid-auto-flow: row;
       grid-row-gap: 4px;
       grid-column-gap: 4px;
+
+      width: fit-content;
     }
 
     div.trash {

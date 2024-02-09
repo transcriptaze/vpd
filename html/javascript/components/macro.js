@@ -55,8 +55,9 @@ export class MacroKey extends HTMLElement {
   set label (v) {
     const shadow = this.shadowRoot
     const button = shadow.querySelector('button')
+    const label = button.querySelector('div.label')
 
-    button.innerHTML = `${v}`
+    label.innerHTML = `${v}`
   }
 
   /* eslint-disable-next-line accessor-pairs */
