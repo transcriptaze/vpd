@@ -42,7 +42,7 @@
 - [x] _module_
 - [x] _help_
 - [x] _background_
-      - [ ] Replace RGBA alpha with opacity (_NanoSVG_ doesn't seem to like RGBA)
+      - [x] Replace RGBA alpha with stop-opacity
 
 - [ ] _guidelines_
       - [ ] `set`
