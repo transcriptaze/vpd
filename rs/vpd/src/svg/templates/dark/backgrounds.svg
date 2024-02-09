@@ -1,15 +1,15 @@
 {% macro bg(name) %}
 {%- if name == 'default' %}
     <linearGradient id="default">
-      <stop offset="0%"   stop-color="#222222" />
-      <stop offset="100%" stop-color="#222222" />
+      <stop offset="0%"   stop-color="#222222" stop-opacity="1" />
+      <stop offset="100%" stop-color="#222222" stop-opacity="1" />
     </linearGradient>
 {% endif %}
 
 {%- if name == 'fundamental' %}
     <linearGradient id="fundamental">
-      <stop offset="0%"   stop-color="#2a2a2b" />
-      <stop offset="100%" stop-color="#171717" />
+      <stop offset="0%"   stop-color="#2a2a2b" stop-opacity="1" />
+      <stop offset="100%" stop-color="#171717" stop-opacity="1" />
     </linearGradient>
 {% endif %}
 {% endmacro default %}
@@ -22,7 +22,7 @@
     {% for v in backgrounds %}
     <linearGradient id="{{ v.id }}">
       {% for stop in v.stops -%}
-      <stop offset="{{ stop.offset }}%" stop-color="{{ stop.colour }}" />
+      <stop offset="{{ stop.offset }}%" stop-color="{{ stop.colour }}" stop-opacity="{{ stop.opacity }}" />
       {% endfor %}
     </linearGradient>
     {%- endfor %}

@@ -42,7 +42,7 @@ impl NewDecoration {
 }
 
 impl Command for NewDecoration {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         let id = m.new_decoration_id();
         let x = panel::X::new(&self.reference, self.offset.x);
         let y = panel::Y::new(&self.reference, self.offset.y);
@@ -56,12 +56,5 @@ impl Command for NewDecoration {
             self.scale,
             &panel::Stretch::new(self.stretch.x, self.stretch.y),
         ));
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

@@ -1,5 +1,11 @@
 let parser
 
+const ID = '<em>&lt;id&gt;</em>'
+const NAME = '<em>&lt;name&gt;</em>'
+const PART = '<em>&lt;part&gt;</em>'
+const X = '<em>&lt;x&gt;</em>'
+const Y = '<em>&lt;y&gt;</em>'
+
 export async function init (Parser) {
   const grammar = await Parser.Language.load('../wasm/grammars/tree-sitter-help.wasm')
 
@@ -10,7 +16,7 @@ export async function init (Parser) {
 const COMMANDS = [
   {
     command: ['new', 'module'],
-    help: ['new', 'module', '<em>&lt;name&gt;</em>'],
+    help: ['new', 'module', `${NAME}`],
     min: 3
   },
   {
@@ -106,6 +112,26 @@ const COMMANDS = [
   {
     command: ['set', 'module', 'width'],
     help: ['set', 'module', 'width <em>&lt;width&gt;</em>'],
+    min: 1
+  },
+  {
+    command: ['set', 'input', 'identifier', 'name'],
+    help: ['set', 'input', ID, `name ${NAME}`],
+    min: 1
+  },
+  {
+    command: ['set', 'input', 'identifier', 'x'],
+    help: ['set', 'input', ID, `x ${X}`],
+    min: 1
+  },
+  {
+    command: ['set', 'input', 'identifier', 'y'],
+    help: ['set', 'input', ID, `y ${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'input', 'identifier', 'part'],
+    help: ['set', 'input', ID, `part ${PART}`],
     min: 1
   },
   {

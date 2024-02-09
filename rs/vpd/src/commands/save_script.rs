@@ -23,14 +23,12 @@ impl SaveScript {
 }
 
 impl Command for SaveScript {
-    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         let timestamp = match self.timestamp {
             Some(v) => v,
             _ => false,
         };
 
         m.save_script(timestamp);
-
-        false
     }
 }

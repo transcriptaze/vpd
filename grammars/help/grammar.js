@@ -70,6 +70,7 @@ module.exports = grammar({
           $.origin,
           alias($._module_attr,$.module),
           $.background,
+          $._input_attr,
         ),
       )
     ),
@@ -81,6 +82,73 @@ module.exports = grammar({
           seq('name', $.name),
           seq('height', $.height),
           seq('width', $.width),
+        ),
+      ),
+    ),
+
+    _input_attr: $ => seq(
+      alias($._input_id, $.input),
+      optional(
+        choice(
+          seq('name', optional($.name)),
+          seq('x',    optional(alias($._x_attr, $.x))),
+          seq('y',    optional(alias($._y_attr, $.y))),
+          seq('xy',   optional(alias($._xy_attr, $.xy))),
+          seq('part', optional($.part)),
+        ),
+      ),
+    ),
+
+    _x_attr: $ => choice(
+      seq('@',/[0-9]+([.][0-9]*)?(mm|H)?/),
+      /[0-9]+([.][0-9]*)?(mm|H)?/,
+      seq(
+          choice('left', 'centre','center', 'right'),
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+      seq(
+          /[a-z][a-z0-9]*/,
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+    ),
+
+    _y_attr: $ => choice(
+      seq('@',/[0-9]+([.][0-9]*)?(mm|H)?/),
+      /[0-9]+([.][0-9]*)?(mm|H)?/,
+      seq(
+          choice('top', 'middle', 'bottom'),
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+      seq(
+          /[a-z][a-z0-9]*/,
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+        ),
+    ),
+
+    _xy_attr: $ => seq(
+      choice(
+        seq('@',/[0-9]+([.][0-9]*)?(mm|H)?/),
+        /[0-9]+([.][0-9]*)?(mm|H)?/,
+        seq(
+            choice('left', 'centre','center', 'right'),
+            optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+          ),
+        seq(
+            /[a-z][a-z0-9]*/,
+            optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+          ),
+      ),
+      ',',
+      choice(
+        seq('@',/[0-9]+([.][0-9]*)?(mm|H)?/),
+        /[0-9]+([.][0-9]*)?(mm|H)?/,
+        seq(
+            choice('top', 'middle', 'bottom'),
+            optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
+          ),
+        seq(
+          /[a-z][a-z0-9]*/,
+          optional(/[+-][0-9]+([.][0-9]*)?(mm|H)?/),
         ),
       ),
     ),

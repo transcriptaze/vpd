@@ -1,5 +1,5 @@
 {
-  "version": "v0.0.0",
+  "version": 1,
   "name": "bodacious",
   "panel": {
     "width": 50.8,
@@ -374,33 +374,12 @@
       }
     },
     "guides": {
-      "v2": {
+      "v1": {
         "x": {
-          "reference": "v1",
-          "offset": 12.7
+          "reference": "absolute",
+          "offset": 10.16
         },
         "y": null
-      },
-      "h1": {
-        "x": null,
-        "y": {
-          "reference": "absolute",
-          "offset": 20.32
-        }
-      },
-      "h2": {
-        "x": null,
-        "y": {
-          "reference": "h1",
-          "offset": 15.24
-        }
-      },
-      "h3": {
-        "x": null,
-        "y": {
-          "reference": "top",
-          "offset": 10.16
-        }
       },
       "h4": {
         "x": null,
@@ -409,23 +388,65 @@
           "offset": -15.24
         }
       },
-      "v1": {
-        "x": {
-          "reference": "absolute",
-          "offset": 10.16
-        },
-        "y": null
-      },
       "v3": {
         "x": {
           "reference": "right",
           "offset": -10.16
         },
         "y": null
+      },
+      "v2": {
+        "x": {
+          "reference": "v1",
+          "offset": 12.7
+        },
+        "y": null
+      },
+      "h2": {
+        "x": null,
+        "y": {
+          "reference": "h1",
+          "offset": 15.24
+        }
+      },
+      "h1": {
+        "x": null,
+        "y": {
+          "reference": "absolute",
+          "offset": 20.32
+        }
+      },
+      "h3": {
+        "x": null,
+        "y": {
+          "reference": "top",
+          "offset": 10.16
+        }
       }
     }
   },
   "script": [
+    "new module \"quickstart\" 1U 9H",
+    "new guide vertical +15.24mm",
+    "new guide horizontal +15.24mm",
+    "new input \"e\" v1,h1 PJ301M",
+    "decorate (input \"e\") with CircularGraduations",
+    "new output \"u\" right-10.16mm,bottom-25.4mm PJ301M",
+    "new parameter \"E\" @25.24mm,15.24mm RoundBlackKnob",
+    "new light \"on\" v1+4.5mm,h1+12.5mm",
+    "new widget \"channels\" centre+12.8mm,middle \"Channels\"",
+    "set input i2 x @40mm",
+    "new input \"pqr\" v1+5.08,h1",
+    "delete input i2",
+    "new input \"pqr\" v1+5.08mm,h1+25.4mm PJ301M",
+    "set input i2 x @40mm",
+    "set input i2 x v1",
+    "set input i2 x 40",
+    "set input i2 x v1",
+    "set input i2 x v1",
+    "set input i2 x v1 @25mm",
+    "set input i2 y 100mm",
+    "set input i2 y 50mm",
     "new module \"bodacious\" 1U 10H",
     "new guide vertical @10.16mm",
     "new guide v1+12.7mm",
@@ -441,6 +462,8 @@
     "new output \"right\" v3,h4         PJ301M",
     "new parameter \"volume\" v2,h1 RoundBlackKnob",
     "new parameter \"distortion\" v2,h2 RoundBlackKnob",
+    "new light \"ok\" centre,middle LED",
+    "new light \"recording\" centre,middle+12.7mm LED",
     "new widget \"channels\" @40.64mm,20.32mm square",
     "new label \"Thing 1\" centre,h3 \"StyleScript-Regular\" 16pt centre,baseline #c000ff,#00e000",
     "new label \"FREQ\"  (input  \"frequency\"+0mm,-5.08mm) \"RobotoCondensed-Regular\" 8pt centre,baseline",

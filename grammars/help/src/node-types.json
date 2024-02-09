@@ -607,7 +607,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -615,11 +615,35 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
           "type": "module",
           "named": true
         },
         {
+          "type": "name",
+          "named": true
+        },
+        {
           "type": "origin",
+          "named": true
+        },
+        {
+          "type": "part",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "xy",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -869,6 +893,10 @@
     "named": false
   },
   {
+    "type": "part",
+    "named": false
+  },
+  {
     "type": "project",
     "named": false
   },
@@ -918,6 +946,18 @@
   },
   {
     "type": "with",
+    "named": false
+  },
+  {
+    "type": "x",
+    "named": false
+  },
+  {
+    "type": "xy",
+    "named": false
+  },
+  {
+    "type": "y",
     "named": false
   }
 ]

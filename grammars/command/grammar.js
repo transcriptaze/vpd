@@ -31,6 +31,7 @@ module.exports = grammar({
         $.origin,
         $.background,
         alias($._module_attr,$.module),
+        $._input_attr,
       )
     ),
 
@@ -42,6 +43,119 @@ module.exports = grammar({
         seq('width', $.width),
       )
     ),
+
+    _input_attr: $ => seq(
+      alias($._input_id, $.input),
+      choice(
+        seq('name', $.name),
+        seq('x',    alias($._x_attr, $.x)),
+        seq('y',    alias($._y_attr, $.y)),
+        seq('xy',   alias($._xy_attr, $.xy)),
+        seq('part', $.part),
+      )
+    ),
+
+    _x_attr: $ => seq(
+      choice(
+        $._absolute_attr,
+        $._relative_attr,
+        $._geometry_x_attr,
+        $._guide_attr,
+      ),
+    ),
+
+    _y_attr: $ => seq(
+      choice(
+        $._absolute_attr,
+        $._relative_attr,
+        $._geometry_y_attr,
+        $._guide_attr,
+      ),
+    ),
+
+    _xy_attr: $ => seq(
+      choice(
+        $._absolute_xy_attr,
+        $._relative_xy_attr,
+        $._geometry_xy_attr,
+        $._guide_xy_attr,
+      ),
+    ),
+
+    _absolute_attr: $ => seq(
+      alias('@',$.absolute),
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _absolute_x_attr: $ => seq(
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _absolute_y_attr: $ => seq(
+      alias(/[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _absolute_xy_attr: $ => seq(
+      alias('@',$.absolute),
+      alias($._absolute_x_attr, $.x),
+      ',',
+      alias($._absolute_y_attr, $.y),
+    ),
+
+    _relative_attr: $ => seq(
+      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _relative_xy_attr: $ => seq(
+      alias($._relative_attr, $.x),
+      ',',
+      alias($._relative_attr, $.y),
+    ),
+
+    _geometry_x_attr: $ => seq(
+      alias(
+        choice (
+          'left',
+          'centre',
+          'center',
+          'right',
+        ), $.reference),
+      optional(
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      ),
+    ),
+
+    _geometry_y_attr: $ => seq(
+      alias(
+        choice (
+          'top',
+          'middle',
+          'bottom',
+        ), $.reference),
+      optional(
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      ),
+    ),
+
+    _geometry_xy_attr: $ => seq(
+      alias($._geometry_x_attr,$.x),
+      ',',
+      alias($._geometry_y_attr,$.y),
+    ),
+
+    _guide_attr: $ => seq(
+      alias(/[a-zA-Z][a-zA-Z0-9]*/, $.reference),
+      optional(
+        alias(/[+-][0-9]+(?:\.[0-9]*)?(mm|H)?/, $.offset),
+      ),
+    ),
+
+    _guide_xy_attr: $ => seq(
+      alias($._guide_attr,$.x),
+      ',',
+      alias($._guide_attr,$.y),
+    ),
+
 
     // ... decorate
     decorate: $ => seq(

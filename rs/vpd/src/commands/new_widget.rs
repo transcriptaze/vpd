@@ -29,18 +29,11 @@ impl NewWidget {
 }
 
 impl Command for NewWidget {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         let id = m.new_widget_id();
 
         m.panel.widgets.push(panel::Widget::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

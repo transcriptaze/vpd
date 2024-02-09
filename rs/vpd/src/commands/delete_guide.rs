@@ -23,14 +23,7 @@ impl DeleteGuide {
 }
 
 impl Command for DeleteGuide {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         m.panel.guides.remove(&self.id);
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

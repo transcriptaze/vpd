@@ -51,6 +51,10 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
             let mut state = STATE.lock().unwrap();
             let module = &mut state.module;
 
+            if let Some(err) = cmd.validate(module) {
+                return Err(JsValue::from(format!("{}", err)));
+            }
+
             if cmd.apply(module) {
                 let info = module.info();
                 let object = serde_json::to_string(&info).unwrap();

@@ -25,7 +25,7 @@ impl DeleteDecoration {
 }
 
 impl Command for DeleteDecoration {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         if let Some(id) = &self.id {
             let mut it = m.panel.decorations.iter();
 
@@ -44,12 +44,5 @@ impl Command for DeleteDecoration {
                 _ => {}
             }
         }
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

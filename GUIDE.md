@@ -2,21 +2,20 @@
 
 **Contents**
 
-| General                             | Commands                                |                                           |                                   |                                           |
-|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|
-| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           |
-| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         |
-| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   |
-|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           |
-| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |
-|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |
-|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |
-|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |
-|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         |                                           |                                   |                                           |
-|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           | [`set background`](#set-background)       |                                   |                                           |
-|   - [_Command area_](#command-area) |                                         |                                           |                                   |                                           |
-|                                     | [`export panel`](#export-panel)         |                                           |                                   |                                           |
-|                                     |                                         |                                           |                                   |                                           |
+| General                             | Commands                                |                                           |                                   |                                           |                                                 |
+|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|-------------------------------------------------|
+| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute) |
+| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         |                                                 |
+| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   |                                                 |
+|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           |                                                 |
+| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |                                                 |
+|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                 |
+|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                 |
+|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                 |
+|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                 |
+|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                 |
+|   - [_Command area_](#command-area) | [`export panel`](#export-panel)         |                                           |                                   |                                           |                                                 |
+|                                     |                                         |                                           |                                   |                                           |                                                 |
 
 ## Getting started
 
@@ -537,7 +536,6 @@ set background fundamental
 ````
 
 --- 
-
 #### `new input`
 
 ```new input <name> <xy> [part]```
@@ -592,6 +590,36 @@ _Examples_
 delete input i1
 delete input audio
 ```   
+
+#### `set input <attribute>`
+
+```set input <id|name> <attribute> <value>```
+
+Changes the value of an input attribute.
+
+_Command options:_
+```
+id          Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
+name        Name of input.
+attribute   Input attribute - one of name,x,y,xy or part
+value       New attribute value.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _input_ by name are migrated automatically when the `name`
+   of the input is changed.
+
+_Examples:_
+```
+set input i1   name 'FREQ'
+set input freq name 'FREQ'
+set input freq x v1+10mm
+set input freq y @55.5mm
+set input freq x v1+10mm
+set input freq xy v1,h1
+set input freq part PJ301M
+set input freq part none
+```
 
 --- 
 #### `new output`

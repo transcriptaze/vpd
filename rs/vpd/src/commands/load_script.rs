@@ -21,8 +21,7 @@ impl LoadScript {
 }
 
 impl Command for LoadScript {
-    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         m.load_script();
-        false
     }
 }

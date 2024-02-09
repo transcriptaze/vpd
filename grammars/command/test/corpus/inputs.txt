@@ -309,3 +309,243 @@ delete input 'audio 1'
   (delete
     (input
       (identifier))))
+
+
+======================
+set input i1 name fghi
+======================
+set input i1 name fghi
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))
+
+
+================================
+set input 'audio' name 'audio-2'
+================================
+set input 'audio' name 'audio-2'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))
+
+
+================================
+set input "audio" name "audio-2"
+================================
+set input "audio" name "audio-2"
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))
+
+
+=========================
+set input 'audio' x @10mm
+=========================
+set input 'audio' x @10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (absolute)
+      (offset))))
+
+
+========================
+set input 'audio' x 10mm
+========================
+set input 'audio' x 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (offset))))
+
+
+=============================
+set input 'audio' x left+10mm
+=============================
+set input 'audio' x left+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+===========================
+set input 'audio' x v1+10mm
+===========================
+set input 'audio' x v1+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+=========================
+set input 'audio' y @10mm
+=========================
+set input 'audio' y @10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (absolute)
+      (offset))))
+
+
+========================
+set input 'audio' y 10mm
+========================
+set input 'audio' y 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (offset))))
+
+
+============================
+set input 'audio' y top+10mm
+============================
+set input 'audio' y top+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===========================
+set input 'audio' y h1+10mm
+===========================
+set input 'audio' y h1+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===============================
+set input 'audio' xy @10mm,10mm
+===============================
+set input 'audio' xy @10mm,10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (xy
+      (absolute)
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==============================
+set input 'audio' xy 10mm,10mm
+==============================
+set input 'audio' xy 10mm,10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (xy
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==========================================
+set input 'audio' xy left+10mm,middle+10mm
+==========================================
+set input 'audio' xy left+10mm,middle+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+====================================
+set input 'audio' xy v1+10mm,h2+10mm
+====================================
+set input 'audio' xy v1+10mm,h2+10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+===============================
+set input 'audio' part 'PJ301M'
+===============================
+set input 'audio' part 'PJ301M'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (part)))
+
+
+===========================
+set input 'audio' part none
+===========================
+set input 'audio' part none
+---
+(command
+  (set
+    (input
+      (identifier))
+    (part)))
+

@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::io::Write;
 
 use chrono::Local;
@@ -18,7 +17,7 @@ use crate::utils::log;
 use crate::warnf;
 use svg::PrettyPrinter;
 
-const VERSION: &str = "v0.0.0";
+const VERSION: u32 = 1;
 const RADIUS: f32 = 2.5;
 
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
@@ -29,7 +28,7 @@ extern "C" {
 
 #[derive(Serialize, Deserialize)]
 pub struct Module {
-    pub version: String,
+    pub version: u32,
     pub name: String,
     pub panel: Panel,
     pub script: Vec<String>,
@@ -51,12 +50,12 @@ pub struct Item {
     pub itype: String,
     pub id: String,
     pub name: String,
-    pub attributes: HashMap<String, String>,
+    pub attributes: Vec<(String, String)>,
 }
 
 pub fn new() -> Module {
     return Module {
-        version: VERSION.to_string(),
+        version: VERSION,
         name: "unknown".into(),
         panel: Panel::new(DEFAULT_WIDTH, DEFAULT_HEIGHT),
         script: Vec::new(),
@@ -340,6 +339,33 @@ impl Module {
                 Some(v) => format!("{}{}", v.get(1).unwrap().as_str(), ix + 1),
                 None => format!("g{}", ix + 1),
             },
+        }
+    }
+
+    pub fn find_input(&self, id: &str) -> Option<usize> {
+        match self.panel.inputs.iter().position(|v| v.id == id) {
+            Some(ix) => Some(ix),
+            None => self
+                .panel
+                .inputs
+                .iter()
+                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
+        }
+    }
+
+    pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
+        let old = format!("{}<{}>", tag, from);
+        let new = format!("{}<{}>", tag, to);
+
+        // FIXME migrate inputs
+        // FIXME migrate outputs
+        // FIXME migrate parameters
+        // FIXME migrate lights
+        // FIXME migrate widgets
+        // FIXME migrate labels
+
+        for v in &mut self.panel.decorations {
+            v.migrate(&old, &new);
         }
     }
 

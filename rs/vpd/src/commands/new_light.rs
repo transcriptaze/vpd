@@ -28,13 +28,11 @@ impl NewLight {
 }
 
 impl Command for NewLight {
-    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         let id = m.new_light_id();
 
         m.panel.lights.push(panel::Light::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
-
-        true
     }
 }

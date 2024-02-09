@@ -23,7 +23,7 @@ impl DeleteLabel {
 }
 
 impl Command for DeleteLabel {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         match m.panel.labels.iter().position(|v| v.id == self.id) {
             Some(ix) => {
                 m.panel.labels.remove(ix);
@@ -37,12 +37,5 @@ impl Command for DeleteLabel {
                 None => {}
             },
         }
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

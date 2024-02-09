@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] Check hasError/isMissing
-- [ ] Resolve names to IDs in apply()
 - [ ] Genericize ID generation
 
 - [x] Load project file
@@ -19,6 +18,8 @@
 - [x] Allow 'out' for component names
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
+- [ ] Export header file
+
 
 ### Overlay
 - [x] panel screws
@@ -41,54 +42,49 @@
 - [x] _module_
 - [x] _help_
 - [x] _background_
-      - [x] rename foundation to _fundamental_
+      - [x] Replace RGBA alpha with stop-opacity
 
 - [ ] _guidelines_
-      - [x] V0 and H0
-      - [x] help
-      - [x] `delete`
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - (?) warn if duplicate offset
+      - (?) `new guide horizontal h1+10mm` (i.e. optional vertical/horizontal)
 
 - [ ] _inputs_
-      - [x] `delete`
-      - [x] help
       - [ ] discard/warn duplicates
-      - [ ] set
+      - [x] set
+            - [x] name
+            - [x] x
+            - [x] y
+            - [x] xy
+            - [x] part
 
 - [ ] _outputs_
       - [ ] discard/warn duplicates
-      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
-      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
-      - [x] `delete`
       - [ ] set
       - [ ] help
 
 - [ ] _widget_
-      - [x] delete
       - [ ] set
       - [ ] help
 
 - [ ] _label_
-      - [x] delete
       - [ ] set
       - [ ] hover
       - [ ] Export label text too
 
 - [ ] _decorate_
-      - [x] delete
       - [ ] set
       - [ ] Export decorations in SVG component group
 
@@ -98,6 +94,7 @@
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
       - Versioning
+      - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
 - [ ] Auto-generate help text from grammar/examples
 - [ ] Bundle with rollup.js
@@ -112,6 +109,9 @@
       - default font
       - default font alignment
 
+- [ ] Rust SVG
+      - https://github.com/RazrFalcon/resvg
+      
 
 ## Notes
 

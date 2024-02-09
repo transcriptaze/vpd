@@ -28,18 +28,11 @@ impl NewInput {
 }
 
 impl Command for NewInput {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         let id = m.new_input_id();
 
         m.panel.inputs.push(panel::Input::new(
             &id, &self.name, &self.x, &self.y, &self.part,
         ));
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

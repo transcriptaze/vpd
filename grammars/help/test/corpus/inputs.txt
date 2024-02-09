@@ -64,6 +64,83 @@ delete input v1
     (input
       (identifier))))
 
-        
+
+=========
+set input
+=========
+set input
+---
+(command
+  (set
+    (input)))
 
 
+============
+set input i1
+============
+set input i1
+---
+(command
+  (set
+    (input
+      (identifier))))
+
+
+=========================
+set input i1 name 'audio'
+=========================
+set input i1 name 'audio'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (name)))
+
+
+===================
+set input i1 x 10mm
+===================
+set input i1 x 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (x)))
+
+
+===================
+set input i1 y 10mm
+===================
+set input i1 y 10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (y)))
+
+
+=========================
+set input i1 xy 10mm,10mm
+=========================
+set input i1 xy 10mm,10mm
+---
+(command
+  (set
+    (input
+      (identifier))
+    (xy)))
+
+
+==========================
+set input in part 'PJ301M'
+==========================
+set input in part 'PJ301M'
+---
+(command
+  (set
+    (input
+      (identifier))
+    (part)))

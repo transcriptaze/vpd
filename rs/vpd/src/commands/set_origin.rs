@@ -57,15 +57,8 @@ impl SetOrigin {
 }
 
 impl Command for SetOrigin {
-    fn apply(&self, m: &mut Module, line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         m.panel.origin.set_x(&self.x.reference, self.x.offset);
         m.panel.origin.set_y(&self.y.reference, self.y.offset);
-
-        match line {
-            Some(v) => m.script.push(v.to_string()),
-            _ => {}
-        }
-
-        true
     }
 }

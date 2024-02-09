@@ -21,8 +21,7 @@ impl LoadProject {
 }
 
 impl Command for LoadProject {
-    fn apply(&self, m: &mut Module, _line: &Option<String>) -> bool {
+    fn apply(&self, m: &mut Module) {
         m.load_project();
-        false
     }
 }
