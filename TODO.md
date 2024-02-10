@@ -54,6 +54,7 @@
       - [ ] clean up NewGuide::apply
       - (?) warn if duplicate offset
       - (?) `new guide horizontal h1+10mm` (i.e. optional vertical/horizontal)
+      - [ ] migrate
 
 - [x] _inputs_
       - [x] discard/warn duplicates

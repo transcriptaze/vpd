@@ -144,6 +144,24 @@ impl Module {
         }
     }
 
+    pub fn export_header(&self) {
+        // match self.panel.export_SVG(theme) {
+        //     Ok(svg) => {
+        //         let pp = PrettyPrinter::new();
+        //         let blob = pp.prettify(&svg);
+
+        //         let filename = match theme {
+        //             "dark" => format!("{}-dark.svg", self.name),
+        //             _ => format!("{}.svg", self.name),
+        //         };
+
+        //         save("svg", &filename, blob.as_bytes());
+        //     }
+        //     Err(e) => warnf!("error generating SVG '{:?}'", e),
+        // }
+        warnf!("not implemented");
+    }
+
     pub fn new_input_id(&self) -> String {
         let re = Regex::new(r"(i)(\d+)").unwrap();
         let mut ix: i32 = 0;
