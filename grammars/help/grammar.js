@@ -21,8 +21,8 @@ module.exports = grammar({
         choice(
           $.module,
           $.guide,
-          alias($._input_entity,$.input),
-          $.output,
+          alias($._input_entity, $.input),
+          alias($._output_entity,$.output),
           $.parameter,
           $.light,
           $.widget,
@@ -57,6 +57,20 @@ module.exports = grammar({
       ),
     ),
 
+    _output_entity: $ => seq(
+      'output',
+      optional(
+        seq(
+          $.name,
+          optional(
+            seq(
+              $.xy,
+              optional($.part),
+            ),
+          ),
+        ),
+      ),
+    ),
 
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,

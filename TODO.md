@@ -61,9 +61,9 @@
       - [ ] migrate
 
 - [ ] _outputs_
-      - [ ] discard/warn duplicates
+      - [x] discard/warn duplicates
       - [x] set
-      - [ ] help
+      - [x] help
       - [ ] migrate
 
 - [ ] _parameters_
