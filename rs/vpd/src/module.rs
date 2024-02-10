@@ -145,12 +145,12 @@ impl Module {
     }
 
     pub fn export_header(&self) {
-        match self.panel.export_header() {
+        match self.panel.export_header(&self.name) {
             Ok(header) => {
                 // let pp = PrettyPrinter::new();
                 // let blob = pp.prettify(&svg);
                 let blob = header.to_string();
-                let filename = format!("{}.h", self.name);
+                let filename = format!("{}_widget.h", self.name);
 
                 save(".h", &filename, blob.as_bytes());
             }

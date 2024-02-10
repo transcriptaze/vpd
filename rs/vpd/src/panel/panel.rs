@@ -29,6 +29,7 @@ use crate::svg::Style;
 use crate::svg::Text;
 use crate::svg::SVG;
 
+use crate::vcv::Component;
 use crate::vcv::VCV;
 
 pub const H: f32 = 5.08; // 1 'horizontal' unit
@@ -122,6 +123,7 @@ impl Panel {
         let outputs = self.outputs(theme);
         let parameters = self.parameters(theme);
         let lights = self.lights(theme);
+        let widgets = self.widgets(theme);
         let labels = self.labels(theme);
         let decorations = self.decorations(theme);
 
@@ -131,6 +133,7 @@ impl Panel {
             .outputs(outputs)
             .parameters(parameters)
             .lights(lights)
+            .widgets(widgets)
             .labels(labels)
             .decorations(decorations)
             .overlay(false);
@@ -141,19 +144,73 @@ impl Panel {
         }
     }
 
-    pub fn export_header(&self) -> Result<String, JsValue> {
-        // let inputs = self.inputs();
-        // let outputs = self.outputs();
-        // let parameters = self.parameters();
-        // let lights = self.lights();
+    pub fn export_header(&self, name: &str) -> Result<String, JsValue> {
+        let inputs = self
+            .inputs
+            .iter()
+            .map(|v| {
+                let name = &v.name;
+                let x = v.x.resolve(&self);
+                let y = v.y.resolve(&self);
 
-        // let vcv = VCV::new()
-        //     .inputs(inputs)
-        //     .outputs(outputs)
-        //     .parameters(parameters)
-        //     .lights(lights);
+                Component::new(name, x, y)
+            })
+            .collect::<Vec<_>>();
 
-        let vcv = VCV::new();
+        let outputs = self
+            .outputs
+            .iter()
+            .map(|v| {
+                let name = &v.name;
+                let x = v.x.resolve(&self);
+                let y = v.y.resolve(&self);
+
+                Component::new(name, x, y)
+            })
+            .collect::<Vec<_>>();
+
+        let parameters = self
+            .parameters
+            .iter()
+            .map(|v| {
+                let name = &v.name;
+                let x = v.x.resolve(&self);
+                let y = v.y.resolve(&self);
+
+                Component::new(name, x, y)
+            })
+            .collect::<Vec<_>>();
+
+        let lights = self
+            .lights
+            .iter()
+            .map(|v| {
+                let name = &v.name;
+                let x = v.x.resolve(&self);
+                let y = v.y.resolve(&self);
+
+                Component::new(name, x, y)
+            })
+            .collect::<Vec<_>>();
+
+        let widgets = self
+            .widgets
+            .iter()
+            .map(|v| {
+                let name = &v.name;
+                let x = v.x.resolve(&self);
+                let y = v.y.resolve(&self);
+
+                Component::new(name, x, y)
+            })
+            .collect::<Vec<_>>();
+
+        let vcv = VCV::new(name)
+            .inputs(inputs)
+            .outputs(outputs)
+            .parameters(parameters)
+            .lights(lights)
+            .widgets(widgets);
 
         match vcv.to_header() {
             Ok(v) => Ok(v),
