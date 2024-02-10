@@ -120,3 +120,12 @@ export panel svg dark
         (dark)))))
 
 
+===============
+export panel .h
+===============
+export panel .h
+---
+(command
+  (export
+    (panel
+      (header))))

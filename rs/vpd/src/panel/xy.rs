@@ -1,5 +1,6 @@
 use regex::Regex;
 use serde::{Deserialize, Serialize};
+use std::fmt;
 
 use crate::panel::Panel;
 
@@ -87,6 +88,16 @@ impl X {
     }
 }
 
+impl fmt::Display for X {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self.reference.as_str() {
+            "absolute" => write!(f, "@{}mm", &self.offset),
+            "origin" => write!(f, "{}mm", &self.offset),
+            _ => write!(f, "{}  {}mm", &self.reference, &self.offset),
+        }
+    }
+}
+
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Y {
     pub reference: String,
@@ -163,6 +174,16 @@ impl Y {
                     },
                 }
             }
+        }
+    }
+}
+
+impl fmt::Display for Y {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self.reference.as_str() {
+            "absolute" => write!(f, "@{}mm", &self.offset),
+            "origin" => write!(f, "{}mm", &self.offset),
+            _ => write!(f, "{}  {}mm", &self.reference, &self.offset),
         }
     }
 }

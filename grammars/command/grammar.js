@@ -32,6 +32,7 @@ module.exports = grammar({
         $.background,
         alias($._module_attr,$.module),
         $._input_attr,
+        $._output_attr,
       )
     ),
 
@@ -46,6 +47,17 @@ module.exports = grammar({
 
     _input_attr: $ => seq(
       alias($._input_id, $.input),
+      choice(
+        seq('name', $.name),
+        seq('x',    alias($._x_attr, $.x)),
+        seq('y',    alias($._y_attr, $.y)),
+        seq('xy',   alias($._xy_attr, $.xy)),
+        seq('part', $.part),
+      )
+    ),
+
+    _output_attr: $ => seq(
+      alias($._output_id, $.output),
       choice(
         seq('name', $.name),
         seq('x',    alias($._x_attr, $.x)),
@@ -509,7 +521,10 @@ module.exports = grammar({
     // ... files
     panel: $ => seq(
       'panel',
-      $.svg,
+      choice(
+        $.svg,
+        $.header,
+      ),
     ),
 
     svg: $ => seq(
@@ -520,6 +535,10 @@ module.exports = grammar({
           alias('dark',$.dark),
         ),
       ),
+    ),
+
+    header: $ => seq(
+      '.h',
     ),
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,

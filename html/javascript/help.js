@@ -44,21 +44,39 @@ const COMMANDS = [
     help: ['new', 'guide', 'v1', '+10mm'],
     min: 1
   },
+  
   {
     command: ['new', 'input', 'name', 'xy', 'part'],
-    help: ['new', 'input', '<em>&lt;name&gt;</em>', '@10mm,10mm', 'PJ301M'],
+    help: ['new', 'input', `${NAME}`, '@10mm,10mm', 'PJ301M'],
     min: 1
   },
   {
     command: ['new', 'input', 'name', 'xy', 'part'],
-    help: ['new', 'input', '<em>&lt;name&gt;</em>', '10mm,10mm', 'PJ301M'],
+    help: ['new', 'input', `${NAME}`, '10mm,10mm', 'PJ301M'],
     min: 1
   },
   {
     command: ['new', 'input', 'name', 'xy', 'part'],
-    help: ['new', 'input', '<em>&lt;name&gt;</em>', 'left+10mm,top+10mm', 'PJ301M'],
+    help: ['new', 'input', `${NAME}`, 'left+10mm,top+10mm', 'PJ301M'],
     min: 1
   },
+
+  {
+    command: ['new', 'output', 'name', 'xy', 'part'],
+    help: ['new', 'output', `${NAME}`, '@10mm,10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'output', 'name', 'xy', 'part'],
+    help: ['new', 'output', `${NAME}`, '10mm,10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'output', 'name', 'xy', 'part'],
+    help: ['new', 'output', `${NAME}`, 'left+10mm,top+10mm', 'PJ301M'],
+    min: 1
+  },
+  
   {
     command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize', 'halign', 'valign', 'colour'],
     help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
@@ -132,6 +150,26 @@ const COMMANDS = [
   {
     command: ['set', 'input', 'identifier', 'part'],
     help: ['set', 'input', ID, `part ${PART}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'name'],
+    help: ['set', 'output', ID, `name ${NAME}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'x'],
+    help: ['set', 'output', ID, `x ${X}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'y'],
+    help: ['set', 'output', ID, `y ${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'output', 'identifier', 'part'],
+    help: ['set', 'output', ID, `part ${PART}`],
     min: 1
   },
   {
@@ -297,6 +335,11 @@ const COMMANDS = [
   {
     command: ['export', 'panel', 'svg', 'dark'],
     help: ['export', 'panel', 'svg', 'dark'],
+    min: 1
+  },
+  {
+    command: ['export', 'panel', 'header'],
+    help: ['export', 'panel', '.h'],
     min: 1
   }
 ]

@@ -250,7 +250,7 @@ main div#controls button img {
 }
 main div#controls div.files {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(2, auto);
   grid-auto-flow: row;
   grid-row-gap: 4px;
@@ -260,8 +260,14 @@ main div#controls div.files {
 main div#controls div.files button img {
   width: 32px;
 }
+main div#controls div.files button.light {
+  grid-column: 1;
+}
 main div#controls div.files button.light img {
   filter: invert(100%) sepia(3%) saturate(7500%) hue-rotate(195deg) brightness(102%) contrast(104%);
+}
+main div#controls div.files button.include {
+  font-size: 18px;
 }
 main div#controls div.undo {
   display: grid;
@@ -270,6 +276,7 @@ main div#controls div.undo {
   grid-auto-flow: row;
   grid-row-gap: 4px;
   grid-column-gap: 4px;
+  width: fit-content;
   margin-bottom: 8px;
 }
 main div#controls div.undo button img {
@@ -282,9 +289,10 @@ main div#controls div.macros {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(5, auto);
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   grid-row-gap: 4px;
   grid-column-gap: 4px;
+  width: fit-content;
 }
 main div#controls div.trash {
   margin-top: auto;

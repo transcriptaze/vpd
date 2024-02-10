@@ -28,6 +28,16 @@ impl NewInput {
 }
 
 impl Command for NewInput {
+    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
+        let name = self.name.as_str();
+
+        if let Some(_) = m.find_input(&name) {
+            return Some(format!("duplicate input name '{}'", name).into());
+        }
+
+        None
+    }
+
     fn apply(&self, m: &mut Module) {
         let id = m.new_input_id();
 

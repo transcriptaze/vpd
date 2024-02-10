@@ -28,6 +28,16 @@ impl NewOutput {
 }
 
 impl Command for NewOutput {
+    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
+        let name = self.name.as_str();
+
+        if let Some(_) = m.find_output(&name) {
+            return Some(format!("duplicate output name '{}'", name).into());
+        }
+
+        None
+    }
+
     fn apply(&self, m: &mut Module) {
         let id = m.new_output_id();
 

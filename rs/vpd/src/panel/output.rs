@@ -28,11 +28,20 @@ impl Output {
 
 impl IItem for Output {
     fn as_item(&self) -> Item {
+        let mut attributes = vec![
+            ("x".to_string(), format!("{}", &self.x)),
+            ("y".to_string(), format!("{}", &self.y)),
+        ];
+
+        if let Some(part) = &self.part {
+            attributes.push(("part".to_string(), part.clone()));
+        }
+
         Item {
             itype: "output".to_string(),
             id: self.id.clone(),
             name: self.name.clone(),
-            attributes: Vec::<(String, String)>::new(),
+            attributes: attributes,
         }
     }
 }

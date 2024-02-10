@@ -28,22 +28,10 @@ impl Input {
 
 impl IItem for Input {
     fn as_item(&self) -> Item {
-        let mut attributes = Vec::<(String, String)>::new();
-
-        let x = match self.x.reference.as_str() {
-            "absolute" => format!("@{}mm", &self.x.offset),
-            "origin" => format!("{}mm", &self.x.offset),
-            _ => format!("{}  {}mm", &self.x.reference, &self.x.offset),
-        };
-
-        let y = match self.y.reference.as_str() {
-            "absolute" => format!("@{}mm", &self.y.offset),
-            "origin" => format!("{}mm", &self.y.offset),
-            _ => format!("{}  {}mm", &self.y.reference, &self.y.offset),
-        };
-
-        attributes.push(("x".to_string(), x));
-        attributes.push(("y".to_string(), y));
+        let mut attributes = vec![
+            ("x".to_string(), format!("{}", &self.x)),
+            ("y".to_string(), format!("{}", &self.y)),
+        ];
 
         if let Some(part) = &self.part {
             attributes.push(("part".to_string(), part.clone()));

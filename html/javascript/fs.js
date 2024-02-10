@@ -28,6 +28,8 @@ export function save (filetype, filename, blob) {
     saveVPX(filename, blob)
   } else if (filetype === 'svg') {
     saveSVG(filename, blob)
+  } else if (filetype === '.h') {
+    saveHeader(filename, blob)
   }
 }
 
@@ -311,6 +313,40 @@ function saveSVG (filename, svg) {
         {
           description: 'VPD panel SVG',
           accept: { 'image/svg+xml': ['.svg'] }
+        }
+      ]
+    }
+
+    saveWithPicker(blob, options)
+  } else {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.querySelector('a#save')
+
+    anchor.href = url
+    anchor.download = filename
+    anchor.click()
+
+    URL.revokeObjectURL(url)
+  }
+}
+
+function saveHeader (filename, svg) {
+  const blob = new Blob([svg], { type: 'text/plain' })
+
+  const match = `${filename}`.match(/(.*?)(\.h|\.hpp)/)
+  if (match.length > 2) {
+    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.${match[2]}`
+  } else if (match.length > 1) {
+    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.h`
+  }
+
+  if (window.showSaveFilePicker) {
+    const options = {
+      suggestedName: filename,
+      types: [
+        {
+          description: 'C++ header file',
+          accept: { 'text/plain': ['.h', '.hpp'] }
         }
       ]
     }

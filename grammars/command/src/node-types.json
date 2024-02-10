@@ -353,6 +353,11 @@
     "fields": {}
   },
   {
+    "type": "header",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "horizontal",
     "named": true,
     "fields": {},
@@ -703,6 +708,10 @@
       "required": true,
       "types": [
         {
+          "type": "header",
+          "named": true
+        },
+        {
           "type": "svg",
           "named": true
         }
@@ -864,6 +873,10 @@
         },
         {
           "type": "origin",
+          "named": true
+        },
+        {
+          "type": "output",
           "named": true
         },
         {
@@ -1084,6 +1097,10 @@
     "named": false
   },
   {
+    "type": ".h",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
   },
@@ -1237,11 +1254,11 @@
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "script",

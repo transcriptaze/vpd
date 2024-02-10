@@ -104,6 +104,10 @@ div.vpd-drop.dropping img {
 }
 
 button.vpd-macro-key {
+  display: flow;
+  flow-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 48px;
   height: 48px;
   padding-top: 4px;
@@ -112,6 +116,14 @@ button.vpd-macro-key {
   padding-right: 4px;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
+}
+button.vpd-macro-key div.ctrl {
+  font-size: 12px;
+  font-variant-caps: all-small-caps;
+}
+button.vpd-macro-key div.label {
+  font-size: 14px;
+  font-weight: bold;
 }
 
 img.vpd-logo {
