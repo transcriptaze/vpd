@@ -52,39 +52,37 @@
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
-      - (?) warn if duplicate offset
-      - (?) `new guide horizontal h1+10mm` (i.e. optional vertical/horizontal)
       - [ ] migrate
+      - (?) warn if duplicate offset
 
 - [x] _inputs_
-      - [x] discard/warn duplicates
-      - [x] set
       - [ ] migrate
 
 - [ ] _outputs_
-      - [x] discard/warn duplicates
-      - [x] set
-      - [x] help
       - [ ] migrate
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates
       - [ ] set
       - [ ] help
+      - [ ] migrate
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
       - [ ] set
       - [ ] help
+      - [ ] migrate
 
 - [ ] _widget_
       - [ ] set
       - [ ] help
+      - [ ] migrate
 
 - [ ] _label_
       - [ ] set
       - [ ] hover
       - [ ] Export label text too
+      - [ ] migrate
 
 - [ ] _decorate_
       - [ ] set

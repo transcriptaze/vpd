@@ -145,21 +145,17 @@ impl Module {
     }
 
     pub fn export_header(&self) {
-        // match self.panel.export_SVG(theme) {
-        //     Ok(svg) => {
-        //         let pp = PrettyPrinter::new();
-        //         let blob = pp.prettify(&svg);
+        match self.panel.export_header() {
+            Ok(header) => {
+                // let pp = PrettyPrinter::new();
+                // let blob = pp.prettify(&svg);
+                let blob = header.to_string();
+                let filename = format!("{}.h", self.name);
 
-        //         let filename = match theme {
-        //             "dark" => format!("{}-dark.svg", self.name),
-        //             _ => format!("{}.svg", self.name),
-        //         };
-
-        //         save("svg", &filename, blob.as_bytes());
-        //     }
-        //     Err(e) => warnf!("error generating SVG '{:?}'", e),
-        // }
-        warnf!("not implemented");
+                save(".h", &filename, blob.as_bytes());
+            }
+            Err(e) => warnf!("error generating C++ header file '{:?}'", e),
+        }
     }
 
     pub fn new_input_id(&self) -> String {

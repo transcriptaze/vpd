@@ -4,6 +4,7 @@ mod module;
 mod panel;
 mod svg;
 mod utils;
+mod vcv;
 
 use wasm_bindgen::prelude::*;
 

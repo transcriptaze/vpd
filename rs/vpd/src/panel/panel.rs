@@ -29,6 +29,8 @@ use crate::svg::Style;
 use crate::svg::Text;
 use crate::svg::SVG;
 
+use crate::vcv::VCV;
+
 pub const H: f32 = 5.08; // 1 'horizontal' unit
 
 #[derive(Serialize, Deserialize)]
@@ -134,6 +136,26 @@ impl Panel {
             .overlay(false);
 
         match svg.to_SVG(theme) {
+            Ok(v) => Ok(v),
+            Err(e) => Err(JsValue::from(format!("{}", e))),
+        }
+    }
+
+    pub fn export_header(&self) -> Result<String, JsValue> {
+        // let inputs = self.inputs();
+        // let outputs = self.outputs();
+        // let parameters = self.parameters();
+        // let lights = self.lights();
+
+        // let vcv = VCV::new()
+        //     .inputs(inputs)
+        //     .outputs(outputs)
+        //     .parameters(parameters)
+        //     .lights(lights);
+
+        let vcv = VCV::new();
+
+        match vcv.to_header() {
             Ok(v) => Ok(v),
             Err(e) => Err(JsValue::from(format!("{}", e))),
         }
