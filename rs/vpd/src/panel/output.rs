@@ -2,8 +2,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::Item;
+use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
+use crate::vcv::Component;
 
 #[derive(Serialize, Deserialize)]
 pub struct Output {
@@ -23,6 +25,14 @@ impl Output {
             y: y.clone(),
             part: part.clone(),
         }
+    }
+
+    pub fn as_component(&self, panel: &Panel) -> Component {
+        let name = &self.name;
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+
+        Component::new(name, x, y)
     }
 }
 

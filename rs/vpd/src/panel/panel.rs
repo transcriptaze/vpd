@@ -148,62 +148,32 @@ impl Panel {
         let inputs = self
             .inputs
             .iter()
-            .map(|v| {
-                let name = &v.name;
-                let x = v.x.resolve(&self);
-                let y = v.y.resolve(&self);
-
-                Component::new(name, x, y)
-            })
-            .collect::<Vec<_>>();
+            .map(|v| v.as_component(&self))
+            .collect::<Vec<Component>>();
 
         let outputs = self
             .outputs
             .iter()
-            .map(|v| {
-                let name = &v.name;
-                let x = v.x.resolve(&self);
-                let y = v.y.resolve(&self);
-
-                Component::new(name, x, y)
-            })
-            .collect::<Vec<_>>();
+            .map(|v| v.as_component(&self))
+            .collect::<Vec<Component>>();
 
         let parameters = self
             .parameters
             .iter()
-            .map(|v| {
-                let name = &v.name;
-                let x = v.x.resolve(&self);
-                let y = v.y.resolve(&self);
-
-                Component::new(name, x, y)
-            })
-            .collect::<Vec<_>>();
+            .map(|v| v.as_component(&self))
+            .collect::<Vec<Component>>();
 
         let lights = self
             .lights
             .iter()
-            .map(|v| {
-                let name = &v.name;
-                let x = v.x.resolve(&self);
-                let y = v.y.resolve(&self);
-
-                Component::new(name, x, y)
-            })
-            .collect::<Vec<_>>();
+            .map(|v| v.as_component(&self))
+            .collect::<Vec<Component>>();
 
         let widgets = self
             .widgets
             .iter()
-            .map(|v| {
-                let name = &v.name;
-                let x = v.x.resolve(&self);
-                let y = v.y.resolve(&self);
-
-                Component::new(name, x, y)
-            })
-            .collect::<Vec<_>>();
+            .map(|v| v.as_component(&self))
+            .collect::<Vec<Component>>();
 
         let vcv = VCV::new(name)
             .inputs(inputs)
