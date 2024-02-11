@@ -260,78 +260,38 @@ impl Panel {
     }
 
     fn inputs(&self, _theme: &str) -> Vec<Circle> {
-        let mut list: Vec<Circle> = Vec::new();
-        let radius = 2.54;
-        let colour = "#00ff00";
-
-        for v in self.inputs.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
-
-            list.push(Circle::new(&v.name, x, y, radius, &colour));
-        }
-
-        return list;
+        self.inputs
+            .iter()
+            .map(|v| v.as_svg(&self))
+            .collect::<Vec<Circle>>()
     }
 
     fn outputs(&self, _theme: &str) -> Vec<Circle> {
-        let mut list: Vec<Circle> = Vec::new();
-        let radius = 2.54;
-        let colour = "#0000ff";
-
-        for v in self.outputs.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
-
-            list.push(Circle::new(&v.name, x, y, radius, &colour));
-        }
-
-        return list;
+        self.outputs
+            .iter()
+            .map(|v| v.as_svg(&self))
+            .collect::<Vec<Circle>>()
     }
 
     fn parameters(&self, _theme: &str) -> Vec<Circle> {
-        let mut list: Vec<Circle> = Vec::new();
-        let radius = 2.54;
-        let colour = "#ff0000";
-
-        for v in self.parameters.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
-
-            list.push(Circle::new(&v.name, x, y, radius, &colour));
-        }
-
-        return list;
+        self.parameters
+            .iter()
+            .map(|v| v.as_svg(&self))
+            .collect::<Vec<Circle>>()
     }
 
     fn lights(&self, _theme: &str) -> Vec<Circle> {
-        let mut list: Vec<Circle> = Vec::new();
-        let radius = 2.54;
-        let colour = "#ff00ff";
-
-        for v in self.lights.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
-
-            list.push(Circle::new(&v.name, x, y, radius, &colour));
-        }
-
-        return list;
+        self.lights
+            .iter()
+            .map(|v| v.as_svg(&self))
+            .collect::<Vec<Circle>>()
     }
 
     fn widgets(&self, _theme: &str) -> Vec<Circle> {
-        let mut list: Vec<Circle> = Vec::new();
-        let radius = 2.54;
-        let colour = "#ffff00";
-
-        for v in self.widgets.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
-
-            list.push(Circle::new(&v.name, x, y, radius, &colour));
-        }
-
-        return list;
+        self.widgets
+            .iter()
+            .map(|v| v.as_svg(&self))
+            .collect::<Vec<Circle>>()
     }
 
     fn labels(&self, theme: &str) -> Vec<Text> {
