@@ -142,8 +142,10 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
                 Ok(header) => {
                     // let pp = PrettyPrinter::new();
                     let blob = header.to_string();
+                    let filename = format!("{}_widget.h", &module.name);
+
                     let serialized = Serialized {
-                        name: module.name.to_string(),
+                        name: filename,
                         serialized: blob,
                     };
 
