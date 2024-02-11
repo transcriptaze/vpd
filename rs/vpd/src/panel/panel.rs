@@ -144,7 +144,7 @@ impl Panel {
         }
     }
 
-    pub fn export_header(&self, name: &str) -> Result<String, JsValue> {
+    pub fn export_header(&self, name: &str, prefix: &str) -> Result<String, JsValue> {
         let inputs = self
             .inputs
             .iter()
@@ -212,7 +212,7 @@ impl Panel {
             .lights(lights)
             .widgets(widgets);
 
-        match vcv.to_header() {
+        match vcv.to_header(prefix) {
             Ok(v) => Ok(v),
             Err(e) => Err(JsValue::from(format!("{}", e))),
         }

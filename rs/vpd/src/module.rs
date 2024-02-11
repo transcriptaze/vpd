@@ -145,7 +145,12 @@ impl Module {
     }
 
     pub fn export_header(&self) {
-        match self.panel.export_header(&self.name) {
+        let prefix = Regex::new(r#"[^a-zA-Z0-9]+"#)
+            .unwrap()
+            .replace_all(&self.name, "_")
+            .to_uppercase();
+
+        match self.panel.export_header(&self.name, &prefix) {
             Ok(header) => {
                 // let pp = PrettyPrinter::new();
                 // let blob = pp.prettify(&svg);

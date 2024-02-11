@@ -10,6 +10,7 @@ use wasm_bindgen::prelude::*;
 
 use crate::utils::log;
 use once_cell::sync::Lazy;
+use regex::Regex;
 use serde;
 use serde_wasm_bindgen;
 use std::sync::Mutex;
@@ -131,21 +132,28 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
             Err(e) => Err(JsValue::from(format!("error generating SVG '{:?}'", e))),
         },
 
-        "panel.h" => match module.panel.export_header(&module.name) {
-            Ok(header) => {
-                // let pp = PrettyPrinter::new();
-                let blob = header.to_string();
-                let serialized = Serialized {
-                    name: module.name.to_string(),
-                    serialized: blob,
-                };
+        "panel.h" => {
+            let prefix = Regex::new(r#"[^a-zA-Z0-9]+"#)
+                .unwrap()
+                .replace_all(&module.name, "_")
+                .to_uppercase();
 
-                let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
-                Ok(value)
+            match module.panel.export_header(&module.name, &prefix) {
+                Ok(header) => {
+                    // let pp = PrettyPrinter::new();
+                    let blob = header.to_string();
+                    let serialized = Serialized {
+                        name: module.name.to_string(),
+                        serialized: blob,
+                    };
+
+                    let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+                    Ok(value)
+                }
+
+                Err(e) => Err(JsValue::from(format!("error generating .h file '{:?}'", e))),
             }
-
-            Err(e) => Err(JsValue::from(format!("error generating .h file '{:?}'", e))),
-        },
+        }
 
         _ => Err(JsValue::from(format!("unknown object {}", object))),
     }

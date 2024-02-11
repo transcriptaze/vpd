@@ -24,8 +24,9 @@
       - [x] Help
       - [x] JS
       - [x] rs
-      - [ ] Convert names to uppercase and replace non-alphanumeric with underscores
+      - [x] Default prefix - convert module name to uppercase and replace non-alphanumeric with underscores
       - [ ] pretty-print
+      - [ ] optional prefix
 
 
 ### Overlay

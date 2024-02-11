@@ -5,7 +5,7 @@ use tera::Context;
 use tera::Tera;
 
 pub struct VCV {
-    name: String,
+    _name: String,
     inputs: Option<Vec<Component>>,
     outputs: Option<Vec<Component>>,
     parameters: Option<Vec<Component>>,
@@ -25,7 +25,7 @@ pub struct Component {
 impl VCV {
     pub fn new(name: &str) -> VCV {
         VCV {
-            name: name.to_string(),
+            _name: name.to_string(),
             inputs: None,
             outputs: None,
             parameters: None,
@@ -59,13 +59,13 @@ impl VCV {
         self
     }
 
-    pub fn to_header(&self) -> Result<String, Box<dyn Error>> {
+    pub fn to_header(&self, prefix: &str) -> Result<String, Box<dyn Error>> {
         let mut tera = Tera::default();
         let mut context = Context::new();
 
         load_templates(&mut tera);
 
-        context.insert("prefix", &self.name);
+        context.insert("prefix", prefix);
 
         if let Some(v) = &self.inputs {
             context.insert("inputs", v);
