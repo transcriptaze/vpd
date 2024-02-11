@@ -20,8 +20,6 @@ pub struct Component {
     y: f32,
 }
 
-// TODO include_dir
-//      https://crates.io/crates/include_dir
 impl VCV {
     pub fn new(name: &str) -> VCV {
         VCV {

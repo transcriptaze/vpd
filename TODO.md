@@ -27,6 +27,7 @@
       - [x] Default prefix - convert module name to uppercase and replace non-alphanumeric with underscores
       - [ ] pretty-print
       - [ ] optional prefix
+      - [ ] loadable template
 
 
 ### Overlay

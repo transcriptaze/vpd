@@ -2,3 +2,5 @@
 node_modules
 dist
 runtime
+html/wasm/vpd/vpd.js
+html/wasm/vpd/vpd_bg.wasm
