@@ -16,8 +16,8 @@ pub struct VCV {
 #[derive(Serialize, Deserialize)]
 pub struct Component {
     name: String,
-    x: String,
-    y: String,
+    x: f32,
+    y: f32,
 }
 
 // TODO include_dir
@@ -65,7 +65,7 @@ impl VCV {
 
         load_templates(&mut tera);
 
-        context.insert("name", &self.name);
+        context.insert("prefix", &self.name);
 
         if let Some(v) = &self.inputs {
             context.insert("inputs", v);
@@ -103,8 +103,8 @@ impl Component {
     pub fn new(name: &str, x: f32, y: f32) -> Component {
         Component {
             name: name.to_string(),
-            x: format!("{:2}", x),
-            y: format!("{:2}", y),
+            x: x,
+            y: y,
         }
     }
 }

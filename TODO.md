@@ -18,11 +18,14 @@
 - [ ] Default to mm in dimensions
 
 - [ ] Export header file
+      - [x] Fix ..h filename
       - [x] UI button
       - [x] Command
       - [x] Help
       - [x] JS
-      - [ ] RS
+      - [x] rs
+      - [ ] Convert names to uppercase and replace non-alphanumeric with underscores
+      - [ ] pretty-print
 
 
 ### Overlay

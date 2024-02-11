@@ -120,22 +120,29 @@ export function onSave (type, timestamped) {
   }
 }
 
-export function onExport (theme) {
+export function onExport (item) {
   try {
-    if (theme === 'dark') {
-      const serialized = serialize('panel-dark')
-      const name = serialized.name
-      const svg = serialized.serialized
-      const filename = `${name}-dark.svg`
-
-      fs.save('svg', filename, svg)
-    } else {
-      const serialized = serialize('panel')
+    if (item === 'panel.svg') {
+      const serialized = serialize('panel.svg')
       const name = serialized.name
       const svg = serialized.serialized
       const filename = `${name}.svg`
 
       fs.save('svg', filename, svg)
+    } else if (item === 'panel.svg.dark') {
+      const serialized = serialize('panel.svg.dark')
+      const name = serialized.name
+      const svg = serialized.serialized
+      const filename = `${name}-dark.svg`
+
+      fs.save('svg', filename, svg)
+    } else if (item === 'panel.h') {
+      const serialized = serialize('panel.h')
+      const name = serialized.name
+      const header = serialized.serialized
+      const filename = `${name}.h`
+
+      fs.save('.h', filename, header)
     }
   } catch (err) {
     console.error(err)
