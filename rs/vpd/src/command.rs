@@ -19,6 +19,7 @@ use crate::commands::SetInput;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
 use crate::commands::SetOutput;
+use crate::commands::SetParameter;
 
 use crate::commands::DeleteDecoration;
 use crate::commands::DeleteGuide;
@@ -177,6 +178,10 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.output.is_some() {
         return Ok(Box::new(SetOutput::new(json)?));
+    }
+
+    if v.parameter.is_some() {
+        return Ok(Box::new(SetParameter::new(json)?));
     }
 
     return Err("invalid 'set' command".into());

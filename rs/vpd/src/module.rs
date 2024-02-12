@@ -383,6 +383,17 @@ impl Module {
         }
     }
 
+    pub fn find_parameter(&self, id: &str) -> Option<usize> {
+        match self.panel.parameters.iter().position(|v| v.id == id) {
+            Some(ix) => Some(ix),
+            None => self
+                .panel
+                .parameters
+                .iter()
+                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
+        }
+    }
+
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
         let old = format!("{}<{}>", tag, from);
         let new = format!("{}<{}>", tag, to);

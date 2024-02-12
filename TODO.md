@@ -72,8 +72,8 @@
 
 - [ ] _parameters_
       - [x] help
-      - [ ] set
-      - [ ] migrate
+      - [x] set
+      - [x] migrate
       - [ ] discard/warn duplicates
       - [ ] `set parameter 'volume' x (input in +10mm)`
 
@@ -82,11 +82,13 @@
       - [ ] set
       - [ ] help
       - [ ] migrate
+      - [ ] info
 
 - [ ] _widget_
       - [ ] set
       - [ ] help
       - [ ] migrate
+      - [ ] info
 
 - [ ] _label_
       - [ ] set
