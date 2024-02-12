@@ -2,8 +2,12 @@ use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::Item;
+use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
+
+use crate::svg::Circle;
+use crate::vcv::Component;
 
 #[derive(Serialize, Deserialize)]
 pub struct Parameter {
@@ -24,15 +28,52 @@ impl Parameter {
             part: part.clone(),
         }
     }
+
+    pub fn as_svg(&self, panel: &Panel) -> Circle {
+        let name = &self.name;
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+        let radius = 2.54;
+        let colour = "#ff0000";
+
+        Circle::new(name, x, y, radius, &colour)
+    }
+
+    pub fn as_component(&self, panel: &Panel) -> Component {
+        let name = &self.name;
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+
+        Component::new(name, x, y)
+    }
+
+    pub fn migrate(&mut self, from: &str, to: &str) {
+        if self.x.reference == from {
+            self.x.reference = to.to_string();
+        }
+
+        if self.y.reference == from {
+            self.y.reference = to.to_string();
+        }
+    }
 }
 
 impl IItem for Parameter {
     fn as_item(&self) -> Item {
+        let mut attributes = vec![
+            ("x".to_string(), format!("{}", &self.x)),
+            ("y".to_string(), format!("{}", &self.y)),
+        ];
+
+        if let Some(part) = &self.part {
+            attributes.push(("part".to_string(), part.clone()));
+        }
+
         Item {
             itype: "parameter".to_string(),
             id: self.id.clone(),
             name: self.name.clone(),
-            attributes: Vec::<(String, String)>::new(),
+            attributes: attributes,
         }
     }
 }

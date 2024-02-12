@@ -180,6 +180,34 @@ new light "on" v1,h1
         (reference)))))
 
 
+=============================
+new light "on" (parameter X1)
+=============================
+new light "on" (parameter X1)
+---
+(command
+  (new
+    (light
+      (name)
+      (parameter
+        (name)))))
+
+
+=========================================
+new light "on" (parameter X1 +10mm,-10mm)
+=========================================
+new light "on" (parameter X1 +10mm,-10mm)
+---
+(command
+  (new
+    (light
+      (name)
+      (parameter
+        (name)
+        (dx)
+        (dy)))))
+
+
 ==========================
 new light "on" v1,h1 "LED"
 ==========================
@@ -228,6 +256,36 @@ new light "on" v1+4.5mm,h1-12.5mm "LED"
       (y
         (reference)
         (offset))
+      (part))))
+
+
+=================================
+new light "on" (parameter X1) LED
+=================================
+new light "on" (parameter X1) LED
+---
+(command
+  (new
+    (light
+      (name)
+      (parameter
+        (name))
+      (part))))
+
+
+=============================================
+new light "on" (parameter X1 +10mm,-10mm) LED
+=============================================
+new light "on" (parameter X1 +10mm,-10mm) LED
+---
+(command
+  (new
+    (light
+      (name)
+      (parameter
+        (name)
+        (dx)
+        (dy))
       (part))))
 
 

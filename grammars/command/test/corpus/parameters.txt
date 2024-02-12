@@ -299,3 +299,241 @@ delete parameter 'volume 1'
       (identifier))))
 
 
+==============================
+set parameter volume name gain
+==============================
+set parameter volume name gain
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (name)))
+
+
+===================================
+set parameter 'volume' name 'right'
+===================================
+set parameter 'volume' name 'right'
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (name)))
+
+
+===================================
+set parameter "volume" name "right"
+===================================
+set parameter "volume" name "right"
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (name)))
+
+
+==============================
+set parameter 'volume' x @10mm
+==============================
+set parameter 'volume' x @10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x
+      (absolute)
+      (offset))))
+
+
+=============================
+set parameter 'volume' x 10mm
+=============================
+set parameter 'volume' x 10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x
+      (offset))))
+
+
+==================================
+set parameter 'volume' x left+10mm
+==================================
+set parameter 'volume' x left+10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+================================
+set parameter 'volume' x v1+10mm
+================================
+set parameter 'volume' x v1+10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+==============================
+set parameter 'volume' y @10mm
+==============================
+set parameter 'volume' y @10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y
+      (absolute)
+      (offset))))
+
+
+=============================
+set parameter 'volume' y 10mm
+=============================
+set parameter 'volume' y 10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y
+      (offset))))
+
+
+=================================
+set parameter 'volume' y top+10mm
+=================================
+set parameter 'volume' y top+10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+================================
+set parameter 'volume' y h1+10mm
+================================
+set parameter 'volume' y h1+10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+====================================
+set parameter 'volume' xy @10mm,10mm
+====================================
+set parameter 'volume' xy @10mm,10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy
+      (absolute)
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+===================================
+set parameter 'volume' xy 10mm,10mm
+===================================
+set parameter 'volume' xy 10mm,10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+===============================================
+set parameter 'volume' xy left+10mm,middle+10mm
+===============================================
+set parameter 'volume' xy left+10mm,middle+10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+=========================================
+set parameter 'volume' xy v1+10mm,h2+10mm
+=========================================
+set parameter 'volume' xy v1+10mm,h2+10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+====================================
+set parameter 'volume' part 'PJ301M'
+====================================
+set parameter 'volume' part 'PJ301M'
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (part)))
+
+
+================================
+set parameter 'volume' part none
+================================
+set parameter 'volume' part none
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (part)))
+

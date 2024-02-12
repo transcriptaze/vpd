@@ -33,6 +33,7 @@ module.exports = grammar({
         alias($._module_attr,$.module),
         $._input_attr,
         $._output_attr,
+        $._parameter_attr,
       )
     ),
 
@@ -58,6 +59,17 @@ module.exports = grammar({
 
     _output_attr: $ => seq(
       alias($._output_id, $.output),
+      choice(
+        seq('name', $.name),
+        seq('x',    alias($._x_attr, $.x)),
+        seq('y',    alias($._y_attr, $.y)),
+        seq('xy',   alias($._xy_attr, $.xy)),
+        seq('part', $.part),
+      )
+    ),
+
+    _parameter_attr: $ => seq(
+      alias($._parameter_id, $.parameter),
       choice(
         seq('name', $.name),
         seq('x',    alias($._x_attr, $.x)),
@@ -385,6 +397,17 @@ module.exports = grammar({
         $.absolute,
         $.relative,
         seq( $.x, ',', $.y ),
+        seq (
+          '(',
+          choice (
+            alias ($._input,     $.input),
+            alias ($._output,    $.output),
+            alias ($._parameter, $.parameter),
+            alias ($._light,     $.light),
+            alias ($._widget,    $.widget),
+          ),
+          ')',
+        ),
       ),
       optional($.part),
     ),

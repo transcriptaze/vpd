@@ -144,6 +144,25 @@ impl Module {
         }
     }
 
+    pub fn export_header(&self) {
+        let prefix = Regex::new(r#"[^a-zA-Z0-9]+"#)
+            .unwrap()
+            .replace_all(&self.name, "_")
+            .to_uppercase();
+
+        match self.panel.export_header(&self.name, &prefix) {
+            Ok(header) => {
+                // let pp = PrettyPrinter::new();
+                // let blob = pp.prettify(&svg);
+                let blob = header.to_string();
+                let filename = format!("{}_widget.h", self.name);
+
+                save(".h", &filename, blob.as_bytes());
+            }
+            Err(e) => warnf!("error generating C++ header file '{:?}'", e),
+        }
+    }
+
     pub fn new_input_id(&self) -> String {
         let re = Regex::new(r"(i)(\d+)").unwrap();
         let mut ix: i32 = 0;
@@ -364,12 +383,29 @@ impl Module {
         }
     }
 
+    pub fn find_parameter(&self, id: &str) -> Option<usize> {
+        match self.panel.parameters.iter().position(|v| v.id == id) {
+            Some(ix) => Some(ix),
+            None => self
+                .panel
+                .parameters
+                .iter()
+                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
+        }
+    }
+
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
         let old = format!("{}<{}>", tag, from);
         let new = format!("{}<{}>", tag, to);
 
-        // FIXME migrate inputs
-        // FIXME migrate outputs
+        for v in &mut self.panel.inputs {
+            v.migrate(&old, &new);
+        }
+
+        for v in &mut self.panel.outputs {
+            v.migrate(&old, &new);
+        }
+
         // FIXME migrate parameters
         // FIXME migrate lights
         // FIXME migrate widgets

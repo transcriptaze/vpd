@@ -5,25 +5,23 @@ use crate::command::Command;
 use crate::module::Module;
 
 #[derive(Deserialize)]
-pub struct ExportSVG {
-    theme: String,
-}
+pub struct ExportHeader {}
 
 #[derive(Deserialize)]
 struct Object {
-    svg: ExportSVG,
+    header: ExportHeader,
 }
 
-impl ExportSVG {
-    pub fn new(json: &str) -> Result<ExportSVG, Box<dyn Error>> {
+impl ExportHeader {
+    pub fn new(json: &str) -> Result<ExportHeader, Box<dyn Error>> {
         let o: Object = serde_json::from_str(json)?;
 
-        Ok(o.svg)
+        Ok(o.header)
     }
 }
 
-impl Command for ExportSVG {
+impl Command for ExportHeader {
     fn apply(&self, m: &mut Module) {
-        m.export_svg(&self.theme);
+        m.export_header();
     }
 }

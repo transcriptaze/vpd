@@ -13,6 +13,7 @@ mod set_input;
 mod set_module;
 mod set_origin;
 mod set_output;
+mod set_parameter;
 
 mod delete_decoration;
 mod delete_guide;
@@ -23,6 +24,7 @@ mod delete_output;
 mod delete_parameter;
 mod delete_widget;
 
+mod export_header;
 mod export_svg;
 mod load_project;
 mod load_script;
@@ -44,6 +46,7 @@ pub use set_input::SetInput;
 pub use set_module::SetModule;
 pub use set_origin::SetOrigin;
 pub use set_output::SetOutput;
+pub use set_parameter::SetParameter;
 
 pub use delete_decoration::DeleteDecoration;
 pub use delete_guide::DeleteGuide;
@@ -54,6 +57,7 @@ pub use delete_output::DeleteOutput;
 pub use delete_parameter::DeleteParameter;
 pub use delete_widget::DeleteWidget;
 
+pub use export_header::ExportHeader;
 pub use export_svg::ExportSVG;
 pub use load_project::LoadProject;
 pub use load_script::LoadScript;

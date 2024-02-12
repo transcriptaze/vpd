@@ -2,8 +2,12 @@ use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::Item;
+use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
+
+use crate::svg::Circle;
+use crate::vcv::Component;
 
 #[derive(Serialize, Deserialize)]
 pub struct Light {
@@ -23,6 +27,24 @@ impl Light {
             y: y.clone(),
             part: part.clone(),
         }
+    }
+
+    pub fn as_svg(&self, panel: &Panel) -> Circle {
+        let name = &self.name;
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+        let radius = 2.54;
+        let colour = "#ff00ff";
+
+        Circle::new(name, x, y, radius, &colour)
+    }
+
+    pub fn as_component(&self, panel: &Panel) -> Component {
+        let name = &self.name;
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+
+        Component::new(name, x, y)
     }
 }
 

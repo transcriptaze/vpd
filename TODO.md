@@ -16,13 +16,20 @@
 - [ ] Save .h file
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
+- [ ] Cheatsheet
+      - [ ] XY
 
 - [ ] Export header file
+      - [x] Fix ..h filename
       - [x] UI button
       - [x] Command
       - [x] Help
       - [x] JS
-      - [ ] RS
+      - [x] rs
+      - [x] Default prefix - convert module name to uppercase and replace non-alphanumeric with underscores
+      - [ ] pretty-print
+      - [ ] optional prefix
+      - [ ] loadable template
 
 
 ### Overlay
@@ -52,38 +59,42 @@
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
-      - (?) warn if duplicate offset
-      - (?) `new guide horizontal h1+10mm` (i.e. optional vertical/horizontal)
-
-- [x] _inputs_
-      - [x] discard/warn duplicates
-      - [x] set
       - [ ] migrate
+      - (?) warn if duplicate offset
+
+- [ ] _inputs_
+      - [x] migrate
+      - [ ] `set input 'gain' x (input in +10mm)`
 
 - [ ] _outputs_
-      - [x] discard/warn duplicates
-      - [x] set
-      - [x] help
-      - [ ] migrate
+      - [x] migrate
+      - [ ] `set output 'left' x (input in +10mm)`
 
 - [ ] _parameters_
-      - [ ] discard/warn duplicates
-      - [ ] set
-      - [ ] help
+      - [x] help
+      - [x] set
+      - [x] migrate
+      - [x] warn duplicates
+      - [ ] `set parameter 'volume' x (input in +10mm)`
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
       - [ ] set
       - [ ] help
+      - [ ] migrate
+      - [ ] info
 
 - [ ] _widget_
       - [ ] set
       - [ ] help
+      - [ ] migrate
+      - [ ] info
 
 - [ ] _label_
       - [ ] set
       - [ ] hover
       - [ ] Export label text too
+      - [ ] migrate
 
 - [ ] _decorate_
       - [ ] set

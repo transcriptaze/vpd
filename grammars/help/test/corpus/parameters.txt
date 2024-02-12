@@ -7,6 +7,43 @@ new parameter
   (new
     (parameter)))
 
+
+===============
+new parameter p
+===============
+new parameter p
+---
+(command
+  (new
+    (parameter
+      (name))))
+
+
+==========================
+new parameter p @10mm,10mm
+==========================
+new parameter p @10mm,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (xy))))
+
+
+==================================
+new parameter "p" 10mm,10mm PJ301M
+==================================
+new parameter "p" 10mm,10mm PJ301M
+---
+(command
+  (new
+    (parameter
+      (name)
+      (xy)
+      (part))))
+
+
 ================
 delete parameter
 ================
@@ -28,5 +65,95 @@ delete parameter p1
       (identifier))))
 
         
+=============
+set parameter
+=============
+set parameter
+---
+(command
+  (set
+    (parameter)))
 
+
+================
+set parameter p1
+================
+set parameter p1
+---
+(command
+  (set
+    (parameter
+      (identifier))))
+
+
+============================
+set parameter p1 name 'gain'
+============================
+set parameter p1 name 'gain'
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (name)))
+
+
+=======================
+set parameter p1 x 10mm
+=======================
+set parameter p1 x 10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x)))
+
+
+=======================
+set parameter p1 y 10mm
+=======================
+set parameter p1 y 10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y)))
+
+
+=============================
+set parameter p1 xy 10mm,10mm
+=============================
+set parameter p1 xy 10mm,10mm
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy)))
+
+
+==================================
+set parameter 'gain' part 'PJ301M'
+==================================
+set parameter 'gain' part 'PJ301M'
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (part)))
+
+
+==================================
+set parameter "gain" part 'PJ301M'
+==================================
+set parameter "gain" part 'PJ301M'
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (part)))
 

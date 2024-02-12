@@ -333,11 +333,13 @@ function saveSVG (filename, svg) {
 function saveHeader (filename, svg) {
   const blob = new Blob([svg], { type: 'text/plain' })
 
+  console.log('>>', filename)
+
   const match = `${filename}`.match(/(.*?)(\.h|\.hpp)/)
   if (match.length > 2) {
-    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.${match[2]}`
+    filename = `${match[1].replaceAll(/[^a-zA-Z0-9_-]+/g, '_')}${match[2]}`
   } else if (match.length > 1) {
-    filename = `${match[1].replaceAll(/[^a-zA-Z0-9-]+/g, '_')}.h`
+    filename = `${match[1].replaceAll(/[^a-zA-Z0-9_-]+/g, '_')}.h`
   }
 
   if (window.showSaveFilePicker) {

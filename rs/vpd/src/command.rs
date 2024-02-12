@@ -19,6 +19,7 @@ use crate::commands::SetInput;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
 use crate::commands::SetOutput;
+use crate::commands::SetParameter;
 
 use crate::commands::DeleteDecoration;
 use crate::commands::DeleteGuide;
@@ -29,6 +30,7 @@ use crate::commands::DeleteOutput;
 use crate::commands::DeleteParameter;
 use crate::commands::DeleteWidget;
 
+use crate::commands::ExportHeader;
 use crate::commands::ExportSVG;
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
@@ -70,6 +72,7 @@ struct Action<'a> {
     project: Option<Entity>,
     script: Option<Entity>,
     svg: Option<Entity>,
+    header: Option<Entity>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -177,6 +180,10 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         return Ok(Box::new(SetOutput::new(json)?));
     }
 
+    if v.parameter.is_some() {
+        return Ok(Box::new(SetParameter::new(json)?));
+    }
+
     return Err("invalid 'set' command".into());
 }
 
@@ -239,6 +246,10 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.action == "export" && v.svg.is_some() {
         return Ok(Box::new(ExportSVG::new(json)?));
+    }
+
+    if v.action == "export" && v.header.is_some() {
+        return Ok(Box::new(ExportHeader::new(json)?));
     }
 
     return Err("invalid command".into());

@@ -3,6 +3,7 @@ import * as module from './modules.js'
 import * as background from './background.js'
 import * as inputs from './inputs.js'
 import * as outputs from './outputs.js'
+import * as parameters from './parameters.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -24,6 +25,9 @@ export function parse (node) {
 
       case 'output':
         return outputs.setOutput(child, src)
+
+      case 'parameter':
+        return parameters.setParameter(child, src)
 
       default:
         throw new Error(`unknown 'set' entity <<${child.type}>>`)

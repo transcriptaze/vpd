@@ -4,11 +4,13 @@ mod module;
 mod panel;
 mod svg;
 mod utils;
+mod vcv;
 
 use wasm_bindgen::prelude::*;
 
 use crate::utils::log;
 use once_cell::sync::Lazy;
+use regex::Regex;
 use serde;
 use serde_wasm_bindgen;
 use std::sync::Mutex;
@@ -98,7 +100,7 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
             Ok(value)
         }
 
-        "panel" => match module.panel.export_SVG("light") {
+        "panel.svg" => match module.panel.export_SVG("light") {
             Ok(svg) => {
                 let pp = PrettyPrinter::new();
                 let blob = pp.prettify(&svg);
@@ -114,7 +116,7 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
             Err(e) => Err(JsValue::from(format!("error generating SVG '{:?}'", e))),
         },
 
-        "panel-dark" => match module.panel.export_SVG("dark") {
+        "panel.svg.dark" => match module.panel.export_SVG("dark") {
             Ok(svg) => {
                 let pp = PrettyPrinter::new();
                 let blob = pp.prettify(&svg);
@@ -129,6 +131,31 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
 
             Err(e) => Err(JsValue::from(format!("error generating SVG '{:?}'", e))),
         },
+
+        "panel.h" => {
+            let prefix = Regex::new(r#"[^a-zA-Z0-9]+"#)
+                .unwrap()
+                .replace_all(&module.name, "_")
+                .to_uppercase();
+
+            match module.panel.export_header(&module.name, &prefix) {
+                Ok(header) => {
+                    // let pp = PrettyPrinter::new();
+                    let blob = header.to_string();
+                    let filename = format!("{}_widget.h", &module.name);
+
+                    let serialized = Serialized {
+                        name: filename,
+                        serialized: blob,
+                    };
+
+                    let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+                    Ok(value)
+                }
+
+                Err(e) => Err(JsValue::from(format!("error generating .h file '{:?}'", e))),
+            }
+        }
 
         _ => Err(JsValue::from(format!("unknown object {}", object))),
     }

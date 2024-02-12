@@ -195,72 +195,57 @@ impl SVG {
             _ => context.insert("styles", "no"),
         }
 
-        match &self.background {
-            Some(v) => {
-                context.insert("backgrounds", &self.backgrounds);
-                context.insert("background", &v.template);
-            }
-            _ => {}
+        if let Some(v) = &self.background {
+            context.insert("backgrounds", &self.backgrounds);
+            context.insert("background", &v.template);
         }
 
-        match &self.outline {
-            Some(v) => context.insert("outline", &v),
-            _ => {}
+        if let Some(v) = &self.outline {
+            context.insert("outline", v);
         }
 
-        match &self.origin {
-            Some(v) => context.insert("origin", &v),
-            _ => {}
+        if let Some(v) = &self.origin {
+            context.insert("origin", v);
         }
 
-        match &self.guidelines {
-            Some(v) => context.insert("guidelines", &v),
-            _ => {}
+        if let Some(v) = &self.guidelines {
+            context.insert("guidelines", v);
         }
 
-        match &self.inputs {
-            Some(v) => context.insert("inputs", &v),
-            _ => {}
+        if let Some(v) = &self.inputs {
+            context.insert("inputs", v);
         }
 
-        match &self.outputs {
-            Some(v) => context.insert("outputs", &v),
-            _ => {}
+        if let Some(v) = &self.outputs {
+            context.insert("outputs", v);
         }
 
-        match &self.parameters {
-            Some(v) => context.insert("parameters", &v),
-            _ => {}
+        if let Some(v) = &self.parameters {
+            context.insert("parameters", v);
         }
 
-        match &self.lights {
-            Some(v) => context.insert("lights", &v),
-            _ => {}
+        if let Some(v) = &self.lights {
+            context.insert("lights", v);
         }
 
-        match &self.widgets {
-            Some(v) => context.insert("widgets", &v),
-            _ => {}
+        if let Some(v) = &self.widgets {
+            context.insert("widgets", v);
         }
 
-        match &self.labels {
-            Some(v) => context.insert("labels", &v),
-            _ => {}
+        if let Some(v) = &self.labels {
+            context.insert("labels", v);
         }
 
-        match &self.decorations {
-            Some(v) => context.insert("decorations", &v),
-            _ => {}
+        if let Some(v) = &self.decorations {
+            context.insert("decorations", v);
         }
 
-        match &self.parts {
-            Some(v) => context.insert("parts", &v),
-            _ => {}
+        if let Some(v) = &self.parts {
+            context.insert("parts", v);
         }
 
-        match &self.screws {
-            Some(v) => context.insert("screws", &v),
-            _ => {}
+        if let Some(v) = &self.screws {
+            context.insert("screws", v);
         }
 
         let svg = tera.render("panel", &context).unwrap();

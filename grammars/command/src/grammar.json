@@ -92,6 +92,10 @@
             {
               "type": "SYMBOL",
               "name": "_output_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_parameter_attr"
             }
           ]
         }
@@ -260,6 +264,105 @@
           },
           "named": true,
           "value": "output"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "name"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "x"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_x_attr"
+                  },
+                  "named": true,
+                  "value": "x"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "y"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_y_attr"
+                  },
+                  "named": true,
+                  "value": "y"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "xy"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_xy_attr"
+                  },
+                  "named": true,
+                  "value": "xy"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "part"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "part"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_parameter_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_parameter_id"
+          },
+          "named": true,
+          "value": "parameter"
         },
         {
           "type": "CHOICE",
@@ -1604,6 +1707,69 @@
                 {
                   "type": "SYMBOL",
                   "name": "y"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_input"
+                      },
+                      "named": true,
+                      "value": "input"
+                    },
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_output"
+                      },
+                      "named": true,
+                      "value": "output"
+                    },
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_parameter"
+                      },
+                      "named": true,
+                      "value": "parameter"
+                    },
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_light"
+                      },
+                      "named": true,
+                      "value": "light"
+                    },
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_widget"
+                      },
+                      "named": true,
+                      "value": "widget"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
                 }
               ]
             }
