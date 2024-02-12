@@ -1,4 +1,3 @@
-import { identifier, string, mm } from './commands.js'
 import * as components from './components.js'
 
 export function newInput (node, src) {
