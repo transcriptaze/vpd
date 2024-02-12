@@ -245,6 +245,22 @@ new input "e" v1+4.5mm,h1+4.5mm "PJ301M"
         (part))))
 
 
+============================================
+new input 'f' (input 'e' +10mm,-10mm) PJ301M
+============================================
+new input 'f' (input 'e' +10mm,-10mm) PJ301M
+---
+(command
+  (new
+    (input
+      (name)
+      (input
+        (name)
+        (dx)
+        (dy))
+      (part))))
+
+
 ===============
 delete input i1
 ===============

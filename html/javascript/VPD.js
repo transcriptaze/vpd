@@ -206,7 +206,7 @@ export function onClickPanel (panel, x, y) {
               const value = document.createElement('p')
 
               label.innerHTML = `${k}`
-              value.innerHTML = `${v}`
+              value.innerHTML = `${v}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 
               fieldset.append(label)
               fieldset.append(value)

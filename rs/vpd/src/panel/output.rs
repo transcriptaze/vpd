@@ -46,6 +46,16 @@ impl Output {
 
         Component::new(name, x, y)
     }
+
+    pub fn migrate(&mut self, from: &str, to: &str) {
+        if self.x.reference == from {
+            self.x.reference = to.to_string();
+        }
+
+        if self.y.reference == from {
+            self.y.reference = to.to_string();
+        }
+    }
 }
 
 impl IItem for Output {

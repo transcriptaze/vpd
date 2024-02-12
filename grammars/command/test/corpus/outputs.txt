@@ -230,6 +230,20 @@ new output "u" v1+4.5mm,h1+4.5mm "PJ301M"
         (offset))
       (part))))
 
+==============================================
+new output 'v' (output 'v' +10mm,-10mm) PJ301M
+==============================================
+new output 'v' (output 'v' +10mm,-10mm) PJ301M
+---
+(command
+  (new
+    (output
+      (name)
+      (output
+        (name)
+        (dx)
+        (dy))
+      (part))))
 
 ================
 delete output o1

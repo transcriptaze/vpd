@@ -63,10 +63,10 @@
       - (?) warn if duplicate offset
 
 - [x] _inputs_
-      - [ ] migrate
+      - [x] migrate
 
-- [ ] _outputs_
-      - [ ] migrate
+- [x] _outputs_
+      - [x] migrate
 
 - [ ] _parameters_
       - [ ] discard/warn duplicates

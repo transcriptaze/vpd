@@ -62,19 +62,19 @@ export function parse (node) {
       }
     }
 
-    if (child.type === 'parameter') {
+    if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
       object.x = {
-        offset: 0,
-      }          
+        offset: 0
+      }
 
       object.y = {
-                offset: 0,
-      }          
-      
+        offset: 0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'name') {
-          object.x.reference = `parameter<${identifier(v)}>`
-          object.y.reference = `parameter<${identifier(v)}>`
+          object.x.reference = `${child.type}<${identifier(v)}>`
+          object.y.reference = `${child.type}<${identifier(v)}>`
         }
 
         if (v.type === 'dx') {
