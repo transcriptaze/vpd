@@ -960,6 +960,10 @@
           "named": true
         },
         {
+          "type": "parameter",
+          "named": true
+        },
+        {
           "type": "part",
           "named": true
         },

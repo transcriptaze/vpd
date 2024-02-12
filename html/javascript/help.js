@@ -65,7 +65,6 @@ const COMMANDS = [
     help: ['new', 'input', `${NAME}`, '(output audio +0mm,-10.16mm)', 'PJ301M'],
     min: 1
   },
-
   {
     command: ['new', 'output', 'name', 'xy', 'part'],
     help: ['new', 'output', `${NAME}`, '@10mm,10mm', 'PJ301M'],
@@ -86,7 +85,26 @@ const COMMANDS = [
     help: ['new', 'output', `${NAME}`, '(input audio +0mm,+10.16mm)', 'PJ301M'],
     min: 1
   },
-
+  {
+    command: ['new', 'parameter', 'name', 'xy', 'part'],
+    help: ['new', 'parameter', `${NAME}`, '@10mm,10mm', 'RoundBlackKnob'],
+    min: 1
+  },
+  {
+    command: ['new', 'parameter', 'name', 'xy', 'part'],
+    help: ['new', 'parameter', `${NAME}`, '10mm,10mm', 'RoundBlackKnob'],
+    min: 1
+  },
+  {
+    command: ['new', 'parameter', 'name', 'xy', 'part'],
+    help: ['new', 'parameter', `${NAME}`, 'left+10mm,top+10mm', 'RoundBlackKnob'],
+    min: 1
+  },
+  {
+    command: ['new', 'parameter', 'name', 'xy', 'part'],
+    help: ['new', 'parameter', `${NAME}`, '(input audio +0mm,+10.16mm)', 'RoundBlackKnob'],
+    min: 1
+  },
   {
     command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize', 'halign', 'valign', 'colour'],
     help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
@@ -158,6 +176,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'input', 'identifier', 'xy'],
+    help: ['set', 'input', ID, `xy ${X},${Y}`],
+    min: 1
+  },
+  {
     command: ['set', 'input', 'identifier', 'part'],
     help: ['set', 'input', ID, `part ${PART}`],
     min: 1
@@ -178,8 +201,33 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'output', 'identifier', 'xy'],
+    help: ['set', 'output', ID, `xy ${X},${Y}`],
+    min: 1
+  },
+  {
     command: ['set', 'output', 'identifier', 'part'],
     help: ['set', 'output', ID, `part ${PART}`],
+    min: 1
+  },
+  {
+    command: ['set', 'parameter', 'identifier', 'x'],
+    help: ['set', 'parameter', ID, `x ${X}`],
+    min: 1
+  },
+  {
+    command: ['set', 'parameter', 'identifier', 'y'],
+    help: ['set', 'parameter', ID, `y ${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'parameter', 'identifier', 'xy'],
+    help: ['set', 'parameter', ID, `xy ${X},${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'parameter', 'identifier', 'part'],
+    help: ['set', 'parameter', ID, `part ${PART}`],
     min: 1
   },
   {

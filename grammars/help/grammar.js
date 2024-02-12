@@ -21,9 +21,9 @@ module.exports = grammar({
         choice(
           $.module,
           $.guide,
-          alias($._input_entity, $.input),
-          alias($._output_entity,$.output),
-          $.parameter,
+          alias($._input_entity,     $.input),
+          alias($._output_entity,    $.output),
+          alias($._parameter_entity, $.parameter),
           $.light,
           $.widget,
           $.label,
@@ -72,6 +72,21 @@ module.exports = grammar({
       ),
     ),
 
+    _parameter_entity: $ => seq(
+      'parameter',
+      optional(
+        seq(
+          $.name,
+          optional(
+            seq(
+              $.xy,
+              optional($.part),
+            ),
+          ),
+        ),
+      ),
+    ),
+
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
 
@@ -86,6 +101,7 @@ module.exports = grammar({
           $.background,
           $._input_attr,
           $._output_attr,
+          $._parameter_attr,
         ),
       )
     ),
@@ -116,6 +132,19 @@ module.exports = grammar({
 
     _output_attr: $ => seq(
       alias($._output_id, $.output),
+      optional(
+        choice(
+          seq('name', optional($.name)),
+          seq('x',    optional(alias($._x_attr, $.x))),
+          seq('y',    optional(alias($._y_attr, $.y))),
+          seq('xy',   optional(alias($._xy_attr, $.xy))),
+          seq('part', optional($.part)),
+        ),
+      ),
+    ),
+
+    _parameter_attr: $ => seq(
+      alias($._parameter_id, $.parameter),
       optional(
         choice(
           seq('name', optional($.name)),

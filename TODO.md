@@ -64,15 +64,18 @@
 
 - [x] _inputs_
       - [x] migrate
+      - [ ] `set input 'gain' x (input in +10mm)`
 
 - [x] _outputs_
       - [x] migrate
+      - [ ] `set output 'left' x (input in +10mm)`
 
 - [ ] _parameters_
-      - [ ] discard/warn duplicates
+      - [x] help
       - [ ] set
-      - [ ] help
       - [ ] migrate
+      - [ ] discard/warn duplicates
+      - [ ] `set parameter 'volume' x (input in +10mm)`
 
 - [ ] _lights_
       - [ ] discard/warn duplicates
