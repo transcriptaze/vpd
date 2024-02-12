@@ -28,6 +28,16 @@ impl NewParameter {
 }
 
 impl Command for NewParameter {
+    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
+        let name = self.name.as_str();
+
+        if let Some(_) = m.find_parameter(&name) {
+            return Some(format!("duplicate parameter name '{}'", name).into());
+        }
+
+        None
+    }
+
     fn apply(&self, m: &mut Module) {
         let id = m.new_parameter_id();
 

@@ -62,11 +62,11 @@
       - [ ] migrate
       - (?) warn if duplicate offset
 
-- [x] _inputs_
+- [ ] _inputs_
       - [x] migrate
       - [ ] `set input 'gain' x (input in +10mm)`
 
-- [x] _outputs_
+- [ ] _outputs_
       - [x] migrate
       - [ ] `set output 'left' x (input in +10mm)`
 
@@ -74,7 +74,7 @@
       - [x] help
       - [x] set
       - [x] migrate
-      - [ ] discard/warn duplicates
+      - [x] warn duplicates
       - [ ] `set parameter 'volume' x (input in +10mm)`
 
 - [ ] _lights_
