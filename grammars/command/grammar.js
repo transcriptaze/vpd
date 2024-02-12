@@ -385,6 +385,17 @@ module.exports = grammar({
         $.absolute,
         $.relative,
         seq( $.x, ',', $.y ),
+        seq (
+          '(',
+          choice (
+            alias ($._input,     $.input),
+            alias ($._output,    $.output),
+            alias ($._parameter, $.parameter),
+            alias ($._light,     $.light),
+            alias ($._widget,    $.widget),
+          ),
+          ')',
+        ),
       ),
       optional($.part),
     ),

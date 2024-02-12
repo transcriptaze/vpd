@@ -62,6 +62,31 @@ export function parse (node) {
       }
     }
 
+    if (child.type === 'parameter') {
+      object.x = {
+        offset: 0,
+      }          
+
+      object.y = {
+                offset: 0,
+      }          
+      
+      for (const v of child.namedChildren) {
+        if (v.type === 'name') {
+          object.x.reference = `parameter<${identifier(v)}>`
+          object.y.reference = `parameter<${identifier(v)}>`
+        }
+
+        if (v.type === 'dx') {
+          object.x.offset = mm(v)
+        }
+
+        if (v.type === 'dy') {
+          object.y.offset = mm(v)
+        }
+      }
+    }
+
     if (child.type === 'part') {
       object.part = clean(child.text)
     }

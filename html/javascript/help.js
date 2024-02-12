@@ -60,6 +60,11 @@ const COMMANDS = [
     help: ['new', 'input', `${NAME}`, 'left+10mm,top+10mm', 'PJ301M'],
     min: 1
   },
+  {
+    command: ['new', 'input', 'name', 'xy', 'part'],
+    help: ['new', 'input', `${NAME}`, '(output audio +0mm,-10.16mm)', 'PJ301M'],
+    min: 1
+  },
 
   {
     command: ['new', 'output', 'name', 'xy', 'part'],
@@ -74,6 +79,11 @@ const COMMANDS = [
   {
     command: ['new', 'output', 'name', 'xy', 'part'],
     help: ['new', 'output', `${NAME}`, 'left+10mm,top+10mm', 'PJ301M'],
+    min: 1
+  },
+  {
+    command: ['new', 'output', 'name', 'xy', 'part'],
+    help: ['new', 'output', `${NAME}`, '(input audio +0mm,+10.16mm)', 'PJ301M'],
     min: 1
   },
 

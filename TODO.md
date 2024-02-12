@@ -16,6 +16,8 @@
 - [ ] Save .h file
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
+- [ ] Cheatsheet
+      - [ ] XY
 
 - [ ] Export header file
       - [x] Fix ..h filename

@@ -406,7 +406,23 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         },
         {
@@ -415,6 +431,10 @@
         },
         {
           "type": "relative",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         },
         {
@@ -512,7 +532,23 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         },
         {
@@ -521,6 +557,10 @@
         },
         {
           "type": "relative",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         },
         {
@@ -677,7 +717,23 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         },
         {
@@ -686,6 +742,10 @@
         },
         {
           "type": "relative",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         },
         {
@@ -743,7 +803,23 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         },
         {
@@ -752,6 +828,10 @@
         },
         {
           "type": "relative",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         },
         {
@@ -985,7 +1065,23 @@
           "named": true
         },
         {
+          "type": "input",
+          "named": true
+        },
+        {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "output",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         },
         {
@@ -994,6 +1090,10 @@
         },
         {
           "type": "relative",
+          "named": true
+        },
+        {
+          "type": "widget",
           "named": true
         },
         {

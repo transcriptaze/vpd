@@ -292,13 +292,13 @@ Examples:
 
 ##### Location formats
 
-| Type         | `<xy>`    | Description                                                              | Example                         |
-|--------------|-----------|--------------------------------------------------------------------------|---------------------------------|
-| **absolute** | `@x,y`    | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.62mm`                 |
-| **relative** | `x,y`     | x,y location in mm relative to the origin                                | `4.5mm,-7.62mm`                 |
-| **geometry** | `h,v`     | x,y location relative to the geometry of the panel                       | `left+4mm,top+10.16mm`          |
-| **guides**   | `h,v`     | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`                |
-| **decorate** | `(e x,y)` | x,y location relative to the component _e_                               | `(input "audio" +4.5mm,-4.5mm)` |
+| Type         | `<xy>`      | Description                                                              | Example                         |
+|--------------|-------------|--------------------------------------------------------------------------|---------------------------------|
+| **absolute** | `@x,y`      | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.62mm`                 |
+| **relative** | `x,y`       | x,y location in mm relative to the origin                                | `4.5mm,-7.62mm`                 |
+| **geometry** | `h,v`       | x,y location relative to the geometry of the panel                       | `left+4mm,top+10.16mm`          |
+| **guides**   | `h,v`       | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`                |
+| **decorate** | `(e [x,y])` | x,y location relative to the component _e_                               | `(input "audio" +4.5mm,-4.5mm)` |
    
 
 #### Parts
@@ -787,6 +787,7 @@ new light on @10.16mm,10.16mm LED
 new light on 10.16mm,10.16mm LED
 new light recording left+5.08mm,top+2H "Red LED"
 new light recording v1+5.08mm,v2+7.62mm "Red LED"
+new light recording (parameter recording) LED
 ````
 
 
