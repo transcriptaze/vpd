@@ -24,7 +24,7 @@ module.exports = grammar({
           alias($._input_entity,     $.input),
           alias($._output_entity,    $.output),
           alias($._parameter_entity, $.parameter),
-          $.light,
+          alias($._light_entity,     $.light),
           $.widget,
           $.label,
         ),
@@ -87,6 +87,21 @@ module.exports = grammar({
       ),
     ),
 
+    _light_entity: $ => seq(
+      'light',
+      optional(
+        seq(
+          $.name,
+          optional(
+            seq(
+              $.xy,
+              optional($.part),
+            ),
+          ),
+        ),
+      ),
+    ),
+
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
 
@@ -99,9 +114,7 @@ module.exports = grammar({
           $.origin,
           alias($._module_attr,$.module),
           $.background,
-          $._input_attr,
-          $._output_attr,
-          $._parameter_attr,
+          $._component_attr,
         ),
       )
     ),
@@ -117,34 +130,13 @@ module.exports = grammar({
       ),
     ),
 
-    _input_attr: $ => seq(
-      alias($._input_id, $.input),
-      optional(
-        choice(
-          seq('name', optional($.name)),
-          seq('x',    optional(alias($._x_attr, $.x))),
-          seq('y',    optional(alias($._y_attr, $.y))),
-          seq('xy',   optional(alias($._xy_attr, $.xy))),
-          seq('part', optional($.part)),
-        ),
+    _component_attr: $ => seq(
+      choice (
+        alias($._input_id, $.input),
+        alias($._output_id, $.output),
+        alias($._parameter_id, $.parameter),
+        alias($._light_id, $.light),
       ),
-    ),
-
-    _output_attr: $ => seq(
-      alias($._output_id, $.output),
-      optional(
-        choice(
-          seq('name', optional($.name)),
-          seq('x',    optional(alias($._x_attr, $.x))),
-          seq('y',    optional(alias($._y_attr, $.y))),
-          seq('xy',   optional(alias($._xy_attr, $.xy))),
-          seq('part', optional($.part)),
-        ),
-      ),
-    ),
-
-    _parameter_attr: $ => seq(
-      alias($._parameter_id, $.parameter),
       optional(
         choice(
           seq('name', optional($.name)),

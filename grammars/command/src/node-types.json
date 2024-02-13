@@ -944,6 +944,10 @@
           "named": true
         },
         {
+          "type": "light",
+          "named": true
+        },
+        {
           "type": "module",
           "named": true
         },

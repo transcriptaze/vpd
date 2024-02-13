@@ -2,20 +2,20 @@
 
 **Contents**
 
-| General                             | Commands                                |                                           |                                   |                                           |                                                   |
-|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|---------------------------------------------------|
-| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute)   |
-| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute) |
-| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   |                                                   |
-|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           |                                                   |
-| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |                                                   |
-|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                   |
-|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                   |
-|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                   |
-|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                   |
-|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                   |
-|   - [_Command area_](#command-area) | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                   |
-|                                     | [`export panel .h`](#export-panel-h)    |                                           |                                   |                                           |                                                   |
+| General                             | Commands                                |                                           |                                   |                                           |                                                         |
+|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|---------------------------------------------------------|
+| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute)         |
+| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute)       |
+| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   | [`set parameter <attribute>`](#set-parameter-attribute) |
+|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           | [`set light <attribute>`](#set-light-attribute)         |
+| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |                                                         |
+|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                         |
+|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                         |
+|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                         |
+|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                         |
+|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                         |
+|   - [_Command area_](#command-area) | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                         |
+|                                     | [`export panel .h`](#export-panel-h)    |                                           |                                   |                                           |                                                         |
 
 ## Getting started
 
@@ -760,6 +760,36 @@ delete parameter p1
 delete parameter 'volume'
 ```   
 
+#### `set paramter <attribute>`
+
+```set parameter <id|name> <attribute> <value>```
+
+Changes the value of a parameter attribute.
+
+_Command options:_
+```
+id          Identifier of the parameter to delete (the identifier is the automatically generated ID assigned to the parameter)
+name        Name of parameter.
+attribute   parameter attribute - one of name,x,y,xy or part
+value       New attribute value.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _parameter_ by name are migrated automatically when the `name`
+   of the parameter is changed.
+
+_Examples:_
+```
+set parameter p1     name 'gain'
+set parameter volume name 'gain'
+set parameter volume x v1+10mm
+set parameter volume y @55.5mm
+set parameter volume x v1+10mm
+set parameter volume xy v1,h1
+set parameter volume part RoundGreenKnob
+set parameter volume part none
+```
+
 --- 
 #### `new light`
 
@@ -816,6 +846,36 @@ _Examples_
 delete light p1
 delete light 'LED'
 ```   
+
+#### `set light <attribute>`
+
+```set light <id|name> <attribute> <value>```
+
+Changes the value of a light attribute.
+
+_Command options:_
+```
+id          Identifier of the light to delete (the identifier is the automatically generated ID assigned to the light)
+name        Name of light.
+attribute   light attribute - one of name,x,y,xy or part
+value       New attribute value.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _light_ by name are migrated automatically when the `name`
+   of the light is changed.
+
+_Examples:_
+```
+set light l1 name 'off'
+set light on name 'off'
+set light on x v1+10mm
+set light on y @55.5mm
+set light on x v1+10mm
+set light on xy v1,h1
+set light on part RedLED
+set light on part none
+```
 
 --- 
 #### `new widget`

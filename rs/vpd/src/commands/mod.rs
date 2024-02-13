@@ -10,6 +10,7 @@ mod new_widget;
 
 mod set_background;
 mod set_input;
+mod set_light;
 mod set_module;
 mod set_origin;
 mod set_output;
@@ -43,6 +44,7 @@ pub use new_widget::NewWidget;
 
 pub use set_background::SetBackground;
 pub use set_input::SetInput;
+pub use set_light::SetLight;
 pub use set_module::SetModule;
 pub use set_origin::SetOrigin;
 pub use set_output::SetOutput;
