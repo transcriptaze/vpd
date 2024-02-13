@@ -1,4 +1,3 @@
-import { identifier } from './commands.js'
 import * as components from './components.js'
 
 export function newLight (node, src) {
@@ -10,17 +9,17 @@ export function newLight (node, src) {
 }
 
 export function deleteLight (node, src) {
-  const object = {
+  return {
     src: `${src}`,
     action: 'delete',
-    light: {}
+    light: components.del(node)
   }
+}
 
-  for (const child of node.namedChildren) {
-    if (child.type === 'identifier') {
-      object.light.id = identifier(child)
-    }
+export function setLight (node, src) {
+  return {
+    src: `${src}`,
+    action: 'set',
+    light: components.set(node)
   }
-
-  return object
 }

@@ -394,6 +394,17 @@ impl Module {
         }
     }
 
+    pub fn find_light(&self, id: &str) -> Option<usize> {
+        match self.panel.lights.iter().position(|v| v.id == id) {
+            Some(ix) => Some(ix),
+            None => self
+                .panel
+                .lights
+                .iter()
+                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
+        }
+    }
+
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
         let old = format!("{}<{}>", tag, from);
         let new = format!("{}<{}>", tag, to);
@@ -406,8 +417,14 @@ impl Module {
             v.migrate(&old, &new);
         }
 
-        // FIXME migrate parameters
-        // FIXME migrate lights
+        for v in &mut self.panel.parameters {
+            v.migrate(&old, &new);
+        }
+
+        for v in &mut self.panel.lights {
+            v.migrate(&old, &new);
+        }
+
         // FIXME migrate widgets
         // FIXME migrate labels
 

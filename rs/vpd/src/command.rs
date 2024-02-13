@@ -16,6 +16,7 @@ use crate::commands::NewWidget;
 
 use crate::commands::SetBackground;
 use crate::commands::SetInput;
+use crate::commands::SetLight;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
 use crate::commands::SetOutput;
@@ -118,39 +119,39 @@ pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
 fn new(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
-    if v.action == "new" && v.module.is_some() {
+    if v.module.is_some() {
         return Ok(Box::new(NewModule::new(json)?));
     }
 
-    if v.action == "new" && v.input.is_some() {
+    if v.input.is_some() {
         return Ok(Box::new(NewInput::new(json)?));
     }
 
-    if v.action == "new" && v.output.is_some() {
+    if v.output.is_some() {
         return Ok(Box::new(NewOutput::new(json)?));
     }
 
-    if v.action == "new" && v.parameter.is_some() {
+    if v.parameter.is_some() {
         return Ok(Box::new(NewParameter::new(json)?));
     }
 
-    if v.action == "new" && v.light.is_some() {
+    if v.light.is_some() {
         return Ok(Box::new(NewLight::new(json)?));
     }
 
-    if v.action == "new" && v.widget.is_some() {
+    if v.widget.is_some() {
         return Ok(Box::new(NewWidget::new(json)?));
     }
 
-    if v.action == "new" && v.label.is_some() {
+    if v.label.is_some() {
         return Ok(Box::new(NewLabel::new(json)?));
     }
 
-    if v.action == "new" && v.decoration.is_some() {
+    if v.decoration.is_some() {
         return Ok(Box::new(NewDecoration::new(json)?));
     }
 
-    if v.action == "new" && v.guide.is_some() {
+    if v.guide.is_some() {
         return Ok(Box::new(NewGuide::new(json)?));
     }
 
@@ -184,41 +185,45 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         return Ok(Box::new(SetParameter::new(json)?));
     }
 
+    if v.light.is_some() {
+        return Ok(Box::new(SetLight::new(json)?));
+    }
+
     return Err("invalid 'set' command".into());
 }
 
 fn delete(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
-    if v.action == "delete" && v.guide.is_some() {
+    if v.guide.is_some() {
         return Ok(Box::new(DeleteGuide::new(json)?));
     }
 
-    if v.action == "delete" && v.input.is_some() {
+    if v.input.is_some() {
         return Ok(Box::new(DeleteInput::new(json)?));
     }
 
-    if v.action == "delete" && v.output.is_some() {
+    if v.output.is_some() {
         return Ok(Box::new(DeleteOutput::new(json)?));
     }
 
-    if v.action == "delete" && v.parameter.is_some() {
+    if v.parameter.is_some() {
         return Ok(Box::new(DeleteParameter::new(json)?));
     }
 
-    if v.action == "delete" && v.light.is_some() {
+    if v.light.is_some() {
         return Ok(Box::new(DeleteLight::new(json)?));
     }
 
-    if v.action == "delete" && v.widget.is_some() {
+    if v.widget.is_some() {
         return Ok(Box::new(DeleteWidget::new(json)?));
     }
 
-    if v.action == "delete" && v.label.is_some() {
+    if v.label.is_some() {
         return Ok(Box::new(DeleteLabel::new(json)?));
     }
 
-    if v.action == "delete" && v.decoration.is_some() {
+    if v.decoration.is_some() {
         return Ok(Box::new(DeleteDecoration::new(json)?));
     }
 

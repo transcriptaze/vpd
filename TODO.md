@@ -71,18 +71,15 @@
       - [ ] `set output 'left' x (input in +10mm)`
 
 - [ ] _parameters_
-      - [x] help
-      - [x] set
-      - [x] migrate
-      - [x] warn duplicates
       - [ ] `set parameter 'volume' x (input in +10mm)`
 
 - [ ] _lights_
-      - [ ] discard/warn duplicates
-      - [ ] set
-      - [ ] help
-      - [ ] migrate
-      - [ ] info
+      - [x] discard/warn duplicates
+      - [x] set
+      - [x] help
+      - [x] migrate
+      - [x] info
+      - [ ] `set light 'on' x (parameter off 0mm,0mm)`
 
 - [ ] _widget_
       - [ ] set

@@ -106,6 +106,26 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['new', 'light', 'name', 'xy', 'part'],
+    help: ['new', 'light', `${NAME}`, '@10mm,10mm', 'LED'],
+    min: 1
+  },
+  {
+    command: ['new', 'light', 'name', 'xy', 'part'],
+    help: ['new', 'light', `${NAME}`, '10mm,10mm', 'LED'],
+    min: 1
+  },
+  {
+    command: ['new', 'light', 'name', 'xy', 'part'],
+    help: ['new', 'light', `${NAME}`, 'left+10mm,top+10mm', 'LED'],
+    min: 1
+  },
+  {
+    command: ['new', 'light', 'name', 'xy', 'part'],
+    help: ['new', 'light', `${NAME}`, '(input audio +0mm,+10.16mm)', 'LED'],
+    min: 1
+  },
+  {
     command: ['new', 'label', 'string', 'absolute', 'font', 'fontsize', 'halign', 'valign', 'colour'],
     help: ['new', 'label', '"lorem"', '@10.16mm,12.7mm', '"Lato-Bold"', '12pt', 'centre,baseline', '#ff0000,#00ff00'],
     min: 1
@@ -228,6 +248,26 @@ const COMMANDS = [
   {
     command: ['set', 'parameter', 'identifier', 'part'],
     help: ['set', 'parameter', ID, `part ${PART}`],
+    min: 1
+  },
+  {
+    command: ['set', 'light', 'identifier', 'x'],
+    help: ['set', 'light', ID, `x ${X}`],
+    min: 1
+  },
+  {
+    command: ['set', 'light', 'identifier', 'y'],
+    help: ['set', 'light', ID, `y ${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'light', 'identifier', 'xy'],
+    help: ['set', 'light', ID, `xy ${X},${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'light', 'identifier', 'part'],
+    help: ['set', 'light', ID, `part ${PART}`],
     min: 1
   },
   {
