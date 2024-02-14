@@ -187,6 +187,15 @@
               },
               "named": true,
               "value": "light"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_widget_id"
+              },
+              "named": true,
+              "value": "widget"
             }
           ]
         },

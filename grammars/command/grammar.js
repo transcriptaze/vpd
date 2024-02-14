@@ -46,10 +46,11 @@ module.exports = grammar({
 
     _component_attr: $ => seq(
       choice(
-        alias($._input_id, $.input),
-        alias($._output_id, $.output),
+        alias($._input_id,     $.input),
+        alias($._output_id,    $.output),
         alias($._parameter_id, $.parameter),
-        alias($._light_id, $.light),
+        alias($._light_id,     $.light),
+        alias($._widget_id,    $.widget),
       ),
       choice(
         seq('name', $.name),

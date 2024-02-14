@@ -1,11 +1,60 @@
 ==========
-new widget
+new widget 
 ==========
 new widget
 ---
 (command
   (new
     (widget)))
+
+
+===================
+new widget channels
+===================
+new widget channels
+---
+(command
+  (new
+    (widget
+      (name))))
+
+
+==============================
+new widget channels @10mm,10mm
+==============================
+new widget channels @10mm,10mm
+---
+(command
+  (new
+    (widget
+      (name)
+      (xy))))
+
+
+======================================
+new widget "channels" 10mm,10mm PJ301M
+======================================
+new widget "channels" 10mm,10mm PJ301M
+---
+(command
+  (new
+    (widget
+      (name)
+      (xy)
+      (part))))
+
+
+======================================
+new widget 'channels' 10mm,10mm PJ301M
+======================================
+new widget 'channels' 10mm,10mm PJ301M
+---
+(command
+  (new
+    (widget
+      (name)
+      (xy)
+      (part))))
 
 
 =============
@@ -29,5 +78,94 @@ delete widget w1
       (identifier))))
 
         
+==========
+set widget
+==========
+set widget
+---
+(command
+  (set
+    (widget)))
 
 
+=============
+set widget w1
+=============
+set widget w1
+---
+(command
+  (set
+    (widget
+      (identifier))))
+
+
+============================
+set widget w1 name 'display'
+============================
+set widget w1 name 'display'
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (name)))
+
+
+====================
+set widget w1 x 10mm
+====================
+set widget w1 x 10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x)))
+
+
+====================
+set widget w1 y 10mm
+====================
+set widget w1 y 10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y)))
+
+
+==========================
+set widget w1 xy 10mm,10mm
+==========================
+set widget w1 xy 10mm,10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy)))
+
+
+===================================
+set widget 'channels' part 'PJ301M'
+===================================
+set widget 'channels' part 'PJ301M'
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (part)))
+
+
+===================================
+set widget "channels" part 'PJ301M'
+===================================
+set widget "channels" part 'PJ301M'
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (part)))
