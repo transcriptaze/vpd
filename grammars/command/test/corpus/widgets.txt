@@ -275,3 +275,241 @@ delete widget 'ChDsp'
       (identifier))))
 
 
+=============================
+set widget channels name mute
+=============================
+set widget channels name nute
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (name)))
+
+
+=================================
+set widget 'channels' name 'mute'
+=================================
+set widget 'channels' name 'mute'
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (name)))
+
+
+=================================
+set widget "channels" name "mute"
+=================================
+set widget "channels" name "mute"
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (name)))
+
+
+=============================
+set widget 'channels' x @10mm
+=============================
+set widget 'channels' x @10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x
+      (absolute)
+      (offset))))
+
+
+============================
+set widget 'channels' x 10mm
+============================
+set widget 'channels' x 10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x
+      (offset))))
+
+
+=================================
+set widget 'channels' x left+10mm
+=================================
+set widget 'channels' x left+10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+===============================
+set widget 'channels' x v1+10mm
+===============================
+set widget 'channels' x v1+10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+=============================
+set widget 'channels' y @10mm
+=============================
+set widget 'channels' y @10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y
+      (absolute)
+      (offset))))
+
+
+============================
+set widget 'channels' y 10mm
+============================
+set widget 'channels' y 10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y
+      (offset))))
+
+
+================================
+set widget 'channels' y top+10mm
+================================
+set widget 'channels' y top+10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===============================
+set widget 'channels' y h1+10mm
+===============================
+set widget 'channels' y h1+10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===================================
+set widget 'channels' xy @10mm,10mm
+===================================
+set widget 'channels' xy @10mm,10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy
+      (absolute)
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==================================
+set widget 'channels' xy 10mm,10mm
+==================================
+set widget 'channels' xy 10mm,10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==============================================
+set widget 'channels' xy left+10mm,middle+10mm
+==============================================
+set widget 'channels' xy left+10mm,middle+10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+========================================
+set widget 'channels' xy v1+10mm,h2+10mm
+========================================
+set widget 'channels' xy v1+10mm,h2+10mm
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+===================================
+set widget 'channels' part 'PJ301M'
+===================================
+set widget 'channels' part 'PJ301M'
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (part)))
+
+
+===============================
+set widget 'channels' part none
+===============================
+set widget 'channels' part none
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (part)))
+

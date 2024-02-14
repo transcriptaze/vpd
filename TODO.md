@@ -74,24 +74,24 @@
       - [ ] `set parameter 'volume' x (input in +10mm)`
 
 - [ ] _lights_
+      - [ ] `set light 'on' x (parameter off 0mm,0mm)`
+      - [ ] `set light 'on' x (parameter off 0mm,0mm)`
+
+- [ ] _widget_
       - [x] discard/warn duplicates
       - [x] set
       - [x] help
       - [x] migrate
       - [x] info
-      - [ ] `set light 'on' x (parameter off 0mm,0mm)`
-
-- [ ] _widget_
-      - [ ] set
-      - [ ] help
-      - [ ] migrate
-      - [ ] info
+      - [ ] `set widget 'channels' x (light 'on' +10mm,-20mm)`
 
 - [ ] _label_
       - [ ] set
       - [ ] hover
       - [ ] Export label text too
       - [ ] migrate
+      - [ ] info
+      - [ ] `set label  l1 x (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
       - [ ] set
@@ -122,6 +122,12 @@
       - https://github.com/RazrFalcon/resvg
       
 
+- [ ] SublimeText plugin
+- [ ] VSCode plugin
+      https://nuejs.org/blog/introducing-glow/
+- [ ] vim plugin
+
+
 ## Notes
 
 1.  https://github.com/danmarshall/google-font-to-svg-path
@@ -143,5 +149,4 @@
 17. https://lukasatkinson.de/2015/mopping-it-up/
 18. Can't easily use local fonts in SVGs because the URLs are referenced to the blob not the originating server.
     (cf. _slow Internet problem_)~~
-
 

@@ -12,6 +12,14 @@ export function deleteWidget (node, src) {
   return {
     src: `${src}`,
     action: 'delete',
-    widget: components.parse(node)
+    widget: components.del(node)
+  }
+}
+
+export function setWidget (node, src) {
+  return {
+    src: `${src}`,
+    action: 'set',
+    widget: components.set(node)
   }
 }

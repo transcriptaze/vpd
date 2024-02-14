@@ -25,7 +25,7 @@ module.exports = grammar({
           alias($._output_entity,    $.output),
           alias($._parameter_entity, $.parameter),
           alias($._light_entity,     $.light),
-          $.widget,
+          alias($._widget_entity,    $.widget),
           $.label,
         ),
       ),
@@ -44,45 +44,35 @@ module.exports = grammar({
 
     _input_entity: $ => seq(
       'input',
-      optional(
-        seq(
-          $.name,
-          optional(
-            seq(
-              $.xy,
-              optional($.part),
-            ),
-          ),
-        ),
-      ),
+      optional($._component_entity),
     ),
 
     _output_entity: $ => seq(
       'output',
-      optional(
-        seq(
-          $.name,
-          optional(
-            seq(
-              $.xy,
-              optional($.part),
-            ),
-          ),
-        ),
-      ),
+      optional($._component_entity),
     ),
 
     _parameter_entity: $ => seq(
       'parameter',
+      optional($._component_entity),
+    ),
+
+    _light_entity: $ => seq(
+      'light',
+      optional($._component_entity),
+    ),
+
+    _widget_entity: $ => seq(
+      'widget',
+      optional($._component_entity),
+    ),
+
+    _component_entity: $ => seq(
+      $.name,
       optional(
         seq(
-          $.name,
-          optional(
-            seq(
-              $.xy,
-              optional($.part),
-            ),
-          ),
+          $.xy,
+          optional($.part),
         ),
       ),
     ),
@@ -132,10 +122,11 @@ module.exports = grammar({
 
     _component_attr: $ => seq(
       choice (
-        alias($._input_id, $.input),
-        alias($._output_id, $.output),
+        alias($._input_id,     $.input),
+        alias($._output_id,    $.output),
         alias($._parameter_id, $.parameter),
-        alias($._light_id, $.light),
+        alias($._light_id,     $.light),
+        alias($._widget_id,    $.widget),
       ),
       optional(
         choice(
