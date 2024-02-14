@@ -77,21 +77,6 @@ module.exports = grammar({
       ),
     ),
 
-    _light_entity: $ => seq(
-      'light',
-      optional(
-        seq(
-          $.name,
-          optional(
-            seq(
-              $.xy,
-              optional($.part),
-            ),
-          ),
-        ),
-      ),
-    ),
-
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
 

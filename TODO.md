@@ -75,7 +75,6 @@
 
 - [ ] _lights_
       - [ ] `set light 'on' x (parameter off 0mm,0mm)`
-      - [ ] `set light 'on' x (parameter off 0mm,0mm)`
 
 - [ ] _widget_
       - [x] discard/warn duplicates
