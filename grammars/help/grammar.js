@@ -90,6 +90,7 @@ module.exports = grammar({
           alias($._module_attr,$.module),
           $.background,
           $._component_attr,
+          $._label_attr,
         ),
       )
     ),
@@ -120,6 +121,25 @@ module.exports = grammar({
           seq('y',    optional(alias($._y_attr, $.y))),
           seq('xy',   optional(alias($._xy_attr, $.xy))),
           seq('part', optional($.part)),
+        ),
+      ),
+    ),
+
+    _label_attr: $ => seq(
+      alias($._label_id, $.label),
+      optional(
+        choice(
+          seq('text',   optional($.string)),
+          seq('x',      optional(alias($._x_attr, $.x))),
+          seq('y',      optional(alias($._y_attr, $.y))),
+          seq('xy',     optional(alias($._xy_attr, $.xy))),
+          seq('font',   optional($.font)),
+          seq('size',   optional($.fontsize)),
+          seq('halign', optional($.halign)),
+          seq('valign', optional($.valign)),
+          seq('align',  optional($._align)),
+          seq('colour', optional($.colour)),
+          seq('color',  optional($.colour)),
         ),
       ),
     ),
@@ -253,9 +273,10 @@ module.exports = grammar({
     _label_id: $ => seq(
       'label',
       optional(
-        choice (
-          $.identifier,
-          $.string,
+        choice(
+          alias(/[^ ]+/,$.identifier),
+          seq('"', alias(/[^"]*/,$.identifier), '"'),
+          seq("'", alias(/[^']*/,$.identifier), "'"),
         ),
       ),
     ),
@@ -500,6 +521,12 @@ module.exports = grammar({
         'bottom',
       ),
       optional ($.colour),
+    ),
+
+    _align: $ => seq(
+      alias(choice('left','centre','center','right'),$.halign),
+      ',',
+      alias(choice('top','middle','baseline','bottom'),$.valign),
     ),
 
     colour: $ => seq(

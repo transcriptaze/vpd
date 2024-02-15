@@ -157,7 +157,7 @@ delete label "εsθaδxδy"
 (command
   (delete
     (label
-      (string))))
+      (identifier))))
 
 
 =======================
@@ -168,4 +168,172 @@ delete label 'εsθaδxδy'
 (command
   (delete
     (label
-      (string))))
+      (identifier))))
+
+
+==========
+set label
+==========
+set label
+---
+(command
+  (set
+    (label)))
+
+
+===============
+set label lorem
+===============
+set label lorem
+---
+(command
+  (set
+    (label
+      (identifier))))
+
+
+==============================
+set label 'lorem' text 'ipsum'
+==============================
+set label 'lorem' text 'ipsum'
+---
+(command
+  (set
+    (label
+      (identifier))
+    (string)))
+
+
+========================
+set label 'lorem' x 10mm
+========================
+set label 'lorem' x 10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x)))
+
+
+======================
+set label lorem y 10mm
+======================
+set label lorem y 10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y)))
+
+
+============================
+set label lorem xy 10mm,10mm
+============================
+set label lorem xy 10mm,10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy)))
+
+
+==================================
+set label 'lorem' font 'ComicSans'
+==================================
+set label 'lorem' font 'ComicSans'
+---
+(command
+  (set
+    (label
+      (identifier))
+    (font)))
+
+
+===================================
+set label "lorem" font 'ComicSans'
+==================================
+set label "lorem" font 'ComicSans'
+---
+(command
+  (set
+    (label
+      (identifier))
+    (font)))
+
+
+===========================
+set label 'lorem' size 14pt
+===========================
+set label 'lorem' size 14pt
+---
+(command
+  (set
+    (label
+      (identifier))
+    (fontsize)))
+
+
+=============================
+set label 'lorem' halign left
+=============================
+set label 'lorem' halign left
+---
+(command
+  (set
+    (label
+      (identifier))
+    (halign)))
+
+
+============================
+set label 'lorem' valign top
+============================
+set label 'lorem' valign top
+---
+(command
+  (set
+    (label
+      (identifier))
+    (valign)))
+
+
+================================
+set label 'lorem' align left,top
+================================
+set label 'lorem' align left,top
+---
+(command
+  (set
+    (label
+      (identifier))
+    (halign)
+    (valign)))
+
+
+================================
+set label 'lorem' colour #ff0000
+================================
+set label 'lorem' colour #ff0000
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour)))
+
+
+===============================
+set label 'lorem' color #ff0000
+===============================
+set label 'lorem' color #ff0000
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour)))
+
+

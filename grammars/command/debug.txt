@@ -1,1 +1,1 @@
-new module thing 3H
+set label 'lorem' text 'ipsum'

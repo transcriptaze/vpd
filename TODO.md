@@ -30,6 +30,7 @@
       - [ ] pretty-print
       - [ ] optional prefix
       - [ ] loadable template
+      - [ ] >> to clipboard
 
 
 ### Overlay
@@ -47,14 +48,6 @@
 - [ ] `load font...`
 
 ### Commands
-- [x] _load_
-- [x] _save_
-- [x] _set origin_
-- [x] _export panel svg_
-- [x] _module_
-- [x] _help_
-- [x] _background_
-
 - [ ] _guidelines_
       - [ ] `set`
       - [ ] clean up Module::new_guide_id
@@ -63,11 +56,9 @@
       - (?) warn if duplicate offset
 
 - [ ] _inputs_
-      - [x] migrate
       - [ ] `set input 'gain' x (input in +10mm)`
 
 - [ ] _outputs_
-      - [x] migrate
       - [ ] `set output 'left' x (input in +10mm)`
 
 - [ ] _parameters_
@@ -77,23 +68,20 @@
       - [ ] `set light 'on' x (parameter off 0mm,0mm)`
 
 - [ ] _widget_
-      - [x] discard/warn duplicates
-      - [x] set
-      - [x] help
-      - [x] migrate
-      - [x] info
       - [ ] `set widget 'channels' x (light 'on' +10mm,-20mm)`
 
 - [ ] _label_
-      - [ ] set
-      - [ ] hover
-      - [ ] Export label text too
-      - [ ] migrate
-      - [ ] info
+      - [x] set
+      - [x] migrate
+      - [x] info
+      - [x] help
       - [ ] `set label  l1 x (widget w1 +10mm,-20mm)`
+      - [ ] Export label text as inkscape attribute
 
 - [ ] _decorate_
       - [ ] set
+      - [ ] migrate
+      - [ ] info
       - [ ] Export decorations in SVG component group
 
 
@@ -101,7 +89,6 @@
 
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
-      - Versioning
       - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
 - [ ] Auto-generate help text from grammar/examples

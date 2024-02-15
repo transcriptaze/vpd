@@ -612,7 +612,7 @@ delete label "εsθaδxδy"
 (command
   (delete
     (label
-      (string))))
+      (identifier))))
 
 
 =======================
@@ -623,6 +623,348 @@ delete label 'εsθaδxδy'
 (command
   (delete
     (label
-      (string))))
+      (identifier))))
 
+
+==========================
+set label lorem text ipsum
+==========================
+set label lorem text ipsum
+---
+(command
+  (set
+    (label
+      (identifier))
+    (string)))
+
+
+==============================
+set label 'lorem' text 'ipsum'
+==============================
+set label 'lorem' text 'ipsum'
+---
+(command
+  (set
+    (label
+      (identifier))
+    (string)))
+
+
+==============================
+set label "lorem" text "ipsum"
+==============================
+set label "lorem" text "ipsum"
+---
+(command
+  (set
+    (label
+      (identifier))
+    (string)))
+
+
+=========================
+set label 'lorem' x @10mm
+=========================
+set label 'lorem' x @10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x
+      (absolute)
+      (offset))))
+
+
+========================
+set label 'lorem' x 10mm
+========================
+set label 'lorem' x 10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x
+      (offset))))
+
+
+=============================
+set label 'lorem' x left+10mm
+=============================
+set label 'lorem' x left+10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+===========================
+set label 'lorem' x v1+10mm
+===========================
+set label 'lorem' x v1+10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x
+      (reference)
+      (offset))))
+
+
+=========================
+set label 'lorem' y @10mm
+=========================
+set label 'lorem' y @10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y
+      (absolute)
+      (offset))))
+
+
+========================
+set label 'lorem' y 10mm
+========================
+set label 'lorem' y 10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y
+      (offset))))
+
+
+============================
+set label 'lorem' y top+10mm
+============================
+set label 'lorem' y top+10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===========================
+set label 'lorem' y h1+10mm
+===========================
+set label 'lorem' y h1+10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y
+      (reference)
+      (offset))))
+
+
+===============================
+set label 'lorem' xy @10mm,10mm
+===============================
+set label 'lorem' xy @10mm,10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (absolute)
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==============================
+set label 'lorem' xy 10mm,10mm
+==============================
+set label 'lorem' xy 10mm,10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (offset))
+      (y
+        (offset)))))
+
+
+==========================================
+set label 'lorem' xy left+10mm,middle+10mm
+==========================================
+set label 'lorem' xy left+10mm,middle+10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+====================================
+set label 'lorem' xy v1+10mm,h2+10mm
+====================================
+set label 'lorem' xy v1+10mm,h2+10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset)))))
+
+
+==================================
+set label 'lorem' font 'ComicSans'
+==================================
+set label 'lorem' font 'ComicSans'
+---
+(command
+  (set
+    (label
+      (identifier))
+    (font)))
+
+
+===========================
+set label 'lorem' size 14pt
+===========================
+set label 'lorem' size 14pt
+---
+(command
+  (set
+    (label
+      (identifier))
+    (fontsize)))
+
+
+=============================
+set label 'lorem' halign left
+=============================
+set label 'lorem' halign left
+---
+(command
+  (set
+    (label
+      (identifier))
+    (halign)))
+
+
+============================
+set label 'lorem' valign top
+============================
+set label 'lorem' valign top
+---
+(command
+  (set
+    (label
+      (identifier))
+    (valign)))
+
+
+================================
+set label 'lorem' align left,top
+================================
+set label 'lorem' align left,top
+---
+(command
+  (set
+    (label
+      (identifier))
+    (halign)
+    (valign)))
+
+
+===============================
+set label 'lorem' color #ff0000
+===============================
+set label 'lorem' color #ff0000
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour
+      (rgb))))
+
+
+================================
+set label 'lorem' colour #ff0000
+================================
+set label 'lorem' colour #ff0000
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour
+      (rgb))))
+
+
+========================================
+set label 'lorem' colour #ff0000,#00ff00
+========================================
+set label 'lorem' colour #ff0000,#00ff00
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour
+      (rgb)
+      (rgb))))
+
+
+==================================
+set label 'lorem' colour #ff000040
+==================================
+set label 'lorem' colour #ff000040
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour
+      (rgba))))
+
+
+============================================
+set label 'lorem' colour #ff000040,#00ff0080
+============================================
+set label 'lorem' colour #ff000040,#00ff0080
+---
+(command
+  (set
+    (label
+      (identifier))
+    (colour
+      (rgba)
+      (rgba))))
 

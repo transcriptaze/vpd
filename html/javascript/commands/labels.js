@@ -156,9 +156,157 @@ export function deleteLabel (node, src) {
     if (child.type === 'identifier') {
       object.label.id = identifier(child)
     }
+  }
 
+  return object
+}
+
+export function setLabel (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'set',
+    label: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.label.id = identifier(child)
+    }
+  }
+
+  for (const child of node.parent.namedChildren) {
     if (child.type === 'string') {
-      object.label.id = string(child)
+      object.label.text = string(child)
+    }
+
+    if (child.type === 'x') {
+      object.label.x = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.label.x.reference = 'absolute'
+        }
+
+        if (v.type === 'reference') {
+          object.label.x.reference = identifier(v)
+        }
+
+        if (v.type === 'offset') {
+          object.label.x.offset = mm(v)
+        }
+      }
+    }
+
+    if (child.type === 'y') {
+      object.label.y = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.label.y.reference = 'absolute'
+        }
+
+        if (v.type === 'reference') {
+          object.label.y.reference = identifier(v)
+        }
+
+        if (v.type === 'offset') {
+          object.label.y.offset = mm(v)
+        }
+      }
+    }
+
+    if (child.type === 'xy') {
+      object.label.x = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      object.label.y = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.label.x.reference = 'absolute'
+          object.label.y.reference = 'absolute'
+        }
+
+        if (v.type === 'x') {
+          for (const u of v.namedChildren) {
+            if (u.type === 'reference') {
+              object.label.x.reference = identifier(u)
+            }
+
+            if (u.type === 'offset') {
+              object.label.x.offset = mm(v)
+            }
+          }
+        }
+
+        if (v.type === 'y') {
+          for (const u of v.namedChildren) {
+            if (u.type === 'reference') {
+              object.label.y.reference = identifier(u)
+            }
+
+            if (u.type === 'offset') {
+              object.label.y.offset = mm(v)
+            }
+          }
+        }
+      }
+    }
+
+    if (child.type === 'font') {
+      object.label.font = string(child)
+    }
+
+    if (child.type === 'fontsize') {
+      const match = child.text.match(/([0-9]+(?:[.][0-9]*)?)pt/)
+      if (match.length > 1) {
+        const size = parseFloat(match[1])
+        if (!Number.isNaN(size)) {
+          object.label.fontsize = size
+        }
+      }
+    }
+
+    if (child.type === 'halign') {
+      object.label.halign = string(child)
+    }
+
+    if (child.type === 'valign') {
+      object.label.valign = string(child)
+    }
+
+    if (child.type === 'colour') {
+      object.label.colour = {}
+
+      if (child.namedChildCount > 1) {
+        const light = child.namedChildren[0]
+        const dark = child.namedChildren[1]
+
+        if (light.type === 'rgb' || light.type === 'rgba') {
+          object.label.colour.light = string(light)
+        }
+
+        if (dark.type === 'rgb' || dark.type === 'rgba') {
+          object.label.colour.dark = string(dark)
+        }
+      } else if (child.namedChildCount > 0) {
+        const colour = child.namedChildren[0]
+        if (colour.type === 'rgb' || colour.type === 'rgba') {
+          object.label.colour.light = string(colour)
+          object.label.colour.dark = string(colour)
+        }
+      }
     }
   }
 
