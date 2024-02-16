@@ -12,11 +12,13 @@
 |   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                         |
 |   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                         |
 |   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                         |
-|   - [_Undo/Redo_](#undoredo)        | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                         |
-|   - [_Macro keys_](#macro-keys)     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                         |
-|   - [_Command area_](#command-area) | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                         |
-|                                     | [`export panel .h`](#export-panel-h)    |                                           |                                   |                                           |                                                         |
-
+|   - [_Export .h_](#export-header)   | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                         |
+|   - [_>>_](#>>)                     | [`save script`](#save-script)           |                                           |                                   |                                           |                                                         |
+|   - [_Undo/Redo_](#undoredo)        |                                         |                                           |                                   |                                           |                                                         |
+|   - [_Macro keys_](#macro-keys)     | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                         |
+|   - [_Command area_](#command-area) | [`export module .h`](#export-module-h)  |                                           |                                   |                                           |                                                         |
+|                                     | [`export module >>`](#export-module->>) |                                           |                                   |                                           |                                                         |
+                                    
 ## Getting started
 
 1. Create a new _module_ that is 50.8mm (10 units) wide
@@ -230,6 +232,14 @@ To save a project as a _.vpx_ file:
 
 - Clicking on the _Export dark SVG_ button saves the 'dark theme' panel as an SVG file that can be used as a plugin resource. The
   SVG file is saved with a _-dark_ suffix.
+
+### <img width="24" src="doc/images/export-module-h.png"> Export .h file
+
+- Clicking on the _.h_ button saves the panel layout XY coordinates as a C++ header file.
+
+### <img width="24" src="doc/images/export-module-helper.png"> >>
+
+- Clicking on the _>>_ button copies the _helper.py_ script to generate a new module to the clipboard.
 
 
 ### Undo/Redo
@@ -1157,16 +1167,15 @@ export panel svg light
 export panel svg dark
 ````
 
-#### `export panel .h`
+#### `export module .h`
 
-```export panel .h```
+```export module .h```
 
-Exports the panel layout as a C++ .h file with the component locations..
+Exports the panel layout as a C++ .h file with the component locations.
 
 _Command options:_
 ```
 .h     (required) exports header file
-dark   (optional) exports the dark themed SVG
 ```
 
 _Notes:_
@@ -1174,6 +1183,25 @@ _Notes:_
 
 _Examples:_
 ```
-export panel .h
+export module .h
+````
+
+#### `export module >>`
+
+```export module >>```
+
+Copies the _helper.py_ command line script to generate a new VCV module to the clipboard.
+
+_Command options:_
+```
+>>     (required) exports helper script
+```
+
+_Notes:_
+1. Non-alphanumeric characters in the module name are replaced with underscores.
+
+_Examples:_
+```
+export module >>
 ````
 

@@ -123,6 +123,38 @@ export
 
 
 ============
+export module
+============
+export module
+---
+(command
+  (export
+    (module)))
+
+
+================
+export module .h
+================
+export module .h
+---
+(command
+  (export
+    (module
+      (header))))
+
+
+================
+export module >>
+================
+export module >>
+---
+(command
+  (export
+    (module
+      (helper))))
+
+
+============
 export panel
 ============
 export panel
@@ -167,12 +199,3 @@ export panel svg dark
         (dark)))))
 
 
-===============
-export panel .h
-===============
-export panel .h
----
-(command
-  (export
-    (panel
-      (header))))

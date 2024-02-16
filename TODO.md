@@ -30,8 +30,6 @@
       - [ ] pretty-print
       - [ ] optional prefix
       - [ ] loadable template
-      - [ ] >> to clipboard
-
 
 ### Overlay
 - [x] panel screws
@@ -48,6 +46,8 @@
 - [ ] `load font...`
 
 ### Commands
+- [x] `export module >>'
+
 - [ ] _guidelines_
       - [ ] `set`
       - [ ] clean up Module::new_guide_id

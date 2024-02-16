@@ -86,6 +86,28 @@ save script timestamp
 
 
 ================
+export module .h
+================
+export module .h
+---
+(command
+  (export
+    (module
+      (header))))
+
+
+================
+export module >>
+================
+export module >>
+---
+(command
+  (export
+    (module
+      (helper))))
+
+
+================
 export panel svg
 ================
 export panel svg
@@ -120,12 +142,3 @@ export panel svg dark
         (dark)))))
 
 
-===============
-export panel .h
-===============
-export panel .h
----
-(command
-  (export
-    (panel
-      (header))))

@@ -34,7 +34,9 @@ use crate::commands::DeleteParameter;
 use crate::commands::DeleteWidget;
 
 use crate::commands::ExportHeader;
+use crate::commands::ExportHelper;
 use crate::commands::ExportSVG;
+
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
 use crate::commands::SaveProject;
@@ -76,6 +78,7 @@ struct Action<'a> {
     script: Option<Entity>,
     svg: Option<Entity>,
     header: Option<Entity>,
+    helper: Option<Entity>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -265,6 +268,10 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.action == "export" && v.header.is_some() {
         return Ok(Box::new(ExportHeader::new(json)?));
+    }
+
+    if v.action == "export" && v.helper.is_some() {
+        return Ok(Box::new(ExportHelper::new(json)?));
     }
 
     return Err("invalid command".into());
