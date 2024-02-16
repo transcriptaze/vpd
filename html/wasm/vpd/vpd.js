@@ -402,13 +402,6 @@ function __wbg_get_imports() {
         const ret = getStringFromWasm0(arg0, arg1);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_text2path_14adbcea076e74a8 = function(arg0, arg1, arg2, arg3, arg4) {
-        const ret = text2path(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), arg4);
-        return addHeapObject(ret);
-    };
-    imports.wbg.__wbg_set_782175fc6b431993 = function(arg0, arg1, arg2, arg3) {
-        set(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
-    };
     imports.wbg.__wbindgen_is_undefined = function(arg0) {
         const ret = getObject(arg0) === undefined;
         return ret;
@@ -435,6 +428,13 @@ function __wbg_get_imports() {
         const val = getObject(arg0);
         const ret = typeof(val) === 'object' && val !== null;
         return ret;
+    };
+    imports.wbg.__wbg_set_782175fc6b431993 = function(arg0, arg1, arg2, arg3) {
+        set(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
+    };
+    imports.wbg.__wbg_text2path_14adbcea076e74a8 = function(arg0, arg1, arg2, arg3, arg4) {
+        const ret = text2path(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), arg4);
+        return addHeapObject(ret);
     };
     imports.wbg.__wbg_new_abda76e883ba8a5f = function() {
         const ret = new Error();
