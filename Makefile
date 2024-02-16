@@ -51,17 +51,18 @@ cloudflare:
 	rm -f dist/cloudflare/LICENSE
 	rm -f dist/cloudflare/package.json
 
-run-python:
+run-python: build-release
 	python3 -m http.server 9876 -d html
 
-run-nodejs:
+run-nodejs: build-release
 	npx http-server html --port 9876
 
-run-go:
+run-go: build-release
 	cd go && make run
 
 run-cloudflare:
 	python3 -m http.server 9876 -d dist/cloudflare
 
-run: run-python
+run: build
+	python3 -m http.server 9876 -d html
 

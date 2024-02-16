@@ -649,7 +649,7 @@ module.exports = grammar({
     ),
 
     _string: $ => choice(
-      alias(/[^ ]+/,$.string),
+      alias(/[^ "'][^ ]*/,$.string),
       seq('"', alias(/[^"]*/,$.string), '"'),
       seq("'", alias(/[^']*/,$.string), "'"),
     ),
