@@ -136,19 +136,18 @@ export async function onExport (item) {
       const filename = `${name}-dark.svg`
 
       fs.save('svg', filename, svg)
-    } else if (item === 'panel.h') {
-      const serialized = serialize('panel.h')
+    } else if (item === 'module.h') {
+      const serialized = serialize('module.h')
       const name = serialized.name
       const header = serialized.serialized
       const filename = `${name}.h`
 
       fs.save('.h', filename, header)
     } else if (item === '>>') {
-      try {
-        await navigator.clipboard.writeText('$RACK_DIR/helper.py createmodule bodacious res/bodacious.svg src/bodacious.cpp')
-      } catch (error) {
-        console.error(error.message)
-      }
+      const serialized = serialize('module >>')
+      const string = serialized.serialized
+
+      fs.save('>>', '<clipboard>', string)
     }
   } catch (err) {
     console.error(err)

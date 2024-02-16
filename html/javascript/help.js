@@ -517,6 +517,16 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['export', 'module', 'header'],
+    help: ['export', 'module', '.h'],
+    min: 1
+  },
+  {
+    command: ['export', 'module', 'helper'],
+    help: ['export', 'module', '&gt;&gt;'],
+    min: 1
+  },
+  {
     command: ['export', 'panel', 'svg'],
     help: ['export', 'panel', 'svg'],
     min: 1
@@ -529,11 +539,6 @@ const COMMANDS = [
   {
     command: ['export', 'panel', 'svg', 'dark'],
     help: ['export', 'panel', 'svg', 'dark'],
-    min: 1
-  },
-  {
-    command: ['export', 'panel', 'header'],
-    help: ['export', 'panel', '.h'],
     min: 1
   }
 ]

@@ -28,7 +28,9 @@ mod delete_parameter;
 mod delete_widget;
 
 mod export_header;
+mod export_helper;
 mod export_svg;
+
 mod load_project;
 mod load_script;
 mod save_project;
@@ -64,7 +66,9 @@ pub use delete_parameter::DeleteParameter;
 pub use delete_widget::DeleteWidget;
 
 pub use export_header::ExportHeader;
+pub use export_helper::ExportHelper;
 pub use export_svg::ExportSVG;
+
 pub use load_project::LoadProject;
 pub use load_script::LoadScript;
 pub use save_project::SaveProject;

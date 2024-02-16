@@ -357,15 +357,28 @@ module.exports = grammar({
     export: $ => seq(
       'export',
       optional(
-        $.panel,
+        choice (
+          alias($._module_export, $.module),
+          $.panel,
+        ),
       ),
     ),
+
+    _module_export : $ => seq(
+      'module',
+      optional(
+        choice(
+          alias('.h', $.header),
+          alias('>>', $.helper),
+        ),
+      ),
+    ),
+
     panel: $ => seq(
       'panel',
       optional(
         choice (
           $.svg,
-          $.header,
         ),
       ),
     ),
@@ -378,10 +391,6 @@ module.exports = grammar({
           alias('dark', $.dark),
         ),
       ),
-    ),
-
-    header: $ => seq(
-      '.h',
     ),
 
     origin: $ => seq(

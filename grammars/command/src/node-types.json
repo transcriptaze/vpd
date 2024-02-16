@@ -267,6 +267,10 @@
       "required": true,
       "types": [
         {
+          "type": "module",
+          "named": true
+        },
+        {
           "type": "panel",
           "named": true
         }
@@ -349,11 +353,6 @@
   },
   {
     "type": "halign",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "header",
     "named": true,
     "fields": {}
   },
@@ -602,7 +601,15 @@
       "required": true,
       "types": [
         {
+          "type": "header",
+          "named": true
+        },
+        {
           "type": "height",
+          "named": true
+        },
+        {
+          "type": "helper",
           "named": true
         },
         {
@@ -767,10 +774,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "header",
-          "named": true
-        },
         {
           "type": "svg",
           "named": true
@@ -1237,10 +1240,6 @@
     "named": false
   },
   {
-    "type": ".h",
-    "named": false
-  },
-  {
     "type": "@",
     "named": false
   },
@@ -1321,11 +1320,19 @@
     "named": false
   },
   {
+    "type": "header",
+    "named": true
+  },
+  {
     "type": "height",
     "named": false
   },
   {
     "type": "height",
+    "named": true
+  },
+  {
+    "type": "helper",
     "named": true
   },
   {
@@ -1414,11 +1421,11 @@
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "script",

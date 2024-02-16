@@ -30,6 +30,8 @@ export function save (filetype, filename, blob) {
     saveSVG(filename, blob)
   } else if (filetype === '.h') {
     saveHeader(filename, blob)
+  } else if (filetype === '>>') {
+    saveHelper(filename, blob)
   }
 }
 
@@ -364,6 +366,23 @@ function saveHeader (filename, svg) {
 
     URL.revokeObjectURL(url)
   }
+}
+
+function saveHelper (filename, cmd) {
+  const div = document.querySelector('div#message')
+  const span = div.querySelector('div')
+  const blob = new Blob([cmd], { type: 'text/plain' })
+
+  blob.text()
+    .then((string) => {
+      span.innerHTML = `${string} (copied to clipbard)`
+      div.classList.add('visible')
+
+      navigator.clipboard.writeText(string)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 }
 
 async function saveWithPicker (blob, options) {

@@ -163,6 +163,19 @@ impl Module {
         }
     }
 
+    pub fn export_helper(&self) {
+        let name = Regex::new(r#"[^a-zA-Z0-9_]+"#)
+            .unwrap()
+            .replace_all(&self.name, "_");
+
+        let sh = format!(
+            "$RACK_DIR/helper.py createmodule {0} res/{0}.svg src/{0}.cpp",
+            &name
+        );
+
+        save(">>", "<clipboard>", sh.as_bytes());
+    }
+
     pub fn new_input_id(&self) -> String {
         let re = Regex::new(r"(i)(\d+)").unwrap();
         let mut ix: i32 = 0;

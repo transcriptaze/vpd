@@ -132,7 +132,7 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
             Err(e) => Err(JsValue::from(format!("error generating SVG '{:?}'", e))),
         },
 
-        "panel.h" => {
+        "module.h" => {
             let prefix = Regex::new(r#"[^a-zA-Z0-9]+"#)
                 .unwrap()
                 .replace_all(&module.name, "_")
@@ -155,6 +155,28 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
 
                 Err(e) => Err(JsValue::from(format!("error generating .h file '{:?}'", e))),
             }
+        }
+
+        "module >>" => {
+            let name = Regex::new(r#"[^a-zA-Z0-9_]+"#)
+                .unwrap()
+                .replace_all(&module.name, "_");
+
+            let string = format!(
+                "$RACK_DIR/helper.py createmodule {0} res/{0}.svg src/{0}.cpp",
+                &name
+            );
+
+            let blob = string.to_string();
+            let filename = "<clipboard>";
+
+            let serialized = Serialized {
+                name: filename.to_string(),
+                serialized: blob,
+            };
+
+            let value = serde_wasm_bindgen::to_value(&serialized).unwrap();
+            Ok(value)
         }
 
         _ => Err(JsValue::from(format!("unknown object {}", object))),

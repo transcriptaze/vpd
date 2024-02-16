@@ -290,7 +290,18 @@ module.exports = grammar({
 
     export: $ => seq (
       'export',
-      $.panel
+      choice(
+        alias($._module_export, $.module),
+        $.panel,
+      ),
+    ),
+
+    _module_export: $ => seq(
+      'module',
+      choice(
+        alias('.h', $.header),
+        alias('>>', $.helper),
+      ),
     ),
 
     project: $ => seq(
@@ -547,7 +558,6 @@ module.exports = grammar({
       'panel',
       choice(
         $.svg,
-        $.header,
       ),
     ),
 
@@ -559,10 +569,6 @@ module.exports = grammar({
           alias('dark',$.dark),
         ),
       ),
-    ),
-
-    header: $ => seq(
-      '.h',
     ),
 
     name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
