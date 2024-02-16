@@ -17,7 +17,7 @@
 |   - [_Undo/Redo_](#undoredo)        |                                         |                                           |                                   |                                           |                                                         |
 |   - [_Macro keys_](#macro-keys)     | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                         |
 |   - [_Command area_](#command-area) | [`export module .h`](#export-module-h)  |                                           |                                   |                                           |                                                         |
-|                                     | [`export module >>`](#export-module->>) |                                           |                                   |                                           |                                                         |
+|                                     | [`export module >>`](#export-module-)   |                                           |                                   |                                           |                                                         |
                                     
 ## Getting started
 
