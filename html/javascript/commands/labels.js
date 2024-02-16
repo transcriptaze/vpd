@@ -18,7 +18,7 @@ export function newLabel (node, src) {
 
   for (const child of node.namedChildren) {
     if (child.type === 'string') {
-      object.label.text = child.text
+      object.label.text = string(child)
     }
 
     if (child.type === 'absolute') {

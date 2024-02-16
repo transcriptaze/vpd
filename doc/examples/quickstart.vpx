@@ -24,10 +24,10 @@ new light "recording" centre,middle+12.7mm LED
 new widget "channels" @40.64mm,20.32mm square
 
 new label "Thing 1" centre,h3 "StyleScript-Regular" 16pt centre,baseline #c000ff,#00e000
-new label "FREQ"  (input  "frequency"+0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
-new label "VOL"   (input  "volume"   +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
-new label "LEFT"  (output "left"     -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle #ffffff,#222222
-new label "RIGHT" (output "right"    -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle #ffffff,#222222
+new label "FREQ"    (input  "frequency"+0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+new label "VOL"     (input  "volume"   +0mm,-5.08mm) "RobotoCondensed-Regular" 8pt centre,baseline
+new label "LEFT"    (output "left"     -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle #ffffff,#222222
+new label "RIGHT"   (output "right"    -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle #ffffff,#222222
 
 decorate (parameter "volume")     with "CircularGraduations" (scale 1.1)
 decorate (parameter "distortion") with "CircularGraduations" (scale 1.1)
