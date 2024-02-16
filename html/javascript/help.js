@@ -2,9 +2,15 @@ let parser
 
 const ID = '<em>&lt;id&gt;</em>'
 const NAME = '<em>&lt;name&gt;</em>'
-const PART = '<em>&lt;part&gt;</em>'
 const X = '<em>&lt;x&gt;</em>'
 const Y = '<em>&lt;y&gt;</em>'
+const PART = '<em>&lt;part&gt;</em>'
+const STRING = '<em>&lt;string&gt;</em>'
+const FONT = '<em>&lt;font&gt;</em>'
+const FONTSIZE = '<em>&lt;fontsize&gt;</em>'
+const HALIGN = '<em>&lt;left|centre|right&gt;</em>'
+const VALIGN = '<em>&lt;top|middle|baseline|bottom&gt;</em>'
+const COLOUR = '<em>&lt;rgb|rgba[,rgb|rgba]&gt;</em>'
 
 export async function init (Parser) {
   const grammar = await Parser.Language.load('../wasm/grammars/tree-sitter-help.wasm')
@@ -308,6 +314,56 @@ const COMMANDS = [
   {
     command: ['set', 'widget', 'identifier', 'part'],
     help: ['set', 'widget', ID, `part ${PART}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'string'],
+    help: ['set', 'label', ID, `text ${STRING}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'x'],
+    help: ['set', 'label', ID, `x ${X}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'y'],
+    help: ['set', 'label', ID, `y ${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'xy'],
+    help: ['set', 'label', ID, `xy ${X},${Y}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'font'],
+    help: ['set', 'label', ID, `font ${FONT}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'fontsize'],
+    help: ['set', 'label', ID, `size ${FONTSIZE}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'halign'],
+    help: ['set', 'label', ID, `halign ${HALIGN}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'valign'],
+    help: ['set', 'label', ID, `valign ${VALIGN}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'align'],
+    help: ['set', 'label', ID, `align ${HALIGN},${VALIGN}`],
+    min: 1
+  },
+  {
+    command: ['set', 'label', 'identifier', 'colour'],
+    help: ['set', 'label', ID, `colour ${COLOUR}`],
     min: 1
   },
   {

@@ -416,6 +416,17 @@ impl Module {
         }
     }
 
+    pub fn find_label(&self, id: &str) -> Option<usize> {
+        match self.panel.labels.iter().position(|v| v.id == id) {
+            Some(ix) => Some(ix),
+            None => self
+                .panel
+                .labels
+                .iter()
+                .position(|v| v.text.trim().to_lowercase() == id.trim().to_lowercase()),
+        }
+    }
+
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
         let old = format!("{}<{}>", tag, from);
         let new = format!("{}<{}>", tag, to);
@@ -439,7 +450,10 @@ impl Module {
         for v in &mut self.panel.widgets {
             v.migrate(&old, &new);
         }
-        // FIXME migrate labels
+
+        for v in &mut self.panel.labels {
+            v.migrate(&old, &new);
+        }
 
         for v in &mut self.panel.decorations {
             v.migrate(&old, &new);

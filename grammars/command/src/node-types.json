@@ -940,7 +940,27 @@
           "named": true
         },
         {
+          "type": "colour",
+          "named": true
+        },
+        {
+          "type": "font",
+          "named": true
+        },
+        {
+          "type": "fontsize",
+          "named": true
+        },
+        {
+          "type": "halign",
+          "named": true
+        },
+        {
           "type": "input",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         },
         {
@@ -969,6 +989,14 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "valign",
           "named": true
         },
         {
@@ -1217,6 +1245,10 @@
     "named": false
   },
   {
+    "type": "align",
+    "named": false
+  },
+  {
     "type": "background",
     "named": false
   },
@@ -1234,6 +1266,14 @@
   },
   {
     "type": "centre",
+    "named": false
+  },
+  {
+    "type": "color",
+    "named": false
+  },
+  {
+    "type": "colour",
     "named": false
   },
   {
@@ -1261,6 +1301,10 @@
     "named": false
   },
   {
+    "type": "font",
+    "named": false
+  },
+  {
     "type": "fontsize",
     "named": true
   },
@@ -1271,6 +1315,10 @@
   {
     "type": "gzip",
     "named": true
+  },
+  {
+    "type": "halign",
+    "named": false
   },
   {
     "type": "height",
@@ -1366,11 +1414,11 @@
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "script",
@@ -1378,6 +1426,10 @@
   },
   {
     "type": "set",
+    "named": false
+  },
+  {
+    "type": "size",
     "named": false
   },
   {
@@ -1393,11 +1445,19 @@
     "named": false
   },
   {
+    "type": "text",
+    "named": false
+  },
+  {
     "type": "timestamp",
     "named": true
   },
   {
     "type": "top",
+    "named": false
+  },
+  {
+    "type": "valign",
     "named": false
   },
   {
@@ -1410,11 +1470,11 @@
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "with",

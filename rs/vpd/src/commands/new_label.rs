@@ -106,6 +106,8 @@ impl Command for NewLabel {
             &self.text,
             &self.x,
             &self.y,
+            font,
+            size,
             halign,
             valign,
             &panel::Path::new(

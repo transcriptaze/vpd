@@ -276,7 +276,7 @@ main {
 
     div.files {
       display: grid;
-      grid-template-columns: repeat(3,auto);
+      grid-template-columns: repeat(4,auto);
       grid-template-rows: repeat(2,auto);
       grid-auto-flow: row;
       grid-row-gap: 4px;
@@ -297,6 +297,11 @@ main {
 
       button.include {
         font-size: 18px;
+      }
+
+      button.script {
+        font-size: 28px;
+        font-weight: bold;
       }
     }
 

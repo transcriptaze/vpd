@@ -120,7 +120,7 @@ export function onSave (type, timestamped) {
   }
 }
 
-export function onExport (item) {
+export async function onExport (item) {
   try {
     if (item === 'panel.svg') {
       const serialized = serialize('panel.svg')
@@ -143,6 +143,12 @@ export function onExport (item) {
       const filename = `${name}.h`
 
       fs.save('.h', filename, header)
+    } else if (item === '>>') {
+      try {
+        await navigator.clipboard.writeText('$RACK_DIR/helper.py createmodule bodacious res/bodacious.svg src/bodacious.cpp')
+      } catch (error) {
+        console.error(error.message)
+      }
     }
   } catch (err) {
     console.error(err)

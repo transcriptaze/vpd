@@ -48,6 +48,7 @@ div.vpd-help-text {
   height: 100%;
   display: flex;
   justify-content: flex-start;
+  overflow: hidden;
 }
 div.vpd-help-text div.ul {
   height: fit-content;

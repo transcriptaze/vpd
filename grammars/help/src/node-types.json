@@ -665,7 +665,27 @@
           "named": true
         },
         {
+          "type": "colour",
+          "named": true
+        },
+        {
+          "type": "font",
+          "named": true
+        },
+        {
+          "type": "fontsize",
+          "named": true
+        },
+        {
+          "type": "halign",
+          "named": true
+        },
+        {
           "type": "input",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         },
         {
@@ -694,6 +714,14 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "valign",
           "named": true
         },
         {
@@ -843,6 +871,14 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -860,6 +896,10 @@
   },
   {
     "type": "@",
+    "named": false
+  },
+  {
+    "type": "align",
     "named": false
   },
   {
@@ -883,6 +923,14 @@
     "named": false
   },
   {
+    "type": "color",
+    "named": false
+  },
+  {
+    "type": "colour",
+    "named": false
+  },
+  {
     "type": "dark",
     "named": true
   },
@@ -903,12 +951,20 @@
     "named": false
   },
   {
+    "type": "font",
+    "named": false
+  },
+  {
     "type": "guide",
     "named": false
   },
   {
     "type": "gzip",
     "named": true
+  },
+  {
+    "type": "halign",
+    "named": false
   },
   {
     "type": "height",
@@ -999,7 +1055,15 @@
     "named": false
   },
   {
+    "type": "size",
+    "named": false
+  },
+  {
     "type": "svg",
+    "named": false
+  },
+  {
+    "type": "text",
     "named": false
   },
   {
@@ -1011,16 +1075,20 @@
     "named": false
   },
   {
+    "type": "valign",
+    "named": false
+  },
+  {
     "type": "widget",
     "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "with",

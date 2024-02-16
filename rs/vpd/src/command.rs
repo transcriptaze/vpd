@@ -16,6 +16,7 @@ use crate::commands::NewWidget;
 
 use crate::commands::SetBackground;
 use crate::commands::SetInput;
+use crate::commands::SetLabel;
 use crate::commands::SetLight;
 use crate::commands::SetModule;
 use crate::commands::SetOrigin;
@@ -192,6 +193,10 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.widget.is_some() {
         return Ok(Box::new(SetWidget::new(json)?));
+    }
+
+    if v.label.is_some() {
+        return Ok(Box::new(SetLabel::new(json)?));
     }
 
     return Err("invalid 'set' command".into());
