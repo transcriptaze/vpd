@@ -10,7 +10,6 @@
 - [ ] Set CSS panel element width from module width
 - [ ] `undo`
 - [ ] `redo`
-- [ ] tab-complete
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
@@ -30,7 +29,6 @@
       - [x] Default prefix - convert module name to uppercase and replace non-alphanumeric with underscores
       - [ ] pretty-print
       - [ ] optional prefix
-      - [ ] loadable template
 
 ### Overlay
 - [x] panel screws
@@ -80,7 +78,7 @@
 - [ ] _decorate_
       - [ ] set
       - [ ] migrate
-      - [ ] info
+      - [x] info
       - [ ] Export decorations in SVG component group
 
 
@@ -89,6 +87,8 @@
 - [ ] API
       - Go REST API
 
+- [ ] Loadable header file template
+- [ ] tab-complete
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
       - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
