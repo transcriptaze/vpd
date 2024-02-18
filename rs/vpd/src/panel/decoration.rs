@@ -68,6 +68,7 @@ impl Stretch {
 impl IItem for Decoration {
     fn as_item(&self) -> Item {
         let attributes = vec![
+            ("name".to_string(), self.name.clone()),
             ("x".to_string(), format!("{}", &self.x)),
             ("y".to_string(), format!("{}", &self.y)),
             ("scale".to_string(), format!("{}", &self.scale)),
@@ -80,7 +81,6 @@ impl IItem for Decoration {
         Item {
             itype: "decoration".to_string(),
             id: self.id.clone(),
-            name: self.name.clone(),
             attributes: attributes,
         }
     }

@@ -63,10 +63,12 @@ impl Command for NewGuide {
         };
 
         if validate(&id, &reference, &m) {
-            m.panel
-                .guides
-                .entry(id)
-                .or_insert(Guide::new(&orientation, &reference, self.offset));
+            m.panel.guides.entry(id.clone()).or_insert(Guide::new(
+                &id,
+                &orientation,
+                &reference,
+                self.offset,
+            ));
         }
     }
 }

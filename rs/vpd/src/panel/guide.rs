@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 
+use crate::module::IItem;
+use crate::module::Item;
 use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
@@ -7,12 +9,13 @@ use crate::svg::GuideLine;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Guide {
+    pub id: String,
     pub x: Option<X>,
     pub y: Option<Y>,
 }
 
 impl Guide {
-    pub fn new(orientation: &str, reference: &str, offset: f32) -> Guide {
+    pub fn new(id: &str, orientation: &str, reference: &str, offset: f32) -> Guide {
         let x = match orientation {
             "vertical" => Some(X::new(reference, offset)),
             _ => None,
@@ -23,7 +26,11 @@ impl Guide {
             _ => None,
         };
 
-        Guide { x: x, y: y }
+        Guide {
+            id: id.to_string(),
+            x: x,
+            y: y,
+        }
     }
 
     #[allow(non_snake_case)]
@@ -60,5 +67,27 @@ impl Guide {
 
             _ => None,
         };
+    }
+}
+
+impl IItem for Guide {
+    fn as_item(&self) -> Item {
+        let mut attributes = vec![];
+
+        if let Some(x) = &self.x {
+            attributes.push(("orientation".to_string(), format!("vertical")));
+            attributes.push(("x".to_string(), format!("{}", x)));
+        }
+
+        if let Some(y) = &self.y {
+            attributes.push(("type".to_string(), format!("horizontal")));
+            attributes.push(("y".to_string(), format!("{}", y)));
+        }
+
+        Item {
+            itype: "guide".to_string(),
+            id: self.id.clone(),
+            attributes: attributes,
+        }
     }
 }

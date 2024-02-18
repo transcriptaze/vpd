@@ -61,6 +61,7 @@ impl Input {
 impl IItem for Input {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
+            ("name".to_string(), self.name.clone()),
             ("x".to_string(), format!("{}", &self.x)),
             ("y".to_string(), format!("{}", &self.y)),
         ];
@@ -72,7 +73,6 @@ impl IItem for Input {
         Item {
             itype: "input".to_string(),
             id: self.id.clone(),
-            name: self.name.clone(),
             attributes: attributes,
         }
     }

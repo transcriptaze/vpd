@@ -114,6 +114,7 @@ impl Label {
 impl IItem for Label {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
+            ("text".to_string(), self.text.clone()),
             ("x".to_string(), format!("{}", &self.x)),
             ("y".to_string(), format!("{}", &self.y)),
         ];
@@ -127,7 +128,6 @@ impl IItem for Label {
         Item {
             itype: "label".to_string(),
             id: self.id.clone(),
-            name: self.text.clone(),
             attributes: attributes,
         }
     }

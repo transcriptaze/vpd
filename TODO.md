@@ -53,7 +53,7 @@
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - [ ] migrate
-      - [ ] info
+      - [x] info
       - (?) warn if duplicate offset
 
 - [ ] _inputs_
@@ -77,7 +77,7 @@
 
 - [ ] _decorate_
       - [ ] set
-      - [ ] migrate
+      - [x] migrate
       - [x] info
       - [ ] Export decorations in SVG component group
 
