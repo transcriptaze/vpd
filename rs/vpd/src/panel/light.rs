@@ -61,6 +61,7 @@ impl Light {
 impl IItem for Light {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
+            ("name".to_string(), self.name.clone()),
             ("x".to_string(), format!("{}", &self.x)),
             ("y".to_string(), format!("{}", &self.y)),
         ];
@@ -72,7 +73,6 @@ impl IItem for Light {
         Item {
             itype: "light".to_string(),
             id: self.id.clone(),
-            name: self.name.clone(),
             attributes: attributes,
         }
     }

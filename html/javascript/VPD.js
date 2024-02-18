@@ -203,7 +203,6 @@ export function onClickPanel (panel, x, y) {
 
           li.querySelector('fieldset legend').innerHTML = `${item.itype}`.toUpperCase()
           li.querySelector('p[data-tag="item.id"]').innerHTML = `${item.id}`
-          li.querySelector('p[data-tag="item.name"]').innerHTML = `${item.name}`
 
           if (item.attributes != null) {
             for (const [k, v] of item.attributes) {

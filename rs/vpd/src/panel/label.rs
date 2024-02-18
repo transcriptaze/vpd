@@ -4,8 +4,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::Item;
+use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
+use crate::svg::Text;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Label {
@@ -71,6 +73,33 @@ impl Label {
         }
     }
 
+    pub fn as_svg(&self, panel: &Panel, theme: &str) -> Text {
+        let mut x = self.x.resolve(panel);
+        let mut y = self.y.resolve(panel);
+        let colour = match theme {
+            "dark" => self.colour.dark.as_str(),
+            _ => self.colour.light.as_str(),
+        };
+
+        x += match self.halign.as_str() {
+            "left" => 0.0,
+            "centre" => -(self.path.bounds.x1 + self.path.bounds.x2) / 2.0,
+            "center" => -(self.path.bounds.x1 + self.path.bounds.x2) / 2.0,
+            "right" => -self.path.bounds.x2,
+            _ => 0.0,
+        };
+
+        y += match self.valign.as_str() {
+            "top" => -self.path.bounds.y1,
+            "middle" => -(self.path.bounds.y1 + self.path.bounds.y2) / 2.0,
+            "baseline" => 0.0,
+            "bottom" => -self.path.bounds.y2,
+            _ => 0.0,
+        };
+
+        Text::new(&self.text, x, y, &self.path.path, &colour)
+    }
+
     pub fn migrate(&mut self, from: &str, to: &str) {
         if self.x.reference == from {
             self.x.reference = to.to_string();
@@ -85,6 +114,7 @@ impl Label {
 impl IItem for Label {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
+            ("text".to_string(), self.text.clone()),
             ("x".to_string(), format!("{}", &self.x)),
             ("y".to_string(), format!("{}", &self.y)),
         ];
@@ -98,7 +128,6 @@ impl IItem for Label {
         Item {
             itype: "label".to_string(),
             id: self.id.clone(),
-            name: self.text.clone(),
             attributes: attributes,
         }
     }

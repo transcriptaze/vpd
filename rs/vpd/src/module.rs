@@ -49,7 +49,6 @@ pub trait IItem {
 pub struct Item {
     pub itype: String,
     pub id: String,
-    pub name: String,
     pub attributes: Vec<(String, String)>,
 }
 
@@ -476,6 +475,32 @@ impl Module {
     pub fn query(&self, x: f32, y: f32) -> Vec<Item> {
         let panel = &self.panel;
         let mut rs = Vec::<Item>::new();
+
+        for (_, v) in &self.panel.guides {
+            if let Some(gx) = &v.x {
+                if y < 0.0 {
+                    let dx = gx.resolve(panel) - x;
+                    let dy = 0.0;
+                    let r = (dx * dx + dy * dy).sqrt();
+
+                    if r < RADIUS {
+                        rs.push(v.as_item());
+                    }
+                }
+            }
+
+            if let Some(gy) = &v.y {
+                if x < 0.0 {
+                    let dx = 0.0;
+                    let dy = gy.resolve(panel) - y;
+                    let r = (dx * dx + dy * dy).sqrt();
+
+                    if r < RADIUS {
+                        rs.push(v.as_item());
+                    }
+                }
+            }
+        }
 
         for v in &self.panel.inputs {
             let dx = v.x.resolve(panel) - x;
