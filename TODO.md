@@ -10,16 +10,17 @@
 - [ ] Set CSS panel element width from module width
 - [ ] `undo`
 - [ ] `redo`
+- [ ] tab-complete
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
-- [ ] Save .h file
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
 - [ ] Cheatsheet
       - [ ] XY
 
 - [ ] Export header file
+      - [x] Save .h file
       - [x] Fix ..h filename
       - [x] UI button
       - [x] Command
@@ -35,6 +36,7 @@
 - [x] panel screws
 - [ ] Only add used widgets to defs
 - [ ] Fix scaling for _RoundBlackKnob_
+- [ ] Fix scaling for _PJ301M_
 
 
 ### Fonts 
@@ -53,6 +55,7 @@
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - [ ] migrate
+      - [ ] info
       - (?) warn if duplicate offset
 
 - [ ] _inputs_
@@ -71,12 +74,8 @@
       - [ ] `set widget 'channels' x (light 'on' +10mm,-20mm)`
 
 - [ ] _label_
-      - [x] set
-      - [x] migrate
-      - [x] info
-      - [x] help
+      - [x] Export label text as inkscape:label attribute
       - [ ] `set label  l1 x (widget w1 +10mm,-20mm)`
-      - [ ] Export label text as inkscape attribute
 
 - [ ] _decorate_
       - [ ] set
@@ -86,6 +85,9 @@
 
 
 ### TO BE DONE
+
+- [ ] API
+      - Go REST API
 
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
