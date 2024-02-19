@@ -274,11 +274,27 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
+          "type": "absolute",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "orientation",
+          "named": true
+        },
+        {
+          "type": "reference",
           "named": true
         }
       ]
@@ -680,6 +696,10 @@
           "named": true
         },
         {
+          "type": "guide",
+          "named": true
+        },
+        {
           "type": "halign",
           "named": true
         },
@@ -852,7 +872,25 @@
   {
     "type": "xy",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "y",
@@ -1018,6 +1056,10 @@
     "named": false
   },
   {
+    "type": "orientation",
+    "named": true
+  },
+  {
     "type": "origin",
     "named": false
   },
@@ -1091,11 +1133,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",

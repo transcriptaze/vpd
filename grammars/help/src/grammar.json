@@ -55,10 +55,6 @@
                   "name": "module"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "guide"
-                },
-                {
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
@@ -106,6 +102,15 @@
                 {
                   "type": "SYMBOL",
                   "name": "label"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_guide_entity"
+                  },
+                  "named": true,
+                  "value": "guide"
                 }
               ]
             },
@@ -309,6 +314,220 @@
         }
       ]
     },
+    "_guide_entity": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "guide"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_new_guide_orientation"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_new_guideline_geometry"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_new_guideline_guide"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_new_guide_orientation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "vertical"
+              },
+              {
+                "type": "STRING",
+                "value": "horizontal"
+              }
+            ]
+          },
+          "named": true,
+          "value": "orientation"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_new_guideline_absolute"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_new_guideline_relative"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_new_guideline_absolute": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@"
+          },
+          "named": true,
+          "value": "absolute"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_new_guideline_relative": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "([0-9]+)([.][0-9]*)?(mm|h|H)"
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "_new_guideline_geometry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "left"
+              },
+              {
+                "type": "STRING",
+                "value": "centre"
+              },
+              {
+                "type": "STRING",
+                "value": "center"
+              },
+              {
+                "type": "STRING",
+                "value": "right"
+              },
+              {
+                "type": "STRING",
+                "value": "top"
+              },
+              {
+                "type": "STRING",
+                "value": "middle"
+              },
+              {
+                "type": "STRING",
+                "value": "bottom"
+              }
+            ]
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "([+-][0-9]+)([.][0-9]*)?(mm|h|H)"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_new_guideline_guide": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z][a-zA-Z0-9]*"
+          },
+          "named": true,
+          "value": "reference"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "([+-][0-9]+)([.][0-9]*)?(mm|h|H)"
+              },
+              "named": true,
+              "value": "offset"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "height": {
       "type": "PATTERN",
       "value": "1U|128.5mm"
@@ -354,6 +573,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "_label_attr"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_guideline_attr"
                 }
               ]
             },
@@ -881,6 +1104,170 @@
             },
             {
               "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_guideline_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_guide_id"
+          },
+          "named": true,
+          "value": "guide"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_guideline_xy_attr"
+              },
+              "named": true,
+              "value": "xy"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_guideline_xy_attr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "@"
+              },
+              "named": true,
+              "value": "absolute"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[0-9]+([.][0-9]*)?(mm|H)?"
+              },
+              "named": true,
+              "value": "offset"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[0-9]+([.][0-9]*)?(mm|H)?"
+              },
+              "named": true,
+              "value": "offset"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "left"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "centre"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "center"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "right"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "top"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "middle"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "bottom"
+                  }
+                ]
+              },
+              "named": true,
+              "value": "reference"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[+-][0-9]+([.][0-9]*)?(mm|H)?"
+                  },
+                  "named": true,
+                  "value": "offset"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[a-zA-Z]+[0-9]*"
+              },
+              "named": true,
+              "value": "reference"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[+-][0-9]+([.][0-9]*)?(mm|H)?"
+                  },
+                  "named": true,
+                  "value": "offset"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         }
@@ -1709,6 +2096,32 @@
             {
               "type": "SYMBOL",
               "name": "name"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_guide_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "guide"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[a-zA-Z][a-zA-Z0-9]*"
+              },
+              "named": true,
+              "value": "identifier"
             },
             {
               "type": "BLANK"

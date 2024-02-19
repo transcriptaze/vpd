@@ -1,1 +1,1 @@
-set label 'lorem' text 'ipsum'
+set guide v1 10mm

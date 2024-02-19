@@ -92,6 +92,10 @@
             {
               "type": "SYMBOL",
               "name": "_label_attr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_guideline_attr"
             }
           ]
         }
@@ -462,6 +466,70 @@
                   "name": "colour"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    "_guideline_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_guide_id"
+          },
+          "named": true,
+          "value": "guide"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_absolute_attr"
+              },
+              "named": true,
+              "value": "xy"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_relative_attr"
+              },
+              "named": true,
+              "value": "xy"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_geometry_x_attr"
+              },
+              "named": true,
+              "value": "xy"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_geometry_y_attr"
+              },
+              "named": true,
+              "value": "xy"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_guide_attr"
+              },
+              "named": true,
+              "value": "xy"
             }
           ]
         }
@@ -939,7 +1007,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_guideline_id"
+                "name": "_guide_id"
               },
               "named": true,
               "value": "guide"
@@ -1011,7 +1079,7 @@
         }
       ]
     },
-    "_guideline_id": {
+    "_guide_id": {
       "type": "SEQ",
       "members": [
         {
@@ -1019,8 +1087,13 @@
           "value": "guide"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)"
+          },
+          "named": true,
+          "value": "identifier"
         }
       ]
     },

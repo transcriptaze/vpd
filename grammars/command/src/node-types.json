@@ -955,6 +955,10 @@
           "named": true
         },
         {
+          "type": "guide",
+          "named": true
+        },
+        {
           "type": "halign",
           "named": true
         },
@@ -1183,6 +1187,14 @@
       "types": [
         {
           "type": "absolute",
+          "named": true
+        },
+        {
+          "type": "offset",
+          "named": true
+        },
+        {
+          "type": "reference",
           "named": true
         },
         {
