@@ -158,7 +158,7 @@ pub fn serialize(object: &str) -> Result<JsValue, JsValue> {
         }
 
         "module >>" => {
-            let name = Regex::new(r#"[^a-zA-Z0-9_]+"#)
+            let name = Regex::new(r#"[^a-zA-Z0-9_-]+"#)
                 .unwrap()
                 .replace_all(&module.name, "_");
 

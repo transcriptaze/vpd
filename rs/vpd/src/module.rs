@@ -163,7 +163,7 @@ impl Module {
     }
 
     pub fn export_helper(&self) {
-        let name = Regex::new(r#"[^a-zA-Z0-9_]+"#)
+        let name = Regex::new(r#"[^a-zA-Z0-9_-]+"#)
             .unwrap()
             .replace_all(&self.name, "_");
 
