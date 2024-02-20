@@ -5,6 +5,7 @@ use flate2::write::GzEncoder;
 use flate2::Compression;
 use regex::Regex;
 
+use super::panel::Guide;
 use super::panel::Panel;
 use super::panel::DEFAULT_HEIGHT;
 use super::panel::DEFAULT_WIDTH;
@@ -163,7 +164,7 @@ impl Module {
     }
 
     pub fn export_helper(&self) {
-        let name = Regex::new(r#"[^a-zA-Z0-9_]+"#)
+        let name = Regex::new(r#"[^a-zA-Z0-9_-]+"#)
             .unwrap()
             .replace_all(&self.name, "_");
 
@@ -437,6 +438,10 @@ impl Module {
                 .iter()
                 .position(|v| v.text.trim().to_lowercase() == id.trim().to_lowercase()),
         }
+    }
+
+    pub fn find_guide(&mut self, id: &str) -> Option<&mut Guide> {
+        self.panel.guides.get_mut(id)
     }
 
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {

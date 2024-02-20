@@ -20,13 +20,13 @@ module.exports = grammar({
       optional(
         choice(
           $.module,
-          $.guide,
           alias($._input_entity,     $.input),
           alias($._output_entity,    $.output),
           alias($._parameter_entity, $.parameter),
           alias($._light_entity,     $.light),
           alias($._widget_entity,    $.widget),
           $.label,
+          alias($._guide_entity,     $.guide),
         ),
       ),
     ),
@@ -77,6 +77,52 @@ module.exports = grammar({
       ),
     ),
 
+    _guide_entity: $ => seq(
+      'guide',
+      optional(
+        choice(
+          $._new_guide_orientation,
+          $._new_guideline_geometry,
+          $._new_guideline_guide,
+        ),
+      ),
+    ),
+
+    _new_guide_orientation: $ => seq(
+      alias(choice('vertical','horizontal'),$.orientation),
+      optional(
+        choice(
+          $._new_guideline_absolute,
+          $._new_guideline_relative,
+        ),
+      ),
+    ),
+
+    _new_guideline_absolute: $ => seq(
+      alias('@',$.absolute),
+      optional(
+        alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.offset)
+      ),
+    ),
+
+    _new_guideline_relative: $ => seq(
+        alias(/([0-9]+)([.][0-9]*)?(mm|h|H)/,$.offset)
+    ),
+
+    _new_guideline_geometry: $ => seq(
+      alias(choice('left','centre','center','right','top','middle','bottom'),$.reference),
+      optional(
+        alias(/([+-][0-9]+)([.][0-9]*)?(mm|h|H)/,$.offset)
+      ),
+    ),
+
+    _new_guideline_guide: $ => seq(
+      alias(/[a-zA-Z][a-zA-Z0-9]*/,$.reference),
+      optional(
+        alias(/([+-][0-9]+)([.][0-9]*)?(mm|h|H)/,$.offset)
+      ),
+    ),
+
     height: $ => /1U|128.5mm/,
     width: $ => /[1-9][0-9]*H|[1-9][0-9]([.][0-9]+)?mm/,
 
@@ -91,6 +137,7 @@ module.exports = grammar({
           $.background,
           $._component_attr,
           $._label_attr,
+          $._guideline_attr,
         ),
       )
     ),
@@ -141,6 +188,29 @@ module.exports = grammar({
           seq('colour', optional($.colour)),
           seq('color',  optional($.colour)),
         ),
+      ),
+    ),
+
+    _guideline_attr: $ => seq(
+      alias($._guide_id, $.guide),
+      optional(alias($._guideline_xy_attr, $.xy)),
+    ),
+
+    _guideline_xy_attr: $ => choice(
+      seq(
+        alias('@',$.absolute),
+        alias(/[0-9]+([.][0-9]*)?(mm|H)?/,$.offset),
+      ),
+      seq(
+        alias(/[0-9]+([.][0-9]*)?(mm|H)?/,$.offset),
+      ),
+      seq(
+        alias(choice('left','centre','center','right','top','middle','bottom'),$.reference),
+        optional(alias(/[+-][0-9]+([.][0-9]*)?(mm|H)?/,$.offset)),
+      ),
+      seq(
+        alias(/[a-zA-Z]+[0-9]*/,$.reference),
+        optional(alias(/[+-][0-9]+([.][0-9]*)?(mm|H)?/,$.offset)),
       ),
     ),
 
@@ -302,6 +372,13 @@ module.exports = grammar({
       ),
       ')',
       optional($.name),
+    ),
+
+    _guide_id: $ => seq(
+      'guide',
+      optional(
+          alias(/[a-zA-Z][a-zA-Z0-9]*/,$.identifier),
+      ),
     ),
 
     // ... load

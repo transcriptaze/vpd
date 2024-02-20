@@ -33,6 +33,7 @@ module.exports = grammar({
         alias($._module_attr,$.module),
         $._component_attr,
         $._label_attr,
+        $._guideline_attr,
       )
     ),
 
@@ -76,6 +77,17 @@ module.exports = grammar({
         seq('align',  $._align),
         seq('colour', $.colour),
         seq('color',  $.colour),
+      ),
+    ),
+
+    _guideline_attr: $ => seq(
+      alias($._guide_id, $.guide),
+      choice(
+        alias($._absolute_attr, $.xy),
+        alias($._relative_attr, $.xy),
+        alias($._geometry_x_attr,$.xy),
+        alias($._geometry_y_attr,$.xy),
+        alias($._guide_attr,$.xy),
       ),
     ),
 
@@ -201,7 +213,7 @@ module.exports = grammar({
     delete: $ => seq(
       'delete',
       choice (
-        alias($._guideline_id, $.guide),
+        alias($._guide_id, $.guide),
         alias($._input_id, $.input),
         alias($._output_id, $.output),
         alias($._parameter_id, $.parameter),
@@ -212,9 +224,9 @@ module.exports = grammar({
       )
     ),
 
-    _guideline_id: $ => seq(
+    _guide_id: $ => seq(
       'guide',
-      $.identifier
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)/, $.identifier),
     ),
 
     _input_id: $ => seq(

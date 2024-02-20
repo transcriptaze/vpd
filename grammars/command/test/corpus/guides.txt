@@ -307,6 +307,71 @@ delete guide v1
     (guide
       (identifier))))
 
-        
+
+==================
+set guide v1 @10mm
+==================
+set guide v1 @10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (absolute)
+      (offset))))
 
 
+=================
+set guide v1 10mm
+=================
+set guide v1 10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (offset))))
+
+
+======================
+set guide v1 left+10mm
+======================
+set guide v1 left+10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (reference)
+      (offset))))
+
+
+=====================
+set guide h1 top+10mm
+=====================
+set guide h1 top+10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (reference)
+      (offset))))
+
+
+====================
+set guide v2 v1+10mm
+====================
+set guide v2 v1+10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (reference)
+      (offset))))

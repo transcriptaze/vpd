@@ -1,3 +1,95 @@
+==========
+new guide 
+==========
+new guide
+---
+(command
+  (new
+    (guide)))
+
+
+==================
+new guide vertical
+==================
+new guide vertical
+---
+(command
+  (new
+    (guide
+      (orientation))))
+
+
+====================
+new guide horizontal
+====================
+new guide horizontal
+---
+(command
+  (new
+    (guide
+      (orientation))))
+
+
+========================
+new guide vertical @10mm
+========================
+new guide vertical @10mm
+---
+(command
+  (new
+    (guide
+      (orientation)
+      (absolute)
+      (offset))))
+
+
+=======================
+new guide vertical 10mm
+=======================
+new guide vertical 10mm
+---
+(command
+  (new
+    (guide
+      (orientation)
+      (offset))))
+
+
+==============
+new guide left
+==============
+new guide left
+---
+(command
+  (new
+    (guide
+      (reference))))
+
+
+===================
+new guide left+10mm
+===================
+new guide left+10mm
+---
+(command
+  (new
+    (guide
+      (reference)
+      (offset))))
+
+
+=================
+new guide v1+10mm
+=================
+new guide v1+10mm
+---
+(command
+  (new
+    (guide
+      (reference)
+      (offset))))
+
+
 ============
 delete guide
 ============
@@ -18,6 +110,93 @@ delete guide v1
     (guide
       (identifier))))
 
+
+=========
+set guide
+=========
+set guide
+---
+(command
+  (set
+    (guide)))
+
+
+============
+set guide v1
+============
+set guide v1
+---
+(command
+  (set
+    (guide
+      (identifier))))
+
+
+==================
+set guide v1 @10mm
+==================
+set guide v1 @10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (absolute)
+      (offset))))
+
+
+=================
+set guide v1 10mm
+=================
+set guide v1 10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (offset))))
+
+
+======================
+set guide v1 left+10mm
+======================
+set guide v1 left+10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (reference)
+      (offset))))
+
+
+=====================
+set guide h1 top+10mm
+=====================
+set guide h1 top+10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (reference)
+      (offset))))
+
+
+====================
+set guide v2 v1+10mm
+====================
+set guide v2 v1+10mm
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (xy
+      (reference)
+      (offset))))
         
-
-

@@ -15,6 +15,7 @@ use crate::commands::NewParameter;
 use crate::commands::NewWidget;
 
 use crate::commands::SetBackground;
+use crate::commands::SetGuide;
 use crate::commands::SetInput;
 use crate::commands::SetLabel;
 use crate::commands::SetLight;
@@ -200,6 +201,10 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.label.is_some() {
         return Ok(Box::new(SetLabel::new(json)?));
+    }
+
+    if v.guide.is_some() {
+        return Ok(Box::new(SetGuide::new(json)?));
     }
 
     return Err("invalid 'set' command".into());

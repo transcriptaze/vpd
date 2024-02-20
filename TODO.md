@@ -19,14 +19,6 @@
       - [ ] XY
 
 - [ ] Export header file
-      - [x] Save .h file
-      - [x] Fix ..h filename
-      - [x] UI button
-      - [x] Command
-      - [x] Help
-      - [x] JS
-      - [x] rs
-      - [x] Default prefix - convert module name to uppercase and replace non-alphanumeric with underscores
       - [ ] pretty-print
       - [ ] optional prefix
 
@@ -49,12 +41,14 @@
 - [x] `export module >>'
 
 - [ ] _guidelines_
-      - [ ] `set`
-      - [ ] clean up Module::new_guide_id
-      - [ ] clean up NewGuide::apply
+      - [x] `set`
       - [ ] migrate
+      - [x] help
       - [x] info
       - (?) warn if duplicate offset
+      - [ ] clean up Module::new_guide_id
+      - [ ] clean up NewGuide::apply
+      - [ ] `set guide (input in +10mm)`
 
 - [ ] _inputs_
       - [ ] `set input 'gain' x (input in +10mm)`
