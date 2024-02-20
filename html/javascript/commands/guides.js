@@ -67,7 +67,7 @@ export function setGuide (node, src) {
     if (child.type === 'xy') {
       object.guide.xy = {
         reference: 'origin',
-        offset: 0.0,
+        offset: 0.0
       }
 
       for (const v of child.namedChildren) {
