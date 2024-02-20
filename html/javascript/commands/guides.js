@@ -50,7 +50,50 @@ export function deleteGuide (node, src) {
   return object
 }
 
+export function setGuide (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'set',
+    guide: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.guide.id = identifier(child)
+    }
+  }
+
+  for (const child of node.parent.namedChildren) {
+    if (child.type === 'xy') {
+      object.guide.xy = {
+        reference: 'origin',
+        offset: 0.0,
+      }
+
+      for (const v of child.namedChildren) {
+        if (v.type === 'absolute') {
+          object.guide.xy.reference = 'absolute'
+        }
+
+        if (v.type === 'reference') {
+          object.guide.xy.reference = reference(child)
+        }
+
+        if (v.type === 'offset') {
+          object.guide.xy.offset = mm(v)
+        }
+      }
+    }
+  }
+
+  return object
+}
+
 function reference (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
   for (const child of node.namedChildren) {
     if (child.type === 'absolute') {
       return 'absolute'
@@ -65,6 +108,10 @@ function reference (node) {
 }
 
 function offset (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
   for (const child of node.namedChildren) {
     if (child.type === 'offset') {
       return mm(child)

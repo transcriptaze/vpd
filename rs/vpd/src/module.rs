@@ -5,6 +5,7 @@ use flate2::write::GzEncoder;
 use flate2::Compression;
 use regex::Regex;
 
+use super::panel::Guide;
 use super::panel::Panel;
 use super::panel::DEFAULT_HEIGHT;
 use super::panel::DEFAULT_WIDTH;
@@ -437,6 +438,10 @@ impl Module {
                 .iter()
                 .position(|v| v.text.trim().to_lowercase() == id.trim().to_lowercase()),
         }
+    }
+
+    pub fn find_guide(&mut self, id: &str) -> Option<&mut Guide> {
+        self.panel.guides.get_mut(id)
     }
 
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {

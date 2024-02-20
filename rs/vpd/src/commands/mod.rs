@@ -9,6 +9,7 @@ mod new_parameter;
 mod new_widget;
 
 mod set_background;
+mod set_guide;
 mod set_input;
 mod set_label;
 mod set_light;
@@ -47,6 +48,7 @@ pub use new_parameter::NewParameter;
 pub use new_widget::NewWidget;
 
 pub use set_background::SetBackground;
+pub use set_guide::SetGuide;
 pub use set_input::SetInput;
 pub use set_label::SetLabel;
 pub use set_light::SetLight;
