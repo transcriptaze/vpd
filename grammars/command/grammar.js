@@ -83,6 +83,7 @@ module.exports = grammar({
     _guideline_attr: $ => seq(
       alias($._guide_id, $.guide),
       choice(
+        seq('id', $.identifier),
         alias($._absolute_attr, $.xy),
         alias($._relative_attr, $.xy),
         alias($._geometry_x_attr,$.xy),

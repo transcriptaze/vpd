@@ -68,6 +68,20 @@ impl Guide {
             _ => None,
         };
     }
+
+    pub fn migrate(&mut self, from: &str, to: &str) {
+        if let Some(ref mut x) = &mut self.x {
+            if x.reference == from {
+                x.reference = to.to_string();
+            }
+        }
+
+        if let Some(ref mut y) = &mut self.y {
+            if y.reference == from {
+                y.reference = to.to_string();
+            }
+        }
+    }
 }
 
 impl IItem for Guide {

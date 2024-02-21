@@ -42,7 +42,7 @@
 
 - [ ] _guidelines_
       - [x] `set`
-      - [ ] migrate
+      - [x] migrate
       - [x] help
       - [x] info
       - (?) warn if duplicate offset

@@ -132,6 +132,29 @@ set guide v1
       (identifier))))
 
 
+===============
+set guide v1 id
+===============
+set guide v1 id
+---
+(command
+  (set
+    (guide
+      (identifier))))
+
+
+==================
+set guide v1 id v2
+==================
+set guide v1 id v2
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (identifier)))
+
+
 ==================
 set guide v1 @10mm
 ==================

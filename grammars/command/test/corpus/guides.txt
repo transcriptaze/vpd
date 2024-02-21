@@ -309,6 +309,18 @@ delete guide v1
 
 
 ==================
+set guide v1 id v2
+==================
+set guide v1 id v2
+---
+(command
+  (set
+    (guide
+      (identifier))
+    (identifier)))
+
+
+==================
 set guide v1 @10mm
 ==================
 set guide v1 @10mm
