@@ -7,6 +7,7 @@ use crate::module::Module;
 #[derive(Deserialize, Debug)]
 pub struct SetGuide {
     id: String,
+    name: Option<String>,
     xy: Option<XY>,
 }
 
@@ -30,9 +31,30 @@ impl SetGuide {
 }
 
 impl Command for SetGuide {
+    fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
+        if let Some(name) = &self.name {
+            if let Some(g) = m.find_guide(&name) {
+                if g.id != self.id {
+                    return Some(format!("duplicate guide id '{}'", name).into());
+                }
+            }
+        }
+
+        None
+    }
+
     fn apply(&self, m: &mut Module) {
-        if let Some(g) = m.find_guide(&self.id) {
-            if let Some(xy) = &self.xy {
+        if let Some(name) = &self.name {
+            if let Some(mut g) = m.panel.guides.remove(&self.id) {
+                g.id = name.to_string();
+                m.panel.guides.insert(name.to_string(), g);
+
+                m.migrate("guide", &self.id, name);
+            }
+        }
+
+        if let Some(xy) = &self.xy {
+            if let Some(g) = m.find_guide(&self.id) {
                 if let Some(x) = &mut g.x {
                     x.reference = xy.reference.clone();
                     x.offset = xy.offset;

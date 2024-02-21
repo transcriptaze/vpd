@@ -193,7 +193,12 @@ module.exports = grammar({
 
     _guideline_attr: $ => seq(
       alias($._guide_id, $.guide),
-      optional(alias($._guideline_xy_attr, $.xy)),
+      optional(
+        choice(
+          seq('id', optional($.identifier)),
+          alias($._guideline_xy_attr, $.xy),
+        ),
+      ),
     ),
 
     _guideline_xy_attr: $ => choice(

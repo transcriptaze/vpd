@@ -64,6 +64,10 @@ export function setGuide (node, src) {
   }
 
   for (const child of node.parent.namedChildren) {
+    if (child.type === 'identifier') {
+      object.guide.name = identifier(child)
+    }
+
     if (child.type === 'xy') {
       object.guide.xy = {
         reference: 'origin',

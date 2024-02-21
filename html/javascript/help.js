@@ -367,6 +367,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['set', 'guide', 'identifier', 'identifier'],
+    help: ['set', 'guide', ID, 'id v2'],
+    min: 1
+  },
+  {
     command: ['set', 'guide', 'identifier', 'absolute'],
     help: ['set', 'guide', ID, '@10.16mm'],
     min: 1

@@ -445,8 +445,15 @@ impl Module {
     }
 
     pub fn migrate(&mut self, tag: &str, from: &str, to: &str) {
-        let old = format!("{}<{}>", tag, from);
-        let new = format!("{}<{}>", tag, to);
+        let old = match tag {
+            "guide" => format!("{}", from),
+            _ => format!("{}<{}>", tag, from),
+        };
+
+        let new = match tag {
+            "guide" => format!("{}", to),
+            _ => format!("{}<{}>", tag, to),
+        };
 
         for v in &mut self.panel.inputs {
             v.migrate(&old, &new);

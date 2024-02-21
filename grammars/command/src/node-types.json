@@ -963,6 +963,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "input",
           "named": true
         },
@@ -1337,11 +1341,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "helper",
@@ -1349,6 +1353,10 @@
   },
   {
     "type": "horizontal",
+    "named": false
+  },
+  {
+    "type": "id",
     "named": false
   },
   {
@@ -1433,11 +1441,11 @@
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "script",
@@ -1489,11 +1497,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",
