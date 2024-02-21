@@ -8,9 +8,9 @@
 | [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute)       |
 | [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   | [`set parameter <attribute>`](#set-parameter-attribute) |
 |                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           | [`set light <attribute>`](#set-light-attribute)         |
-| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         |                                                         |
-|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           |                                                         |
-|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) |                                                         |
+| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         | [`set widget <attribute>`](#set-widget-attribute)       |
+|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           | [`set label <attribute>`](#set-label-attribute)         |
+|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) | [`set guide <attribute>`](#set-guide-attribute)         |
 |   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                         |
 |   - [_Export .h_](#-export-h-file)  | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                         |
 |   - [_>>_](#-)                      | [`save script`](#save-script)           |                                           |                                   |                                           |                                                         |
@@ -428,6 +428,33 @@ _Examples_
 delete guide v1
 ```   
 
+#### `set guide <attribute>`
+
+```set guide <id> id <new-id>```
+```set guide <location>```
+
+Changes the location or ID of a guide.
+
+_Command options:_
+```
+id          Identifier of the guide to update
+new-id      New guide ID
+location    New guide location.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _guide_ by id are migrated automatically when the guide `id`
+   is changed.
+
+_Examples:_
+```
+set guide v1 id v2
+set guide v1 @10.6mm
+set guide v1 10.6mm
+set guide v1 left+10.6mm
+set guide v2 v1+10.6mm
+```
+
 --- 
 
 #### `new module`
@@ -609,7 +636,7 @@ Changes the value of an input attribute.
 
 _Command options:_
 ```
-id          Identifier of the input to delete (the identifier is the automatically generated ID assigned to the input)
+id          Identifier of the input to update (the identifier is the automatically generated ID assigned to the input)
 name        Name of input.
 attribute   Input attribute - one of name,x,y,xy or part
 value       New attribute value.
@@ -694,7 +721,7 @@ Changes the value of an output attribute.
 
 _Command options:_
 ```
-id          Identifier of the output to delete (the identifier is the automatically generated ID assigned to the output)
+id          Identifier of the output to update (the identifier is the automatically generated ID assigned to the output)
 name        Name of output.
 attribute   Output attribute - one of name,x,y,xy or part
 value       New attribute value.
@@ -778,7 +805,7 @@ Changes the value of a parameter attribute.
 
 _Command options:_
 ```
-id          Identifier of the parameter to delete (the identifier is the automatically generated ID assigned to the parameter)
+id          Identifier of the parameter to update (the identifier is the automatically generated ID assigned to the parameter)
 name        Name of parameter.
 attribute   parameter attribute - one of name,x,y,xy or part
 value       New attribute value.
@@ -865,7 +892,7 @@ Changes the value of a light attribute.
 
 _Command options:_
 ```
-id          Identifier of the light to delete (the identifier is the automatically generated ID assigned to the light)
+id          Identifier of the light to update (the identifier is the automatically generated ID assigned to the light)
 name        Name of light.
 attribute   light attribute - one of name,x,y,xy or part
 value       New attribute value.
@@ -943,6 +970,36 @@ delete widget w1
 delete widget 'ChDsp'
 ```   
 
+#### `set widget <attribute>`
+
+```set widget <id|name> <attribute> <value>```
+
+Changes the value of a widget attribute.
+
+_Command options:_
+```
+id          Identifier of the widget to update (the identifier is the automatically generated ID assigned to the widget)
+name        Name of widget.
+attribute   widget attribute - one of name,x,y,xy or part
+value       New attribute value.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _widget_ by name are migrated automatically when the `name`
+   of the widget is changed.
+
+_Examples:_
+```
+set widget w1 name 'display'
+set widget display name 'dsp'
+set widget display x v1+10mm
+set widget display y @55.5mm
+set widget display x v1+10mm
+set widget display xy v1,h1
+set widget display part LCD
+set widget display part none
+```
+
 --- 
 #### `new label`
 
@@ -1010,6 +1067,40 @@ _Examples_
 delete label t1
 delete label 'lorem ipsum'
 ```   
+
+#### `set label <attribute>`
+
+```set label <id|text> <attribute> <value>```
+
+Changes the value of a label attribute.
+
+_Command options:_
+```
+id          Identifier of the label to update (the identifier is the automatically generated ID assigned to the label)
+text        Label text.
+attribute   label attribute - one of text,x,y,xy,font,size,halign,valign,align or colour
+value       New attribute value.
+```
+
+_Notes:_
+1. Other components, labels and decorations that reference the _label_ by name are migrated automatically when the `text`
+   of the widget is changed.
+
+_Examples:_
+```
+set label l1 text 'uiop'
+set label qwerty text 'uiop'
+set label qwerty x v1+10mm
+set label qwerty y @55.5mm
+set label qwerty xy v1,h1
+set label qwerty font RobotoMono-Bold
+set label qwerty size 14.5pt
+set label qwerty halign centre
+set label qwerty valign middle-10.6mm
+set label qwerty align centre,baseline
+set label qwerty colour #ff000
+set label qwerty colour #ff000,#00ff00
+```
 
 ---
 #### `decorate`

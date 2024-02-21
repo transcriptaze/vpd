@@ -1,5 +1,5 @@
 \documentclass[a4paper,10pt,oneside,dvipsnames]{article}
-\usepackage[landscape,left=1.25cm,right=1.25cm,top=1cm,bottom=1.5cm]{geometry}
+\usepackage[landscape,left=1.25cm,right=1.25cm,top=1cm,bottom=1cm]{geometry}
 \usepackage{tcolorbox}
 \usepackage{fontspec}
 \usepackage{tabularx}
@@ -50,17 +50,19 @@
 
     \begin{tcolorbox}[width=7.5cm,colframe=black,title=guidelines]
       \begin{flushleft}
-      new guide \textit{[label]} \textit{vertical} \textit{@x} \\
-      new guide \textit{[label]} \textit{horizontal} \textit{@y} \\
+      new guide \textit{[id]} \textit{vertical} \textit{@x} \\
+      new guide \textit{[id]} \textit{horizontal} \textit{@y} \\
       \vspace{0.25cm}
-      new guide \textit{[label]} \textit{vertical} \textit{x} \\
-      new guide \textit{[label]} \textit{horizontal} \textit{y} \\
+      new guide \textit{[id]} \textit{vertical} \textit{x} \\
+      new guide \textit{[id]} \textit{horizontal} \textit{y} \\
       \vspace{0.25cm}
-      new guide \textit{[label]} \textit{<left|centre|right>} \textit{$\delta$x} \\
-      new guide \textit{[label]} \textit{<top|middle|bottom>} \textit{$\delta$y} \\
-      new guide \textit{[label]} \textit{<guide>} \textit{$\delta$x|$\delta$y} \\
+      new guide \textit{[id]} \textit{<left|centre|right>} \textit{$\delta$x} \\
+      new guide \textit{[id]} \textit{<top|middle|bottom>} \textit{$\delta$y} \\
+      new guide \textit{[id]} \textit{<guide>} \textit{$\delta$x|$\delta$y} \\
       \vspace{0.25cm}
-      delete guide \textit{<id>|<name>}\\
+      delete guide \textit{<id>}\\
+      set guide \textit{<id>} id \textit{<value>}\\
+      set guide \textit{<id>} \textit{<location>}\\
       \end{flushleft}
     \end{tcolorbox}
   \end{minipage} &
@@ -100,10 +102,11 @@
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}[width=7.5cm,colframe=yellow!90!black,title=widgets]
+    \begin{tcolorbox}[width=10cm,colframe=yellow!90!black,title=widgets]
       \begin{flushleft}
       new widget \textit{<name>} \textit{<xy>} \textit{[part]} \\
       delete widget \textit{<id>|<name>} \\
+      set widget \textit{<id>|<name>} name|x|y|xy|part \textit{<value>}\\
       \end{flushleft}
     \end{tcolorbox}
 
@@ -111,6 +114,7 @@
       \begin{flushleft}
       new label \textit{<text>} \textit{<xy>} \textit{[font]} \textit{[size]} \textit{[halign]} \textit{[valign]} \textit{[colour]} \\
       delete label \textit{<id>|<text>} \\
+      set label \textit{<id>|<text>} text|x|y|xy|font|size|align|halign|valign|colour \textit{<value>}\\
       \end{flushleft}
     \end{tcolorbox} 
     
@@ -118,7 +122,6 @@
       \begin{flushleft}
       decorate (\textit{<component> <id> <offset>}) \\
       \-\hspace{0.7cm} with \textit{<decoration>} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
-      \vspace{0.25cm}
       delete decoration \textit{<id>|(<component> <id>) <name>} \\
       \end{flushleft}
     \end{tcolorbox}    
