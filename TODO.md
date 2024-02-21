@@ -42,13 +42,14 @@
 
 - [ ] _guidelines_
       - [x] `set`
-      - [ ] migrate
+      - [x] migrate
       - [x] help
       - [x] info
       - (?) warn if duplicate offset
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - [ ] `set guide (input in +10mm)`
+      - [ ] `set guide <id> id ...`
 
 - [ ] _inputs_
       - [ ] `set input 'gain' x (input in +10mm)`

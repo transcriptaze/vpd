@@ -368,22 +368,22 @@ const COMMANDS = [
   },
   {
     command: ['set', 'guide', 'identifier', 'absolute'],
-    help: ['set', 'guide', ID, `@10.16mm`],
+    help: ['set', 'guide', ID, '@10.16mm'],
     min: 1
   },
   {
     command: ['set', 'guide', 'identifier', 'xy'],
-    help: ['set', 'guide', ID, `10.16mm`],
+    help: ['set', 'guide', ID, '10.16mm'],
     min: 1
   },
   {
     command: ['set', 'guide', 'identifier', 'xy'],
-    help: ['set', 'guide', ID, `v1+10mm`],
+    help: ['set', 'guide', ID, 'v1+10mm'],
     min: 1
   },
   {
     command: ['set', 'guide', 'identifier', 'xy'],
-    help: ['set', 'guide', ID, `left+10mm`],
+    help: ['set', 'guide', ID, 'left+10mm'],
     min: 1
   },
   {

@@ -475,6 +475,10 @@ impl Module {
         for v in &mut self.panel.decorations {
             v.migrate(&old, &new);
         }
+
+        for (_, v) in &mut self.panel.guides {
+            v.migrate(&old, &new);
+        }
     }
 
     pub fn query(&self, x: f32, y: f32) -> Vec<Item> {
