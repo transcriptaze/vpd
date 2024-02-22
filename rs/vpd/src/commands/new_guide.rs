@@ -30,7 +30,7 @@ impl NewGuide {
 
 impl Command for NewGuide {
     fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
-        // ... name
+        // ... id
         if let Some(name) = &self.name {
             if let Some(_) = m.find_guide(&name) {
                 return Some(format!("duplicate guide name '{}'", name).into());
@@ -46,7 +46,7 @@ impl Command for NewGuide {
 
             reference => {
                 if !m.panel.guides.contains_key(reference) {
-                    return Some(format!("no reference guideline '{}'", reference).into());
+                    return Some(format!("missing reference guideline '{}'", reference).into());
                 }
             }
         };

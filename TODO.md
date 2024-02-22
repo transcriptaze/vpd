@@ -43,7 +43,7 @@
       - [x] migrate
       - [x] help
       - [x] info
-      - (?) warn if duplicate offset
+      - [x] warn if duplicate offset
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
       - [ ] `set guide v1 (input in +10mm)`
