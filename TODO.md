@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Check hasError/isMissing
+- [x] Check hasError/isMissing
 - [ ] Genericize ID generation
 
 - [x] Load project file
@@ -38,17 +38,15 @@
 - [ ] `load font...`
 
 ### Commands
-- [x] `export module >>'
-
 - [ ] _guidelines_
       - [x] `set`
       - [x] migrate
       - [x] help
       - [x] info
-      - (?) warn if duplicate offset
+      - [x] warn if duplicate offset
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
-      - [ ] `set guide (input in +10mm)`
+      - [ ] `set guide v1 (input in +10mm)`
 
 - [ ] _inputs_
       - [ ] `set input 'gain' x (input in +10mm)`
@@ -66,13 +64,10 @@
       - [ ] `set widget 'channels' x (light 'on' +10mm,-20mm)`
 
 - [ ] _label_
-      - [x] Export label text as inkscape:label attribute
-      - [ ] `set label  l1 x (widget w1 +10mm,-20mm)`
+      - [ ] `set label l1 x (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
       - [ ] set
-      - [x] migrate
-      - [x] info
       - [ ] Export decorations in SVG component group
 
 
@@ -81,6 +76,7 @@
 - [ ] API
       - Go REST API
 
+- [ ] Custom helper.py to merge updates
 - [ ] Loadable header file template
 - [ ] tab-complete
 - [ ] Robust JSON deserialization 
