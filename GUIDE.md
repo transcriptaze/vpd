@@ -2,22 +2,22 @@
 
 **Contents**
 
-| General                             | Commands                                |                                           |                                   |                                           |                                                         |
-|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|---------------------------------------------------------|
-| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute)         |
-| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute)       |
-| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   | [`set parameter <attribute>`](#set-parameter-attribute) |
-|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           | [`set light <attribute>`](#set-light-attribute)         |
-| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         | [`set widget <attribute>`](#set-widget-attribute)       |
-|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           | [`set label <attribute>`](#set-label-attribute)         |
-|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) | [`set guide <attribute>`](#set-guide-attribute)         |
-|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           |                                                         |
-|   - [_Export .h_](#-export-h-file)  | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                         |
-|   - [_>>_](#-)                      | [`save script`](#save-script)           |                                           |                                   |                                           |                                                         |
-|   - [_Undo/Redo_](#undoredo)        |                                         |                                           |                                   |                                           |                                                         |
-|   - [_Macro keys_](#macro-keys)     | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                         |
-|   - [_Command area_](#command-area) | [`export module .h`](#export-module-h)  |                                           |                                   |                                           |                                                         |
-|                                     | [`export module >>`](#export-module-)   |                                           |                                   |                                           |                                                         |
+| General                             | Commands                                |                                           |                                   |                                           |                                                           |
+|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|-----------------------------------------------------------|
+| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute)           |
+| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute)         |
+| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   | [`set parameter <attribute>`](#set-parameter-attribute)   |
+|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           | [`set light <attribute>`](#set-light-attribute)           |
+| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         | [`set widget <attribute>`](#set-widget-attribute)         |
+|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           | [`set label <attribute>`](#set-label-attribute)           |
+|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) | [`set decoration <attribute>`](#set-decoration-attribute) |
+|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           | [`set guide <attribute>`](#set-guide-attribute)           |
+|   - [_Export .h_](#-export-h-file)  | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                           |
+|   - [_>>_](#-)                      | [`save script`](#save-script)           |                                           |                                   |                                           |                                                           |
+|   - [_Undo/Redo_](#undoredo)        |                                         |                                           |                                   |                                           |                                                           |
+|   - [_Macro keys_](#macro-keys)     | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                           |
+|   - [_Command area_](#command-area) | [`export module .h`](#export-module-h)  |                                           |                                   |                                           |                                                           |
+|                                     | [`export module >>`](#export-module-)   |                                           |                                   |                                           |                                                           |
                                     
 ## Getting started
 
@@ -1160,6 +1160,34 @@ _Examples_
 delete decoration d1
 delete decoration (input 'audio') CircularGraduations
 ```   
+
+#### `set decoration <attribute>`
+
+```set decoration <id> <attribute> <value>```
+```set decoration <reference> <name> <attribute> <value>```
+
+Changes the offset, stretch or scale values of a decoration.
+
+_Command options:_
+```
+id          Identifier of the decoration to update (the identifier is the automatically generated ID assigned to the decoration)
+reference   Reference to component to which decoration is attached, e.g. (input frequency)
+name        Decoration 'name' e.g. Pad
+attribute   decoration attribute - one of x,y,xy,stretch or scale
+value       New attribute value.
+```
+
+_Notes:_
+
+_Examples:_
+```
+set decoration d1 x +10mm
+set decoration d1 y -12.5mm
+set decoration d1 (stretch 1.1,0.9)
+set decoration d1 (scale 0.5)
+set decoration (input frequency) CircularGraduations x +10mm
+set decoration (output left) Pad (stretch 1.25,2.5)
+```
 
 ---
   #### `load project`

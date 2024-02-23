@@ -1,4 +1,4 @@
-import { identifier, string } from './commands.js'
+import { identifier, string, offset } from './commands.js'
 
 export function newDecoration (component, node, src) {
   const object = {
@@ -96,6 +96,74 @@ export function deleteDecoration (node, src) {
 
     if (child.type === 'name') {
       object.decoration.name = string(child)
+    }
+  }
+
+  return object
+}
+
+export function setDecoration (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'set',
+    decoration: {}
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.decoration.id = identifier(child)
+    }
+
+    if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'identifier') {
+          object.decoration.reference = `${child.type}<${identifier(attr)}>`
+        }
+      }
+    }
+
+    if (child.type === 'name') {
+      object.decoration.name = string(child)
+    }
+  }
+
+  for (const child of node.parent.namedChildren) {
+    if (child.type === 'x') {
+      object.decoration.x = {
+        offset: offset(child)
+      }
+    }
+
+    if (child.type === 'y') {
+      object.decoration.y = {
+        offset: offset(child)
+      }
+    }
+
+    if (child.type === 'stretch') {
+      object.decoration.stretch = {}
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'x') {
+          const v = parseFloat(attr.text)
+          if (!Number.isNaN(v)) {
+            object.decoration.stretch.x = v
+          }
+        }
+
+        if (attr.type === 'y') {
+          const v = parseFloat(attr.text)
+          if (!Number.isNaN(v)) {
+            object.decoration.stretch.y = v
+          }
+        }
+      }
+    }
+
+    if (child.type === 'scale') {
+      const v = parseFloat(child.text)
+      if (!Number.isNaN(v)) {
+        object.decoration.scale = v
+      }
     }
   }
 

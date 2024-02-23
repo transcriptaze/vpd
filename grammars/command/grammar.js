@@ -33,6 +33,7 @@ module.exports = grammar({
         alias($._module_attr,$.module),
         $._component_attr,
         $._label_attr,
+        $._decoration_attr,
         $._guideline_attr,
       )
     ),
@@ -80,6 +81,19 @@ module.exports = grammar({
       ),
     ),
 
+    _decoration_attr: $ => seq(
+      choice(
+        alias($._decoration_id, $.decoration),
+      ),
+      choice(
+        seq('x',  alias($._offset_attr, $.x)),
+        seq('y',  alias($._offset_attr, $.y)),
+        seq('xy', $._offset_xy_attr),
+        $.stretch,
+        $._scale,
+      ),
+    ),
+
     _guideline_attr: $ => seq(
       alias($._guide_id, $.guide),
       choice(
@@ -117,6 +131,16 @@ module.exports = grammar({
         $._geometry_xy_attr,
         $._guide_xy_attr,
       ),
+    ),
+
+    _offset_attr: $ => seq(
+      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
+    ),
+
+    _offset_xy_attr: $ => seq(
+      alias($._offset_attr, $.x),
+      ',',
+      alias($._offset_attr, $.y),
     ),
 
     _absolute_attr: $ => seq(
@@ -505,6 +529,7 @@ module.exports = grammar({
     ),
 
     _scale: $ => seq ( '(', 'scale', alias(/[0-9]+([.][0-9]*)?/,$.scale),')'),
+
     stretch: $ => seq ( 
       '(', 
       'stretch', 

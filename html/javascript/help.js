@@ -2,6 +2,7 @@ let parser
 
 const ID = '<em>&lt;id&gt;</em>'
 const NAME = '<em>&lt;name&gt;</em>'
+const REFERENCE = '<em>(&lt;component&gt; &lt;id&gt;)</em>'
 const X = '<em>&lt;x&gt;</em>'
 const Y = '<em>&lt;y&gt;</em>'
 const PART = '<em>&lt;part&gt;</em>'
@@ -364,6 +365,66 @@ const COMMANDS = [
   {
     command: ['set', 'label', 'identifier', 'colour'],
     help: ['set', 'label', ID, `colour ${COLOUR}`],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'reference', 'name', 'x'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'x +10mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'reference', 'name', 'y'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'y +10mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'reference', 'name', 'x'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'xy +10mm,-12mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'reference', 'name', 'y'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'xy +10mm,-12mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'reference', 'name', 'stretch'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, '(stretch 1.1,0.9)'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'reference', 'name', 'scale'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, '(scale 0.5)'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'identifier', 'x'],
+    help: ['set', 'decoration', ID, 'x +10mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'identifier', 'y'],
+    help: ['set', 'decoration', ID, 'y +10mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'identifier', 'x'],
+    help: ['set', 'decoration', ID, 'xy +10mm,-12mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'identifier', 'y'],
+    help: ['set', 'decoration', ID, 'xy +10mm,-12mm'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'identifier', 'stretch'],
+    help: ['set', 'decoration', ID, '(stretch 1.1,0.9)'],
+    min: 1
+  },
+  {
+    command: ['set', 'decoration', 'identifier', 'scale'],
+    help: ['set', 'decoration', ID, '(scale 1.25)'],
     min: 1
   },
   {

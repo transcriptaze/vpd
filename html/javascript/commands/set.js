@@ -7,6 +7,7 @@ import * as parameters from './parameters.js'
 import * as lights from './lights.js'
 import * as widgets from './widgets.js'
 import * as labels from './labels.js'
+import * as decorations from './decorations.js'
 import * as guides from './guides.js'
 
 export function parse (node) {
@@ -41,6 +42,9 @@ export function parse (node) {
 
       case 'label':
         return labels.setLabel(child, src)
+
+      case 'decoration':
+        return decorations.setDecoration(child, src)
 
       case 'guide':
         return guides.setGuide(child, src)

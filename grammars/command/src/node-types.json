@@ -947,6 +947,10 @@
           "named": true
         },
         {
+          "type": "decoration",
+          "named": true
+        },
+        {
           "type": "font",
           "named": true
         },
@@ -1000,6 +1004,14 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "scale",
+          "named": true
+        },
+        {
+          "type": "stretch",
           "named": true
         },
         {

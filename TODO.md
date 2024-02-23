@@ -39,14 +39,9 @@
 
 ### Commands
 - [ ] _guidelines_
-      - [x] `set`
-      - [x] migrate
-      - [x] help
-      - [x] info
-      - [x] warn if duplicate offset
+      - [ ] `set guide v1 (input in +10mm)`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
-      - [ ] `set guide v1 (input in +10mm)`
 
 - [ ] _inputs_
       - [ ] `set input 'gain' x (input in +10mm)`
@@ -67,11 +62,15 @@
       - [ ] `set label l1 x (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
-      - [ ] set
+      - [x] set
       - [ ] Export decorations in SVG component group
+      - (?) `decorate <xy> ...`
 
 
 ### TO BE DONE
+
+- [ ] Better error messaging
+      - https://ishadeed.com/article/css-has-guide/
 
 - [ ] API
       - Go REST API

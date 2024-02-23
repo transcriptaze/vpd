@@ -95,6 +95,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "_decoration_attr"
+            },
+            {
+              "type": "SYMBOL",
               "name": "_guideline_attr"
             }
           ]
@@ -471,6 +475,87 @@
         }
       ]
     },
+    "_decoration_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_decoration_id"
+              },
+              "named": true,
+              "value": "decoration"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "x"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_offset_attr"
+                  },
+                  "named": true,
+                  "value": "x"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "y"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_offset_attr"
+                  },
+                  "named": true,
+                  "value": "y"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "xy"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_offset_xy_attr"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "stretch"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_scale"
+            }
+          ]
+        }
+      ]
+    },
     "_guideline_attr": {
       "type": "SEQ",
       "members": [
@@ -623,6 +708,47 @@
               "name": "_guide_xy_attr"
             }
           ]
+        }
+      ]
+    },
+    "_offset_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[+-]?[0-9]+(?:\\.[0-9]*)?(mm|H|h)?"
+          },
+          "named": true,
+          "value": "offset"
+        }
+      ]
+    },
+    "_offset_xy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_offset_attr"
+          },
+          "named": true,
+          "value": "x"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_offset_attr"
+          },
+          "named": true,
+          "value": "y"
         }
       ]
     },

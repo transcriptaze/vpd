@@ -15,6 +15,7 @@ use crate::commands::NewParameter;
 use crate::commands::NewWidget;
 
 use crate::commands::SetBackground;
+use crate::commands::SetDecoration;
 use crate::commands::SetGuide;
 use crate::commands::SetInput;
 use crate::commands::SetLabel;
@@ -201,6 +202,10 @@ fn set(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.label.is_some() {
         return Ok(Box::new(SetLabel::new(json)?));
+    }
+
+    if v.decoration.is_some() {
+        return Ok(Box::new(SetDecoration::new(json)?));
     }
 
     if v.guide.is_some() {

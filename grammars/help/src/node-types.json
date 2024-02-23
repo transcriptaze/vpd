@@ -657,6 +657,11 @@
     }
   },
   {
+    "type": "scale",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "script",
     "named": true,
     "fields": {},
@@ -685,6 +690,10 @@
         },
         {
           "type": "colour",
+          "named": true
+        },
+        {
+          "type": "decoration",
           "named": true
         },
         {
@@ -728,6 +737,10 @@
           "named": true
         },
         {
+          "type": "offset",
+          "named": true
+        },
+        {
           "type": "origin",
           "named": true
         },
@@ -741,6 +754,14 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "scale",
+          "named": true
+        },
+        {
+          "type": "stretch",
           "named": true
         },
         {
@@ -769,6 +790,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "stretch",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "string",
@@ -1013,11 +1039,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "helper",
@@ -1104,6 +1130,10 @@
     "named": false
   },
   {
+    "type": "scale",
+    "named": false
+  },
+  {
     "type": "script",
     "named": false
   },
@@ -1113,6 +1143,10 @@
   },
   {
     "type": "size",
+    "named": false
+  },
+  {
+    "type": "stretch",
     "named": false
   },
   {

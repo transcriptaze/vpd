@@ -137,6 +137,7 @@ module.exports = grammar({
           $.background,
           $._component_attr,
           $._label_attr,
+          $._decoration_attr,
           $._guideline_attr,
         ),
       )
@@ -187,6 +188,19 @@ module.exports = grammar({
           seq('align',  optional($._align)),
           seq('colour', optional($.colour)),
           seq('color',  optional($.colour)),
+        ),
+      ),
+    ),
+
+    _decoration_attr: $ => seq(
+      alias($._decoration_id, $.decoration),
+      optional(
+        choice(
+          seq('x', optional($._offset_attr)),
+          seq('y', optional($._offset_attr)),
+          seq('xy',optional(seq($._offset_attr,',',$._offset_attr))),
+          $.stretch,
+          $.scale,
         ),
       ),
     ),
@@ -273,6 +287,8 @@ module.exports = grammar({
       ),
     ),
 
+    _offset_attr: $ => alias(/[+-][0-9]+([.][0-9]*)?(mm|H)?/,$.offset),
+
     // ... decorate
     decorate: $ => seq(
       'decorate',
@@ -356,12 +372,14 @@ module.exports = grammar({
       ),
     ),
 
-    _decoration_id: $ => seq(
-      'decoration',
-      optional(
-        choice (
-          $.identifier,
-          $._component_id,
+    _decoration_id: $ => prec.left(
+      seq(
+        'decoration',
+        optional(
+          choice (
+            $.identifier,
+            $._component_id,
+          ),
         ),
       ),
     ),
@@ -725,5 +743,22 @@ module.exports = grammar({
       /'[a-zA-Z][a-zA-Z0-9]*'/,
       /"[a-zA-Z][a-zA-Z0-9]*"/,
     ),
+
+    stretch: $ => seq ( 
+      '(', 
+      'stretch', 
+      /[0-9]+([.][0-9]*)?/,
+      ',',
+      /[0-9]+([.][0-9]*)?/,
+      ')',
+     ),
+
+    scale: $ => seq ( 
+      '(', 
+      'scale', 
+      /[0-9]+([.][0-9]*)?/,
+      ')',
+     ),
+
   }
 });
