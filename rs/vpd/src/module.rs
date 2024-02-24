@@ -440,6 +440,35 @@ impl Module {
         }
     }
 
+    pub fn find_decoration(
+        &self,
+        id: &Option<String>,
+        reference: &Option<String>,
+        name: &Option<String>,
+    ) -> Option<usize> {
+        match (id, reference, name) {
+            (Some(id), _, _) => {
+                return self
+                    .panel
+                    .decorations
+                    .iter()
+                    .position(|v| v.id == id.as_str());
+            }
+
+            (None, Some(component), Some(name)) => {
+                let c = component.as_str();
+                let n = name.trim().to_lowercase();
+
+                return self
+                    .panel
+                    .decorations
+                    .iter()
+                    .position(|v| v.component == c && v.name.trim().to_lowercase() == n);
+            }
+            _ => None,
+        }
+    }
+
     pub fn find_guide(&mut self, id: &str) -> Option<&mut Guide> {
         self.panel.guides.get_mut(id)
     }

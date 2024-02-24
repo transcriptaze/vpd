@@ -30,6 +30,20 @@
   % left
   \begin{minipage}[t]{7.5cm}
     \vspace{0pt}
+    \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save/export]
+      \begin{flushleft}
+        load project \\
+        load script \\
+        \vspace{0.25cm}
+        save project \textit{[timestamp]} \textit{[gzip]} \\
+        save script \textit{[timestamp]} \\
+        \vspace{0.25cm}
+        export panel svg \textit{[light|dark]} \\
+        export module .h \\
+        export module >> \\
+      \end{flushleft}
+    \end{tcolorbox}
+
     \begin{tcolorbox}[width=7.5cm,colframe=black,title=module]
       \begin{flushleft}
         new module \textit{<name>} \textit{[height]} \textit{<width>} \\
@@ -118,11 +132,11 @@
       \end{flushleft}
     \end{tcolorbox} 
     
-    \begin{tcolorbox}[width=10cm,colframe=BurntOrange,title=decorations]
+    \begin{tcolorbox}[width=17.5cm,colframe=BurntOrange,title=decorations]
       \begin{flushleft}
-      decorate (\textit{<component> <id> <offset>}) \\
-      \-\hspace{0.7cm} with \textit{<decoration>} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
+      decorate (\textit{<component> <id> <offset>}) with \textit{<decoration>} \textit{[(scale <scale>)]} \textit{[(stretch <stretch>)]} \\
       delete decoration \textit{<id>|(<component> <id>) <name>} \\
+      set decoration \textit{<id>} |x <offset>|y <offset>|xy <offset>,<offset>|(stretch w,h)|(scale <scale>\\
       \end{flushleft}
     \end{tcolorbox}    
   \end{minipage} &
@@ -131,19 +145,6 @@
   % right
   \begin{minipage}[t]{7.5cm}
     \vspace{0pt}
-    \begin{tcolorbox}[width=7.5cm,colframe=Cerulean,title=load/save/export]
-      \begin{flushleft}
-        load project \\
-        load script \\
-        \vspace{0.25cm}
-        save project \textit{[timestamp]} \textit{[gzip]} \\
-        save script \textit{[timestamp]} \\
-        \vspace{0.25cm}
-        export panel svg \textit{[light|dark]} \\
-        export module .h \\
-        export module >> \\
-      \end{flushleft}
-    \end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm,colframe=Bittersweet,title=fonts]
       \begin{flushleft}
