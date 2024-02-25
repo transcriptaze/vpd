@@ -308,12 +308,13 @@ module.exports = grammar({
       ')',
     ),
 
-    // ... load
+    // ... load/save/export
     load: $ => seq (
       'load',
       choice (
         alias('project',$.project),
-        alias('script',$.script),
+        alias('script', $.script),
+        alias('font',   $.font),
       ),
     ),
 

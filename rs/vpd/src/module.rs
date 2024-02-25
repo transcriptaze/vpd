@@ -127,6 +127,10 @@ impl Module {
         save("vpx", &filename, blob.as_bytes());
     }
 
+    pub fn load_font(&self) {
+        load("font");
+    }
+
     pub fn export_svg(&self, theme: &str) {
         match self.panel.export_SVG(theme) {
             Ok(svg) => {

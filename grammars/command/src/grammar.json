@@ -1519,6 +1519,15 @@
               },
               "named": true,
               "value": "script"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "font"
+              },
+              "named": true,
+              "value": "font"
             }
           ]
         }

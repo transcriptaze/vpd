@@ -1,5 +1,5 @@
-import * as project from './project.js'
-import * as script from './script.js'
+import * as projects from './projects.js'
+import * as scripts from './scripts.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -8,10 +8,10 @@ export function parse (node) {
 
     switch (child.type) {
       case 'project':
-        return project.saveProject(child, src)
+        return projects.saveProject(child, src)
 
       case 'script':
-        return script.saveScript(child, src)
+        return scripts.saveScript(child, src)
 
       default:
         throw new Error(`unknown 'save' entity <<${child.type}>>`)

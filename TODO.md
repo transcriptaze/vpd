@@ -1,6 +1,5 @@
 # TODO
 
-- [x] Check hasError/isMissing
 - [ ] Genericize ID generation
 
 - [x] Load project file
@@ -44,22 +43,22 @@
       - [ ] clean up NewGuide::apply
 
 - [ ] _inputs_
-      - [ ] `set input 'gain' x (input in +10mm)`
+      - [ ] `set input 'gain' xy (input in +10mm)`
 
 - [ ] _outputs_
-      - [ ] `set output 'left' x (input in +10mm)`
+      - [ ] `set output 'left' xy (input in +10mm)`
 
 - [ ] _parameters_
-      - [ ] `set parameter 'volume' x (input in +10mm)`
+      - [ ] `set parameter 'volume' xy (input in +10mm)`
 
 - [ ] _lights_
-      - [ ] `set light 'on' x (parameter off 0mm,0mm)`
+      - [ ] `set light 'on' xy (parameter off 0mm,0mm)`
 
 - [ ] _widget_
-      - [ ] `set widget 'channels' x (light 'on' +10mm,-20mm)`
+      - [ ] `set widget 'channels' xy (light 'on' +10mm,-20mm)`
 
 - [ ] _label_
-      - [ ] `set label l1 x (widget w1 +10mm,-20mm)`
+      - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
       - [x] set

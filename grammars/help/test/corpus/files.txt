@@ -27,6 +27,16 @@ load script
     (script)))
 
 
+=========
+load font
+=========
+load font
+---
+(command
+  (load
+    (font)))
+
+
 ====
 save
 ====

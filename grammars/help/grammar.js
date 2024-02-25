@@ -410,7 +410,8 @@ module.exports = grammar({
       optional(
         choice (
           alias('project', $.project),
-          alias('script', $.script),
+          alias('script',  $.script),
+          alias('font',    $.font),
         ),
       ),
     ),

@@ -582,6 +582,10 @@
       "required": true,
       "types": [
         {
+          "type": "font",
+          "named": true
+        },
+        {
           "type": "project",
           "named": true
         },

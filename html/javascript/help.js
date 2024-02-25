@@ -568,6 +568,11 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['load', 'font'],
+    help: ['load', 'font'],
+    min: 1
+  },
+  {
     command: ['save', 'project'],
     help: ['save', 'project'],
     min: 1
