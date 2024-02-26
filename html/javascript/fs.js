@@ -1,5 +1,5 @@
 import { redraw } from './VPD.js'
-import { store, storeFont, PROJECT } from './db.js'
+import * as db from './db.js'
 import { exec, restore } from '../wasm/vpd/vpd.js'
 import * as command from './command.js'
 
@@ -145,7 +145,7 @@ async function loadVPD (file) {
     .then((object) => {
       const serialized = JSON.stringify(object)
       restore(serialized)
-      store(PROJECT, serialized)
+      db.storeProject(serialized)
       trash.disabled = false
     })
     .catch((err) => {
@@ -184,7 +184,7 @@ async function loadVPZ (file) {
         if (object != null) {
           const serialized = JSON.stringify(object)
           restore(serialized)
-          store(PROJECT, serialized)
+          db.storeProject(serialized)
           redraw()
           trash.disabled = false
         }
@@ -210,7 +210,7 @@ async function loadVPX (file) {
       for (const object of script) {
         const json = JSON.stringify(object.command)
         const serialized = exec(json)
-        store(PROJECT, serialized)
+        db.storeProject(serialized)
         trash.disabled = false
       }
     })
@@ -287,7 +287,7 @@ async function loadFont (file) {
     .then((bytes) => {
       const matches = `${file.name}`.match(/(.*?)[.](?:ttf|otf|woff|woff2)$/m)
       if (matches != null && matches.length > 1) {
-        storeFont(matches[1], bytes)
+        db.storeFont(matches[1], bytes)
       }
     })
     .catch((err) => {

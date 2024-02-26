@@ -1,39 +1,16 @@
-export const PROJECT = 'vpd.projects.current'
-export const MACROS = 'vpd.macros'
+const PROJECT = 'vpd.projects.current'
+const MACROS = 'vpd.macros'
 
-export function store (tag, object) {
-  switch (tag) {
-    case PROJECT:
-      if (object == null) {
-        localStorage.removeItem(PROJECT)
-      } else {
-        localStorage.setItem(PROJECT, object)
-      }
-      break
-
-    default:
-      localStorage.setItem(tag, JSON.stringify(object))
+export function storeProject (object) {
+  if (object == null) {
+    localStorage.removeItem(PROJECT)
+  } else {
+    localStorage.setItem(PROJECT, object)
   }
 }
 
-export function retrieve (tag) {
-  try {
-    const json = localStorage.getItem(tag)
-
-    if (json != null) {
-      switch (tag) {
-        case PROJECT:
-          return json
-
-        default:
-          return JSON.parse(json)
-      }
-    }
-  } catch (err) {
-    console.error(err)
-  }
-
-  return null
+export function getProject () {
+  return localStorage.getItem(PROJECT)
 }
 
 export function storeMacros (object) {
@@ -43,9 +20,9 @@ export function storeMacros (object) {
   localStorage.setItem(key, json)
 }
 
-export function geteMacros () {
+export function getMacros () {
   const key = MACROS
-  const json = localStorage.get(key)
+  const json = localStorage.getItem(key)
 
   if (json != null) {
     return JSON.parse(json)

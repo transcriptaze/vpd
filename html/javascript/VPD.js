@@ -2,7 +2,7 @@ import * as help from './help.js'
 import * as text from './text.js'
 import * as command from './command.js'
 import * as fs from './fs.js'
-import { store, retrieve, PROJECT, MACROS } from './db.js'
+import * as db from './db.js'
 import { exec, render, serialize, clear, restore, query } from '../wasm/vpd/vpd.js'
 
 export async function initialise (parser) {
@@ -35,11 +35,11 @@ export async function initialise (parser) {
     const list = new Map(macros.map((v) => [v.id, v.command]))
     const object = Object.fromEntries(list)
 
-    store(MACROS, object)
+    db.storeMacros(object)
   }
 
   try {
-    const object = retrieve(MACROS)
+    const object = db.getMacros()
     if (object != null) {
       for (const [k, v] of Object.entries(object)) {
         const key = macros.find((e) => k === e.id)
@@ -59,7 +59,7 @@ export async function initialise (parser) {
   // ... restore project
   try {
     const trash = document.querySelector('#trash')
-    const json = retrieve(PROJECT)
+    const json = db.getProject()
 
     if (json != null) {
       busy()
@@ -161,7 +161,7 @@ export function onTrash () {
 
   try {
     clear()
-    store(PROJECT, null)
+    db.storeProject(null)
 
     document.querySelectorAll('div.panel.light object').forEach((o) => {
       o.data = './images/panel-light.svg'
@@ -240,7 +240,7 @@ function execute (v) {
       const serialized = exec(JSON.stringify(cmd))
 
       if (serialized !== '') {
-        store(PROJECT, serialized)
+        db.storeProject(serialized)
         redraw()
         trash.disabled = false
       }
