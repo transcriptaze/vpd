@@ -1,5 +1,6 @@
 export const PROJECT = 'vpd.projects.current'
 export const MACROS = 'vpd.macros'
+export const FONT = 'vpd.font'
 
 export function store (tag, object) {
   switch (tag) {
@@ -9,6 +10,10 @@ export function store (tag, object) {
       } else {
         localStorage.setItem(PROJECT, object)
       }
+      break
+
+    case FONT:
+      storeFont(object.name, object.bytes)
       break
 
     default:
@@ -34,4 +39,8 @@ export function retrieve (tag) {
   }
 
   return null
+}
+
+function storeFont (name, bytes) {
+  console.log('store-font', name, bytes)
 }

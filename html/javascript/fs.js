@@ -1,5 +1,5 @@
 import { redraw } from './VPD.js'
-import { store, PROJECT } from './db.js'
+import { store, PROJECT, FONT } from './db.js'
 import { exec, restore } from '../wasm/vpd/vpd.js'
 import * as command from './command.js'
 
@@ -16,6 +16,10 @@ export function load (filetype, file) {
     pickVPX(filetype)
   } else if (filetype === 'vpx') {
     chooseVPX(filetype)
+  } else if (filetype === 'font' && window.showOpenFilePicker) {
+    pickFont(filetype)
+  } else if (filetype === 'font') {
+    chooseFont(filetype)
   }
 }
 
@@ -215,6 +219,84 @@ async function loadVPX (file) {
     })
     .finally(() => {
       redraw()
+      unbusy()
+    })
+}
+
+function chooseFont (filetype) {
+  const file = document.getElementById('picker')
+
+  file.accept = 'font/otf, font/ttf, font/woff, font/woff2, .otf, .ttf, .woff, .woff2'
+
+  file.onchange = async (e) => {
+    const files = e.target.files
+
+    if (files.length > 0) {
+      loadFont(files.item(0))
+    }
+  }
+
+  file.value = null
+  file.click()
+}
+
+function pickFont (filetype) {
+  const options = {
+    id: 'vpd',
+    multiple: false,
+    types: [
+      {
+        description: 'TrueType font file',
+        accept: {
+          'font/ttf': ['.ttf']
+        }
+      },
+      {
+        description: 'OpenType font file',
+        accept: {
+          'font/otf': ['.otf']
+        }
+      },
+      {
+        description: 'Web Open Font Format file',
+        accept: {
+          'font/woff': ['.woff', '.woff2']
+        }
+      }
+    ]
+  }
+
+  window.showOpenFilePicker(options)
+    .then((files) => {
+      return files.length > 0 ? files[0].getFile() : null
+    })
+    .then((file) => {
+      if (file != null) {
+        loadFont(file)
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+}
+
+async function loadFont (file) {
+  busy()
+
+  file.arrayBuffer()
+    .then((bytes) => {
+      const matches = `${file.name}`.match(/(.*?)[.](?:ttf|otf|woff|woff2)$/m)
+      if (matches != null && matches.length > 1) {
+        store(FONT, {
+          name: matches[1],
+          bytes
+        })
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+    .finally(() => {
       unbusy()
     })
 }
