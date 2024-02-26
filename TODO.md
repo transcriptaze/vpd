@@ -32,9 +32,10 @@
 - [x] fetch preloaded fonts on startup
 - [x] _woff_
 - [ ] _woff2_
-- [ ] lazy fetch
-- [ ] Load/drop font file
-- [ ] `load font...`
+- [ ] lazy fetch and cache parsed font
+- [x] `load font...`
+- [ ] `remove font`
+- [ ] `list fonts`
 
 ### Commands
 - [ ] _guidelines_

@@ -1,6 +1,5 @@
 export const PROJECT = 'vpd.projects.current'
 export const MACROS = 'vpd.macros'
-export const FONT = 'vpd.font'
 
 export function store (tag, object) {
   switch (tag) {
@@ -10,10 +9,6 @@ export function store (tag, object) {
       } else {
         localStorage.setItem(PROJECT, object)
       }
-      break
-
-    case FONT:
-      storeFont(object.name, object.bytes)
       break
 
     default:
@@ -41,6 +36,38 @@ export function retrieve (tag) {
   return null
 }
 
-function storeFont (name, bytes) {
-  console.log('store-font', name, bytes)
+export function storeMacros (object) {
+  const key = MACROS
+  const json = JSON.stringify(object)
+
+  localStorage.setItem(key, json)
+}
+
+export function geteMacros () {
+  const key = MACROS
+  const json = localStorage.get(key)
+
+  if (json != null) {
+    return JSON.parse(json)
+  }
+
+  return null
+}
+
+export function storeFont (name, bytes) {
+  const key = `font::${name}`
+  const encoded = btoa(new Uint8Array(bytes).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+
+  localStorage.setItem(key, encoded)
+}
+
+export function getFont (name) {
+  const key = `font::${name}`
+  const encoded = localStorage.getItem(key)
+
+  if (encoded != null) {
+    return Uint8Array.from(atob(encoded), c => c.charCodeAt(0))
+  }
+
+  return null
 }

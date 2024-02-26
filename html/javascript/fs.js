@@ -1,5 +1,5 @@
 import { redraw } from './VPD.js'
-import { store, PROJECT, FONT } from './db.js'
+import { store, storeFont, PROJECT } from './db.js'
 import { exec, restore } from '../wasm/vpd/vpd.js'
 import * as command from './command.js'
 
@@ -287,10 +287,7 @@ async function loadFont (file) {
     .then((bytes) => {
       const matches = `${file.name}`.match(/(.*?)[.](?:ttf|otf|woff|woff2)$/m)
       if (matches != null && matches.length > 1) {
-        store(FONT, {
-          name: matches[1],
-          bytes
-        })
+        storeFont(matches[1], bytes)
       }
     })
     .catch((err) => {
