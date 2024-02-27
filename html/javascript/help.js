@@ -631,6 +631,11 @@ const COMMANDS = [
     command: ['export', 'panel', 'svg', 'dark'],
     help: ['export', 'panel', 'svg', 'dark'],
     min: 1
+  },
+  {
+    command: ['list', 'fonts'],
+    help: ['list', 'fonts'],
+    min: 1
   }
 ]
 

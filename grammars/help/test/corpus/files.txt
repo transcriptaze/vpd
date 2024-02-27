@@ -209,3 +209,13 @@ export panel svg dark
         (dark)))))
 
 
+==========
+list fonts
+==========
+list fonts
+---
+(command
+  (list
+    (fonts)))
+
+

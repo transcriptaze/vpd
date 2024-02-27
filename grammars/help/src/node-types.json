@@ -71,6 +71,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "load",
           "named": true
         },
@@ -388,6 +392,21 @@
         },
         {
           "type": "xy",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "fonts",
           "named": true
         }
       ]
@@ -1026,6 +1045,10 @@
     "named": false
   },
   {
+    "type": "fonts",
+    "named": true
+  },
+  {
     "type": "guide",
     "named": false
   },
@@ -1043,11 +1066,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "helper",
@@ -1071,6 +1094,10 @@
   },
   {
     "type": "light",
+    "named": false
+  },
+  {
+    "type": "list",
     "named": false
   },
   {
@@ -1179,11 +1206,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",

@@ -33,6 +33,7 @@ mod export_header;
 mod export_helper;
 mod export_svg;
 
+mod list_fonts;
 mod load_font;
 mod load_project;
 mod load_script;
@@ -74,6 +75,7 @@ pub use export_header::ExportHeader;
 pub use export_helper::ExportHelper;
 pub use export_svg::ExportSVG;
 
+pub use list_fonts::ListFonts;
 pub use load_font::LoadFont;
 pub use load_project::LoadProject;
 pub use load_script::LoadScript;

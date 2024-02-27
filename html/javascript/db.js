@@ -48,3 +48,18 @@ export function getFont (name) {
 
   return null
 }
+
+export function listFonts () {
+  const list = []
+  const N = localStorage.length
+
+  for (let i = 0; i < N; i++) {
+    const key = localStorage.key(i)
+
+    if (key.startsWith('font::')) {
+      list.push(key.substring(6))
+    }
+  }
+
+  return list
+}

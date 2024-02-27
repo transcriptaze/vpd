@@ -241,6 +241,35 @@ main {
       }
     }
 
+    fieldset.list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 2px;
+      align-items: start;
+
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+
+      border: 1px solid lightblue;
+      border-radius: 4px;
+
+      font-family: sans-serif;
+      font-size: 0.8em;
+
+      legend {
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 0.75em;   
+      }
+
+      p {
+        font-style: normal;
+        font-size: 0.9em;            
+      }
+    }
+
     fieldset#module {
       display: none;
     }

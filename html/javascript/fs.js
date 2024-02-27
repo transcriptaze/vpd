@@ -39,6 +39,12 @@ export function save (filetype, filename, blob) {
   }
 }
 
+export function list (tag, object) {
+  if (tag === 'fonts') {
+    listFonts(object)
+  }
+}
+
 function pickVPD () {
   const options = {
     id: 'vpd',
@@ -475,6 +481,37 @@ async function saveWithPicker (blob, options) {
     if (err.name !== 'AbortError') {
       console.error(err)
     }
+  }
+}
+
+function listFonts (object) {
+  try {
+    const fonts = JSON.parse(object)
+    const template = document.querySelector('template#template-fonts')
+    const ul = document.querySelector('div#info ul')
+
+    ul.replaceChildren()
+
+    fonts.sort()
+
+    if (fonts != null && Array.isArray(fonts)) {
+      const clone = template.content.cloneNode(true)
+      const li = clone.querySelector('li')
+      const fieldset = li.querySelector('fieldset')
+
+      li.querySelector('fieldset legend').innerHTML = 'fonts'.toUpperCase()
+
+      for (const font of fonts) {
+        const item = document.createElement('p')
+
+        item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+        fieldset.append(item)
+      }
+
+      ul.append(clone)
+    }
+  } catch (err) {
+    console.error(err)
   }
 }
 

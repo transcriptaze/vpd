@@ -37,6 +37,10 @@
           {
             "type": "SYMBOL",
             "name": "export"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "list"
           }
         ]
       }
@@ -1611,6 +1615,24 @@
               "value": "helper"
             }
           ]
+        }
+      ]
+    },
+    "list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "list"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "fonts"
+          },
+          "named": true,
+          "value": "fonts"
         }
       ]
     },

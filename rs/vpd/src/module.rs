@@ -25,6 +25,7 @@ const RADIUS: f32 = 2.5;
 extern "C" {
     fn load(filetype: &str);
     fn save(filetype: &str, filename: &str, blob: &[u8]);
+    fn list(tag: &str, list: &str);
 }
 
 #[derive(Serialize, Deserialize)]
@@ -129,6 +130,11 @@ impl Module {
 
     pub fn load_font(&self) {
         load("font");
+    }
+
+    pub fn list_fonts(&self, fonts: &Vec<String>) {
+        let json = serde_json::to_string(fonts).unwrap();
+        list("fonts", &json);
     }
 
     pub fn export_svg(&self, theme: &str) {
