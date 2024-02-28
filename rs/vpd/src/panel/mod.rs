@@ -12,8 +12,6 @@ mod widget;
 mod xy;
 
 pub use background::Background;
-pub use background::RGB;
-pub use background::RGBA;
 pub use decoration::Decoration;
 pub use decoration::Stretch;
 pub use guide::Guide;

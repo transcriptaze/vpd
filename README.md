@@ -1,5 +1,5 @@
 ![build](https://github.com/transcriptaze/vpd/workflows/build/badge.svg)
-![nightly](https://github.com/transcriptaze/vpd/workflows/nightly/badge.svg)
+![alpha](https://github.com/transcriptaze/vpd/workflows/alpha/badge.svg)
 ![cloudflare](https://github.com/transcriptaze/vpd/workflows/cloudflare/badge.svg)
 
 # VPD: VCV Rack 2 Panel Designer
@@ -17,7 +17,7 @@ It has been tested on:
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands (along with a summary [cheatsheet](/doc/cheatsheet.pdf))
 
-**Status**: _very much still in development_
+**Status**: _ALPHA_
 
 <img width="800" src="doc/images/screenshot.png">
 
@@ -104,7 +104,7 @@ The [VPD](https://vpdx.pages.dev) web app is currently hosted on _Cloudflare Pag
 ### VPD application
 
 1. Download the _vpd_ executable archive from a [release](https://github.com/transcriptaze/vpd/releases) or the latest
-   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and extract it to a folder of 
+   [_alpha_](https://github.com/transcriptaze/vpd/actions/workflows/alpha.yml) build and extract it to a folder of 
    your choice.
 2. Open the `vpd` application in a terminal window (on a _Mac_ you may have to _Ctrl-Open_ the file the first time to grant
    it permissions to run).
@@ -120,13 +120,13 @@ Options:
 --port <port>    Serves the web application on the specifed port (the default port is 9876)
 --html <folder>  External folder for the HTML files - by default it serves the web application
                  embedded in the executable. A tar.gz file with the base version of the HTML
-                 can be downloaded from the Github releases or the latest 'nightly' build.
+                 can be downloaded from the Github releases or the latest 'alpha' build.
 ```
 
 ### Python
 
 1. Download the _HTML_ artifact from either a [release](https://github.com/transcriptaze/vpd/releases) or the latest 
-   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and unzip it to a folder.
+   [_alpha_](https://github.com/transcriptaze/vpd/actions/workflows/alpha.yml) build and unzip it to a folder.
 2. Start an HTTP server to serve the unzipped files:
    ```
    cd vpd
@@ -136,7 +136,7 @@ Options:
 ### NodeJS
 
 1. Download the _HTML_ artifact from either a [release](https://github.com/transcriptaze/vpd/releases) or the latest
-   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and unzip it to a folder.
+   [_alpha_](https://github.com/transcriptaze/vpd/actions/workflows/alpha.yml) build and unzip it to a folder.
 2. Start an HTTP server to serve the unzipped files:
    ```
    cd vpd

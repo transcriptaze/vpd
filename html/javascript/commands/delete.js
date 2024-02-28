@@ -6,6 +6,7 @@ import * as lights from './lights.js'
 import * as widgets from './widgets.js'
 import * as labels from './labels.js'
 import * as decorations from './decorations.js'
+import * as fonts from './fonts.js'
 
 export function parse (node) {
   if (node.namedChildCount > 0) {
@@ -36,6 +37,9 @@ export function parse (node) {
 
       case 'decoration':
         return decorations.deleteDecoration(child, src)
+
+      case 'font':
+        return fonts.unloadFont(child, src)
 
       default:
         throw new Error(`unknown 'delete' entity <<${child.type}>>`)

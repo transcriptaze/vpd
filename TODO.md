@@ -1,5 +1,23 @@
 # TODO
 
+- [x] Build warnings
+```
+warning: unused import: `background::RGB`
+  --> src/panel/mod.rs:15:9
+   |
+15 | pub use background::RGB;
+   |         ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+warning: unused import: `background::RGBA`
+  --> src/panel/mod.rs:16:9
+   |
+16 | pub use background::RGBA;
+   |         ^^^^^^^^^^^^^^^^
+warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply 2 suggestions)
+    Finished dev [unoptimized + debuginfo] target(s) in 23.81s
+```
+
 - [ ] Genericize ID generation
 
 - [x] Load project file
@@ -31,11 +49,15 @@
 ### Fonts 
 - [x] fetch preloaded fonts on startup
 - [x] _woff_
-- [ ] _woff2_
-- [ ] lazy fetch and cache parsed font
 - [x] `load font...`
-- [ ] `remove font`
-- [ ] `list fonts`
+- [x] `unload font`
+- [x] use normalized name as key
+- [x] `list fonts`
+      - [x] user guide
+      - [x] cheat sheet
+      - [x] style preloaded fonts
+- [ ] lazy fetch and cache parsed font
+- [ ] _woff2_
 
 ### Commands
 - [ ] _guidelines_

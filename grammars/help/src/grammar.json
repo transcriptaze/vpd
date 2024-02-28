@@ -28,6 +28,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "unload"
+          },
+          {
+            "type": "SYMBOL",
             "name": "save"
           },
           {
@@ -2187,6 +2191,32 @@
         ]
       }
     },
+    "_font_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "font"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "name"
+              },
+              "named": true,
+              "value": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "_component_id": {
       "type": "SEQ",
       "members": [
@@ -2324,6 +2354,37 @@
                   "content": {
                     "type": "STRING",
                     "value": "font"
+                  },
+                  "named": true,
+                  "value": "font"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "unload": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "unload"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_font_id"
                   },
                   "named": true,
                   "value": "font"

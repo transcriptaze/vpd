@@ -39,6 +39,7 @@ mod load_project;
 mod load_script;
 mod save_project;
 mod save_script;
+mod unload_font;
 
 pub use new_decoration::NewDecoration;
 pub use new_guide::NewGuide;
@@ -81,3 +82,4 @@ pub use load_project::LoadProject;
 pub use load_script::LoadScript;
 pub use save_project::SaveProject;
 pub use save_script::SaveScript;
+pub use unload_font::UnloadFont;

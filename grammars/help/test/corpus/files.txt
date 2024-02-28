@@ -37,6 +37,26 @@ load font
     (font)))
 
 
+===========
+unload font
+===========
+unload font
+---
+(command
+  (unload
+    (font)))
+
+
+================================
+unload font ComicSans-BoldItalic
+================================
+unload font ComicSans-BoldItalic
+---
+(command
+  (unload
+    (font
+      (identifier))))
+
 ====
 save
 ====

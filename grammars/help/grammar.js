@@ -9,6 +9,7 @@ module.exports = grammar({
         $.decorate,
         $.delete,
         $.load,
+        $.unload,
         $.save,
         $.export,
         $.list,
@@ -385,6 +386,11 @@ module.exports = grammar({
       ),
     ),
 
+    _font_id: $ => seq(
+      'font',
+      optional(alias($.name,$.identifier)),
+    ),
+
     _component_id: $ => seq(
       '(',
       choice(
@@ -413,6 +419,16 @@ module.exports = grammar({
           alias('project', $.project),
           alias('script',  $.script),
           alias('font',    $.font),
+        ),
+      ),
+    ),
+
+    // ... unload
+    unload: $ => seq(
+      'unload',
+      optional(
+        choice (
+          alias($._font_id, $.font),
         ),
       ),
     ),

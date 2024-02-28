@@ -95,6 +95,28 @@ load font
     (font)))
 
 
+================================
+unload font ComicSans-BoldItalic
+================================
+unload font ComicSans-BoldItalic
+---
+(command
+  (unload
+    (font
+      (identifier))))
+
+
+================================
+delete font ComicSans-BoldItalic
+================================
+delete font ComicSans-BoldItalic
+---
+(command
+  (delete
+    (font
+      (identifier))))
+
+
 ==========
 list fonts
 ==========

@@ -18,6 +18,11 @@
 |   - [_Macro keys_](#macro-keys)     | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                           |
 |   - [_Command area_](#command-area) | [`export module .h`](#export-module-h)  |                                           |                                   |                                           |                                                           |
 |                                     | [`export module >>`](#export-module-)   |                                           |                                   |                                           |                                                           |
+|                                     |                                         |                                           |                                   |                                           |                                                           |
+|                                     | [`load font`](#load-font)               |                                           |                                   |                                           |                                                           |
+|                                     | [`unload font`](#unload-font)           |                                           |                                   |                                           |                                                           |
+|                                     | [`list fonts`](#list-fonts)             |                                           |                                   |                                           |                                                           |
+|                                     |                                         |                                           |                                   |                                           |                                                           |
                                     
 ## Getting started
 
@@ -1323,4 +1328,66 @@ _Examples:_
 ```
 export module >>
 ````
+
+
+#### `load font`
+
+```load font```
+
+Opens a file picker for a TTF, OTF or woff font. The font is stored in the browser _local storage_ until deleted with an `unload font`
+
+_Command options:_
+
+
+_Notes:_
+1. The font name is the file name without the extensions.
+2. Browser local storage is typically limited to around 10MB - or about 20 fonts (depending on the file size)
+
+_Examples:_
+```
+load font
+````
+
+
+#### `unload font`
+
+```unload font <font>```
+
+Removes the font from the browser _local storage_.
+
+_Command options:_
+```
+font   (required) name of font to be removed (case- and space-insensitive)
+```
+
+
+_Notes:_
+1. It's quite ok to remove a font that isn't loaded. We all do it at some point in time..
+2. Labels are converted to paths when created so unloading a font does not change a label. Updating a label
+   with `set label...` on the other will cause all hell to break loose because the label will be repathed (?)
+   with the default font. Probably not what you want.
+
+_Examples:_
+```
+unload font ComicSans-BoldItalic
+````
+
+
+#### `list fonts`
+
+```list fonts```
+
+Displays a list of the preloaded and user loaded fonts.
+
+_Command options:_
+
+
+_Notes:_
+
+
+_Examples:_
+```
+list fonts
+````
+
 

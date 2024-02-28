@@ -1,4 +1,5 @@
 use serde::Deserialize;
+use serde::Serialize;
 use std::error::Error;
 
 use crate::command::Command;
@@ -6,12 +7,19 @@ use crate::module::Module;
 
 #[derive(Deserialize)]
 pub struct ListFonts {
-    local: Vec<String>,
+    preloaded: Vec<String>,
+    user: Vec<String>,
 }
 
 #[derive(Deserialize)]
 struct Object {
     fonts: ListFonts,
+}
+
+#[derive(Serialize)]
+struct FontList {
+    preloaded: Vec<String>,
+    user: Vec<String>,
 }
 
 impl ListFonts {
@@ -24,6 +32,11 @@ impl ListFonts {
 
 impl Command for ListFonts {
     fn apply(&self, m: &mut Module) {
-        m.list_fonts(&self.local);
+        let object = FontList {
+            preloaded: self.preloaded.clone(),
+            user: self.user.clone(),
+        };
+
+        m.list_fonts(&object);
     }
 }

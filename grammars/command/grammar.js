@@ -10,6 +10,7 @@ module.exports = grammar({
         $.decorate,
         $.delete,
         $.load,
+        $.unload,
         $.save,
         $.export,
         $.list,
@@ -247,6 +248,7 @@ module.exports = grammar({
         alias($._widget_id, $.widget),
         alias($._label_id, $.label),
         alias($._decoration_id, $.decoration),
+        alias($._font_id, $.font),
       )
     ),
 
@@ -297,6 +299,11 @@ module.exports = grammar({
       ),
     ),
 
+    _font_id: $ => seq(
+      'font',
+      alias(/[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/, $.identifier),
+    ),
+
     _component_id: $ => seq(
       '(',
       choice(
@@ -316,6 +323,13 @@ module.exports = grammar({
         alias('project',$.project),
         alias('script', $.script),
         alias('font',   $.font),
+      ),
+    ),
+
+    unload: $ => seq (
+      'unload',
+      choice (
+        alias($._font_id, $.font),
       ),
     ),
 
