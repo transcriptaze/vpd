@@ -32,24 +32,33 @@ export function getMacros () {
 }
 
 export function storeFont (name, bytes) {
-  const key = `font::${name}`
-  const encoded = btoa(new Uint8Array(bytes).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+  const key = `font::${normalise(name)}`
+  const object = {
+    name: `${name}`,
+    bytes: btoa(new Uint8Array(bytes).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+  }
 
-  localStorage.setItem(key, encoded)
+  localStorage.setItem(key, JSON.stringify(object))
 }
 
 export function removeFont (name) {
-  const key = `font::${name}`
+  const key = `font::${normalise(name)}`
 
   localStorage.removeItem(key)
 }
 
 export function getFont (name) {
-  const key = `font::${name}`
-  const encoded = localStorage.getItem(key)
+  try {
+    const key = `font::${normalise(name)}`
+    const json = localStorage.getItem(key)
 
-  if (encoded != null) {
-    return Uint8Array.from(atob(encoded), c => c.charCodeAt(0))
+    if (json != null) {
+      const object = JSON.parse(json)
+
+      return Uint8Array.from(atob(object.bytes), c => c.charCodeAt(0))
+    }
+  } catch (err) {
+    console.error(err)
   }
 
   return null
@@ -63,9 +72,21 @@ export function listFonts () {
     const key = localStorage.key(i)
 
     if (key.startsWith('font::')) {
-      list.push(key.substring(6))
+      try {
+        const json = localStorage.getItem(key)
+        const object = JSON.parse(json)
+
+        list.push(object.name)
+      } catch (err) {
+        console.error(err)
+      }
     }
   }
 
+  console.log(list)
   return list
+}
+
+function normalise (name) {
+  return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
 }

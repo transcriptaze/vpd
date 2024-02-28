@@ -51,7 +51,7 @@ warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply
 - [x] _woff_
 - [x] `load font...`
 - [x] `unload font`
-- [ ] use normalized name as key
+- [x] use normalized name as key
 - [ ] `list fonts`
       - [x] user guide
       - [ ] cheat sheet
