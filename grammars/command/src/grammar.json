@@ -32,6 +32,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "unload"
+          },
+          {
+            "type": "SYMBOL",
             "name": "save"
           },
           {
@@ -1217,6 +1221,15 @@
               },
               "named": true,
               "value": "decoration"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_font_id"
+              },
+              "named": true,
+              "value": "font"
             }
           ]
         }
@@ -1433,6 +1446,24 @@
         }
       ]
     },
+    "_font_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "font"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z]([a-zA-Z0-9_-]*?)|\"[a-zA-Z]([a-zA-Z0-9_ -]*?)\"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'"
+          },
+          "named": true,
+          "value": "identifier"
+        }
+      ]
+    },
     "_component_id": {
       "type": "SEQ",
       "members": [
@@ -1529,6 +1560,29 @@
               "content": {
                 "type": "STRING",
                 "value": "font"
+              },
+              "named": true,
+              "value": "font"
+            }
+          ]
+        }
+      ]
+    },
+    "unload": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "unload"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_font_id"
               },
               "named": true,
               "value": "font"

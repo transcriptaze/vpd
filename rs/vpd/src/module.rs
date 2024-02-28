@@ -24,8 +24,9 @@ const RADIUS: f32 = 2.5;
 #[wasm_bindgen(raw_module = "../../javascript/fs.js")]
 extern "C" {
     fn load(filetype: &str);
+    fn unload(filetype: &str, name: &str);
     fn save(filetype: &str, filename: &str, blob: &[u8]);
-    fn list(tag: &str, list: &str);
+    fn list(filetype: &str, list: &str);
 }
 
 #[derive(Serialize, Deserialize)]
@@ -130,6 +131,10 @@ impl Module {
 
     pub fn load_font(&self) {
         load("font");
+    }
+
+    pub fn unload_font(&self, font: &str) {
+        unload("font", font);
     }
 
     pub fn list_fonts(&self, fonts: &Vec<String>) {

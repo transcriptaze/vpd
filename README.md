@@ -17,7 +17,7 @@ It has been tested on:
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands (along with a summary [cheatsheet](/doc/cheatsheet.pdf))
 
-**Status**: _very much still in development_
+**Status**: _ALPHA_
 
 <img width="800" src="doc/images/screenshot.png">
 
@@ -104,7 +104,7 @@ The [VPD](https://vpdx.pages.dev) web app is currently hosted on _Cloudflare Pag
 ### VPD application
 
 1. Download the _vpd_ executable archive from a [release](https://github.com/transcriptaze/vpd/releases) or the latest
-   [_nightly_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and extract it to a folder of 
+   [_alpha_](https://github.com/transcriptaze/vpd/actions/workflows/nightly.yml) build and extract it to a folder of 
    your choice.
 2. Open the `vpd` application in a terminal window (on a _Mac_ you may have to _Ctrl-Open_ the file the first time to grant
    it permissions to run).

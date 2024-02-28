@@ -1,3 +1,4 @@
+import { identifier } from './commands.js'
 import * as db from '../db.js'
 
 export function loadFont (node, src) {
@@ -5,6 +6,23 @@ export function loadFont (node, src) {
     src: `${src}`,
     action: 'load',
     font: {
+    }
+  }
+
+  return object
+}
+
+export function unloadFont (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'unload',
+    font: {
+    }
+  }
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'identifier') {
+      object.font.name = identifier(child)
     }
   }
 

@@ -38,6 +38,12 @@ export function storeFont (name, bytes) {
   localStorage.setItem(key, encoded)
 }
 
+export function removeFont (name) {
+  const key = `font::${name}`
+
+  localStorage.removeItem(key)
+}
+
 export function getFont (name) {
   const key = `font::${name}`
   const encoded = localStorage.getItem(key)

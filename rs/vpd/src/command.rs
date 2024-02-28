@@ -45,6 +45,7 @@ use crate::commands::LoadProject;
 use crate::commands::LoadScript;
 use crate::commands::SaveProject;
 use crate::commands::SaveScript;
+use crate::commands::UnloadFont;
 
 pub trait Command {
     fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
@@ -117,7 +118,7 @@ pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
-    if v.action == "load" || v.action == "save" || v.action == "export" || v.action == "list" {
+    if ["load", "save", "export", "unload", "list"].contains(&v.action.as_str()) {
         let boxed = files(json)?;
         let wrapper = Wrapper::new(boxed, None, false);
 
@@ -294,6 +295,10 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.action == "list" && v.fonts.is_some() {
         return Ok(Box::new(ListFonts::new(json)?));
+    }
+
+    if v.action == "unload" && v.font.is_some() {
+        return Ok(Box::new(UnloadFont::new(json)?));
     }
 
     return Err("invalid command".into());

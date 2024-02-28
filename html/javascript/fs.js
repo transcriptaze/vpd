@@ -39,9 +39,15 @@ export function save (filetype, filename, blob) {
   }
 }
 
-export function list (tag, object) {
-  if (tag === 'fonts') {
+export function list (filetype, object) {
+  if (filetype === 'fonts') {
     listFonts(object)
+  }
+}
+
+export function unload (filetype, name) {
+  if (filetype === 'font') {
+    unloadFont(name)
   }
 }
 
@@ -481,6 +487,14 @@ async function saveWithPicker (blob, options) {
     if (err.name !== 'AbortError') {
       console.error(err)
     }
+  }
+}
+
+function unloadFont (font) {
+  try {
+    db.removeFont(font)
+  } catch (err) {
+    console.error(err)
   }
 }
 

@@ -3,6 +3,7 @@ import * as _set from './commands/set.js'
 import * as _decorate from './commands/decorate.js'
 import * as _delete from './commands/delete.js'
 import * as _load from './commands/load.js'
+import * as _unload from './commands/unload.js'
 import * as _save from './commands/save.js'
 import * as _export from './commands/export.js'
 import * as _list from './commands/list.js'
@@ -74,6 +75,9 @@ export function parseNode (node) {
 
     case 'load':
       return _load.parse(node)
+
+    case 'unload':
+      return _unload.parse(node)
 
     case 'save':
       return _save.parse(node)

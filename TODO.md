@@ -31,11 +31,15 @@
 ### Fonts 
 - [x] fetch preloaded fonts on startup
 - [x] _woff_
-- [ ] _woff2_
-- [ ] lazy fetch and cache parsed font
 - [x] `load font...`
-- [ ] `remove font`
+- [x] `unload font`
+- [ ] use normalized name as key
 - [ ] `list fonts`
+      - [x] user guide
+      - [ ] cheat sheet
+      - [ ] style preloaded fonts
+- [ ] lazy fetch and cache parsed font
+- [ ] _woff2_
 
 ### Commands
 - [ ] _guidelines_
