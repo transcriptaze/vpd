@@ -52,10 +52,10 @@ warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply
 - [x] `load font...`
 - [x] `unload font`
 - [x] use normalized name as key
-- [ ] `list fonts`
+- [x] `list fonts`
       - [x] user guide
-      - [ ] cheat sheet
-      - [ ] style preloaded fonts
+      - [x] cheat sheet
+      - [x] style preloaded fonts
 - [ ] lazy fetch and cache parsed font
 - [ ] _woff2_
 

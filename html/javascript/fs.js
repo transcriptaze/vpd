@@ -506,24 +506,36 @@ function listFonts (object) {
 
     ul.replaceChildren()
 
-    fonts.sort()
+    fonts.preloaded.sort()
+    fonts.user.sort()
 
-    if (fonts != null && Array.isArray(fonts)) {
-      const clone = template.content.cloneNode(true)
-      const li = clone.querySelector('li')
-      const fieldset = li.querySelector('fieldset')
+    const clone = template.content.cloneNode(true)
+    const li = clone.querySelector('li')
+    const fieldset = li.querySelector('fieldset')
 
-      li.querySelector('fieldset legend').innerHTML = 'fonts'.toUpperCase()
+    li.querySelector('fieldset legend').innerHTML = 'fonts'.toUpperCase()
 
-      for (const font of fonts) {
-        const item = document.createElement('p')
+    for (const font of fonts.preloaded) {
+      const item = document.createElement('p')
 
-        item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
-        fieldset.append(item)
-      }
+      item.classList.add('preloaded')
+      item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 
-      ul.append(clone)
+      fieldset.append(item)
     }
+
+    fieldset.append(document.createElement('hr'))
+
+    for (const font of fonts.user) {
+      const item = document.createElement('p')
+
+      item.classList.add('user')
+      item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+
+      fieldset.append(item)
+    }
+
+    ul.append(clone)
   } catch (err) {
     console.error(err)
   }

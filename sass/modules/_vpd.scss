@@ -241,7 +241,7 @@ main {
       }
     }
 
-    fieldset.list {
+    fieldset.fonts {
       display: flex;
       flex-direction: column;
       row-gap: 2px;
@@ -264,9 +264,29 @@ main {
         font-size: 0.75em;   
       }
 
+      hr {
+        background-color:#c0c0c0;
+        display: block;
+        width: 80%;
+        height: 1px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+
+        border: 0;
+        clear: both;
+      }
+
       p {
         font-style: normal;
         font-size: 0.9em;            
+      }
+
+      p.preloaded {
+        font-style: italic;
+      }
+
+      p.user {
+        font-weight: bold;
       }
     }
 

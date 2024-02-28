@@ -3,6 +3,7 @@
 \usepackage{tcolorbox}
 \usepackage{fontspec}
 \usepackage{tabularx}
+\usepackage{enumitem}
 \usepackage[export]{adjustbox}
 
 \setmainfont{Lato-Regular.ttf} [
@@ -124,7 +125,7 @@
       \end{flushleft}
     \end{tcolorbox}
 
-    \begin{tcolorbox}[width=10cm,colframe=MidnightBlue,title=labels]
+    \begin{tcolorbox}[width=17.5cm,colframe=MidnightBlue,title=labels]
       \begin{flushleft}
       new label \textit{<text>} \textit{<xy>} \textit{[font]} \textit{[size]} \textit{[halign]} \textit{[valign]} \textit{[colour]} \\
       delete label \textit{<id>|<text>} \\
@@ -148,16 +149,23 @@
 
     \begin{tcolorbox}[width=7.5cm,colframe=Bittersweet,title=fonts]
       \begin{flushleft}
-        Lato-Regular \\
-        Lato-Semibold \\
-        Lato-Bold \\
+        load font \\
+        unload font \textit{<name>} \\
+        list fonts \\
+        \vspace{0.15cm}
+        \textit{preloaded fonts:} \\
+        \begin{itemize}[noitemsep,nolistsep]
+        \item Lato-Regular \\
+        \item Lato-Semibold \\
+        \item Lato-Bold \\
         \vspace{0.25cm}
-        RobotoMono-Regular \\
-        RobotoMono-Bold \\
-        RobotoCondensed-Regular \\
-        RobotoCondensed-Bold \\
+        \item RobotoMono-Regular \\
+        \item RobotoMono-Bold \\
+        \item RobotoCondensed-Regular \\
+        \item RobotoCondensed-Bold \\
         \vspace{0.25cm}
-        StyleScript-Regular \\
+        \item StyleScript-Regular \\
+        \end{itemize}
       \end{flushleft}
     \end{tcolorbox}
 

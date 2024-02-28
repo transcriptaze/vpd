@@ -137,8 +137,9 @@ impl Module {
         unload("font", font);
     }
 
-    pub fn list_fonts(&self, fonts: &Vec<String>) {
-        let json = serde_json::to_string(fonts).unwrap();
+    pub fn list_fonts<T: Serialize>(&self, object: &T) {
+        let json = serde_json::to_string(&object).unwrap();
+
         list("fonts", &json);
     }
 
