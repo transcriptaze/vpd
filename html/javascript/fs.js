@@ -524,7 +524,9 @@ function listFonts (object) {
       fieldset.append(item)
     }
 
-    fieldset.append(document.createElement('hr'))
+    if (fonts.preloaded.length > 0 && fonts.user.length > 0) {
+      fieldset.append(document.createElement('hr'))
+    }
 
     for (const font of fonts.user) {
       const item = document.createElement('p')
