@@ -1,5 +1,23 @@
 # TODO
 
+- [ ] Build warnings
+```
+warning: unused import: `background::RGB`
+  --> src/panel/mod.rs:15:9
+   |
+15 | pub use background::RGB;
+   |         ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+warning: unused import: `background::RGBA`
+  --> src/panel/mod.rs:16:9
+   |
+16 | pub use background::RGBA;
+   |         ^^^^^^^^^^^^^^^^
+warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply 2 suggestions)
+    Finished dev [unoptimized + debuginfo] target(s) in 23.81s
+```
+
 - [ ] Genericize ID generation
 
 - [x] Load project file
