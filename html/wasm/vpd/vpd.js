@@ -1,4 +1,4 @@
-import { load, save } from '../../javascript/fs.js';
+import { load, save, list } from '../../javascript/fs.js';
 import { set } from '../../javascript/rs.js';
 import { text2path } from '../../javascript/text.js';
 
@@ -391,6 +391,9 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbg_save_d80e45c0e9e270ff = function(arg0, arg1, arg2, arg3, arg4, arg5) {
         save(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), getArrayU8FromWasm0(arg4, arg5));
+    };
+    imports.wbg.__wbg_list_efdf1b56ac633352 = function(arg0, arg1, arg2, arg3) {
+        list(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
     imports.wbg.__wbg_log_1a419e68e473d2e4 = function(arg0, arg1) {
         console.log(getStringFromWasm0(arg0, arg1));
