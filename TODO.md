@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Build warnings
+- [x] Build warnings
 ```
 warning: unused import: `background::RGB`
   --> src/panel/mod.rs:15:9
