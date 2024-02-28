@@ -37,6 +37,10 @@
           {
             "type": "SYMBOL",
             "name": "export"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "list"
           }
         ]
       }
@@ -1519,6 +1523,15 @@
               },
               "named": true,
               "value": "script"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "font"
+              },
+              "named": true,
+              "value": "font"
             }
           ]
         }
@@ -1602,6 +1615,24 @@
               "value": "helper"
             }
           ]
+        }
+      ]
+    },
+    "list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "list"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "fonts"
+          },
+          "named": true,
+          "value": "fonts"
         }
       ]
     },

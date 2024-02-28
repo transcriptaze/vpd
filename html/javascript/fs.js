@@ -1,5 +1,5 @@
 import { redraw } from './VPD.js'
-import { store, PROJECT } from './db.js'
+import * as db from './db.js'
 import { exec, restore } from '../wasm/vpd/vpd.js'
 import * as command from './command.js'
 
@@ -16,6 +16,10 @@ export function load (filetype, file) {
     pickVPX(filetype)
   } else if (filetype === 'vpx') {
     chooseVPX(filetype)
+  } else if (filetype === 'font' && window.showOpenFilePicker) {
+    pickFont(filetype)
+  } else if (filetype === 'font') {
+    chooseFont(filetype)
   }
 }
 
@@ -32,6 +36,12 @@ export function save (filetype, filename, blob) {
     saveHeader(filename, blob)
   } else if (filetype === '>>') {
     saveHelper(filename, blob)
+  }
+}
+
+export function list (tag, object) {
+  if (tag === 'fonts') {
+    listFonts(object)
   }
 }
 
@@ -141,7 +151,7 @@ async function loadVPD (file) {
     .then((object) => {
       const serialized = JSON.stringify(object)
       restore(serialized)
-      store(PROJECT, serialized)
+      db.storeProject(serialized)
       trash.disabled = false
     })
     .catch((err) => {
@@ -180,7 +190,7 @@ async function loadVPZ (file) {
         if (object != null) {
           const serialized = JSON.stringify(object)
           restore(serialized)
-          store(PROJECT, serialized)
+          db.storeProject(serialized)
           redraw()
           trash.disabled = false
         }
@@ -206,7 +216,7 @@ async function loadVPX (file) {
       for (const object of script) {
         const json = JSON.stringify(object.command)
         const serialized = exec(json)
-        store(PROJECT, serialized)
+        db.storeProject(serialized)
         trash.disabled = false
       }
     })
@@ -215,6 +225,81 @@ async function loadVPX (file) {
     })
     .finally(() => {
       redraw()
+      unbusy()
+    })
+}
+
+function chooseFont (filetype) {
+  const file = document.getElementById('picker')
+
+  file.accept = 'font/otf, font/ttf, font/woff, font/woff2, .otf, .ttf, .woff, .woff2'
+
+  file.onchange = async (e) => {
+    const files = e.target.files
+
+    if (files.length > 0) {
+      loadFont(files.item(0))
+    }
+  }
+
+  file.value = null
+  file.click()
+}
+
+function pickFont (filetype) {
+  const options = {
+    id: 'vpd',
+    multiple: false,
+    types: [
+      {
+        description: 'TrueType font file',
+        accept: {
+          'font/ttf': ['.ttf']
+        }
+      },
+      {
+        description: 'OpenType font file',
+        accept: {
+          'font/otf': ['.otf']
+        }
+      },
+      {
+        description: 'Web Open Font Format file',
+        accept: {
+          'font/woff': ['.woff', '.woff2']
+        }
+      }
+    ]
+  }
+
+  window.showOpenFilePicker(options)
+    .then((files) => {
+      return files.length > 0 ? files[0].getFile() : null
+    })
+    .then((file) => {
+      if (file != null) {
+        loadFont(file)
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+}
+
+async function loadFont (file) {
+  busy()
+
+  file.arrayBuffer()
+    .then((bytes) => {
+      const matches = `${file.name}`.match(/(.*?)[.](?:ttf|otf|woff|woff2)$/m)
+      if (matches != null && matches.length > 1) {
+        db.storeFont(matches[1], bytes)
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+    .finally(() => {
       unbusy()
     })
 }
@@ -396,6 +481,37 @@ async function saveWithPicker (blob, options) {
     if (err.name !== 'AbortError') {
       console.error(err)
     }
+  }
+}
+
+function listFonts (object) {
+  try {
+    const fonts = JSON.parse(object)
+    const template = document.querySelector('template#template-fonts')
+    const ul = document.querySelector('div#info ul')
+
+    ul.replaceChildren()
+
+    fonts.sort()
+
+    if (fonts != null && Array.isArray(fonts)) {
+      const clone = template.content.cloneNode(true)
+      const li = clone.querySelector('li')
+      const fieldset = li.querySelector('fieldset')
+
+      li.querySelector('fieldset legend').innerHTML = 'fonts'.toUpperCase()
+
+      for (const font of fonts) {
+        const item = document.createElement('p')
+
+        item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+        fieldset.append(item)
+      }
+
+      ul.append(clone)
+    }
+  } catch (err) {
+    console.error(err)
   }
 }
 

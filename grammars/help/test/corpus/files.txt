@@ -27,6 +27,16 @@ load script
     (script)))
 
 
+=========
+load font
+=========
+load font
+---
+(command
+  (load
+    (font)))
+
+
 ====
 save
 ====
@@ -197,5 +207,15 @@ export panel svg dark
     (panel
       (svg
         (dark)))))
+
+
+==========
+list fonts
+==========
+list fonts
+---
+(command
+  (list
+    (fonts)))
 
 

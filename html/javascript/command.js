@@ -5,6 +5,8 @@ import * as _delete from './commands/delete.js'
 import * as _load from './commands/load.js'
 import * as _save from './commands/save.js'
 import * as _export from './commands/export.js'
+import * as _list from './commands/list.js'
+
 let parser
 
 export async function init (Parser) {
@@ -78,6 +80,9 @@ export function parseNode (node) {
 
     case 'export':
       return _export.parse(node)
+
+    case 'list':
+      return _list.parse(node)
 
     case 'ERROR':
       console.error(node)

@@ -11,6 +11,7 @@ module.exports = grammar({
         $.load,
         $.save,
         $.export,
+        $.list,
       ),
     ),
 
@@ -410,7 +411,8 @@ module.exports = grammar({
       optional(
         choice (
           alias('project', $.project),
-          alias('script', $.script),
+          alias('script',  $.script),
+          alias('font',    $.font),
         ),
       ),
     ),
@@ -489,6 +491,16 @@ module.exports = grammar({
         choice(
           alias('light',$.light),
           alias('dark', $.dark),
+        ),
+      ),
+    ),
+
+    // ... list
+    list: $ => seq(
+      'list',
+      optional(
+        choice (
+          alias('fonts', $.fonts),
         ),
       ),
     ),

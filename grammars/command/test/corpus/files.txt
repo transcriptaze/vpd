@@ -85,6 +85,26 @@ save script timestamp
       (timestamp))))
 
 
+=========
+load font
+=========
+load font
+---
+(command
+  (load
+    (font)))
+
+
+==========
+list fonts
+==========
+list fonts
+---
+(command
+  (list
+    (fonts)))
+
+
 ================
 export module .h
 ================

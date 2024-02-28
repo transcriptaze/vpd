@@ -1,17 +1,22 @@
-import * as project from './project.js'
-import * as script from './script.js'
+import * as projects from './projects.js'
+import * as scripts from './scripts.js'
+import * as fonts from './fonts.js'
 
 export function parse (node) {
+  const src = node.text
+
   if (node.namedChildCount > 0) {
     const child = node.namedChildren[0]
-    const src = node.text
 
     switch (child.type) {
       case 'project':
-        return project.loadProject(child, src)
+        return projects.loadProject(child, src)
 
       case 'script':
-        return script.loadScript(child, src)
+        return scripts.loadScript(child, src)
+
+      case 'font':
+        return fonts.loadFont(child, src)
 
       default:
         throw new Error(`unknown 'load' entity <<${child.type}>>`)

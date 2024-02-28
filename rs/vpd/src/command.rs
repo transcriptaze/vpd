@@ -39,6 +39,8 @@ use crate::commands::ExportHeader;
 use crate::commands::ExportHelper;
 use crate::commands::ExportSVG;
 
+use crate::commands::ListFonts;
+use crate::commands::LoadFont;
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
 use crate::commands::SaveProject;
@@ -78,6 +80,8 @@ struct Action<'a> {
 
     project: Option<Entity>,
     script: Option<Entity>,
+    font: Option<Entity>,
+    fonts: Option<Entity>,
     svg: Option<Entity>,
     header: Option<Entity>,
     helper: Option<Entity>,
@@ -113,7 +117,7 @@ pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
         return Ok(wrapper);
     }
 
-    if v.action == "load" || v.action == "save" || v.action == "export" {
+    if v.action == "load" || v.action == "save" || v.action == "export" || v.action == "list" {
         let boxed = files(json)?;
         let wrapper = Wrapper::new(boxed, None, false);
 
@@ -260,12 +264,16 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
         return Ok(Box::new(LoadProject::new(json)?));
     }
 
-    if v.action == "save" && v.project.is_some() {
-        return Ok(Box::new(SaveProject::new(json)?));
-    }
-
     if v.action == "load" && v.script.is_some() {
         return Ok(Box::new(LoadScript::new(json)?));
+    }
+
+    if v.action == "load" && v.font.is_some() {
+        return Ok(Box::new(LoadFont::new(json)?));
+    }
+
+    if v.action == "save" && v.project.is_some() {
+        return Ok(Box::new(SaveProject::new(json)?));
     }
 
     if v.action == "save" && v.script.is_some() {
@@ -282,6 +290,10 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 
     if v.action == "export" && v.helper.is_some() {
         return Ok(Box::new(ExportHelper::new(json)?));
+    }
+
+    if v.action == "list" && v.fonts.is_some() {
+        return Ok(Box::new(ListFonts::new(json)?));
     }
 
     return Err("invalid command".into());

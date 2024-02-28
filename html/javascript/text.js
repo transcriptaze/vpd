@@ -1,5 +1,7 @@
 import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
 
+import * as db from './db.js'
+
 const FONTS = [
   { name: 'Lato-Regular', url: '/fonts/Lato-Regular.ttf' },
   { name: 'Lato-Bold', url: '/fonts/Lato-Bold.ttf' },
@@ -57,12 +59,25 @@ export function text2path (text, fontName, points) {
   }
 
   let bytes = fonts.get(DEFAULT.name)
-  for (const [k, v] of fonts) {
-    if (normalise(k) === normalise(fontName)) {
-      bytes = v
-      break
+
+  /* eslint-disable no-labels */
+  find: {
+    // ... preloaded font?
+    for (const [k, v] of fonts) {
+      if (normalise(k) === normalise(fontName)) {
+        bytes = v
+        break find
+      }
+    }
+
+    // ... user font?
+    const f = db.getFont(fontName)
+    if (f != null) {
+      bytes = f.buffer
+      fonts.set(fontName, bytes)
     }
   }
+  /* eslint-enable no-labels */
 
   const fontSize = points2mm(points)
   const font = opentype.parse(bytes)
@@ -72,12 +87,6 @@ export function text2path (text, fontName, points) {
   const path = font.getPath(text, 0, 0, fontSize, {})
   const bounds = path.getBoundingBox()
   const advance = font.getAdvanceWidth(text, fontSize, options)
-
-  // console.log('>> bounds', bounds)
-  // console.log('>> advance', advance)
-  // console.log('>> unitsPerEm', unitsPerEm)
-  // console.log('>> ascender', ascender)
-  // console.log('>> descender', descender)
 
   return {
     path: `${path.toSVG()}`,
