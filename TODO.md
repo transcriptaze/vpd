@@ -17,6 +17,9 @@ warning: unused import: `background::RGBA`
 warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply 2 suggestions)
     Finished dev [unoptimized + debuginfo] target(s) in 23.81s
 ```
+```
+Node.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/upload-artifact@v3. 
+```
 
 - [ ] Genericize ID generation
 
@@ -53,11 +56,8 @@ warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply
 - [x] `unload font`
 - [x] use normalized name as key
 - [x] `list fonts`
-      - [x] user guide
-      - [x] cheat sheet
-      - [x] style preloaded fonts
+- [x] ~woff2~
 - [ ] lazy fetch and cache parsed font
-- [ ] _woff2_
 
 ### Commands
 - [ ] _guidelines_

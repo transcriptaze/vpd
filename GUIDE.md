@@ -339,6 +339,9 @@ are included in the app:
 - _RobotoCondensed-Bold_
 - _StyleScript-Regular_
 
+TTF, OTF and WOFF fonts can be loaded using the [`load font`](#load-font) command - WOFF2 fonts aren't supported because the available JS and
+Rust woff2 decoders didn't seem to work all that well. To use a _woff2_ font convert it to TTF using one of the many, many tools out there.
+
 --- 
 
 #### `set origin`
