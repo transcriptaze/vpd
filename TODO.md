@@ -1,6 +1,7 @@
 # TODO
 
 - [x] Build warnings
+      - https://rustwasm.github.io/docs/wasm-bindgen/wasm-bindgen-test/continuous-integration.html#github-actions
 ```
 Node.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/upload-artifact@v3. 
 ```
