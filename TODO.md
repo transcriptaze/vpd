@@ -43,16 +43,8 @@ Node.js 16 actions are deprecated. Please update the following actions to use No
 - [x] `unload font`
 - [x] use normalized name as key
 - [x] `list fonts`
-<<<<<<< Updated upstream
-      - [x] user guide
-      - [x] cheat sheet
-      - [x] style preloaded fonts
-- [ ] lazy fetch and cache parsed font
-- [ ] _woff2_
-=======
 - [x] ~woff2~
 - [x] cache parsed font
->>>>>>> Stashed changes
 
 ### Commands
 - [ ] _guidelines_

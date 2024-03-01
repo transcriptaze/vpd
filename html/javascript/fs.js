@@ -238,7 +238,7 @@ async function loadVPX (file) {
 function chooseFont (filetype) {
   const file = document.getElementById('picker')
 
-  file.accept = 'font/otf, font/ttf, font/woff, font/woff2, .otf, .ttf, .woff, .woff2'
+  file.accept = 'font/otf, font/ttf, font/woff, .otf, .ttf, .woff'
 
   file.onchange = async (e) => {
     const files = e.target.files
@@ -272,7 +272,7 @@ function pickFont (filetype) {
       {
         description: 'Web Open Font Format file',
         accept: {
-          'font/woff': ['.woff', '.woff2']
+          'font/woff': ['.woff']
         }
       }
     ]
@@ -297,9 +297,21 @@ async function loadFont (file) {
 
   file.arrayBuffer()
     .then((bytes) => {
-      const matches = `${file.name}`.match(/(.*?)[.](?:ttf|otf|woff|woff2)$/m)
-      if (matches != null && matches.length > 1) {
-        db.storeFont(matches[1], bytes)
+      const matches = `${file.name}`.match(/^(.*?)([.](?:ttf|otf|woff|woff2))$/m)
+      if (matches != null && matches.length > 2) {
+        const name = matches[1]
+        const ext = matches[2]
+
+        switch (ext) {
+          case '.ttf':
+          case '.otf':
+          case '.woff':
+            db.storeFont(name, bytes)
+            break
+
+          case '.woff2':
+            throw new Error('woff2 is not supported')
+        }
       }
     })
     .catch((err) => {
@@ -524,7 +536,9 @@ function listFonts (object) {
       fieldset.append(item)
     }
 
-    fieldset.append(document.createElement('hr'))
+    if (fonts.preloaded.length > 0 && fonts.user.length > 0) {
+      fieldset.append(document.createElement('hr'))
+    }
 
     for (const font of fonts.user) {
       const item = document.createElement('p')
