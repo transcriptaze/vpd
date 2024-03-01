@@ -19,7 +19,7 @@ jobs:
     - name: Setup npm
       uses: actions/setup-node@v4
       with:
-        node-version: '18.19.1'
+        node-version: '20.11.1'
 
     - name: Set up Go 1.22+
       uses: actions/setup-go@v5
@@ -46,25 +46,25 @@ jobs:
       run: make build-release
 
     - name: Upload Linux-x64 artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: dist/linux/*
         name: vpd-0.0.0-linux
 
     - name: Upload MacOS-x64 artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: dist/darwin/*
         name: vpd-0.0.0-darwin
 
     - name: Upload Windows artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: dist/windows/*
         name: vpd-0.0.0-windows
 
     - name: Upload HTML artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: dist/html/*
         name: vpd-0.0.0-html

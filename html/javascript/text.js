@@ -24,7 +24,7 @@ export async function init () {
   fetch(DEFAULT.url)
     .then((response) => response.arrayBuffer())
     .then((bytes) => {
-      fonts.set(DEFAULT.name, bytes)
+      fonts.set(normalise(DEFAULT.name), opentype.parse(bytes))
     })
     .catch((err) => console.error(err))
 
@@ -45,7 +45,7 @@ export async function init () {
   Promise.all(promises)
     .then((v) => {
       for (const font of v) {
-        fonts.set(font.name, font.bytes)
+        fonts.set(normalise(font.name), opentype.parse(font.bytes))
       }
     })
     .catch((err) => {
@@ -58,29 +58,20 @@ export function text2path (text, fontName, points) {
     decimalPlaces: 3
   }
 
-  let bytes = fonts.get(DEFAULT.name)
+  let font = fonts.get(normalise(DEFAULT.name))
+  const normalised = normalise(fontName)
 
-  /* eslint-disable no-labels */
-  find: {
-    // ... preloaded font?
-    for (const [k, v] of fonts) {
-      if (normalise(k) === normalise(fontName)) {
-        bytes = v
-        break find
-      }
-    }
-
-    // ... user font?
+  if (fonts.has(normalised)) {
+    font = fonts.get(normalised)
+  } else {
     const f = db.getFont(fontName)
     if (f != null) {
-      bytes = f.buffer
-      fonts.set(fontName, bytes)
+      font = opentype.parse(f.buffer)
+      fonts.set(normalised, font)
     }
   }
-  /* eslint-enable no-labels */
 
   const fontSize = points2mm(points)
-  const font = opentype.parse(bytes)
   const unitsPerEm = font.unitsPerEm
   const ascender = points2mm(points * font.ascender / unitsPerEm)
   const descender = points2mm(points * font.descender / unitsPerEm)

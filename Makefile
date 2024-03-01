@@ -64,5 +64,5 @@ run-cloudflare:
 	python3 -m http.server 9876 -d dist/cloudflare
 
 run: build
-	python3 -m http.server 9876 -d html
+	python3 httpd.py
 

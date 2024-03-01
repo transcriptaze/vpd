@@ -2,6 +2,7 @@
 
 - [x] Build warnings
 ```
+<<<<<<< Updated upstream
 warning: unused import: `background::RGB`
   --> src/panel/mod.rs:15:9
    |
@@ -16,6 +17,9 @@ warning: unused import: `background::RGBA`
    |         ^^^^^^^^^^^^^^^^
 warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply 2 suggestions)
     Finished dev [unoptimized + debuginfo] target(s) in 23.81s
+=======
+Node.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/upload-artifact@v3. 
+>>>>>>> Stashed changes
 ```
 
 - [ ] Genericize ID generation
@@ -39,6 +43,9 @@ warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply
       - [ ] pretty-print
       - [ ] optional prefix
 
+- [ ] Docker container
+      - [ ] github
+
 ### Overlay
 - [x] panel screws
 - [ ] Only add used widgets to defs
@@ -53,11 +60,16 @@ warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply
 - [x] `unload font`
 - [x] use normalized name as key
 - [x] `list fonts`
+<<<<<<< Updated upstream
       - [x] user guide
       - [x] cheat sheet
       - [x] style preloaded fonts
 - [ ] lazy fetch and cache parsed font
 - [ ] _woff2_
+=======
+- [x] ~woff2~
+- [x] cache parsed font
+>>>>>>> Stashed changes
 
 ### Commands
 - [ ] _guidelines_
@@ -84,9 +96,9 @@ warning: `vpd` (lib) generated 2 warnings (run `cargo fix --lib -p vpd` to apply
       - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
-      - [x] set
       - [ ] Export decorations in SVG component group
       - (?) `decorate <xy> ...`
+      - [ ] `new decoration <xy> ...`
 
 
 ### TO BE DONE
