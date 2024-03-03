@@ -414,7 +414,15 @@
       "required": false,
       "types": [
         {
+          "type": "decorations",
+          "named": true
+        },
+        {
           "type": "fonts",
+          "named": true
+        },
+        {
+          "type": "parts",
           "named": true
         }
       ]
@@ -1056,6 +1064,10 @@
     "named": false
   },
   {
+    "type": "decorations",
+    "named": true
+  },
+  {
     "type": "delete",
     "named": false
   },
@@ -1168,6 +1180,10 @@
     "named": false
   },
   {
+    "type": "parts",
+    "named": true
+  },
+  {
     "type": "project",
     "named": false
   },
@@ -1233,11 +1249,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",

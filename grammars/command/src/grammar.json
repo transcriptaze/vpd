@@ -1680,13 +1680,36 @@
           "value": "list"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "fonts"
-          },
-          "named": true,
-          "value": "fonts"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "fonts"
+              },
+              "named": true,
+              "value": "fonts"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "parts"
+              },
+              "named": true,
+              "value": "parts"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "decorations"
+              },
+              "named": true,
+              "value": "decorations"
+            }
+          ]
         }
       ]
     },

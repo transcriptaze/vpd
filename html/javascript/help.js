@@ -583,6 +583,16 @@ const COMMANDS = [
     min: 1
   },
   {
+    command: ['list', 'parts'],
+    help: ['list', 'parts'],
+    min: 1
+  },
+  {
+    command: ['list', 'decorations'],
+    help: ['list', 'decorations'],
+    min: 1
+  },
+  {
     command: ['save', 'project'],
     help: ['save', 'project'],
     min: 1

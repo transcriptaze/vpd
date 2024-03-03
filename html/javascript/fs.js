@@ -41,7 +41,11 @@ export function save (filetype, filename, blob) {
 
 export function list (filetype, object) {
   if (filetype === 'fonts') {
-    listFonts(object)
+    showList('fonts', JSON.parse(object))
+  } else if (filetype === 'parts') {
+    showList('parts', JSON.parse(object))
+  } else if (filetype === 'decorations') {
+    showList('decorations', JSON.parse(object))
   }
 }
 
@@ -510,43 +514,42 @@ function unloadFont (font) {
   }
 }
 
-function listFonts (object) {
+function showList (label, object) {
   try {
-    const fonts = JSON.parse(object)
-    const template = document.querySelector('template#template-fonts')
+    const template = document.querySelector('template#template-list')
     const ul = document.querySelector('div#info ul')
 
     ul.replaceChildren()
 
-    fonts.preloaded.sort()
-    fonts.user.sort()
+    object.preloaded.sort()
+    object.user.sort()
 
     const clone = template.content.cloneNode(true)
     const li = clone.querySelector('li')
     const fieldset = li.querySelector('fieldset')
 
-    li.querySelector('fieldset legend').innerHTML = 'fonts'.toUpperCase()
+    li.querySelector('fieldset legend').innerHTML = label.toUpperCase()
 
-    for (const font of fonts.preloaded) {
-      const item = document.createElement('p')
+    for (const item of object.preloaded) {
+      const p = document.createElement('p')
 
-      item.classList.add('preloaded')
-      item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+      p.classList.add('preloaded')
+      p.innerHTML = `${item}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 
-      fieldset.append(item)
+      fieldset.append(p)
     }
 
-    if (fonts.preloaded.length > 0 && fonts.user.length > 0) {
+    if (object.preloaded.length > 0 && object.user.length > 0) {
       fieldset.append(document.createElement('hr'))
     }
 
-    for (const font of fonts.user) {
-      const item = document.createElement('p')
+    for (const item of object.user) {
+      const p = document.createElement('p')
 
-      item.classList.add('user')
-      item.innerHTML = `${font}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+      p.classList.add('user')
+      p.innerHTML = `${item}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 
-      fieldset.append(item)
+      fieldset.append(p)
     }
 
     ul.append(clone)

@@ -1,11 +1,6 @@
 # TODO
 
 - [x] Build warnings
-```
-Node.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/upload-artifact@v3. 
-```
-
-- [ ] Genericize ID generation
 
 - [x] Load project file
       - [ ] web component
@@ -17,8 +12,6 @@ Node.js 16 actions are deprecated. Please update the following actions to use No
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
-- [ ] Allow H in decoration offsets
-- [ ] Default to mm in dimensions
 - [ ] Cheatsheet
       - [ ] XY
 
@@ -42,11 +35,18 @@ Node.js 16 actions are deprecated. Please update the following actions to use No
 - [x] `load font...`
 - [x] `unload font`
 - [x] use normalized name as key
-- [x] `list fonts`
 - [x] ~woff2~
 - [x] cache parsed font
 
 ### Commands
+- [x] `list fonts`
+- [x] `list parts`
+- [x] `list decorations`
+
+- [ ] Allow H in decoration offsets
+- [ ] Default to mm in dimensions
+- [ ] Genericize ID generation
+
 - [ ] _guidelines_
       - [ ] `set guide v1 (input in +10mm)`
       - [ ] clean up Module::new_guide_id

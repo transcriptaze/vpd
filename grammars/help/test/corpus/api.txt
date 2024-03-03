@@ -239,3 +239,23 @@ list fonts
     (fonts)))
 
 
+==========
+list parts
+==========
+list parts
+---
+(command
+  (list
+    (parts)))
+
+
+================
+list decorations
+================
+list decorations
+---
+(command
+  (list
+    (decorations)))
+
+
