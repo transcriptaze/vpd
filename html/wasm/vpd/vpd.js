@@ -1,6 +1,4 @@
-import { load, unload, save, list } from '../../javascript/fs.js';
-import { set } from '../../javascript/rs.js';
-import { text2path } from '../../javascript/text.js';
+import { load, unload, save, list, text2path, set } from '../../javascript/api.js';
 
 let wasm;
 
@@ -386,16 +384,16 @@ async function __wbg_load(module, imports) {
 function __wbg_get_imports() {
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbg_load_142b51f2a66e9609 = function(arg0, arg1) {
+    imports.wbg.__wbg_load_85c9b08e8c491c0c = function(arg0, arg1) {
         load(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbg_save_d80e45c0e9e270ff = function(arg0, arg1, arg2, arg3, arg4, arg5) {
+    imports.wbg.__wbg_save_734c2c34d1072b84 = function(arg0, arg1, arg2, arg3, arg4, arg5) {
         save(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), getArrayU8FromWasm0(arg4, arg5));
     };
-    imports.wbg.__wbg_unload_c779bd749a6486dc = function(arg0, arg1, arg2, arg3) {
+    imports.wbg.__wbg_unload_838ffdd1f262ffd0 = function(arg0, arg1, arg2, arg3) {
         unload(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
-    imports.wbg.__wbg_list_efdf1b56ac633352 = function(arg0, arg1, arg2, arg3) {
+    imports.wbg.__wbg_list_18081b084eb1a869 = function(arg0, arg1, arg2, arg3) {
         list(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
     imports.wbg.__wbg_log_1a419e68e473d2e4 = function(arg0, arg1) {
@@ -435,11 +433,11 @@ function __wbg_get_imports() {
         const ret = getStringFromWasm0(arg0, arg1);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_text2path_14adbcea076e74a8 = function(arg0, arg1, arg2, arg3, arg4) {
+    imports.wbg.__wbg_text2path_3c0eb3e91ccff894 = function(arg0, arg1, arg2, arg3, arg4) {
         const ret = text2path(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), arg4);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_set_782175fc6b431993 = function(arg0, arg1, arg2, arg3) {
+    imports.wbg.__wbg_set_e2a5a1144a54b2cd = function(arg0, arg1, arg2, arg3) {
         set(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
     imports.wbg.__wbg_new_abda76e883ba8a5f = function() {
