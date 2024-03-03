@@ -1,0 +1,71 @@
+========
+decorate
+========
+decorate
+---
+(command
+  (decorate))
+
+===
+set
+===
+set
+---
+(command
+  (set))
+
+======
+delete
+======
+delete
+---
+(command
+  (delete))
+
+====
+load
+====
+load
+---
+(command
+  (load))
+
+======
+unload
+======
+unload
+---
+(command
+  (unload))
+
+====
+save
+====
+save
+---
+(command
+  (save))
+
+======
+export
+======
+export
+---
+(command
+  (export))
+
+====
+list
+====
+list
+---
+(command
+  (list))
+
+====
+help
+====
+help
+---
+(command
+  (help))

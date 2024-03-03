@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-command",
+  "name": "hint",
   "version": "0.0.1",
-  "description": "VPD tree-sitter 'command' grammar",
+  "description": "VPD tree-sitter 'hint' grammar",
   "main": "bindings/node",
   "keywords": [
     "parsing",
@@ -11,9 +11,9 @@
     "test": "tree-sitter test"
   },
   "dependencies": {
-    "nan": "^2.12.1"
+    "nan": "^2.18.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.8"
+    "tree-sitter-cli": "^0.21.0"
   }
 }

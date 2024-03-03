@@ -1,0 +1,88 @@
+===
+new
+===
+new
+---
+(command
+  (new))
+
+==========
+new module
+==========
+new module
+---
+(command
+  (new
+    (module)))
+
+=========
+new input
+=========
+new input
+---
+(command
+  (new
+    (input)))
+
+==========
+new output
+==========
+new output
+---
+(command
+  (new
+    (output)))
+
+=============
+new parameter
+=============
+new parameter
+---
+(command
+  (new
+    (parameter)))
+
+=========
+new light
+=========
+new light
+---
+(command
+  (new
+    (light)))
+
+==========
+new widget
+==========
+new widget
+---
+(command
+  (new
+    (widget)))
+
+=========
+new label
+=========
+new label
+---
+(command
+  (new
+    (label)))
+
+==============
+new decoration
+==============
+new decoration
+---
+(command
+  (new
+    (decoration)))
+
+=========
+new guide
+=========
+new guide
+---
+(command
+  (new
+    (guide)))
