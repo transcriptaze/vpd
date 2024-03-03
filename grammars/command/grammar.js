@@ -221,6 +221,20 @@ module.exports = grammar({
 
 
     // ... decorate
+    _new_decoration: $ => seq(
+      'decoration',
+      '(',
+      choice (
+        alias ($._input,     $.input),
+        alias ($._output,    $.output),
+        alias ($._parameter, $.parameter),
+        alias ($._light,     $.light),
+        alias ($._widget,    $.widget),
+      ),
+      ')',
+      $.decoration,
+    ),
+
     decorate: $ => seq(
       'decorate',
       '(',
@@ -398,6 +412,7 @@ module.exports = grammar({
       $.light,
       $.widget,
       $.label,
+      alias($._new_decoration,$.decoration),
       $.guide,
     ),
 

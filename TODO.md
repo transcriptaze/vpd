@@ -1,7 +1,5 @@
 # TODO
 
-- [x] Build warnings
-
 - [x] Load project file
       - [ ] web component
 
@@ -23,26 +21,11 @@
       - [ ] github
 
 ### Overlay
-- [x] panel screws
 - [ ] Only add used widgets to defs
 - [ ] Fix scaling for _RoundBlackKnob_
 - [ ] Fix scaling for _PJ301M_
 
-
-### Fonts 
-- [x] fetch preloaded fonts on startup
-- [x] _woff_
-- [x] `load font...`
-- [x] `unload font`
-- [x] use normalized name as key
-- [x] ~woff2~
-- [x] cache parsed font
-
 ### Commands
-- [x] `list fonts`
-- [x] `list parts`
-- [x] `list decorations`
-
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
 - [ ] Genericize ID generation
@@ -71,9 +54,9 @@
       - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
+      - [x] `new decoration <xy> ...`
       - [ ] Export decorations in SVG component group
       - (?) `decorate <xy> ...`
-      - [ ] `new decoration <xy> ...`
 
 
 ### TO BE DONE

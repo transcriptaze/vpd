@@ -1065,6 +1065,77 @@
         }
       ]
     },
+    "_new_decoration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "decoration"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_input"
+              },
+              "named": true,
+              "value": "input"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_output"
+              },
+              "named": true,
+              "value": "output"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_parameter"
+              },
+              "named": true,
+              "value": "parameter"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_light"
+              },
+              "named": true,
+              "value": "light"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_widget"
+              },
+              "named": true,
+              "value": "widget"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decoration"
+        }
+      ]
+    },
     "decorate": {
       "type": "SEQ",
       "members": [
@@ -1871,6 +1942,15 @@
         {
           "type": "SYMBOL",
           "name": "label"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_new_decoration"
+          },
+          "named": true,
+          "value": "decoration"
         },
         {
           "type": "SYMBOL",

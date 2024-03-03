@@ -23,6 +23,7 @@ test: build
 build-all: test
 	cd grammars/command && make wasm
 	cd grammars/help    && make wasm
+	cd grammars/hint    && make wasm
 	cd rs/vpd           && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 	cd go               && make build-all
 

@@ -16,7 +16,7 @@ const BASELINE: &str = "baseline";
 const LIGHT: &str = "#222222";
 const DARK: &str = "#ebebeb";
 
-#[wasm_bindgen(raw_module = "../../javascript/text.js")]
+#[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
     fn text2path(text: &str, font: &str, fontsize: f32) -> JsValue;
 }
