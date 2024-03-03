@@ -2,27 +2,27 @@
 
 **Contents**
 
-| General                             | Commands                                |                                           |                                   |                                           |                                                           |
-|-------------------------------------|-----------------------------------------|-------------------------------------------|-----------------------------------|-------------------------------------------|-----------------------------------------------------------|
-| [Getting started](#getting-started) | [_comments_](#comments)                 | [`set origin`](#set-origin)               | [`new input`](#new-input)         | [`delete input`](#delete-input)           | [`set input <attribute>`](#set-input-attribute)           |
-| [Projects](#projects)               | [_units_](#units)                       | [`new guide`](#new-guide)                 | [`new output`](#new-output)       | [`delete output`](#delete-output)         | [`set output <attribute>`](#set-output-attribute)         |
-| [Scripts](#scripts)                 | [_location formats_](#location-formats) | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter) | [`delete parameter`](#delete-parameter)   | [`set parameter <attribute>`](#set-parameter-attribute)   |
-|                                     | [_parts_](#parts)                       |                                           | [`new light`](#new-light)         | [`delete light`](#delete-light)           | [`set light <attribute>`](#set-light-attribute)           |
-| [User interface](#user-interface)   | [_fonts_](#fonts)                       | [`new module`](#new-module)               | [`new widget`](#new-widget)       | [`delete widget`](#delete-widget)         | [`set widget <attribute>`](#set-widget-attribute)         |
-|   - [_Load_](#load)                 |                                         | [`set module name`](#set-module-name)     | [`new label`](#new-label)         | [`delete label`](#delete-label)           | [`set label <attribute>`](#set-label-attribute)           |
-|   - [_Save_](#save)                 | [`load project`](#load-project)         | [`set module height`](#set-module-height) |                                   | [`delete decoration`](#delete-decoration) | [`set decoration <attribute>`](#set-decoration-attribute) |
-|   - [_Export SVG_](#export-svg)     | [`load script`](#load-script)           | [`set module width`](#set-module-width)   | [`decorate ...`](#decorate)       |                                           | [`set guide <attribute>`](#set-guide-attribute)           |
-|   - [_Export .h_](#-export-h-file)  | [`save project`](#save-project)         | [`set background`](#set-background)       |                                   |                                           |                                                           |
-|   - [_>>_](#-)                      | [`save script`](#save-script)           |                                           |                                   |                                           |                                                           |
-|   - [_Undo/Redo_](#undoredo)        |                                         |                                           |                                   |                                           |                                                           |
-|   - [_Macro keys_](#macro-keys)     | [`export panel svg`](#export-panel-svg) |                                           |                                   |                                           |                                                           |
-|   - [_Command area_](#command-area) | [`export module .h`](#export-module-h)  |                                           |                                   |                                           |                                                           |
-|                                     | [`export module >>`](#export-module-)   |                                           |                                   |                                           |                                                           |
-|                                     |                                         |                                           |                                   |                                           |                                                           |
-|                                     | [`load font`](#load-font)               |                                           |                                   |                                           |                                                           |
-|                                     | [`unload font`](#unload-font)           |                                           |                                   |                                           |                                                           |
-|                                     | [`list fonts`](#list-fonts)             |                                           |                                   |                                           |                                                           |
-|                                     |                                         |                                           |                                   |                                           |                                                           |
+| General                                 | Commands                                |                                           |                                            |                                                           |
+|-----------------------------------------|-----------------------------------------|-------------------------------------------|--------------------------------------------|-----------------------------------------------------------|
+| [Getting started](#getting-started)     | [`load project`](#load-project)         | [`set origin`](#set-origin)               | [`new input`](#new-input)                  | [`set input <attribute>`](#set-input-attribute)           |
+| [Projects](#projects)                   | [`load script`](#load-script)           | [`new guide`](#new-guide)                 | [`new output`](#new-output)                | [`set output <attribute>`](#set-output-attribute)         |
+| [Scripts](#scripts)                     | [`save project`](#save-project)         | [`delete guide`](#delete-guide)           | [`new parameter`](#new-parameter)          | [`set parameter <attribute>`](#set-parameter-attribute)   |
+|                                         | [`save script`](#save-script)           |                                           | [`new light`](#new-light)                  | [`set light <attribute>`](#set-light-attribute)           |
+| [User interface](#user-interface)       |                                         | [`new module`](#new-module)               | [`new widget`](#new-widget)                | [`set widget <attribute>`](#set-widget-attribute)         |
+|   - [_Load_](#load)                     | [`export panel svg`](#export-panel-svg) | [`set module name`](#set-module-name)     | [`new label`](#new-label)                  | [`set label <attribute>`](#set-label-attribute)           |
+|   - [_Save_](#save)                     | [`export module .h`](#export-module-h)  | [`set module height`](#set-module-height) | [`decorate ...`](#decorate)                | [`set decoration <attribute>`](#set-decoration-attribute) |
+|   - [_Export SVG_](#export-svg)         | [`export module >>`](#export-module-)   | [`set module width`](#set-module-width)   |                                            | [`set guide <attribute>`](#set-guide-attribute)           |
+|   - [_Export .h_](#-export-h-file)      |                                         | [`set background`](#set-background)       |                                            |                                                           |
+|   - [_>>_](#-)                          | [`load font`](#load-font)               |                                           | [`delete input`](#delete-input)            |                                                           |
+|   - [_Undo/Redo_](#undoredo)            | [`unload font`](#unload-font)           |                                           | [`delete output`](#delete-output)          |                                                           |
+|   - [_Macro keys_](#macro-keys)         |                                         |                                           | [`delete parameter`](#delete-parameter)    |                                                           |
+|   - [_Command area_](#command-area)     | [`list fonts`](#list-fonts)             |                                           | [`delete light`](#delete-light)            |                                                           |
+|                                         | [`list parts`](#list-parts)             |                                           | [`delete widget`](#delete-widget)          |                                                           |
+| [_comments_](#comments)                 | [`list decorations`](#list-decorations) |                                           | [`delete label`](#delete-label)            |                                                           |
+| [_units_](#units)                       |                                         |                                           | [`delete decoration`](#delete-decoration)  |                                                           |
+| [_location formats_](#location-formats) |                                         |                                           |                                            |                                                           |
+| [_parts_](#parts)                       |                                         |                                           |                                            |                                                           |
+| [_fonts_](#fonts)                       |                                         |                                           |                                            |                                                           |
                                     
 ## Getting started
 
@@ -1391,6 +1391,42 @@ _Notes:_
 _Examples:_
 ```
 list fonts
+````
+
+
+#### `list parts`
+
+```list parts```
+
+Displays a list of the preloaded and user loaded parts.
+
+_Command options:_
+
+
+_Notes:_
+
+
+_Examples:_
+```
+list parts
+````
+
+
+#### `list decorations`
+
+```list decorations```
+
+Displays a list of the preloaded and user loaded decorations.
+
+_Command options:_
+
+
+_Notes:_
+
+
+_Examples:_
+```
+list decorations
 ````
 
 
