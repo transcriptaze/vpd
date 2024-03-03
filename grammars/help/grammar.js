@@ -516,7 +516,9 @@ module.exports = grammar({
       'list',
       optional(
         choice (
-          alias('fonts', $.fonts),
+          alias('fonts',       $.fonts),
+          alias('parts',       $.parts),
+          alias('decorations', $.decorations),
         ),
       ),
     ),

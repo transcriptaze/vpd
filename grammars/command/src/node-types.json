@@ -604,7 +604,15 @@
       "required": true,
       "types": [
         {
+          "type": "decorations",
+          "named": true
+        },
+        {
           "type": "fonts",
+          "named": true
+        },
+        {
+          "type": "parts",
           "named": true
         }
       ]
@@ -1376,6 +1384,10 @@
     "named": false
   },
   {
+    "type": "decorations",
+    "named": true
+  },
+  {
     "type": "delete",
     "named": false
   },
@@ -1413,11 +1425,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "helper",
@@ -1494,6 +1506,10 @@
   {
     "type": "part",
     "named": false
+  },
+  {
+    "type": "parts",
+    "named": true
   },
   {
     "type": "project",

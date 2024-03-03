@@ -2722,6 +2722,24 @@
                   },
                   "named": true,
                   "value": "fonts"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "parts"
+                  },
+                  "named": true,
+                  "value": "parts"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "decorations"
+                  },
+                  "named": true,
+                  "value": "decorations"
                 }
               ]
             },

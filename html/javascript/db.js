@@ -83,8 +83,15 @@ export function listFonts () {
     }
   }
 
-  console.log(list)
   return list
+}
+
+export function listParts () {
+  return []
+}
+
+export function listDecorations () {
+  return []
 }
 
 function normalise (name) {

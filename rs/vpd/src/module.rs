@@ -143,6 +143,18 @@ impl Module {
         list("fonts", &json);
     }
 
+    pub fn list_parts<T: Serialize>(&self, object: &T) {
+        let json = serde_json::to_string(&object).unwrap();
+
+        list("parts", &json);
+    }
+
+    pub fn list_decorations<T: Serialize>(&self, object: &T) {
+        let json = serde_json::to_string(&object).unwrap();
+
+        list("decorations", &json);
+    }
+
     pub fn export_svg(&self, theme: &str) {
         match self.panel.export_SVG(theme) {
             Ok(svg) => {

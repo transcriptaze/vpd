@@ -1,4 +1,5 @@
 import { identifier, string, offset } from './commands.js'
+import * as db from '../db.js'
 
 export function newDecoration (component, node, src) {
   const object = {
@@ -164,6 +165,22 @@ export function setDecoration (node, src) {
       if (!Number.isNaN(v)) {
         object.decoration.scale = v
       }
+    }
+  }
+
+  return object
+}
+
+export function listDecorations (node, src) {
+  const decorations = [
+  ]
+
+  const object = {
+    src: `${src}`,
+    action: 'list',
+    decorations: {
+      preloaded: decorations,
+      user: db.listDecorations()
     }
   }
 

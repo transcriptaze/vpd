@@ -27,3 +27,6 @@ pub use snippet::Stretch;
 pub use style::Style;
 pub use svg::SVG;
 pub use text::Text;
+
+pub use part::PARTS;
+pub use svg::DECORATIONS;

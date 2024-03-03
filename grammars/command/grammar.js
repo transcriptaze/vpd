@@ -359,7 +359,11 @@ module.exports = grammar({
 
     list: $ => seq (
       'list',
-      alias('fonts', $.fonts),
+      choice (
+        alias('fonts',       $.fonts),
+        alias('parts',       $.parts),
+        alias('decorations', $.decorations),
+      ),
     ),
 
     project: $ => seq(

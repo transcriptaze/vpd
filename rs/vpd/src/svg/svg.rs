@@ -15,6 +15,7 @@ use crate::svg::Style;
 use crate::svg::Text;
 
 const OUTLINE_STROKE: f32 = 0.125;
+pub const DECORATIONS: [&'static str; 2] = ["CircularGraduations", "Pad"];
 
 pub struct SVG {
     width: f32,

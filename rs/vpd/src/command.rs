@@ -39,13 +39,14 @@ use crate::commands::ExportHeader;
 use crate::commands::ExportHelper;
 use crate::commands::ExportSVG;
 
-use crate::commands::ListFonts;
 use crate::commands::LoadFont;
 use crate::commands::LoadProject;
 use crate::commands::LoadScript;
 use crate::commands::SaveProject;
 use crate::commands::SaveScript;
 use crate::commands::UnloadFont;
+
+use crate::commands;
 
 pub trait Command {
     fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
@@ -82,10 +83,13 @@ struct Action<'a> {
     project: Option<Entity>,
     script: Option<Entity>,
     font: Option<Entity>,
-    fonts: Option<Entity>,
     svg: Option<Entity>,
     header: Option<Entity>,
     helper: Option<Entity>,
+
+    fonts: Option<Entity>,
+    parts: Option<Entity>,
+    decorations: Option<Entity>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -294,7 +298,15 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     }
 
     if v.action == "list" && v.fonts.is_some() {
-        return Ok(Box::new(ListFonts::new(json)?));
+        return Ok(Box::new(commands::ListFonts::new(json)?));
+    }
+
+    if v.action == "list" && v.parts.is_some() {
+        return Ok(Box::new(commands::ListParts::new(json)?));
+    }
+
+    if v.action == "list" && v.decorations.is_some() {
+        return Ok(Box::new(commands::ListDecorations::new(json)?));
     }
 
     if v.action == "unload" && v.font.is_some() {
