@@ -21,7 +21,7 @@ use svg::PrettyPrinter;
 const VERSION: u32 = 1;
 const RADIUS: f32 = 2.5;
 
-#[wasm_bindgen(raw_module = "../../javascript/fs.js")]
+#[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
     fn load(filetype: &str);
     fn unload(filetype: &str, name: &str);

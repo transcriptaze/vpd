@@ -33,7 +33,7 @@ static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     })
 });
 
-#[wasm_bindgen(raw_module = "../../javascript/rs.js")]
+#[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
     fn set(tag: &str, object: &str);
 }
