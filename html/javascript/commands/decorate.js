@@ -10,7 +10,7 @@ export function parse (node) {
       case 'parameter':
       case 'light':
       case 'widget':
-        return decorations.newDecoration(child, node, src)
+        return decorations.decorate(child, node, src)
     }
   }
 

@@ -1,7 +1,7 @@
 import { identifier, string, offset } from './commands.js'
 import * as db from '../db.js'
 
-export function newDecoration (component, node, src) {
+export function decorate (component, node, src) {
   const object = {
     src: `${src}`,
     action: 'new',
@@ -73,6 +73,83 @@ export function newDecoration (component, node, src) {
   }
 
   throw new Error("invalid 'decorate' command")
+}
+
+export function newDecoration (node, src) {
+  const object = {
+    src: `${src}`,
+    action: 'new',
+    decoration: {
+      offset: {
+        x: 0.0,
+        y: 0.0
+      },
+      scale: 1.0,
+      stretch: {
+        x: 1.0,
+        y: 1.0
+      }
+    }
+  }
+
+  for (const child of node.namedChildren) {
+    if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'name') {
+          object.decoration.reference = `${child.type}<${string(attr)}>`
+        }
+
+        if (attr.type === 'dx') {
+          const v = parseFloat(attr.text)
+          if (!Number.isNaN(v)) {
+            object.decoration.offset.x = v
+          }
+        }
+
+        if (attr.type === 'dy') {
+          const v = parseFloat(attr.text)
+          if (!Number.isNaN(v)) {
+            object.decoration.offset.y = v
+          }
+        }
+      }
+    }
+
+    if (child.type === 'decoration') {
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'name') {
+          object.decoration.name = string(attr)
+        }
+
+        if (attr.type === 'scale') {
+          const v = parseFloat(attr.text)
+          if (!Number.isNaN(v)) {
+            object.decoration.scale = v
+          }
+        }
+
+        if (attr.type === 'stretch') {
+          for (const xy of attr.namedChildren) {
+            if (xy.type === 'x') {
+              const v = parseFloat(xy.text)
+              if (!Number.isNaN(v)) {
+                object.decoration.stretch.x = v
+              }
+            }
+
+            if (xy.type === 'y') {
+              const v = parseFloat(xy.text)
+              if (!Number.isNaN(v)) {
+                object.decoration.stretch.y = v
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return object
 }
 
 export function deleteDecoration (node, src) {

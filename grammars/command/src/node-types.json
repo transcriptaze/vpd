@@ -175,6 +175,10 @@
       "required": true,
       "types": [
         {
+          "type": "decoration",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -685,6 +689,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "decoration",
+          "named": true
+        },
         {
           "type": "guide",
           "named": true
@@ -1533,11 +1541,11 @@
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "script",

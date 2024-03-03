@@ -1,3 +1,63 @@
+=================================================
+new decoration (input "in") "CircularGraduations"
+=================================================
+new decoration (input "in") "CircularGraduations"
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)))))
+
+=============================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5)
+=============================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5)
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)
+        (scale)))))
+
+===================================================================
+new decoration (input "in") "CircularGraduations" (stretch 1.5,2.5)
+===================================================================
+new decoration (input "in") "CircularGraduations" (stretch 1.5,2.5)
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)
+        (stretch
+          (x)
+          (y))))))
+
+===============================================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5) (stretch 1.5,2.5)
+===============================================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5) (stretch 1.5,2.5)
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)
+        (scale)
+        (stretch
+          (x)
+          (y))))))
+
 ================================================
 decorate (input "in") with "CircularGraduations"
 ================================================
