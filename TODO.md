@@ -20,6 +20,11 @@
 - [ ] Docker container
       - [ ] github
 
+### Help
+- [ ] Replace help with hints
+- [ ] `help ..` command
+- https://www.adamgrant.info/tiny-predictive-text
+
 ### Overlay
 - [ ] Only add used widgets to defs
 - [ ] Fix scaling for _RoundBlackKnob_
