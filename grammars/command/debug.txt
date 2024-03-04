@@ -1,1 +1,1 @@
-set guide v1 10mm
+set input audio xy (parameter volume)

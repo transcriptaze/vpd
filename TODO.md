@@ -41,7 +41,11 @@
       - [ ] clean up NewGuide::apply
 
 - [ ] _inputs_
-      - [ ] `set input 'gain' xy (input in +10mm)`
+      - [x] `set input 'gain' xy (parameter f +10mm,+10mm)`
+      - [x] `set input 'gain' x  (parameter f +10mm)`
+      - [x] `set input 'gain' y  (parameter f +10mm)`
+      - [ ] user guide
+      - [ ] cheatsheet
 
 - [ ] _outputs_
       - [ ] `set output 'left' xy (input in +10mm)`
@@ -59,7 +63,6 @@
       - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
 
 - [ ] _decorate_
-      - [x] `new decoration <xy> ...`
       - [ ] Export decorations in SVG component group
       - (?) `decorate <xy> ...`
 

@@ -146,6 +146,18 @@ export function set (node, src) {
         if (v.type === 'offset') {
           object.x.offset = mm(v)
         }
+
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          for (const u of v.namedChildren) {
+            if (u.type === 'name') {
+              object.x.reference = `${v.type}<${identifier(u)}>`
+            }
+
+            if (u.type === 'offset') {
+              object.x.offset = mm(u)
+            }
+          }
+        }
       }
     }
 
@@ -166,6 +178,18 @@ export function set (node, src) {
 
         if (v.type === 'offset') {
           object.y.offset = mm(v)
+        }
+
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          for (const u of v.namedChildren) {
+            if (u.type === 'name') {
+              object.y.reference = `${v.type}<${identifier(u)}>`
+            }
+
+            if (u.type === 'offset') {
+              object.y.offset = mm(u)
+            }
+          }
         }
       }
     }
@@ -194,7 +218,7 @@ export function set (node, src) {
             }
 
             if (u.type === 'offset') {
-              object.x.offset = mm(v)
+              object.x.offset = mm(u)
             }
           }
         }
@@ -206,7 +230,24 @@ export function set (node, src) {
             }
 
             if (u.type === 'offset') {
-              object.y.offset = mm(v)
+              object.y.offset = mm(u)
+            }
+          }
+        }
+
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          for (const u of v.namedChildren) {
+            if (u.type === 'name') {
+              object.x.reference = `${v.type}<${identifier(u)}>`
+              object.y.reference = `${v.type}<${identifier(u)}>`
+            }
+
+            if (u.type === 'x') {
+              object.x.offset = mm(u)
+            }
+
+            if (u.type === 'y') {
+              object.y.offset = mm(u)
             }
           }
         }

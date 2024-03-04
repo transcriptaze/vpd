@@ -8,10 +8,10 @@ export async function init (Parser, wasm) {
 }
 
 export function parse (text) {
-  const src = `${text}`
-  const tree = parser.parse(src)
-  const root = tree.rootNode
-  const tokens = []
+  // const src = `${text}`
+  // const tree = parser.parse(src)
+  // const root = tree.rootNode
+  // const tokens = []
 
   // if (root.namedChildCount > 0) {
   //   tokens.push(...walk(root.namedChildren[0]))
@@ -19,7 +19,7 @@ export function parse (text) {
 
   // console.log(tokens)
 
-  const list = new Set([ 'new',  'decorate', 'set', 'delete', 'load','unload','save','export','list', 'help'])
+  const list = new Set(['new', 'decorate', 'set', 'delete', 'load', 'unload', 'save', 'export', 'list', 'help'])
 
   // for (const c of COMMANDS) {
   //   if (matches(c.command, tokens)) {
