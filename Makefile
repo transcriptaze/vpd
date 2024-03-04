@@ -16,9 +16,13 @@ www:
 build: www
 	cd rs/vpd && wasm-pack build --target web --dev --out-dir ../../html/wasm/vpd
 
+debug:
+	npm test
+
 test: build
 	cd grammars/command && make test
 	cd grammars/help    && make test
+#	npm test
 
 build-all: test
 	cd grammars/command && make wasm

@@ -23,7 +23,45 @@ module.exports = grammar({
     // ... new
     new: $ => seq(
       'new',
-      $._entity,
+      choice(
+      $.module,
+      alias($._new_input,$.input),
+      $.output,
+      $.parameter,
+      $.light,
+      $.widget,
+      $.label,
+      alias($._new_decoration,$.decoration),
+      $.guide,
+      ),
+    ),
+
+    _new_input: $ => seq(
+      'input',
+      $._new_component,
+    ),
+
+    _new_component: $ => seq(
+      $.name,
+      $._new_xy,
+      optional($.part),
+    ),
+
+    _new_xy: $ => choice (
+      $.absolute,
+      $.relative,
+      seq( $.x, ',', $.y ),
+      seq (
+        '(',
+        choice (
+          alias ($._input,     $.input),
+          alias ($._output,    $.output),
+          alias ($._parameter, $.parameter),
+          alias ($._light,     $.light),
+          alias ($._widget,    $.widget),
+        ),
+        ')',
+      ),
     ),
 
     // ... set
@@ -114,6 +152,17 @@ module.exports = grammar({
         $._relative_attr,
         $._geometry_x_attr,
         $._guide_attr,
+        seq(
+          '(',
+          choice(
+            seq('input',     alias($._component_x_attr, $.input)),
+            seq('output',    alias($._component_x_attr, $.output)),
+            seq('parameter', alias($._component_x_attr, $.parameter)),
+            seq('light',     alias($._component_x_attr, $.light)),
+            seq('widget',    alias($._component_x_attr, $.widget)),
+          ),
+          ')',
+        ),
       ),
     ),
 
@@ -123,6 +172,17 @@ module.exports = grammar({
         $._relative_attr,
         $._geometry_y_attr,
         $._guide_attr,
+        seq(
+          '(',
+          choice(
+            seq('input',     alias($._component_y_attr, $.input)),
+            seq('output',    alias($._component_y_attr, $.output)),
+            seq('parameter', alias($._component_y_attr, $.parameter)),
+            seq('light',     alias($._component_y_attr, $.light)),
+            seq('widget',    alias($._component_y_attr, $.widget)),
+          ),
+          ')',
+        ),
       ),
     ),
 
@@ -132,6 +192,17 @@ module.exports = grammar({
         $._relative_xy_attr,
         $._geometry_xy_attr,
         $._guide_xy_attr,
+        seq(
+          '(',
+          choice(
+            seq('input',     alias($._component_xy_attr, $.input)),
+            seq('output',    alias($._component_xy_attr, $.output)),
+            seq('parameter', alias($._component_xy_attr, $.parameter)),
+            seq('light',     alias($._component_xy_attr, $.light)),
+            seq('widget',    alias($._component_xy_attr, $.widget)),
+          ),
+          ')',
+        ),
       ),
     ),
 
@@ -219,6 +290,26 @@ module.exports = grammar({
       alias($._guide_attr,$.y),
     ),
 
+    _component_x_attr: $ => seq(
+      $.name,
+      optional(
+        $._offset_attr,
+      ),
+    ),
+
+    _component_y_attr: $ => seq(
+      $.name,
+      optional(
+        $._offset_attr,
+      ),
+    ),
+
+    _component_xy_attr: $ => seq(
+      $.name,
+      optional(
+        $._offset_xy_attr,
+      ),
+    ),
 
     // ... decorate
     _new_decoration: $ => seq(
@@ -404,18 +495,6 @@ module.exports = grammar({
     ),
 
     // ... entities
-    _entity: $ => choice(
-      $.module,
-      $.input,
-      $.output,
-      $.parameter,
-      $.light,
-      $.widget,
-      $.label,
-      alias($._new_decoration,$.decoration),
-      $.guide,
-    ),
-
     _input: $ => seq (
       'input',
       $.name,
@@ -455,10 +534,10 @@ module.exports = grammar({
     ),
 
     // ... components
-    input: $ => seq(
-      'input',
-      $._component,
-    ),
+    // input: $ => seq(
+    //   'input',
+    //   $._component,
+    // ),
 
     output: $ => seq(
       'output',
