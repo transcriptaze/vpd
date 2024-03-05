@@ -44,11 +44,14 @@
       - [x] `set input 'gain' xy (parameter f +10mm,+10mm)`
       - [x] `set input 'gain' x  (parameter f +10mm)`
       - [x] `set input 'gain' y  (parameter f +10mm)`
-      - [ ] user guide
-      - [ ] cheatsheet
+      - [x] user guide
 
 - [ ] _outputs_
-      - [ ] `set output 'left' xy (input in +10mm)`
+      - [x] `set output 'left' xy (input in +10mm,+10mm)`
+      - [x] `set output 'left' x  (input in +10mm)`
+      - [x] `set output 'left' y  (input in +10mm)`
+      - [x] user guide
+      - [ ] `delete output`
 
 - [ ] _parameters_
       - [ ] `set parameter 'volume' xy (input in +10mm)`
@@ -101,7 +104,9 @@
 
 - [ ] SublimeText plugin
 - [ ] VSCode plugin
-      https://nuejs.org/blog/introducing-glow/
+      - https://nuejs.org/blog/introducing-glow/
+      - https://www.freecodecamp.org/news/things-you-need-to-know-about-working-with-svg-in-vs-code-63be593444dd/
+      - https://marketplace.visualstudio.com/items?itemName=sndst00m.vscode-native-svg-preview
 - [ ] vim plugin
 
 

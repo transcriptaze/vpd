@@ -20,6 +20,18 @@ new module thing 3H
       (name)
       (width))))
 
+======================
+new module thing 1U,3H
+======================
+new module thing 1U,3H
+---
+(command
+  (new
+    (module
+      (name)
+      (height)
+      (width))))
+
 ========================
 new module "thing" 1U 3H
 ========================

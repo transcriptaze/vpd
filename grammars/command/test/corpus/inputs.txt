@@ -542,9 +542,9 @@ set input 'audio' xy v1+10mm,h2+10mm
         (offset)))))
 
 
-=====================================
+====================================
 set input audio x (parameter volume)
-=====================================
+====================================
 set input audio x (parameter volume)
 ---
 (command
@@ -571,9 +571,9 @@ set input audio x (parameter volume +10mm)
         (offset)))))
 
 
-=====================================
+====================================
 set input audio y (parameter volume)
-=====================================
+====================================
 set input audio y (parameter volume)
 ---
 (command

@@ -662,6 +662,9 @@ set input freq x v1+10mm
 set input freq y @55.5mm
 set input freq x v1+10mm
 set input freq xy v1,h1
+set input freq xy (parameter in +10mm,+10mm)
+set input freq x  (parameter in -2H)
+set input freq y  (parameter in +5h)
 set input freq part PJ301M
 set input freq part none
 ```
@@ -747,6 +750,9 @@ set output left x v1+10mm
 set output left y @55.5mm
 set output left x v1+10mm
 set output left xy v1,h1
+set output left xy (output right +10mm,+10mm)
+set output left x  (output right -2H)
+set output left y  (output right +5h)
 set output left part PJ301M
 set output left part none
 ```
