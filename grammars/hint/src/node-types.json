@@ -51,6 +51,25 @@
     }
   },
   {
+    "type": "module",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "height",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "new",
     "named": true,
     "fields": {},
@@ -118,6 +137,10 @@
     "named": true
   },
   {
+    "type": "height",
+    "named": true
+  },
+  {
     "type": "help",
     "named": true
   },
@@ -143,6 +166,10 @@
   },
   {
     "type": "module",
+    "named": false
+  },
+  {
+    "type": "name",
     "named": true
   },
   {
