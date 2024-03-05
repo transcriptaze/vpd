@@ -11,7 +11,7 @@ export function newOutput (node, src) {
 export function deleteOutput (node, src) {
   return {
     src: `${src}`,
-    action: 'set',
+    action: 'delete',
     output: components.del(node)
   }
 }

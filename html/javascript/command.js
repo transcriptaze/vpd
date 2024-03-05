@@ -10,8 +10,8 @@ import * as _list from './commands/list.js'
 
 let parser
 
-export async function init (Parser) {
-  const grammar = await Parser.Language.load('../wasm/grammars/tree-sitter-command.wasm')
+export async function init (Parser, wasm) {
+  const grammar = await Parser.Language.load(wasm)
 
   parser = new Parser()
   parser.setLanguage(grammar)

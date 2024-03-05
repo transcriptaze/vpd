@@ -22,6 +22,7 @@
 
 ### Help
 - [ ] Replace help with hints
+      - [ ] Auto-generate hint corpus from grammar/examples
 - [ ] `help ..` command
 - https://www.adamgrant.info/tiny-predictive-text
 
@@ -72,6 +73,8 @@
 
 ### TO BE DONE
 
+- [ ] 'approximate' name matching
+
 - [ ] Better error messaging
       - https://ishadeed.com/article/css-has-guide/
 
@@ -85,7 +88,6 @@
       - Accomodate missing fields
       - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
-- [ ] Auto-generate help text from grammar/examples
 - [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests
