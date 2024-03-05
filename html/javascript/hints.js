@@ -1,6 +1,6 @@
 const symbols = new Map([
   ['name', '<em>&lt;name&gt;</em>'],
-  ['height', '1U'],
+  ['height', '1U']
 ])
 
 const corpus = [
@@ -37,7 +37,7 @@ const corpus = [
   ['list', 'parts'],
   ['list', 'decorations'],
 
-  ['help'],
+  ['help']
 ]
 
 let parser
