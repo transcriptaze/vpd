@@ -6,15 +6,6 @@ new
 (command
   (new))
 
-==========
-new module
-==========
-new module
----
-(command
-  (new
-    (module)))
-
 =========
 new input
 =========

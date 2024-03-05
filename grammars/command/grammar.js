@@ -24,20 +24,47 @@ module.exports = grammar({
     new: $ => seq(
       'new',
       choice(
-      $.module,
-      alias($._new_input,$.input),
-      $.output,
-      $.parameter,
-      $.light,
-      $.widget,
+      alias($._new_module,   $.module),
+      alias($._new_input,    $.input),
+      alias($._new_output,   $.output),
+      alias($._new_parameter,$.parameter),
+      alias($._new_light,    $.light),
+      alias($._new_widget,   $.widget),
       $.label,
       alias($._new_decoration,$.decoration),
       $.guide,
       ),
     ),
 
+    _new_module: $ => seq(
+      'module',
+      $.name,
+      optional(seq($.height, optional(','))),
+      $.width,
+    ),
+
     _new_input: $ => seq(
-      'input',
+      'input ',
+      $._new_component,
+    ),
+
+    _new_output: $ => seq(
+      'output ',
+      $._new_component,
+    ),
+
+    _new_parameter: $ => seq(
+      /parameter|param /,
+      $._new_component,
+    ),
+
+    _new_light: $ => seq(
+      'light ',
+      $._new_component,
+    ),
+
+    _new_widget: $ => seq(
+      'widget ',
       $._new_component,
     ),
 
@@ -51,7 +78,7 @@ module.exports = grammar({
       $.absolute,
       $.relative,
       seq( $.x, ',', $.y ),
-      seq (
+      seq(
         '(',
         choice (
           alias ($._input,     $.input),
@@ -523,61 +550,6 @@ module.exports = grammar({
       'widget',
       $.name,
       optional ($._relative),
-    ),
-
-    // ... module
-    module: $ => seq(
-      'module',
-      $.name,
-      optional($.height),
-      $.width,
-    ),
-
-    // ... components
-    // input: $ => seq(
-    //   'input',
-    //   $._component,
-    // ),
-
-    output: $ => seq(
-      'output',
-      $._component,
-    ),
-
-    parameter: $ => seq(
-      /parameter|param/,
-      $._component,
-    ),
-
-    light: $ => seq(
-      'light',
-      $._component,
-    ),
-
-    widget: $ => seq(
-      'widget',
-      $._component,
-    ),
-
-    _component: $ => seq(
-      $.name,
-      choice (
-        $.absolute,
-        $.relative,
-        seq( $.x, ',', $.y ),
-        seq (
-          '(',
-          choice (
-            alias ($._input,     $.input),
-            alias ($._output,    $.output),
-            alias ($._parameter, $.parameter),
-            alias ($._light,     $.light),
-            alias ($._widget,    $.widget),
-          ),
-          ')',
-        ),
-      ),
-      optional($.part),
     ),
 
     // ... labels

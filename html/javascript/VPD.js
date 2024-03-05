@@ -6,7 +6,7 @@ import * as db from './db.js'
 import { exec, render, serialize, clear, restore, query } from '../wasm/vpd/vpd.js'
 
 export async function initialise (parser) {
-  await command.init(parser)
+  await command.init(parser, '../wasm/grammars/tree-sitter-command.wasm')
   await help.init(parser)
   await text.init()
 

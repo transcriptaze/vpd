@@ -21,7 +21,7 @@ module.exports = grammar({
       'new',
       optional(
         choice(
-          alias('module',     $.module),
+          alias($._new_module,$.module),
           alias('input',      $.input),
           alias('output',     $.output),
           alias('parameter',  $.parameter),
@@ -33,5 +33,19 @@ module.exports = grammar({
         ),
       ),
     ),
+
+    _new_module: $ => seq(
+      'module',
+      optional(
+        seq(
+          $.name,
+          optional(alias('1U', $.height))
+        ),
+      ),
+    ),
+
+    // ... common expressions
+    name: $ => /[a-zA-Z]([a-zA-Z0-9_-]*?)|"[a-zA-Z]([a-zA-Z0-9_ -]*?)"|'[a-zA-Z]([a-zA-Z0-9_ -]*?)'/,
+
   }
 });

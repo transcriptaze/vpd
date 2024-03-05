@@ -22,6 +22,7 @@
 
 ### Help
 - [ ] Replace help with hints
+      - [ ] Auto-generate hint corpus from grammar/examples
 - [ ] `help ..` command
 - https://www.adamgrant.info/tiny-predictive-text
 
@@ -44,11 +45,14 @@
       - [x] `set input 'gain' xy (parameter f +10mm,+10mm)`
       - [x] `set input 'gain' x  (parameter f +10mm)`
       - [x] `set input 'gain' y  (parameter f +10mm)`
-      - [ ] user guide
-      - [ ] cheatsheet
+      - [x] user guide
 
 - [ ] _outputs_
-      - [ ] `set output 'left' xy (input in +10mm)`
+      - [x] `set output 'left' xy (input in +10mm,+10mm)`
+      - [x] `set output 'left' x  (input in +10mm)`
+      - [x] `set output 'left' y  (input in +10mm)`
+      - [x] user guide
+      - [ ] `delete output`
 
 - [ ] _parameters_
       - [ ] `set parameter 'volume' xy (input in +10mm)`
@@ -69,6 +73,8 @@
 
 ### TO BE DONE
 
+- [ ] 'approximate' name matching
+
 - [ ] Better error messaging
       - https://ishadeed.com/article/css-has-guide/
 
@@ -82,7 +88,6 @@
       - Accomodate missing fields
       - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
-- [ ] Auto-generate help text from grammar/examples
 - [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests
@@ -101,7 +106,9 @@
 
 - [ ] SublimeText plugin
 - [ ] VSCode plugin
-      https://nuejs.org/blog/introducing-glow/
+      - https://nuejs.org/blog/introducing-glow/
+      - https://www.freecodecamp.org/news/things-you-need-to-know-about-working-with-svg-in-vs-code-63be593444dd/
+      - https://marketplace.visualstudio.com/items?itemName=sndst00m.vscode-native-svg-preview
 - [ ] vim plugin
 
 
