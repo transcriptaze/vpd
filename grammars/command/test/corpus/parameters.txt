@@ -244,6 +244,22 @@ new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
       (part))))
 
 
+=========================================================
+new parameter "E" (input in +10mm,+10mm) "RoundBlackKnob"
+=========================================================
+new parameter "E" (input in +10mm,+10mm) "RoundBlackKnob"
+---
+(command
+  (new
+    (parameter
+      (name)
+      (input
+        (name)
+        (dx)
+        (dy))
+      (part))))
+
+
 ===================
 delete parameter p1
 ===================
@@ -514,6 +530,93 @@ set parameter 'volume' xy v1+10mm,h2+10mm
         (offset)))))
 
 
+==================================
+set parameter volume x (input in)
+==================================
+set parameter volume x (input in)
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x
+      (input
+        (name)))))
+
+
+=======================================
+set parameter volume x (input in +10mm)
+=======================================
+set parameter volume x (input in +10mm)
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (x
+      (input
+        (name)
+        (offset)))))
+
+
+=================================
+set parameter volume y (input in)
+=================================
+set parameter volume y (input in)
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y
+      (input
+        (name)))))
+
+
+=======================================
+set parameter volume y (input in +10mm)
+=======================================
+set parameter volume y (input in +10mm)
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (y
+      (input
+        (name)
+        (offset)))))
+
+==================================
+set parameter volume xy (input in)
+==================================
+set parameter volume xy (input in)
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy
+      (input
+        (name)))))
+
+==============================================
+set parameter volume xy (input in +10mm,+10mm)
+==============================================
+set parameter volume xy (input in +10mm,+10mm)
+---
+(command
+  (set
+    (parameter
+      (identifier))
+    (xy
+      (input
+        (name)
+        (x
+          (offset))
+        (y
+          (offset))))))
+
 ====================================
 set parameter 'volume' part 'PJ301M'
 ====================================
@@ -536,4 +639,5 @@ set parameter 'volume' part none
     (parameter
       (identifier))
     (part)))
+
 

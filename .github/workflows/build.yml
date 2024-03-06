@@ -39,6 +39,12 @@ jobs:
     - name: Install eslint v8.56.0+
       run: npm install eslint eslint-config-standard
 
+    - name: Install mocha, chai and 
+      run: |
+        npm install mocha           --save-dev
+        npm install chai            --save-dev
+        npm install web-tree-sitter --save-dev
+
     - name: Install wasm-pack v0.12.1+
       run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
