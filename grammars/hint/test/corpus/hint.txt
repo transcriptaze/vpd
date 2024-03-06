@@ -6,23 +6,14 @@ new
 (command
   (new))
 
-=========
-new input
-=========
-new input
----
-(command
-  (new
-    (input)))
-
 ==========
 new output
 ==========
 new output
 ---
 (command
-  (new
-    (output)))
+  (new)
+  (output))
 
 =============
 new parameter
@@ -30,8 +21,8 @@ new parameter
 new parameter
 ---
 (command
-  (new
-    (parameter)))
+  (new)
+  (parameter))
 
 =========
 new light
@@ -39,8 +30,8 @@ new light
 new light
 ---
 (command
-  (new
-    (light)))
+  (new)
+  (light))
 
 ==========
 new widget
@@ -48,8 +39,8 @@ new widget
 new widget
 ---
 (command
-  (new
-    (widget)))
+  (new)
+  (widget))
 
 =========
 new label
@@ -57,8 +48,8 @@ new label
 new label
 ---
 (command
-  (new
-    (label)))
+  (new)
+  (label))
 
 ==============
 new decoration
@@ -66,8 +57,8 @@ new decoration
 new decoration
 ---
 (command
-  (new
-    (decoration)))
+  (new)
+  (decoration))
 
 =========
 new guide
@@ -75,5 +66,5 @@ new guide
 new guide
 ---
 (command
-  (new
-    (guide)))
+  (new)
+  (guide))

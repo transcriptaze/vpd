@@ -56,7 +56,7 @@ export function parse (text) {
   const tokens = []
 
   if (root.namedChildCount > 0) {
-    tokens.push(...walk(root.namedChildren[0]))
+    tokens.push(...walk(root))
   }
 
   // console.log('>>>>>>>>>>>>>>>>>>>>', tokens)
@@ -81,10 +81,16 @@ function walk (node) {
   }
 
   if (node.namedChildCount < 1) {
-    return [node.type]
+    return []
   }
 
-  return [node.type, ...walk(node.namedChildren[0])]
+  const tokens = []
+
+  for (const child of node.namedChildren){
+    tokens.push(child.type, ...walk(child))
+  }
+  
+  return tokens
 }
 
 function matches (command, tokens) {

@@ -1,0 +1,74 @@
+=========
+new input
+=========
+new input
+---
+(command
+  (new)
+  (input))
+
+============
+new input in
+============
+new input in
+---
+(command
+  (new)
+  (input)
+  (name))
+
+=======================
+new input in @10mm,10mm
+=======================
+new input in @10mm,10mm
+---
+(command
+  (new)
+  (input)
+  (name)
+  (xy))
+
+======================
+new input in 10mm,10mm
+======================
+new input in 10mm,10mm
+---
+(command
+  (new)
+  (input)
+  (name)
+  (xy))
+
+==================
+new input in v1,h1
+==================
+new input in v1,h1
+---
+(command
+  (new)
+  (input)
+  (name)
+  (xy))
+
+===========================
+new input in v1+10mm,h-10mm
+===========================
+new input in v1+10mm,h-10mm
+---
+(command
+  (new)
+  (input)
+  (name)
+  (xy))
+
+==============================
+new input in @10mm,10mm PJ301M
+==============================
+new input in @10mm,10mm PJ301M
+---
+(command
+  (new)
+  (input)
+  (name)
+  (xy)
+  (part))

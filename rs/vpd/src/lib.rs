@@ -17,6 +17,11 @@ use std::sync::Mutex;
 
 use svg::PrettyPrinter;
 
+#[wasm_bindgen(raw_module = "../../javascript/api.js")]
+extern "C" {
+    fn push(src: &str, module: &str);
+}
+
 pub struct State {
     pub module: module::Module,
 }
@@ -55,6 +60,12 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
 
             if let Some(err) = cmd.validate(module) {
                 return Err(JsValue::from(format!("{}", err)));
+            }
+
+            if let Some(src) = &cmd.src {
+                let before = serde_json::to_string(&module).unwrap();
+
+                push(src.as_str(), &before)
             }
 
             if cmd.apply(module) {

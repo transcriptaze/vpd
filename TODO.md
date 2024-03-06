@@ -5,7 +5,6 @@
 
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
-- [ ] `undo`
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
@@ -19,6 +18,9 @@
 
 - [ ] Docker container
       - [ ] github
+
+### _undo_
+    - [ ] push cmd + project
 
 ### Help
 - [ ] Replace help with hints
@@ -41,21 +43,10 @@
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
 
-- [ ] _inputs_
-      - [x] `set input 'gain' xy (parameter f +10mm,+10mm)`
-      - [x] `set input 'gain' x  (parameter f +10mm)`
-      - [x] `set input 'gain' y  (parameter f +10mm)`
-      - [x] user guide
-
-- [ ] _outputs_
-      - [x] `set output 'left' xy (input in +10mm,+10mm)`
-      - [x] `set output 'left' x  (input in +10mm)`
-      - [x] `set output 'left' y  (input in +10mm)`
-      - [x] user guide
-      - [ ] `delete output`
-
-- [ ] _parameters_
-      - [ ] `set parameter 'volume' xy (input in +10mm)`
+- [x] _parameters_
+      - [x] `set parameter volume xy (input in +10mm,+10mm)`
+      - [x] `set parameter volume x  (input in +10mm)`
+      - [x] `set parameter volume y  (input in +10mm)`
 
 - [ ] _lights_
       - [ ] `set light 'on' xy (parameter off 0mm,0mm)`
