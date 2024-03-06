@@ -11,8 +11,8 @@ www:
 	npx eslint --fix ./html/javascript/*.js
 	npx eslint --fix ./html/javascript/components/*.js
 	npx eslint --fix ./html/javascript/commands/*.js
-	npx eslint --fix ./test/*.js
 	npx eslint --fix ./test/command/*.js
+	npx eslint --fix ./test/hint/*.js
 	sass --no-source-map sass/themes:html/css
 
 build: www
