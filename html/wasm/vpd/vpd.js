@@ -1,4 +1,4 @@
-import { load, unload, save, list, text2path, set } from '../../javascript/api.js';
+import { load, unload, save, list, text2path, push, set } from '../../javascript/api.js';
 
 let wasm;
 
@@ -436,6 +436,9 @@ function __wbg_get_imports() {
     imports.wbg.__wbg_text2path_3c0eb3e91ccff894 = function(arg0, arg1, arg2, arg3, arg4) {
         const ret = text2path(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), arg4);
         return addHeapObject(ret);
+    };
+    imports.wbg.__wbg_push_a4fdae9e00644291 = function(arg0, arg1, arg2, arg3) {
+        push(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
     imports.wbg.__wbg_set_e2a5a1144a54b2cd = function(arg0, arg1, arg2, arg3) {
         set(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
