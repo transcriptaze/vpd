@@ -4,8 +4,8 @@ new module
 new module
 ---
 (command
-  (new
-    (module)))
+  (new)
+  (module))
 
 ===============
 new module woot
@@ -13,9 +13,9 @@ new module woot
 new module woot
 ---
 (command
-  (new
-    (module
-      (name))))
+  (new)
+  (module)
+  (name))
 
 ==================
 new module woot 1U
@@ -23,8 +23,32 @@ new module woot 1U
 new module woot 1U
 ---
 (command
-  (new
-    (module
-      (name)
-      (height))))
+  (new)
+  (module)
+  (name)
+  (height))
+
+=====================
+new module woot 1U 9H
+=====================
+new module woot 1U 9H
+---
+(command
+  (new)
+  (module)
+  (name)
+  (height)
+  (width))
+
+=========================
+new module woot 1U 45.3mm
+=========================
+new module woot 1U 45.3mm
+---
+(command
+  (new)
+  (module)
+  (name)
+  (height)
+  (width))
 
