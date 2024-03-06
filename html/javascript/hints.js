@@ -86,10 +86,10 @@ function walk (node) {
 
   const tokens = []
 
-  for (const child of node.namedChildren){
+  for (const child of node.namedChildren) {
     tokens.push(child.type, ...walk(child))
   }
-  
+
   return tokens
 }
 
