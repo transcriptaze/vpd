@@ -5,7 +5,6 @@
 
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
-- [ ] `undo`
 - [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
@@ -19,6 +18,9 @@
 
 - [ ] Docker container
       - [ ] github
+
+### _undo_
+    - [ ] push cmd + project
 
 ### Help
 - [ ] Replace help with hints

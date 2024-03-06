@@ -57,6 +57,10 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
                 return Err(JsValue::from(format!("{}", err)));
             }
 
+            warnf!(">>>>>> CMD {:?}", cmd.src);
+
+            // let before = serde_json::to_string(&module).unwrap();
+
             if cmd.apply(module) {
                 let info = module.info();
                 let object = serde_json::to_string(&info).unwrap();

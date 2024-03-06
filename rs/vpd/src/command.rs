@@ -57,8 +57,8 @@ pub trait Command {
 }
 
 pub struct Wrapper {
+    pub src: Option<String>,
     command: Box<dyn Command>,
-    src: Option<String>,
     reload: bool,
 }
 
@@ -319,8 +319,8 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
 impl Wrapper {
     pub fn new(command: Box<dyn Command>, src: Option<String>, reload: bool) -> Wrapper {
         Wrapper {
-            command: command,
             src: src,
+            command: command,
             reload: reload,
         }
     }

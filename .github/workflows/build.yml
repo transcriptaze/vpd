@@ -60,7 +60,6 @@ jobs:
         sass        --version
         npx eslint  --version
         npx mocha   --version
-        npx chai    --version
 
     - name: Build
       run: make build-all
