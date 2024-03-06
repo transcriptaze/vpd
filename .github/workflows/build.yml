@@ -61,7 +61,6 @@ jobs:
         npx eslint  --version
         npx mocha   --version
         npx chai    --version
-        npx web-tree-sitter --version
 
     - name: Build
       run: make build-all
