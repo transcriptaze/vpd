@@ -3,6 +3,11 @@
 - [x] Load project file
       - [ ] web component
 
+- [ ] Bundle with rollup.js
+      - wasm-pack bundler
+      - https://rustwasm.github.io/wasm-bindgen/reference/deployment.html
+      
+
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
 - [ ] `redo`
@@ -76,7 +81,6 @@
       - Accomodate missing fields
       - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
-- [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
