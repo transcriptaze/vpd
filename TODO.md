@@ -48,13 +48,10 @@
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
 
-- [x] _lights_
-      - [x] `set light recording xy (parameter volume +10mm,+10mm)`
-      - [x] `set light recording x  (parameter volume +10mm)`
-      - [x] `set light recording y  (parameter volume +10mm)`
-
-- [ ] _widget_
-      - [ ] `set widget 'channels' xy (light 'on' +10mm,-20mm)`
+- [x] _widget_
+      - [x] `set widget 'channels' xy (input 'freq' +10mm,-20mm)`
+      - [x] `set widget 'channels' x (input 'freq' +10mm)`
+      - [x] `set widget 'channels' y (input 'freq' +20mm)`
 
 - [ ] _label_
       - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
