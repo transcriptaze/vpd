@@ -37,7 +37,7 @@ pub struct Module {
     pub script: Vec<String>,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize)]
 pub struct ModuleInfo {
     pub name: String,
     pub height: f32,

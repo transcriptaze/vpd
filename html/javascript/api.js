@@ -3,13 +3,16 @@ import * as db from './db.js'
 export { load, unload, save, list } from './fs.js'
 export { text2path } from './text.js'
 
-export function set (tag, json) {
+export function set (json) {
   try {
     const object = JSON.parse(json)
-    switch (tag) {
-      case 'module':
-        setModuleInfo(object)
-        break
+
+    if (Object.hasOwn(object, 'module') && object.module != null) {
+      setModuleInfo(object.module)
+    }
+
+    if (Object.hasOwn(object, 'command') && object.command != null) {
+      setCommand(object.command)
     }
   } catch (e) {
     console.error(`${e}`)
@@ -53,4 +56,8 @@ function setModuleInfo (object) {
   } else {
     info.classList.remove('visible')
   }
+}
+
+function setCommand (cmd) {
+  document.querySelector('#command').value = `${cmd}`
 }

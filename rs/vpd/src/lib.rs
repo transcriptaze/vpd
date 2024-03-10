@@ -12,6 +12,7 @@ use std::sync::Mutex;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use serde;
+use serde::Serialize;
 use serde_wasm_bindgen;
 
 use wasm_bindgen::prelude::*;
@@ -37,9 +38,15 @@ static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     })
 });
 
+#[derive(Serialize)]
+pub struct Info {
+    pub module: Option<module::ModuleInfo>,
+    pub command: Option<String>,
+}
+
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
-    fn set(tag: &str, object: &str);
+    fn set(object: &str);
     fn stash(tag: &str, blob: &str);
 }
 
@@ -52,7 +59,7 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(json: &str) -> Result<String, JsValue> {
+pub fn exec(json: &str) -> Result<bool, JsValue> {
     match command::parse(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
@@ -68,15 +75,20 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
             }
 
             if cmd.apply(&mut state.module) {
-                let info = state.module.info();
-                let object = serde_json::to_string(&info).unwrap();
-                set("module", &object);
+                let info = Info {
+                    module: Some(state.module.info()),
+                    command: None,
+                };
 
                 let serialized = serde_json::to_string(&state.module).unwrap();
+                let object = serde_json::to_string(&info).unwrap();
 
-                Ok(serialized)
+                stash("project", &serialized);
+                set(&object);
+
+                Ok(true)
             } else {
-                Ok("".to_string())
+                Ok(false)
             }
         }
 
@@ -89,18 +101,23 @@ pub fn undo() -> Result<bool, JsValue> {
     let mut state = STATE.lock().unwrap();
 
     if let Some(v) = state.history.pop() {
+        let cmd = v.0;
         let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(&v.1);
 
         match rs {
             Ok(m) => {
                 state.module = m;
 
+                let info = Info {
+                    module: Some(state.module.info()),
+                    command: Some(cmd),
+                };
+
                 let serialized = serde_json::to_string(&state.module).unwrap();
-                let info = state.module.info();
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &serialized);
-                set("module", &object);
+                set(&object);
 
                 Ok(true)
             }
@@ -238,9 +255,13 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
             let mut state = STATE.lock().unwrap();
             state.module = m;
 
-            let info = state.module.info();
+            let info = Info {
+                module: Some(state.module.info()),
+                command: None,
+            };
+
             let object = serde_json::to_string(&info).unwrap();
-            set("module", &object);
+            set(&object);
 
             Ok(())
         }

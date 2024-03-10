@@ -237,22 +237,15 @@ export function onClickPanel (panel, x, y) {
 }
 
 function execute (v) {
-  const trash = document.querySelector('#trash')
-
   onError(null)
 
   try {
     const cmd = command.parse(v)
-
     if (cmd != null) {
       console.log(cmd)
 
-      const serialized = exec(JSON.stringify(cmd))
-
-      if (serialized !== '') {
-        db.storeProject(serialized)
+      if (exec(JSON.stringify(cmd))) {
         redraw()
-        trash.disabled = false
       }
     }
   } catch (err) {

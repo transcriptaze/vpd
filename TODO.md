@@ -31,11 +31,13 @@
 ### _undo_
    - [x] push cmd + project
    - [x] pop
-   - [ ] invoke stash from exec
+   - [x] invoke stash from exec
+   - [x] restore command
+   - [ ] limit history size
    - [ ] enable/disable undo
    - [ ] enable/disable trash (empty project + empty stack)
+   - [ ] truncate history on new module, trash, etc
    - [ ] serialize to IndexDB
-   - [ ] `trash` also clears undo stack
    - (?) store current project to OPFS
 
 ### Help
@@ -59,10 +61,11 @@
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
 
-- [x] _label_
+- [ ] _label_
       - [x] `set label l1 xy (input in +10mm,-20mm)`
       - [x] `set label l1 xy (input in +10mm)`
       - [x] `set label l1 xy (input in -20mm)`
+      - [ ] Regularise grammar to be similar to component
 
 - [ ] _decorate_
       - [ ] Export decorations in SVG component group
