@@ -22,27 +22,27 @@ impl GuideLine {
         };
     }
 
-    pub fn clone(&self, label: &str, offset: f32) -> Option<GuideLine> {
-        match self.orientation.as_str() {
-            "vertical" => Some(GuideLine {
-                label: label.to_string(),
-                x1: self.x1 + offset,
-                y1: self.y1,
-                x2: self.x2 + offset,
-                y2: self.y2,
-                orientation: self.orientation.to_string(),
-            }),
-
-            "horizontal" => Some(GuideLine {
-                label: label.to_string(),
-                x1: self.x1,
-                y1: self.y1 + offset,
-                x2: self.x2,
-                y2: self.y2 + offset,
-                orientation: self.orientation.to_string(),
-            }),
-
-            _ => None,
-        }
-    }
+    // pub fn clone(&self, label: &str, offset: f32) -> Option<GuideLine> {
+    //     match self.orientation.as_str() {
+    //         "vertical" => Some(GuideLine {
+    //             label: label.to_string(),
+    //             x1: self.x1 + offset,
+    //             y1: self.y1,
+    //             x2: self.x2 + offset,
+    //             y2: self.y2,
+    //             orientation: self.orientation.to_string(),
+    //         }),
+    //
+    //         "horizontal" => Some(GuideLine {
+    //             label: label.to_string(),
+    //             x1: self.x1,
+    //             y1: self.y1 + offset,
+    //             x2: self.x2,
+    //             y2: self.y2 + offset,
+    //             orientation: self.orientation.to_string(),
+    //         }),
+    //
+    //         _ => None,
+    //     }
+    // }
 }

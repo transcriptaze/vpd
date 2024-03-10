@@ -2,28 +2,29 @@ mod command;
 mod commands;
 mod module;
 mod panel;
+mod stack;
 mod svg;
 mod utils;
 mod vcv;
 
-use wasm_bindgen::prelude::*;
+use std::io::Write;
+use std::sync::Mutex;
 
-use crate::utils::log;
+use flate2::write::GzEncoder;
+use flate2::Compression;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use serde;
 use serde_wasm_bindgen;
-use std::sync::Mutex;
 
+use wasm_bindgen::prelude::*;
+
+use crate::utils::log;
 use svg::PrettyPrinter;
 
-#[wasm_bindgen(raw_module = "../../javascript/api.js")]
-extern "C" {
-    fn push(src: &str, module: &str);
-}
-
 pub struct State {
-    pub module: module::Module,
+    module: module::Module,
+    stack: stack::Stack,
 }
 
 #[derive(serde::Serialize)]
@@ -35,6 +36,7 @@ struct Serialized {
 static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     Mutex::new(State {
         module: module::new(),
+        stack: stack::new(),
     })
 });
 
@@ -56,24 +58,28 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
     match command::parse(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
-            let module = &mut state.module;
 
-            if let Some(err) = cmd.validate(module) {
+            if let Some(err) = cmd.validate(&mut state.module) {
                 return Err(JsValue::from(format!("{}", err)));
             }
 
             if let Some(src) = &cmd.src {
-                let before = serde_json::to_string(&module).unwrap();
+                let blob = serde_json::to_string(&state.module).unwrap();
+                let mut gzip = GzEncoder::new(Vec::new(), Compression::default());
 
-                push(src.as_str(), &before)
+                gzip.write_all(blob.as_bytes()).unwrap();
+
+                let bytes = gzip.finish().unwrap();
+
+                state.stack.push(src, &bytes)
             }
 
-            if cmd.apply(module) {
-                let info = module.info();
+            if cmd.apply(&mut state.module) {
+                let info = state.module.info();
                 let object = serde_json::to_string(&info).unwrap();
                 set("module", &object);
 
-                let serialized = serde_json::to_string(&module).unwrap();
+                let serialized = serde_json::to_string(&state.module).unwrap();
 
                 Ok(serialized)
             } else {
@@ -84,6 +90,9 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
         Err(e) => Err(JsValue::from(format!("{}", e))),
     }
 }
+
+#[wasm_bindgen]
+pub fn undo() {}
 
 #[wasm_bindgen]
 pub fn serialize(object: &str) -> Result<JsValue, JsValue> {

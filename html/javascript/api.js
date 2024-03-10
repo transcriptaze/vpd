@@ -1,9 +1,6 @@
 export { load, unload, save, list } from './fs.js'
 export { text2path } from './text.js'
 
-export function push (src, project) {
-}
-
 export function set (tag, json) {
   try {
     const object = JSON.parse(json)

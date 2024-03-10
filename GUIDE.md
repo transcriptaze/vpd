@@ -1350,7 +1350,7 @@ _Command options:_
 
 _Notes:_
 1. The font name is the file name without the extensions.
-2. Browser local storage is typically limited to around 10MB - or about 20 fonts (depending on the file size)
+2. Browser local storage is typically limited to around 5MB - or about 10 fonts (depending on the file size)
 
 _Examples:_
 ```

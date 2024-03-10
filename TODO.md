@@ -24,8 +24,17 @@
 - [ ] Docker container
       - [ ] github
 
+### Fonts
+    - [ ] `clear fonts`
+    - [ ] store fonts to OPFS/IndexDB
+
 ### _undo_
-    - [ ] push cmd + project
+    - [x] push cmd + project
+    - [ ] enable undo if pop'able
+    - [ ] pop
+    - [ ] serialize to IndexDB
+    - [ ] `trash` clears undo stack
+    - (?) store current project to OPFS
 
 ### Help
 - [ ] Replace help with hints
@@ -63,15 +72,15 @@
 
 ### TO BE DONE
 
+- [ ] CLI
+- [ ] Custom helper.py to merge updates
 - [ ] 'approximate' name matching
-
 - [ ] Better error messaging
       - https://ishadeed.com/article/css-has-guide/
 
 - [ ] API
       - Go REST API
 
-- [ ] Custom helper.py to merge updates
 - [ ] Loadable header file template
 - [ ] tab-complete
 - [ ] Robust JSON deserialization 
