@@ -841,6 +841,94 @@ set label 'lorem' xy v1+10mm,h2+10mm
         (offset)))))
 
 
+============================
+set label lorem x (input in)
+============================
+set label lorem x (input in)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x
+      (input
+        (name)))))
+
+
+==================================
+set label lorem x (input in +10mm)
+==================================
+set label lorem x (input in +10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (x
+      (input
+        (name)
+        (offset)))))
+
+
+============================
+set label lorem y (input in)
+============================
+set label lorem y (input in)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y
+      (input
+        (name)))))
+
+
+==================================
+set label lorem y (input in +10mm)
+==================================
+set label lorem y (input in +10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (y
+      (input
+        (name)
+        (offset)))))
+
+=============================
+set label lorem xy (input in)
+=============================
+set label lorem xy (input in)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (input
+        (name)))))
+
+=========================================
+set label lorem xy (input in +10mm,+10mm)
+=========================================
+set label lorem xy (input in +10mm,+10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (input
+        (name)
+        (x
+          (offset))
+        (y
+          (offset))))))
+
+
 ==================================
 set label 'lorem' font 'ComicSans'
 ==================================

@@ -59,13 +59,10 @@
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
 
-- [x] _widget_
-      - [x] `set widget 'channels' xy (input 'freq' +10mm,-20mm)`
-      - [x] `set widget 'channels' x (input 'freq' +10mm)`
-      - [x] `set widget 'channels' y (input 'freq' +20mm)`
-
-- [ ] _label_
-      - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
+- [x] _label_
+      - [x] `set label l1 xy (input in +10mm,-20mm)`
+      - [x] `set label l1 xy (input in +10mm)`
+      - [x] `set label l1 xy (input in -20mm)`
 
 - [ ] _decorate_
       - [ ] Export decorations in SVG component group

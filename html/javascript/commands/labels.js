@@ -197,6 +197,22 @@ export function setLabel (node, src) {
         if (v.type === 'offset') {
           object.label.x.offset = mm(v)
         }
+
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          object.label.x = {
+            offset: 0
+          }
+
+          for (const u of v.namedChildren) {
+            if (u.type === 'name') {
+              object.label.x.reference = `${v.type}<${identifier(u)}>`
+            }
+
+            if (u.type === 'offset') {
+              object.label.x.offset = mm(u)
+            }
+          }
+        }
       }
     }
 
@@ -217,6 +233,22 @@ export function setLabel (node, src) {
 
         if (v.type === 'offset') {
           object.label.y.offset = mm(v)
+        }
+
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          object.label.y = {
+            offset: 0
+          }
+
+          for (const u of v.namedChildren) {
+            if (u.type === 'name') {
+              object.label.y.reference = `${v.type}<${identifier(u)}>`
+            }
+
+            if (u.type === 'offset') {
+              object.label.y.offset = mm(u)
+            }
+          }
         }
       }
     }
@@ -258,6 +290,31 @@ export function setLabel (node, src) {
 
             if (u.type === 'offset') {
               object.label.y.offset = mm(v)
+            }
+          }
+        }
+
+        if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
+          object.label.x = {
+            offset: 0
+          }
+
+          object.label.y = {
+            offset: 0
+          }
+
+          for (const u of v.namedChildren) {
+            if (u.type === 'name') {
+              object.label.x.reference = `${v.type}<${identifier(u)}>`
+              object.label.y.reference = `${v.type}<${identifier(u)}>`
+            }
+
+            if (u.type === 'x') {
+              object.label.x.offset = mm(u)
+            }
+
+            if (u.type === 'y') {
+              object.label.y.offset = mm(u)
             }
           }
         }
