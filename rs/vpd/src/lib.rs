@@ -1,17 +1,14 @@
 mod command;
 mod commands;
+mod history;
 mod module;
 mod panel;
-mod stack;
 mod svg;
 mod utils;
 mod vcv;
 
-use std::io::Write;
 use std::sync::Mutex;
 
-use flate2::write::GzEncoder;
-use flate2::Compression;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use serde;
@@ -24,7 +21,7 @@ use svg::PrettyPrinter;
 
 pub struct State {
     module: module::Module,
-    stack: stack::Stack,
+    history: history::History,
 }
 
 #[derive(serde::Serialize)]
@@ -36,13 +33,14 @@ struct Serialized {
 static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     Mutex::new(State {
         module: module::new(),
-        stack: stack::new(),
+        history: history::new(),
     })
 });
 
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
     fn set(tag: &str, object: &str);
+    fn stash(tag: &str, blob: &str);
 }
 
 #[wasm_bindgen(start)]
@@ -65,13 +63,8 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
 
             if let Some(src) = &cmd.src {
                 let blob = serde_json::to_string(&state.module).unwrap();
-                let mut gzip = GzEncoder::new(Vec::new(), Compression::default());
 
-                gzip.write_all(blob.as_bytes()).unwrap();
-
-                let bytes = gzip.finish().unwrap();
-
-                state.stack.push(src, &bytes)
+                state.history.push(src, &blob)
             }
 
             if cmd.apply(&mut state.module) {
@@ -92,7 +85,32 @@ pub fn exec(json: &str) -> Result<String, JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn undo() {}
+pub fn undo() -> Result<bool, JsValue> {
+    let mut state = STATE.lock().unwrap();
+
+    if let Some(v) = state.history.pop() {
+        let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(&v.1);
+
+        match rs {
+            Ok(m) => {
+                state.module = m;
+
+                let serialized = serde_json::to_string(&state.module).unwrap();
+                let info = state.module.info();
+                let object = serde_json::to_string(&info).unwrap();
+
+                stash("project", &serialized);
+                set("module", &object);
+
+                Ok(true)
+            }
+
+            Err(e) => Err(JsValue::from(format!("{}", e))),
+        }
+    } else {
+        Ok(false)
+    }
+}
 
 #[wasm_bindgen]
 pub fn serialize(object: &str) -> Result<JsValue, JsValue> {

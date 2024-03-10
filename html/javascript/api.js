@@ -1,3 +1,5 @@
+import * as db from './db.js'
+
 export { load, unload, save, list } from './fs.js'
 export { text2path } from './text.js'
 
@@ -11,6 +13,18 @@ export function set (tag, json) {
     }
   } catch (e) {
     console.error(`${e}`)
+  }
+}
+
+export function stash (tag, blob) {
+  const trash = document.querySelector('#trash')
+
+  if (tag === 'project') {
+    db.storeProject(blob)
+
+    if (blob !== '') {
+      trash.disabled = false
+    }
   }
 }
 

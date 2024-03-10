@@ -25,16 +25,18 @@
       - [ ] github
 
 ### Fonts
-    - [ ] `clear fonts`
-    - [ ] store fonts to OPFS/IndexDB
+   - [ ] `clear fonts`
+   - [ ] store fonts to OPFS/IndexDB
 
 ### _undo_
-    - [x] push cmd + project
-    - [ ] enable undo if pop'able
-    - [ ] pop
-    - [ ] serialize to IndexDB
-    - [ ] `trash` clears undo stack
-    - (?) store current project to OPFS
+   - [x] push cmd + project
+   - [x] pop
+   - [ ] invoke stash from exec
+   - [ ] enable/disable undo
+   - [ ] enable/disable trash (empty project + empty stack)
+   - [ ] serialize to IndexDB
+   - [ ] `trash` also clears undo stack
+   - (?) store current project to OPFS
 
 ### Help
 - [ ] Replace help with hints

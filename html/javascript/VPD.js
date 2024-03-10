@@ -3,7 +3,7 @@ import * as text from './text.js'
 import * as command from './command.js'
 import * as fs from './fs.js'
 import * as db from './db.js'
-import { exec, render, serialize, clear, restore, query } from '../wasm/vpd/vpd.js'
+import { exec, undo, render, serialize, clear, restore, query } from '../wasm/vpd/vpd.js'
 
 export async function initialise (parser) {
   await command.init(parser, '../wasm/grammars/tree-sitter-command.wasm')
@@ -152,6 +152,16 @@ export async function onExport (item) {
   } catch (err) {
     console.error(err)
     onError(err)
+  }
+}
+
+export function onUndo () {
+  try {
+    if (undo()) {
+      redraw()
+    }
+  } catch (err) {
+    console.error(err)
   }
 }
 
