@@ -20,7 +20,7 @@ describe('label command translation', () => {
         x: {
           reference: 'input<in>',
           offset: 10
-        },
+        }
       }
     }
 

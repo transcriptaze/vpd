@@ -1,4 +1,4 @@
-import { identifier, string,reference, offset, mm } from './commands.js'
+import { identifier, string, reference, offset, mm } from './commands.js'
 import * as db from '../db.js'
 
 export function decorate (component, node, src) {
@@ -82,11 +82,11 @@ export function newDecoration (node, src) {
     decoration: {
       x: {
         reference: 'origin',
-        offset: 0,
+        offset: 0
       },
       y: {
         reference: 'origin',
-        offset: 0,
+        offset: 0
       },
       scale: 1.0,
       stretch: {
@@ -105,7 +105,7 @@ export function newDecoration (node, src) {
             offset: mm(v)
           }
         }
-    
+
         if (v.type === 'y') {
           object.decoration.y = {
             reference: 'absolute',

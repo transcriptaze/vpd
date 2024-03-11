@@ -18,7 +18,7 @@ describe('decoration command translation', () => {
       decoration: {
         x: {
           reference: 'input<in>',
-          offset: 10,
+          offset: 10
         },
         y: {
           reference: 'input<in>',
@@ -44,7 +44,7 @@ describe('decoration command translation', () => {
       decoration: {
         x: {
           reference: 'absolute',
-          offset: 10,
+          offset: 10
         },
         y: {
           reference: 'absolute',
@@ -70,7 +70,7 @@ describe('decoration command translation', () => {
       decoration: {
         x: {
           reference: 'origin',
-          offset: 10,
+          offset: 10
         },
         y: {
           reference: 'origin',
@@ -96,7 +96,7 @@ describe('decoration command translation', () => {
       decoration: {
         x: {
           reference: 'v1',
-          offset: 10,
+          offset: 10
         },
         y: {
           reference: 'h1',
@@ -114,7 +114,6 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-
   it('decorate left+10mm,bottom-12.5mm with CircularGraduations (scale 0.9) (stretch 1.25,1.5)', () => {
     const cmd = command.parse('decorate left+10mm,bottom-12.5mm with CircularGraduations (scale 0.9) (stretch 1.25,1.5)')
     const expected = {
@@ -123,7 +122,7 @@ describe('decoration command translation', () => {
       decoration: {
         x: {
           reference: 'left',
-          offset: 10,
+          offset: 10
         },
         y: {
           reference: 'bottom',
@@ -140,5 +139,4 @@ describe('decoration command translation', () => {
 
     expect(cmd).to.eql(expected)
   })
-
 })
