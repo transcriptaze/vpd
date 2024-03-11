@@ -33,7 +33,7 @@
    - [x] pop
    - [x] invoke stash from exec
    - [x] restore command
-   - [ ] limit history size
+   - [x] limit history size
    - [ ] enable/disable undo
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc

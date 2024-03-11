@@ -1,0 +1,313 @@
+=================================================
+new decoration (input "in") "CircularGraduations"
+=================================================
+new decoration (input "in") "CircularGraduations"
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)))))
+
+=============================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5)
+=============================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5)
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)
+        (scale)))))
+
+===================================================================
+new decoration (input "in") "CircularGraduations" (stretch 1.5,2.5)
+===================================================================
+new decoration (input "in") "CircularGraduations" (stretch 1.5,2.5)
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)
+        (stretch
+          (x)
+          (y))))))
+
+===============================================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5) (stretch 1.5,2.5)
+===============================================================================
+new decoration (input "in") "CircularGraduations" (scale 1.5) (stretch 1.5,2.5)
+---
+(command
+  (new
+    (decoration
+      (input
+        (name))
+      (decoration
+        (name)
+        (scale)
+        (stretch
+          (x)
+          (y))))))
+
+================================================
+decorate (input "in") with "CircularGraduations"
+================================================
+decorate (input "in") with "CircularGraduations"
+---
+(command
+  (decorate
+    (input
+      (name))
+    (decoration
+      (name))))
+
+
+================================================================
+decorate (input "in" +5.08mm,-5.08mm) with "CircularGraduations"
+================================================================
+decorate (input "in" +5.08mm,-5.08mm) with "CircularGraduations"
+---
+(command
+  (decorate
+    (input
+      (name)
+      (dx)
+      (dy))
+    (decoration
+      (name))))
+
+
+============================================================
+decorate (input "in") with "CircularGraduations" (scale 1.5)
+============================================================
+decorate (input "in") with "CircularGraduations" (scale 1.5)
+---
+(command
+  (decorate
+    (input
+      (name))
+    (decoration
+      (name)
+      (scale))))
+
+
+==================================================================
+decorate (input "in") with "CircularGraduations" (stretch 1.5,2.5)
+==================================================================
+decorate (input "in") with "CircularGraduations" (stretch 1.5,2.5)
+---
+(command
+  (decorate
+    (input
+      (name))
+    (decoration
+      (name)
+      (stretch
+        (x)
+        (y)))))
+
+
+==============================================
+decorate @10mm,10mm with "CircularGraduations"
+==============================================
+decorate @10mm,10mm with "CircularGraduations"
+---
+(command
+  (decorate
+    (absolute
+      (x)
+      (y))
+    (decoration
+      (name))))
+
+
+=============================================
+decorate 10mm,10mm with "CircularGraduations"
+=============================================
+decorate 10mm,10mm with "CircularGraduations"
+---
+(command
+  (decorate
+    (relative
+      (x)
+      (y))
+    (decoration
+      (name))))
+
+
+=========================================
+decorate v1,h1 with "CircularGraduations"
+=========================================
+decorate v1,h1 with "CircularGraduations"
+---
+(command
+  (decorate
+    (x
+      (reference))
+    (y
+      (reference))
+    (decoration
+      (name))))
+
+
+============================================
+decorate left,top with "CircularGraduations"
+============================================
+decorate left,top with "CircularGraduations"
+---
+(command
+  (decorate
+    (x
+      (reference))
+    (y
+      (reference))
+    (decoration
+      (name))))
+
+
+====================
+delete decoration d1
+====================
+delete decoration d1
+---
+(command
+  (delete
+    (decoration
+      (identifier))))
+
+
+==================================================
+delete decoration (input 'in') CircularGraduations
+==================================================
+delete decoration (input 'in') CircularGraduations
+---
+(command
+  (delete
+    (decoration
+      (input
+        (identifier))
+      (name))))
+
+
+=======================================================
+set decoration (input 'in') CircularGraduations x +10mm
+=======================================================
+set decoration (input 'in') CircularGraduations x +10mm
+---
+(command
+  (set
+    (decoration
+      (input
+        (identifier))
+      (name))
+      (x
+        (offset))))
+
+
+=======================================================
+set decoration (input 'in') CircularGraduations y +10mm
+=======================================================
+set decoration (input 'in') CircularGraduations y +10mm
+---
+(command
+  (set
+    (decoration
+      (input
+        (identifier))
+      (name))
+    (y
+      (offset))))
+
+
+==============================================================
+set decoration (input 'in') CircularGraduations xy +10mm,-10mm
+==============================================================
+set decoration (input 'in') CircularGraduations xy +10mm,-10mm
+---
+(command
+  (set
+    (decoration
+      (input
+        (identifier))
+      (name))
+      (x
+        (offset))
+      (y
+        (offset))))
+
+
+=========================
+set decoration d1 x +10mm
+=========================
+set decoration d1 x +10mm
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (x
+      (offset))))
+
+
+=========================
+set decoration d1 y -10mm
+=========================
+set decoration d1 y -10mm
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (y
+      (offset))))
+
+
+================================
+set decoration d1 xy +10mm,-10mm
+================================
+set decoration d1 xy +10mm,-10mm
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (x
+      (offset))
+    (y
+      (offset))))
+
+
+===================================
+set decoration d1 (stretch 1.1,0.9)
+===================================
+set decoration d1 (stretch 1.1,0.9)
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (stretch
+      (x)
+      (y))))
+
+
+=============================
+set decoration d1 (scale 0.5)
+=============================
+set decoration d1 (scale 0.5)
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (scale)))
+

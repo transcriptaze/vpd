@@ -1,8 +1,12 @@
+use std::collections::VecDeque;
+
 use super::serde::{Deserialize, Serialize};
+
+const MAX_HISTORY: usize = 64;
 
 #[derive(Serialize, Deserialize)]
 pub struct History {
-    stack: Vec<Item>,
+    stack: VecDeque<Item>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -12,16 +16,22 @@ pub struct Item {
 }
 
 pub fn new() -> History {
-    History { stack: vec![] }
+    History {
+        stack: vec![].into(),
+    }
 }
 
 impl History {
     pub fn push(&mut self, cmd: &str, blob: &str) {
-        self.stack.push(Item::new(cmd, blob));
+        self.stack.push_front(Item::new(cmd, blob));
+
+        while self.stack.len() > MAX_HISTORY {
+            self.stack.pop_back();
+        }
     }
 
     pub fn pop(&mut self) -> Option<(String, String)> {
-        if let Some(v) = self.stack.pop() {
+        if let Some(v) = self.stack.pop_front() {
             Some((v.cmd, v.blob))
         } else {
             None
