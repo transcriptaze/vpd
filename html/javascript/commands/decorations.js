@@ -1,4 +1,4 @@
-import { identifier, string, offset } from './commands.js'
+import { identifier, string,reference, offset, mm } from './commands.js'
 import * as db from '../db.js'
 
 export function decorate (component, node, src) {
@@ -80,9 +80,13 @@ export function newDecoration (node, src) {
     src: `${src}`,
     action: 'new',
     decoration: {
-      offset: {
-        x: 0.0,
-        y: 0.0
+      x: {
+        reference: 'origin',
+        offset: 0,
+      },
+      y: {
+        reference: 'origin',
+        offset: 0,
       },
       scale: 1.0,
       stretch: {
@@ -93,23 +97,74 @@ export function newDecoration (node, src) {
   }
 
   for (const child of node.namedChildren) {
+    if (child.type === 'absolute') {
+      for (const v of child.namedChildren) {
+        if (v.type === 'x') {
+          object.decoration.x = {
+            reference: 'absolute',
+            offset: mm(v)
+          }
+        }
+    
+        if (v.type === 'y') {
+          object.decoration.y = {
+            reference: 'absolute',
+            offset: mm(v)
+          }
+        }
+      }
+    }
+
+    if (child.type === 'relative') {
+      for (const v of child.namedChildren) {
+        if (v.type === 'x') {
+          object.decoration.x = {
+            reference: 'origin',
+            offset: mm(v)
+          }
+        }
+
+        if (v.type === 'y') {
+          object.decoration.y = {
+            reference: 'origin',
+            offset: mm(v)
+          }
+        }
+      }
+    }
+
+    if (child.type === 'x') {
+      object.decoration.x = {
+        reference: reference(child),
+        offset: offset(child)
+      }
+    }
+
+    if (child.type === 'y') {
+      object.decoration.y = {
+        reference: reference(child),
+        offset: offset(child)
+      }
+    }
+
     if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
       for (const attr of child.namedChildren) {
         if (attr.type === 'name') {
-          object.decoration.reference = `${child.type}<${string(attr)}>`
+          object.decoration.x.reference = `${child.type}<${string(attr)}>`
+          object.decoration.y.reference = `${child.type}<${string(attr)}>`
         }
 
         if (attr.type === 'dx') {
           const v = parseFloat(attr.text)
           if (!Number.isNaN(v)) {
-            object.decoration.offset.x = v
+            object.decoration.x.offset = v
           }
         }
 
         if (attr.type === 'dy') {
           const v = parseFloat(attr.text)
           if (!Number.isNaN(v)) {
-            object.decoration.offset.y = v
+            object.decoration.y.offset = v
           }
         }
       }

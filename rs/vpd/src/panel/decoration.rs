@@ -9,7 +9,6 @@ use crate::panel::Y;
 pub struct Decoration {
     pub id: String,
     pub name: String,
-    pub component: String,
     pub x: X,
     pub y: Y,
     pub scale: f32,
@@ -23,24 +22,23 @@ pub struct Stretch {
 }
 
 impl Decoration {
-    pub fn new(
-        id: &str,
-        name: &str,
-        component: &str,
-        x: &X,
-        y: &Y,
-        scale: f32,
-        stretch: &Stretch,
-    ) -> Decoration {
+    pub fn new(id: &str, name: &str, x: &X, y: &Y, scale: f32, stretch: &Stretch) -> Decoration {
         Decoration {
             id: id.to_string(),
             name: name.to_string(),
-            component: component.to_string(),
             x: x.clone(),
             y: y.clone(),
             scale: scale,
             stretch: stretch.clone(),
         }
+    }
+
+    pub fn is(&self, name: &str) -> bool {
+        return self.name.trim().to_lowercase() == name;
+    }
+
+    pub fn decorates(&self, component: &str) -> bool {
+        return self.x.reference == component || self.y.reference == component;
     }
 
     pub fn matches(&self, reference: &str, name: &str) -> bool {

@@ -55,21 +55,19 @@
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
 - [ ] Genericize ID generation
+- [ ] `new module` doesn't clear script
 
 - [ ] _guidelines_
       - [ ] `set guide v1 (input in +10mm)`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
 
-- [ ] _label_
-      - [x] `set label l1 xy (input in +10mm,-20mm)`
-      - [x] `set label l1 xy (input in +10mm)`
-      - [x] `set label l1 xy (input in -20mm)`
-      - [ ] Regularise grammar to be similar to component
-
 - [ ] _decorate_
+      - [x] `decorate <xy> ...`
+      - [ ] `set decoration d1 xy (input in +10mm,-20mm)`
+      - [ ] `set decoration d1 x (input in +10mm)`
+      - [ ] `set decoration d1 x (input in -20mm)`
       - [ ] Export decorations in SVG component group
-      - (?) `decorate <xy> ...`
 
 
 ### TO BE DONE

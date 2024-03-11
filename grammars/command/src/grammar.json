@@ -274,6 +274,44 @@
         }
       ]
     },
+    "_new_decoration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "decoration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_new_xy"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decoration"
+        }
+      ]
+    },
+    "decorate": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "decorate"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_new_xy"
+        },
+        {
+          "type": "STRING",
+          "value": "with"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decoration"
+        }
+      ]
+    },
     "_new_xy": {
       "type": "CHOICE",
       "members": [
@@ -1750,152 +1788,6 @@
               "type": "BLANK"
             }
           ]
-        }
-      ]
-    },
-    "_new_decoration": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "decoration"
-        },
-        {
-          "type": "STRING",
-          "value": "("
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_input"
-              },
-              "named": true,
-              "value": "input"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_output"
-              },
-              "named": true,
-              "value": "output"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_parameter"
-              },
-              "named": true,
-              "value": "parameter"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_light"
-              },
-              "named": true,
-              "value": "light"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_widget"
-              },
-              "named": true,
-              "value": "widget"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ")"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "decoration"
-        }
-      ]
-    },
-    "decorate": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "decorate"
-        },
-        {
-          "type": "STRING",
-          "value": "("
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_input"
-              },
-              "named": true,
-              "value": "input"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_output"
-              },
-              "named": true,
-              "value": "output"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_parameter"
-              },
-              "named": true,
-              "value": "parameter"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_light"
-              },
-              "named": true,
-              "value": "light"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_widget"
-              },
-              "named": true,
-              "value": "widget"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ")"
-        },
-        {
-          "type": "STRING",
-          "value": "with"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "decoration"
         }
       ]
     },

@@ -491,7 +491,7 @@ impl Module {
                     .panel
                     .decorations
                     .iter()
-                    .position(|v| v.component == c && v.name.trim().to_lowercase() == n);
+                    .position(|v| v.decorates(c) && v.is(&n));
             }
             _ => None,
         }

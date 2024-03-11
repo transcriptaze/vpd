@@ -10,6 +10,40 @@ before(async function () {
 })
 
 describe('label command translation', () => {
+  it('set label lorem x (input in +10mm)', () => {
+    const cmd = command.parse('set label lorem x (input in +10mm)')
+    const expected = {
+      src: 'set label lorem x (input in +10mm)',
+      action: 'set',
+      label: {
+        id: 'lorem',
+        x: {
+          reference: 'input<in>',
+          offset: 10
+        },
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set label lorem y (input in +12.5mm)', () => {
+    const cmd = command.parse('set label lorem y (input in +12.5mm)')
+    const expected = {
+      src: 'set label lorem y (input in +12.5mm)',
+      action: 'set',
+      label: {
+        id: 'lorem',
+        y: {
+          reference: 'input<in>',
+          offset: 12.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('set label lorem xy (input in +10mm,+12.5mm)', () => {
     const cmd = command.parse('set label lorem xy (input in +10mm,+12.5mm)')
     const expected = {

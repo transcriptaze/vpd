@@ -74,6 +74,19 @@ module.exports = grammar({
       optional($.part),
     ),
 
+    _new_decoration: $ => seq(
+      'decoration',
+      $._new_xy,
+      $.decoration,
+    ),
+
+    decorate: $ => seq(
+      'decorate',
+      $._new_xy,
+      'with',
+      $.decoration,
+    ),
+
     _new_xy: $ => choice (
       $.absolute,
       $.relative,
@@ -336,36 +349,6 @@ module.exports = grammar({
       optional(
         $._offset_xy_attr,
       ),
-    ),
-
-    // ... decorate
-    _new_decoration: $ => seq(
-      'decoration',
-      '(',
-      choice (
-        alias ($._input,     $.input),
-        alias ($._output,    $.output),
-        alias ($._parameter, $.parameter),
-        alias ($._light,     $.light),
-        alias ($._widget,    $.widget),
-      ),
-      ')',
-      $.decoration,
-    ),
-
-    decorate: $ => seq(
-      'decorate',
-      '(',
-      choice (
-        alias ($._input,     $.input),
-        alias ($._output,    $.output),
-        alias ($._parameter, $.parameter),
-        alias ($._light,     $.light),
-        alias ($._widget,    $.widget),
-      ),
-      ')',
-      'with',
-      $.decoration,
     ),
 
     // ... delete

@@ -124,6 +124,10 @@
       "required": true,
       "types": [
         {
+          "type": "absolute",
+          "named": true
+        },
+        {
           "type": "decoration",
           "named": true
         },
@@ -160,7 +164,19 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "widget",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -174,6 +190,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
         {
           "type": "decoration",
           "named": true
@@ -203,6 +223,10 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "scale",
           "named": true
         },
@@ -212,6 +236,14 @@
         },
         {
           "type": "widget",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -1513,11 +1545,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "helper",
@@ -1633,11 +1665,11 @@
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "script",
@@ -1697,11 +1729,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",
