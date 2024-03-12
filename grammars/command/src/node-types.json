@@ -1496,11 +1496,15 @@
     "named": true
   },
   {
-    "type": "decorate",
+    "type": "decorate ",
     "named": false
   },
   {
     "type": "decoration",
+    "named": false
+  },
+  {
+    "type": "decoration ",
     "named": false
   },
   {
@@ -1604,11 +1608,15 @@
     "named": false
   },
   {
+    "type": "module ",
+    "named": false
+  },
+  {
     "type": "name",
     "named": false
   },
   {
-    "type": "new",
+    "type": "new ",
     "named": false
   },
   {
@@ -1665,11 +1673,11 @@
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "script",
@@ -1729,11 +1737,11 @@
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "with",

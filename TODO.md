@@ -64,9 +64,12 @@
 
 - [ ] _decorate_
       - [x] `decorate <xy> ...`
-      - [ ] `set decoration d1 xy (input in +10mm,-20mm)`
-      - [ ] `set decoration d1 x (input in +10mm)`
-      - [ ] `set decoration d1 x (input in -20mm)`
+      - [x] `set decoration d1 (input in +10mm,-20mm)`
+      - [ ] `set decoration d1 x @10mm`
+      - [ ] `set decoration d1 x origin+10mm`
+      - [ ] `set decoration d1 x v1+10mm`
+      - [ ] `set decoration d1 x left+10mm`
+      - (?) Change `set ... x ..` to `set .. dx ..`
       - [ ] Export decorations in SVG component group
 
 

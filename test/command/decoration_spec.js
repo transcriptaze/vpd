@@ -139,4 +139,91 @@ describe('decoration command translation', () => {
 
     expect(cmd).to.eql(expected)
   })
+
+  it.only('set decoration d1 (output out)', () => {
+    const cmd = command.parse('set decoration d1 (output out)')
+    const expected = {
+      src: 'set decoration d1 (output out)',
+      action: 'set',
+      decoration: {
+        id: 'd1',
+        x: {
+          reference: 'output<out>',
+          offset: 0
+        },
+        y: {
+          reference: 'output<out>',
+          offset: 0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it.only('set decoration d1 (output out +10mm,+12.5mm)', () => {
+    const cmd = command.parse('set decoration d1 (output out +10mm,+12.5mm)')
+    const expected = {
+      src: 'set decoration d1 (output out +10mm,+12.5mm)',
+      action: 'set',
+      decoration: {
+        id: 'd1',
+        x: {
+          reference: 'output<out>',
+          offset: 10
+        },
+        y: {
+          reference: 'output<out>',
+          offset: 12.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+
+  it.only('set decoration (input in) CircularGraduations (output out)', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations (output out)')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations (output out)',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          reference: 'output<out>',
+          offset: 0
+        },
+        y: {
+          reference: 'output<out>',
+          offset: 0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it.only('set decoration (input in) CircularGraduations (output out +10mm,+12.5mm)', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations (output out +10mm,+12.5mm)')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations (output out +10mm,+12.5mm)',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          reference: 'output<out>',
+          offset: 10
+        },
+        y: {
+          reference: 'output<out>',
+          offset: 12.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
 })

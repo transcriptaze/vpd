@@ -261,6 +261,31 @@ export function setDecoration (node, src) {
   }
 
   for (const child of node.parent.namedChildren) {
+    if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
+      object.decoration.x = {
+        offset: 0
+      }
+
+      object.decoration.y = {
+        offset: 0
+      }
+
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'name') {
+            object.decoration.x.reference = `${child.type}<${identifier(attr)}>`
+            object.decoration.y.reference = `${child.type}<${identifier(attr)}>`
+        }
+
+        if (attr.type === 'dx') {
+          object.decoration.x.offset = mm(attr)
+        }
+
+        if (attr.type === 'dy') {
+          object.decoration.y.offset = mm(attr)
+        }
+      }
+    }
+
     if (child.type === 'x') {
       object.decoration.x = {
         offset: offset(child)
