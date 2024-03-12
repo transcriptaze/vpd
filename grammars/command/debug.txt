@@ -1,1 +1,1 @@
-set input audio xy (parameter volume)
+set decoration (input in) CircularGraduations (output out)

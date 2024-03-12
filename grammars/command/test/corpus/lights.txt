@@ -289,6 +289,22 @@ new light "on" (parameter X1 +10mm,-10mm) LED
       (part))))
 
 
+=============================================
+new light "on" (parameter X1 +10mm,+10mm) LED
+=============================================
+new light "on" (parameter X1 +10mm,+10mm) LED
+---
+(command
+  (new
+    (light
+      (name)
+      (parameter
+        (name)
+        (dx)
+        (dy))
+      (part))))
+
+
 ===============
 delete light l1
 ===============
@@ -546,6 +562,94 @@ set light 'recording' xy v1+10mm,h2+10mm
       (y
         (reference)
         (offset)))))
+
+
+========================================
+set light recording x (parameter volume)
+========================================
+set light recording x (parameter volume)
+---
+(command
+  (set
+    (light
+      (identifier))
+    (x
+      (parameter
+        (name)))))
+
+
+=============================================
+set light recording x (parameter volume +10mm)
+=============================================
+set light recording x (parameter volume +10mm)
+---
+(command
+  (set
+    (light
+      (identifier))
+    (x
+      (parameter
+        (name)
+        (offset)))))
+
+
+========================================
+set light recording y (parameter volume)
+========================================
+set light recording y (parameter volume)
+---
+(command
+  (set
+    (light
+      (identifier))
+    (y
+      (parameter
+        (name)))))
+
+
+==============================================
+set light recording y (parameter volume +10mm)
+==============================================
+set light recording y (parameter volume +10mm)
+---
+(command
+  (set
+    (light
+      (identifier))
+    (y
+      (parameter
+        (name)
+        (offset)))))
+
+=========================================
+set light recording xy (parameter volume)
+=========================================
+set light recording xy (parameter volume)
+---
+(command
+  (set
+    (light
+      (identifier))
+    (xy
+      (parameter
+        (name)))))
+
+=====================================================
+set light recording xy (parameter volume +10mm,+10mm)
+=====================================================
+set light recording xy (parameter volume +10mm,+10mm)
+---
+(command
+  (set
+    (light
+      (identifier))
+    (xy
+      (parameter
+        (name)
+        (x
+          (offset))
+        (y
+          (offset))))))
 
 
 ===================================

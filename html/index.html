@@ -61,8 +61,8 @@
             <button class="script"  onclick="onExport(event,'>>')">&gt;</button>
           </div>
           <div class="undo">
-            <button disabled><img src="./images/undo.svg" /></button>
-            <button disabled><img src="./images/redo.svg" /></button>
+            <button id="undo" onclick="onUndo(event)" disabled><img src="./images/undo.svg" /></button>
+            <button id="redo" onclick="onRedo(event)" disabled><img src="./images/redo.svg" /></button>
           </div>
           <div class="macros">
             <vpd-macro-key id="macro1"  label="1" key="ctrl-1" command='load script'></vpd-macro-key>
@@ -167,6 +167,14 @@
 
     window.onExport = (event, item) => {
       VPD.onExport(item)
+    }
+
+    window.onUndo = (event) => {
+      VPD.onUndo()
+    }
+
+    window.onRedo = (event) => {
+      VPD.onRedo()
     }
 
     window.onTrash = (event) => {

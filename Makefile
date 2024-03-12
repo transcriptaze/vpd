@@ -24,7 +24,7 @@ debug:
 test: build
 	cd grammars/command && make test
 	cd grammars/help    && make test
-#	npm test
+	npm test
 
 build-all: test
 	cd grammars/command && make wasm

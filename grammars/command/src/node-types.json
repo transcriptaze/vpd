@@ -124,6 +124,10 @@
       "required": true,
       "types": [
         {
+          "type": "absolute",
+          "named": true
+        },
+        {
           "type": "decoration",
           "named": true
         },
@@ -160,7 +164,19 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "widget",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -174,6 +190,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "absolute",
+          "named": true
+        },
         {
           "type": "decoration",
           "named": true
@@ -203,6 +223,10 @@
           "named": true
         },
         {
+          "type": "relative",
+          "named": true
+        },
+        {
           "type": "scale",
           "named": true
         },
@@ -212,6 +236,14 @@
         },
         {
           "type": "widget",
+          "named": true
+        },
+        {
+          "type": "x",
+          "named": true
+        },
+        {
+          "type": "y",
           "named": true
         }
       ]
@@ -1464,11 +1496,15 @@
     "named": true
   },
   {
-    "type": "decorate",
+    "type": "decorate ",
     "named": false
   },
   {
     "type": "decoration",
+    "named": false
+  },
+  {
+    "type": "decoration ",
     "named": false
   },
   {
@@ -1513,11 +1549,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "helper",
@@ -1572,11 +1608,15 @@
     "named": false
   },
   {
+    "type": "module ",
+    "named": false
+  },
+  {
     "type": "name",
     "named": false
   },
   {
-    "type": "new",
+    "type": "new ",
     "named": false
   },
   {

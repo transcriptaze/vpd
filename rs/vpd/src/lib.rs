@@ -1,29 +1,28 @@
 mod command;
 mod commands;
+mod history;
 mod module;
 mod panel;
 mod svg;
 mod utils;
 mod vcv;
 
-use wasm_bindgen::prelude::*;
+use std::sync::Mutex;
 
-use crate::utils::log;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use serde;
+use serde::Serialize;
 use serde_wasm_bindgen;
-use std::sync::Mutex;
 
+use wasm_bindgen::prelude::*;
+
+use crate::utils::log;
 use svg::PrettyPrinter;
 
-#[wasm_bindgen(raw_module = "../../javascript/api.js")]
-extern "C" {
-    fn push(src: &str, module: &str);
-}
-
 pub struct State {
-    pub module: module::Module,
+    module: module::Module,
+    history: history::History,
 }
 
 #[derive(serde::Serialize)]
@@ -35,12 +34,21 @@ struct Serialized {
 static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
     Mutex::new(State {
         module: module::new(),
+        history: history::new(),
     })
 });
 
+#[derive(Serialize)]
+pub struct Info {
+    pub module: Option<module::Info>,
+    pub history: Option<history::Info>,
+    pub command: Option<String>,
+}
+
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
-    fn set(tag: &str, object: &str);
+    fn set(object: &str);
+    fn stash(tag: &str, blob: &str);
 }
 
 #[wasm_bindgen(start)]
@@ -52,36 +60,75 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(json: &str) -> Result<String, JsValue> {
+pub fn exec(json: &str) -> Result<bool, JsValue> {
     match command::parse(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
-            let module = &mut state.module;
 
-            if let Some(err) = cmd.validate(module) {
+            if let Some(err) = cmd.validate(&mut state.module) {
                 return Err(JsValue::from(format!("{}", err)));
             }
 
             if let Some(src) = &cmd.src {
-                let before = serde_json::to_string(&module).unwrap();
+                let blob = serde_json::to_string(&state.module).unwrap();
 
-                push(src.as_str(), &before)
+                state.history.push(src, &blob)
             }
 
-            if cmd.apply(module) {
-                let info = module.info();
+            if cmd.apply(&mut state.module) {
+                let info = Info {
+                    module: Some(state.module.info()),
+                    history: Some(state.history.info()),
+                    command: None,
+                };
+
+                let serialized = serde_json::to_string(&state.module).unwrap();
                 let object = serde_json::to_string(&info).unwrap();
-                set("module", &object);
 
-                let serialized = serde_json::to_string(&module).unwrap();
+                stash("project", &serialized);
+                set(&object);
 
-                Ok(serialized)
+                Ok(true)
             } else {
-                Ok("".to_string())
+                Ok(false)
             }
         }
 
         Err(e) => Err(JsValue::from(format!("{}", e))),
+    }
+}
+
+#[wasm_bindgen]
+pub fn undo() -> Result<bool, JsValue> {
+    let mut state = STATE.lock().unwrap();
+
+    if let Some(v) = state.history.pop() {
+        let cmd = v.0;
+        let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(&v.1);
+
+        match rs {
+            Ok(m) => {
+                state.module = m;
+
+                let info = Info {
+                    module: Some(state.module.info()),
+                    history: Some(state.history.info()),
+                    command: Some(cmd),
+                };
+
+                let serialized = serde_json::to_string(&state.module).unwrap();
+                let object = serde_json::to_string(&info).unwrap();
+
+                stash("project", &serialized);
+                set(&object);
+
+                Ok(true)
+            }
+
+            Err(e) => Err(JsValue::from(format!("{}", e))),
+        }
+    } else {
+        Ok(false)
     }
 }
 
@@ -211,9 +258,14 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
             let mut state = STATE.lock().unwrap();
             state.module = m;
 
-            let info = state.module.info();
+            let info = Info {
+                module: Some(state.module.info()),
+                history: Some(state.history.info()),
+                command: None,
+            };
+
             let object = serde_json::to_string(&info).unwrap();
-            set("module", &object);
+            set(&object);
 
             Ok(())
         }

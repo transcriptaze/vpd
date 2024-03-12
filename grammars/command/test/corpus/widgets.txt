@@ -231,6 +231,22 @@ new widget "channels" v1+4.5mm,h1-12.5mm "ChInd"
       (part))))
 
 
+=====================================================
+new widget "channels" (input freq +10mm,+10mm) ChInd
+====================================================
+new widget "channels" (input freq +10mm,+10mm) ChInd
+---
+(command
+  (new
+    (widget
+      (name)
+      (input
+        (name)
+        (dx)
+        (dy))
+      (part))))
+
+
 ================
 delete widget w1
 ================
@@ -488,6 +504,93 @@ set widget 'channels' xy v1+10mm,h2+10mm
       (y
         (reference)
         (offset)))))
+
+===================================
+set widget recording x (input freq)
+===================================
+set widget recording x (input freq)
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x
+      (input
+        (name)))))
+
+
+=========================================
+set widget recording x (input freq +10mm)
+=========================================
+set widget recording x (input freq +10mm)
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (x
+      (input
+        (name)
+        (offset)))))
+
+
+===================================
+set widget recording y (input freq)
+===================================
+set widget recording y (input freq)
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y
+      (input
+        (name)))))
+
+
+=========================================
+set widget recording y (input freq +10mm)
+=========================================
+set widget recording y (input freq +10mm)
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (y
+      (input
+        (name)
+        (offset)))))
+
+====================================
+set widget recording xy (input freq)
+====================================
+set widget recording xy (input freq)
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy
+      (input
+        (name)))))
+
+================================================
+set widget recording xy (input freq +10mm,+10mm)
+================================================
+set widget recording xy (input freq +10mm,+10mm)
+---
+(command
+  (set
+    (widget
+      (identifier))
+    (xy
+      (input
+        (name)
+        (x
+          (offset))
+        (y
+          (offset))))))
 
 
 ===================================

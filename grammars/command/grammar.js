@@ -22,7 +22,7 @@ module.exports = grammar({
 
     // ... new
     new: $ => seq(
-      'new',
+      'new ',
       choice(
       alias($._new_module,   $.module),
       alias($._new_input,    $.input),
@@ -37,7 +37,7 @@ module.exports = grammar({
     ),
 
     _new_module: $ => seq(
-      'module',
+      'module ',
       $.name,
       optional(seq($.height, optional(','))),
       $.width,
@@ -72,6 +72,19 @@ module.exports = grammar({
       $.name,
       $._new_xy,
       optional($.part),
+    ),
+
+    _new_decoration: $ => seq(
+      'decoration ',
+      $._new_xy,
+      $.decoration,
+    ),
+
+    decorate: $ => seq(
+      'decorate ',
+      $._new_xy,
+      'with',
+      $.decoration,
     ),
 
     _new_xy: $ => choice (
@@ -153,6 +166,17 @@ module.exports = grammar({
         alias($._decoration_id, $.decoration),
       ),
       choice(
+        seq(
+          '(',
+          choice (
+            alias ($._input,     $.input),
+            alias ($._output,    $.output),
+            alias ($._parameter, $.parameter),
+            alias ($._light,     $.light),
+            alias ($._widget,    $.widget),
+          ),
+          ')',
+        ),
         seq('x',  alias($._offset_attr, $.x)),
         seq('y',  alias($._offset_attr, $.y)),
         seq('xy', $._offset_xy_attr),
@@ -336,36 +360,6 @@ module.exports = grammar({
       optional(
         $._offset_xy_attr,
       ),
-    ),
-
-    // ... decorate
-    _new_decoration: $ => seq(
-      'decoration',
-      '(',
-      choice (
-        alias ($._input,     $.input),
-        alias ($._output,    $.output),
-        alias ($._parameter, $.parameter),
-        alias ($._light,     $.light),
-        alias ($._widget,    $.widget),
-      ),
-      ')',
-      $.decoration,
-    ),
-
-    decorate: $ => seq(
-      'decorate',
-      '(',
-      choice (
-        alias ($._input,     $.input),
-        alias ($._output,    $.output),
-        alias ($._parameter, $.parameter),
-        alias ($._light,     $.light),
-        alias ($._widget,    $.widget),
-      ),
-      ')',
-      'with',
-      $.decoration,
     ),
 
     // ... delete

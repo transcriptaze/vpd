@@ -9,7 +9,7 @@ before(async function () {
   await hints.init(Parser, './html/wasm/grammars/tree-sitter-hint.wasm')
 })
 
-describe("'new module' command hints", () => {
+describe("command hints: 'new module …' ", () => {
   it('new module', function () {
     const list = hints.parse('new module').sort()
     const expected = ['new module <em>&lt;name&gt;</em>'].sort()

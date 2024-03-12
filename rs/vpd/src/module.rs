@@ -37,8 +37,8 @@ pub struct Module {
     pub script: Vec<String>,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct ModuleInfo {
+#[derive(Serialize)]
+pub struct Info {
     pub name: String,
     pub height: f32,
     pub width: f32,
@@ -65,8 +65,8 @@ pub fn new() -> Module {
 }
 
 impl Module {
-    pub fn info(&self) -> ModuleInfo {
-        ModuleInfo {
+    pub fn info(&self) -> Info {
+        Info {
             name: self.name.to_string(),
             height: self.panel.height,
             width: self.panel.width,
@@ -491,7 +491,7 @@ impl Module {
                     .panel
                     .decorations
                     .iter()
-                    .position(|v| v.component == c && v.name.trim().to_lowercase() == n);
+                    .position(|v| v.decorates(c) && v.is(&n));
             }
             _ => None,
         }

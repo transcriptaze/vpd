@@ -9,17 +9,15 @@ before(async function () {
   await hints.init(Parser, './html/wasm/grammars/tree-sitter-hint.wasm')
 })
 
-describe('no command hints', () => {
+describe('command hints', () => {
   it('no text', function () {
     const list = hints.parse('').sort()
     const expected = ['new', 'decorate', 'set', 'delete', 'load', 'unload', 'save', 'export', 'list', 'help'].sort()
 
     expect(list).to.eql(expected)
   })
-})
 
-describe("'new' command hints", () => {
-  it('new', function () {
+  it("command hints: 'new'", function () {
     const list = hints.parse('new').sort()
     const expected = ['new module', 'new input', 'new output', 'new parameter', 'new light', 'new widget', 'new label', 'new decoration', 'new guide'].sort()
 

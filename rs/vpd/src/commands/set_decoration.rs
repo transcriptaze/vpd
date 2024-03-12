@@ -22,6 +22,7 @@ struct Object {
 
 #[derive(Deserialize, Debug)]
 struct Offset {
+    reference: Option<String>,
     offset: f32,
 }
 
@@ -43,10 +44,18 @@ impl Command for SetDecoration {
     fn apply(&self, m: &mut Module) {
         if let Some(ix) = m.find_decoration(&self.id, &self.reference, &self.name) {
             if let Some(x) = &self.x {
+                if let Some(reference) = &x.reference {
+                    m.panel.decorations[ix].x.reference = reference.to_string();
+                }
+
                 m.panel.decorations[ix].x.offset = x.offset;
             }
 
             if let Some(y) = &self.y {
+                if let Some(reference) = &y.reference {
+                    m.panel.decorations[ix].y.reference = reference.to_string();
+                }
+
                 m.panel.decorations[ix].y.offset = y.offset;
             }
 

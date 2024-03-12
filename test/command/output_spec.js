@@ -9,7 +9,7 @@ before(async function () {
   await command.init(Parser, './html/wasm/grammars/tree-sitter-command.wasm')
 })
 
-describe('command translation', () => {
+describe('output command translation', () => {
   it('delete output audio', () => {
     const cmd = command.parse('delete output audio')
     const expected = {

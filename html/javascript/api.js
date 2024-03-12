@@ -1,19 +1,37 @@
+import * as db from './db.js'
+
 export { load, unload, save, list } from './fs.js'
 export { text2path } from './text.js'
 
-export function push (src, project) {
-}
-
-export function set (tag, json) {
+export function set (json) {
   try {
     const object = JSON.parse(json)
-    switch (tag) {
-      case 'module':
-        setModuleInfo(object)
-        break
+
+    if (Object.hasOwn(object, 'module') && object.module != null) {
+      setModuleInfo(object.module)
+    }
+
+    if (Object.hasOwn(object, 'history') && object.history != null) {
+      setHistoryInfo(object.history)
+    }
+
+    if (Object.hasOwn(object, 'command') && object.command != null) {
+      setCommand(object.command)
     }
   } catch (e) {
     console.error(`${e}`)
+  }
+}
+
+export function stash (tag, blob) {
+  const trash = document.querySelector('#trash')
+
+  if (tag === 'project') {
+    db.storeProject(blob)
+
+    if (blob !== '') {
+      trash.disabled = false
+    }
   }
 }
 
@@ -42,4 +60,29 @@ function setModuleInfo (object) {
   } else {
     info.classList.remove('visible')
   }
+}
+
+function setHistoryInfo (object) {
+  const undo = document.querySelector('#undo')
+  const redo = document.querySelector('#redo')
+
+  if (Object.hasOwn(object, 'undo')) {
+    const N = parseInt(`${object.undo}`)
+
+    if (!Number.isNaN(N)) {
+      undo.disabled = !(N > 0)
+    }
+  }
+
+  if (Object.hasOwn(object, 'redo')) {
+    const N = parseInt(`${object.redo}`)
+
+    if (!Number.isNaN(N)) {
+      redo.disabled = !(N > 0)
+    }
+  }
+}
+
+function setCommand (cmd) {
+  document.querySelector('#command').value = `${cmd}`
 }

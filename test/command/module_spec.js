@@ -9,7 +9,7 @@ before(async function () {
   await command.init(Parser, './html/wasm/grammars/tree-sitter-command.wasm')
 })
 
-describe('new module… command translation', () => {
+describe('module command translation', () => {
   it('new module woot 9H', () => {
     const cmd = command.parse('new module woot 9H')
     const expected = {

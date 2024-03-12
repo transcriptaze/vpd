@@ -3,6 +3,11 @@
 - [x] Load project file
       - [ ] web component
 
+- [ ] Bundle with rollup.js
+      - wasm-pack bundler
+      - https://rustwasm.github.io/wasm-bindgen/reference/deployment.html
+      
+
 - [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
 - [ ] `redo`
@@ -19,8 +24,22 @@
 - [ ] Docker container
       - [ ] github
 
+### Fonts
+   - [ ] `clear fonts`
+   - [ ] store fonts to OPFS/IndexDB
+
 ### _undo_
-    - [ ] push cmd + project
+   - [x] push cmd + project
+   - [x] pop
+   - [x] invoke stash from exec
+   - [x] restore command
+   - [x] limit history size
+   - [x] enable/disable undo
+   - [ ] save/restore
+   - [ ] enable/disable trash (empty project + empty stack)
+   - [ ] truncate history on new module, trash, etc
+   - [ ] serialize to IndexDB
+   - (?) store current project to OPFS
 
 ### Help
 - [ ] Replace help with hints
@@ -37,49 +56,41 @@
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
 - [ ] Genericize ID generation
+- [ ] `new module` doesn't clear script
 
 - [ ] _guidelines_
       - [ ] `set guide v1 (input in +10mm)`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
 
-- [x] _parameters_
-      - [x] `set parameter volume xy (input in +10mm,+10mm)`
-      - [x] `set parameter volume x  (input in +10mm)`
-      - [x] `set parameter volume y  (input in +10mm)`
-
-- [ ] _lights_
-      - [ ] `set light 'on' xy (parameter off 0mm,0mm)`
-
-- [ ] _widget_
-      - [ ] `set widget 'channels' xy (light 'on' +10mm,-20mm)`
-
-- [ ] _label_
-      - [ ] `set label l1 xy (widget w1 +10mm,-20mm)`
-
 - [ ] _decorate_
+      - [x] `decorate <xy> ...`
+      - [x] `set decoration d1 (input in +10mm,-20mm)`
+      - [ ] `set decoration d1 x @10mm`
+      - [ ] `set decoration d1 x origin+10mm`
+      - [ ] `set decoration d1 x v1+10mm`
+      - [ ] `set decoration d1 x left+10mm`
+      - (?) Change `set ... x ..` to `set .. dx ..`
       - [ ] Export decorations in SVG component group
-      - (?) `decorate <xy> ...`
 
 
 ### TO BE DONE
 
+- [ ] CLI
+- [ ] Custom helper.py to merge updates
 - [ ] 'approximate' name matching
-
 - [ ] Better error messaging
       - https://ishadeed.com/article/css-has-guide/
 
 - [ ] API
       - Go REST API
 
-- [ ] Custom helper.py to merge updates
 - [ ] Loadable header file template
 - [ ] tab-complete
 - [ ] Robust JSON deserialization 
       - Accomodate missing fields
       - https://stackoverflow.com/questions/64192343/how-to-partially-deserialise-a-json-object
 
-- [ ] Bundle with rollup.js
 - [ ] Standard HTML colour names
 - [ ] Integration tests
       - https://playwright.dev/docs/intro
