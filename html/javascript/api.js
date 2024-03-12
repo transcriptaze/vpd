@@ -11,6 +11,10 @@ export function set (json) {
       setModuleInfo(object.module)
     }
 
+    if (Object.hasOwn(object, 'history') && object.history != null) {
+      setHistoryInfo(object.history)
+    }
+
     if (Object.hasOwn(object, 'command') && object.command != null) {
       setCommand(object.command)
     }
@@ -55,6 +59,27 @@ function setModuleInfo (object) {
     info.classList.add('visible')
   } else {
     info.classList.remove('visible')
+  }
+}
+
+function setHistoryInfo (object) {
+  const undo = document.querySelector('#undo')
+  const redo = document.querySelector('#redo')
+
+  if (Object.hasOwn(object, 'undo')) {
+    const N = parseInt(`${object.undo}`)
+
+    if (!Number.isNaN(N)) {
+      undo.disabled = !(N > 0)
+    }
+  }
+
+  if (Object.hasOwn(object, 'redo')) {
+    const N = parseInt(`${object.redo}`)
+
+    if (!Number.isNaN(N)) {
+      redo.disabled = !(N > 0)
+    }
   }
 }
 

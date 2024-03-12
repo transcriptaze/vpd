@@ -6,7 +6,14 @@ const MAX_HISTORY: usize = 64;
 
 #[derive(Serialize, Deserialize)]
 pub struct History {
-    stack: VecDeque<Item>,
+    undo: VecDeque<Item>,
+    redo: VecDeque<Item>,
+}
+
+#[derive(Serialize)]
+pub struct Info {
+    pub undo: usize,
+    pub redo: usize,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -17,24 +24,32 @@ pub struct Item {
 
 pub fn new() -> History {
     History {
-        stack: vec![].into(),
+        undo: vec![].into(),
+        redo: vec![].into(),
     }
 }
 
 impl History {
     pub fn push(&mut self, cmd: &str, blob: &str) {
-        self.stack.push_front(Item::new(cmd, blob));
+        self.undo.push_front(Item::new(cmd, blob));
 
-        while self.stack.len() > MAX_HISTORY {
-            self.stack.pop_back();
+        while self.undo.len() > MAX_HISTORY {
+            self.undo.pop_back();
         }
     }
 
     pub fn pop(&mut self) -> Option<(String, String)> {
-        if let Some(v) = self.stack.pop_front() {
+        if let Some(v) = self.undo.pop_front() {
             Some((v.cmd, v.blob))
         } else {
             None
+        }
+    }
+
+    pub fn info(&self) -> Info {
+        Info {
+            undo: self.undo.len(),
+            redo: self.redo.len(),
         }
     }
 }

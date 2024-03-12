@@ -40,7 +40,8 @@ static STATE: Lazy<Mutex<State>> = Lazy::new(|| {
 
 #[derive(Serialize)]
 pub struct Info {
-    pub module: Option<module::ModuleInfo>,
+    pub module: Option<module::Info>,
+    pub history: Option<history::Info>,
     pub command: Option<String>,
 }
 
@@ -77,6 +78,7 @@ pub fn exec(json: &str) -> Result<bool, JsValue> {
             if cmd.apply(&mut state.module) {
                 let info = Info {
                     module: Some(state.module.info()),
+                    history: Some(state.history.info()),
                     command: None,
                 };
 
@@ -110,6 +112,7 @@ pub fn undo() -> Result<bool, JsValue> {
 
                 let info = Info {
                     module: Some(state.module.info()),
+                    history: Some(state.history.info()),
                     command: Some(cmd),
                 };
 
@@ -257,6 +260,7 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
 
             let info = Info {
                 module: Some(state.module.info()),
+                history: Some(state.history.info()),
                 command: None,
             };
 

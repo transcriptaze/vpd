@@ -272,8 +272,8 @@ export function setDecoration (node, src) {
 
       for (const attr of child.namedChildren) {
         if (attr.type === 'name') {
-            object.decoration.x.reference = `${child.type}<${identifier(attr)}>`
-            object.decoration.y.reference = `${child.type}<${identifier(attr)}>`
+          object.decoration.x.reference = `${child.type}<${identifier(attr)}>`
+          object.decoration.y.reference = `${child.type}<${identifier(attr)}>`
         }
 
         if (attr.type === 'dx') {

@@ -182,7 +182,6 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-
   it.only('set decoration (input in) CircularGraduations (output out)', () => {
     const cmd = command.parse('set decoration (input in) CircularGraduations (output out)')
     const expected = {

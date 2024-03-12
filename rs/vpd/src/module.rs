@@ -38,7 +38,7 @@ pub struct Module {
 }
 
 #[derive(Serialize)]
-pub struct ModuleInfo {
+pub struct Info {
     pub name: String,
     pub height: f32,
     pub width: f32,
@@ -65,8 +65,8 @@ pub fn new() -> Module {
 }
 
 impl Module {
-    pub fn info(&self) -> ModuleInfo {
-        ModuleInfo {
+    pub fn info(&self) -> Info {
+        Info {
             name: self.name.to_string(),
             height: self.panel.height,
             width: self.panel.width,

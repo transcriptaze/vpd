@@ -34,7 +34,8 @@
    - [x] invoke stash from exec
    - [x] restore command
    - [x] limit history size
-   - [ ] enable/disable undo
+   - [x] enable/disable undo
+   - [ ] save/restore
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
    - [ ] serialize to IndexDB
