@@ -49,6 +49,7 @@ pub struct Info {
 extern "C" {
     fn set(object: &str);
     fn stash(tag: &str, blob: &str);
+    fn stashx(tag: &str, blob: &[u8]);
 }
 
 #[wasm_bindgen(start)]
@@ -82,10 +83,12 @@ pub fn exec(json: &str) -> Result<bool, JsValue> {
                     command: None,
                 };
 
-                let serialized = serde_json::to_string(&state.module).unwrap();
+                let project = serde_json::to_string(&state.module).unwrap();
+                let history = state.history.serialize();
                 let object = serde_json::to_string(&info).unwrap();
 
-                stash("project", &serialized);
+                stash("project", &project);
+                stashx("history", &history);
                 set(&object);
 
                 Ok(true)
@@ -116,10 +119,12 @@ pub fn undo() -> Result<bool, JsValue> {
                     command: Some(cmd),
                 };
 
-                let serialized = serde_json::to_string(&state.module).unwrap();
+                let project = serde_json::to_string(&state.module).unwrap();
+                let history = state.history.serialize();
                 let object = serde_json::to_string(&info).unwrap();
 
-                stash("project", &serialized);
+                stash("project", &project);
+                stashx("history", &history);
                 set(&object);
 
                 Ok(true)

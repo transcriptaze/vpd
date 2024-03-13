@@ -13,6 +13,27 @@ export function getProject () {
   return localStorage.getItem(PROJECT)
 }
 
+export function storeHistory (bytes) {
+  if (bytes != null) {
+    navigator.storage.getDirectory()
+    .then((root) => root.getFileHandle('history', { create: true }))
+    .then((fh) => fh.createWritable({keepExistingData: false}))
+    .then((stream) => {
+      stream.write(bytes)
+      return stream
+    })
+    .then((stream) => {
+      stream.close()
+    })
+    .then(() => {
+      console.log('stored history to OPFS')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
+}
+
 export function storeMacros (object) {
   const key = MACROS
   const json = JSON.stringify(object)

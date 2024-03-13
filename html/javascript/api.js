@@ -35,6 +35,12 @@ export function stash (tag, blob) {
   }
 }
 
+export function stashx (tag, blob) {
+  if (tag === 'history') {
+    db.storeHistory(blob)
+  }
+}
+
 function setModuleInfo (object) {
   const info = document.querySelector('fieldset#module')
   const name = info.querySelector('[data-tag="module.name"]')

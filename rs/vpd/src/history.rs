@@ -1,6 +1,9 @@
 use std::collections::VecDeque;
+use std::io::Write;
 
 use super::serde::{Deserialize, Serialize};
+use flate2::write::GzEncoder;
+use flate2::Compression;
 
 const MAX_HISTORY: usize = 64;
 
@@ -44,6 +47,15 @@ impl History {
         } else {
             None
         }
+    }
+
+    pub fn serialize(&self) -> Vec<u8> {
+        let blob = serde_json::to_string_pretty(self).unwrap();
+        let mut gz = GzEncoder::new(Vec::new(), Compression::default());
+
+        gz.write_all(blob.as_bytes()).unwrap();
+
+        return gz.finish().unwrap();
     }
 
     pub fn info(&self) -> Info {

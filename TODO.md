@@ -1,16 +1,11 @@
 # TODO
 
-- [x] Load project file
-      - [ ] web component
-
 - [ ] Bundle with rollup.js
       - wasm-pack bundler
       - https://rustwasm.github.io/wasm-bindgen/reference/deployment.html
       
 
-- [ ] _command_ web component
 - [ ] Set CSS panel element width from module width
-- [ ] `redo`
 - [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
       - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
@@ -24,6 +19,11 @@
 - [ ] Docker container
       - [ ] github
 
+- [ ] _load_ web component
+- [ ] _command_ web component
+- [ ] `redo`
+
+
 ### Fonts
    - [ ] `clear fonts`
    - [ ] store fonts to OPFS/IndexDB
@@ -35,7 +35,11 @@
    - [x] restore command
    - [x] limit history size
    - [x] enable/disable undo
-   - [ ] save/restore
+   - [ ] save
+         - [x] exec
+         - [x] undo
+         - [ ] redo
+   - [ ] restore
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
    - [ ] serialize to IndexDB
@@ -66,11 +70,11 @@
 - [ ] _decorate_
       - [x] `decorate <xy> ...`
       - [x] `set decoration d1 (input in +10mm,-20mm)`
+      - [ ] Change `set ... x ..` to `set .. dx ..`
       - [ ] `set decoration d1 x @10mm`
       - [ ] `set decoration d1 x origin+10mm`
       - [ ] `set decoration d1 x v1+10mm`
       - [ ] `set decoration d1 x left+10mm`
-      - (?) Change `set ... x ..` to `set .. dx ..`
       - [ ] Export decorations in SVG component group
 
 
