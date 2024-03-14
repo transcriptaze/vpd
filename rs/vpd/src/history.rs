@@ -1,9 +1,14 @@
 use std::collections::VecDeque;
+use std::io::Read;
 use std::io::Write;
 
 use super::serde::{Deserialize, Serialize};
+use flate2::read::GzDecoder;
 use flate2::write::GzEncoder;
 use flate2::Compression;
+
+use crate::utils::log;
+use crate::warnf;
 
 const MAX_HISTORY: usize = 64;
 
@@ -56,6 +61,35 @@ impl History {
         gz.write_all(blob.as_bytes()).unwrap();
 
         return gz.finish().unwrap();
+    }
+
+    pub fn deserialize(&mut self, bytes: &[u8]) {
+        let mut gz = GzDecoder::new(&bytes[..]);
+        let mut json = String::new();
+
+        self.undo.clear();
+
+        warnf!(">>>> bytes {}", bytes.len());
+
+        match gz.read_to_string(&mut json) {
+            Ok(_) => {
+                let rs: Result<History, serde_json::Error> = serde_json::from_str(&json);
+
+                match rs {
+                    Ok(history) => {
+                        self.undo = history.undo;
+                    }
+
+                    Err(e) => {
+                        warnf!("error deserializing undo history ({})", e);
+                    }
+                }
+            }
+
+            Err(e) => {
+                warnf!("error deserializing undo history ({})", e);
+            }
+        }
     }
 
     pub fn info(&self) -> Info {

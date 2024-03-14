@@ -40,6 +40,8 @@
          - [x] undo
          - [ ] redo
    - [ ] restore
+         - [ ] gzip header gets corrupted after undo()
+
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
    - [ ] serialize to IndexDB

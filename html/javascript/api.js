@@ -7,6 +7,8 @@ export function set (json) {
   try {
     const object = JSON.parse(json)
 
+    console.log('>>set', object)
+
     if (Object.hasOwn(object, 'module') && object.module != null) {
       setModuleInfo(object.module)
     }
@@ -37,8 +39,17 @@ export function stash (tag, blob) {
 
 export function stashx (tag, blob) {
   if (tag === 'history') {
+    console.log('>> store', blob.length)
     db.storeHistory(blob)
   }
+}
+
+export async function unstash (tag) {
+  if (tag === 'history') {
+    return db.getHistory()
+  }
+
+  return null
 }
 
 function setModuleInfo (object) {

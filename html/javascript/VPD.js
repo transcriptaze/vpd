@@ -64,7 +64,9 @@ export async function initialise (parser) {
     if (json != null) {
       busy()
       restore(json)
-      redraw()
+        .then(() => {
+          redraw()
+        })
 
       trash.disabled = false
     }

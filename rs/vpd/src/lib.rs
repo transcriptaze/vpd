@@ -16,6 +16,8 @@ use serde::Serialize;
 use serde_wasm_bindgen;
 
 use wasm_bindgen::prelude::*;
+use wasm_bindgen_futures;
+use web_sys::js_sys::Uint8Array;
 
 use crate::utils::log;
 use svg::PrettyPrinter;
@@ -50,6 +52,7 @@ extern "C" {
     fn set(object: &str);
     fn stash(tag: &str, blob: &str);
     fn stashx(tag: &str, blob: &[u8]);
+    async fn unstash(tag: &str) -> JsValue;
 }
 
 #[wasm_bindgen(start)]
@@ -255,7 +258,7 @@ pub fn clear() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn restore(json: &str) -> Result<(), JsValue> {
+pub async fn restore(json: &str) -> Result<(), JsValue> {
     let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
 
     match rs {
@@ -263,6 +266,13 @@ pub fn restore(json: &str) -> Result<(), JsValue> {
             let mut state = STATE.lock().unwrap();
             state.module = m;
 
+            // ... unstash undo history
+            let array = unstash("history").await;
+            let bytes = Uint8Array::new(&array).to_vec();
+
+            state.history.deserialize(&bytes);
+
+            // ... set state
             let info = Info {
                 module: Some(state.module.info()),
                 history: Some(state.history.info()),
