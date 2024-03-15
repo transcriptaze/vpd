@@ -369,22 +369,22 @@ const COMMANDS = [
   },
   {
     command: ['set', 'decoration', 'reference', 'name', 'x'],
-    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'x +10mm'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'dx +10mm'],
     min: 1
   },
   {
     command: ['set', 'decoration', 'reference', 'name', 'y'],
-    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'y +10mm'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'dy +10mm'],
     min: 1
   },
   {
     command: ['set', 'decoration', 'reference', 'name', 'x'],
-    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'xy +10mm,-12mm'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'dxy +10mm,-12mm'],
     min: 1
   },
   {
     command: ['set', 'decoration', 'reference', 'name', 'y'],
-    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'xy +10mm,-12mm'],
+    help: ['set', 'decoration', `${REFERENCE}`, `${NAME}`, 'dxy +10mm,-12mm'],
     min: 1
   },
   {
@@ -404,17 +404,17 @@ const COMMANDS = [
   },
   {
     command: ['set', 'decoration', 'identifier', 'y'],
-    help: ['set', 'decoration', ID, 'y +10mm'],
+    help: ['set', 'decoration', ID, 'dy +10mm'],
     min: 1
   },
   {
     command: ['set', 'decoration', 'identifier', 'x'],
-    help: ['set', 'decoration', ID, 'xy +10mm,-12mm'],
+    help: ['set', 'decoration', ID, 'dxy +10mm,-12mm'],
     min: 1
   },
   {
     command: ['set', 'decoration', 'identifier', 'y'],
-    help: ['set', 'decoration', ID, 'xy +10mm,-12mm'],
+    help: ['set', 'decoration', ID, 'dxy +10mm,-12mm'],
     min: 1
   },
   {

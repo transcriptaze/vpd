@@ -72,7 +72,7 @@
 - [ ] _decorate_
       - [x] `decorate <xy> ...`
       - [x] `set decoration d1 (input in +10mm,-20mm)`
-      - [ ] Change `set ... x ..` to `set .. dx ..`
+      - [x] Change `set ... x ..` to `set .. dx ..`
       - [ ] `set decoration d1 x @10mm`
       - [ ] `set decoration d1 x origin+10mm`
       - [ ] `set decoration d1 x v1+10mm`

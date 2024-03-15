@@ -225,4 +225,58 @@ describe('decoration command translation', () => {
 
     expect(cmd).to.eql(expected)
   })
+
+  it.only('set decoration (input in) CircularGraduations x +10mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations x +10mm')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations x +10mm',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          offset: 10
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it.only('set decoration (input in) CircularGraduations y +10mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations y +10mm')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations y +10mm',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        y: {
+          offset: 10
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it.only('set decoration (input in) CircularGraduations xy +10mm,-12.5mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations xy +10mm,-12.5mm')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations xy +10mm,-12.5mm',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          offset: 10
+        },
+        y: {
+          offset: -12.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
 })

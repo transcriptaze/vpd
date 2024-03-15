@@ -1516,6 +1516,18 @@
     "named": false
   },
   {
+    "type": "dx",
+    "named": false
+  },
+  {
+    "type": "dxy",
+    "named": false
+  },
+  {
+    "type": "dy",
+    "named": false
+  },
+  {
     "type": "export",
     "named": false
   },
@@ -1549,11 +1561,11 @@
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "helper",

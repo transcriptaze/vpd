@@ -402,6 +402,58 @@ impl Module {
         }
     }
 
+    pub fn find_reference(&self, reference: &str) -> Option<(String, String, String)> {
+        let re = Regex::new(r#"(input|output|parameter|light|widget)<(.*?)>"#).unwrap();
+
+        if let Some(captures) = re.captures(reference) {
+            let u = &captures[1];
+            let id = &captures[2];
+
+            match u {
+                "input" => {
+                    if let Some(ix) = self.find_input(&id) {
+                        let v = &self.panel.inputs[ix];
+                        return Some((u.to_string(), v.id.clone(), v.name.clone()));
+                    }
+                }
+
+                "output" => {
+                    if let Some(ix) = self.find_output(&id) {
+                        let v = &self.panel.outputs[ix];
+                        return Some((u.to_string(), v.id.clone(), v.name.clone()));
+                    }
+                }
+
+                "parameter" => {
+                    if let Some(ix) = self.find_parameter(&id) {
+                        let v = &self.panel.parameters[ix];
+                        return Some((u.to_string(), v.id.clone(), v.name.clone()));
+                    }
+                }
+
+                "light" => {
+                    if let Some(ix) = self.find_light(&id) {
+                        let v = &self.panel.lights[ix];
+                        return Some((u.to_string(), v.id.clone(), v.name.clone()));
+                    }
+                }
+
+                "widget" => {
+                    if let Some(ix) = self.find_widget(&id) {
+                        let v = &self.panel.widgets[ix];
+                        return Some((u.to_string(), v.id.clone(), v.name.clone()));
+                    }
+                }
+
+                _ => {
+                    return None;
+                }
+            }
+        };
+
+        None
+    }
+
     pub fn find_input(&self, id: &str) -> Option<usize> {
         match self.panel.inputs.iter().position(|v| v.id == id) {
             Some(ix) => Some(ix),
@@ -476,6 +528,7 @@ impl Module {
     ) -> Option<usize> {
         match (id, reference, name) {
             (Some(id), _, _) => {
+                warnf!(">>/1 {}", id);
                 return self
                     .panel
                     .decorations
@@ -484,16 +537,26 @@ impl Module {
             }
 
             (None, Some(component), Some(name)) => {
+                warnf!(">>/2 {},{}", component, name);
                 let c = component.as_str();
                 let n = name.trim().to_lowercase();
+
+                self.panel.decorations.iter().for_each(|v| {
+                    warnf!(">>> {},{}", v.id, v.name);
+                    warnf!(">>> >> {}", v.decorates(&self, c));
+                    warnf!(">>> >> >> {}", v.is(&n));
+                });
 
                 return self
                     .panel
                     .decorations
                     .iter()
-                    .position(|v| v.decorates(c) && v.is(&n));
+                    .position(|v| v.decorates(&self, c) && v.is(&n));
             }
-            _ => None,
+            _ => {
+                warnf!(">>/3 ooops");
+                None
+            }
         }
     }
 

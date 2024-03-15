@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::Item;
+use crate::module::Module;
 use crate::panel::X;
 use crate::panel::Y;
 
@@ -37,8 +38,28 @@ impl Decoration {
         return self.name.trim().to_lowercase() == name;
     }
 
-    pub fn decorates(&self, component: &str) -> bool {
-        return self.x.reference == component || self.y.reference == component;
+    pub fn decorates(&self, m: &Module, component: &str) -> bool {
+        if let Some(v) = m.find_reference(&self.x.reference) {
+            if component == format!("{}<{}>", v.0, v.1) {
+                return true;
+            }
+
+            if component == format!("{}<{}>", v.0, v.2) {
+                return true;
+            }
+        }
+
+        if let Some(v) = m.find_reference(&self.y.reference) {
+            if component == format!("{}<{}>", v.0, v.1) {
+                return true;
+            }
+
+            if component == format!("{}<{}>", v.0, v.2) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     pub fn matches(&self, reference: &str, name: &str) -> bool {

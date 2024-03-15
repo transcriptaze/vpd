@@ -1187,16 +1187,19 @@ _Command options:_
 id          Identifier of the decoration to update (the identifier is the automatically generated ID assigned to the decoration)
 reference   Reference to component to which decoration is attached, e.g. (input frequency)
 name        Decoration 'name' e.g. Pad
-attribute   decoration attribute - one of x,y,xy,stretch or scale
+attribute   decoration attribute - one of dx,dy,dxy,stretch or scale
 value       New attribute value.
 ```
 
 _Notes:_
+1. _dx_, _dy_ and _dxy_ attributes set the offset relative to the reference component.
+
 
 _Examples:_
 ```
-set decoration d1 x +10mm
-set decoration d1 y -12.5mm
+set decoration d1 dx +10mm
+set decoration d1 dy -12.5mm
+set decoration d1 dxy +10mm,-12.5mm
 set decoration d1 (stretch 1.1,0.9)
 set decoration d1 (scale 0.5)
 set decoration (input frequency) CircularGraduations x +10mm
