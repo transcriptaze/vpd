@@ -226,10 +226,10 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-  it.only('set decoration (input in) CircularGraduations x +10mm', () => {
-    const cmd = command.parse('set decoration (input in) CircularGraduations x +10mm')
+  it.only('set decoration (input in) CircularGraduations dx +10mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations dx +10mm')
     const expected = {
-      src: 'set decoration (input in) CircularGraduations x +10mm',
+      src: 'set decoration (input in) CircularGraduations dx +10mm',
       action: 'set',
       decoration: {
         reference: 'input<in>',
@@ -243,10 +243,10 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-  it.only('set decoration (input in) CircularGraduations y +10mm', () => {
-    const cmd = command.parse('set decoration (input in) CircularGraduations y +10mm')
+  it.only('set decoration (input in) CircularGraduations dy +10mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations dy +10mm')
     const expected = {
-      src: 'set decoration (input in) CircularGraduations y +10mm',
+      src: 'set decoration (input in) CircularGraduations dy +10mm',
       action: 'set',
       decoration: {
         reference: 'input<in>',
@@ -260,10 +260,10 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-  it.only('set decoration (input in) CircularGraduations xy +10mm,-12.5mm', () => {
-    const cmd = command.parse('set decoration (input in) CircularGraduations xy +10mm,-12.5mm')
+  it.only('set decoration (input in) CircularGraduations dxy +10mm,-12.5mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations dxy +10mm,-12.5mm')
     const expected = {
-      src: 'set decoration (input in) CircularGraduations xy +10mm,-12.5mm',
+      src: 'set decoration (input in) CircularGraduations dxy +10mm,-12.5mm',
       action: 'set',
       decoration: {
         reference: 'input<in>',
