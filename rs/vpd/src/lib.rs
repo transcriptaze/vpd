@@ -51,7 +51,7 @@ pub struct Info {
 extern "C" {
     fn set(object: &str);
     fn stash(tag: &str, blob: &str);
-    fn stashx(tag: &str, blob: &[u8]);
+    async fn stashx(tag: &str, blob: &[u8]);
     async fn unstash(tag: &str) -> JsValue;
 }
 
@@ -64,7 +64,7 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(json: &str) -> Result<bool, JsValue> {
+pub async fn exec(json: &str) -> Result<bool, JsValue> {
     match command::parse(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
@@ -91,7 +91,7 @@ pub fn exec(json: &str) -> Result<bool, JsValue> {
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &project);
-                stashx("history", &history);
+                stashx("history", &history).await;
                 set(&object);
 
                 Ok(true)
@@ -105,7 +105,7 @@ pub fn exec(json: &str) -> Result<bool, JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn undo() -> Result<bool, JsValue> {
+pub async fn undo() -> Result<bool, JsValue> {
     let mut state = STATE.lock().unwrap();
 
     if let Some(v) = state.history.pop() {
@@ -127,7 +127,7 @@ pub fn undo() -> Result<bool, JsValue> {
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &project);
-                stashx("history", &history);
+                stashx("history", &history).await;
                 set(&object);
 
                 Ok(true)

@@ -159,9 +159,11 @@ export async function onExport (item) {
 
 export function onUndo () {
   try {
-    if (undo()) {
-      redraw()
-    }
+    undo().then((ok) => {
+      if (ok) {
+        redraw()
+      }
+    })
   } catch (err) {
     console.error(err)
   }
@@ -246,9 +248,11 @@ function execute (v) {
     if (cmd != null) {
       console.log(cmd)
 
-      if (exec(JSON.stringify(cmd))) {
-        redraw()
-      }
+      exec(JSON.stringify(cmd)).then((ok) => {
+        if (ok) {
+          redraw()
+        }
+      })
     }
   } catch (err) {
     onError(err)

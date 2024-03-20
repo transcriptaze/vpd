@@ -41,6 +41,7 @@
          - [ ] redo
    - [ ] restore
          - [ ] gzip header gets corrupted after undo()
+               - stash() is async and buffer is getting freed in rs
 
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc

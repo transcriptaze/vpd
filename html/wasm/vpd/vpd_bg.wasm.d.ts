@@ -2,8 +2,8 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export function main(): void;
-export function exec(a: number, b: number, c: number): void;
-export function undo(a: number): void;
+export function exec(a: number, b: number): number;
+export function undo(): number;
 export function serialize(a: number, b: number, c: number): void;
 export function clear(a: number): void;
 export function restore(a: number, b: number): number;

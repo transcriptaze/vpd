@@ -5,13 +5,13 @@
 export function main(): void;
 /**
 * @param {string} json
-* @returns {boolean}
+* @returns {Promise<boolean>}
 */
-export function exec(json: string): boolean;
+export function exec(json: string): Promise<boolean>;
 /**
-* @returns {boolean}
+* @returns {Promise<boolean>}
 */
-export function undo(): boolean;
+export function undo(): Promise<boolean>;
 /**
 * @param {string} object
 * @returns {any}
@@ -42,8 +42,8 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly main: () => void;
-  readonly exec: (a: number, b: number, c: number) => void;
-  readonly undo: (a: number) => void;
+  readonly exec: (a: number, b: number) => number;
+  readonly undo: () => number;
   readonly serialize: (a: number, b: number, c: number) => void;
   readonly clear: (a: number) => void;
   readonly restore: (a: number, b: number) => number;
