@@ -1,6 +1,6 @@
 import { redraw } from './VPD.js'
 import * as db from './db.js'
-import { exec, restore } from '../wasm/vpd/vpd.js'
+import * as wasm from '../wasm/vpd/vpd.js'
 import * as command from './command.js'
 
 export function load (filetype, file) {
@@ -160,7 +160,7 @@ async function loadVPD (file) {
     .then((b) => JSON.parse(b))
     .then((object) => {
       const serialized = JSON.stringify(object)
-      restore(serialized)
+      wasm.load(serialized)
       db.storeProject(serialized)
       trash.disabled = false
     })
@@ -199,7 +199,7 @@ async function loadVPZ (file) {
       .then((object) => {
         if (object != null) {
           const serialized = JSON.stringify(object)
-          restore(serialized)
+          wasm.load(serialized)
           db.storeProject(serialized)
           redraw()
           trash.disabled = false
@@ -225,7 +225,7 @@ async function loadVPX (file) {
     .then((script) => {
       for (const object of script) {
         const json = JSON.stringify(object.command)
-        const serialized = exec(json)
+        const serialized = wasm.exec(json)
         db.storeProject(serialized)
         trash.disabled = false
       }

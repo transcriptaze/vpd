@@ -5,13 +5,18 @@
 export function main(): void;
 /**
 * @param {string} json
-* @returns {boolean}
+* @returns {Promise<void>}
 */
-export function exec(json: string): boolean;
+export function restore(json: string): Promise<void>;
 /**
-* @returns {boolean}
+* @param {string} json
+* @returns {Promise<boolean>}
 */
-export function undo(): boolean;
+export function exec(json: string): Promise<boolean>;
+/**
+* @returns {Promise<boolean>}
+*/
+export function undo(): Promise<boolean>;
 /**
 * @param {string} object
 * @returns {any}
@@ -22,9 +27,8 @@ export function serialize(object: string): any;
 export function clear(): void;
 /**
 * @param {string} json
-* @returns {Promise<void>}
 */
-export function restore(json: string): Promise<void>;
+export function load(json: string): void;
 /**
 * @param {string} theme
 * @returns {string}
@@ -42,11 +46,12 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly main: () => void;
-  readonly exec: (a: number, b: number, c: number) => void;
-  readonly undo: (a: number) => void;
+  readonly restore: (a: number, b: number) => number;
+  readonly exec: (a: number, b: number) => number;
+  readonly undo: () => number;
   readonly serialize: (a: number, b: number, c: number) => void;
   readonly clear: (a: number) => void;
-  readonly restore: (a: number, b: number) => number;
+  readonly load: (a: number, b: number, c: number) => void;
   readonly render: (a: number, b: number, c: number) => void;
   readonly query: (a: number, b: number, c: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;

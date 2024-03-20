@@ -51,7 +51,7 @@ pub struct Info {
 extern "C" {
     fn set(object: &str);
     fn stash(tag: &str, blob: &str);
-    fn stashx(tag: &str, blob: &[u8]);
+    async fn stashx(tag: &str, blob: &[u8]);
     async fn unstash(tag: &str) -> JsValue;
 }
 
@@ -64,7 +64,38 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn exec(json: &str) -> Result<bool, JsValue> {
+pub async fn restore(json: &str) -> Result<(), JsValue> {
+    let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
+
+    match rs {
+        Ok(m) => {
+            let mut state = STATE.lock().unwrap();
+            state.module = m;
+
+            // ... unstash undo history
+            let array = unstash("history").await;
+            let bytes = Uint8Array::new(&array).to_vec();
+
+            state.history.deserialize(&bytes);
+
+            // ... set state
+            let info = Info {
+                module: Some(state.module.info()),
+                history: Some(state.history.info()),
+                command: None,
+            };
+
+            let object = serde_json::to_string(&info).unwrap();
+            set(&object);
+
+            Ok(())
+        }
+        Err(e) => Err(JsValue::from(format!("{}", e))),
+    }
+}
+
+#[wasm_bindgen]
+pub async fn exec(json: &str) -> Result<bool, JsValue> {
     match command::parse(json) {
         Ok(cmd) => {
             let mut state = STATE.lock().unwrap();
@@ -91,7 +122,7 @@ pub fn exec(json: &str) -> Result<bool, JsValue> {
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &project);
-                stashx("history", &history);
+                stashx("history", &history).await;
                 set(&object);
 
                 Ok(true)
@@ -105,7 +136,7 @@ pub fn exec(json: &str) -> Result<bool, JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn undo() -> Result<bool, JsValue> {
+pub async fn undo() -> Result<bool, JsValue> {
     let mut state = STATE.lock().unwrap();
 
     if let Some(v) = state.history.pop() {
@@ -127,7 +158,7 @@ pub fn undo() -> Result<bool, JsValue> {
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &project);
-                stashx("history", &history);
+                stashx("history", &history).await;
                 set(&object);
 
                 Ok(true)
@@ -258,19 +289,14 @@ pub fn clear() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub async fn restore(json: &str) -> Result<(), JsValue> {
+pub fn load(json: &str) -> Result<(), JsValue> {
     let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
 
     match rs {
         Ok(m) => {
             let mut state = STATE.lock().unwrap();
             state.module = m;
-
-            // ... unstash undo history
-            let array = unstash("history").await;
-            let bytes = Uint8Array::new(&array).to_vec();
-
-            state.history.deserialize(&bytes);
+            state.history.clear();
 
             // ... set state
             let info = Info {

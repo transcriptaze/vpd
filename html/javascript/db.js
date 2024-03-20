@@ -13,38 +13,48 @@ export function getProject () {
   return localStorage.getItem(PROJECT)
 }
 
-export function storeHistory (bytes) {
-  if (bytes != null) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getFileHandle('history', { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => {
-        stream.write(bytes)
-        return stream
-      })
-      .then((stream) => {
-        stream.close()
-      })
-      .then(() => {
-        console.log('stored history to OPFS')
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }
+export async function storeHistory (blob) {
+  const bytes = new Uint8Array(blob)
+
+  navigator.storage.getDirectory()
+    .then((root) => root.getFileHandle('history', { create: true }))
+    .then((fh) => fh.createWritable({ keepExistingData: false }))
+    .then((stream) => save(stream, bytes))
+    .then(() => {
+      console.log(`stored history to OPFS (${bytes.length} bytes)`)
+    })
+    .catch((err) => onError(err))
 }
 
-export function getHistory () {
+export async function getHistory () {
   return navigator.storage.getDirectory()
     .then((root) => root.getFileHandle('history', { create: true }))
     .then((fh) => fh.getFile())
     .then((file) => file.arrayBuffer())
     .then((buffer) => {
-      return new Uint8Array(buffer)
+      console.log(`restored history from OPFS (${buffer.byteLength} bytes)`)
+
+      return buffer
     })
-    .catch((err) => {
-      console.error(err)
+    .catch((err) => onError(err))
+}
+
+export function deleteHistory () {
+  navigator.storage.getDirectory()
+    .then((root) => root.removeEntry('history'))
+    .then(() => {
+      console.log('deleted history from OPFS')
     })
+    .catch((err) => onError(err))
+}
+
+async function save (stream, bytes) {
+  await stream.write(bytes)
+  await stream.close()
+}
+
+function onError (err) {
+  console.error(err)
 }
 
 export function storeMacros (object) {
