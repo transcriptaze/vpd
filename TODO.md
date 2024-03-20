@@ -29,6 +29,8 @@
    - [ ] store fonts to OPFS/IndexDB
 
 ### _undo_
+   - [ ] `new module` doesn't clear script
+   - [ ] store current project to OPFS
    - [x] push cmd + project
    - [x] pop
    - [x] invoke stash from exec
@@ -39,14 +41,11 @@
          - [x] exec
          - [x] undo
          - [ ] redo
-   - [ ] restore
-         - [ ] gzip header gets corrupted after undo()
-               - stash() is async and buffer is getting freed in rs
+   - [x] restore
+         - [x] gzip header gets corrupted after undo()
 
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
-   - [ ] serialize to IndexDB
-   - (?) store current project to OPFS
 
 ### Help
 - [ ] Replace help with hints
@@ -63,7 +62,6 @@
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
 - [ ] Genericize ID generation
-- [ ] `new module` doesn't clear script
 
 - [ ] _guidelines_
       - [ ] `set guide v1 (input in +10mm)`
