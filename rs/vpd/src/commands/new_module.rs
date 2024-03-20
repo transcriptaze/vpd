@@ -36,5 +36,6 @@ impl Command for NewModule {
 
         m.name = self.name.clone().into();
         m.panel = Panel::new(self.width, height);
+        m.script = Vec::new();
     }
 }

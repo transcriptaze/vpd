@@ -24,7 +24,7 @@
 - [ ] `redo`
 
 
-- [ ] `new module` doesn't clear script
+- [x] `new module` doesn't clear script
 
 - [ ] migrate localStorage to OPFS
       - [x] store project
