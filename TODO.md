@@ -24,13 +24,17 @@
 - [ ] `redo`
 
 
+- [ ] `new module` doesn't clear script
+
+- [ ] migrate localStorage to OPFS
+      - [x] store project
+      - [ ] restore project
+      - [ ] store fonts
+
 ### Fonts
    - [ ] `clear fonts`
-   - [ ] store fonts to OPFS/IndexDB
 
 ### _undo_
-   - [ ] `new module` doesn't clear script
-   - [ ] store current project to OPFS
    - [x] push cmd + project
    - [x] pop
    - [x] invoke stash from exec
@@ -42,8 +46,6 @@
          - [x] undo
          - [ ] redo
    - [x] restore
-         - [x] gzip header gets corrupted after undo()
-
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
 

@@ -60,7 +60,7 @@ impl History {
         self.redo.clear();
     }
 
-    pub fn serialize(&self) -> Vec<u8> {
+    pub fn gzip(&self) -> Vec<u8> {
         let blob = serde_json::to_string_pretty(self).unwrap();
         let mut gz = GzEncoder::new(Vec::new(), Compression::default());
 

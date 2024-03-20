@@ -1,16 +1,34 @@
 const PROJECT = 'vpd.projects.current'
 const MACROS = 'vpd.macros'
 
-export function storeProject (object) {
-  if (object == null) {
+export function storeProject (blob, where) {
+  if (where === 'OPFS') {
+    const bytes = new Uint8Array(blob)
+
+    navigator.storage.getDirectory()
+      .then((root) => root.getFileHandle('project', { create: true }))
+      .then((fh) => fh.createWritable({ keepExistingData: false }))
+      .then((stream) => save(stream, bytes))
+      .then(() => log(`stored project to OPFS (${bytes.length} bytes)`))
+      .catch((err) => onError(err))
+  } else if (blob == null) {
     localStorage.removeItem(PROJECT)
   } else {
-    localStorage.setItem(PROJECT, object)
+    localStorage.setItem(PROJECT, blob)
   }
 }
 
 export function getProject () {
   return localStorage.getItem(PROJECT)
+}
+
+export function deleteProject () {
+  navigator.storage.getDirectory()
+    .then((root) => root.removeEntry('project'))
+    .then(() => {
+      console.log('deleted project from OPFS')
+    })
+    .catch((err) => onError(err))
 }
 
 export async function storeHistory (blob) {
@@ -20,9 +38,7 @@ export async function storeHistory (blob) {
     .then((root) => root.getFileHandle('history', { create: true }))
     .then((fh) => fh.createWritable({ keepExistingData: false }))
     .then((stream) => save(stream, bytes))
-    .then(() => {
-      console.log(`stored history to OPFS (${bytes.length} bytes)`)
-    })
+    .then(() => log(`stored history to OPFS (${bytes.length} bytes)`))
     .catch((err) => onError(err))
 }
 
@@ -55,6 +71,10 @@ async function save (stream, bytes) {
 
 function onError (err) {
   console.error(err)
+}
+
+function log (msg) {
+  console.log(msg)
 }
 
 export function storeMacros (object) {
