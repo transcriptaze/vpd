@@ -919,7 +919,7 @@
                     "name": "_offset_attr"
                   },
                   "named": true,
-                  "value": "x"
+                  "value": "dx"
                 }
               ]
             },
@@ -937,7 +937,7 @@
                     "name": "_offset_attr"
                   },
                   "named": true,
-                  "value": "y"
+                  "value": "dy"
                 }
               ]
             },
@@ -950,7 +950,61 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_offset_xy_attr"
+                  "name": "_offset_dxy_attr"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "x"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_x_attr"
+                  },
+                  "named": true,
+                  "value": "x"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "y"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_y_attr"
+                  },
+                  "named": true,
+                  "value": "y"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "xy"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_xy_attr"
+                  },
+                  "named": true,
+                  "value": "xy"
                 }
               ]
             },
@@ -1483,6 +1537,33 @@
           },
           "named": true,
           "value": "y"
+        }
+      ]
+    },
+    "_offset_dxy_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_offset_attr"
+          },
+          "named": true,
+          "value": "dx"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_offset_attr"
+          },
+          "named": true,
+          "value": "dy"
         }
       ]
     },

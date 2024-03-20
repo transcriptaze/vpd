@@ -286,15 +286,72 @@ export function setDecoration (node, src) {
       }
     }
 
+    if (child.type === 'dx') {
+      object.decoration.x = {
+        offset: offset(child)
+      }
+    }
+
+    if (child.type === 'dy') {
+      object.decoration.y = {
+        offset: offset(child)
+      }
+    }
+
     if (child.type === 'x') {
       object.decoration.x = {
+        reference: reference(child),
         offset: offset(child)
       }
     }
 
     if (child.type === 'y') {
       object.decoration.y = {
+        reference: reference(child),
         offset: offset(child)
+      }
+    }
+
+    if (child.type === 'xy') {
+      object.decoration.x = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      object.decoration.y = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      for (const attr of child.namedChildren) {
+        if (attr.type === 'absolute') {
+          object.decoration.x.reference = 'absolute'
+          object.decoration.y.reference = 'absolute'
+        }
+
+        if (attr.type === 'x') {
+          for (const u of attr.namedChildren) {
+            if (u.type === 'reference') {
+              object.decoration.x.reference = identifier(u)
+            }
+
+            if (u.type === 'offset') {
+              object.decoration.x.offset = mm(u)
+            }
+          }
+        }
+
+        if (attr.type === 'y') {
+          for (const u of attr.namedChildren) {
+            if (u.type === 'reference') {
+              object.decoration.y.reference = identifier(u)
+            }
+
+            if (u.type === 'offset') {
+              object.decoration.y.offset = mm(u)
+            }
+          }
+        }
       }
     }
 
