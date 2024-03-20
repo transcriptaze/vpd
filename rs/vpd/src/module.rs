@@ -73,6 +73,15 @@ impl Module {
         }
     }
 
+    pub fn gzip(&self) -> Vec<u8> {
+        let blob = serde_json::to_string_pretty(self).unwrap();
+        let mut gz = GzEncoder::new(Vec::new(), Compression::default());
+
+        gz.write_all(blob.as_bytes()).unwrap();
+
+        return gz.finish().unwrap();
+    }
+
     pub fn load_project(&self) {
         load("vpd");
     }

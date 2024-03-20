@@ -36,6 +36,14 @@ export function stash (tag, blob) {
 }
 
 export async function stashx (tag, blob) {
+  if (tag === 'project') {
+    if (blob == null) {
+      return db.deleteProject()
+    } else {
+      return db.storeProject(blob, 'OPFS')
+    }
+  }
+
   if (tag === 'history') {
     if (blob == null) {
       return db.deleteHistory()

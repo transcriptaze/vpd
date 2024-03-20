@@ -118,10 +118,12 @@ pub async fn exec(json: &str) -> Result<bool, JsValue> {
                 };
 
                 let project = serde_json::to_string(&state.module).unwrap();
-                let history = state.history.serialize();
+                let projectz = state.module.gzip();
+                let history = state.history.gzip();
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &project);
+                stashx("project", &projectz).await;
                 stashx("history", &history).await;
                 set(&object);
 
@@ -154,10 +156,12 @@ pub async fn undo() -> Result<bool, JsValue> {
                 };
 
                 let project = serde_json::to_string(&state.module).unwrap();
-                let history = state.history.serialize();
+                let projectz = state.module.gzip();
+                let history = state.history.gzip();
                 let object = serde_json::to_string(&info).unwrap();
 
                 stash("project", &project);
+                stashx("project", &projectz).await;
                 stashx("history", &history).await;
                 set(&object);
 

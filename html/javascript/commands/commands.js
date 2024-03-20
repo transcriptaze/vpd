@@ -29,6 +29,10 @@ export function reference (node) {
   }
 
   for (const child of node.namedChildren) {
+    if (child.type === 'absolute') {
+      return 'absolute'
+    }
+
     if (child.type === 'reference') {
       return child.text.trim()
     }

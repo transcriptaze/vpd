@@ -177,9 +177,12 @@ module.exports = grammar({
           ),
           ')',
         ),
-        seq('dx',  alias($._offset_attr, $.x)),
-        seq('dy',  alias($._offset_attr, $.y)),
-        seq('dxy', $._offset_xy_attr),
+        seq('dx',  alias($._offset_attr, $.dx)),
+        seq('dy',  alias($._offset_attr, $.dy)),
+        seq('dxy', $._offset_dxy_attr),
+        seq('x',   alias($._x_attr, $.x)),
+        seq('y',   alias($._y_attr, $.y)),
+        seq('xy',  alias($._xy_attr, $.xy)),
         $.stretch,
         $._scale,
       ),
@@ -265,6 +268,12 @@ module.exports = grammar({
       alias($._offset_attr, $.x),
       ',',
       alias($._offset_attr, $.y),
+    ),
+
+    _offset_dxy_attr: $ => seq(
+      alias($._offset_attr, $.dx),
+      ',',
+      alias($._offset_attr, $.dy),
     ),
 
     _absolute_attr: $ => seq(
