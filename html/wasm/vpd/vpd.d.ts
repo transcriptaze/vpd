@@ -4,10 +4,9 @@
 */
 export function main(): void;
 /**
-* @param {string} json
 * @returns {Promise<void>}
 */
-export function restore(json: string): Promise<void>;
+export function restore(): Promise<void>;
 /**
 * @param {string} json
 * @returns {Promise<boolean>}
@@ -46,7 +45,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly main: () => void;
-  readonly restore: (a: number, b: number) => number;
+  readonly restore: () => number;
   readonly exec: (a: number, b: number) => number;
   readonly undo: () => number;
   readonly serialize: (a: number, b: number, c: number) => void;

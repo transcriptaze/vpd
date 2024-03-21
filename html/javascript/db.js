@@ -9,7 +9,7 @@ export function storeProject (blob, where) {
       .then((root) => root.getFileHandle('project', { create: true }))
       .then((fh) => fh.createWritable({ keepExistingData: false }))
       .then((stream) => save(stream, bytes))
-      .then(() => log(`stored project to OPFS (${bytes.length} bytes)`))
+      .then(() => console.log(`stored project to OPFS (${bytes.length} bytes)`))
       .catch((err) => onError(err))
   } else if (blob == null) {
     localStorage.removeItem(PROJECT)
@@ -18,16 +18,23 @@ export function storeProject (blob, where) {
   }
 }
 
-export function getProject () {
-  return localStorage.getItem(PROJECT)
+export async function getProject () {
+  return navigator.storage.getDirectory()
+    .then((root) => root.getFileHandle('project', { create: true }))
+    .then((fh) => fh.getFile())
+    .then((file) => file.arrayBuffer())
+    .then((buffer) => {
+      console.log(`restored project from OPFS (${buffer.byteLength} bytes)`)
+
+      return buffer
+    })
+    .catch((err) => onError(err))
 }
 
 export function deleteProject () {
   navigator.storage.getDirectory()
     .then((root) => root.removeEntry('project'))
-    .then(() => {
-      console.log('deleted project from OPFS')
-    })
+    .then(() => console.log('deleted project from OPFS'))
     .catch((err) => onError(err))
 }
 
@@ -38,7 +45,7 @@ export async function storeHistory (blob) {
     .then((root) => root.getFileHandle('history', { create: true }))
     .then((fh) => fh.createWritable({ keepExistingData: false }))
     .then((stream) => save(stream, bytes))
-    .then(() => log(`stored history to OPFS (${bytes.length} bytes)`))
+    .then(() => console.log(`stored history to OPFS (${bytes.length} bytes)`))
     .catch((err) => onError(err))
 }
 
@@ -58,9 +65,7 @@ export async function getHistory () {
 export function deleteHistory () {
   navigator.storage.getDirectory()
     .then((root) => root.removeEntry('history'))
-    .then(() => {
-      console.log('deleted history from OPFS')
-    })
+    .then(() => console.log('deleted history from OPFS'))
     .catch((err) => onError(err))
 }
 
@@ -71,10 +76,6 @@ async function save (stream, bytes) {
 
 function onError (err) {
   console.error(err)
-}
-
-function log (msg) {
-  console.log(msg)
 }
 
 export function storeMacros (object) {

@@ -64,34 +64,36 @@ pub fn main() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub async fn restore(json: &str) -> Result<(), JsValue> {
-    let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
+pub async fn restore() -> Result<(), JsValue> {
+    let mut state = STATE.lock().unwrap();
 
-    match rs {
-        Ok(m) => {
-            let mut state = STATE.lock().unwrap();
-            state.module = m;
+    // ... unstash project
+    {
+        let array = unstash("project").await;
+        let bytes = Uint8Array::new(&array).to_vec();
 
-            // ... unstash undo history
-            let array = unstash("history").await;
-            let bytes = Uint8Array::new(&array).to_vec();
-
-            state.history.deserialize(&bytes);
-
-            // ... set state
-            let info = Info {
-                module: Some(state.module.info()),
-                history: Some(state.history.info()),
-                command: None,
-            };
-
-            let object = serde_json::to_string(&info).unwrap();
-            set(&object);
-
-            Ok(())
-        }
-        Err(e) => Err(JsValue::from(format!("{}", e))),
+        state.module.gunzip(&bytes);
     }
+
+    // ... unstash undo history
+    {
+        let array = unstash("history").await;
+        let bytes = Uint8Array::new(&array).to_vec();
+
+        state.history.gunzip(&bytes);
+    }
+
+    // ... set state
+    let info = Info {
+        module: Some(state.module.info()),
+        history: Some(state.history.info()),
+        command: None,
+    };
+
+    let object = serde_json::to_string(&info).unwrap();
+    set(&object);
+
+    Ok(())
 }
 
 #[wasm_bindgen]

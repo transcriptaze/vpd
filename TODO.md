@@ -28,8 +28,9 @@
 
 - [ ] migrate localStorage to OPFS
       - [x] store project
-      - [ ] restore project
+      - [x] restore project
       - [ ] store fonts
+      - [ ] cleanup localStorage stuff
 
 ### Fonts
    - [ ] `clear fonts`

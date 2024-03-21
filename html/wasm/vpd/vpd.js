@@ -269,13 +269,10 @@ export function main() {
 }
 
 /**
-* @param {string} json
 * @returns {Promise<void>}
 */
-export function restore(json) {
-    const ptr0 = passStringToWasm0(json, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.restore(ptr0, len0);
+export function restore() {
+    const ret = wasm.restore();
     return takeObject(ret);
 }
 
@@ -743,7 +740,7 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper6755 = function() { return logError(function (arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper6756 = function() { return logError(function (arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 486, __wbg_adapter_38);
         return addHeapObject(ret);
     }, arguments) };

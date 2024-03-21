@@ -59,19 +59,14 @@ export async function initialise (parser) {
   // ... restore project
   try {
     const trash = document.querySelector('#trash')
-    const json = db.getProject()
 
-    if (json != null) {
-      busy()
-      restore(json)
-        .then(() => {
-          redraw()
-        })
-
-      trash.disabled = false
-    }
-
-    onError(null)
+    busy()
+    restore()
+      .then(() => {
+        redraw()
+        onError(null)
+        trash.disabled = false
+      })
   } catch (err) {
     console.error(err)
   } finally {
