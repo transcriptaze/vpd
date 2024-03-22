@@ -1,13 +1,6 @@
 # TODO
 
-- [ ] Bundle with rollup.js
-      - wasm-pack bundler
-      - https://rustwasm.github.io/wasm-bindgen/reference/deployment.html
-      
-
 - [ ] Set CSS panel element width from module width
-- [x] ~~Use local fonts for SVG (cf. _slow Internet problem_)~~
-      - [ ] Can't reference /fonts because it's in a blob URL - maybe use CSS ??????
 - [ ] Windmill intermittently doesn't appear
 - [ ] Cheatsheet
       - [ ] XY
@@ -17,14 +10,10 @@
       - [ ] optional prefix
 
 - [ ] Docker container
-      - [ ] github
+      - [ ] ghcr
 
 - [ ] _load_ web component
 - [ ] _command_ web component
-- [ ] `redo`
-
-
-- [x] `new module` doesn't clear script
 
 - [ ] migrate localStorage to OPFS
       - [x] store project
@@ -35,6 +24,10 @@
 ### Fonts
    - [ ] `clear fonts`
 
+### [ ] `redo`
+   - [ ] save
+   - [ ] restore
+
 ### _undo_
    - [x] push cmd + project
    - [x] pop
@@ -42,10 +35,9 @@
    - [x] restore command
    - [x] limit history size
    - [x] enable/disable undo
-   - [ ] save
+   - [x] save
          - [x] exec
          - [x] undo
-         - [ ] redo
    - [x] restore
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
@@ -75,14 +67,19 @@
       - [x] `decorate <xy> ...`
       - [x] `set decoration d1 (input in +10mm,-20mm)`
       - [x] Change `set ... x ..` to `set .. dx ..`
-      - [ ] `set decoration d1 x @10mm`
-      - [ ] `set decoration d1 x origin+10mm`
-      - [ ] `set decoration d1 x v1+10mm`
-      - [ ] `set decoration d1 x left+10mm`
+      - [x] `set decoration d1 x @10mm`
+      - [x] `set decoration d1 x origin+10mm`
+      - [x] `set decoration d1 x v1+10mm`
+      - [x] `set decoration d1 x left+10mm`
+      - [ ] `set decoration d1 dx (parameter v +10mm)`
       - [ ] Export decorations in SVG component group
 
 
 ### TO BE DONE
+
+- [ ] Bundle with rollup.js
+      - wasm-pack bundler
+      - https://rustwasm.github.io/wasm-bindgen/reference/deployment.html
 
 - [ ] CLI
 - [ ] Custom helper.py to merge updates
