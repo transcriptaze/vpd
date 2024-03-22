@@ -308,15 +308,11 @@ impl Panel {
             let x = v.x.resolve(&self);
             let y = v.y.resolve(&self);
             let stretch = Stretch::new(v.stretch.x, v.stretch.y);
+            let label = v.label();
 
-            list.push(Snippet::new(
-                &v.name,
-                x,
-                y,
-                v.scale,
-                &stretch,
-                v.x.reference.as_str(), // FIXME
-            ));
+            let snippet = Snippet::new(&v.name, x, y, v.scale, &stretch, &label);
+
+            list.push(snippet);
         }
 
         return list;

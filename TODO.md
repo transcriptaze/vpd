@@ -1,7 +1,7 @@
 # TODO
 
+- (?) Windmill intermittently doesn't appear
 - [ ] Set CSS panel element width from module width
-- [ ] Windmill intermittently doesn't appear
 - [ ] Cheatsheet
       - [ ] XY
 
@@ -64,6 +64,7 @@
       - [ ] clean up NewGuide::apply
 
 - [ ] _decorate_
+      - [x] Label decorations in SVG
       - [x] `decorate <xy> ...`
       - [x] `set decoration d1 (input in +10mm,-20mm)`
       - [x] Change `set ... x ..` to `set .. dx ..`
@@ -72,7 +73,6 @@
       - [x] `set decoration d1 x v1+10mm`
       - [x] `set decoration d1 x left+10mm`
       - [ ] `set decoration d1 dx (parameter v +10mm)`
-      - [ ] Export decorations in SVG component group
 
 
 ### TO BE DONE

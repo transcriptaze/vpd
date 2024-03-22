@@ -11,7 +11,7 @@ pub struct Snippet {
     pub scale: f32,
     pub stretch: Stretch,
     pub template: String,
-    pub layer: String,
+    pub label: String,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -21,7 +21,7 @@ pub struct Stretch {
 }
 
 impl Snippet {
-    pub fn new(name: &str, x: f32, y: f32, scale: f32, stretch: &Stretch, layer: &str) -> Snippet {
+    pub fn new(name: &str, x: f32, y: f32, scale: f32, stretch: &Stretch, label: &str) -> Snippet {
         let template = match DECORATIONS
             .iter()
             .find(|v| normalise(*v) == normalise(&name))
@@ -37,7 +37,7 @@ impl Snippet {
             scale: scale,
             stretch: stretch.clone(),
             template: template.to_string(),
-            layer: layer.to_string(),
+            label: label.to_string(),
         }
     }
 }

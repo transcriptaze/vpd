@@ -76,6 +76,16 @@ impl Decoration {
             self.y.reference = to.to_string();
         }
     }
+
+    pub fn label(&self) -> String {
+        if self.x.reference == self.y.reference {
+            return format!("{}", self.x.reference)
+                .replace("<", "[")
+                .replace(">", "]");
+        } else {
+            return format!("{}", self.id).replace("<", "[").replace(">", "]");
+        }
+    }
 }
 
 impl Stretch {
