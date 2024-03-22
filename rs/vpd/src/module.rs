@@ -1,6 +1,8 @@
+use std::io::Read;
 use std::io::Write;
 
 use chrono::Local;
+use flate2::read::GzDecoder;
 use flate2::write::GzEncoder;
 use flate2::Compression;
 use regex::Regex;
@@ -80,6 +82,31 @@ impl Module {
         gz.write_all(blob.as_bytes()).unwrap();
 
         return gz.finish().unwrap();
+    }
+
+    pub fn gunzip(&mut self, bytes: &[u8]) {
+        let mut gz = GzDecoder::new(&bytes[..]);
+        let mut json = String::new();
+
+        match gz.read_to_string(&mut json) {
+            Ok(_) => {
+                let rs: Result<Module, serde_json::Error> = serde_json::from_str(&json);
+
+                match rs {
+                    Ok(module) => {
+                        *self = module;
+                    }
+
+                    Err(e) => {
+                        warnf!("error deserializing project ({})", e);
+                    }
+                }
+            }
+
+            Err(e) => {
+                warnf!("error deserializing project ({})", e);
+            }
+        }
     }
 
     pub fn load_project(&self) {

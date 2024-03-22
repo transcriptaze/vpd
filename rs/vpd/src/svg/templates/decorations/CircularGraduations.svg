@@ -1,4 +1,4 @@
-    <g fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.187" transform="translate({{x}} {{y}}) scale({{scale}})">
+    <g inkscape:label="CircularGraduation@{{label}}" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.187" transform="translate({{x}} {{y}}) scale({{scale}})">
       <line x1="-1.900" y1="3.291"  x2="-2.375" y2="4.114" />
       <line x1="-3.291" y1="1.900"  x2="-4.114" y2="2.375" />
       <line x1="-3.800" y1="0.000"  x2="-4.750" y2="0.000" />

@@ -1,8 +1,5 @@
 {% if styles == "yes" %}
   <style>
-
-    @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-
     .border {
       fill: none;
       stroke: none;

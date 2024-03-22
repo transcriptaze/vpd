@@ -69,7 +69,7 @@ impl History {
         return gz.finish().unwrap();
     }
 
-    pub fn deserialize(&mut self, bytes: &[u8]) {
+    pub fn gunzip(&mut self, bytes: &[u8]) {
         let mut gz = GzDecoder::new(&bytes[..]);
         let mut json = String::new();
 

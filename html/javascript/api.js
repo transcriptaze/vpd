@@ -54,6 +54,10 @@ export async function stashx (tag, blob) {
 }
 
 export async function unstash (tag) {
+  if (tag === 'project') {
+    return db.getProject()
+  }
+
   if (tag === 'history') {
     return db.getHistory()
   }

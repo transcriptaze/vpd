@@ -1,4 +1,4 @@
-{% macro decoration(name,x=0,y=0,scale=1,sx=1,sy=1) %}
+{% macro decoration(name,x=0,y=0,scale=1,sx=1,sy=1,label="") %}
 {% if name == 'CircularGraduations' %}
 {% include "CircularGraduations" %}
 {% elif name == 'Pad' %}
@@ -11,7 +11,7 @@
 {% if decorations %}
   <g inkscape:groupmode="layer" inkscape:label="decorations">    
   {% for v in decorations -%}
-{{ self::decoration(name=v.name, x=v.x, y=v.y, scale=v.scale, sx=v.stretch.x,sy=v.stretch.y) }}
+{{ self::decoration(name=v.name, x=v.x, y=v.y, scale=v.scale, sx=v.stretch.x, sy=v.stretch.y, label=v.label) }}
   {%- endfor %}
   </g>
 {%- endif %}
