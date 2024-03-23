@@ -15,7 +15,7 @@
       - [x] store project
       - [x] restore project
       - [x] store fonts
-      - [ ] list fonts
+      - [x] list fonts
       - [ ] delete font
       - [ ] cleanup localStorage stuff
 
