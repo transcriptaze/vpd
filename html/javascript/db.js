@@ -124,11 +124,17 @@ export async function storeFont (name, blob) {
     .catch((err) => onError(err))
 }
 
-export function removeFont (name) {
+export async function removeFont (name) {
   const key = `font::${normalise(name)}`
 
   localStorage.removeItem(key)
   fonts.delete(name)
+
+  navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((folder) => folder.removeEntry(name))
+    .then(() => console.log(`deleted font ${name} from OPFS`))
+    .catch((err) => onError(err))
 }
 
 export function getFont (name) {

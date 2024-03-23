@@ -506,7 +506,7 @@ async function saveWithPicker (blob, options) {
   }
 }
 
-function unloadFont (font) {
+async function unloadFont (font) {
   try {
     db.removeFont(font)
   } catch (err) {
