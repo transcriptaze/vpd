@@ -69,15 +69,6 @@ export function deleteHistory () {
     .catch((err) => onError(err))
 }
 
-async function save (stream, bytes) {
-  await stream.write(bytes)
-  await stream.close()
-}
-
-function onError (err) {
-  console.error(err)
-}
-
 export function storeMacros (object) {
   const key = MACROS
   const json = JSON.stringify(object)
@@ -96,14 +87,23 @@ export function getMacros () {
   return null
 }
 
-export function storeFont (name, bytes) {
+export async function storeFont (name, blob) {
+  const bytes = new Uint8Array(blob)
   const key = `font::${normalise(name)}`
   const object = {
     name: `${name}`,
-    bytes: btoa(new Uint8Array(bytes).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+    bytes: btoa(bytes.reduce((data, byte) => data + String.fromCharCode(byte), ''))
   }
 
   localStorage.setItem(key, JSON.stringify(object))
+
+  navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((fonts) => fonts.getFileHandle(name, { create: true }))
+    .then((fh) => fh.createWritable({ keepExistingData: false }))
+    .then((stream) => save(stream, bytes))
+    .then(() => console.log(`stored font ${name} to OPFS (${bytes.length} bytes)`))
+    .catch((err) => onError(err))
 }
 
 export function removeFont (name) {
@@ -157,6 +157,15 @@ export function listParts () {
 
 export function listDecorations () {
   return []
+}
+
+async function save (stream, bytes) {
+  await stream.write(bytes)
+  await stream.close()
+}
+
+function onError (err) {
+  console.error(err)
 }
 
 function normalise (name) {

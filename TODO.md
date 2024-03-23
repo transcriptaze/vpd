@@ -1,6 +1,5 @@
 # TODO
 
-- (?) Windmill intermittently doesn't appear
 - [ ] Set CSS panel element width from module width
 - [ ] Cheatsheet
       - [ ] XY
@@ -9,16 +8,15 @@
       - [ ] pretty-print
       - [ ] optional prefix
 
-- [ ] Docker container
-      - [ ] ghcr
-
 - [ ] _load_ web component
 - [ ] _command_ web component
 
 - [ ] migrate localStorage to OPFS
       - [x] store project
       - [x] restore project
-      - [ ] store fonts
+      - [x] store fonts
+      - [ ] list fonts
+      - [ ] delete font
       - [ ] cleanup localStorage stuff
 
 ### Fonts
@@ -36,8 +34,6 @@
    - [x] limit history size
    - [x] enable/disable undo
    - [x] save
-         - [x] exec
-         - [x] undo
    - [x] restore
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
@@ -64,18 +60,14 @@
       - [ ] clean up NewGuide::apply
 
 - [ ] _decorate_
-      - [x] Label decorations in SVG
-      - [x] `decorate <xy> ...`
-      - [x] `set decoration d1 (input in +10mm,-20mm)`
-      - [x] Change `set ... x ..` to `set .. dx ..`
-      - [x] `set decoration d1 x @10mm`
-      - [x] `set decoration d1 x origin+10mm`
-      - [x] `set decoration d1 x v1+10mm`
-      - [x] `set decoration d1 x left+10mm`
       - [ ] `set decoration d1 dx (parameter v +10mm)`
+      - [ ] `new decoration [name]`
 
 
 ### TO BE DONE
+
+- [ ] Docker container
+      - [ ] ghcr
 
 - [ ] Bundle with rollup.js
       - wasm-pack bundler
