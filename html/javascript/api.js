@@ -1,7 +1,7 @@
 import * as db from './db.js'
 
 export { load, unload, save, list } from './fs.js'
-export { text2path } from './text.js'
+export { prepareFont, text2path } from './text.js'
 
 export function set (json) {
   try {
@@ -116,3 +116,6 @@ function setHistoryInfo (object) {
 function setCommand (cmd) {
   document.querySelector('#command').value = `${cmd}`
 }
+
+// export async function preaasyncText2Path (text, fontName, points) {
+// }

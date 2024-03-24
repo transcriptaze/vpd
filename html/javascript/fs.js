@@ -297,12 +297,12 @@ function pickFont (filetype) {
 }
 
 async function loadFont (file) {
-  busy()
+  const matches = `${file.name}`.match(/^(.*?)([.](?:ttf|otf|woff|woff2))$/m)
+  if (matches != null && matches.length > 2) {
+    busy()
 
-  file.arrayBuffer()
-    .then((bytes) => {
-      const matches = `${file.name}`.match(/^(.*?)([.](?:ttf|otf|woff|woff2))$/m)
-      if (matches != null && matches.length > 2) {
+    file.arrayBuffer()
+      .then((bytes) => {
         const name = matches[1]
         const ext = matches[2]
 
@@ -316,14 +316,14 @@ async function loadFont (file) {
           case '.woff2':
             throw new Error('woff2 is not supported')
         }
-      }
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-    .finally(() => {
-      unbusy()
-    })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+      .finally(() => {
+        unbusy()
+      })
+  }
 }
 
 function saveVPD (filename, json) {
@@ -506,9 +506,9 @@ async function saveWithPicker (blob, options) {
   }
 }
 
-function unloadFont (font) {
+async function unloadFont (font) {
   try {
-    db.removeFont(font)
+    db.deleteFont(font)
   } catch (err) {
     console.error(err)
   }

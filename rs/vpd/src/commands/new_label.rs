@@ -1,4 +1,6 @@
 use std::error::Error;
+use std::future::Future;
+use std::pin::Pin;
 
 use wasm_bindgen::prelude::*;
 
@@ -18,6 +20,7 @@ const DARK: &str = "#ebebeb";
 
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
+    async fn prepareFont(font: &str);
     fn text2path(text: &str, font: &str, fontsize: f32) -> JsValue;
 }
 
@@ -70,6 +73,15 @@ impl NewLabel {
 }
 
 impl Command for NewLabel {
+    fn prepare(&self, _m: &Module) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
+        let font = match &self.font {
+            Some(v) => v,
+            None => FONT,
+        };
+
+        Some(Box::pin(prepare((&font).to_string())))
+    }
+
     fn apply(&self, m: &mut Module) {
         let id = m.new_label_id();
 
@@ -140,4 +152,8 @@ impl Colour {
             _ => panel::Colour::new(&self.light, &self.light),
         }
     }
+}
+
+async fn prepare(font: String) {
+    prepareFont(&font).await;
 }

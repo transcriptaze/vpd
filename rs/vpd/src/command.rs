@@ -1,8 +1,11 @@
 use std::error::Error;
+use std::future::Future;
+use std::pin::Pin;
 
-use super::module::Module;
 use serde::{Deserialize, Serialize};
 use serde_json::value::RawValue;
+
+use super::module::Module;
 
 use crate::commands::NewDecoration;
 use crate::commands::NewGuide;
@@ -48,18 +51,20 @@ use crate::commands::UnloadFont;
 
 use crate::commands;
 
+pub trait MyFuture: Future<Output = ()> {}
+
+impl<T: Future<Output = ()>> MyFuture for T {}
+
 pub trait Command {
     fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
         None
     }
 
-    fn apply(&self, m: &mut Module);
-}
+    fn prepare(&self, _m: &Module) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
+        None
+    }
 
-pub struct Wrapper {
-    pub src: Option<String>,
-    command: Box<dyn Command>,
-    reload: bool,
+    fn apply(&self, m: &mut Module);
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -98,35 +103,31 @@ struct Entity {}
 #[derive(Serialize, Deserialize, Debug)]
 struct Attr {}
 
-pub fn parse(json: &str) -> Result<Wrapper, Box<dyn Error>> {
+pub fn parse(json: &str) -> Result<(Box<dyn Command>, Option<String>, bool), Box<dyn Error>> {
     let v: Action = serde_json::from_str(json)?;
 
     if v.action == "new" {
         let boxed = new(json)?;
-        let wrapper = Wrapper::new(boxed, v.src, true);
 
-        return Ok(wrapper);
+        return Ok((boxed, v.src, true));
     }
 
     if v.action == "set" {
         let boxed = set(json)?;
-        let wrapper = Wrapper::new(boxed, v.src, true);
 
-        return Ok(wrapper);
+        return Ok((boxed, v.src, true));
     }
 
     if v.action == "delete" {
         let boxed = delete(json)?;
-        let wrapper = Wrapper::new(boxed, v.src, true);
 
-        return Ok(wrapper);
+        return Ok((boxed, v.src, true));
     }
 
     if ["load", "save", "export", "unload", "list"].contains(&v.action.as_str()) {
         let boxed = files(json)?;
-        let wrapper = Wrapper::new(boxed, None, false);
 
-        return Ok(wrapper);
+        return Ok((boxed, None, false));
     }
 
     return Err("unknown command".into());
@@ -314,28 +315,4 @@ fn files(json: &str) -> Result<Box<dyn Command>, Box<dyn Error>> {
     }
 
     return Err("invalid command".into());
-}
-
-impl Wrapper {
-    pub fn new(command: Box<dyn Command>, src: Option<String>, reload: bool) -> Wrapper {
-        Wrapper {
-            src: src,
-            command: command,
-            reload: reload,
-        }
-    }
-
-    pub fn validate(&self, m: &mut Module) -> Option<Box<dyn Error>> {
-        self.command.validate(m)
-    }
-
-    pub fn apply(&self, m: &mut Module) -> bool {
-        self.command.apply(m);
-
-        if let Some(line) = &self.src {
-            m.script.push(line.to_string());
-        }
-
-        return self.reload;
-    }
 }

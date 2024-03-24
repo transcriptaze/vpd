@@ -28,6 +28,9 @@ export async function initialise (parser) {
     }
   }
 
+  // ... load fonts, etc
+  db.init()
+
   // ... intialise macro keys
   const macros = Array.from(document.querySelectorAll('vpd-macro-key'))
 

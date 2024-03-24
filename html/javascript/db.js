@@ -1,6 +1,21 @@
 const PROJECT = 'vpd.projects.current'
 const MACROS = 'vpd.macros'
 
+const fonts = new Set()
+
+export async function init () {
+  navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((folder) => folder.keys())
+    .then(async (it) => {
+      for await (const font of it) {
+        fonts.add(font)
+      }
+    })
+    .then(() => console.log(`retrieved fonts from OPFS (${fonts.size} fonts)`))
+    .catch((err) => onError(err))
+}
+
 export function storeProject (blob, where) {
   if (where === 'OPFS') {
     const bytes = new Uint8Array(blob)
@@ -69,15 +84,6 @@ export function deleteHistory () {
     .catch((err) => onError(err))
 }
 
-async function save (stream, bytes) {
-  await stream.write(bytes)
-  await stream.close()
-}
-
-function onError (err) {
-  console.error(err)
-}
-
 export function storeMacros (object) {
   const key = MACROS
   const json = JSON.stringify(object)
@@ -96,41 +102,50 @@ export function getMacros () {
   return null
 }
 
-export function storeFont (name, bytes) {
-  const key = `font::${normalise(name)}`
-  const object = {
-    name: `${name}`,
-    bytes: btoa(new Uint8Array(bytes).reduce((data, byte) => data + String.fromCharCode(byte), ''))
-  }
+export async function storeFont (name, blob) {
+  const bytes = new Uint8Array(blob)
 
-  localStorage.setItem(key, JSON.stringify(object))
+  navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((folder) => folder.getFileHandle(name, { create: true }))
+    .then((fh) => fh.createWritable({ keepExistingData: false }))
+    .then((stream) => save(stream, bytes))
+    .then(() => {
+      fonts.add(name)
+      console.log(`stored font ${name} to OPFS (${bytes.length} bytes)`)
+    })
+    .catch((err) => onError(err))
 }
 
-export function removeFont (name) {
+export async function getFont (font) {
+  return navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((folder) => folder.getFileHandle(font, { create: false }))
+    .then((fh) => fh.getFile())
+    .then((file) => file.arrayBuffer())
+    .then((buffer) => {
+      console.log(`loaded font ${font} from OPFS (${buffer.byteLength} bytes)`)
+
+      return buffer
+    })
+    .catch((err) => onError(err))
+}
+
+export async function deleteFont (name) {
   const key = `font::${normalise(name)}`
 
   localStorage.removeItem(key)
-}
+  fonts.delete(name)
 
-export function getFont (name) {
-  try {
-    const key = `font::${normalise(name)}`
-    const json = localStorage.getItem(key)
-
-    if (json != null) {
-      const object = JSON.parse(json)
-
-      return Uint8Array.from(atob(object.bytes), c => c.charCodeAt(0))
-    }
-  } catch (err) {
-    console.error(err)
-  }
-
-  return null
+  navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((folder) => folder.removeEntry(name))
+    .then(() => console.log(`deleted font ${name} from OPFS`))
+    .catch((err) => onError(err))
 }
 
 export function listFonts () {
-  const list = []
+  const list = new Set()
   const N = localStorage.length
 
   for (let i = 0; i < N; i++) {
@@ -141,14 +156,19 @@ export function listFonts () {
         const json = localStorage.getItem(key)
         const object = JSON.parse(json)
 
-        list.push(object.name)
+        list.add(object.name)
       } catch (err) {
         console.error(err)
       }
     }
   }
 
-  return list
+  // NTS: for some bizarre reason ...fonts doesn't seem to work with a Set that has had the last element deleted
+  if (fonts.size > 0) {
+    list.add(...fonts)
+  }
+
+  return Array.from(list)
 }
 
 export function listParts () {
@@ -157,6 +177,15 @@ export function listParts () {
 
 export function listDecorations () {
   return []
+}
+
+async function save (stream, bytes) {
+  await stream.write(bytes)
+  await stream.close()
+}
+
+function onError (err) {
+  console.error(err)
 }
 
 function normalise (name) {

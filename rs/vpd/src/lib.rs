@@ -99,20 +99,30 @@ pub async fn restore() -> Result<(), JsValue> {
 #[wasm_bindgen]
 pub async fn exec(json: &str) -> Result<bool, JsValue> {
     match command::parse(json) {
-        Ok(cmd) => {
+        Ok((cmd, src, reload)) => {
             let mut state = STATE.lock().unwrap();
 
             if let Some(err) = cmd.validate(&mut state.module) {
                 return Err(JsValue::from(format!("{}", err)));
             }
 
-            if let Some(src) = &cmd.src {
+            if let Some(src) = &src {
                 let blob = serde_json::to_string(&state.module).unwrap();
 
                 state.history.push(src, &blob)
             }
 
-            if cmd.apply(&mut state.module) {
+            if let Some(f) = cmd.prepare(&state.module) {
+                f.await
+            }
+
+            cmd.apply(&mut state.module);
+
+            if let Some(src) = &src {
+                state.module.script.push(src.to_string());
+            }
+
+            if reload {
                 let info = Info {
                     module: Some(state.module.info()),
                     history: Some(state.history.info()),

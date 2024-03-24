@@ -1,5 +1,7 @@
 use serde::Deserialize;
 use std::error::Error;
+use std::future::Future;
+use std::pin::Pin;
 
 use wasm_bindgen::prelude::*;
 
@@ -9,6 +11,7 @@ use crate::panel;
 
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
+    async fn prepareFont(font: &str);
     fn text2path(text: &str, font: &str, fontsize: f32) -> JsValue;
 }
 
@@ -62,6 +65,17 @@ impl SetLabel {
 }
 
 impl Command for SetLabel {
+    fn prepare(&self, m: &Module) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
+        if let Some(font) = &self.font {
+            Some(Box::pin(prepare((&font).to_string())))
+        } else if let Some(ix) = m.find_label(&self.id) {
+            let font = &m.panel.labels[ix].font;
+            Some(Box::pin(prepare((&font).to_string())))
+        } else {
+            None
+        }
+    }
+
     fn apply(&self, m: &mut Module) {
         if let Some(ix) = m.find_label(&self.id) {
             if let Some(text) = &self.text {
@@ -156,4 +170,8 @@ impl Colour {
             _ => panel::Colour::new(&self.light, &self.light),
         }
     }
+}
+
+async fn prepare(font: String) {
+    prepareFont(&font).await;
 }
