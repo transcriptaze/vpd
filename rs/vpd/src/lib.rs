@@ -112,7 +112,7 @@ pub async fn exec(json: &str) -> Result<bool, JsValue> {
                 state.history.push(src, &blob)
             }
 
-            if let Some(f) = cmd.prepare() {
+            if let Some(f) = cmd.prepare(&state.module) {
                 f.await
             }
 

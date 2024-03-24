@@ -17,8 +17,10 @@
       - [x] store fonts
       - [x] list fonts
       - [x] delete font
-      - [ ] get font
+      - [x] get font
       - [ ] cleanup localStorage stuff
+      - [ ] `async_apply`
+            - https://stackoverflow.com/questions/69560112/how-to-use-rust-async-trait-generic-to-a-lifetime-parameter
 
 ### Fonts
    - [ ] `clear fonts`

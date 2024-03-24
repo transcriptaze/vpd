@@ -124,7 +124,21 @@ export async function storeFont (name, blob) {
     .catch((err) => onError(err))
 }
 
-export async function removeFont (name) {
+export async function getFont (font) {
+  return navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((folder) => folder.getFileHandle(font, { create: false }))
+    .then((fh) => fh.getFile())
+    .then((file) => file.arrayBuffer())
+    .then((buffer) => {
+      console.log(`loaded font ${font} from OPFS (${buffer.byteLength} bytes)`)
+
+      return buffer
+    })
+    .catch((err) => onError(err))
+}
+
+export async function deleteFont (name) {
   const key = `font::${normalise(name)}`
 
   localStorage.removeItem(key)
@@ -135,23 +149,6 @@ export async function removeFont (name) {
     .then((folder) => folder.removeEntry(name))
     .then(() => console.log(`deleted font ${name} from OPFS`))
     .catch((err) => onError(err))
-}
-
-export function getFont (name) {
-  try {
-    const key = `font::${normalise(name)}`
-    const json = localStorage.getItem(key)
-
-    if (json != null) {
-      const object = JSON.parse(json)
-
-      return Uint8Array.from(atob(object.bytes), c => c.charCodeAt(0))
-    }
-  } catch (err) {
-    console.error(err)
-  }
-
-  return null
 }
 
 export function listFonts () {

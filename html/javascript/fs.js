@@ -508,7 +508,7 @@ async function saveWithPicker (blob, options) {
 
 async function unloadFont (font) {
   try {
-    db.removeFont(font)
+    db.deleteFont(font)
   } catch (err) {
     console.error(err)
   }

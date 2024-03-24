@@ -60,7 +60,7 @@ pub trait Command {
         None
     }
 
-    fn prepare(&self) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
+    fn prepare(&self, _m: &Module) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
         None
     }
 

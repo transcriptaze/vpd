@@ -53,23 +53,31 @@ export async function init () {
     })
 }
 
+export async function prepareFont (font) {
+  const normalised = normalise(font)
+
+  if (!fonts.has(normalised)) {
+    console.log('preparing font/2 ', normalised)
+    return db.getFont(font)
+      .then((bytes) => {
+        if (bytes != null) {
+          font = opentype.parse(bytes)
+          fonts.set(normalised, font)
+          console.log(`prepared font ${font}`)
+        }
+      })
+      .catch((err) => console.log(err))
+  }
+}
+
 export function text2path (text, fontName, points) {
   const options = {
     decimalPlaces: 3
   }
 
-  let font = fonts.get(normalise(DEFAULT.name))
   const normalised = normalise(fontName)
-
-  if (fonts.has(normalised)) {
-    font = fonts.get(normalised)
-  } else {
-    const f = db.getFont(fontName)
-    if (f != null) {
-      font = opentype.parse(f.buffer)
-      fonts.set(normalised, font)
-    }
-  }
+  const defval = fonts.get(normalise(DEFAULT.name))
+  const font = fonts.has(normalised) ? fonts.get(normalised) : defval
 
   const fontSize = points2mm(points)
   const unitsPerEm = font.unitsPerEm
