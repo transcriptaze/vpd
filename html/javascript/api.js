@@ -116,3 +116,6 @@ function setHistoryInfo (object) {
 function setCommand (cmd) {
   document.querySelector('#command').value = `${cmd}`
 }
+
+export async function asyncText2Path (text, fontName, points) {
+}

@@ -1,4 +1,6 @@
 use std::error::Error;
+use std::future::Future;
+use std::pin::Pin;
 
 use serde::{Deserialize, Serialize};
 use serde_json::value::RawValue;
@@ -49,8 +51,16 @@ use crate::commands::UnloadFont;
 
 use crate::commands;
 
+pub trait MyFuture: Future<Output = ()> {}
+
+impl<T: Future<Output = ()>> MyFuture for T {}
+
 pub trait Command {
     fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
+        None
+    }
+
+    fn prepare(&self) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
         None
     }
 

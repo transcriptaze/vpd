@@ -112,6 +112,10 @@ pub async fn exec(json: &str) -> Result<bool, JsValue> {
                 state.history.push(src, &blob)
             }
 
+            if let Some(f) = cmd.prepare() {
+                f.await
+            }
+
             cmd.apply(&mut state.module);
 
             if let Some(src) = &src {

@@ -1,4 +1,6 @@
 use std::error::Error;
+use std::future::Future;
+use std::pin::Pin;
 
 use wasm_bindgen::prelude::*;
 
@@ -9,6 +11,9 @@ use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
 
+use crate::utils::log;
+use crate::warnf;
+
 const FONT: &str = "RobotoMono-Bold";
 const FONTSIZE: f32 = 12.0;
 const LEFT: &str = "left";
@@ -18,6 +23,7 @@ const DARK: &str = "#ebebeb";
 
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
+    async fn asyncText2path(text: &str, font: &str, fontsize: f32);
     fn text2path(text: &str, font: &str, fontsize: f32) -> JsValue;
 }
 
@@ -70,6 +76,10 @@ impl NewLabel {
 }
 
 impl Command for NewLabel {
+    fn prepare(&self) -> Option<Pin<Box<dyn Future<Output = ()>>>> {
+        Some(Box::pin(prepare()))
+    }
+
     fn apply(&self, m: &mut Module) {
         let id = m.new_label_id();
 
@@ -140,4 +150,10 @@ impl Colour {
             _ => panel::Colour::new(&self.light, &self.light),
         }
     }
+}
+
+async fn prepare() {
+    warnf!("woooot/1");
+    asyncText2path("ahlfjasdhflasdjh", "RobotoMono", 16.0).await;
+    warnf!("woooot/2s");
 }
