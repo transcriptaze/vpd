@@ -104,13 +104,6 @@ export function getMacros () {
 
 export async function storeFont (name, blob) {
   const bytes = new Uint8Array(blob)
-  const key = `font::${normalise(name)}`
-  const object = {
-    name: `${name}`,
-    bytes: btoa(bytes.reduce((data, byte) => data + String.fromCharCode(byte), ''))
-  }
-
-  localStorage.setItem(key, JSON.stringify(object))
 
   navigator.storage.getDirectory()
     .then((root) => root.getDirectoryHandle('fonts', { create: true }))
