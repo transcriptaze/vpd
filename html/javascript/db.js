@@ -1,11 +1,12 @@
-const PROJECT = 'vpd.projects.current'
-const MACROS = 'vpd.macros'
+const BASE = 'VPD'
+const MACROS = 'VPD.macros'
 
 const fonts = new Set()
 
 export async function init () {
   navigator.storage.getDirectory()
-    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getDirectoryHandle('fonts', { create: true }))
     .then((folder) => folder.keys())
     .then(async (it) => {
       for await (const font of it) {
@@ -16,26 +17,22 @@ export async function init () {
     .catch((err) => onError(err))
 }
 
-export function storeProject (blob, where) {
-  if (where === 'OPFS') {
-    const bytes = new Uint8Array(blob)
+export function storeProject (blob) {
+  const bytes = new Uint8Array(blob)
 
-    navigator.storage.getDirectory()
-      .then((root) => root.getFileHandle('project', { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => save(stream, bytes))
-      .then(() => console.log(`stored project to OPFS (${bytes.length} bytes)`))
-      .catch((err) => onError(err))
-  } else if (blob == null) {
-    localStorage.removeItem(PROJECT)
-  } else {
-    localStorage.setItem(PROJECT, blob)
-  }
+  navigator.storage.getDirectory()
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getFileHandle('project', { create: true }))
+    .then((fh) => fh.createWritable({ keepExistingData: false }))
+    .then((stream) => save(stream, bytes))
+    .then(() => console.log(`stored project to OPFS (${bytes.length} bytes)`))
+    .catch((err) => onError(err))
 }
 
 export async function getProject () {
   return navigator.storage.getDirectory()
-    .then((root) => root.getFileHandle('project', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getFileHandle('project', { create: true }))
     .then((fh) => fh.getFile())
     .then((file) => file.arrayBuffer())
     .then((buffer) => {
@@ -48,7 +45,8 @@ export async function getProject () {
 
 export function deleteProject () {
   navigator.storage.getDirectory()
-    .then((root) => root.removeEntry('project'))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.removeEntry('project'))
     .then(() => console.log('deleted project from OPFS'))
     .catch((err) => onError(err))
 }
@@ -57,7 +55,8 @@ export async function storeHistory (blob) {
   const bytes = new Uint8Array(blob)
 
   navigator.storage.getDirectory()
-    .then((root) => root.getFileHandle('history', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getFileHandle('history', { create: true }))
     .then((fh) => fh.createWritable({ keepExistingData: false }))
     .then((stream) => save(stream, bytes))
     .then(() => console.log(`stored history to OPFS (${bytes.length} bytes)`))
@@ -66,7 +65,8 @@ export async function storeHistory (blob) {
 
 export async function getHistory () {
   return navigator.storage.getDirectory()
-    .then((root) => root.getFileHandle('history', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getFileHandle('history', { create: true }))
     .then((fh) => fh.getFile())
     .then((file) => file.arrayBuffer())
     .then((buffer) => {
@@ -79,7 +79,8 @@ export async function getHistory () {
 
 export function deleteHistory () {
   navigator.storage.getDirectory()
-    .then((root) => root.removeEntry('history'))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.removeEntry('history'))
     .then(() => console.log('deleted history from OPFS'))
     .catch((err) => onError(err))
 }
@@ -106,7 +107,8 @@ export async function storeFont (name, blob) {
   const bytes = new Uint8Array(blob)
 
   navigator.storage.getDirectory()
-    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getDirectoryHandle('fonts', { create: true }))
     .then((folder) => folder.getFileHandle(name, { create: true }))
     .then((fh) => fh.createWritable({ keepExistingData: false }))
     .then((stream) => save(stream, bytes))
@@ -118,8 +120,11 @@ export async function storeFont (name, blob) {
 }
 
 export async function getFont (font) {
+  // const key = `font::${normalise(name)}`
+
   return navigator.storage.getDirectory()
-    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getDirectoryHandle('fonts', { create: true }))
     .then((folder) => folder.getFileHandle(font, { create: false }))
     .then((fh) => fh.getFile())
     .then((file) => file.arrayBuffer())
@@ -132,13 +137,13 @@ export async function getFont (font) {
 }
 
 export async function deleteFont (name) {
-  const key = `font::${normalise(name)}`
+  // const key = `font::${normalise(name)}`
 
-  localStorage.removeItem(key)
   fonts.delete(name)
 
   navigator.storage.getDirectory()
-    .then((root) => root.getDirectoryHandle('fonts', { create: true }))
+    .then((root) => root.getDirectoryHandle(BASE, { create: true }))
+    .then((base) => base.getDirectoryHandle('fonts', { create: true }))
     .then((folder) => folder.removeEntry(name))
     .then(() => console.log(`deleted font ${name} from OPFS`))
     .catch((err) => onError(err))
@@ -146,22 +151,6 @@ export async function deleteFont (name) {
 
 export function listFonts () {
   const list = new Set()
-  const N = localStorage.length
-
-  for (let i = 0; i < N; i++) {
-    const key = localStorage.key(i)
-
-    if (key.startsWith('font::')) {
-      try {
-        const json = localStorage.getItem(key)
-        const object = JSON.parse(json)
-
-        list.add(object.name)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-  }
 
   // NTS: for some bizarre reason ...fonts doesn't seem to work with a Set that has had the last element deleted
   if (fonts.size > 0) {
@@ -188,6 +177,6 @@ function onError (err) {
   console.error(err)
 }
 
-function normalise (name) {
-  return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
-}
+// function normalise (name) {
+//   return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
+// }

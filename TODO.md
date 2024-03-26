@@ -10,20 +10,22 @@
 
 - [ ] _load_ web component
 - [ ] _command_ web component
+- [ ] `async_apply`
+      - https://stackoverflow.com/questions/69560112/how-to-use-rust-async-trait-generic-to-a-lifetime-parameter
 
 - [ ] migrate localStorage to OPFS
-      - [x] store project
-      - [x] restore project
-      - [x] store fonts
-      - [x] list fonts
-      - [x] delete font
-      - [x] get font
-      - [ ] cleanup localStorage stuff
-      - [ ] `async_apply`
-            - https://stackoverflow.com/questions/69560112/how-to-use-rust-async-trait-generic-to-a-lifetime-parameter
+   - [x] store project
+   - [x] restore project
+   - [x] store fonts
+   - [x] list fonts
+   - [x] delete font
+   - [x] get font
+   - [x] relocate OPFS under 'VPD' folder
+   - [ ] cleanup localStorage stuff
+   - [ ]  use normalised names for get/delete
 
 ### Fonts
-   - [ ] `clear fonts`
+   - [ ] `unload all fonts`
 
 ### [ ] `redo`
    - [ ] save
