@@ -209,9 +209,9 @@ async function loadVPX (file) {
 
   file.text()
     .then((text) => command.parseVPX(text))
-    .then((script) => {
+    .then(async (script) => {
       for (const object of script) {
-        wasm.exec(JSON.stringify(object.command))
+        await wasm.exec(JSON.stringify(object.command))
       }
     })
     .catch((err) => {
