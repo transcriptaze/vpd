@@ -152,8 +152,6 @@ function chooseVPX (filetype) {
 }
 
 async function loadVPD (file) {
-  const trash = document.querySelector('#trash')
-
   busy()
 
   file.text()
@@ -171,7 +169,6 @@ async function loadVPD (file) {
 }
 
 async function loadVPZ (file) {
-  const trash = document.querySelector('#trash')
   const gzip = new DecompressionStream('gzip')
   const reader = file.stream().pipeThrough(gzip).getReader()
   const decoder = new TextDecoder('utf-8')
@@ -208,15 +205,13 @@ async function loadVPZ (file) {
 }
 
 async function loadVPX (file) {
-  const trash = document.querySelector('#trash')
   busy()
 
   file.text()
     .then((text) => command.parseVPX(text))
     .then((script) => {
       for (const object of script) {
-        const json = JSON.stringify(object.command)
-        const serialized = wasm.exec(json)
+        wasm.exec(JSON.stringify(object.command))
       }
     })
     .catch((err) => {
