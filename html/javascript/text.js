@@ -57,7 +57,6 @@ export async function prepareFont (font) {
   const normalised = normalise(font)
 
   if (!fonts.has(normalised)) {
-    console.log('preparing font/2 ', normalised)
     return db.getFont(font)
       .then((bytes) => {
         if (bytes != null) {
