@@ -23,24 +23,12 @@ export function set (json) {
   }
 }
 
-export function stash (tag, blob) {
-  const trash = document.querySelector('#trash')
-
-  if (tag === 'project') {
-    db.storeProject(blob)
-
-    if (blob !== '') {
-      trash.disabled = false
-    }
-  }
-}
-
-export async function stashx (tag, blob) {
+export async function stash (tag, blob) {
   if (tag === 'project') {
     if (blob == null) {
       return db.deleteProject()
     } else {
-      return db.storeProject(blob, 'OPFS')
+      return db.storeProject(blob)
     }
   }
 

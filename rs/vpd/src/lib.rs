@@ -50,8 +50,7 @@ pub struct Info {
 #[wasm_bindgen(raw_module = "../../javascript/api.js")]
 extern "C" {
     fn set(object: &str);
-    fn stash(tag: &str, blob: &str);
-    async fn stashx(tag: &str, blob: &[u8]);
+    async fn stash(tag: &str, blob: &[u8]);
     async fn unstash(tag: &str) -> JsValue;
 }
 
@@ -129,14 +128,12 @@ pub async fn exec(json: &str) -> Result<bool, JsValue> {
                     command: None,
                 };
 
-                let project = serde_json::to_string(&state.module).unwrap();
-                let projectz = state.module.gzip();
+                let project = state.module.gzip();
                 let history = state.history.gzip();
                 let object = serde_json::to_string(&info).unwrap();
 
-                stash("project", &project);
-                stashx("project", &projectz).await;
-                stashx("history", &history).await;
+                stash("project", &project).await;
+                stash("history", &history).await;
                 set(&object);
 
                 Ok(true)
@@ -167,14 +164,12 @@ pub async fn undo() -> Result<bool, JsValue> {
                     command: Some(cmd),
                 };
 
-                let project = serde_json::to_string(&state.module).unwrap();
-                let projectz = state.module.gzip();
+                let project = state.module.gzip();
                 let history = state.history.gzip();
                 let object = serde_json::to_string(&info).unwrap();
 
-                stash("project", &project);
-                stashx("project", &projectz).await;
-                stashx("history", &history).await;
+                stash("project", &project).await;
+                stash("history", &history).await;
                 set(&object);
 
                 Ok(true)
@@ -305,7 +300,7 @@ pub fn clear() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn load(json: &str) -> Result<(), JsValue> {
+pub async fn load(json: &str) -> Result<(), JsValue> {
     let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(json);
 
     match rs {
@@ -321,7 +316,12 @@ pub fn load(json: &str) -> Result<(), JsValue> {
                 command: None,
             };
 
+            let project = state.module.gzip();
+            let history = state.history.gzip();
             let object = serde_json::to_string(&info).unwrap();
+
+            stash("project", &project).await;
+            stash("history", &history).await;
             set(&object);
 
             Ok(())

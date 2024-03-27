@@ -158,12 +158,9 @@ async function loadVPD (file) {
 
   file.text()
     .then((b) => JSON.parse(b))
-    .then((object) => {
-      const serialized = JSON.stringify(object)
-      wasm.load(serialized)
-      db.storeProject(serialized)
-      trash.disabled = false
-    })
+    .then((object) => JSON.stringify(object))
+    .then((serialized) => wasm.load(serialized))
+    .then(() => redraw())
     .catch((err) => {
       console.error(err)
     })
@@ -196,15 +193,9 @@ async function loadVPZ (file) {
           f()
         }
       })
-      .then((object) => {
-        if (object != null) {
-          const serialized = JSON.stringify(object)
-          wasm.load(serialized)
-          db.storeProject(serialized)
-          redraw()
-          trash.disabled = false
-        }
-      })
+      .then((object) => object != null ? JSON.stringify(object) : null)
+      .then((serialized) => serialized != null ? wasm.load(serialized) : null)
+      .then(() => redraw())
       .catch((err) => {
         console.error(err)
       })
@@ -226,8 +217,6 @@ async function loadVPX (file) {
       for (const object of script) {
         const json = JSON.stringify(object.command)
         const serialized = wasm.exec(json)
-        db.storeProject(serialized)
-        trash.disabled = false
       }
     })
     .catch((err) => {
