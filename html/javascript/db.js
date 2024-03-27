@@ -1,7 +1,6 @@
 const BASE = 'VPD'
 const MACROS = 'VPD.macros'
-
-const fonts = new Set()
+const FONTS = new Set()
 
 export async function init () {
   navigator.storage.getDirectory()
@@ -10,10 +9,10 @@ export async function init () {
     .then((folder) => folder.keys())
     .then(async (it) => {
       for await (const font of it) {
-        fonts.add(font)
+        FONTS.add(font)
       }
     })
-    .then(() => console.log(`retrieved fonts from OPFS (${fonts.size} fonts)`))
+    .then(() => console.log(`retrieved fonts from OPFS (${FONTS.size} fonts)`))
     .catch((err) => onError(err))
 }
 
@@ -113,51 +112,57 @@ export async function storeFont (name, blob) {
     .then((fh) => fh.createWritable({ keepExistingData: false }))
     .then((stream) => save(stream, bytes))
     .then(() => {
-      fonts.add(name)
+      FONTS.add(name)
       console.log(`stored font ${name} to OPFS (${bytes.length} bytes)`)
     })
     .catch((err) => onError(err))
 }
 
 export async function getFont (font) {
-  // const key = `font::${normalise(name)}`
+  const key = `${normalise(font)}`
 
   return navigator.storage.getDirectory()
     .then((root) => root.getDirectoryHandle(BASE, { create: true }))
     .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-    .then((folder) => folder.getFileHandle(font, { create: false }))
-    .then((fh) => fh.getFile())
-    .then((file) => file.arrayBuffer())
-    .then((buffer) => {
-      console.log(`loaded font ${font} from OPFS (${buffer.byteLength} bytes)`)
+    .then((folder) => folder.entries())
+    .then(async (it) => {
+      for await (const [k, fh] of it) {
+        if (normalise(k) === key) {
+          return fh
+        }
+      }
 
-      return buffer
+      return null
     })
+    .then((fh) => fh != null ? fh.getFile() : null)
+    .then((file) => file != null ? file.arrayBuffer() : null)
+    .then((buffer) => buffer)
     .catch((err) => onError(err))
 }
 
-export async function deleteFont (name) {
-  // const key = `font::${normalise(name)}`
-
-  fonts.delete(name)
+export async function deleteFont (font) {
+  const key = `${normalise(font)}`
 
   navigator.storage.getDirectory()
     .then((root) => root.getDirectoryHandle(BASE, { create: true }))
     .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-    .then((folder) => folder.removeEntry(name))
-    .then(() => console.log(`deleted font ${name} from OPFS`))
+    .then((folder) => [folder, folder.keys()])
+    .then(async ([folder, it]) => {
+      for await (const k of it) {
+        if (normalise(k) === key) {
+          folder.removeEntry(k)
+            .then(() => {
+              FONTS.delete(k)
+              console.log(`deleted font ${font} from OPFS`)
+            })
+        }
+      }
+    })
     .catch((err) => onError(err))
 }
 
 export function listFonts () {
-  const list = new Set()
-
-  // NTS: for some bizarre reason ...fonts doesn't seem to work with a Set that has had the last element deleted
-  if (fonts.size > 0) {
-    list.add(...fonts)
-  }
-
-  return Array.from(list)
+  return Array.from(FONTS)
 }
 
 export function listParts () {
@@ -177,6 +182,6 @@ function onError (err) {
   console.error(err)
 }
 
-// function normalise (name) {
-//   return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
-// }
+function normalise (name) {
+  return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
+}

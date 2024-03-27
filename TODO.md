@@ -13,7 +13,7 @@
 - [ ] `async_apply`
       - https://stackoverflow.com/questions/69560112/how-to-use-rust-async-trait-generic-to-a-lifetime-parameter
 
-- [ ] migrate localStorage to OPFS
+- [x] migrate localStorage to OPFS
    - [x] store project
    - [x] restore project
    - [x] store fonts
@@ -21,8 +21,8 @@
    - [x] delete font
    - [x] get font
    - [x] relocate OPFS under 'VPD' folder
-   - [ ] cleanup localStorage stuff
-   - [ ]  use normalised names for get/delete
+   - [x] cleanup localStorage stuff
+   - [x] use normalised names for get/delete
 
 ### Fonts
    - [ ] `unload all fonts`
