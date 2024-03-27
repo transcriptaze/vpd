@@ -26,8 +26,9 @@ export function serialize(object: string): any;
 export function clear(): void;
 /**
 * @param {string} json
+* @returns {Promise<void>}
 */
-export function load(json: string): void;
+export function load(json: string): Promise<void>;
 /**
 * @param {string} theme
 * @returns {string}
@@ -50,7 +51,7 @@ export interface InitOutput {
   readonly undo: () => number;
   readonly serialize: (a: number, b: number, c: number) => void;
   readonly clear: (a: number) => void;
-  readonly load: (a: number, b: number, c: number) => void;
+  readonly load: (a: number, b: number) => number;
   readonly render: (a: number, b: number, c: number) => void;
   readonly query: (a: number, b: number, c: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
