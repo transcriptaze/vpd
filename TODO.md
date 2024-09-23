@@ -1,5 +1,16 @@
 # TODO
 
+- [ ] [Add supported component and position items in polar coordinates](https://github.com/transcriptaze/vpd/issues/4)
+      - [ ] VCVSlider
+      - [ ] VCVSliderHorizontal
+      - [ ] MomentarySwitch
+      - [ ] VCVButton
+      - [ ] Trimpot
+            - [ ] exporting to CPP as RoundBlackKnob
+      - [ ] Radial guides
+      - [ ] Polar coordinates/offsets
+
+- !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
 - [ ] Cheatsheet
       - [ ] XY
@@ -10,10 +21,6 @@
 
 - [ ] _load_ web component
 - [ ] _command_ web component
-- [ ] `async_apply`
-      - https://stackoverflow.com/questions/69560112/how-to-use-rust-async-trait-generic-to-a-lifetime-parameter
-
-- [x] migrate localStorage to OPFS
 
 ### Fonts
    - [ ] `unload all fonts`
@@ -23,14 +30,6 @@
    - [ ] restore
 
 ### _undo_
-   - [x] push cmd + project
-   - [x] pop
-   - [x] invoke stash from exec
-   - [x] restore command
-   - [x] limit history size
-   - [x] enable/disable undo
-   - [x] save
-   - [x] restore
    - [ ] enable/disable trash (empty project + empty stack)
    - [ ] truncate history on new module, trash, etc
 
@@ -49,8 +48,12 @@
 - [ ] Allow H in decoration offsets
 - [ ] Default to mm in dimensions
 - [ ] Genericize ID generation
+- [ ] Minimum module width is 3H
+- [ ] `set label` _t1/l1_ ????
+      - sometimes takes t1, sometime l1
 
 - [ ] _guidelines_
+      - [ ] allow both guide and guideline
       - [ ] `set guide v1 (input in +10mm)`
       - [ ] clean up Module::new_guide_id
       - [ ] clean up NewGuide::apply
@@ -60,7 +63,16 @@
       - [ ] `new decoration [name]`
 
 
-### TO BE DONE
+## TO BE DONE EVENTUALLY
+
+- [ ] Side-by-side editor
+      - https://github.com/ianstormtaylor/slate
+
+- [ ] LLM
+      - https://towardsdatascience.com/clone-the-abilities-of-powerful-llms-into-small-local-models-using-knowledge-distillation-12e954d256c2
+
+- [ ] `async_apply`
+      - https://stackoverflow.com/questions/69560112/how-to-use-rust-async-trait-generic-to-a-lifetime-parameter
 
 - [ ] Docker container
       - [ ] ghcr

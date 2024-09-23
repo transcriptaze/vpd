@@ -148,7 +148,7 @@ Options:
 You need a **bunch** of tools:
 - _make_ (optional but recommended)
 - [_tree-sitter_](https://tree-sitter.github.io/tree-sitter)
-- [_Rust_ 1.74+](https://www.rust-lang.org/tools/install)
+- [_Rust_ 1.81+](https://www.rust-lang.org/tools/install)
 - [_wasm-pack_](https://github.com/rustwasm/wasm-pack)
 - [_wasm-bindgen_](https://github.com/rustwasm/wasm-bindgen)
 - [_npm 1.16.32+_](https://www.npmjs.com/get-npm)
@@ -156,7 +156,7 @@ You need a **bunch** of tools:
 - [_eslint_](https://eslint.org)
 - [_eslint-config-standard_](https://www.npmjs.com/package/eslint-config-standard)
 - [_Docker_](https://www.docker.com)
-- [_Go 1.21+_](https://go.dev)
+- [_Go 1.23+_](https://go.dev)
 - [_Python 3.9+_](https://www.python.org/downloads/)
 
 **NOTES**: 

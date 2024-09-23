@@ -1,6 +1,7 @@
 .PHONY: format
 .PHONY: sass
 .PHONY: cloudflare
+.PHONY: screenshot
 
 .DEFAULT_GOAL = build
 

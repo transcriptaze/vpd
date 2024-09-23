@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg"  
+     xmlns:svg="http://www.w3.org/2000/svg"
+     version="1.1"
+     x="0px" 
+     y="0px"
+     width="17.85mm"
+     height="17.85mm" 
+     viewBox="-8.925 -8.925 17.85 17.85">
+  <defs>
+    <linearGradient id="Trimpot1" x1="0" y1="-8.1" x2="0" y2="8.1" gradientUnits="userSpaceOnUse" >
+      <stop  offset="0" style="stop-color:#fffbfd" />
+      <stop  offset="1" style="stop-color:#000000" />
+    </linearGradient>
+    <linearGradient id="Trimpot2" x1="0" y1="-8.1" x2="0" y2="8.1" gradientUnits="userSpaceOnUse" >
+      <stop  offset="0" style="stop-color:#fffbfd"/>
+      <stop  offset="1" style="stop-color:#2e2e2e"/>
+    </linearGradient>
+  </defs>
+
+  <g id="Trimpot" transform="scale(0.30)">
+    <!-- background -->
+    <circle cx="0.00" cy="0.00" r="8.925" fill="#0a0a0a" />
+    <circle cx="0.00" cy="0.00" r="8.10"  fill="url(#Trimpot1)" />
+    <circle cx="0.00" cy="0.00" r="8.10"  fill="url(#Trimpot2)" />
+    <circle cx="0.00" cy="0.00" r="6.91"  opacity="0.4" />
+    <circle cx="0.00" cy="0.00" r="6.91"  opacity="0.43" />
+
+    <!-- knob -->
+    <path d="M-1.07,-6.91h2.09v4.45324c0,0.29768,-0.24131,0.53899,-0.53899,0.53899h-1.012c-0.29768,0,-0.53899,-0.24131,-0.53899,-0.53899v-4.453z" 
+          opacity="0.99" 
+          fill="#ededed" />
+    <path d="M1.01,-8.03v1.20435c3.33276,0.49072,5.89355,3.354,5.89355,6.823c0,3.81384,-3.09167,6.90552,-6.9054,6.90552s-6.9054,-3.09167,-6.9054,-6.90552c0,-3.4458,2.52661,-6.29382,5.82678,-6.81274v-1.204c-3.961,0.528,-7.019,3.912,-7.019,8.017c0,4.47217,3.62524,8.09741,8.09729,8.09741s8.09729,-3.62525,8.09729,-8.09741c0,-4.129,-3.092,-7.529,-7.085,-8.028z" opacity="0.4" />
+    <rect x="-1.07" y="-8.10" width="2.09" height="1.28" opacity="0.58" fill="#ffffff" />
+  </g>
+</svg>
