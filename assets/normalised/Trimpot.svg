@@ -17,7 +17,7 @@
     </linearGradient>
   </defs>
 
-  <g id="Trimpot" transform="scale(0.30)">
+  <g id="Trimpot" transform="scale(0.338)">
     <!-- background -->
     <circle cx="0.00" cy="0.00" r="8.925" fill="#0a0a0a" />
     <circle cx="0.00" cy="0.00" r="8.10"  fill="url(#Trimpot1)" />

@@ -1,9 +1,24 @@
 # TODO
 
+- [ ] Fix scaling for _RoundBlackKnob_
+- [ ] Fix scaling for _PJ301M_
+- [ ] set _parts_ scale factor to 0.33 throughout
+
 - [ ] [Add supported component and position items in polar coordinates](https://github.com/transcriptaze/vpd/issues/4)
       - [ ] VCVSlider
       - [ ] VCVSliderHorizontal
       - [ ] MomentarySwitch
+```
+template <typename TBase>
+struct VCVBezelLightBig : TBase {
+      VCVBezelLightBig() {
+            this->borderColor = color::BLACK_TRANSPARENT;
+            this->bgColor = color::BLACK_TRANSPARENT;
+            this->box.size = mm2px(math::Vec(11.1936, 11.1936));
+      }
+};
+```
+
       - [ ] VCVButton
       - [ ] Trimpot
             - [ ] exporting to CPP as RoundBlackKnob
@@ -41,8 +56,6 @@
 
 ### Overlay
 - [ ] Only add used widgets to defs
-- [ ] Fix scaling for _RoundBlackKnob_
-- [ ] Fix scaling for _PJ301M_
 
 ### Commands
 - [ ] Allow H in decoration offsets

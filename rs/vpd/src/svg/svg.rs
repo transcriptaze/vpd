@@ -273,6 +273,7 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     let mut rbk = include_str!("templates/components/RoundBlackKnob.svg");
     let mut pj301m = include_str!("templates/components/PJ301M.svg");
     let trimpot = include_str!("templates/components/Trimpot.svg");
+    let pushbutton = include_str!("templates/components/PUshButton.svg");
 
     if theme == "dark" {
         styles = include_str!("templates/dark/styles.svg");
@@ -305,4 +306,5 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("RoundBlackKnob", &rbk).unwrap();
     tera.add_raw_template("PJ301M", &pj301m).unwrap();
     tera.add_raw_template("Trimpot", &trimpot).unwrap();
+    tera.add_raw_template("PushButton", &pushbutton).unwrap();
 }
