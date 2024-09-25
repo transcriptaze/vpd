@@ -14,10 +14,12 @@
       - [ ] Polar coordinates/offsets
       - [ ] Drop shadows
       - (?) 'new button' => eventually export with code and all?
-      - [ ] Sample project:
-            - BevelBig in .h file
-            - BevelBig.svg
-            - code in .cpp
+      - [ ] Demo project:
+            - [x] trimpot
+            - [x] pushbutton
+                  - [x] Pushbutton in .h file
+                  - [x] PushButton.svg
+            - [x] button
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

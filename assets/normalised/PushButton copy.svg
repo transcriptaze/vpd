@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg"  
+     xmlns:svg="http://www.w3.org/2000/svg"
+     version="1.1"
+     width="36mm"
+     height="36mm" 
+     viewBox="-18 -18 36 36">
+  <defs>
+    <linearGradient id="PushButton1" x1="18.0" y1="1.49" x2="18.0" y2="34.54" gradientUnits="userSpaceOnUse" >
+      <stop  offset="0" style="stop-color:#787878"/>
+      <stop  offset="1" style="stop-color:#474747"/>
+    </linearGradient>
+    <linearGradient id="PushButton2" x1="18.01" y1="33.45" x2="18.01" y2="2.57"  gradientUnits="userSpaceOnUse" >
+      <stop  offset="0.00559" style="stop-color:#6b6b6b" />
+      <stop  offset="1" style="stop-color:#dedede" />
+    </linearGradient>
+    <linearGradient id="PushButton3" x1="18.01" y1="32.85" x2="18.01" y2="3.17" gradientUnits="userSpaceOnUse" >
+      <stop  offset="0.00559" style="stop-color:#5b5b5b"/>
+      <stop  offset="1" style="stop-color:#6c6c6c"/>
+    </linearGradient>
+  </defs>
+
+  <g id="Pushbutton" transform="scale(0.338)">
+    <!-- bezel -->
+    <g>
+      <path d="M36.03,18.01 c0,9.94739,-8.06683,18.01147,-18.01407,18.01147 c-9.94595,0,-18.01144,-8.06409,-18.01144,-18.01147 c0,-9.95129,8.06549,-18.01404,18.01141,-18.01404 c9.947,0,18.014,8.063,18.014,18.014"/>
+      <path d="M1.49,18.01 c0,-9.1261,7.40079,-16.52441,16.52676,-16.52441 c9.12473,0,16.52429,7.39832,16.52429,16.52441 c0,9.12964,-7.39957,16.52673,-16.52432,16.52673 c-9.126,0,-16.527,-7.397,-16.527,-16.527" fill="url(#PushButton1)" />
+      <path d="M18.01,33.46 c-8.52792,0,-15.44122,-6.91565,-15.44122,-15.44348 c0,-8.52661,6.9133,-15.44116,15.44122,-15.44116 c8.53131,0,15.44348,6.91455,15.44348,15.44116 c0,8.528,-6.912,15.443,-15.443,15.443" fill="url(#PushButton2)" opacity="0.21" />
+      <path d="M18.01,32.85 c-8.19525,0,-14.83887,-6.64587,-14.83887,-14.84094 c0,-8.19409,6.64362,-14.83899,14.83887,-14.83899 c8.19852,0,14.84106,6.6449,14.84106,14.83887 c0,8.195,-6.643,14.841,-14.841,14.841" fill="url(#PushButton3)" />
+    </g>
+
+    <!-- white light -->
+    <g>
+      <circle cx="18" cy="18" r="15" fill="#ffffff" />
+    </g>
+
+  </g>
+</svg>
+
