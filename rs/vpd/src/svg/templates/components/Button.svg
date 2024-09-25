@@ -1,0 +1,14 @@
+    <g id="Button" transform="scale(0.338)">
+      <linearGradient id="Button1" x1="0" y1="-7.74" x2="0" y2="8.25" gradientUnits="userSpaceOnUse" >
+        <stop  offset="0" style="stop-color:#807c7e" />
+        <stop  offset="1" style="stop-color:#0a0a0a" />
+      </linearGradient>
+      <linearGradient x1="0" y1="-7.37" x2="0" y2="7.37" gradientUnits="userSpaceOnUse">
+        <stop  offset="0" style="stop-color:#4a4747" />
+        <stop  offset="1" style="stop-color:#1f1f1f" />
+      </linearGradient>
+
+      <path d="M9,0 c0,4.97021,-4.03055,8.99939,-9.00067,8.99939 c-4.96945,0,-8.99933,-4.02917,-8.99933,-8.99939 c0,-4.97217,4.02988,-9.00061,8.99933,-9.00061 c4.97,0,9.001,4.028,9.001,9.001" />
+      <path d="M-8.25,0 c0,-4.55444,3.69345,-8.2467,8.24789,-8.2467 c4.55383,0,8.24667,3.69226,8.24667,8.2467 c0,4.55627,-3.69284,8.24792,-8.24667,8.24792 c-4.554,0,-8.248,-3.692,-8.248,-8.248" fill="url(#Button1)" />
+      <path d="M0,-7.37 c4.07211,0,7.37326,3.30225,7.37326,7.37427 c0,4.07153,-3.30115,7.37329,-7.37326,7.37329 c-4.07376,0,-7.37436,-3.30176,-7.37436,-7.37329 c0,-4.072,3.301,-7.374,7.374,-7.374" fill="url(#Button2)" />
+    </g>
