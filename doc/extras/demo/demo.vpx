@@ -1,0 +1,8 @@
+new module demo 9H
+new guide vertical centre
+new guide h1 top+20.32mm
+new guide h2 h1+20.32mm
+new guide h3 h2+20.32mm
+new parameter Trimpot    v1,h1 Trimpot
+new parameter PushButton v1,h2 PushButton
+new parameter Button     v1,h3 Button

@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "name": "demo",
+  "panel": {
+    "width": 45.72,
+    "height": 128.5,
+    "background": {
+      "rgb": null,
+      "rgba": null,
+      "background": "default"
+    },
+    "inputs": [],
+    "outputs": [],
+    "parameters": [
+      {
+        "id": "p1",
+        "name": "Trimpot",
+        "x": {
+          "reference": "v1",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h1",
+          "offset": 0.0
+        },
+        "part": "Trimpot"
+      },
+      {
+        "id": "p2",
+        "name": "PushButton",
+        "x": {
+          "reference": "v1",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h2",
+          "offset": 0.0
+        },
+        "part": "PushButton"
+      },
+      {
+        "id": "p3",
+        "name": "Button",
+        "x": {
+          "reference": "v1",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h3",
+          "offset": 0.0
+        },
+        "part": "Button"
+      }
+    ],
+    "lights": [],
+    "widgets": [],
+    "labels": [],
+    "decorations": [],
+    "gutter": 5.0,
+    "origin": {
+      "x": {
+        "reference": "left",
+        "offset": 0.0
+      },
+      "y": {
+        "reference": "top",
+        "offset": 0.0
+      }
+    },
+    "guides": {
+      "h1": {
+        "id": "h1",
+        "x": null,
+        "y": {
+          "reference": "top",
+          "offset": 20.32
+        }
+      },
+      "h3": {
+        "id": "h3",
+        "x": null,
+        "y": {
+          "reference": "h2",
+          "offset": 20.32
+        }
+      },
+      "v1": {
+        "id": "v1",
+        "x": {
+          "reference": "centre",
+          "offset": 0.0
+        },
+        "y": null
+      },
+      "h2": {
+        "id": "h2",
+        "x": null,
+        "y": {
+          "reference": "h1",
+          "offset": 20.32
+        }
+      }
+    }
+  },
+  "script": [
+    "new module demo 9H",
+    "new guide vertical centre",
+    "new guide h1 top+20.32mm",
+    "new guide h2 h1+20.32mm",
+    "new guide h3 h2+20.32mm",
+    "new parameter Trimpot    v1,h1 Trimpot",
+    "new parameter PushButton v1,h2 PushButton",
+    "new parameter Button     v1,h3 Button"
+  ]
+}

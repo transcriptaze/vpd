@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     version="1.1"
+     width="45.72mm"
+     height="128.5mm"
+     viewBox="0 0 45.72 128.5">
+  <defs>
+    <linearGradient id="default">
+      <stop offset="0%"   stop-color="#222222" stop-opacity="1" />
+      <stop offset="100%" stop-color="#222222" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+
+  <g inkscape:groupmode="layer" inkscape:label="components" style="display:none">
+    <circle inkscape:label="Trimpot" cx="22.86" cy="20.32" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="PushButton" cx="22.86" cy="40.64" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="Button" cx="22.86" cy="60.96" r="2.54" fill="#ff0000" />
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="background">
+    <rect x="0" y="0" width="45.72" height="128.5" fill="url(#default)" />
+  </g>
+
+  <g inkscape:groupmode="layer" inkscape:label="title"></g>
+  <g inkscape:groupmode="layer" inkscape:label="inputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="outputs"></g>
+  <g inkscape:groupmode="layer" inkscape:label="parameters"></g>
+  <g inkscape:groupmode="layer" inkscape:label="lights"></g>
+  <g inkscape:groupmode="layer" inkscape:label="widgets"></g>
+  <g inkscape:groupmode="layer" inkscape:label="labels"></g>
+</svg>

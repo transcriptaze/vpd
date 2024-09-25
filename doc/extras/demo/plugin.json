@@ -1,0 +1,25 @@
+{
+  "slug": "demo",
+  "name": "demo",
+  "version": "2.0.0",
+  "license": "MIT",
+  "brand": "vpd",
+  "author": "",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "demo",
+      "name": "demo",
+      "description": "VPD buttons demo",
+      "tags": [
+        "blank"
+      ]
+    }
+  ]
+}
