@@ -1,7 +1,7 @@
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 
-pub const PARTS: [&'static str; 5] = ["PJ301M", "RoundBlackKnob", "Trimpot", "PushButton", "Button"];
+pub const PARTS: [&'static str; 6] = ["PJ301M", "RoundBlackKnob", "Trimpot", "PushButton", "Button", "Slider"];
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Part {

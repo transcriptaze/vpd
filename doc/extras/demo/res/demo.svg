@@ -2,24 +2,25 @@
      xmlns:svg="http://www.w3.org/2000/svg"
      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
      version="1.1"
-     width="45.72mm"
+     width="50.8mm"
      height="128.5mm"
-     viewBox="0 0 45.72 128.5">
+     viewBox="0 0 50.8 128.5">
   <defs>
-    <linearGradient id="default">
-      <stop offset="0%"   stop-color="#ffffff" stop-opacity="1" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="1" />
+    <linearGradient id="fundamental">
+      <stop offset="0%"   stop-color="#ebebeb" stop-opacity="1" />
+      <stop offset="100%" stop-color="#e1e1e1" stop-opacity="1" />
     </linearGradient>
   </defs>
 
   <g inkscape:groupmode="layer" inkscape:label="components" style="display:none">
-    <circle inkscape:label="Trimpot" cx="22.86" cy="20.32" r="2.54" fill="#ff0000" />
-    <circle inkscape:label="PushButton" cx="22.86" cy="40.64" r="2.54" fill="#ff0000" />
-    <circle inkscape:label="Button" cx="22.86" cy="60.96" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="Trimpot" cx="15.24" cy="25.4" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="PushButton" cx="15.24" cy="45.72" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="Button" cx="15.24" cy="66.04" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="Slider" cx="35.56" cy="45.72" r="2.54" fill="#ff0000" />
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="background">
-    <rect x="0" y="0" width="45.72" height="128.5" fill="url(#default)" />
+    <rect x="0" y="0" width="50.8" height="128.5" fill="url(#fundamental)" />
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="title"></g>
@@ -28,5 +29,11 @@
   <g inkscape:groupmode="layer" inkscape:label="parameters"></g>
   <g inkscape:groupmode="layer" inkscape:label="lights"></g>
   <g inkscape:groupmode="layer" inkscape:label="widgets"></g>
-  <g inkscape:groupmode="layer" inkscape:label="labels"></g>
+
+  <g inkscape:groupmode="layer" inkscape:label="labels">
+    <g inkscape:label="DEMO" transform="translate(20.275,11.665)" fill="#222222">
+      <path d="M0.26-3.01L0.26 0L1.07 0Q1.27 0 1.44-0.05Q1.62-0.10 1.77-0.19L1.77-0.19Q1.89-0.27 2.00-0.39Q2.10-0.50 2.18-0.64L2.18-0.64Q2.27-0.80 2.31-0.98Q2.36-1.17 2.36-1.38L2.36-1.38L2.36-1.63Q2.36-1.84 2.31-2.04Q2.26-2.23 2.17-2.39L2.17-2.39Q2.09-2.52 1.99-2.63Q1.89-2.74 1.76-2.82L1.76-2.82Q1.61-2.91 1.43-2.96Q1.25-3.01 1.04-3.01L1.04-3.01L0.26-3.01ZM0.84-0.47L0.84-2.54L1.04-2.54Q1.14-2.54 1.23-2.51Q1.32-2.49 1.40-2.45L1.40-2.45Q1.49-2.39 1.57-2.30Q1.64-2.21 1.69-2.09L1.69-2.09Q1.72-1.99 1.74-1.88Q1.76-1.76 1.76-1.63L1.76-1.63L1.76-1.38Q1.76-1.24 1.74-1.12Q1.72-1.00 1.69-0.91L1.69-0.91Q1.64-0.79 1.58-0.71Q1.52-0.63 1.44-0.57L1.44-0.57Q1.36-0.52 1.27-0.49Q1.17-0.47 1.07-0.47L1.07-0.47L0.84-0.47ZM3.43-1.32L4.66-1.32L4.66-1.78L3.43-1.78L3.43-2.54L4.87-2.54L4.87-3.01L2.84-3.01L2.84 0L4.87 0L4.87-0.47L3.43-0.47L3.43-1.32ZM6.35-1.88L6.06-3.01L5.34-3.01L5.34 0L5.88 0L5.88-0.89L5.85-2.24L6.21-0.99L6.49-0.99L6.89-2.30L6.86-0.89L6.86 0L7.40 0L7.40-3.01L6.67-3.01L6.35-1.88ZM9.99-1.28L9.99-1.28L9.99-1.72Q9.99-1.93 9.95-2.11Q9.92-2.29 9.84-2.44L9.84-2.44Q9.78-2.58 9.69-2.69Q9.59-2.80 9.47-2.88L9.47-2.88Q9.35-2.96 9.20-3.01Q9.05-3.05 8.87-3.05L8.87-3.05Q8.70-3.05 8.55-3.01Q8.41-2.96 8.29-2.88L8.29-2.88Q8.17-2.80 8.08-2.69Q7.99-2.57 7.92-2.43L7.92-2.43Q7.85-2.28 7.82-2.10Q7.79-1.92 7.79-1.72L7.79-1.72L7.79-1.28Q7.79-1.10 7.82-0.93Q7.85-0.76 7.90-0.62L7.90-0.62Q7.97-0.47 8.06-0.34Q8.16-0.22 8.28-0.13L8.28-0.13Q8.40-0.05 8.55-0.00Q8.70 0.04 8.87 0.04L8.87 0.04Q9.04 0.04 9.18 0.00Q9.33-0.04 9.45-0.11L9.45-0.11Q9.58-0.19 9.68-0.32Q9.79-0.44 9.86-0.59L9.86-0.59Q9.92-0.74 9.96-0.91Q9.99-1.09 9.99-1.28ZM9.40-1.73L9.40-1.73L9.40-1.28Q9.40-1.17 9.39-1.07Q9.38-0.97 9.36-0.88L9.36-0.88Q9.33-0.77 9.28-0.68Q9.23-0.59 9.16-0.53L9.16-0.53Q9.11-0.49 9.03-0.46Q8.96-0.44 8.87-0.44L8.87-0.44Q8.78-0.44 8.71-0.46Q8.64-0.49 8.58-0.54L8.58-0.54Q8.52-0.60 8.48-0.69Q8.44-0.78 8.41-0.88L8.41-0.88Q8.39-0.97 8.38-1.07Q8.38-1.17 8.38-1.28L8.38-1.28L8.38-1.73Q8.38-1.84 8.39-1.95Q8.39-2.05 8.41-2.14L8.41-2.14Q8.44-2.26 8.49-2.34Q8.54-2.43 8.61-2.49L8.61-2.49Q8.66-2.53 8.73-2.55Q8.79-2.57 8.87-2.57L8.87-2.57Q8.96-2.57 9.03-2.55Q9.10-2.52 9.15-2.48L9.15-2.48Q9.22-2.43 9.27-2.34Q9.32-2.25 9.36-2.14L9.36-2.14Q9.38-2.05 9.39-1.95Q9.40-1.84 9.40-1.73Z"/>
+    </g>
+  </g>
+
 </svg>

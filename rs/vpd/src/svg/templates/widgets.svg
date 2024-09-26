@@ -12,6 +12,7 @@
 {% include "PJ301M"          %}
 {% include "Trimpot"         %}
 {% include "PushButton"      %}
-{% include "Button"      %}
+{% include "Button"          %}
+{% include "Slider"          %}
   </defs>
 {%- endif %}

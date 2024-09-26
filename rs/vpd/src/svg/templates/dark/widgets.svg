@@ -13,5 +13,6 @@
 {% include "Trimpot"         %}
 {% include "PushButton"      %}
 {% include "Button"          %}
+{% include "Slider"          %}
   </defs>
 {%- endif %}

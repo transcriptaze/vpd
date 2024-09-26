@@ -8,6 +8,7 @@ struct Demo : Module {
 		TRIMPOT_PARAM,
 		PUSHBUTTON_PARAM,
 		BUTTON_PARAM,
+		SLIDER_PARAM,
 		PARAMS_LEN
 	};
 
@@ -34,6 +35,7 @@ struct Demo : Module {
 		configParam(TRIMPOT_PARAM, 0.f, 1.f, 0.f, "Trimpot");
 		configButton(PUSHBUTTON_PARAM, "PushButton");
 		configButton(BUTTON_PARAM, "Button");
+		configParam(SLIDER_PARAM, 0.f, 1.f, 0.f, "Slider");
 	}
 
 	void process(const ProcessArgs& args) override {
@@ -56,7 +58,8 @@ struct Demo : Module {
 struct DemoWidget : ModuleWidget {
 	DemoWidget(Demo* module) {
 		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/demo.svg")));
+		setPanel(createPanel(asset::plugin(pluginInstance, "res/demo.svg"),
+		                     asset::plugin(pluginInstance, "res/demo-dark.svg")));
 
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
@@ -66,6 +69,7 @@ struct DemoWidget : ModuleWidget {
 		addParam(createParamCentered<Trimpot>(DEMO_PARAM_TRIMPOT, module, Demo::TRIMPOT_PARAM));
         addParam(createLightParamCentered<LightButton<PushButton, PushButtonLight<WhiteLight>>>(DEMO_PARAM_PUSHBUTTON, module, Demo::PUSHBUTTON_PARAM, Demo::PUSHBUTTON_LIGHT));
 		addParam(createLightParamCentered<VCVLightButton<MediumSimpleLight<WhiteLight>>>(DEMO_PARAM_BUTTON, module, Demo::BUTTON_PARAM, Demo::BUTTON_LIGHT));
+		addParam(createParamCentered<VCVSlider>(DEMO_PARAM_SLIDER, module, Demo::SLIDER_PARAM));
 	}
 };
 
