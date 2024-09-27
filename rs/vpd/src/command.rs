@@ -51,10 +51,6 @@ use crate::commands::UnloadFont;
 
 use crate::commands;
 
-pub trait MyFuture: Future<Output = ()> {}
-
-impl<T: Future<Output = ()>> MyFuture for T {}
-
 pub trait Command {
     fn validate(&self, _m: &mut Module) -> Option<Box<dyn Error>> {
         None

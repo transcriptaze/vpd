@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg"  
+     xmlns:svg="http://www.w3.org/2000/svg"
+     version="1.1"
+     width="19.84258"
+     height="76.53516" 
+     viewBox="0 0 19.84258 76.53516">
+  <g id="Slider" transform="scale(0.338)">
+  	<!-- background -->
+  	<g>
+	  <path d="M14.17327,1.827865 v72.87942 c0,1.00951,-0.81836,1.82787,-1.82787,1.82787 h-4.84827 c-1.0095,0,-1.82786,-0.81836,-1.82786,-1.82787 v-72.879c0,-1.00951,0.81836,-1.82787,1.82786,-1.82787h4.84827 c1.01,0,1.828,0.818,1.828,1.827z" />
+	</g>
+	<!-- handle -->
+	<g transform="translate(7.76129,10)">
+	 <path d="M0,0 h4.32 v11.742 h-4.32 v-11.742z" fill="#454545" />
+	 <rect x="0" y="8.87107"  width="4.32027" height="1"        fill="#787878" />
+	 <rect x="0" y="10.77812" width="4.32027" height="0.96405"  fill="#363636" />
+     <rect x="0" y="1.84624"  width="4.32027" height="1"        fill="#262626" />
+     <rect x="0" y="0"        width="4.32027" height="0.79375"  fill="#5e5e5e" />
+     <rect x="0" y="2.87108"  width="4.32027" height="6"        fill="#d4d4d4" />
+	</g>
+  </g>
+</svg>

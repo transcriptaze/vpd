@@ -9,7 +9,7 @@
         <stop  offset="1" style="stop-color:#1f1e1f"/>
       </linearGradient>
 
-      <g transform="scale(0.3)">
+      <g transform="scale(0.338)">
         <circle fill="url(#RoundBlackKnob1)" cx="0" cy="0" r="14.167"/>
 
         <path fill="#ffffff"
