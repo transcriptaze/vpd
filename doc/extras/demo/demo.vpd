@@ -63,6 +63,19 @@
           "offset": 0.0
         },
         "part": "Slider"
+      },
+      {
+        "id": "p5",
+        "name": "RoundBlackKnow",
+        "x": {
+          "reference": "v1",
+          "offset": 0.0
+        },
+        "y": {
+          "reference": "h4",
+          "offset": 0.0
+        },
+        "part": "RoundBlackKnob"
       }
     ],
     "lights": [],
@@ -114,35 +127,11 @@
       }
     },
     "guides": {
-      "h2": {
-        "id": "h2",
-        "x": null,
-        "y": {
-          "reference": "h1",
-          "offset": 20.32
-        }
-      },
-      "h3": {
-        "id": "h3",
-        "x": null,
-        "y": {
-          "reference": "h2",
-          "offset": 20.32
-        }
-      },
       "v1": {
         "id": "v1",
         "x": {
           "reference": "left",
           "offset": 15.24
-        },
-        "y": null
-      },
-      "v2": {
-        "id": "v2",
-        "x": {
-          "reference": "right",
-          "offset": -15.24
         },
         "y": null
       },
@@ -154,12 +143,44 @@
           "offset": 15.24
         }
       },
+      "h3": {
+        "id": "h3",
+        "x": null,
+        "y": {
+          "reference": "h2",
+          "offset": 20.32
+        }
+      },
+      "h2": {
+        "id": "h2",
+        "x": null,
+        "y": {
+          "reference": "h1",
+          "offset": 20.32
+        }
+      },
+      "v2": {
+        "id": "v2",
+        "x": {
+          "reference": "right",
+          "offset": -15.24
+        },
+        "y": null
+      },
       "h0": {
         "id": "h0",
         "x": null,
         "y": {
           "reference": "top",
           "offset": 10.16
+        }
+      },
+      "h4": {
+        "id": "h4",
+        "x": null,
+        "y": {
+          "reference": "h3",
+          "offset": 20.32
         }
       }
     }
@@ -173,10 +194,12 @@
     "new guide h1 h0+15.24mm",
     "new guide h2 h1+20.32mm",
     "new guide h3 h2+20.32mm",
+    "new guide h4 h3+20.32mm",
     "new label \"DEMO\" centre,h0 \"RobotoMono-Bold\" 12pt centre,middle #222222,#ebebeb",
     "new parameter Trimpot    v1,h1 Trimpot",
     "new parameter PushButton v1,h2 PushButton",
     "new parameter Button     v1,h3 Button",
-    "new parameter Slider     v2,h2 Slider"
+    "new parameter Slider     v2,h2 Slider",
+    "new parameter RoundBlackKnow v1,h4 RoundBlackKnob"
   ]
 }

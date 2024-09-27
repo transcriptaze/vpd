@@ -1,13 +1,21 @@
 new module demo 10H
+
 set background fundamental
+
 new guide v1 left+15.24mm
 new guide v2 right-15.24mm
 new guide h0 top+10.16mm
 new guide h1 h0+15.24mm
 new guide h2 h1+20.32mm
 new guide h3 h2+20.32mm
+new guide h4 h3+20.32mm
+new guide h5 h4+20.32mm
+
 new label "DEMO" centre,h0 "RobotoMono-Bold" 12pt centre,middle #222222,#ebebeb
-new parameter Trimpot    v1,h1 Trimpot
-new parameter PushButton v1,h2 PushButton
-new parameter Button     v1,h3 Button
-new parameter Slider     v2,h2 Slider
+
+new parameter Trimpot        v1,h1 Trimpot
+new parameter PushButton     v1,h2 PushButton
+new parameter Button         v1,h3 Button
+new parameter Slider         v2,h2 Slider
+new parameter RoundBlackKnob v1,h4 RoundBlackKnob
+new input     PJ301M         v1,h5 PJ301M

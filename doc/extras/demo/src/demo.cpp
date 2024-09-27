@@ -9,10 +9,12 @@ struct Demo : Module {
 		PUSHBUTTON_PARAM,
 		BUTTON_PARAM,
 		SLIDER_PARAM,
+		ROUNDBLACKKNOB_PARAM,
 		PARAMS_LEN
 	};
 
 	enum InputId {
+		PJ301M_INPUT,
 		INPUTS_LEN
 	};
 
@@ -70,6 +72,8 @@ struct DemoWidget : ModuleWidget {
         addParam(createLightParamCentered<LightButton<PushButton, PushButtonLight<WhiteLight>>>(DEMO_PARAM_PUSHBUTTON, module, Demo::PUSHBUTTON_PARAM, Demo::PUSHBUTTON_LIGHT));
 		addParam(createLightParamCentered<VCVLightButton<MediumSimpleLight<WhiteLight>>>(DEMO_PARAM_BUTTON, module, Demo::BUTTON_PARAM, Demo::BUTTON_LIGHT));
 		addParam(createParamCentered<VCVSlider>(DEMO_PARAM_SLIDER, module, Demo::SLIDER_PARAM));
+		addParam(createParamCentered<RoundBlackKnob>(DEMO_PARAM_ROUNDBLACKKNOB, module, Demo::ROUNDBLACKKNOB_PARAM));
+		addInput(createInputCentered<PJ301MPort>(DEMO_INPUT_PJ301M, module, Demo::PJ301M_INPUT));
 	}
 };
 

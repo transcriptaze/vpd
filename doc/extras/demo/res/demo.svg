@@ -13,10 +13,12 @@
   </defs>
 
   <g inkscape:groupmode="layer" inkscape:label="components" style="display:none">
+    <circle inkscape:label="PJ301M" cx="15.24" cy="106.68" r="2.54" fill="#00ff00" />
     <circle inkscape:label="Trimpot" cx="15.24" cy="25.4" r="2.54" fill="#ff0000" />
     <circle inkscape:label="PushButton" cx="15.24" cy="45.72" r="2.54" fill="#ff0000" />
     <circle inkscape:label="Button" cx="15.24" cy="66.04" r="2.54" fill="#ff0000" />
     <circle inkscape:label="Slider" cx="35.56" cy="45.72" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="RoundBlackKnob" cx="15.24" cy="86.36" r="2.54" fill="#ff0000" />
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="background">
