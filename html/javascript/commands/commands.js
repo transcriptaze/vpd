@@ -85,6 +85,21 @@ export function mm (node) {
   return parseFloat(`${v}`)
 }
 
+export function degrees (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  const v = node.text
+
+  const match = `${v}`.match(/([0-9]+)°/)
+  if (match != null && match.length > 1) {
+    return parseFloat(`${match[1]}`)
+  }
+
+  return parseFloat(`${v}`)
+}
+
 export function clean (v) {
   const re = /^(([a-zA-Z][a-zA-Z0-9_-]*)|"([a-zA-Z][a-zA-Z0-9_ -]*?)"|'([a-zA-Z][a-zA-Z0-9_ -]*?)')$/
   const match = `${v}`.match(re)

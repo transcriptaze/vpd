@@ -8,6 +8,14 @@
       "required": false,
       "types": [
         {
+          "type": "angle",
+          "named": true
+        },
+        {
+          "type": "radius",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
@@ -128,6 +136,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "decoration",
           "named": true
         },
@@ -164,6 +176,10 @@
           "named": true
         },
         {
+          "type": "radius",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -195,6 +211,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "decoration",
           "named": true
         },
@@ -220,6 +240,10 @@
         },
         {
           "type": "parameter",
+          "named": true
+        },
+        {
+          "type": "radius",
           "named": true
         },
         {
@@ -471,6 +495,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "dx",
           "named": true
         },
@@ -508,6 +536,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "radius",
           "named": true
         },
         {
@@ -601,6 +633,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "dx",
           "named": true
         },
@@ -638,6 +674,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "radius",
           "named": true
         },
         {
@@ -829,6 +869,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "dx",
           "named": true
         },
@@ -866,6 +910,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "radius",
           "named": true
         },
         {
@@ -915,6 +963,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "dx",
           "named": true
         },
@@ -952,6 +1004,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "radius",
           "named": true
         },
         {
@@ -1010,6 +1066,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "angle",
+          "named": true
+        },
+        {
+          "type": "radius",
+          "named": true
+        },
         {
           "type": "x",
           "named": true
@@ -1264,6 +1328,10 @@
           "named": true
         },
         {
+          "type": "angle",
+          "named": true
+        },
+        {
           "type": "dx",
           "named": true
         },
@@ -1301,6 +1369,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "radius",
           "named": true
         },
         {
@@ -1488,6 +1560,10 @@
     "named": false
   },
   {
+    "type": "angle",
+    "named": true
+  },
+  {
     "type": "background",
     "named": false
   },
@@ -1589,11 +1665,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "helper",
@@ -1696,6 +1772,10 @@
     "named": false
   },
   {
+    "type": "radius",
+    "named": true
+  },
+  {
     "type": "rgb",
     "named": true
   },
@@ -1713,11 +1793,11 @@
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "script",
@@ -1777,11 +1857,11 @@
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "with",

@@ -90,7 +90,20 @@ module.exports = grammar({
     _new_xy: $ => choice (
       $.absolute,
       $.relative,
-      seq( $.x, ',', $.y ),
+      choice (
+        seq( $.x, ',', $.y ),
+        seq( 
+          '(', $.x, ',', $.y, 
+          optional ( 
+            seq (
+               alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
+               ',',
+               alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
+            ),
+          ),
+          ')',
+        ),
+      ),
       seq(
         '(',
         choice (
@@ -794,15 +807,31 @@ module.exports = grammar({
 
     absolute: $ => seq(
       '@',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
-      ',',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+      choice (
+        seq(
+          alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
+          ',',
+          alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+        ),
+        seq(
+          alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
+          ',',
+          alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
+        ),
+      ),
     ),
 
-    relative: $ => seq(
-      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.x),
-      ',',
-      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
+    relative: $ => choice(
+      seq(
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.x),
+        ',',
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
+      ),
+      seq(
+        alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
+        ',',
+        alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
+      ),
     ),
 
     _decorate: $ => seq(
@@ -820,10 +849,17 @@ module.exports = grammar({
       ')',
     ),
 
-    _relative: $ => seq(
-      alias($._offset, $.dx),
-      ',',
-      alias($._offset, $.dy),
+    _relative: $ => choice(
+      seq(
+        alias($._offset, $.dx),
+        ',',
+        alias($._offset, $.dy),
+      ),
+      seq(
+        alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
+        ',',
+        alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
+      ),
     ),
 
     _xy: $ => seq(

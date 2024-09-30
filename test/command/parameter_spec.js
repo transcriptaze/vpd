@@ -30,4 +30,96 @@ describe('parameter command translation', () => {
 
     expect(cmd).to.eql(expected)
   })
+
+  it('new parameter volume @30°,10mm', () => {
+    const cmd = command.parse('new parameter volume @30°,10mm')
+    const expected = {
+      src: 'new parameter volume @30°,10mm',
+      action: 'new',
+      parameter: {
+        name: 'volume',
+        x: {
+          reference: 'absolute',
+          offset: 0
+        },
+        y: {
+          reference: 'absolute',
+          offset: 0
+        },
+        angle: 30,
+        radius: 10
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('new parameter volume 30°,10mm', () => {
+    const cmd = command.parse('new parameter volume 30°,10mm')
+    const expected = {
+      src: 'new parameter volume 30°,10mm',
+      action: 'new',
+      parameter: {
+        name: 'volume',
+        x: {
+          reference: 'origin',
+          offset: 0
+        },
+        y: {
+          reference: 'origin',
+          offset: 0
+        },
+        angle: 30,
+        radius: 10
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('new parameter volume (v1,h1 30°,10mm)', () => {
+    const cmd = command.parse('new parameter volume (v1,h1 30°,10mm)')
+    const expected = {
+      src: 'new parameter volume (v1,h1 30°,10mm)',
+      action: 'new',
+      parameter: {
+        name: 'volume',
+        x: {
+          reference: 'v1',
+          offset: 0
+        },
+        y: {
+          reference: 'h1',
+          offset: 0
+        },
+        angle: 30,
+        radius: 10
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('new parameter volume (input in 30°,10mm)', () => {
+    const cmd = command.parse('new parameter volume (input in 30°,10mm)')
+    const expected = {
+      src: 'new parameter volume (input in 30°,10mm)',
+      action: 'new',
+      parameter: {
+        name: 'volume',
+        x: {
+          reference: 'input<in>',
+          offset: 0
+        },
+        y: {
+          reference: 'input<in>',
+          offset: 0
+        },
+        angle: 30,
+        radius: 10
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
 })

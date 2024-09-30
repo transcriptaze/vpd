@@ -1,0 +1,86 @@
+=======================
+new param "E" @30°,10mm
+=======================
+new param "E" @30°,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (angle)
+        (radius)))))
+
+=======================
+new param "E" 30°,10mm
+=======================
+new param "E" 30°,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (relative
+        (angle)
+        (radius)))))
+
+=====================================
+new parameter "E" (input in 30°,10mm)
+=====================================
+new parameter "E" (input in 30°,10mm)
+---
+(command
+  (new
+    (parameter
+      (name)
+      (input
+        (name)
+        (angle)
+        (radius)))))
+
+=========================
+new parameter "E" (v1,h1)
+=========================
+new parameter "E" (v1,h1)
+---
+(command
+  (new
+    (parameter
+      (name)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+==================================
+new parameter "E" (v1,h1 30°,10mm)
+==================================
+new parameter "E" (v1,h1 30°,10mm)
+---
+(command
+  (new
+    (parameter
+      (name)
+      (x
+        (reference))
+      (y
+        (reference))
+      (angle)
+      (radius))))
+
+==========================================
+new parameter "E" (centre,middle 30°,10mm)
+==========================================
+new parameter "E" (centre,middle 30°,10mm)
+---
+(command
+  (new
+    (parameter
+      (name)
+      (x
+        (reference))
+      (y
+        (reference))
+      (angle)
+      (radius))))
+

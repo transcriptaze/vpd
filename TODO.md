@@ -4,6 +4,7 @@
 - [x] Fix scaling for _PJ301M_
 - [x] Fix scaling for _SilverScrew_
 - [x] set _parts_ scale factor to 0.338 throughout
+- [ ] Drop shadows
 
 - [ ] [Add supported component and position items in polar coordinates](https://github.com/transcriptaze/vpd/issues/4)
       - [x] VCVSlider
@@ -12,13 +13,13 @@
       - [x] Button
       - [x] Trimpot
       - [x] Demo project:
-            - [x] trimpot
-            - [x] pushbutton
-            - [x] button
-            - [x] slider
-      - [ ] Radial guides
       - [ ] Polar coordinates/offsets
-      - [ ] Drop shadows
+            - [x] grammar
+            - [x] JS command
+            - [ ] rs command
+            - [ ] N,S,E,W, etc
+            - (?) o'clock
+      - (?) Radial guides
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

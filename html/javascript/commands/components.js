@@ -1,4 +1,4 @@
-import { identifier, string, reference, offset, clean, mm } from './commands.js'
+import { identifier, string, reference, offset, clean, mm, degrees } from './commands.js'
 
 // FIXME remove
 export function parse (node) {
@@ -18,6 +18,16 @@ export function create (node) {
     }
 
     if (child.type === 'absolute') {
+      object.x = {
+        reference: 'absolute',
+        offset: 0.0
+      }
+
+      object.y = {
+        reference: 'absolute',
+        offset: 0.0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
           object.x = {
@@ -31,11 +41,29 @@ export function create (node) {
             reference: 'absolute',
             offset: mm(v)
           }
+        }
+
+        if (v.type === 'angle') {
+          object.angle = degrees(v)
+        }
+
+        if (v.type === 'radius') {
+          object.radius = mm(v)
         }
       }
     }
 
     if (child.type === 'relative') {
+      object.x = {
+        reference: 'origin',
+        offset: 0.0
+      }
+
+      object.y = {
+        reference: 'origin',
+        offset: 0.0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
           object.x = {
@@ -49,6 +77,14 @@ export function create (node) {
             reference: 'origin',
             offset: mm(v)
           }
+        }
+
+        if (v.type === 'angle') {
+          object.angle = degrees(v)
+        }
+
+        if (v.type === 'radius') {
+          object.radius = mm(v)
         }
       }
     }
@@ -65,6 +101,14 @@ export function create (node) {
         reference: reference(child),
         offset: offset(child)
       }
+    }
+
+    if (child.type === 'angle') {
+      object.angle = degrees(child)
+    }
+
+    if (child.type === 'radius') {
+      object.radius = mm(child)
     }
 
     if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
@@ -88,6 +132,14 @@ export function create (node) {
 
         if (v.type === 'dy') {
           object.y.offset = mm(v)
+        }
+
+        if (v.type === 'angle') {
+          object.angle = degrees(v)
+        }
+
+        if (v.type === 'radius') {
+          object.radius = mm(v)
         }
       }
     }
