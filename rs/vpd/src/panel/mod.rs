@@ -26,6 +26,7 @@ pub use output::Output;
 pub use panel::Panel;
 pub use parameter::Parameter;
 pub use widget::Widget;
+pub use xy::Polar;
 pub use xy::X;
 pub use xy::Y;
 

@@ -13,6 +13,34 @@ pub struct X {
     pub offset: f32,
 }
 
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct Y {
+    pub reference: String,
+    pub offset: f32,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct Polar {
+    pub angle: f32,
+    pub radius: f32,
+}
+
+impl Polar {
+    pub fn new(angle: Option<f32>, radius: Option<f32>) -> Polar {
+        match (angle, radius) {
+            (Some(a), Some(r)) => Polar {
+                angle: a,
+                radius: r,
+            },
+
+            _ => Polar {
+                angle: 0.0,
+                radius: 0.0,
+            },
+        }
+    }
+}
+
 impl X {
     pub fn new(reference: &str, offset: f32) -> X {
         X {
@@ -96,12 +124,6 @@ impl fmt::Display for X {
             _ => write!(f, "{}  {}mm", &self.reference, &self.offset),
         }
     }
-}
-
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct Y {
-    pub reference: String,
-    pub offset: f32,
 }
 
 impl Y {

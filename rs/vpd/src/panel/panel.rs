@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::error::Error;
+use std::f32::consts::PI;
 
 use serde::{Deserialize, Serialize};
 
@@ -14,7 +15,10 @@ use crate::panel::Light;
 use crate::panel::Origin;
 use crate::panel::Output;
 use crate::panel::Parameter;
+use crate::panel::Polar;
 use crate::panel::Widget;
+use crate::panel::X;
+use crate::panel::Y;
 
 use crate::svg::Circle;
 use crate::svg::Gradient;
@@ -348,8 +352,7 @@ impl Panel {
         for v in self.parameters.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = self.resolve(&v.x, &v.y, &v.offset);
 
                     list.push(Part::new(p, x, y));
                 }
@@ -382,5 +385,21 @@ impl Panel {
         }
 
         return list;
+    }
+
+    pub fn resolve(&self, x: &X, y: &Y, offset: &Option<Polar>) -> (f32, f32) {
+        let _x = x.resolve(self);
+        let _y = y.resolve(self);
+
+        match offset {
+            Some(p) => {
+                let radians = PI * p.angle / 180.0;
+                let dx = p.radius * radians.cos();
+                let dy = p.radius * radians.sin();
+                (_x + dx, _y - dy)
+            }
+
+            _ => (_x, _y),
+        }
     }
 }

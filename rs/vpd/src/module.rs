@@ -695,8 +695,9 @@ impl Module {
         }
 
         for v in &self.panel.parameters {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
+            let (_x, _y) = self.panel.resolve(&v.x, &v.y, &v.offset);
+            let dx = _x - x;
+            let dy = _y - y;
             let r = (dx * dx + dy * dy).sqrt();
 
             if r < RADIUS {

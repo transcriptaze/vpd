@@ -16,10 +16,18 @@
       - [ ] Polar coordinates/offsets
             - [x] grammar
             - [x] JS command
-            - [ ] rs command
+            - [x] rs command
+            - [x] parameter
+            - [ ] deg/degrees
             - [ ] N,S,E,W, etc
+            - [ ] input
+            - [ ] output
+            - [ ] light
+            - [ ] widget
             - (?) o'clock
-      - (?) Radial guides
+      - [ ] CHANGELOG
+      - [ ] README
+      - [ ] User manual
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
@@ -74,6 +82,7 @@
 
 ## TO BE DONE EVENTUALLY
 - (?) 'new button' => eventually export with code and all?
+- (?) Radial guides
 
 - [ ] Side-by-side structure editor
       - https://github.com/ianstormtaylor/slate
