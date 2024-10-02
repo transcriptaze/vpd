@@ -18,12 +18,12 @@
             - [x] JS command
             - [x] rs command
             - [x] deg/degrees
-            - [ ] decorations
             - [x] parameter
-            - [ ] input
+            - [x] input
             - [ ] output
             - [ ] light
             - [ ] widget
+            - [ ] decorations
             - [ ] _set xxx_
             - [ ] demo project
       - [ ] CHANGELOG
