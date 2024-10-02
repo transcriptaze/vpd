@@ -1054,6 +1054,11 @@
     }
   },
   {
+    "type": "radius",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "reference",
     "named": true,
     "fields": {}
@@ -1770,10 +1775,6 @@
   {
     "type": "project",
     "named": false
-  },
-  {
-    "type": "radius",
-    "named": true
   },
   {
     "type": "rgb",

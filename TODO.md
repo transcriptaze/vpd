@@ -18,13 +18,11 @@
             - [x] JS command
             - [x] rs command
             - [x] parameter
-            - [ ] deg/degrees
-            - [ ] N,S,E,W, etc
+            - [x] deg/degrees
             - [ ] input
             - [ ] output
             - [ ] light
             - [ ] widget
-            - (?) o'clock
       - [ ] CHANGELOG
       - [ ] README
       - [ ] User manual

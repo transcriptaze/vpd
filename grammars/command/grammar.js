@@ -94,13 +94,7 @@ module.exports = grammar({
         seq( $.x, ',', $.y ),
         seq( 
           '(', $.x, ',', $.y, 
-          optional ( 
-            seq (
-               alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
-               ',',
-               alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
-            ),
-          ),
+          optional(seq ($.angle, ',', $.radius)),
           ')',
         ),
       ),
@@ -813,11 +807,7 @@ module.exports = grammar({
           ',',
           alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
         ),
-        seq(
-          alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
-          ',',
-          alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
-        ),
+        seq ($.angle, ',', $.radius),
       ),
     ),
 
@@ -827,11 +817,7 @@ module.exports = grammar({
         ',',
         alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
       ),
-      seq(
-        alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
-        ',',
-        alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
-      ),
+      seq ($.angle, ',', $.radius),
     ),
 
     _decorate: $ => seq(
@@ -855,11 +841,7 @@ module.exports = grammar({
         ',',
         alias($._offset, $.dy),
       ),
-      seq(
-        alias(/[0-9]+(?:\.[0-9]*)?°/, $.angle),
-        ',',
-        alias(/[0-9]+(?:\.[0-9]*)?mm/, $.radius),
-      ),
+      seq ($.angle, ',', $.radius),
     ),
 
     _xy: $ => seq(
@@ -893,5 +875,7 @@ module.exports = grammar({
       optional($.offset),
     ),
 
+    angle: $ => /[0-9]+(?:\.[0-9]*)?(?:°|deg(rees)?)/,
+    radius: $ => /[0-9]+(?:\.[0-9]*)?mm/,
   }
 });

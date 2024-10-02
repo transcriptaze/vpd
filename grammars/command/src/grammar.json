@@ -369,26 +369,16 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "ALIAS",
-                          "content": {
-                            "type": "PATTERN",
-                            "value": "[0-9]+(?:\\.[0-9]*)?°"
-                          },
-                          "named": true,
-                          "value": "angle"
+                          "type": "SYMBOL",
+                          "name": "angle"
                         },
                         {
                           "type": "STRING",
                           "value": ","
                         },
                         {
-                          "type": "ALIAS",
-                          "content": {
-                            "type": "PATTERN",
-                            "value": "[0-9]+(?:\\.[0-9]*)?mm"
-                          },
-                          "named": true,
-                          "value": "radius"
+                          "type": "SYMBOL",
+                          "name": "radius"
                         }
                       ]
                     },
@@ -3931,26 +3921,16 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[0-9]+(?:\\.[0-9]*)?°"
-                  },
-                  "named": true,
-                  "value": "angle"
+                  "type": "SYMBOL",
+                  "name": "angle"
                 },
                 {
                   "type": "STRING",
                   "value": ","
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[0-9]+(?:\\.[0-9]*)?mm"
-                  },
-                  "named": true,
-                  "value": "radius"
+                  "type": "SYMBOL",
+                  "name": "radius"
                 }
               ]
             }
@@ -3992,26 +3972,16 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "PATTERN",
-                "value": "[0-9]+(?:\\.[0-9]*)?°"
-              },
-              "named": true,
-              "value": "angle"
+              "type": "SYMBOL",
+              "name": "angle"
             },
             {
               "type": "STRING",
               "value": ","
             },
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "PATTERN",
-                "value": "[0-9]+(?:\\.[0-9]*)?mm"
-              },
-              "named": true,
-              "value": "radius"
+              "type": "SYMBOL",
+              "name": "radius"
             }
           ]
         }
@@ -4131,26 +4101,16 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "PATTERN",
-                "value": "[0-9]+(?:\\.[0-9]*)?°"
-              },
-              "named": true,
-              "value": "angle"
+              "type": "SYMBOL",
+              "name": "angle"
             },
             {
               "type": "STRING",
               "value": ","
             },
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "PATTERN",
-                "value": "[0-9]+(?:\\.[0-9]*)?mm"
-              },
-              "named": true,
-              "value": "radius"
+              "type": "SYMBOL",
+              "name": "radius"
             }
           ]
         }
@@ -4262,6 +4222,14 @@
           ]
         }
       ]
+    },
+    "angle": {
+      "type": "PATTERN",
+      "value": "[0-9]+(?:\\.[0-9]*)?(?:°|deg(rees)?)"
+    },
+    "radius": {
+      "type": "PATTERN",
+      "value": "[0-9]+(?:\\.[0-9]*)?mm"
     }
   },
   "extras": [

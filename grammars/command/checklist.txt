@@ -22,9 +22,17 @@ new parameter "E" v1,h1
 new parameter "E" v1,h1 "RoundBlackKnob"
 new parameter "E" v1+4.5mm,h1+4.5mm
 new parameter "E" v1+4.5mm,h1+4.5mm "RoundBlackKnob"
+
 new parameter "E" 30°,10mm
 new parameter "E" @30°,10mm
 new parameter "E" 30°,10mm
+new parameter "E" 30deg,10mm
+new parameter "E" @30deg,10mm
+new parameter "E" 30deg,10mm
+new parameter "E" 30degrees,10mm
+new parameter "E" @30degrees,10mm
+new parameter "E" 30degrees,10mm
+
 new parameter "E" (v1,h1)
 new parameter "E" (center,middle)
 new parameter "E" (v1,h1         30°,10mm)
