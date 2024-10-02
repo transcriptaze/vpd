@@ -73,19 +73,19 @@ impl Parameter {
 
 impl IXY for Parameter {
     fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
-        let mut _x = self.x.resolve(panel);
-        let mut _y = self.y.resolve(panel);
+        let mut dx: f32 = 0.0;
+        let mut dy: f32 = 0.0;
 
         if let Some(offset) = &self.offset {
             let radians = PI * offset.angle / 180.0;
-            let dx = offset.radius * radians.cos();
-            let dy = offset.radius * radians.sin();
-
-            _x += dx;
-            _y -= dy;
+            dx = offset.radius * radians.cos();
+            dy = offset.radius * radians.sin();
         }
 
-        (_x, _y)
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+
+        (x + dx, y - dy)
     }
 }
 
