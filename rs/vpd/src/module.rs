@@ -50,6 +50,12 @@ pub trait IItem {
     fn as_item(&self) -> Item;
 }
 
+pub trait IQueryable {
+    const RADIUS: f32;
+
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool;
+}
+
 #[derive(Serialize)]
 pub struct Item {
     pub itype: String,
@@ -577,11 +583,11 @@ impl Module {
                 let c = component.as_str();
                 let n = name.trim().to_lowercase();
 
-                self.panel.decorations.iter().for_each(|v| {
-                    warnf!(">>> {},{}", v.id, v.name);
-                    warnf!(">>> >> {}", v.decorates(&self, c));
-                    warnf!(">>> >> >> {}", v.is(&n));
-                });
+                // self.panel.decorations.iter().for_each(|v| {
+                //     warnf!(">>> {},{}", v.id, v.name);
+                //     warnf!(">>> >> {}", v.decorates(&self, c));
+                //     warnf!(">>> >> >> {}", v.is(&n));
+                // });
 
                 return self
                     .panel
@@ -675,11 +681,7 @@ impl Module {
         }
 
         for v in &self.panel.inputs {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
@@ -695,12 +697,7 @@ impl Module {
         }
 
         for v in &self.panel.parameters {
-            let (_x, _y) = self.panel.resolve(&v.x, &v.y, &v.offset);
-            let dx = _x - x;
-            let dy = _y - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }

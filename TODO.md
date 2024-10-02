@@ -17,12 +17,15 @@
             - [x] grammar
             - [x] JS command
             - [x] rs command
-            - [x] parameter
             - [x] deg/degrees
+            - [ ] decorations
+            - [x] parameter
             - [ ] input
             - [ ] output
             - [ ] light
             - [ ] widget
+            - [ ] _set xxx_
+            - [ ] demo project
       - [ ] CHANGELOG
       - [ ] README
       - [ ] User manual

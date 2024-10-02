@@ -328,8 +328,7 @@ impl Panel {
         for v in self.inputs.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = self.resolve(&v.x, &v.y, &v.offset);
 
                     list.push(Part::new(p, x, y));
                 }

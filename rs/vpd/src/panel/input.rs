@@ -1,8 +1,10 @@
 use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
+use crate::module::IQueryable;
 use crate::module::Item;
 use crate::panel::Panel;
+use crate::panel::Polar;
 use crate::panel::X;
 use crate::panel::Y;
 
@@ -15,24 +17,33 @@ pub struct Input {
     pub name: String,
     pub x: X,
     pub y: Y,
+    pub offset: Option<Polar>,
     pub part: Option<String>,
 }
 
 impl Input {
-    pub fn new(id: &str, name: &str, x: &X, y: &Y, part: &Option<String>) -> Input {
+    pub fn new(
+        id: &str,
+        name: &str,
+        x: &X,
+        y: &Y,
+        angle: Option<f32>,
+        radius: Option<f32>,
+        part: &Option<String>,
+    ) -> Input {
         Input {
             id: id.to_string(),
             name: name.to_string(),
             x: x.clone(),
             y: y.clone(),
+            offset: Some(Polar::new(angle, radius)),
             part: part.clone(),
         }
     }
 
     pub fn as_svg(&self, panel: &Panel) -> Circle {
         let name = &self.name;
-        let x = self.x.resolve(panel);
-        let y = self.y.resolve(panel);
+        let (x, y) = panel.resolve(&self.x, &self.y, &self.offset);
         let radius = 2.54;
         let colour = "#00ff00";
 
@@ -41,8 +52,7 @@ impl Input {
 
     pub fn as_component(&self, panel: &Panel) -> Component {
         let name = &self.name;
-        let x = self.x.resolve(panel);
-        let y = self.y.resolve(panel);
+        let (x, y) = panel.resolve(&self.x, &self.y, &self.offset);
 
         Component::new(name, x, y)
     }
@@ -66,6 +76,13 @@ impl IItem for Input {
             ("y".to_string(), format!("{}", &self.y)),
         ];
 
+        if let Some(offset) = &self.offset {
+            attributes.push((
+                "offset".to_string(),
+                format!("{}°/{}mm", offset.angle, offset.radius),
+            ));
+        }
+
         if let Some(part) = &self.part {
             attributes.push(("part".to_string(), part.clone()));
         }
@@ -75,5 +92,18 @@ impl IItem for Input {
             id: self.id.clone(),
             attributes: attributes,
         }
+    }
+}
+
+impl IQueryable for Input {
+    const RADIUS: f32 = 2.5;
+
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        let (_x, _y) = panel.resolve(&self.x, &self.y, &self.offset);
+        let dx = _x - x;
+        let dy = _y - y;
+        let r = (dx * dx + dy * dy).sqrt();
+
+        return r < Input::RADIUS;
     }
 }

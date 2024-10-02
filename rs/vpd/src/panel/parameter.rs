@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
+use crate::module::IQueryable;
 use crate::module::Item;
 use crate::panel::Panel;
 use crate::panel::Polar;
@@ -91,5 +92,18 @@ impl IItem for Parameter {
             id: self.id.clone(),
             attributes: attributes,
         }
+    }
+}
+
+impl IQueryable for Parameter {
+    const RADIUS: f32 = 2.5;
+
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        let (_x, _y) = panel.resolve(&self.x, &self.y, &self.offset);
+        let dx = _x - x;
+        let dy = _y - y;
+        let r = (dx * dx + dy * dy).sqrt();
+
+        return r < Parameter::RADIUS;
     }
 }

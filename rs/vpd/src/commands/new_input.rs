@@ -11,6 +11,8 @@ pub struct NewInput {
     name: String,
     x: panel::X,
     y: panel::Y,
+    angle: Option<f32>,
+    radius: Option<f32>,
     part: Option<String>,
 }
 
@@ -42,7 +44,13 @@ impl Command for NewInput {
         let id = m.new_input_id();
 
         m.panel.inputs.push(panel::Input::new(
-            &id, &self.name, &self.x, &self.y, &self.part,
+            &id,
+            &self.name,
+            &self.x,
+            &self.y,
+            self.angle,
+            self.radius,
+            &self.part,
         ));
     }
 }
