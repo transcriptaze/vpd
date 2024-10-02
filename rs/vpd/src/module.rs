@@ -46,14 +46,14 @@ pub struct Info {
     pub width: f32,
 }
 
-pub trait IItem {
-    fn as_item(&self) -> Item;
-}
-
 pub trait IQueryable {
     const RADIUS: f32;
 
     fn at(&self, panel: &Panel, x: f32, y: f32) -> bool;
+}
+
+pub trait IItem {
+    fn as_item(&self) -> Item;
 }
 
 #[derive(Serialize)]

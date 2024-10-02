@@ -1,8 +1,11 @@
+use std::f32::consts::PI;
+
 use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
 use crate::module::Item;
+use crate::panel::panel::IXY;
 use crate::panel::Panel;
 use crate::panel::Polar;
 use crate::panel::X;
@@ -43,7 +46,7 @@ impl Input {
 
     pub fn as_svg(&self, panel: &Panel) -> Circle {
         let name = &self.name;
-        let (x, y) = panel.resolve(&self.x, &self.y, &self.offset);
+        let (x, y) = self.resolvexy(panel);
         let radius = 2.54;
         let colour = "#00ff00";
 
@@ -52,7 +55,7 @@ impl Input {
 
     pub fn as_component(&self, panel: &Panel) -> Component {
         let name = &self.name;
-        let (x, y) = panel.resolve(&self.x, &self.y, &self.offset);
+        let (x, y) = self.resolvexy(panel);
 
         Component::new(name, x, y)
     }
@@ -65,6 +68,37 @@ impl Input {
         if self.y.reference == from {
             self.y.reference = to.to_string();
         }
+    }
+}
+
+impl IXY for Input {
+    fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
+        let mut _x = self.x.resolve(panel);
+        let mut _y = self.y.resolve(panel);
+
+        if let Some(offset) = &self.offset {
+            let radians = PI * offset.angle / 180.0;
+            let dx = offset.radius * radians.cos();
+            let dy = offset.radius * radians.sin();
+
+            _x += dx;
+            _y -= dy;
+        }
+
+        (_x, _y)
+    }
+}
+
+impl IQueryable for Input {
+    const RADIUS: f32 = 2.5;
+
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        let (_x, _y) = self.resolvexy(panel);
+        let dx = _x - x;
+        let dy = _y - y;
+        let r = (dx * dx + dy * dy).sqrt();
+
+        return r < Input::RADIUS;
     }
 }
 
@@ -92,18 +126,5 @@ impl IItem for Input {
             id: self.id.clone(),
             attributes: attributes,
         }
-    }
-}
-
-impl IQueryable for Input {
-    const RADIUS: f32 = 2.5;
-
-    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
-        let (_x, _y) = panel.resolve(&self.x, &self.y, &self.offset);
-        let dx = _x - x;
-        let dy = _y - y;
-        let r = (dx * dx + dy * dy).sqrt();
-
-        return r < Input::RADIUS;
     }
 }
