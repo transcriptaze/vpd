@@ -11,6 +11,8 @@ pub struct NewOutput {
     name: String,
     x: panel::X,
     y: panel::Y,
+    angle: Option<f32>,
+    radius: Option<f32>,
     part: Option<String>,
 }
 
@@ -42,7 +44,13 @@ impl Command for NewOutput {
         let id = m.new_output_id();
 
         m.panel.outputs.push(panel::Output::new(
-            &id, &self.name, &self.x, &self.y, &self.part,
+            &id,
+            &self.name,
+            &self.x,
+            &self.y,
+            self.angle,
+            self.radius,
+            &self.part,
         ));
     }
 }

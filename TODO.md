@@ -20,7 +20,7 @@
             - [x] deg/degrees
             - [x] parameter
             - [x] input
-            - [ ] output
+            - [x] output
             - [ ] light
             - [ ] widget
             - [ ] decorations

@@ -24,6 +24,7 @@ pub use light::Light;
 pub use origin::Origin;
 pub use output::Output;
 pub use panel::Panel;
+pub use panel::IXY;
 pub use parameter::Parameter;
 pub use widget::Widget;
 pub use xy::Polar;

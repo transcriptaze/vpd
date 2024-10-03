@@ -5,9 +5,9 @@ use serde::{Deserialize, Serialize};
 use crate::module::IItem;
 use crate::module::IQueryable;
 use crate::module::Item;
-use crate::panel::panel::IXY;
 use crate::panel::Panel;
 use crate::panel::Polar;
+use crate::panel::IXY;
 use crate::panel::X;
 use crate::panel::Y;
 
