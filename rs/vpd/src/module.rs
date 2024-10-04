@@ -583,12 +583,6 @@ impl Module {
                 let c = component.as_str();
                 let n = name.trim().to_lowercase();
 
-                // self.panel.decorations.iter().for_each(|v| {
-                //     warnf!(">>> {},{}", v.id, v.name);
-                //     warnf!(">>> >> {}", v.decorates(&self, c));
-                //     warnf!(">>> >> >> {}", v.is(&n));
-                // });
-
                 return self
                     .panel
                     .decorations
@@ -699,11 +693,7 @@ impl Module {
         }
 
         for v in &self.panel.lights {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }

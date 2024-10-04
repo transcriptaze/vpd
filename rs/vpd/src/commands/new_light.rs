@@ -11,6 +11,7 @@ pub struct NewLight {
     name: String,
     x: panel::X,
     y: panel::Y,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -42,7 +43,12 @@ impl Command for NewLight {
         let id = m.new_light_id();
 
         m.panel.lights.push(panel::Light::new(
-            &id, &self.name, &self.x, &self.y, &self.part,
+            &id,
+            &self.name,
+            &self.x,
+            &self.y,
+            &self.offset,
+            &self.part,
         ));
     }
 }

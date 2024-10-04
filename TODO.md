@@ -6,7 +6,7 @@
 - [x] set _parts_ scale factor to 0.338 throughout
 - [ ] Drop shadows
 
-- [ ] [Add supported component and position items in polar coordinates](https://github.com/transcriptaze/vpd/issues/4)
+- [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [x] VCVSlider
       - [x] ~VCVSliderHorizontal~
       - [x] PushButton
@@ -21,7 +21,7 @@
             - [x] parameter
             - [x] input
             - [x] output
-            - [ ] light
+            - [x] light
             - [ ] widget
             - [ ] decorations
             - [ ] _set xxx_

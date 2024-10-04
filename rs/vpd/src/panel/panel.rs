@@ -361,8 +361,7 @@ impl Panel {
         for v in self.lights.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = v.resolvexy(self);
 
                     list.push(Part::new(p, x, y));
                 }

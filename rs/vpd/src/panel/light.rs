@@ -1,8 +1,11 @@
 use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
+use crate::module::IQueryable;
 use crate::module::Item;
+use crate::panel::Offset;
 use crate::panel::Panel;
+use crate::panel::IXY;
 use crate::panel::X;
 use crate::panel::Y;
 
@@ -15,24 +18,35 @@ pub struct Light {
     pub name: String,
     pub x: X,
     pub y: Y,
+    pub offset: Option<Offset>,
     pub part: Option<String>,
 }
 
 impl Light {
-    pub fn new(id: &str, name: &str, x: &X, y: &Y, part: &Option<String>) -> Light {
+    pub fn new(
+        id: &str,
+        name: &str,
+        x: &X,
+        y: &Y,
+        offset: &Option<Offset>,
+        part: &Option<String>,
+    ) -> Light {
+        let x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
+        let y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
+
         Light {
             id: id.to_string(),
             name: name.to_string(),
-            x: x.clone(),
-            y: y.clone(),
+            x: x,
+            y: y,
+            offset: offset.clone(),
             part: part.clone(),
         }
     }
 
     pub fn as_svg(&self, panel: &Panel) -> Circle {
         let name = &self.name;
-        let x = self.x.resolve(panel);
-        let y = self.y.resolve(panel);
+        let (x, y) = self.resolvexy(panel);
         let radius = 2.54;
         let colour = "#ff00ff";
 
@@ -41,8 +55,7 @@ impl Light {
 
     pub fn as_component(&self, panel: &Panel) -> Component {
         let name = &self.name;
-        let x = self.x.resolve(panel);
-        let y = self.y.resolve(panel);
+        let (x, y) = self.resolvexy(panel);
 
         Component::new(name, x, y)
     }
@@ -58,6 +71,28 @@ impl Light {
     }
 }
 
+impl IXY for Light {
+    fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
+        let x = self.x.resolve(panel);
+        let y = self.y.resolve(panel);
+
+        (x, y)
+    }
+}
+
+impl IQueryable for Light {
+    const RADIUS: f32 = 2.5;
+
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        let (_x, _y) = self.resolvexy(panel);
+        let dx = _x - x;
+        let dy = _y - y;
+        let r = (dx * dx + dy * dy).sqrt();
+
+        return r < Light::RADIUS;
+    }
+}
+
 impl IItem for Light {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
@@ -65,6 +100,13 @@ impl IItem for Light {
             ("x".to_string(), format!("{}", &self.x)),
             ("y".to_string(), format!("{}", &self.y)),
         ];
+
+        if let Some(offset) = &self.offset {
+            attributes.push((
+                "offset".to_string(),
+                format!("{}°/{}mm", offset.angle, offset.radius),
+            ));
+        }
 
         if let Some(part) = &self.part {
             attributes.push(("part".to_string(), part.clone()));
