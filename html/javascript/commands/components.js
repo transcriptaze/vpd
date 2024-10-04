@@ -1,4 +1,4 @@
-import { identifier, string, reference, offset, clean, mm, degrees } from './commands.js'
+import { identifier, string, reference, offset, clean, mm, polar } from './commands.js'
 
 // FIXME remove
 export function parse (node) {
@@ -43,12 +43,17 @@ export function create (node) {
           }
         }
 
-        if (v.type === 'angle') {
-          object.angle = degrees(v)
-        }
+        if (v.type === 'polar') {
+          const { x, y } = polar(v)
+          object.x = {
+            reference: 'absolute',
+            offset: x
+          }
 
-        if (v.type === 'radius') {
-          object.radius = mm(v)
+          object.y = {
+            reference: 'absolute',
+            offset: y
+          }
         }
       }
     }
@@ -79,12 +84,17 @@ export function create (node) {
           }
         }
 
-        if (v.type === 'angle') {
-          object.angle = degrees(v)
-        }
+        if (v.type === 'polar') {
+          const { x, y } = polar(v)
+          object.x = {
+            reference: 'origin',
+            offset: x
+          }
 
-        if (v.type === 'radius') {
-          object.radius = mm(v)
+          object.y = {
+            reference: 'origin',
+            offset: y
+          }
         }
       }
     }
@@ -103,12 +113,10 @@ export function create (node) {
       }
     }
 
-    if (child.type === 'angle') {
-      object.angle = degrees(child)
-    }
-
-    if (child.type === 'radius') {
-      object.radius = mm(child)
+    if (child.type === 'polar') {
+      const { x, y } = polar(child)
+      object.x.offset = x
+      object.y.offset = y
     }
 
     if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
@@ -134,12 +142,11 @@ export function create (node) {
           object.y.offset = mm(v)
         }
 
-        if (v.type === 'angle') {
-          object.angle = degrees(v)
-        }
+        if (v.type === 'polar') {
+          const { x, y } = polar(v)
 
-        if (v.type === 'radius') {
-          object.radius = mm(v)
+          object.x.offset = x
+          object.y.offset = y
         }
       }
     }

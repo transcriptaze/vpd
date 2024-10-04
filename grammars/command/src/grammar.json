@@ -366,21 +366,8 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "angle"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": ","
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "radius"
-                        }
-                      ]
+                      "type": "SYMBOL",
+                      "name": "polar"
                     },
                     {
                       "type": "BLANK"
@@ -3918,23 +3905,27 @@
               ]
             },
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "angle"
-                },
-                {
-                  "type": "STRING",
-                  "value": ","
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "radius"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "polar"
             }
           ]
+        }
+      ]
+    },
+    "polar": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "angle"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "radius"
         }
       ]
     },
@@ -3969,21 +3960,8 @@
           ]
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "angle"
-            },
-            {
-              "type": "STRING",
-              "value": ","
-            },
-            {
-              "type": "SYMBOL",
-              "name": "radius"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "polar"
         }
       ]
     },
@@ -4098,21 +4076,8 @@
           ]
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "angle"
-            },
-            {
-              "type": "STRING",
-              "value": ","
-            },
-            {
-              "type": "SYMBOL",
-              "name": "radius"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "polar"
         }
       ]
     },

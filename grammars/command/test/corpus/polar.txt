@@ -8,8 +8,9 @@ new param "E" @30°,10mm
     (parameter
       (name)
       (absolute
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 =========================
 new param "E" @30deg,10mm
@@ -21,8 +22,9 @@ new param "E" @30deg,10mm
     (parameter
       (name)
       (absolute
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 =============================
 new param "E" @30degrees,10mm
@@ -34,8 +36,9 @@ new param "E" @30degrees,10mm
     (parameter
       (name)
       (absolute
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 =======================
 new param "E" 30°,10mm
@@ -47,8 +50,9 @@ new param "E" 30°,10mm
     (parameter
       (name)
       (relative
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 ========================
 new param "E" 30deg,10mm
@@ -60,8 +64,9 @@ new param "E" 30deg,10mm
     (parameter
       (name)
       (relative
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 ============================
 new param "E" 30degrees,10mm
@@ -73,8 +78,9 @@ new param "E" 30degrees,10mm
     (parameter
       (name)
       (relative
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 =====================================
 new parameter "E" (input in 30°,10mm)
@@ -87,8 +93,9 @@ new parameter "E" (input in 30°,10mm)
       (name)
       (input
         (name)
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 =======================================
 new parameter "E" (input in 30deg,10mm)
@@ -101,8 +108,9 @@ new parameter "E" (input in 30deg,10mm)
       (name)
       (input
         (name)
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 ===========================================
 new parameter "E" (input in 30degrees,10mm)
@@ -115,8 +123,9 @@ new parameter "E" (input in 30degrees,10mm)
       (name)
       (input
         (name)
-        (angle)
-        (radius)))))
+        (polar
+          (angle)
+          (radius))))))
 
 =========================
 new parameter "E" (v1,h1)
@@ -145,8 +154,9 @@ new parameter "E" (v1,h1 30°,10mm)
         (reference))
       (y
         (reference))
-      (angle)
-      (radius))))
+      (polar
+        (angle)
+        (radius)))))
 
 ==========================================
 new parameter "E" (centre,middle 30°,10mm)
@@ -161,6 +171,7 @@ new parameter "E" (centre,middle 30°,10mm)
         (reference))
       (y
         (reference))
-      (angle)
-      (radius))))
+      (polar
+        (angle)
+        (radius)))))
 

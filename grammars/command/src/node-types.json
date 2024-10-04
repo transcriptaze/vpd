@@ -8,11 +8,7 @@
       "required": false,
       "types": [
         {
-          "type": "angle",
-          "named": true
-        },
-        {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -136,10 +132,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "decoration",
           "named": true
         },
@@ -176,7 +168,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -211,10 +203,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "decoration",
           "named": true
         },
@@ -243,7 +231,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -495,10 +483,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "dx",
           "named": true
         },
@@ -539,7 +523,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -633,10 +617,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "dx",
           "named": true
         },
@@ -677,7 +657,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -869,10 +849,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "dx",
           "named": true
         },
@@ -913,7 +889,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -963,10 +939,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "dx",
           "named": true
         },
@@ -1007,7 +979,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -1033,6 +1005,25 @@
     "type": "part",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "polar",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "angle",
+          "named": true
+        },
+        {
+          "type": "radius",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "project",
@@ -1072,11 +1063,7 @@
       "required": true,
       "types": [
         {
-          "type": "angle",
-          "named": true
-        },
-        {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -1333,10 +1320,6 @@
           "named": true
         },
         {
-          "type": "angle",
-          "named": true
-        },
-        {
           "type": "dx",
           "named": true
         },
@@ -1377,7 +1360,7 @@
           "named": true
         },
         {
-          "type": "radius",
+          "type": "polar",
           "named": true
         },
         {
@@ -1794,11 +1777,11 @@
   },
   {
     "type": "scale",
-    "named": true
+    "named": false
   },
   {
     "type": "scale",
-    "named": false
+    "named": true
   },
   {
     "type": "script",
@@ -1858,11 +1841,11 @@
   },
   {
     "type": "width",
-    "named": false
+    "named": true
   },
   {
     "type": "width",
-    "named": true
+    "named": false
   },
   {
     "type": "with",

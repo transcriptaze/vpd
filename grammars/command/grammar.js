@@ -92,11 +92,7 @@ module.exports = grammar({
       $.relative,
       choice (
         seq( $.x, ',', $.y ),
-        seq( 
-          '(', $.x, ',', $.y, 
-          optional(seq ($.angle, ',', $.radius)),
-          ')',
-        ),
+        seq( '(', $.x, ',', $.y,  optional($.polar), ')'),
       ),
       seq(
         '(',
@@ -807,9 +803,11 @@ module.exports = grammar({
           ',',
           alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
         ),
-        seq ($.angle, ',', $.radius),
+        $.polar,
       ),
     ),
+
+    polar: $ => seq ($.angle, ',', $.radius),
 
     relative: $ => choice(
       seq(
@@ -817,7 +815,7 @@ module.exports = grammar({
         ',',
         alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
       ),
-      seq ($.angle, ',', $.radius),
+      $.polar,
     ),
 
     _decorate: $ => seq(
@@ -841,7 +839,7 @@ module.exports = grammar({
         ',',
         alias($._offset, $.dy),
       ),
-      seq ($.angle, ',', $.radius),
+      $.polar,
     ),
 
     _xy: $ => seq(

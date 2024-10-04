@@ -85,6 +85,37 @@ export function mm (node) {
   return parseFloat(`${v}`)
 }
 
+export function polar (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  let angle = 0.0
+  let radius = 0.0
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'angle') {
+      angle = degrees(child)
+    }
+
+    if (child.type === 'radius') {
+      radius = mm(child)
+    }
+  }
+
+  const round = (v) => {
+    return Math.round((v + Number.EPSILON) * 1000) / 1000
+  }
+
+  const x = radius * Math.cos(angle * Math.PI / 180.0)
+  const y = radius * Math.sin(angle * Math.PI / 180.0)
+
+  return {
+    x: round(x),
+    y: -round(y)
+  }
+}
+
 export function degrees (node) {
   if (node.hasError() || node.isMissing()) {
     throw new Error(node.toString())
