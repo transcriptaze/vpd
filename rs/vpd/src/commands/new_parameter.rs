@@ -11,8 +11,7 @@ pub struct NewParameter {
     name: String,
     x: panel::X,
     y: panel::Y,
-    angle: Option<f32>,
-    radius: Option<f32>,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -48,8 +47,7 @@ impl Command for NewParameter {
             &self.name,
             &self.x,
             &self.y,
-            self.angle,
-            self.radius,
+            &self.offset,
             &self.part,
         ));
     }

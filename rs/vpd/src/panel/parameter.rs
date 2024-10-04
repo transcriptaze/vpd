@@ -1,12 +1,10 @@
-use std::f32::consts::PI;
-
 use serde::{Deserialize, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
 use crate::module::Item;
+use crate::panel::Offset;
 use crate::panel::Panel;
-use crate::panel::Polar;
 use crate::panel::IXY;
 use crate::panel::X;
 use crate::panel::Y;
@@ -20,7 +18,7 @@ pub struct Parameter {
     pub name: String,
     pub x: X,
     pub y: Y,
-    pub offset: Option<Polar>,
+    pub offset: Option<Offset>,
     pub part: Option<String>,
 }
 
@@ -30,16 +28,18 @@ impl Parameter {
         name: &str,
         x: &X,
         y: &Y,
-        angle: Option<f32>,
-        radius: Option<f32>,
+        offset: &Option<Offset>,
         part: &Option<String>,
     ) -> Parameter {
+        let x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
+        let y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
+
         Parameter {
             id: id.to_string(),
             name: name.to_string(),
-            x: x.clone(),
-            y: y.clone(),
-            offset: Some(Polar::new(angle, radius)),
+            x: x,
+            y: y,
+            offset: offset.clone(),
             part: part.clone(),
         }
     }
@@ -73,19 +73,10 @@ impl Parameter {
 
 impl IXY for Parameter {
     fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
-        let mut dx: f32 = 0.0;
-        let mut dy: f32 = 0.0;
-
-        if let Some(offset) = &self.offset {
-            let radians = PI * offset.angle / 180.0;
-            dx = offset.radius * radians.cos();
-            dy = offset.radius * radians.sin();
-        }
-
         let x = self.x.resolve(panel);
         let y = self.y.resolve(panel);
 
-        (x + dx, y - dy)
+        (x, y)
     }
 }
 
@@ -110,12 +101,12 @@ impl IItem for Parameter {
             ("y".to_string(), format!("{}", &self.y)),
         ];
 
-        // if let Some(offset) = &self.offset {
-        //     attributes.push((
-        //         "offset".to_string(),
-        //         format!("{}°/{}mm", offset.angle, offset.radius),
-        //     ));
-        // }
+        if let Some(offset) = &self.offset {
+            attributes.push((
+                "offset".to_string(),
+                format!("{}°/{}mm", offset.angle, offset.radius),
+            ));
+        }
 
         if let Some(part) = &self.part {
             attributes.push(("part".to_string(), part.clone()));

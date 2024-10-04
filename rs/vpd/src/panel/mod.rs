@@ -9,7 +9,9 @@ mod output;
 mod panel;
 mod parameter;
 mod widget;
+mod x;
 mod xy;
+mod y;
 
 pub use background::Background;
 pub use decoration::Decoration;
@@ -27,9 +29,9 @@ pub use panel::Panel;
 pub use panel::IXY;
 pub use parameter::Parameter;
 pub use widget::Widget;
-pub use xy::Polar;
-pub use xy::X;
-pub use xy::Y;
+pub use x::X;
+pub use xy::Offset;
+pub use y::Y;
 
 pub const DEFAULT_WIDTH: f32 = 45.72; // 9H
 pub const DEFAULT_HEIGHT: f32 = 128.5; // 1U

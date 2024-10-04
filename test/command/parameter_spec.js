@@ -40,11 +40,17 @@ describe('parameter command translation', () => {
         name: 'volume',
         x: {
           reference: 'absolute',
-          offset: 8.660
+          offset: 0.0
         },
         y: {
           reference: 'absolute',
-          offset: -5.000
+          offset: 0.0
+        },
+        offset: {
+          dx: 0.0,
+          dy: 0.0,
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -61,11 +67,17 @@ describe('parameter command translation', () => {
         name: 'volume',
         x: {
           reference: 'origin',
-          offset: 8.660
+          offset: 0.0
         },
         y: {
           reference: 'origin',
-          offset: -5.000
+          offset: 0.0
+        },
+        offset: {
+          dx: 0.0,
+          dy: 0.0,
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -82,11 +94,17 @@ describe('parameter command translation', () => {
         name: 'volume',
         x: {
           reference: 'v1',
-          offset: 8.660
+          offset: 0.0
         },
         y: {
           reference: 'h1',
-          offset: -5.000
+          offset: 0.0
+        },
+        offset: {
+          dx: 0.0,
+          dy: 0.0,
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -103,11 +121,17 @@ describe('parameter command translation', () => {
         name: 'volume',
         x: {
           reference: 'input<in>',
-          offset: 8.660
+          offset: 0.0
         },
         y: {
           reference: 'input<in>',
-          offset: -5.000
+          offset: 0.0
+        },
+        offset: {
+          dx: 0.0,
+          dy: 0.0,
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }

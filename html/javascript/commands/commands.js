@@ -103,17 +103,19 @@ export function polar (node) {
     }
   }
 
-  const round = (v) => {
-    return Math.round((v + Number.EPSILON) * 1000) / 1000
-  }
+  // const round = (v) => {
+  //   return Math.round((v + Number.EPSILON) * 1000) / 1000
+  // }
+  //
+  // const x = radius * Math.cos(angle * Math.PI / 180.0)
+  // const y = radius * Math.sin(angle * Math.PI / 180.0)
+  //
+  // return {
+  //   x: round(x),
+  //   y: -round(y)
+  // }
 
-  const x = radius * Math.cos(angle * Math.PI / 180.0)
-  const y = radius * Math.sin(angle * Math.PI / 180.0)
-
-  return {
-    x: round(x),
-    y: -round(y)
-  }
+  return { angle, radius }
 }
 
 export function degrees (node) {

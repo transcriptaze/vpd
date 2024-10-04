@@ -48,7 +48,7 @@ impl Command for SetDecoration {
                     m.panel.decorations[ix].x.reference = reference.to_string();
                 }
 
-                m.panel.decorations[ix].x.offset = x.offset;
+                m.panel.decorations[ix].x.set_offset(x.offset);
             }
 
             if let Some(y) = &self.y {
@@ -56,7 +56,7 @@ impl Command for SetDecoration {
                     m.panel.decorations[ix].y.reference = reference.to_string();
                 }
 
-                m.panel.decorations[ix].y.offset = y.offset;
+                m.panel.decorations[ix].y.set_offset(y.offset);
             }
 
             if let Some(stretch) = &self.stretch {

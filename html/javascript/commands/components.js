@@ -6,7 +6,14 @@ export function parse (node) {
 }
 
 export function create (node) {
-  const object = {}
+  const object = {
+    offset: {
+      dx: 0.0,
+      dy: 0.0,
+      angle: 0.0,
+      radius: 0.0
+    }
+  }
 
   for (const child of node.namedChildren) {
     if (child.type === 'identifier') {
@@ -44,16 +51,19 @@ export function create (node) {
         }
 
         if (v.type === 'polar') {
-          const { x, y } = polar(v)
-          object.x = {
-            reference: 'absolute',
-            offset: x
-          }
+          const { angle, radius } = polar(v)
+          object.offset.angle = angle
+          object.offset.radius = radius
+          // const { x, y } = polar(v)
+          // object.x = {
+          //   reference: 'absolute',
+          //   offset: x
+          // }
 
-          object.y = {
-            reference: 'absolute',
-            offset: y
-          }
+          // object.y = {
+          //   reference: 'absolute',
+          //   offset: y
+          // }
         }
       }
     }
@@ -85,16 +95,19 @@ export function create (node) {
         }
 
         if (v.type === 'polar') {
-          const { x, y } = polar(v)
-          object.x = {
-            reference: 'origin',
-            offset: x
-          }
+          const { angle, radius } = polar(v)
+          object.offset.angle = angle
+          object.offset.radius = radius
+          // const { x, y } = polar(v)
+          // object.x = {
+          //   reference: 'origin',
+          //   offset: x
+          // }
 
-          object.y = {
-            reference: 'origin',
-            offset: y
-          }
+          // object.y = {
+          //   reference: 'origin',
+          //   offset: y
+          // }
         }
       }
     }
@@ -114,9 +127,12 @@ export function create (node) {
     }
 
     if (child.type === 'polar') {
-      const { x, y } = polar(child)
-      object.x.offset = x
-      object.y.offset = y
+      const { angle, radius } = polar(child)
+      object.offset.angle = angle
+      object.offset.radius = radius
+      // const { x, y } = polar(child)
+      // object.x.offset = x
+      // object.y.offset = y
     }
 
     if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
@@ -143,10 +159,13 @@ export function create (node) {
         }
 
         if (v.type === 'polar') {
-          const { x, y } = polar(v)
+          const { angle, radius } = polar(v)
+          object.offset.angle = angle
+          object.offset.radius = radius
+          // const { x, y } = polar(v)
 
-          object.x.offset = x
-          object.y.offset = y
+          // object.x.offset = x
+          // object.y.offset = y
         }
       }
     }
