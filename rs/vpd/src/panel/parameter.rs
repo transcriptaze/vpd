@@ -110,12 +110,12 @@ impl IItem for Parameter {
             ("y".to_string(), format!("{}", &self.y)),
         ];
 
-        if let Some(offset) = &self.offset {
-            attributes.push((
-                "offset".to_string(),
-                format!("{}°/{}mm", offset.angle, offset.radius),
-            ));
-        }
+        // if let Some(offset) = &self.offset {
+        //     attributes.push((
+        //         "offset".to_string(),
+        //         format!("{}°/{}mm", offset.angle, offset.radius),
+        //     ));
+        // }
 
         if let Some(part) = &self.part {
             attributes.push(("part".to_string(), part.clone()));
