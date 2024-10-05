@@ -10,7 +10,7 @@
       - [x] input
       - [x] output
       - [x] light
-      - [ ] widget
+      - [x] widget
       - [ ] decoration
       - [ ] label
 
@@ -30,7 +30,7 @@
             - [x] input
             - [x] output
             - [x] light
-            - [ ] widget
+            - [x] widget
             - [ ] decoration
             - [ ] label
             - (?) origin

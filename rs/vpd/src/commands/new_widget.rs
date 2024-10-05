@@ -11,6 +11,7 @@ pub struct NewWidget {
     name: String,
     x: panel::X,
     y: panel::Y,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -43,7 +44,12 @@ impl Command for NewWidget {
         let id = m.new_widget_id();
 
         m.panel.widgets.push(panel::Widget::new(
-            &id, &self.name, &self.x, &self.y, &self.part,
+            &id,
+            &self.name,
+            &self.x,
+            &self.y,
+            &self.offset,
+            &self.part,
         ));
     }
 }

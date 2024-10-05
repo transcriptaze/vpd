@@ -20,7 +20,11 @@ pub struct Parameter {
     pub name: String,
     pub x: X,
     pub y: Y,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offset: Option<Offset>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub part: Option<String>,
 }
 
