@@ -1,4 +1,4 @@
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
@@ -12,8 +12,10 @@ use crate::panel::Y;
 use crate::svg::Circle;
 use crate::vcv::Component;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize)]
 pub struct Parameter {
+    version: u8,
+
     pub id: String,
     pub name: String,
     pub x: X,
@@ -35,6 +37,7 @@ impl Parameter {
         let y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
 
         Parameter {
+            version: 1,
             id: id.to_string(),
             name: name.to_string(),
             x: x,
@@ -116,6 +119,64 @@ impl IItem for Parameter {
             itype: "parameter".to_string(),
             id: self.id.clone(),
             attributes: attributes,
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for Parameter {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum _Parameter {
+            V1 {
+                version: u8,
+                id: String,
+                name: String,
+                x: X,
+                y: Y,
+                offset: Option<Offset>,
+                part: Option<String>,
+            },
+            V0 {
+                id: String,
+                name: String,
+                x: X,
+                y: Y,
+                part: Option<String>,
+            },
+        }
+
+        let p = _Parameter::deserialize(deserializer)?;
+
+        match p {
+            #[rustfmt::skip]
+            _Parameter::V0 {id,name,x,y,part } => {
+                Ok(Parameter {
+                    version: 0,
+                    id: id,
+                    name: name,
+                    x: x,
+                    y: y,
+                    offset: None,
+                    part: part,
+                })
+            },
+
+            #[rustfmt::skip]
+            _Parameter::V1 { version, id, name, x, y, offset, part } => {
+                Ok(Parameter {
+                    version: version,
+                    id: id,
+                    name: name,
+                    x: x,
+                    y: y,
+                    offset: offset,
+                    part: part,
+                })
+            },
         }
     }
 }

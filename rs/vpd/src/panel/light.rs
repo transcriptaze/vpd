@@ -1,4 +1,4 @@
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
@@ -12,8 +12,10 @@ use crate::panel::Y;
 use crate::svg::Circle;
 use crate::vcv::Component;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize)]
 pub struct Light {
+    version: u8,
+
     pub id: String,
     pub name: String,
     pub x: X,
@@ -35,6 +37,7 @@ impl Light {
         let y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
 
         Light {
+            version: 1,
             id: id.to_string(),
             name: name.to_string(),
             x: x,
@@ -116,6 +119,64 @@ impl IItem for Light {
             itype: "light".to_string(),
             id: self.id.clone(),
             attributes: attributes,
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for Light {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum _Light {
+            V1 {
+                version: u8,
+                id: String,
+                name: String,
+                x: X,
+                y: Y,
+                offset: Option<Offset>,
+                part: Option<String>,
+            },
+            V0 {
+                id: String,
+                name: String,
+                x: X,
+                y: Y,
+                part: Option<String>,
+            },
+        }
+
+        let l = _Light::deserialize(deserializer)?;
+
+        match l {
+            #[rustfmt::skip]
+            _Light::V0 {id,name,x,y,part } => {
+                Ok(Light {
+                    version: 0,
+                    id: id,
+                    name: name,
+                    x: x,
+                    y: y,
+                    offset: None,
+                    part: part,
+                })
+            },
+
+            #[rustfmt::skip]
+            _Light::V1 { version, id, name, x, y, offset, part } => {
+                Ok(Light {
+                    version: version,
+                    id: id,
+                    name: name,
+                    x: x,
+                    y: y,
+                    offset: offset,
+                    part: part,
+                })
+            },
         }
     }
 }
