@@ -2895,6 +2895,18 @@
                 {
                   "type": "SYMBOL",
                   "name": "y"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "polar"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 }
               ]
             },

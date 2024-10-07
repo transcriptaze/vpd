@@ -1,4 +1,4 @@
-import { identifier, string, reference, offset, mm } from './commands.js'
+import { identifier, string, reference, offset, mm, polar } from './commands.js'
 
 export function newLabel (node, src) {
   const object = {
@@ -22,6 +22,16 @@ export function newLabel (node, src) {
     }
 
     if (child.type === 'absolute') {
+      object.label.x = {
+        reference: 'absolute',
+        offset: 0
+      }
+
+      object.label.y = {
+        reference: 'absolute',
+        offset: 0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
           object.label.x = {
@@ -34,12 +44,31 @@ export function newLabel (node, src) {
           object.label.y = {
             reference: 'absolute',
             offset: mm(v)
+          }
+        }
+
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.label.offset = {
+            angle,
+            radius
           }
         }
       }
     }
 
     if (child.type === 'relative') {
+      object.label.x = {
+        reference: 'origin',
+        offset: 0
+      }
+
+      object.label.y = {
+        reference: 'origin',
+        offset: 0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
           object.label.x = {
@@ -52,6 +81,15 @@ export function newLabel (node, src) {
           object.label.y = {
             reference: 'origin',
             offset: mm(v)
+          }
+        }
+
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.label.offset = {
+            angle,
+            radius
           }
         }
       }
@@ -81,6 +119,15 @@ export function newLabel (node, src) {
         if (v.type === 'dy') {
           object.label.y.offset = mm(v)
         }
+
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.label.offset = {
+            angle,
+            radius
+          }
+        }
       }
     }
 
@@ -95,6 +142,15 @@ export function newLabel (node, src) {
       object.label.y = {
         reference: reference(child),
         offset: offset(child)
+      }
+    }
+
+    if (child.type === 'polar') {
+      const { angle, radius } = polar(child)
+
+      object.label.offset = {
+        angle,
+        radius
       }
     }
 
