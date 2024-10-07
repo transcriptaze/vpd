@@ -35,6 +35,7 @@
             - [ ] label
             - (?) origin
             - [ ] _set xxx_
+                  - `_offset_xy_attr`
             - [ ] demo project
       - [ ] CHANGELOG
       - [ ] README

@@ -1458,6 +1458,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
