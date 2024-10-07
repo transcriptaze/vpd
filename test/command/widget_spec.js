@@ -24,6 +24,8 @@ describe('widget command translation', () => {
         y: {
           reference: 'input<freq>',
           offset: 12.5
+        },
+        offset: {
         }
       }
     }

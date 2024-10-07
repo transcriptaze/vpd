@@ -24,6 +24,8 @@ describe('light command translation', () => {
         y: {
           reference: 'parameter<volume>',
           offset: 12.5
+        },
+        offset: {
         }
       }
     }

@@ -52,18 +52,9 @@ export function create (node) {
 
         if (v.type === 'polar') {
           const { angle, radius } = polar(v)
+
           object.offset.angle = angle
           object.offset.radius = radius
-          // const { x, y } = polar(v)
-          // object.x = {
-          //   reference: 'absolute',
-          //   offset: x
-          // }
-
-          // object.y = {
-          //   reference: 'absolute',
-          //   offset: y
-          // }
         }
       }
     }
@@ -96,18 +87,9 @@ export function create (node) {
 
         if (v.type === 'polar') {
           const { angle, radius } = polar(v)
+
           object.offset.angle = angle
           object.offset.radius = radius
-          // const { x, y } = polar(v)
-          // object.x = {
-          //   reference: 'origin',
-          //   offset: x
-          // }
-
-          // object.y = {
-          //   reference: 'origin',
-          //   offset: y
-          // }
         }
       }
     }
@@ -128,11 +110,9 @@ export function create (node) {
 
     if (child.type === 'polar') {
       const { angle, radius } = polar(child)
+
       object.offset.angle = angle
       object.offset.radius = radius
-      // const { x, y } = polar(child)
-      // object.x.offset = x
-      // object.y.offset = y
     }
 
     if (['input', 'output', 'parameter', 'light', 'widget'].includes(child.type)) {
@@ -160,12 +140,9 @@ export function create (node) {
 
         if (v.type === 'polar') {
           const { angle, radius } = polar(v)
+
           object.offset.angle = angle
           object.offset.radius = radius
-          // const { x, y } = polar(v)
-
-          // object.x.offset = x
-          // object.y.offset = y
         }
       }
     }
@@ -275,12 +252,15 @@ export function set (node, src) {
     if (child.type === 'xy') {
       object.x = {
         reference: 'origin',
-        offset: 0
+        offset: 0.0
       }
 
       object.y = {
         reference: 'origin',
-        offset: 0
+        offset: 0.0
+      }
+
+      object.offset = {
       }
 
       for (const v of child.namedChildren) {
@@ -313,6 +293,13 @@ export function set (node, src) {
           }
         }
 
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.offset.angle = angle
+          object.offset.radius = radius
+        }
+
         if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
           for (const u of v.namedChildren) {
             if (u.type === 'name') {
@@ -326,6 +313,13 @@ export function set (node, src) {
 
             if (u.type === 'y') {
               object.y.offset = mm(u)
+            }
+
+            if (u.type === 'polar') {
+              const { angle, radius } = polar(u)
+
+              object.offset.angle = angle
+              object.offset.radius = radius
             }
           }
         }
