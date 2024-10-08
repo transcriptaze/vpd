@@ -54,6 +54,11 @@ pub trait IItem {
     fn as_item(&self) -> Item;
 }
 
+pub trait Is {
+    fn is(&self, id: &str) -> bool;
+    fn named(&self, name: &str) -> bool;
+}
+
 #[derive(Serialize)]
 pub struct Item {
     pub itype: String,
@@ -495,68 +500,36 @@ impl Module {
     }
 
     pub fn find_input(&self, id: &str) -> Option<usize> {
-        match self.panel.inputs.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .inputs
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.inputs, id)
     }
 
     pub fn find_output(&self, id: &str) -> Option<usize> {
-        match self.panel.outputs.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .outputs
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.outputs, id)
     }
 
     pub fn find_parameter(&self, id: &str) -> Option<usize> {
-        match self.panel.parameters.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .parameters
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.parameters, id)
     }
 
     pub fn find_light(&self, id: &str) -> Option<usize> {
-        match self.panel.lights.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .lights
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.lights, id)
     }
 
     pub fn find_widget(&self, id: &str) -> Option<usize> {
-        match self.panel.widgets.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .widgets
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.widgets, id)
     }
 
     pub fn find_label(&self, id: &str) -> Option<usize> {
-        match self.panel.labels.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .labels
-                .iter()
-                .position(|v| v.text.trim().to_lowercase() == id.trim().to_lowercase()),
+        self.find_in_list(&self.panel.labels, id)
+    }
+
+    fn find_in_list<T: Is>(&self, list: &Vec<T>, id: &str) -> Option<usize> {
+        let name = id.trim().to_lowercase();
+
+        if let Some(ix) = list.iter().position(|v| v.is(id)) {
+            Some(ix)
+        } else {
+            list.iter().position(|v| v.named(name.as_str()))
         }
     }
 

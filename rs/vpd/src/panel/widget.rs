@@ -2,6 +2,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
+use crate::module::Is;
 use crate::module::Item;
 use crate::panel::Offset;
 use crate::panel::Panel;
@@ -75,6 +76,16 @@ impl Widget {
         if self.y.reference == from {
             self.y.reference = to.to_string();
         }
+    }
+}
+
+impl Is for Widget {
+    fn is(&self, id: &str) -> bool {
+        self.id == id
+    }
+
+    fn named(&self, name: &str) -> bool {
+        self.name.trim().to_lowercase() == name
     }
 }
 

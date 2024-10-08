@@ -4,6 +4,8 @@ use std::error::Error;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
+use crate::panel::X;
+use crate::panel::Y;
 
 #[derive(Deserialize, Debug)]
 pub struct SetInput {
@@ -11,6 +13,7 @@ pub struct SetInput {
     name: Option<String>,
     x: Option<panel::X>,
     y: Option<panel::Y>,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -56,6 +59,24 @@ impl Command for SetInput {
 
             if let Some(y) = &self.y {
                 m.panel.inputs[ix].y = y.clone();
+            }
+
+            if let Some(offset) = &self.offset {
+                let x = X::new_with_offset(
+                    m.panel.inputs[ix].x.reference.as_str(),
+                    m.panel.inputs[ix].x.offset,
+                    &self.offset,
+                );
+
+                let y = Y::new_with_offset(
+                    m.panel.inputs[ix].y.reference.as_str(),
+                    m.panel.inputs[ix].y.offset,
+                    &self.offset,
+                );
+
+                m.panel.inputs[ix].x = x;
+                m.panel.inputs[ix].y = y;
+                m.panel.inputs[ix].offset = Some(offset.clone());
             }
 
             if let Some(part) = &self.part {

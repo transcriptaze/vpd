@@ -4,6 +4,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
+use crate::module::Is;
 use crate::module::Item;
 use crate::panel::Offset;
 use crate::panel::Panel;
@@ -123,6 +124,16 @@ impl Label {
         if self.y.reference == from {
             self.y.reference = to.to_string();
         }
+    }
+}
+
+impl Is for Label {
+    fn is(&self, id: &str) -> bool {
+        self.id == id
+    }
+
+    fn named(&self, name: &str) -> bool {
+        self.text.trim().to_lowercase() == name
     }
 }
 
