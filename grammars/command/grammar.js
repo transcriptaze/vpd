@@ -249,17 +249,7 @@ module.exports = grammar({
         $._relative_xy_attr,
         $._geometry_xy_attr,
         $._guide_xy_attr,
-        seq(
-          '(',
-          choice(
-            seq('input',     alias($._component_xy_attr, $.input)),
-            seq('output',    alias($._component_xy_attr, $.output)),
-            seq('parameter', alias($._component_xy_attr, $.parameter)),
-            seq('light',     alias($._component_xy_attr, $.light)),
-            seq('widget',    alias($._component_xy_attr, $.widget)),
-          ),
-          ')',
-        ),
+        $._widget_xy_attr,
       ),
     ),
 
@@ -359,11 +349,32 @@ module.exports = grammar({
       ),
     ),
 
-    _guide_xy_attr: $ => seq(
-      alias($._guide_attr,$.x),
-      ',',
-      alias($._guide_attr,$.y),
-      optional($.polar),
+    _guide_xy_attr: $ => choice(
+      seq(
+        alias($._guide_attr,$.x),
+        ',',
+        alias($._guide_attr,$.y),
+      ),
+      seq(
+        '(',
+        alias($._guide_attr,$.x),
+        ',',
+        alias($._guide_attr,$.y),
+        optional($.polar),
+        ')',
+      ),
+    ),
+
+    _widget_xy_attr: $ => seq(
+      '(',
+      choice(
+        seq('input',     alias($._component_xy_attr, $.input)),
+        seq('output',    alias($._component_xy_attr, $.output)),
+        seq('parameter', alias($._component_xy_attr, $.parameter)),
+        seq('light',     alias($._component_xy_attr, $.light)),
+        seq('widget',    alias($._component_xy_attr, $.widget)),
+      ),
+      ')',
     ),
 
     _component_x_attr: $ => seq(

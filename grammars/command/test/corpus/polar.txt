@@ -204,10 +204,10 @@ set parameter "E" xy 30°,10mm
         (angle)
         (radius)))))
 
-==============================================
-set parameter 'volume' xy left,middle 30°,10mm
-==============================================
-set parameter 'volume' xy left,middle 30°,10mm
+================================================
+set parameter 'volume' xy (left,middle 30°,10mm)
+================================================
+set parameter 'volume' xy (left,middle 30°,10mm)
 ---
 (command
   (set
@@ -222,10 +222,10 @@ set parameter 'volume' xy left,middle 30°,10mm
         (angle)
         (radius)))))
 
-========================================================
-set parameter 'volume' xy left+10mm,middle+12mm 30°,10mm
-========================================================
-set parameter 'volume' xy left+10mm,middle+12mm 30°,10mm
+==========================================================
+set parameter 'volume' xy (left+10mm,middle+12mm 30°,10mm)
+==========================================================
+set parameter 'volume' xy (left+10mm,middle+12mm 30°,10mm)
 ---
 (command
   (set
@@ -243,10 +243,10 @@ set parameter 'volume' xy left+10mm,middle+12mm 30°,10mm
         (radius)))))
 
 
-===================================
-set parameter "E" xy v1,h2 30°,10mm
-===================================
-set parameter "E" xy v1,h2 30°,10mm
+=====================================
+set parameter "E" xy (v1,h2 30°,10mm)
+=====================================
+set parameter "E" xy (v1,h2 30°,10mm)
 ---
 (command
   (set
@@ -261,10 +261,10 @@ set parameter "E" xy v1,h2 30°,10mm
         (angle)
         (radius)))))
 
-=============================================
-set parameter "E" xy v1+10mm,h2+10mm 30°,10mm
-=============================================
-set parameter "E" xy v1+10mm,h2+10mm 30°,10mm
+===============================================
+set parameter "E" xy (v1+10mm,h2+10mm 30°,10mm)
+===============================================
+set parameter "E" xy (v1+10mm,h2+10mm 30°,10mm)
 ---
 (command
   (set

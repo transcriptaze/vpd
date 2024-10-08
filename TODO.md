@@ -35,6 +35,15 @@
             - [x] label
             - (?) origin
             - [ ] _set xxx_
+                  - [x] make new/set grammar consistent vis-a-vis brackets/no brackets for e.g. v1,h2
+                  - [x] parameter
+                  - [ ] input
+                  - [ ] output
+                  - [ ] light
+                  - [ ] widget
+                  - [ ] decoration
+                  - [ ] label
+                  - (?) origin
             - [ ] demo project
       - [ ] CHANGELOG
       - [ ] README

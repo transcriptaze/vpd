@@ -193,10 +193,10 @@ describe('set parameter command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-  it('set parameter volume xy v1,h2 30°,10mm', () => {
-    const cmd = command.parse('set parameter volume xy v1,h2 30°,10mm')
+  it('set parameter volume xy (v1,h2 30°,10mm)', () => {
+    const cmd = command.parse('set parameter volume xy (v1,h2 30°,10mm)')
     const expected = {
-      src: 'set parameter volume xy v1,h2 30°,10mm',
+      src: 'set parameter volume xy (v1,h2 30°,10mm)',
       action: 'set',
       parameter: {
         id: 'volume',
@@ -218,10 +218,10 @@ describe('set parameter command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-  it('set parameter volume xy left,middle 30°,10mm', () => {
-    const cmd = command.parse('set parameter volume xy left,middle 30°,10mm')
+  it('set parameter volume xy (left,middle 30°,10mm)', () => {
+    const cmd = command.parse('set parameter volume xy (left,middle 30°,10mm)')
     const expected = {
-      src: 'set parameter volume xy left,middle 30°,10mm',
+      src: 'set parameter volume xy (left,middle 30°,10mm)',
       action: 'set',
       parameter: {
         id: 'volume',
