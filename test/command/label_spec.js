@@ -101,6 +101,35 @@ describe('new label command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('new label lorem (v1,h2)', () => {
+    const cmd = command.parse('new label lorem (v1,h2)')
+    const expected = {
+      src: 'new label lorem (v1,h2)',
+      action: 'new',
+      label: {
+        text: 'lorem',
+        x: {
+          reference: 'v1',
+          offset: 0.0
+        },
+        y: {
+          reference: 'h2',
+          offset: 0.0
+        },
+        colour: {
+          light: '#222222',
+          dark: '#ebebeb'
+        },
+        font: 'RobotoMono-Bold',
+        fontsize: 12,
+        halign: 'left',
+        valign: 'baseline'
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('new label lorem v1+10mm,h2-12mm', () => {
     const cmd = command.parse('new label lorem v1+10mm,h2-12mm')
     const expected = {
@@ -130,10 +159,10 @@ describe('new label command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
-  it('new label lorem v1,h2 30°,10mm', () => {
-    const cmd = command.parse('new label lorem v1,h2 30°,10mm')
+  it('new label lorem (v1,h2 30°,10mm)', () => {
+    const cmd = command.parse('new label lorem (v1,h2 30°,10mm)')
     const expected = {
-      src: 'new label lorem v1,h2 30°,10mm',
+      src: 'new label lorem (v1,h2 30°,10mm)',
       action: 'new',
       label: {
         text: 'lorem',
@@ -171,10 +200,10 @@ describe('new label command translation', () => {
       label: {
         text: 'lorem',
         x: {
-          reference: 'input<in>',
+          reference: 'input<in>'
         },
         y: {
-          reference: 'input<in>',
+          reference: 'input<in>'
         },
         offset: {
           angle: 30.0,

@@ -11,8 +11,8 @@
       - [x] output
       - [x] light
       - [x] widget
+      - [x] label
       - [ ] decoration
-      - [ ] label
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [x] VCVSlider
@@ -32,7 +32,7 @@
             - [x] light
             - [x] widget
             - [ ] decoration
-            - [ ] label
+            - [x] label
             - (?) origin
             - [ ] _set xxx_
             - [ ] demo project

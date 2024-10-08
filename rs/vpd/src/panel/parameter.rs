@@ -88,15 +88,15 @@ impl IXY for Parameter {
 }
 
 impl IQueryable for Parameter {
-    const RADIUS: f32 = 2.5;
-
     fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        const RADIUS: f32 = 2.5;
+
         let (_x, _y) = self.resolvexy(panel);
         let dx = _x - x;
         let dy = _y - y;
         let r = (dx * dx + dy * dy).sqrt();
 
-        return r < Parameter::RADIUS;
+        return r < RADIUS;
     }
 }
 

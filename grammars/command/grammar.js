@@ -578,7 +578,10 @@ module.exports = grammar({
       choice (
         $.absolute,
         $.relative,
-        seq( $.x, ',', $.y, optional($.polar)),
+        choice (
+          seq( $.x, ',', $.y ),
+          seq( '(', $.x, ',', $.y,  optional($.polar), ')'),
+        ),
         alias($._decorate,$.decorate),
       ),
       optional($.font),

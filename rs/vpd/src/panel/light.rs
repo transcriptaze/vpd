@@ -88,15 +88,15 @@ impl IXY for Light {
 }
 
 impl IQueryable for Light {
-    const RADIUS: f32 = 2.5;
-
     fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        const RADIUS: f32 = 2.5;
+
         let (_x, _y) = self.resolvexy(panel);
         let dx = _x - x;
         let dy = _y - y;
         let r = (dx * dx + dy * dy).sqrt();
 
-        return r < Light::RADIUS;
+        return r < RADIUS;
     }
 }
 

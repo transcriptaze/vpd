@@ -117,10 +117,24 @@ new label "lorem" v1+10mm,h1-10mm
         (reference)
         (offset)))))
 
-================================
-new label "lorem" v1,h1 30°,10mm
-================================
-new label "lorem" v1,h1 30°,10mm
+=========================
+new label "lorem" (v1,h1)
+=========================
+new label "lorem" (v1,h1)
+---
+(command
+  (new
+    (label
+      (string)
+      (x
+        (reference))
+      (y
+        (reference)))))
+
+==================================
+new label "lorem" (v1,h1 30°,10mm)
+==================================
+new label "lorem" (v1,h1 30°,10mm)
 ---
 (command
   (new

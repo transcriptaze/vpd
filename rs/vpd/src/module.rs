@@ -47,8 +47,6 @@ pub struct Info {
 }
 
 pub trait IQueryable {
-    const RADIUS: f32;
-
     fn at(&self, panel: &Panel, x: f32, y: f32) -> bool;
 }
 
@@ -705,33 +703,36 @@ impl Module {
         }
 
         for v in &self.panel.labels {
-            let mut vx = v.x.resolve(panel);
-            let mut vy = v.y.resolve(panel);
-
-            vx += match v.halign.as_str() {
-                "left" => 0.0,
-                "centre" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
-                "center" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
-                "right" => -v.path.bounds.x2,
-                _ => 0.0,
-            };
-
-            vy += match v.valign.as_str() {
-                "top" => -v.path.bounds.y1,
-                "middle" => -(v.path.bounds.y1 + v.path.bounds.y2) / 2.0,
-                "baseline" => 0.0,
-                "bottom" => -v.path.bounds.y2,
-                _ => 0.0,
-            };
-
-            let x1 = vx + v.path.bounds.x1;
-            let x2 = vx + v.path.bounds.x2;
-            let y1 = vy + v.path.bounds.y1;
-            let y2 = vy + v.path.bounds.y2;
-
-            if x >= x1 && x <= x2 && y >= y1 && y <= y2 {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
+            // let mut vx = v.x.resolve(panel);
+            // let mut vy = v.y.resolve(panel);
+
+            // vx += match v.halign.as_str() {
+            //     "left" => 0.0,
+            //     "centre" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
+            //     "center" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
+            //     "right" => -v.path.bounds.x2,
+            //     _ => 0.0,
+            // };
+
+            // vy += match v.valign.as_str() {
+            //     "top" => -v.path.bounds.y1,
+            //     "middle" => -(v.path.bounds.y1 + v.path.bounds.y2) / 2.0,
+            //     "baseline" => 0.0,
+            //     "bottom" => -v.path.bounds.y2,
+            //     _ => 0.0,
+            // };
+
+            // let x1 = vx + v.path.bounds.x1;
+            // let x2 = vx + v.path.bounds.x2;
+            // let y1 = vy + v.path.bounds.y1;
+            // let y2 = vy + v.path.bounds.y2;
+
+            // if x >= x1 && x <= x2 && y >= y1 && y <= y2 {
+            //     rs.push(v.as_item());
+            // }
         }
 
         for v in &self.panel.decorations {
