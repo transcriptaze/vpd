@@ -272,9 +272,9 @@ impl<'de> Deserialize<'de> for Label {
             },
         }
 
-        let p = _Label::deserialize(deserializer)?;
+        let l = _Label::deserialize(deserializer)?;
 
-        match p {
+        match l {
             #[rustfmt::skip]
             _Label::V0 {id,text,x,y,font,fontsize,halign,valign,path, colour } => {
                 Ok(Label {

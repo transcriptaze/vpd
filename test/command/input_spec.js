@@ -80,5 +80,4 @@ describe('set input command translation', () => {
 
     expect(cmd).to.eql(expected)
   })
-
 })

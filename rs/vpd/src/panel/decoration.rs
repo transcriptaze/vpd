@@ -1,4 +1,4 @@
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::Item;
@@ -6,7 +6,7 @@ use crate::module::Module;
 use crate::panel::X;
 use crate::panel::Y;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Debug)]
 pub struct Decoration {
     pub id: String,
     pub name: String,
@@ -111,6 +111,42 @@ impl IItem for Decoration {
             itype: "decoration".to_string(),
             id: self.id.clone(),
             attributes: attributes,
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for Decoration {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum _Decoration {
+            V0 {
+                id: String,
+                name: String,
+                x: X,
+                y: Y,
+                scale: f32,
+                stretch: Stretch,
+            },
+        }
+
+        let d = _Decoration::deserialize(deserializer)?;
+
+        match d {
+            #[rustfmt::skip]
+            _Decoration::V0 {id,name,x,y,scale,stretch } => {
+                Ok(Decoration {
+                    id: id,
+                    name: name,
+                    x: x,
+                    y: y,
+                    scale: scale,
+                    stretch: stretch,
+                })
+            },
         }
     }
 }

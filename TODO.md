@@ -4,15 +4,15 @@
 - [x] Fix scaling for _PJ301M_
 - [x] Fix scaling for _SilverScrew_
 - [x] set _parts_ scale factor to 0.338 throughout
-- [ ] Drop shadows
-- [ ] Versioned structs
+- [x] Versioned structs
       - [x] parameter
       - [x] input
       - [x] output
       - [x] light
       - [x] widget
       - [x] label
-      - [ ] decoration
+      - [x] decoration
+- [ ] Drop shadows
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [x] VCVSlider
