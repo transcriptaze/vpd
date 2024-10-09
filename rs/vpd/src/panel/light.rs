@@ -2,6 +2,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
+use crate::module::ISet;
 use crate::module::Is;
 use crate::module::Item;
 use crate::panel::Offset;
@@ -86,6 +87,17 @@ impl Is for Light {
 
     fn named(&self, name: &str) -> bool {
         self.name.trim().to_lowercase() == name
+    }
+}
+
+impl ISet for Light {
+    fn set_offset(&mut self, offset: &Option<Offset>) {
+        let x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
+        let y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
+
+        self.x = x;
+        self.y = y;
+        self.offset = offset.clone();
     }
 }
 

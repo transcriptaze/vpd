@@ -7,6 +7,7 @@ use flate2::write::GzEncoder;
 use flate2::Compression;
 use regex::Regex;
 
+use super::panel;
 use super::panel::Guide;
 use super::panel::Panel;
 use super::panel::DEFAULT_HEIGHT;
@@ -57,6 +58,10 @@ pub trait IItem {
 pub trait Is {
     fn is(&self, id: &str) -> bool;
     fn named(&self, name: &str) -> bool;
+}
+
+pub trait ISet {
+    fn set_offset(&mut self, offset: &Option<panel::Offset>);
 }
 
 #[derive(Serialize)]

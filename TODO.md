@@ -5,22 +5,9 @@
 - [x] Fix scaling for _SilverScrew_
 - [x] set _parts_ scale factor to 0.338 throughout
 - [x] Versioned structs
-      - [x] parameter
-      - [x] input
-      - [x] output
-      - [x] light
-      - [x] widget
-      - [x] label
-      - [x] decoration
 - [ ] Drop shadows
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
-      - [x] VCVSlider
-      - [x] ~VCVSliderHorizontal~
-      - [x] PushButton
-      - [x] Button
-      - [x] Trimpot
-      - [x] Demo project:
       - [ ] Polar coordinates/offsets
             - [x] grammar
             - [x] JS command
@@ -31,18 +18,19 @@
             - [x] output
             - [x] light
             - [x] widget
-            - [ ] decoration
             - [x] label
+            - [ ] decoration
             - (?) origin
             - [ ] _set xxx_
+                  - [ ] remove offset
                   - [x] make new/set grammar consistent vis-a-vis brackets/no brackets for e.g. v1,h2
                   - [x] parameter
-                  - [ ] input
-                  - [ ] output
-                  - [ ] light
-                  - [ ] widget
-                  - [ ] decoration
+                  - [x] input
+                  - [x] output
+                  - [x] light
+                  - [x] widget
                   - [ ] label
+                  - [ ] decoration
                   - (?) origin
             - [ ] demo project
       - [ ] CHANGELOG

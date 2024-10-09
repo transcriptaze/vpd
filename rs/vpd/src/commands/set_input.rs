@@ -2,10 +2,9 @@ use serde::Deserialize;
 use std::error::Error;
 
 use crate::command::Command;
+use crate::module::ISet;
 use crate::module::Module;
 use crate::panel;
-use crate::panel::X;
-use crate::panel::Y;
 
 #[derive(Deserialize, Debug)]
 pub struct SetInput {
@@ -61,22 +60,10 @@ impl Command for SetInput {
                 m.panel.inputs[ix].y = y.clone();
             }
 
-            if let Some(offset) = &self.offset {
-                let x = X::new_with_offset(
-                    m.panel.inputs[ix].x.reference.as_str(),
-                    m.panel.inputs[ix].x.offset,
-                    &self.offset,
-                );
+            if let Some(_) = &self.offset {
+                let i = &mut m.panel.inputs[ix];
 
-                let y = Y::new_with_offset(
-                    m.panel.inputs[ix].y.reference.as_str(),
-                    m.panel.inputs[ix].y.offset,
-                    &self.offset,
-                );
-
-                m.panel.inputs[ix].x = x;
-                m.panel.inputs[ix].y = y;
-                m.panel.inputs[ix].offset = Some(offset.clone());
+                i.set_offset(&self.offset);
             }
 
             if let Some(part) = &self.part {

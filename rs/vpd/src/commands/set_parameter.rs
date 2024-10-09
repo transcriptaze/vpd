@@ -2,10 +2,9 @@ use serde::Deserialize;
 use std::error::Error;
 
 use crate::command::Command;
+use crate::module::ISet;
 use crate::module::Module;
 use crate::panel;
-use crate::panel::X;
-use crate::panel::Y;
 
 #[derive(Deserialize, Debug)]
 pub struct SetParameter {
@@ -61,22 +60,10 @@ impl Command for SetParameter {
                 m.panel.parameters[ix].y = y.clone();
             }
 
-            if let Some(offset) = &self.offset {
-                let x = X::new_with_offset(
-                    m.panel.parameters[ix].x.reference.as_str(),
-                    m.panel.parameters[ix].x.offset,
-                    &self.offset,
-                );
+            if let Some(_) = &self.offset {
+                let p = &mut m.panel.parameters[ix];
 
-                let y = Y::new_with_offset(
-                    m.panel.parameters[ix].y.reference.as_str(),
-                    m.panel.parameters[ix].y.offset,
-                    &self.offset,
-                );
-
-                m.panel.parameters[ix].x = x;
-                m.panel.parameters[ix].y = y;
-                m.panel.parameters[ix].offset = Some(offset.clone());
+                p.set_offset(&self.offset);
             }
 
             if let Some(part) = &self.part {
