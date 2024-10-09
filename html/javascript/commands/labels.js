@@ -350,6 +350,15 @@ export function setLabel (node, src) {
           }
         }
 
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.label.offset = {
+            angle,
+            radius
+          }
+        }
+
         if (['input', 'output', 'parameter', 'light', 'widget'].includes(v.type)) {
           object.label.x = {
             offset: 0
@@ -371,6 +380,15 @@ export function setLabel (node, src) {
 
             if (u.type === 'y') {
               object.label.y.offset = mm(u)
+            }
+
+            if (u.type === 'polar') {
+              const { angle, radius } = polar(u)
+
+              object.label.offset = {
+                angle,
+                radius
+              }
             }
           }
         }

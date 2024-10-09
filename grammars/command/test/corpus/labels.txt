@@ -878,6 +878,37 @@ set label 'lorem' xy 10mm,10mm
         (offset)))))
 
 
+==============================
+set label 'lorem' xy @30°,10mm
+==============================
+set label 'lorem' xy @30°,10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (absolute)
+      (polar
+        (angle)
+        (radius)))))
+
+
+=============================
+set label 'lorem' xy 30°,10mm
+=============================
+set label 'lorem' xy 30°,10mm
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (polar
+        (angle)
+        (radius)))))
+
+
 ==========================================
 set label 'lorem' xy left+10mm,middle+10mm
 ==========================================
@@ -896,6 +927,46 @@ set label 'lorem' xy left+10mm,middle+10mm
         (offset)))))
 
 
+===========================================
+set label 'lorem' xy (left,middle 30°,10mm)
+===========================================
+set label 'lorem' xy (left,middle 30°,10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (reference))
+      (y
+        (reference))
+      (polar
+        (angle)
+        (radius)))))
+
+
+=====================================================
+set label 'lorem' xy (left+10mm,middle+12mm 30°,10mm)
+=====================================================
+set label 'lorem' xy (left+10mm,middle+12mm 30°,10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset))
+      (polar
+        (angle)
+        (radius)))))
+
+
 ====================================
 set label 'lorem' xy v1+10mm,h2+10mm
 ====================================
@@ -912,6 +983,46 @@ set label 'lorem' xy v1+10mm,h2+10mm
       (y
         (reference)
         (offset)))))
+
+
+=====================================
+set label 'lorem' xy (v1,h2 30°,10mm)
+=====================================
+set label 'lorem' xy (v1,h2 30°,10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (reference))
+      (y
+        (reference))
+      (polar
+        (angle)
+        (radius)))))
+
+
+===============================================
+set label 'lorem' xy (v1+10mm,h2+10mm 30°,10mm)
+===============================================
+set label 'lorem' xy (v1+10mm,h2+10mm 30°,10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset))
+      (polar
+        (angle)
+        (radius)))))
 
 
 ============================
@@ -1000,6 +1111,23 @@ set label lorem xy (input in +10mm,+10mm)
           (offset))
         (y
           (offset))))))
+
+
+========================================
+set label 'lorem' xy (input in 30°,10mm)
+========================================
+set label 'lorem' xy (input in 30°,10mm)
+---
+(command
+  (set
+    (label
+      (identifier))
+    (xy
+      (input
+        (name)
+        (polar 
+          (angle)
+          (radius))))))
 
 
 ==================================
