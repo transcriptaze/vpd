@@ -39,15 +39,15 @@ impl Parameter {
         offset: &Option<Offset>,
         part: &Option<String>,
     ) -> Parameter {
-        let x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
-        let y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
+        let _x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
+        let _y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
 
         Parameter {
             version: 1,
             id: id.to_string(),
             name: name.to_string(),
-            x: x,
-            y: y,
+            x: _x,
+            y: _y,
             offset: offset.clone(),
             part: part.clone(),
         }

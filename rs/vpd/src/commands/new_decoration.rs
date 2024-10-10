@@ -11,6 +11,7 @@ pub struct NewDecoration {
     name: String,
     x: panel::X,
     y: panel::Y,
+    offset: Option<panel::Offset>,
     scale: f32,
     stretch: Stretch,
 }
@@ -43,6 +44,7 @@ impl Command for NewDecoration {
             &self.name,
             &self.x,
             &self.y,
+            &self.offset,
             self.scale,
             &panel::Stretch::new(self.stretch.x, self.stretch.y),
         ));

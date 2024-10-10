@@ -309,8 +309,7 @@ impl Panel {
         let mut list: Vec<Snippet> = Vec::new();
 
         for v in self.decorations.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
+            let (x, y) = v.resolvexy(&self);
             let stretch = Stretch::new(v.stretch.x, v.stretch.y);
             let label = v.label();
 

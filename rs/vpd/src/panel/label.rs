@@ -71,15 +71,15 @@ impl Label {
         path: &Path,
         colour: &Colour,
     ) -> Label {
-        let x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
-        let y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
+        let _x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
+        let _y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
 
         Label {
             version: 1,
             id: id.to_string(),
             text: text.to_string(),
-            x: x,
-            y: y,
+            x: _x,
+            y: _y,
             offset: offset.clone(),
             font: font.to_string(),
             fontsize: fontsize,
@@ -308,12 +308,12 @@ impl<'de> Deserialize<'de> for Label {
             #[rustfmt::skip]
             _Label::V1 {version, id,text,x,y,offset, font,fontsize,halign,valign,path, colour } => {
                   Ok(Label {
-                      version: version,
+                    version: version,
                     id: id,
                     text: text,
                     x: x,
                     y: y,
-                      offset: offset,
+                    offset: offset,
                     font: font,
                     fontsize: fontsize,
                     halign: halign,

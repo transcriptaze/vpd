@@ -545,30 +545,18 @@ impl Module {
         name: &Option<String>,
     ) -> Option<usize> {
         match (id, reference, name) {
-            (Some(id), _, _) => {
-                warnf!(">>/1 {}", id);
-                return self
-                    .panel
-                    .decorations
-                    .iter()
-                    .position(|v| v.id == id.as_str());
-            }
+            (Some(id), _, _) => self.panel.decorations.iter().position(|v| v.is(id)),
 
             (None, Some(component), Some(name)) => {
-                warnf!(">>/2 {},{}", component, name);
                 let c = component.as_str();
                 let n = name.trim().to_lowercase();
 
-                return self
-                    .panel
+                self.panel
                     .decorations
                     .iter()
-                    .position(|v| v.decorates(&self, c) && v.is(&n));
+                    .position(|v| v.decorates(&self, c) && v.named(&n))
             }
-            _ => {
-                warnf!(">>/3 ooops");
-                None
-            }
+            _ => None,
         }
     }
 

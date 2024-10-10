@@ -1,38 +1,29 @@
 # TODO
 
-- [x] Fix scaling for _RoundBlackKnob_
-- [x] Fix scaling for _PJ301M_
-- [x] Fix scaling for _SilverScrew_
-- [x] set _parts_ scale factor to 0.338 throughout
-- [x] Versioned structs
 - [ ] Drop shadows
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [ ] Polar coordinates/offsets
-            - [x] grammar
-            - [x] JS command
-            - [x] rs command
-            - [x] deg/degrees
-            - [x] parameter
-            - [x] input
-            - [x] output
-            - [x] light
-            - [x] widget
-            - [x] label
-            - [ ] decoration
-            - (?) origin
-            - [ ] _set xxx_
-                  - [ ] remove offset
-                  - [x] make new/set grammar consistent vis-a-vis brackets/no brackets for e.g. v1,h2
+            - [x] _new_`
                   - [x] parameter
                   - [x] input
                   - [x] output
                   - [x] light
                   - [x] widget
-                  - [ ] label
+                  - [x] label
+                  - [x] decoration
+            - [ ] _set_
+                  - [ ] remove offset
+                  - [x] parameter
+                  - [x] input
+                  - [x] output
+                  - [x] light
+                  - [x] widget
+                  - [x] label
                   - [ ] decoration
-                  - (?) origin
+            - (?) origin
             - [ ] demo project
+      - [ ] Rework x,y attribute as xy
       - [ ] CHANGELOG
       - [ ] README
       - [ ] User manual
