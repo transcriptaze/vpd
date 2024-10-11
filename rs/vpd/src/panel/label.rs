@@ -7,6 +7,7 @@ use crate::module::IQueryable;
 use crate::module::ISet;
 use crate::module::Is;
 use crate::module::Item;
+use crate::panel::no_use_to_man_or_beast;
 use crate::panel::Offset;
 use crate::panel::Panel;
 use crate::panel::IXY;
@@ -23,7 +24,7 @@ pub struct Label {
     pub x: X,
     pub y: Y,
 
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "no_use_to_man_or_beast")]
     pub offset: Option<Offset>,
 
     pub font: String,
@@ -139,6 +140,14 @@ impl Is for Label {
 }
 
 impl ISet for Label {
+    fn set_x(&mut self, x: &X) {
+        self.x = x.clone();
+    }
+
+    fn set_y(&mut self, y: &Y) {
+        self.y = y.clone();
+    }
+
     fn set_offset(&mut self, offset: &Option<Offset>) {
         let x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
         let y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
@@ -196,10 +205,12 @@ impl IItem for Label {
         ];
 
         if let Some(offset) = &self.offset {
-            attributes.push((
-                "offset".to_string(),
-                format!("{}°/{}mm", offset.angle, offset.radius),
-            ));
+            if offset.radius > 0.0 {
+                attributes.push((
+                    "offset".to_string(),
+                    format!("{}°/{}mm", offset.angle, offset.radius),
+                ));
+            }
         }
 
         attributes.push(("font".to_string(), self.font.clone()));

@@ -53,11 +53,11 @@ impl Command for SetOutput {
             }
 
             if let Some(x) = &self.x {
-                m.panel.outputs[ix].x = x.clone();
+                m.panel.outputs[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.outputs[ix].y = y.clone();
+                m.panel.outputs[ix].set_y(&y);
             }
 
             if let Some(_) = &self.offset {

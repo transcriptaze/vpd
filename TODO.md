@@ -5,8 +5,8 @@
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [ ] Polar coordinates/offsets
-            - [ ] Remove polar offset
-                  - (?) set radius to 0 to remove offset
+            - [x] Remove polar offset if radius is <= 0.0
+            - [x] JS: set default offset to 0.0
             - [ ] demo project
             - (?) origin
       - [ ] CHANGELOG

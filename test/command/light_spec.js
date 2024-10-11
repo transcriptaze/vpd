@@ -26,6 +26,8 @@ describe('light command translation', () => {
           offset: 12.5
         },
         offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }

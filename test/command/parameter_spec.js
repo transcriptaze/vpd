@@ -136,6 +136,33 @@ describe('set parameter command translation', () => {
           offset: 12.5
         },
         offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set parameter volume xy @10mm,10mm', () => {
+    const cmd = command.parse('set parameter volume xy @10mm,10mm')
+    const expected = {
+      src: 'set parameter volume xy @10mm,10mm',
+      action: 'set',
+      parameter: {
+        id: 'volume',
+        x: {
+          reference: 'absolute',
+          offset: 10.0
+        },
+        y: {
+          reference: 'absolute',
+          offset: 10.0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -193,6 +220,31 @@ describe('set parameter command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('set parameter volume xy (v1,h2)', () => {
+    const cmd = command.parse('set parameter volume xy (v1,h2)')
+    const expected = {
+      src: 'set parameter volume xy (v1,h2)',
+      action: 'set',
+      parameter: {
+        id: 'volume',
+        x: {
+          reference: 'v1',
+          offset: 0
+        },
+        y: {
+          reference: 'h2',
+          offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('set parameter volume xy (v1,h2 30°,10mm)', () => {
     const cmd = command.parse('set parameter volume xy (v1,h2 30°,10mm)')
     const expected = {
@@ -211,6 +263,31 @@ describe('set parameter command translation', () => {
         offset: {
           angle: 30.0,
           radius: 10.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set parameter volume xy (left,middle)', () => {
+    const cmd = command.parse('set parameter volume xy (left,middle)')
+    const expected = {
+      src: 'set parameter volume xy (left,middle)',
+      action: 'set',
+      parameter: {
+        id: 'volume',
+        x: {
+          reference: 'left',
+          offset: 0
+        },
+        y: {
+          reference: 'middle',
+          offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }

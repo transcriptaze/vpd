@@ -5,6 +5,7 @@ use crate::module::ISet;
 use crate::module::Is;
 use crate::module::Item;
 use crate::module::Module;
+use crate::panel::no_use_to_man_or_beast;
 use crate::panel::Offset;
 use crate::panel::Panel;
 use crate::panel::IXY;
@@ -20,7 +21,7 @@ pub struct Decoration {
     pub x: X,
     pub y: Y,
 
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "no_use_to_man_or_beast")]
     pub offset: Option<Offset>,
 
     pub scale: f32,
@@ -119,6 +120,10 @@ impl Is for Decoration {
 }
 
 impl ISet for Decoration {
+    fn set_x(&mut self, _: &X) {}
+
+    fn set_y(&mut self, _: &Y) {}
+
     fn set_offset(&mut self, offset: &Option<Offset>) {
         let x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
         let y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
@@ -153,10 +158,12 @@ impl IItem for Decoration {
         ];
 
         if let Some(offset) = &self.offset {
-            attributes.push((
-                "offset".to_string(),
-                format!("{}°/{}mm", offset.angle, offset.radius),
-            ));
+            if offset.radius > 0.0 {
+                attributes.push((
+                    "offset".to_string(),
+                    format!("{}°/{}mm", offset.angle, offset.radius),
+                ));
+            }
         }
 
         attributes.push(("scale".to_string(), format!("{}", &self.scale)));

@@ -261,6 +261,8 @@ export function set (node, src) {
       }
 
       object.offset = {
+        angle: 0.0,
+        radius: 0.0
       }
 
       for (const v of child.namedChildren) {

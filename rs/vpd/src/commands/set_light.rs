@@ -53,11 +53,11 @@ impl Command for SetLight {
             }
 
             if let Some(x) = &self.x {
-                m.panel.lights[ix].x = x.clone();
+                m.panel.lights[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.lights[ix].y = y.clone();
+                m.panel.lights[ix].set_y(&y);
             }
 
             if let Some(_) = &self.offset {

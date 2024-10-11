@@ -53,17 +53,15 @@ impl Command for SetParameter {
             }
 
             if let Some(x) = &self.x {
-                m.panel.parameters[ix].x = x.clone();
+                m.panel.parameters[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.parameters[ix].y = y.clone();
+                m.panel.parameters[ix].set_y(&y);
             }
 
             if let Some(_) = &self.offset {
-                let p = &mut m.panel.parameters[ix];
-
-                p.set_offset(&self.offset);
+                m.panel.parameters[ix].set_offset(&self.offset);
             }
 
             if let Some(part) = &self.part {

@@ -61,6 +61,8 @@ pub trait Is {
 }
 
 pub trait ISet {
+    fn set_x(&mut self, x: &panel::X);
+    fn set_y(&mut self, y: &panel::Y);
     fn set_offset(&mut self, offset: &Option<panel::Offset>);
 }
 

@@ -33,5 +33,7 @@ pub use x::X;
 pub use xy::Offset;
 pub use y::Y;
 
+pub use xy::no_use_to_man_or_beast;
+
 pub const DEFAULT_WIDTH: f32 = 45.72; // 9H
 pub const DEFAULT_HEIGHT: f32 = 128.5; // 1U

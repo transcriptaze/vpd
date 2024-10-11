@@ -320,6 +320,11 @@ export function setLabel (node, src) {
         offset: 0
       }
 
+      object.label.offset = {
+        angle: 0.0,
+        radius: 0.0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'absolute') {
           object.label.x.reference = 'absolute'

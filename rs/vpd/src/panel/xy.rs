@@ -34,6 +34,16 @@ impl Polar {
     }
 }
 
+pub fn no_use_to_man_or_beast(offset: &Option<Offset>) -> bool {
+    if let Some(o) = offset {
+        if o.radius <= 0.0 {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
     match itype {
         "input" => {

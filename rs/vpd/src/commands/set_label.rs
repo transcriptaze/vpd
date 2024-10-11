@@ -100,11 +100,11 @@ impl Command for SetLabel {
             }
 
             if let Some(x) = &self.x {
-                m.panel.labels[ix].x = x.clone();
+                m.panel.labels[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.labels[ix].y = y.clone();
+                m.panel.labels[ix].set_y(&y);
             }
 
             if let Some(_) = &self.offset {

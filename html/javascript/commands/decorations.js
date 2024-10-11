@@ -240,6 +240,11 @@ export function setDecoration (node, src) {
         offset: 0
       }
 
+      object.decoration.offset = {
+        angle: 0.0,
+        radius: 0.0
+      }
+
       for (const attr of child.namedChildren) {
         if (attr.type === 'name') {
           object.decoration.x.reference = `${child.type}<${identifier(attr)}>`
@@ -300,6 +305,11 @@ export function setDecoration (node, src) {
       object.decoration.y = {
         reference: 'origin',
         offset: 0
+      }
+
+      object.decoration.offset = {
+        angle: 0.0,
+        radius: 0.0
       }
 
       for (const attr of child.namedChildren) {

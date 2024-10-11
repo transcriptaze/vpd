@@ -53,11 +53,11 @@ impl Command for SetWidget {
             }
 
             if let Some(x) = &self.x {
-                m.panel.widgets[ix].x = x.clone();
+                m.panel.widgets[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.widgets[ix].y = y.clone();
+                m.panel.widgets[ix].set_y(&y);
             }
 
             if let Some(_) = &self.offset {

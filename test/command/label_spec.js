@@ -273,6 +273,10 @@ describe('set label command translation', () => {
         y: {
           reference: 'input<in>',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -305,6 +309,31 @@ describe('set label command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('set label "lorem" xy 10mm,10mm', () => {
+    const cmd = command.parse('set label "lorem" xy 10mm,10mm')
+    const expected = {
+      src: 'set label "lorem" xy 10mm,10mm',
+      action: 'set',
+      label: {
+        id: 'lorem',
+        x: {
+          reference: 'origin',
+          offset: 10
+        },
+        y: {
+          reference: 'origin',
+          offset: 10
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('set label "lorem" xy 30°,10mm', () => {
     const cmd = command.parse('set label "lorem" xy 30°,10mm')
     const expected = {
@@ -323,6 +352,31 @@ describe('set label command translation', () => {
         offset: {
           angle: 30.0,
           radius: 10.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set label "lorem" xy (v1,h2)', () => {
+    const cmd = command.parse('set label "lorem" xy (v1,h2)')
+    const expected = {
+      src: 'set label "lorem" xy (v1,h2)',
+      action: 'set',
+      label: {
+        id: 'lorem',
+        x: {
+          reference: 'v1',
+          offset: 0
+        },
+        y: {
+          reference: 'h2',
+          offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -355,6 +409,31 @@ describe('set label command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('set label "lorem" xy (left,middle)', () => {
+    const cmd = command.parse('set label "lorem" xy (left,middle)')
+    const expected = {
+      src: 'set label "lorem" xy (left,middle)',
+      action: 'set',
+      label: {
+        id: 'lorem',
+        x: {
+          reference: 'left',
+          offset: 0
+        },
+        y: {
+          reference: 'middle',
+          offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('set label "lorem" xy (left,middle 30°,10mm)', () => {
     const cmd = command.parse('set label "lorem" xy (left,middle 30°,10mm)')
     const expected = {
@@ -373,6 +452,31 @@ describe('set label command translation', () => {
         offset: {
           angle: 30.0,
           radius: 10.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set label "lorem" xy (input in)', () => {
+    const cmd = command.parse('set label "lorem" xy (input in)')
+    const expected = {
+      src: 'set label "lorem" xy (input in)',
+      action: 'set',
+      label: {
+        id: 'lorem',
+        x: {
+          reference: 'input<in>',
+          offset: 0
+        },
+        y: {
+          reference: 'input<in>',
+          offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }

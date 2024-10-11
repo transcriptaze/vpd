@@ -306,6 +306,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -327,6 +331,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -374,6 +382,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -396,6 +408,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -616,6 +632,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'absolute',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -664,6 +684,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'origin',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -712,6 +736,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'top',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -760,6 +788,10 @@ describe('set decoration command translation', () => {
         y: {
           reference: 'h1',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
