@@ -2,7 +2,9 @@ use serde::Deserialize;
 use std::error::Error;
 
 use crate::command::Command;
+use crate::module::ISet;
 use crate::module::Module;
+use crate::panel;
 
 #[derive(Deserialize, Debug)]
 pub struct SetDecoration {
@@ -11,6 +13,7 @@ pub struct SetDecoration {
     name: Option<String>,
     x: Option<Offset>,
     y: Option<Offset>,
+    offset: Option<panel::Offset>,
     stretch: Option<Stretch>,
     scale: Option<f32>,
 }
@@ -57,6 +60,12 @@ impl Command for SetDecoration {
                 }
 
                 m.panel.decorations[ix].y.set_offset(y.offset);
+            }
+
+            if let Some(_) = &self.offset {
+                let d = &mut m.panel.decorations[ix];
+
+                d.set_offset(&self.offset);
             }
 
             if let Some(stretch) = &self.stretch {

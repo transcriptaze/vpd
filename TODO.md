@@ -1,29 +1,14 @@
 # TODO
 
 - [ ] Drop shadows
+- [ ] Encapsulate x,y fields into single xy
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [ ] Polar coordinates/offsets
-            - [x] _new_`
-                  - [x] parameter
-                  - [x] input
-                  - [x] output
-                  - [x] light
-                  - [x] widget
-                  - [x] label
-                  - [x] decoration
-            - [ ] _set_
-                  - [ ] remove offset
-                  - [x] parameter
-                  - [x] input
-                  - [x] output
-                  - [x] light
-                  - [x] widget
-                  - [x] label
-                  - [ ] decoration
-            - (?) origin
+            - [ ] Remove polar offset
+                  - (?) set radius to 0 to remove offset
             - [ ] demo project
-      - [ ] Rework x,y attribute as xy
+            - (?) origin
       - [ ] CHANGELOG
       - [ ] README
       - [ ] User manual

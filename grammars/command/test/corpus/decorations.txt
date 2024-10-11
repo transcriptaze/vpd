@@ -335,6 +335,22 @@ set decoration d1 (output out +10mm,+10mm)
       (dy))))
 
 
+=======================================
+set decoration d1 (output out 30°,10mm)
+=======================================
+set decoration d1 (output out 30°,10mm)
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (output
+      (name)
+      (polar
+        (angle)
+        (radius)))))
+
+
 ======================================================================
 set decoration (input in) CircularGraduations (output out +10mm,+10mm)
 ======================================================================
@@ -585,6 +601,21 @@ set decoration d1 xy @10mm,10mm
       (y
         (offset)))))
 
+===============================
+set decoration d1 xy @30°,10mm
+===============================
+set decoration d1 xy @30°,10mm
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (xy
+      (absolute)
+      (polar
+        (angle)
+        (radius)))))
+
 ==============================
 set decoration d1 xy 10mm,10mm
 ==============================
@@ -599,6 +630,20 @@ set decoration d1 xy 10mm,10mm
         (offset))
       (y
         (offset)))))
+
+=============================
+set decoration d1 xy 30°,10mm
+=============================
+set decoration d1 xy 30°,10mm
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (xy
+      (polar
+        (angle)
+        (radius)))))
 
 =======================================
 set decoration d1 xy left+10mm,top+10mm
@@ -617,6 +662,24 @@ set decoration d1 xy left+10mm,top+10mm
         (reference)
         (offset)))))
 
+========================================
+set decoration d1 xy (left,top 30°,10mm)
+=======================================
+set decoration d1 xy (left,top 30°,10mm)
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (xy
+      (x
+        (reference))
+      (y
+        (reference))
+      (polar
+        (angle)
+        (radius)))))
+
 ====================================
 set decoration d1 xy v1+10mm,h1+10mm
 ====================================
@@ -634,3 +697,20 @@ set decoration d1 xy v1+10mm,h1+10mm
         (reference)
         (offset)))))
 
+=====================================
+set decoration d1 xy (v1,h1 30°,10mm)
+=====================================
+set decoration d1 xy (v1,h1 30°,10mm)
+---
+(command
+  (set
+    (decoration
+      (identifier))
+    (xy
+      (x
+        (reference))
+      (y
+        (reference))
+      (polar
+        (angle)
+        (radius)))))
