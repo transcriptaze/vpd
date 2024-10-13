@@ -68,7 +68,7 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
         "input" => {
             let mut it = panel.inputs.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -76,7 +76,7 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
         "output" => {
             let mut it = panel.outputs.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -92,7 +92,7 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
         "light" => {
             let mut it = panel.lights.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -100,7 +100,7 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
         "widget" => {
             let mut it = panel.widgets.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }

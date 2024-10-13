@@ -2,11 +2,16 @@
 
 - [ ] Drop shadows
 - [ ] Encapsulate x,y fields into single xy
+      - [x] parameter
+      - [x] input
+      - [x] output
+      - [x] light
+      - [x] widget
+      - [ ] label
+      - [ ] decoration
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [ ] Polar coordinates/offsets
-            - [x] Remove polar offset if radius is <= 0.0
-            - [x] JS: set default offset to 0.0
             - [ ] demo project
             - (?) origin
       - [ ] CHANGELOG
