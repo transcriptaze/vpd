@@ -36,9 +36,7 @@ impl Parameter {
         offset: &Option<Offset>,
         part: &Option<String>,
     ) -> Parameter {
-        let _x = X::new_with_offset(x.reference.as_str(), x.offset, &offset);
-        let _y = Y::new_with_offset(y.reference.as_str(), y.offset, &offset);
-        let xy = XY::new(_x, _y, offset.clone());
+        let xy = XY::new(x, y, offset);
 
         Parameter {
             version: 1,
@@ -96,20 +94,15 @@ impl Is for Parameter {
 
 impl ISet for Parameter {
     fn set_x(&mut self, x: &X) {
-        self.xy.x = x.clone();
+        self.xy.set_x(x);
     }
 
     fn set_y(&mut self, y: &Y) {
-        self.xy.y = y.clone();
+        self.xy.set_y(y);
     }
 
     fn set_offset(&mut self, offset: &Option<Offset>) {
-        let x = X::new_with_offset(self.xy.x.reference.as_str(), self.xy.x.offset, offset);
-        let y = Y::new_with_offset(self.xy.y.reference.as_str(), self.xy.y.offset, offset);
-
-        self.xy.x = x;
-        self.xy.y = y;
-        self.xy.offset = offset.clone();
+        self.xy.set_offset(offset);
     }
 }
 
@@ -197,7 +190,7 @@ impl<'de> Deserialize<'de> for Parameter {
                     version: 0,
                     id: id,
                     name: name,
-                    xy: XY::new(x,y,None),
+                    xy: XY::new_without_offset(x,y),
                     part: part,
                 })
             },

@@ -36,9 +36,7 @@ impl Widget {
         offset: &Option<Offset>,
         part: &Option<String>,
     ) -> Widget {
-        let _x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
-        let _y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
-        let xy = XY::new(_x, _y, offset.clone());
+        let xy = XY::new(x, y, offset);
 
         Widget {
             version: 1,
@@ -197,7 +195,7 @@ impl<'de> Deserialize<'de> for Widget {
                     version: 0,
                     id: id,
                     name: name,
-                    xy: XY::new(x,y,None),
+                    xy: XY::new_without_offset(x,y),
                     part: part,
                 })
             },

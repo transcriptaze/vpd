@@ -1,10 +1,10 @@
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Serialize, Clone, Debug)]
 pub struct XY {
     pub x: X,
     pub y: Y,
@@ -21,18 +21,60 @@ pub struct Polar {
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Offset {
-    // pub dx: f32,
-    // pub dy: f32,
     pub angle: f32,
     pub radius: f32,
 }
 
 impl XY {
-    pub fn new(x: X, y: Y, offset: Option<Offset>) -> XY {
+    pub fn new(x: &X, y: &Y, offset: &Option<Offset>) -> XY {
         XY {
-            x: x.clone(),
-            y: y.clone(),
+            x: X::new_with_offset(x.reference.as_str(), x.offset, &offset),
+            y: Y::new_with_offset(y.reference.as_str(), y.offset, &offset),
             offset: offset.clone(),
+        }
+    }
+
+    pub fn new_without_offset(x: X, y: Y) -> XY {
+        XY {
+            x: x,
+            y: y,
+            offset: None,
+        }
+    }
+
+    pub fn set_x(&mut self, x: &X) {
+        self.x = x.clone();
+    }
+
+    pub fn set_y(&mut self, y: &Y) {
+        self.y = y.clone();
+    }
+
+    pub fn set_offset(&mut self, offset: &Option<Offset>) {
+        self.x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
+        self.y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
+        self.offset = offset.clone();
+    }
+}
+
+impl<'de> Deserialize<'de> for XY {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum _XY {
+            V0 { x: X, y: Y, offset: Option<Offset> },
+        }
+
+        let xy = _XY::deserialize(deserializer)?;
+
+        match xy {
+            #[rustfmt::skip]
+            _XY::V0 {x,y,offset } => {
+                Ok(XY::new(&x,&y,&offset))
+            },
         }
     }
 }
