@@ -31,6 +31,7 @@ pub use parameter::Parameter;
 pub use widget::Widget;
 pub use x::X;
 pub use xy::Offset;
+pub use xy::XY;
 pub use y::Y;
 
 pub use xy::no_use_to_man_or_beast;

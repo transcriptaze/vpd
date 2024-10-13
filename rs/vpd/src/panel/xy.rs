@@ -5,6 +5,15 @@ use crate::panel::X;
 use crate::panel::Y;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct XY {
+    pub x: X,
+    pub y: Y,
+
+    #[serde(skip_serializing_if = "no_use_to_man_or_beast")]
+    pub offset: Option<Offset>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Polar {
     pub angle: f32,
     pub radius: f32,
@@ -16,6 +25,16 @@ pub struct Offset {
     // pub dy: f32,
     pub angle: f32,
     pub radius: f32,
+}
+
+impl XY {
+    pub fn new(x: X, y: Y, offset: Option<Offset>) -> XY {
+        XY {
+            x: x.clone(),
+            y: y.clone(),
+            offset: offset.clone(),
+        }
+    }
 }
 
 impl Polar {
@@ -65,7 +84,7 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
         "parameter" => {
             let mut it = panel.parameters.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
