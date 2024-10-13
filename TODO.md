@@ -7,8 +7,9 @@
       - [x] output
       - [x] light
       - [x] widget
-      - [ ] label
-      - [ ] decoration
+      - [x] label
+      - [x] decoration
+      - [ ] deserialize with constructors
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [ ] Polar coordinates/offsets

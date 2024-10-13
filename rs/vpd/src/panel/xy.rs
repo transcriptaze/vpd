@@ -150,7 +150,7 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
         "label" => {
             let mut it = panel.labels.iter();
             match it.find(|&v| v.id == reference || v.text == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }

@@ -1,15 +1,16 @@
 use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
+use crate::module::IQueryable;
 use crate::module::ISet;
 use crate::module::Is;
 use crate::module::Item;
 use crate::module::Module;
-use crate::panel::no_use_to_man_or_beast;
 use crate::panel::Offset;
 use crate::panel::Panel;
 use crate::panel::IXY;
 use crate::panel::X;
+use crate::panel::XY;
 use crate::panel::Y;
 
 #[derive(Serialize, Debug)]
@@ -18,11 +19,7 @@ pub struct Decoration {
 
     pub id: String,
     pub name: String,
-    pub x: X,
-    pub y: Y,
-
-    #[serde(skip_serializing_if = "no_use_to_man_or_beast")]
-    pub offset: Option<Offset>,
+    pub xy: XY,
 
     pub scale: f32,
     pub stretch: Stretch,
@@ -44,23 +41,18 @@ impl Decoration {
         scale: f32,
         stretch: &Stretch,
     ) -> Decoration {
-        let _x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
-        let _y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
-
         Decoration {
             version: 1,
             id: id.to_string(),
             name: name.to_string(),
-            x: _x,
-            y: _y,
-            offset: offset.clone(),
+            xy: XY::new(x, y, offset),
             scale: scale,
             stretch: stretch.clone(),
         }
     }
 
     pub fn decorates(&self, m: &Module, component: &str) -> bool {
-        if let Some(v) = m.find_reference(&self.x.reference) {
+        if let Some(v) = m.find_reference(&self.xy.x.reference) {
             if component == format!("{}<{}>", v.0, v.1) {
                 return true;
             }
@@ -70,7 +62,7 @@ impl Decoration {
             }
         }
 
-        if let Some(v) = m.find_reference(&self.y.reference) {
+        if let Some(v) = m.find_reference(&self.xy.y.reference) {
             if component == format!("{}<{}>", v.0, v.1) {
                 return true;
             }
@@ -84,23 +76,23 @@ impl Decoration {
     }
 
     pub fn matches(&self, reference: &str, name: &str) -> bool {
-        return (self.x.reference == reference || self.y.reference == reference)
+        return (self.xy.x.reference == reference || self.xy.y.reference == reference)
             && self.name == name;
     }
 
     pub fn migrate(&mut self, from: &str, to: &str) {
-        if self.x.reference == from {
-            self.x.reference = to.to_string();
+        if self.xy.x.reference == from {
+            self.xy.x.reference = to.to_string();
         }
 
-        if self.y.reference == from {
-            self.y.reference = to.to_string();
+        if self.xy.y.reference == from {
+            self.xy.y.reference = to.to_string();
         }
     }
 
     pub fn label(&self) -> String {
-        if self.x.reference == self.y.reference {
-            return format!("{}", self.x.reference)
+        if self.xy.x.reference == self.xy.y.reference {
+            return format!("{}", self.xy.x.reference)
                 .replace("<", "[")
                 .replace(">", "]");
         } else {
@@ -125,27 +117,29 @@ impl ISet for Decoration {
     fn set_y(&mut self, _: &Y) {}
 
     fn set_offset(&mut self, offset: &Option<Offset>) {
-        let x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
-        let y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
-
-        self.x = x;
-        self.y = y;
-        self.offset = offset.clone();
+        self.xy.set_offset(offset);
     }
 }
 
 impl IXY for Decoration {
     fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
-        let x = self.x.resolve(panel);
-        let y = self.y.resolve(panel);
+        let x = self.xy.x.resolve(panel);
+        let y = self.xy.y.resolve(panel);
 
         (x, y)
     }
 }
 
-impl Stretch {
-    pub fn new(x: f32, y: f32) -> Stretch {
-        Stretch { x: x, y: y }
+impl IQueryable for Decoration {
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        const RADIUS: f32 = 2.5;
+
+        let (_x, _y) = self.resolvexy(panel);
+        let dx = _x - x;
+        let dy = _y - y;
+        let r = (dx * dx + dy * dy).sqrt();
+
+        return r < RADIUS;
     }
 }
 
@@ -153,11 +147,11 @@ impl IItem for Decoration {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
             ("name".to_string(), self.name.clone()),
-            ("x".to_string(), format!("{}", &self.x)),
-            ("y".to_string(), format!("{}", &self.y)),
+            ("x".to_string(), format!("{}", &self.xy.x)),
+            ("y".to_string(), format!("{}", &self.xy.y)),
         ];
 
-        if let Some(offset) = &self.offset {
+        if let Some(offset) = &self.xy.offset {
             if offset.radius > 0.0 {
                 attributes.push((
                     "offset".to_string(),
@@ -192,9 +186,7 @@ impl<'de> Deserialize<'de> for Decoration {
                 version: u8,
                 id: String,
                 name: String,
-                x: X,
-                y: Y,
-                offset: Option<Offset>,
+                xy: XY,
                 scale: f32,
                 stretch: Stretch,
             },
@@ -218,27 +210,29 @@ impl<'de> Deserialize<'de> for Decoration {
                     version: 0,
                     id: id,
                     name: name,
-                    x: x,
-                    y: y,
-                    offset: None,
+                    xy: XY::new_without_offset(x,y),
                     scale: scale,
                     stretch: stretch,
                 })
             },
 
             #[rustfmt::skip]
-            _Decoration::V1 {version, id,name,x,y,offset,scale,stretch } => {
+            _Decoration::V1 {version, id,name,xy,scale,stretch } => {
                 Ok(Decoration {
                     version: version,
                     id: id,
                     name: name,
-                    x: x,
-                    y: y,
-                    offset: offset,
+                    xy: xy,
                     scale: scale,
                     stretch: stretch,
                 })
             },
         }
+    }
+}
+
+impl Stretch {
+    pub fn new(x: f32, y: f32) -> Stretch {
+        Stretch { x: x, y: y }
     }
 }

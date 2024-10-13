@@ -7,11 +7,11 @@ use crate::module::IQueryable;
 use crate::module::ISet;
 use crate::module::Is;
 use crate::module::Item;
-use crate::panel::no_use_to_man_or_beast;
 use crate::panel::Offset;
 use crate::panel::Panel;
 use crate::panel::IXY;
 use crate::panel::X;
+use crate::panel::XY;
 use crate::panel::Y;
 use crate::svg::Text;
 
@@ -21,11 +21,7 @@ pub struct Label {
 
     pub id: String,
     pub text: String,
-    pub x: X,
-    pub y: Y,
-
-    #[serde(skip_serializing_if = "no_use_to_man_or_beast")]
-    pub offset: Option<Offset>,
+    pub xy: XY,
 
     pub font: String,
     pub fontsize: f32,
@@ -72,16 +68,11 @@ impl Label {
         path: &Path,
         colour: &Colour,
     ) -> Label {
-        let _x = X::new_with_offset(x.reference.as_str(), x.offset, offset);
-        let _y = Y::new_with_offset(y.reference.as_str(), y.offset, offset);
-
         Label {
             version: 1,
             id: id.to_string(),
             text: text.to_string(),
-            x: _x,
-            y: _y,
-            offset: offset.clone(),
+            xy: XY::new(&x, &y, offset),
             font: font.to_string(),
             fontsize: fontsize,
             halign: halign.to_string(),
@@ -119,13 +110,21 @@ impl Label {
     }
 
     pub fn migrate(&mut self, from: &str, to: &str) {
-        if self.x.reference == from {
-            self.x.reference = to.to_string();
+        if self.xy.x.reference == from {
+            self.xy.x.reference = to.to_string();
         }
 
-        if self.y.reference == from {
-            self.y.reference = to.to_string();
+        if self.xy.y.reference == from {
+            self.xy.y.reference = to.to_string();
         }
+    }
+
+    pub fn x(&self) -> X {
+        return self.xy.x.clone();
+    }
+
+    pub fn y(&self) -> Y {
+        return self.xy.y.clone();
     }
 }
 
@@ -141,27 +140,22 @@ impl Is for Label {
 
 impl ISet for Label {
     fn set_x(&mut self, x: &X) {
-        self.x = x.clone();
+        self.xy.set_x(x);
     }
 
     fn set_y(&mut self, y: &Y) {
-        self.y = y.clone();
+        self.xy.set_y(y);
     }
 
     fn set_offset(&mut self, offset: &Option<Offset>) {
-        let x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
-        let y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
-
-        self.x = x;
-        self.y = y;
-        self.offset = offset.clone();
+        self.xy.set_offset(offset);
     }
 }
 
 impl IXY for Label {
     fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
-        let x = self.x.resolve(panel);
-        let y = self.y.resolve(panel);
+        let x = self.xy.x.resolve(panel);
+        let y = self.xy.y.resolve(panel);
 
         (x, y)
     }
@@ -200,11 +194,11 @@ impl IItem for Label {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
             ("text".to_string(), self.text.clone()),
-            ("x".to_string(), format!("{}", &self.x)),
-            ("y".to_string(), format!("{}", &self.y)),
+            ("x".to_string(), format!("{}", &self.xy.x)),
+            ("y".to_string(), format!("{}", &self.xy.y)),
         ];
 
-        if let Some(offset) = &self.offset {
+        if let Some(offset) = &self.xy.offset {
             if offset.radius > 0.0 {
                 attributes.push((
                     "offset".to_string(),
@@ -270,9 +264,7 @@ impl<'de> Deserialize<'de> for Label {
                 version: u8,
                 id: String,
                 text: String,
-                x: X,
-                y: Y,
-                offset: Option<Offset>,
+                xy: XY,
                 font: String,
                 fontsize: f32,
                 halign: String,
@@ -304,9 +296,7 @@ impl<'de> Deserialize<'de> for Label {
                     version: 0,
                     id: id,
                     text: text,
-                    x: x,
-                    y: y,
-                    offset: None,
+                    xy: XY::new_without_offset(x.clone(),y.clone()),
                     font: font,
                     fontsize: fontsize,
                     halign: halign,
@@ -317,14 +307,12 @@ impl<'de> Deserialize<'de> for Label {
             },
 
             #[rustfmt::skip]
-            _Label::V1 {version, id,text,x,y,offset, font,fontsize,halign,valign,path, colour } => {
+            _Label::V1 {version, id,text,xy, font,fontsize,halign,valign,path, colour } => {
                   Ok(Label {
                     version: version,
                     id: id,
                     text: text,
-                    x: x,
-                    y: y,
-                    offset: offset,
+                    xy: xy,
                     font: font,
                     fontsize: fontsize,
                     halign: halign,

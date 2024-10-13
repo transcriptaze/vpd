@@ -48,18 +48,18 @@ impl Command for SetDecoration {
         if let Some(ix) = m.find_decoration(&self.id, &self.reference, &self.name) {
             if let Some(x) = &self.x {
                 if let Some(reference) = &x.reference {
-                    m.panel.decorations[ix].x.reference = reference.to_string();
+                    m.panel.decorations[ix].xy.x.reference = reference.to_string();
                 }
 
-                m.panel.decorations[ix].x.set_offset(x.offset);
+                m.panel.decorations[ix].xy.x.set_offset(x.offset);
             }
 
             if let Some(y) = &self.y {
                 if let Some(reference) = &y.reference {
-                    m.panel.decorations[ix].y.reference = reference.to_string();
+                    m.panel.decorations[ix].xy.y.reference = reference.to_string();
                 }
 
-                m.panel.decorations[ix].y.set_offset(y.offset);
+                m.panel.decorations[ix].xy.y.set_offset(y.offset);
             }
 
             if let Some(_) = &self.offset {
