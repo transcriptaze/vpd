@@ -25,7 +25,15 @@ struct Demo : Module {
 	enum LightId {
 		PUSHBUTTON_LIGHT,
 		BUTTON_LIGHT,
-		LIGHTS_LEN
+
+        RED_LIGHT,    RED_LIGHT1,    RED_LIGHT2,
+        ORANGE_LIGHT, ORANGE_LIGHT1, ORANGE_LIGHT2,
+        YELLOW_LIGHT, YELLOW_LIGHT1, YELLOW_LIGHT2,
+        GREEN_LIGHT,  GREEN_LIGHT1,  GREEN_LIGHT2,
+        BLUE_LIGHT,   BLUE_LIGHT1,   BLUE_LIGHT2,
+        INDIGO_LIGHT, INDIGO_LIGHT1, INDIGO_LIGHT2,
+        VIOLET_LIGHT, VIOLET_LIGHT1, VIOLET_LIGHT2,
+        LIGHTS_LEN
 	};
 
     dsp::BooleanTrigger pushBoolean;
@@ -53,6 +61,35 @@ struct Demo : Module {
 
 		lights[BUTTON_LIGHT].setBrightnessSmooth(hold, args.sampleTime);
 		lights[PUSHBUTTON_LIGHT].setBrightnessSmooth(gate, args.sampleTime);
+
+		// LEDs
+		lights[RED_LIGHT + 0].setBrightness(1.f);
+	    lights[RED_LIGHT + 1].setBrightness(0.f);
+	    lights[RED_LIGHT + 2].setBrightness(0.f);
+
+		lights[ORANGE_LIGHT + 0].setBrightness(1.f);
+	    lights[ORANGE_LIGHT + 1].setBrightness(0.647f);
+	    lights[ORANGE_LIGHT + 2].setBrightness(0.f);
+
+		lights[YELLOW_LIGHT + 0].setBrightness(1.f);
+	    lights[YELLOW_LIGHT + 1].setBrightness(1.f);
+	    lights[YELLOW_LIGHT + 2].setBrightness(0.f);
+
+		lights[GREEN_LIGHT + 0].setBrightness(0.f);
+	    lights[GREEN_LIGHT + 1].setBrightness(1.f);
+	    lights[GREEN_LIGHT + 2].setBrightness(0.f);
+
+		lights[BLUE_LIGHT + 0].setBrightness(0.f);
+	    lights[BLUE_LIGHT + 1].setBrightness(0.f);
+	    lights[BLUE_LIGHT + 2].setBrightness(1.f);
+
+		lights[INDIGO_LIGHT + 0].setBrightness(0.294f);
+	    lights[INDIGO_LIGHT + 1].setBrightness(0.f);
+	    lights[INDIGO_LIGHT + 2].setBrightness(0.51f);
+
+		lights[VIOLET_LIGHT + 0].setBrightness(0.5f);
+	    lights[VIOLET_LIGHT + 1].setBrightness(0.f);
+	    lights[VIOLET_LIGHT + 2].setBrightness(1.f);
 	}
 };
 
@@ -74,6 +111,14 @@ struct DemoWidget : ModuleWidget {
 		addParam(createParamCentered<VCVSlider>(DEMO_PARAM_SLIDER, module, Demo::SLIDER_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(DEMO_PARAM_ROUNDBLACKKNOB, module, Demo::ROUNDBLACKKNOB_PARAM));
 		addInput(createInputCentered<PJ301MPort>(DEMO_INPUT_PJ301M, module, Demo::PJ301M_INPUT));
+
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_RED, module, Demo::RED_LIGHT));		
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_ORANGE, module, Demo::ORANGE_LIGHT));		
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_YELLOW, module, Demo::YELLOW_LIGHT));		
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_GREEN, module, Demo::GREEN_LIGHT));		
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_BLUE, module, Demo::BLUE_LIGHT));		
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_INDIGO, module, Demo::INDIGO_LIGHT));		
+        addChild(createLightCentered<MediumLight<RedGreenBlueLight>>(DEMO_LIGHT_VIOLET, module, Demo::VIOLET_LIGHT));		
 	}
 };
 

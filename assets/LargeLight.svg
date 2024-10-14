@@ -65,7 +65,7 @@
    id="stop7" />
 </linearGradient>
 <ellipse
-   fill="url(#SVGID_1_)"
+   fill="red"
    cx="2.5"
    cy="1.37704"
    rx="1.51927"
@@ -91,7 +91,7 @@
 </linearGradient>
 <ellipse
    opacity="0.3"
-   fill="url(#SVGID_2_)"
+   fill="green"
    cx="2.5"
    cy="3.66071"
    rx="1.51927"

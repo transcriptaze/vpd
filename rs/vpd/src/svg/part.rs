@@ -1,13 +1,14 @@
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 
-pub const PARTS: [&'static str; 6] = [
+pub const PARTS: [&'static str; 7] = [
     "PJ301M",
     "RoundBlackKnob",
     "Trimpot",
     "PushButton",
     "Button",
     "Slider",
+    "LED",
 ];
 
 #[derive(Serialize, Deserialize, Debug)]

@@ -11,20 +11,23 @@
     },
     "inputs": [
       {
-        "version": 0,
+        "version": 1,
         "id": "i1",
         "name": "PJ301M",
-        "x": {
-          "reference": "v1",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h5",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "v2",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h1",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "part": "PJ301M"
       }
@@ -32,113 +35,301 @@
     "outputs": [],
     "parameters": [
       {
-        "version": 0,
+        "version": 1,
         "id": "p1",
         "name": "Trimpot",
-        "x": {
-          "reference": "v1",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h1",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "v1",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h1",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "part": "Trimpot"
       },
       {
-        "version": 0,
+        "version": 1,
         "id": "p2",
         "name": "PushButton",
-        "x": {
-          "reference": "v1",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h2",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "v1",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h2",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "part": "PushButton"
       },
       {
-        "version": 0,
+        "version": 1,
         "id": "p3",
         "name": "Button",
-        "x": {
-          "reference": "v1",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h3",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "v1",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h3",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "part": "Button"
       },
       {
-        "version": 0,
+        "version": 1,
         "id": "p4",
         "name": "Slider",
-        "x": {
-          "reference": "v2",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h2",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "v2",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h2",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "part": "Slider"
       },
       {
-        "version": 0,
+        "version": 1,
         "id": "p5",
         "name": "RoundBlackKnob",
-        "x": {
-          "reference": "v1",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h4",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "v3",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h5",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "part": "RoundBlackKnob"
       }
     ],
-    "lights": [],
+    "lights": [
+      {
+        "version": 1,
+        "id": "l1",
+        "name": "red",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 0.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      },
+      {
+        "version": 1,
+        "id": "l2",
+        "name": "orange",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 30.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 30.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 30.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      },
+      {
+        "version": 1,
+        "id": "l3",
+        "name": "yellow",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 60.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 60.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 60.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      },
+      {
+        "version": 1,
+        "id": "l4",
+        "name": "green",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 90.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 90.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 90.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      },
+      {
+        "version": 1,
+        "id": "l5",
+        "name": "blue",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 120.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 120.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 120.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      },
+      {
+        "version": 1,
+        "id": "l6",
+        "name": "indigo",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 150.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 150.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 150.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      },
+      {
+        "version": 1,
+        "id": "l7",
+        "name": "violet",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 180.0,
+            "radius": 15.24
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0,
+            "angle": 180.0,
+            "radius": 15.24
+          },
+          "offset": {
+            "angle": 180.0,
+            "radius": 15.24
+          }
+        },
+        "part": "LED"
+      }
+    ],
     "widgets": [],
     "labels": [
       {
+        "version": 1,
         "id": "t1",
         "text": "DEMO",
-        "x": {
-          "reference": "centre",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": {
-          "reference": "h0",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
+        "xy": {
+          "x": {
+            "reference": "centre",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "y": {
+            "reference": "h0",
+            "offset": 0.0,
+            "angle": 0.0,
+            "radius": 0.0
+          },
+          "offset": null
         },
         "font": "RobotoMono-Bold",
         "fontsize": 12.0,
@@ -185,11 +376,21 @@
           "radius": 0.0
         }
       },
-      "v2": {
-        "id": "v2",
+      "h3": {
+        "id": "h3",
+        "x": null,
+        "y": {
+          "reference": "h2",
+          "offset": 20.32,
+          "angle": 0.0,
+          "radius": 0.0
+        }
+      },
+      "v3": {
+        "id": "v3",
         "x": {
-          "reference": "right",
-          "offset": -15.24,
+          "reference": "centre",
+          "offset": 0.0,
           "angle": 0.0,
           "radius": 0.0
         },
@@ -245,15 +446,15 @@
           "radius": 0.0
         }
       },
-      "h3": {
-        "id": "h3",
-        "x": null,
-        "y": {
-          "reference": "h2",
-          "offset": 20.32,
+      "v2": {
+        "id": "v2",
+        "x": {
+          "reference": "right",
+          "offset": -15.24,
           "angle": 0.0,
           "radius": 0.0
-        }
+        },
+        "y": null
       }
     }
   },
@@ -282,6 +483,16 @@
     "new output \"woot\" (v2,h4 30°,10mm) PJ301M",
     "delete output o1",
     "new parameter \"woot\" (v2,h4 30°,10mm) PJ301M",
-    "delete parameter p6"
+    "delete parameter p6",
+    "set input i1 xy v2,h1",
+    "new guide vertical centre",
+    "set parameter p5 xy v3,h5",
+    "new light red (parameter p5 0°,15.24mm) LED",
+    "new light orange (parameter p5 30°,15.24mm) LED",
+    "new light yellow (parameter p5 60°,15.24mm) LED",
+    "new light green (parameter p5 90°,15.24mm) LED",
+    "new light blue (parameter p5 120°,15.24mm) LED",
+    "new light indigo (parameter p5 150°,15.24mm) LED",
+    "new light violet (parameter p5 180°,15.24mm) LED"
   ]
 }

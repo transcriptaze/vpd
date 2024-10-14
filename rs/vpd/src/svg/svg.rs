@@ -276,6 +276,7 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     let pushbutton = include_str!("templates/components/PushButton.svg");
     let button = include_str!("templates/components/Button.svg");
     let slider = include_str!("templates/components/Slider.svg");
+    let led = include_str!("templates/components/LED.svg");
 
     if theme == "dark" {
         styles = include_str!("templates/dark/styles.svg");
@@ -311,4 +312,5 @@ fn load_templates(tera: &mut Tera, theme: &str) {
     tera.add_raw_template("PushButton", &pushbutton).unwrap();
     tera.add_raw_template("Button", &button).unwrap();
     tera.add_raw_template("Slider", &slider).unwrap();
+    tera.add_raw_template("LED", &led).unwrap();
 }
