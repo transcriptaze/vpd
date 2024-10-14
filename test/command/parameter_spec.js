@@ -37,6 +37,60 @@ describe('new parameter command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('new parameter volume @+30°,10mm', () => {
+    const cmd = command.parse('new parameter volume @+30°,10mm')
+    const expected = {
+      src: 'new parameter volume @+30°,10mm',
+      action: 'new',
+      parameter: {
+        name: 'volume',
+        x: {
+          reference: 'absolute',
+          offset: 0.0
+        },
+        y: {
+          reference: 'absolute',
+          offset: 0.0
+        },
+        offset: {
+          dx: 0.0,
+          dy: 0.0,
+          angle: +30.0,
+          radius: 10.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('new parameter volume @-30°,10mm', () => {
+    const cmd = command.parse('new parameter volume @-30°,10mm')
+    const expected = {
+      src: 'new parameter volume @-30°,10mm',
+      action: 'new',
+      parameter: {
+        name: 'volume',
+        x: {
+          reference: 'absolute',
+          offset: 0.0
+        },
+        y: {
+          reference: 'absolute',
+          offset: 0.0
+        },
+        offset: {
+          dx: 0.0,
+          dy: 0.0,
+          angle: -30.0,
+          radius: 10.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('new parameter volume 30°,10mm', () => {
     const cmd = command.parse('new parameter volume 30°,10mm')
     const expected = {

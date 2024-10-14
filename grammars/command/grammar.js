@@ -900,7 +900,7 @@ module.exports = grammar({
       optional($.offset),
     ),
 
-    angle: $ => /[0-9]+(?:\.[0-9]*)?(?:°|deg(rees)?)/,
+    angle: $ => /[+-]?[0-9]+(?:\.[0-9]*)?(?:°|deg(rees)?)/,
     radius: $ => /[0-9]+(?:\.[0-9]*)?mm/,
   }
 });

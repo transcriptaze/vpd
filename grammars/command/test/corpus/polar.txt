@@ -12,6 +12,34 @@ new param "E" @30°,10mm
           (angle)
           (radius))))))
 
+========================
+new param "E" @+30°,10mm
+========================
+new param "E" @+30°,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (polar
+          (angle)
+          (radius))))))
+
+========================
+new param "E" @-30°,10mm
+========================
+new param "E" @-30°,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (absolute
+        (polar
+          (angle)
+          (radius))))))
+
 =========================
 new param "E" @30deg,10mm
 =========================
@@ -55,6 +83,34 @@ new param "E" 30°,10mm
           (radius))))))
 
 ========================
+new param "E" +30°,10mm
+========================
+new param "E" +30°,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (relative
+        (polar
+          (angle)
+          (radius))))))
+
+========================
+new param "E" -30°,10mm
+========================
+new param "E" -30°,10mm
+---
+(command
+  (new
+    (parameter
+      (name)
+      (relative
+        (polar
+          (angle)
+          (radius))))))
+
+========================
 new param "E" 30deg,10mm
 ========================
 new param "E" 30deg,10mm
@@ -86,6 +142,36 @@ new param "E" 30degrees,10mm
 new parameter "E" (input in 30°,10mm)
 =====================================
 new parameter "E" (input in 30°,10mm)
+---
+(command
+  (new
+    (parameter
+      (name)
+      (input
+        (name)
+        (polar
+          (angle)
+          (radius))))))
+
+======================================
+new parameter "E" (input in +30°,10mm)
+======================================
+new parameter "E" (input in +30°,10mm)
+---
+(command
+  (new
+    (parameter
+      (name)
+      (input
+        (name)
+        (polar
+          (angle)
+          (radius))))))
+
+======================================
+new parameter "E" (input in -30°,10mm)
+======================================
+new parameter "E" (input in -30°,10mm)
 ---
 (command
   (new

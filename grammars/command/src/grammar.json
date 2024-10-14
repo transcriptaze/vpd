@@ -4332,7 +4332,7 @@
     },
     "angle": {
       "type": "PATTERN",
-      "value": "[0-9]+(?:\\.[0-9]*)?(?:°|deg(rees)?)"
+      "value": "[+-]?[0-9]+(?:\\.[0-9]*)?(?:°|deg(rees)?)"
     },
     "radius": {
       "type": "PATTERN",

@@ -12,7 +12,7 @@
       - [x] deserialize with constructors
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
-      - [ ] Negative angles
+      - [x] Negative angles
       - [ ] Polar coordinates/offsets
             - [ ] demo project
             - (?) origin
