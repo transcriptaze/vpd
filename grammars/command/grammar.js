@@ -90,7 +90,10 @@ module.exports = grammar({
     _new_xy: $ => choice (
       $.absolute,
       $.relative,
-      seq( $.x, ',', $.y ),
+      choice (
+        seq( $.x, ',', $.y ),
+        seq( '(', $.x, ',', $.y,  optional($.polar), ')'),
+      ),
       seq(
         '(',
         choice (
@@ -246,17 +249,7 @@ module.exports = grammar({
         $._relative_xy_attr,
         $._geometry_xy_attr,
         $._guide_xy_attr,
-        seq(
-          '(',
-          choice(
-            seq('input',     alias($._component_xy_attr, $.input)),
-            seq('output',    alias($._component_xy_attr, $.output)),
-            seq('parameter', alias($._component_xy_attr, $.parameter)),
-            seq('light',     alias($._component_xy_attr, $.light)),
-            seq('widget',    alias($._component_xy_attr, $.widget)),
-          ),
-          ')',
-        ),
+        $._widget_xy_attr,
       ),
     ),
 
@@ -264,10 +257,13 @@ module.exports = grammar({
       alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
     ),
 
-    _offset_xy_attr: $ => seq(
-      alias($._offset_attr, $.x),
-      ',',
-      alias($._offset_attr, $.y),
+    _offset_xy_attr: $ => choice(
+      seq(
+        alias($._offset_attr, $.x),
+        ',',
+        alias($._offset_attr, $.y),
+      ),
+      $.polar,
     ),
 
     _offset_dxy_attr: $ => seq(
@@ -291,19 +287,27 @@ module.exports = grammar({
 
     _absolute_xy_attr: $ => seq(
       alias('@',$.absolute),
-      alias($._absolute_x_attr, $.x),
-      ',',
-      alias($._absolute_y_attr, $.y),
+      choice(
+        seq(
+          alias($._absolute_x_attr, $.x),
+          ',',
+          alias($._absolute_y_attr, $.y),
+        ),
+        $.polar,
+      )
     ),
 
     _relative_attr: $ => seq(
       alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|H|h)?/, $.offset),
     ),
 
-    _relative_xy_attr: $ => seq(
-      alias($._relative_attr, $.x),
-      ',',
-      alias($._relative_attr, $.y),
+    _relative_xy_attr: $ => choice(
+      seq(
+        alias($._relative_attr, $.x),
+        ',',
+        alias($._relative_attr, $.y),
+      ),
+      $.polar,
     ),
 
     _geometry_x_attr: $ => seq(
@@ -335,6 +339,7 @@ module.exports = grammar({
       alias($._geometry_x_attr,$.x),
       ',',
       alias($._geometry_y_attr,$.y),
+      optional($.polar),
     ),
 
     _guide_attr: $ => seq(
@@ -344,10 +349,32 @@ module.exports = grammar({
       ),
     ),
 
-    _guide_xy_attr: $ => seq(
-      alias($._guide_attr,$.x),
-      ',',
-      alias($._guide_attr,$.y),
+    _guide_xy_attr: $ => choice(
+      seq(
+        alias($._guide_attr,$.x),
+        ',',
+        alias($._guide_attr,$.y),
+      ),
+      seq(
+        '(',
+        alias($._guide_attr,$.x),
+        ',',
+        alias($._guide_attr,$.y),
+        optional($.polar),
+        ')',
+      ),
+    ),
+
+    _widget_xy_attr: $ => seq(
+      '(',
+      choice(
+        seq('input',     alias($._component_xy_attr, $.input)),
+        seq('output',    alias($._component_xy_attr, $.output)),
+        seq('parameter', alias($._component_xy_attr, $.parameter)),
+        seq('light',     alias($._component_xy_attr, $.light)),
+        seq('widget',    alias($._component_xy_attr, $.widget)),
+      ),
+      ')',
     ),
 
     _component_x_attr: $ => seq(
@@ -562,7 +589,10 @@ module.exports = grammar({
       choice (
         $.absolute,
         $.relative,
-        seq( $.x, ',', $.y ),
+        choice (
+          seq( $.x, ',', $.y ),
+          seq( '(', $.x, ',', $.y,  optional($.polar), ')'),
+        ),
         alias($._decorate,$.decorate),
       ),
       optional($.font),
@@ -794,15 +824,25 @@ module.exports = grammar({
 
     absolute: $ => seq(
       '@',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
-      ',',
-      alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+      choice (
+        seq(
+          alias(/[0-9]+(?:\.[0-9]*)?mm/, $.x),
+          ',',
+          alias(/[0-9]+(?:\.[0-9]*)?mm/, $.y),
+        ),
+        $.polar,
+      ),
     ),
 
-    relative: $ => seq(
-      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.x),
-      ',',
-      alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
+    polar: $ => seq ($.angle, ',', $.radius),
+
+    relative: $ => choice(
+      seq(
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.x),
+        ',',
+        alias(/[+-]?[0-9]+(?:\.[0-9]*)?(mm|h|H)/, $.y),
+      ),
+      $.polar,
     ),
 
     _decorate: $ => seq(
@@ -820,10 +860,13 @@ module.exports = grammar({
       ')',
     ),
 
-    _relative: $ => seq(
-      alias($._offset, $.dx),
-      ',',
-      alias($._offset, $.dy),
+    _relative: $ => choice(
+      seq(
+        alias($._offset, $.dx),
+        ',',
+        alias($._offset, $.dy),
+      ),
+      $.polar,
     ),
 
     _xy: $ => seq(
@@ -857,5 +900,7 @@ module.exports = grammar({
       optional($.offset),
     ),
 
+    angle: $ => /[+-]?[0-9]+(?:\.[0-9]*)?(?:°|deg(rees)?)/,
+    radius: $ => /[0-9]+(?:\.[0-9]*)?mm/,
   }
 });

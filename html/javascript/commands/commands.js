@@ -85,6 +85,42 @@ export function mm (node) {
   return parseFloat(`${v}`)
 }
 
+export function polar (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  let angle = 0.0
+  let radius = 0.0
+
+  for (const child of node.namedChildren) {
+    if (child.type === 'angle') {
+      angle = degrees(child)
+    }
+
+    if (child.type === 'radius') {
+      radius = mm(child)
+    }
+  }
+
+  return { angle, radius }
+}
+
+export function degrees (node) {
+  if (node.hasError() || node.isMissing()) {
+    throw new Error(node.toString())
+  }
+
+  const v = node.text
+
+  const match = `${v}`.match(/([+-]?[0-9]+)°/)
+  if (match != null && match.length > 1) {
+    return parseFloat(`${match[1]}`)
+  }
+
+  return parseFloat(`${v}`)
+}
+
 export function clean (v) {
   const re = /^(([a-zA-Z][a-zA-Z0-9_-]*)|"([a-zA-Z][a-zA-Z0-9_ -]*?)"|'([a-zA-Z][a-zA-Z0-9_ -]*?)')$/
   const match = `${v}`.match(re)

@@ -1,79 +1,5 @@
-import { identifier, string, reference, offset, mm } from './commands.js'
+import { identifier, string, reference, offset, mm, polar } from './commands.js'
 import * as db from '../db.js'
-
-export function decorate (component, node, src) {
-  const object = {
-    src: `${src}`,
-    action: 'new',
-    decoration: {
-      reference: `${component.type}<${string(component)}>`,
-      offset: {
-        x: 0.0,
-        y: 0.0
-      },
-      scale: 1.0,
-      stretch: {
-        x: 1.0,
-        y: 1.0
-      }
-    }
-  }
-
-  for (const attr of component.namedChildren) {
-    if (attr.type === 'dx') {
-      const v = parseFloat(attr.text)
-      if (!Number.isNaN(v)) {
-        object.decoration.offset.x = v
-      }
-    }
-
-    if (attr.type === 'dy') {
-      const v = parseFloat(attr.text)
-      if (!Number.isNaN(v)) {
-        object.decoration.offset.y = v
-      }
-    }
-  }
-
-  for (const child of node.namedChildren) {
-    if (child.type === 'decoration') {
-      for (const attr of child.namedChildren) {
-        if (attr.type === 'name') {
-          object.decoration.name = string(attr)
-        }
-
-        if (attr.type === 'scale') {
-          const v = parseFloat(attr.text)
-          if (!Number.isNaN(v)) {
-            object.decoration.scale = v
-          }
-        }
-
-        if (attr.type === 'stretch') {
-          for (const xy of attr.namedChildren) {
-            if (xy.type === 'x') {
-              const v = parseFloat(xy.text)
-              if (!Number.isNaN(v)) {
-                object.decoration.stretch.x = v
-              }
-            }
-
-            if (xy.type === 'y') {
-              const v = parseFloat(xy.text)
-              if (!Number.isNaN(v)) {
-                object.decoration.stretch.y = v
-              }
-            }
-          }
-        }
-      }
-
-      return object
-    }
-  }
-
-  throw new Error("invalid 'decorate' command")
-}
 
 export function newDecoration (node, src) {
   const object = {
@@ -98,36 +24,62 @@ export function newDecoration (node, src) {
 
   for (const child of node.namedChildren) {
     if (child.type === 'absolute') {
+      object.decoration.x = {
+        reference: 'absolute',
+        offset: 0.0
+      }
+
+      object.decoration.y = {
+        reference: 'absolute',
+        offset: 0.0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
-          object.decoration.x = {
-            reference: 'absolute',
-            offset: mm(v)
-          }
+          object.decoration.x.offset = mm(v)
         }
 
         if (v.type === 'y') {
-          object.decoration.y = {
-            reference: 'absolute',
-            offset: mm(v)
+          object.decoration.y.offset = mm(v)
+        }
+
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.decoration.offset = {
+            angle,
+            radius
           }
         }
       }
     }
 
     if (child.type === 'relative') {
+      object.decoration.x = {
+        reference: 'origin',
+        offset: 0.0
+      }
+
+      object.decoration.y = {
+        reference: 'origin',
+        offset: 0.0
+      }
+
       for (const v of child.namedChildren) {
         if (v.type === 'x') {
-          object.decoration.x = {
-            reference: 'origin',
-            offset: mm(v)
-          }
+          object.decoration.x.offset = mm(v)
         }
 
         if (v.type === 'y') {
-          object.decoration.y = {
-            reference: 'origin',
-            offset: mm(v)
+          object.decoration.y.offset = mm(v)
+        }
+
+        if (v.type === 'polar') {
+          const { angle, radius } = polar(v)
+
+          object.decoration.offset = {
+            angle,
+            radius
           }
         }
       }
@@ -144,6 +96,15 @@ export function newDecoration (node, src) {
       object.decoration.y = {
         reference: reference(child),
         offset: offset(child)
+      }
+    }
+
+    if (child.type === 'polar') {
+      const { angle, radius } = polar(child)
+
+      object.decoration.offset = {
+        angle,
+        radius
       }
     }
 
@@ -165,6 +126,15 @@ export function newDecoration (node, src) {
           const v = parseFloat(attr.text)
           if (!Number.isNaN(v)) {
             object.decoration.y.offset = v
+          }
+        }
+
+        if (attr.type === 'polar') {
+          const { angle, radius } = polar(attr)
+
+          object.decoration.offset = {
+            angle,
+            radius
           }
         }
       }
@@ -270,6 +240,11 @@ export function setDecoration (node, src) {
         offset: 0
       }
 
+      object.decoration.offset = {
+        angle: 0.0,
+        radius: 0.0
+      }
+
       for (const attr of child.namedChildren) {
         if (attr.type === 'name') {
           object.decoration.x.reference = `${child.type}<${identifier(attr)}>`
@@ -282,6 +257,15 @@ export function setDecoration (node, src) {
 
         if (attr.type === 'dy') {
           object.decoration.y.offset = mm(attr)
+        }
+
+        if (attr.type === 'polar') {
+          const { angle, radius } = polar(attr)
+
+          object.decoration.offset = {
+            angle,
+            radius
+          }
         }
       }
     }
@@ -323,6 +307,11 @@ export function setDecoration (node, src) {
         offset: 0
       }
 
+      object.decoration.offset = {
+        angle: 0.0,
+        radius: 0.0
+      }
+
       for (const attr of child.namedChildren) {
         if (attr.type === 'absolute') {
           object.decoration.x.reference = 'absolute'
@@ -350,6 +339,15 @@ export function setDecoration (node, src) {
             if (u.type === 'offset') {
               object.decoration.y.offset = mm(u)
             }
+          }
+        }
+
+        if (attr.type === 'polar') {
+          const { angle, radius } = polar(attr)
+
+          object.decoration.offset = {
+            angle,
+            radius
           }
         }
       }

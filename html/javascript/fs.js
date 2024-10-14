@@ -426,8 +426,6 @@ function saveSVG (filename, svg) {
 function saveHeader (filename, svg) {
   const blob = new Blob([svg], { type: 'text/plain' })
 
-  console.log('>>', filename)
-
   const match = `${filename}`.match(/(.*?)(\.h|\.hpp)/)
   if (match.length > 2) {
     filename = `${match[1].replaceAll(/[^a-zA-Z0-9_-]+/g, '_')}${match[2]}`

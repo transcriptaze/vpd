@@ -13,12 +13,19 @@
   </defs>
 
   <g inkscape:groupmode="layer" inkscape:label="components" style="display:none">
-    <circle inkscape:label="PJ301M" cx="15.24" cy="106.68" r="2.54" fill="#00ff00" />
+    <circle inkscape:label="PJ301M" cx="35.56" cy="25.4" r="2.54" fill="#00ff00" />
     <circle inkscape:label="Trimpot" cx="15.24" cy="25.4" r="2.54" fill="#ff0000" />
     <circle inkscape:label="PushButton" cx="15.24" cy="45.72" r="2.54" fill="#ff0000" />
     <circle inkscape:label="Button" cx="15.24" cy="66.04" r="2.54" fill="#ff0000" />
     <circle inkscape:label="Slider" cx="35.56" cy="45.72" r="2.54" fill="#ff0000" />
-    <circle inkscape:label="RoundBlackKnob" cx="15.24" cy="86.36" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="RoundBlackKnob" cx="25.4" cy="106.68" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="red" cx="40.64" cy="106.68" r="2.54" fill="#ff00ff" />
+    <circle inkscape:label="orange" cx="38.598" cy="99.06" r="2.54" fill="#ff00ff" />
+    <circle inkscape:label="yellow" cx="33.02" cy="93.482" r="2.54" fill="#ff00ff" />
+    <circle inkscape:label="green" cx="25.4" cy="91.44" r="2.54" fill="#ff00ff" />
+    <circle inkscape:label="blue" cx="17.78" cy="93.482" r="2.54" fill="#ff00ff" />
+    <circle inkscape:label="indigo" cx="12.202" cy="99.06" r="2.54" fill="#ff00ff" />
+    <circle inkscape:label="violet" cx="10.16" cy="106.68" r="2.54" fill="#ff00ff" />
   </g>
 
   <g inkscape:groupmode="layer" inkscape:label="background">

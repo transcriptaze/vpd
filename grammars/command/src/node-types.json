@@ -8,6 +8,10 @@
       "required": false,
       "types": [
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },
@@ -164,6 +168,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -220,6 +228,10 @@
         },
         {
           "type": "parameter",
+          "named": true
+        },
+        {
+          "type": "polar",
           "named": true
         },
         {
@@ -511,6 +523,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -563,6 +579,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "polar",
           "named": true
         },
         {
@@ -638,6 +658,10 @@
         },
         {
           "type": "part",
+          "named": true
+        },
+        {
+          "type": "polar",
           "named": true
         },
         {
@@ -869,6 +893,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -955,6 +983,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -979,6 +1011,25 @@
     "fields": {}
   },
   {
+    "type": "polar",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "angle",
+          "named": true
+        },
+        {
+          "type": "radius",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "project",
     "named": true,
     "fields": {},
@@ -998,6 +1049,11 @@
     }
   },
   {
+    "type": "radius",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "reference",
     "named": true,
     "fields": {}
@@ -1010,6 +1066,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "polar",
+          "named": true
+        },
         {
           "type": "x",
           "named": true
@@ -1304,6 +1364,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "relative",
           "named": true
         },
@@ -1398,6 +1462,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
@@ -1486,6 +1554,10 @@
   {
     "type": "align",
     "named": false
+  },
+  {
+    "type": "angle",
+    "named": true
   },
   {
     "type": "background",
@@ -1589,11 +1661,11 @@
   },
   {
     "type": "height",
-    "named": false
+    "named": true
   },
   {
     "type": "height",
-    "named": true
+    "named": false
   },
   {
     "type": "helper",

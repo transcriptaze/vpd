@@ -2,6 +2,7 @@ use serde::Deserialize;
 use std::error::Error;
 
 use crate::command::Command;
+use crate::module::ISet;
 use crate::module::Module;
 use crate::panel;
 
@@ -11,6 +12,7 @@ pub struct SetWidget {
     name: Option<String>,
     x: Option<panel::X>,
     y: Option<panel::Y>,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -51,11 +53,17 @@ impl Command for SetWidget {
             }
 
             if let Some(x) = &self.x {
-                m.panel.widgets[ix].x = x.clone();
+                m.panel.widgets[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.widgets[ix].y = y.clone();
+                m.panel.widgets[ix].set_y(&y);
+            }
+
+            if let Some(_) = &self.offset {
+                let w = &mut m.panel.widgets[ix];
+
+                w.set_offset(&self.offset);
             }
 
             if let Some(part) = &self.part {

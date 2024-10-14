@@ -6,6 +6,11 @@ macro_rules! console_log {
 }
 
 #[macro_export]
+macro_rules! debugf {
+    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
+}
+
+#[macro_export]
 macro_rules! warnf {
     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }

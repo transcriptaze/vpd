@@ -1,199 +1,108 @@
-use regex::Regex;
-use serde::{Deserialize, Serialize};
-use std::fmt;
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::panel::Panel;
+use crate::panel::X;
+use crate::panel::Y;
 
-use crate::utils::log;
-use crate::warnf;
+#[derive(Serialize, Clone, Debug)]
+pub struct XY {
+    pub x: X,
+    pub y: Y,
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct X {
-    pub reference: String,
-    pub offset: f32,
-}
-
-impl X {
-    pub fn new(reference: &str, offset: f32) -> X {
-        X {
-            reference: reference.to_string(),
-            offset: offset,
-        }
-    }
-
-    pub fn resolve(&self, panel: &Panel) -> f32 {
-        match self._resolve(panel, Vec::new()) {
-            Some(v) => v,
-            None => 0.0,
-        }
-    }
-
-    fn _resolve<'a>(&'a self, panel: &Panel, mut stack: Vec<&'a str>) -> Option<f32> {
-        let reference = self.reference.as_str();
-        let w = panel.width;
-
-        if stack.contains(&reference) {
-            warnf!("resolve(X): circular reference {}", reference);
-            return None;
-        }
-
-        if stack.len() > 25 {
-            warnf!("resolve(X): recursion depth exceeded");
-            return None;
-        }
-
-        stack.push(reference);
-
-        match reference {
-            "absolute" => Some(self.offset),
-            "origin" => Some(panel.origin.resolve(panel).0 + self.offset),
-            "V0" => Some(panel.origin.resolve(panel).0 + self.offset),
-            "left" => Some(self.offset),
-            "centre" => Some(w / 2.0 + self.offset),
-            "center" => Some(w / 2.0 + self.offset),
-            "right" => Some(w + self.offset),
-
-            _ => {
-                let re = Regex::new(r"(input|output|parameter|light|widget|label)<(.*?)>").unwrap();
-
-                match re.captures(reference) {
-                    // ... component reference?
-                    Some(captures) => {
-                        let itype = captures.get(1).unwrap().as_str();
-                        let id = captures.get(2).unwrap().as_str();
-
-                        match find(panel, itype, id) {
-                            (Some(x), _) => match x._resolve(panel, stack) {
-                                Some(v) => Some(v + self.offset),
-                                None => None,
-                            },
-                            (_, _) => None,
-                        }
-                    }
-
-                    // ... guideline?
-                    None => match panel.guides.get(reference) {
-                        Some(g) => match &g.x {
-                            Some(x) => match x._resolve(panel, stack) {
-                                Some(v) => Some(v + self.offset),
-                                None => None,
-                            },
-                            None => None,
-                        },
-                        None => None,
-                    },
-                }
-            }
-        }
-    }
-}
-
-impl fmt::Display for X {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self.reference.as_str() {
-            "absolute" => write!(f, "@{}mm", &self.offset),
-            "origin" => write!(f, "{}mm", &self.offset),
-            _ => write!(f, "{}  {}mm", &self.reference, &self.offset),
-        }
-    }
+    #[serde(skip_serializing_if = "no_use_to_man_or_beast")]
+    pub offset: Option<Offset>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct Y {
-    pub reference: String,
-    pub offset: f32,
+pub struct Polar {
+    pub angle: f32,
+    pub radius: f32,
 }
 
-impl Y {
-    pub fn new(reference: &str, offset: f32) -> Y {
-        Y {
-            reference: reference.to_string(),
-            offset: offset,
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct Offset {
+    pub angle: f32,
+    pub radius: f32,
+}
+
+impl XY {
+    pub fn new(x: &X, y: &Y, offset: &Option<Offset>) -> XY {
+        XY {
+            x: X::new_with_offset(x.reference.as_str(), x.offset, &offset),
+            y: Y::new_with_offset(y.reference.as_str(), y.offset, &offset),
+            offset: offset.clone(),
         }
     }
 
-    pub fn resolve(&self, panel: &Panel) -> f32 {
-        match self._resolve(panel, Vec::new()) {
-            Some(v) => v,
-            None => 0.0,
-        }
+    pub fn set_x(&mut self, x: &X) {
+        self.x = x.clone();
     }
 
-    fn _resolve<'a>(&'a self, panel: &Panel, mut stack: Vec<&'a str>) -> Option<f32> {
-        let reference = self.reference.as_str();
-        let h = panel.height;
+    pub fn set_y(&mut self, y: &Y) {
+        self.y = y.clone();
+    }
 
-        if stack.contains(&reference) {
-            warnf!("resolve(Y): circular reference {}", reference);
-            return None;
+    pub fn set_offset(&mut self, offset: &Option<Offset>) {
+        self.x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
+        self.y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
+        self.offset = offset.clone();
+    }
+}
+
+impl<'de> Deserialize<'de> for XY {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum _XY {
+            V0 { x: X, y: Y, offset: Option<Offset> },
         }
 
-        if stack.len() > 25 {
-            warnf!("resolve(Y): recursion depth exceeded");
-            return None;
-        }
+        let xy = _XY::deserialize(deserializer)?;
 
-        stack.push(reference);
-
-        match self.reference.as_str() {
-            "absolute" => Some(self.offset),
-            "origin" => Some(panel.origin.resolve(panel).1 + self.offset),
-            "H0" => Some(panel.origin.resolve(panel).1 + self.offset),
-            "top" => Some(self.offset),
-            "middle" => Some(h / 2.0 + self.offset),
-            "bottom" => Some(h + self.offset),
-
-            _ => {
-                let re = Regex::new(r"(input|output|parameter|light|widget|label)<(.*?)>").unwrap();
-
-                match re.captures(reference) {
-                    // ... component reference?
-                    Some(captures) => {
-                        let itype = captures.get(1).unwrap().as_str();
-                        let id = captures.get(2).unwrap().as_str();
-
-                        match find(panel, itype, id) {
-                            (_, Some(y)) => match y._resolve(panel, stack) {
-                                Some(v) => Some(v + self.offset),
-                                None => None,
-                            },
-                            (_, _) => None,
-                        }
-                    }
-
-                    // ... guideline?
-                    None => match panel.guides.get(reference) {
-                        Some(g) => match &g.y {
-                            Some(y) => match y._resolve(panel, stack) {
-                                Some(v) => Some(v + self.offset),
-                                None => None,
-                            },
-                            None => None,
-                        },
-                        None => None,
-                    },
-                }
-            }
+        match xy {
+            #[rustfmt::skip]
+            _XY::V0 {x,y,offset } => {
+                Ok(XY::new(&x,&y,&offset))
+            },
         }
     }
 }
 
-impl fmt::Display for Y {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self.reference.as_str() {
-            "absolute" => write!(f, "@{}mm", &self.offset),
-            "origin" => write!(f, "{}mm", &self.offset),
-            _ => write!(f, "{}  {}mm", &self.reference, &self.offset),
+impl Polar {
+    pub fn _new(angle: Option<f32>, radius: Option<f32>) -> Polar {
+        match (angle, radius) {
+            (Some(a), Some(r)) => Polar {
+                angle: a,
+                radius: r,
+            },
+
+            _ => Polar {
+                angle: 0.0,
+                radius: 0.0,
+            },
         }
     }
 }
 
-fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
+pub fn no_use_to_man_or_beast(offset: &Option<Offset>) -> bool {
+    if let Some(o) = offset {
+        if o.radius <= 0.0 {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
     match itype {
         "input" => {
             let mut it = panel.inputs.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -201,7 +110,7 @@ fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
         "output" => {
             let mut it = panel.outputs.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -209,7 +118,7 @@ fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
         "parameter" => {
             let mut it = panel.parameters.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -217,7 +126,7 @@ fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
         "light" => {
             let mut it = panel.lights.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -225,7 +134,7 @@ fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
         "widget" => {
             let mut it = panel.widgets.iter();
             match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }
@@ -233,7 +142,7 @@ fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y>) {
         "label" => {
             let mut it = panel.labels.iter();
             match it.find(|&v| v.id == reference || v.text == reference) {
-                Some(e) => (Some(e.x.clone()), Some(e.y.clone())),
+                Some(e) => (Some(e.x()), Some(e.y())),
                 None => (None, None),
             }
         }

@@ -32,6 +32,10 @@ use crate::svg::SVG;
 use crate::vcv::Component;
 use crate::vcv::VCV;
 
+pub trait IXY {
+    fn resolvexy(&self, panel: &Panel) -> (f32, f32);
+}
+
 pub const H: f32 = 5.08; // 1 'horizontal' unit
 
 #[derive(Serialize, Deserialize)]
@@ -305,8 +309,7 @@ impl Panel {
         let mut list: Vec<Snippet> = Vec::new();
 
         for v in self.decorations.iter() {
-            let x = v.x.resolve(&self);
-            let y = v.y.resolve(&self);
+            let (x, y) = v.resolvexy(&self);
             let stretch = Stretch::new(v.stretch.x, v.stretch.y);
             let label = v.label();
 
@@ -324,8 +327,7 @@ impl Panel {
         for v in self.inputs.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = v.resolvexy(self);
 
                     list.push(Part::new(p, x, y));
                 }
@@ -336,8 +338,7 @@ impl Panel {
         for v in self.outputs.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = v.resolvexy(self);
 
                     list.push(Part::new(p, x, y));
                 }
@@ -348,8 +349,7 @@ impl Panel {
         for v in self.parameters.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = v.resolvexy(self);
 
                     list.push(Part::new(p, x, y));
                 }
@@ -360,8 +360,7 @@ impl Panel {
         for v in self.lights.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = v.resolvexy(self);
 
                     list.push(Part::new(p, x, y));
                 }
@@ -372,8 +371,7 @@ impl Panel {
         for v in self.widgets.iter() {
             match &v.part {
                 Some(p) => {
-                    let x = v.x.resolve(&self);
-                    let y = v.y.resolve(&self);
+                    let (x, y) = v.resolvexy(self);
 
                     list.push(Part::new(p, x, y));
                 }

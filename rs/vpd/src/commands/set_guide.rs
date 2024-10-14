@@ -109,12 +109,12 @@ impl Command for SetGuide {
             if let Some(g) = m.find_guide(&self.id) {
                 if let Some(x) = &mut g.x {
                     x.reference = xy.reference.clone();
-                    x.offset = xy.offset;
+                    x.set_offset(xy.offset);
                 }
 
                 if let Some(y) = &mut g.y {
                     y.reference = xy.reference.clone();
-                    y.offset = xy.offset;
+                    y.set_offset(xy.offset);
                 }
             }
         }

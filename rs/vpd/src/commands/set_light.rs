@@ -2,6 +2,7 @@ use serde::Deserialize;
 use std::error::Error;
 
 use crate::command::Command;
+use crate::module::ISet;
 use crate::module::Module;
 use crate::panel;
 
@@ -11,6 +12,7 @@ pub struct SetLight {
     name: Option<String>,
     x: Option<panel::X>,
     y: Option<panel::Y>,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -51,11 +53,17 @@ impl Command for SetLight {
             }
 
             if let Some(x) = &self.x {
-                m.panel.lights[ix].x = x.clone();
+                m.panel.lights[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.lights[ix].y = y.clone();
+                m.panel.lights[ix].set_y(&y);
+            }
+
+            if let Some(_) = &self.offset {
+                let l = &mut m.panel.lights[ix];
+
+                l.set_offset(&self.offset);
             }
 
             if let Some(part) = &self.part {

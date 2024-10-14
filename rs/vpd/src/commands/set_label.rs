@@ -6,6 +6,7 @@ use std::pin::Pin;
 use wasm_bindgen::prelude::*;
 
 use crate::command::Command;
+use crate::module::ISet;
 use crate::module::Module;
 use crate::panel;
 
@@ -21,6 +22,7 @@ pub struct SetLabel {
     text: Option<String>,
     x: Option<panel::X>,
     y: Option<panel::Y>,
+    offset: Option<panel::Offset>,
     font: Option<String>,
     fontsize: Option<f32>,
     halign: Option<String>,
@@ -98,11 +100,17 @@ impl Command for SetLabel {
             }
 
             if let Some(x) = &self.x {
-                m.panel.labels[ix].x = x.clone();
+                m.panel.labels[ix].set_x(&x);
             }
 
             if let Some(y) = &self.y {
-                m.panel.labels[ix].y = y.clone();
+                m.panel.labels[ix].set_y(&y);
+            }
+
+            if let Some(_) = &self.offset {
+                let l = &mut m.panel.labels[ix];
+
+                l.set_offset(&self.offset);
             }
 
             if let Some(font) = &self.font {

@@ -5,12 +5,14 @@ use serde::Deserialize;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
+use crate::panel::XY;
 
 #[derive(Deserialize)]
 pub struct NewParameter {
     name: String,
     x: panel::X,
     y: panel::Y,
+    offset: Option<panel::Offset>,
     part: Option<String>,
 }
 
@@ -40,9 +42,10 @@ impl Command for NewParameter {
 
     fn apply(&self, m: &mut Module) {
         let id = m.new_parameter_id();
+        let xy = XY::new(&self.x, &self.y, &self.offset);
 
-        m.panel.parameters.push(panel::Parameter::new(
-            &id, &self.name, &self.x, &self.y, &self.part,
-        ));
+        m.panel
+            .parameters
+            .push(panel::Parameter::new(&id, &self.name, &xy, &self.part));
     }
 }

@@ -14,5 +14,6 @@
 {% include "PushButton"      %}
 {% include "Button"          %}
 {% include "Slider"          %}
+{% include "LED"             %}
   </defs>
 {%- endif %}

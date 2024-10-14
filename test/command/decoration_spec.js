@@ -9,33 +9,7 @@ before(async function () {
   await command.init(Parser, './html/wasm/grammars/tree-sitter-command.wasm')
 })
 
-describe('decoration command translation', () => {
-  it('decorate (input in +10mm,+12.5mm) with CircularGraduations (scale 0.9) (stretch 1.25,1.5)', () => {
-    const cmd = command.parse('decorate (input in +10mm,+12.5mm) with CircularGraduations (scale 0.9) (stretch 1.25,1.5)')
-    const expected = {
-      src: 'decorate (input in +10mm,+12.5mm) with CircularGraduations (scale 0.9) (stretch 1.25,1.5)',
-      action: 'new',
-      decoration: {
-        x: {
-          reference: 'input<in>',
-          offset: 10
-        },
-        y: {
-          reference: 'input<in>',
-          offset: 12.5
-        },
-        name: 'CircularGraduations',
-        scale: 0.9,
-        stretch: {
-          x: 1.25,
-          y: 1.5
-        }
-      }
-    }
-
-    expect(cmd).to.eql(expected)
-  })
-
+describe('decorate command translation', () => {
   it('decorate @10mm,12.5mm CircularGraduations (scale 0.9) (stretch 1.25,1.5)', () => {
     const cmd = command.parse('decorate @10mm,12.5mm with CircularGraduations (scale 0.9) (stretch 1.25,1.5)')
     const expected = {
@@ -55,6 +29,36 @@ describe('decoration command translation', () => {
         stretch: {
           x: 1.25,
           y: 1.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('decorate @30°,10mm CircularGraduations', () => {
+    const cmd = command.parse('decorate @30°,10mm with CircularGraduations')
+    const expected = {
+      src: 'decorate @30°,10mm with CircularGraduations',
+      action: 'new',
+      decoration: {
+        x: {
+          reference: 'absolute',
+          offset: 0.0
+        },
+        y: {
+          reference: 'absolute',
+          offset: 0.0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
+        },
+        name: 'CircularGraduations',
+        scale: 1.0,
+        stretch: {
+          x: 1.0,
+          y: 1.0
         }
       }
     }
@@ -88,6 +92,92 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('decorate 30°,10mm CircularGraduations', () => {
+    const cmd = command.parse('decorate 30°,10mm with CircularGraduations')
+    const expected = {
+      src: 'decorate 30°,10mm with CircularGraduations',
+      action: 'new',
+      decoration: {
+        x: {
+          reference: 'origin',
+          offset: 0.0
+        },
+        y: {
+          reference: 'origin',
+          offset: 0.0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
+        },
+        name: 'CircularGraduations',
+        scale: 1.0,
+        stretch: {
+          x: 1.0,
+          y: 1.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('decorate (input in +10mm,+12.5mm) with CircularGraduations (scale 0.9) (stretch 1.25,1.5)', () => {
+    const cmd = command.parse('decorate (input in +10mm,+12.5mm) with CircularGraduations (scale 0.9) (stretch 1.25,1.5)')
+    const expected = {
+      src: 'decorate (input in +10mm,+12.5mm) with CircularGraduations (scale 0.9) (stretch 1.25,1.5)',
+      action: 'new',
+      decoration: {
+        x: {
+          reference: 'input<in>',
+          offset: 10
+        },
+        y: {
+          reference: 'input<in>',
+          offset: 12.5
+        },
+        name: 'CircularGraduations',
+        scale: 0.9,
+        stretch: {
+          x: 1.25,
+          y: 1.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('decorate (input in 30°,10mm) with CircularGraduations', () => {
+    const cmd = command.parse('decorate (input in 30°,10mm) with CircularGraduations')
+    const expected = {
+      src: 'decorate (input in 30°,10mm) with CircularGraduations',
+      action: 'new',
+      decoration: {
+        x: {
+          reference: 'input<in>',
+          offset: 0.0
+        },
+        y: {
+          reference: 'input<in>',
+          offset: 0.0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
+        },
+        name: 'CircularGraduations',
+        scale: 1.0,
+        stretch: {
+          x: 1.0,
+          y: 1.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
   it('decorate v1+10mm,h1+12.5mm with CircularGraduations (scale 0.9) (stretch 1.25,1.5)', () => {
     const cmd = command.parse('decorate v1+10mm,h1+12.5mm with CircularGraduations (scale 0.9) (stretch 1.25,1.5)')
     const expected = {
@@ -107,6 +197,36 @@ describe('decoration command translation', () => {
         stretch: {
           x: 1.25,
           y: 1.5
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('decorate (v1,h2 30°,10mm) with CircularGraduations', () => {
+    const cmd = command.parse('decorate (v1,h2 30°,10mm) with CircularGraduations')
+    const expected = {
+      src: 'decorate (v1,h2 30°,10mm) with CircularGraduations',
+      action: 'new',
+      decoration: {
+        x: {
+          reference: 'v1',
+          offset: 0.0
+        },
+        y: {
+          reference: 'h2',
+          offset: 0.0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
+        },
+        name: 'CircularGraduations',
+        scale: 1.0,
+        stretch: {
+          x: 1.0,
+          y: 1.0
         }
       }
     }
@@ -140,6 +260,38 @@ describe('decoration command translation', () => {
     expect(cmd).to.eql(expected)
   })
 
+  it('decorate (left,bottom 30°,10mm) with CircularGraduations', () => {
+    const cmd = command.parse('decorate (left,bottom 30°,10mm) with CircularGraduations')
+    const expected = {
+      src: 'decorate (left,bottom 30°,10mm) with CircularGraduations',
+      action: 'new',
+      decoration: {
+        x: {
+          reference: 'left',
+          offset: 0.0
+        },
+        y: {
+          reference: 'bottom',
+          offset: 0.0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
+        },
+        name: 'CircularGraduations',
+        scale: 1.0,
+        stretch: {
+          x: 1.0,
+          y: 1.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+})
+
+describe('set decoration command translation', () => {
   it('set decoration d1 (output out)', () => {
     const cmd = command.parse('set decoration d1 (output out)')
     const expected = {
@@ -154,6 +306,10 @@ describe('decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -175,6 +331,35 @@ describe('decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set decoration d1 (output out 30°,10mm)', () => {
+    const cmd = command.parse('set decoration d1 (output out 30°,10mm)')
+    const expected = {
+      src: 'set decoration d1 (output out 30°,10mm)',
+      action: 'set',
+      decoration: {
+        id: 'd1',
+        x: {
+          reference: 'output<out>',
+          offset: 0.0
+        },
+        y: {
+          reference: 'output<out>',
+          offset: 0.0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -197,6 +382,10 @@ describe('decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 0
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -219,6 +408,10 @@ describe('decoration command translation', () => {
         y: {
           reference: 'output<out>',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
         }
       }
     }
@@ -439,6 +632,36 @@ describe('decoration command translation', () => {
         y: {
           reference: 'absolute',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set decoration (input in) CircularGraduations xy @30°,10mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations xy @30°,10mm')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations xy @30°,10mm',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          reference: 'absolute',
+          offset: 0
+        },
+        y: {
+          reference: 'absolute',
+          offset: 0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -461,6 +684,36 @@ describe('decoration command translation', () => {
         y: {
           reference: 'origin',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set decoration (input in) CircularGraduations xy 30°,10mm', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations xy 30°,10mm')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations xy 30°,10mm',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          reference: 'origin',
+          offset: 0
+        },
+        y: {
+          reference: 'origin',
+          offset: 0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -483,6 +736,36 @@ describe('decoration command translation', () => {
         y: {
           reference: 'top',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set decoration (input in) CircularGraduations xy (left,top 30°,10mm)', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations xy (left,top 30°,10mm)')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations xy (left,top 30°,10mm)',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          reference: 'left',
+          offset: 0
+        },
+        y: {
+          reference: 'top',
+          offset: 0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }
@@ -505,6 +788,36 @@ describe('decoration command translation', () => {
         y: {
           reference: 'h1',
           offset: 12.5
+        },
+        offset: {
+          angle: 0.0,
+          radius: 0.0
+        }
+      }
+    }
+
+    expect(cmd).to.eql(expected)
+  })
+
+  it('set decoration (input in) CircularGraduations xy (v1,h2 30°,10mm)', () => {
+    const cmd = command.parse('set decoration (input in) CircularGraduations xy (v1,h2 30°,10mm)')
+    const expected = {
+      src: 'set decoration (input in) CircularGraduations xy (v1,h2 30°,10mm)',
+      action: 'set',
+      decoration: {
+        reference: 'input<in>',
+        name: 'CircularGraduations',
+        x: {
+          reference: 'v1',
+          offset: 0
+        },
+        y: {
+          reference: 'h2',
+          offset: 0
+        },
+        offset: {
+          angle: 30.0,
+          radius: 10.0
         }
       }
     }

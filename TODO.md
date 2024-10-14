@@ -1,24 +1,13 @@
 # TODO
 
-- [x] Fix scaling for _RoundBlackKnob_
-- [x] Fix scaling for _PJ301M_
-- [x] Fix scaling for _SilverScrew_
-- [x] set _parts_ scale factor to 0.338 throughout
-
-- [ ] [Add supported component and position items in polar coordinates](https://github.com/transcriptaze/vpd/issues/4)
-      - [x] VCVSlider
-      - [x] ~VCVSliderHorizontal~
-      - [x] PushButton
-      - [x] Button
-      - [x] Trimpot
-      - [x] Demo project:
-            - [x] trimpot
-            - [x] pushbutton
-            - [x] button
-            - [x] slider
-      - [ ] Radial guides
+- [ ] Drop shadows
+- [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [ ] Polar coordinates/offsets
-      - [ ] Drop shadows
+            - [x] demo project
+            - (?) origin
+      - [x] CHANGELOG
+      - [ ] README
+      - [ ] User manual
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
@@ -73,6 +62,7 @@
 
 ## TO BE DONE EVENTUALLY
 - (?) 'new button' => eventually export with code and all?
+- (?) Radial guides
 
 - [ ] Side-by-side structure editor
       - https://github.com/ianstormtaylor/slate

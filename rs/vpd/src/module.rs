@@ -7,6 +7,7 @@ use flate2::write::GzEncoder;
 use flate2::Compression;
 use regex::Regex;
 
+use super::panel;
 use super::panel::Guide;
 use super::panel::Panel;
 use super::panel::DEFAULT_HEIGHT;
@@ -46,8 +47,23 @@ pub struct Info {
     pub width: f32,
 }
 
+pub trait IQueryable {
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool;
+}
+
 pub trait IItem {
     fn as_item(&self) -> Item;
+}
+
+pub trait Is {
+    fn is(&self, id: &str) -> bool;
+    fn named(&self, name: &str) -> bool;
+}
+
+pub trait ISet {
+    fn set_x(&mut self, x: &panel::X);
+    fn set_y(&mut self, y: &panel::Y);
+    fn set_offset(&mut self, offset: &Option<panel::Offset>);
 }
 
 #[derive(Serialize)]
@@ -491,68 +507,36 @@ impl Module {
     }
 
     pub fn find_input(&self, id: &str) -> Option<usize> {
-        match self.panel.inputs.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .inputs
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.inputs, id)
     }
 
     pub fn find_output(&self, id: &str) -> Option<usize> {
-        match self.panel.outputs.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .outputs
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.outputs, id)
     }
 
     pub fn find_parameter(&self, id: &str) -> Option<usize> {
-        match self.panel.parameters.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .parameters
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.parameters, id)
     }
 
     pub fn find_light(&self, id: &str) -> Option<usize> {
-        match self.panel.lights.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .lights
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.lights, id)
     }
 
     pub fn find_widget(&self, id: &str) -> Option<usize> {
-        match self.panel.widgets.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .widgets
-                .iter()
-                .position(|v| v.name.trim().to_lowercase() == id.trim().to_lowercase()),
-        }
+        self.find_in_list(&self.panel.widgets, id)
     }
 
     pub fn find_label(&self, id: &str) -> Option<usize> {
-        match self.panel.labels.iter().position(|v| v.id == id) {
-            Some(ix) => Some(ix),
-            None => self
-                .panel
-                .labels
-                .iter()
-                .position(|v| v.text.trim().to_lowercase() == id.trim().to_lowercase()),
+        self.find_in_list(&self.panel.labels, id)
+    }
+
+    fn find_in_list<T: Is>(&self, list: &Vec<T>, id: &str) -> Option<usize> {
+        let name = id.trim().to_lowercase();
+
+        if let Some(ix) = list.iter().position(|v| v.is(id)) {
+            Some(ix)
+        } else {
+            list.iter().position(|v| v.named(name.as_str()))
         }
     }
 
@@ -563,36 +547,18 @@ impl Module {
         name: &Option<String>,
     ) -> Option<usize> {
         match (id, reference, name) {
-            (Some(id), _, _) => {
-                warnf!(">>/1 {}", id);
-                return self
-                    .panel
-                    .decorations
-                    .iter()
-                    .position(|v| v.id == id.as_str());
-            }
+            (Some(id), _, _) => self.panel.decorations.iter().position(|v| v.is(id)),
 
             (None, Some(component), Some(name)) => {
-                warnf!(">>/2 {},{}", component, name);
                 let c = component.as_str();
                 let n = name.trim().to_lowercase();
 
-                self.panel.decorations.iter().for_each(|v| {
-                    warnf!(">>> {},{}", v.id, v.name);
-                    warnf!(">>> >> {}", v.decorates(&self, c));
-                    warnf!(">>> >> >> {}", v.is(&n));
-                });
-
-                return self
-                    .panel
+                self.panel
                     .decorations
                     .iter()
-                    .position(|v| v.decorates(&self, c) && v.is(&n));
+                    .position(|v| v.decorates(&self, c) && v.named(&n))
             }
-            _ => {
-                warnf!(">>/3 ooops");
-                None
-            }
+            _ => None,
         }
     }
 
@@ -675,91 +641,43 @@ impl Module {
         }
 
         for v in &self.panel.inputs {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
 
         for v in &self.panel.outputs {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
 
         for v in &self.panel.parameters {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
 
         for v in &self.panel.lights {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
 
         for v in &self.panel.widgets {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
 
         for v in &self.panel.labels {
-            let mut vx = v.x.resolve(panel);
-            let mut vy = v.y.resolve(panel);
-
-            vx += match v.halign.as_str() {
-                "left" => 0.0,
-                "centre" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
-                "center" => -(v.path.bounds.x1 + v.path.bounds.x2) / 2.0,
-                "right" => -v.path.bounds.x2,
-                _ => 0.0,
-            };
-
-            vy += match v.valign.as_str() {
-                "top" => -v.path.bounds.y1,
-                "middle" => -(v.path.bounds.y1 + v.path.bounds.y2) / 2.0,
-                "baseline" => 0.0,
-                "bottom" => -v.path.bounds.y2,
-                _ => 0.0,
-            };
-
-            let x1 = vx + v.path.bounds.x1;
-            let x2 = vx + v.path.bounds.x2;
-            let y1 = vy + v.path.bounds.y1;
-            let y2 = vy + v.path.bounds.y2;
-
-            if x >= x1 && x <= x2 && y >= y1 && y <= y2 {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }
 
         for v in &self.panel.decorations {
-            let dx = v.x.resolve(panel) - x;
-            let dy = v.y.resolve(panel) - y;
-            let r = (dx * dx + dy * dy).sqrt();
-
-            if r < RADIUS {
+            if v.at(&self.panel, x, y) {
                 rs.push(v.as_item());
             }
         }

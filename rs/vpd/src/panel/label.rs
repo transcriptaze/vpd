@@ -1,20 +1,28 @@
 use std::fmt;
 
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
+use crate::module::IQueryable;
+use crate::module::ISet;
+use crate::module::Is;
 use crate::module::Item;
+use crate::panel::Offset;
 use crate::panel::Panel;
+use crate::panel::IXY;
 use crate::panel::X;
+use crate::panel::XY;
 use crate::panel::Y;
 use crate::svg::Text;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Debug)]
 pub struct Label {
+    version: u8,
+
     pub id: String,
     pub text: String,
-    pub x: X,
-    pub y: Y,
+    pub xy: XY,
+
     pub font: String,
     pub fontsize: f32,
     pub halign: String,
@@ -50,8 +58,7 @@ impl Label {
     pub fn new(
         id: &str,
         text: &str,
-        x: &X,
-        y: &Y,
+        xy: &XY,
         font: &str,
         fontsize: f32,
         halign: &str,
@@ -60,10 +67,10 @@ impl Label {
         colour: &Colour,
     ) -> Label {
         Label {
+            version: 1,
             id: id.to_string(),
             text: text.to_string(),
-            x: x.clone(),
-            y: y.clone(),
+            xy: xy.clone(),
             font: font.to_string(),
             fontsize: fontsize,
             halign: halign.to_string(),
@@ -74,8 +81,8 @@ impl Label {
     }
 
     pub fn as_svg(&self, panel: &Panel, theme: &str) -> Text {
-        let mut x = self.x.resolve(panel);
-        let mut y = self.y.resolve(panel);
+        let (mut x, mut y) = self.resolvexy(panel);
+
         let colour = match theme {
             "dark" => self.colour.dark.as_str(),
             _ => self.colour.light.as_str(),
@@ -101,13 +108,83 @@ impl Label {
     }
 
     pub fn migrate(&mut self, from: &str, to: &str) {
-        if self.x.reference == from {
-            self.x.reference = to.to_string();
+        if self.xy.x.reference == from {
+            self.xy.x.reference = to.to_string();
         }
 
-        if self.y.reference == from {
-            self.y.reference = to.to_string();
+        if self.xy.y.reference == from {
+            self.xy.y.reference = to.to_string();
         }
+    }
+
+    pub fn x(&self) -> X {
+        return self.xy.x.clone();
+    }
+
+    pub fn y(&self) -> Y {
+        return self.xy.y.clone();
+    }
+}
+
+impl Is for Label {
+    fn is(&self, id: &str) -> bool {
+        self.id == id
+    }
+
+    fn named(&self, name: &str) -> bool {
+        self.text.trim().to_lowercase() == name
+    }
+}
+
+impl ISet for Label {
+    fn set_x(&mut self, x: &X) {
+        self.xy.set_x(x);
+    }
+
+    fn set_y(&mut self, y: &Y) {
+        self.xy.set_y(y);
+    }
+
+    fn set_offset(&mut self, offset: &Option<Offset>) {
+        self.xy.set_offset(offset);
+    }
+}
+
+impl IXY for Label {
+    fn resolvexy(&self, panel: &Panel) -> (f32, f32) {
+        let x = self.xy.x.resolve(panel);
+        let y = self.xy.y.resolve(panel);
+
+        (x, y)
+    }
+}
+
+impl IQueryable for Label {
+    fn at(&self, panel: &Panel, x: f32, y: f32) -> bool {
+        let (mut _x, mut _y) = self.resolvexy(panel);
+
+        _x += match self.halign.as_str() {
+            "left" => 0.0,
+            "centre" => -(self.path.bounds.x1 + self.path.bounds.x2) / 2.0,
+            "center" => -(self.path.bounds.x1 + self.path.bounds.x2) / 2.0,
+            "right" => -self.path.bounds.x2,
+            _ => 0.0,
+        };
+
+        _y += match self.valign.as_str() {
+            "top" => -self.path.bounds.y1,
+            "middle" => -(self.path.bounds.y1 + self.path.bounds.y2) / 2.0,
+            "baseline" => 0.0,
+            "bottom" => -self.path.bounds.y2,
+            _ => 0.0,
+        };
+
+        let x1 = _x + self.path.bounds.x1;
+        let x2 = _x + self.path.bounds.x2;
+        let y1 = _y + self.path.bounds.y1;
+        let y2 = _y + self.path.bounds.y2;
+
+        return x >= x1 && x <= x2 && y >= y1 && y <= y2;
     }
 }
 
@@ -115,9 +192,18 @@ impl IItem for Label {
     fn as_item(&self) -> Item {
         let mut attributes = vec![
             ("text".to_string(), self.text.clone()),
-            ("x".to_string(), format!("{}", &self.x)),
-            ("y".to_string(), format!("{}", &self.y)),
+            ("x".to_string(), format!("{}", &self.xy.x)),
+            ("y".to_string(), format!("{}", &self.xy.y)),
         ];
+
+        if let Some(offset) = &self.xy.offset {
+            if offset.radius > 0.0 {
+                attributes.push((
+                    "offset".to_string(),
+                    format!("{}°/{}mm", offset.angle, offset.radius),
+                ));
+            }
+        }
 
         attributes.push(("font".to_string(), self.font.clone()));
         attributes.push(("size".to_string(), format!("{:1}pt", self.fontsize)));
@@ -160,6 +246,78 @@ impl fmt::Display for Colour {
             write!(f, "{}", &self.light)
         } else {
             write!(f, "{},{}", &self.light, &self.dark)
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for Label {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum _Label {
+            V1 {
+                #[serde(alias = "version")]
+                _version: u8,
+                id: String,
+                text: String,
+                xy: XY,
+                font: String,
+                fontsize: f32,
+                halign: String,
+                valign: String,
+                path: Path,
+                colour: Colour,
+            },
+
+            V0 {
+                id: String,
+                text: String,
+                x: X,
+                y: Y,
+                font: String,
+                fontsize: f32,
+                halign: String,
+                valign: String,
+                path: Path,
+                colour: Colour,
+            },
+        }
+
+        let l = _Label::deserialize(deserializer)?;
+
+        match l {
+            #[rustfmt::skip]
+            _Label::V0 {id,text,x,y,font,fontsize,halign,valign,path, colour } => {
+                let offset: Option<Offset> = None;
+                let xy = XY::new(&x, &y, &offset);
+
+                Ok(Label::new(
+                    &id,
+                    &text,
+                    &xy,
+                    &font,
+                    fontsize,
+                    &halign,
+                    &valign,
+                    &path,
+                    &colour))
+            }
+
+            #[rustfmt::skip]
+            _Label::V1 {_version, id,text,xy, font,fontsize,halign,valign,path, colour } => {
+                  Ok(Label::new(&id,
+                    &text,
+                    &xy,
+                    &font,
+                    fontsize,
+                    &halign,
+                    &valign,
+                    &path,
+                    &colour))
+              },
         }
     }
 }
