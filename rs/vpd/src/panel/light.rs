@@ -28,21 +28,12 @@ pub struct Light {
 }
 
 impl Light {
-    pub fn new(
-        id: &str,
-        name: &str,
-        x: &X,
-        y: &Y,
-        offset: &Option<Offset>,
-        part: &Option<String>,
-    ) -> Light {
-        let xy = XY::new(x, y, offset);
-
+    pub fn new(id: &str, name: &str, xy: &XY, part: &Option<String>) -> Light {
         Light {
             version: 1,
             id: id.to_string(),
             name: name.to_string(),
-            xy: xy,
+            xy: xy.clone(),
             part: part.clone(),
         }
     }
@@ -166,7 +157,8 @@ impl<'de> Deserialize<'de> for Light {
         #[serde(untagged)]
         enum _Light {
             V1 {
-                version: u8,
+                #[serde(alias = "version")]
+                _version: u8,
                 id: String,
                 name: String,
                 xy: XY,
@@ -186,24 +178,15 @@ impl<'de> Deserialize<'de> for Light {
         match l {
             #[rustfmt::skip]
             _Light::V0 {id,name,x,y,part } => {
-                Ok(Light {
-                    version: 0,
-                    id: id,
-                    name: name,
-                    xy: XY::new_without_offset(x,y),
-                    part: part,
-                })
-            },
+                let offset: Option<Offset> = None;
+                let xy = XY::new(&x, &y, &offset);
+
+                Ok(Light::new(&id, &name, &xy, &part))
+            }
 
             #[rustfmt::skip]
-            _Light::V1 { version, id, name, xy,part } => {
-                Ok(Light {
-                    version: version,
-                    id: id,
-                    name: name,
-                    xy: xy,
-                    part: part,
-                })
+            _Light::V1 { _version, id, name, xy,part } => {
+                Ok(Light::new(&id, &name, &xy, &part))
             },
         }
     }

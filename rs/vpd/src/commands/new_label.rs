@@ -10,6 +10,7 @@ use serde_wasm_bindgen;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
+use crate::panel::XY;
 
 const FONT: &str = "RobotoMono-Bold";
 const FONTSIZE: f32 = 12.0;
@@ -85,6 +86,7 @@ impl Command for NewLabel {
 
     fn apply(&self, m: &mut Module) {
         let id = m.new_label_id();
+        let xy = XY::new(&self.x, &self.y, &self.offset);
 
         let font = match &self.font {
             Some(v) => v,
@@ -117,9 +119,7 @@ impl Command for NewLabel {
         m.panel.labels.push(panel::Label::new(
             &id,
             &self.text,
-            &self.x,
-            &self.y,
-            &self.offset,
+            &xy,
             font,
             size,
             halign,

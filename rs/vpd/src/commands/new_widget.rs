@@ -5,6 +5,7 @@ use serde::Deserialize;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
+use crate::panel::XY;
 
 #[derive(Deserialize)]
 pub struct NewWidget {
@@ -42,14 +43,10 @@ impl Command for NewWidget {
 
     fn apply(&self, m: &mut Module) {
         let id = m.new_widget_id();
+        let xy = XY::new(&self.x, &self.y, &self.offset);
 
-        m.panel.widgets.push(panel::Widget::new(
-            &id,
-            &self.name,
-            &self.x,
-            &self.y,
-            &self.offset,
-            &self.part,
-        ));
+        m.panel
+            .widgets
+            .push(panel::Widget::new(&id, &self.name, &xy, &self.part));
     }
 }

@@ -28,21 +28,12 @@ pub struct Parameter {
 }
 
 impl Parameter {
-    pub fn new(
-        id: &str,
-        name: &str,
-        x: &X,
-        y: &Y,
-        offset: &Option<Offset>,
-        part: &Option<String>,
-    ) -> Parameter {
-        let xy = XY::new(x, y, offset);
-
+    pub fn new(id: &str, name: &str, xy: &XY, part: &Option<String>) -> Parameter {
         Parameter {
             version: 1,
             id: id.to_string(),
             name: name.to_string(),
-            xy: xy,
+            xy: xy.clone(),
             part: part.clone(),
         }
     }
@@ -166,7 +157,8 @@ impl<'de> Deserialize<'de> for Parameter {
         #[serde(untagged)]
         enum _Parameter {
             V1 {
-                version: u8,
+                #[serde(alias = "version")]
+                _version: u8,
                 id: String,
                 name: String,
                 xy: XY,
@@ -185,25 +177,16 @@ impl<'de> Deserialize<'de> for Parameter {
 
         match p {
             #[rustfmt::skip]
-            _Parameter::V0 {id,name,x,y,part } => {
-                Ok(Parameter {
-                    version: 0,
-                    id: id,
-                    name: name,
-                    xy: XY::new_without_offset(x,y),
-                    part: part,
-                })
-            },
+            _Parameter::V0 {id, name, x, y, part} => {
+                let offset: Option<Offset> = None;
+                let xy = XY::new(&x, &y, &offset);
+
+                Ok(Parameter::new(&id, &name, &xy, &part))
+            }
 
             #[rustfmt::skip]
-            _Parameter::V1 { version, id, name, xy, part } => {
-                Ok(Parameter {
-                    version: version,
-                    id: id,
-                    name: name,
-                    xy: xy,
-                    part: part,
-                })
+            _Parameter::V1 {_version, id, name, xy, part} => {
+                Ok(Parameter::new(&id, &name, &xy, &part))
             },
         }
     }

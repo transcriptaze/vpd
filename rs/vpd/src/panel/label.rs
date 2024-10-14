@@ -58,9 +58,7 @@ impl Label {
     pub fn new(
         id: &str,
         text: &str,
-        x: &X,
-        y: &Y,
-        offset: &Option<Offset>,
+        xy: &XY,
         font: &str,
         fontsize: f32,
         halign: &str,
@@ -72,7 +70,7 @@ impl Label {
             version: 1,
             id: id.to_string(),
             text: text.to_string(),
-            xy: XY::new(&x, &y, offset),
+            xy: xy.clone(),
             font: font.to_string(),
             fontsize: fontsize,
             halign: halign.to_string(),
@@ -261,7 +259,8 @@ impl<'de> Deserialize<'de> for Label {
         #[serde(untagged)]
         enum _Label {
             V1 {
-                version: u8,
+                #[serde(alias = "version")]
+                _version: u8,
                 id: String,
                 text: String,
                 xy: XY,
@@ -292,34 +291,32 @@ impl<'de> Deserialize<'de> for Label {
         match l {
             #[rustfmt::skip]
             _Label::V0 {id,text,x,y,font,fontsize,halign,valign,path, colour } => {
-                Ok(Label {
-                    version: 0,
-                    id: id,
-                    text: text,
-                    xy: XY::new_without_offset(x.clone(),y.clone()),
-                    font: font,
-                    fontsize: fontsize,
-                    halign: halign,
-                    valign: valign,
-                    path: path,
-                    colour: colour,
-                })
-            },
+                let offset: Option<Offset> = None;
+                let xy = XY::new(&x, &y, &offset);
+
+                Ok(Label::new(
+                    &id,
+                    &text,
+                    &xy,
+                    &font,
+                    fontsize,
+                    &halign,
+                    &valign,
+                    &path,
+                    &colour))
+            }
 
             #[rustfmt::skip]
-            _Label::V1 {version, id,text,xy, font,fontsize,halign,valign,path, colour } => {
-                  Ok(Label {
-                    version: version,
-                    id: id,
-                    text: text,
-                    xy: xy,
-                    font: font,
-                    fontsize: fontsize,
-                    halign: halign,
-                    valign: valign,
-                    path: path,
-                    colour: colour,
-                  })
+            _Label::V1 {_version, id,text,xy, font,fontsize,halign,valign,path, colour } => {
+                  Ok(Label::new(&id,
+                    &text,
+                    &xy,
+                    &font,
+                    fontsize,
+                    &halign,
+                    &valign,
+                    &path,
+                    &colour))
               },
         }
     }

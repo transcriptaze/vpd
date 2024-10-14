@@ -34,14 +34,6 @@ impl XY {
         }
     }
 
-    pub fn new_without_offset(x: X, y: Y) -> XY {
-        XY {
-            x: x,
-            y: y,
-            offset: None,
-        }
-    }
-
     pub fn set_x(&mut self, x: &X) {
         self.x = x.clone();
     }

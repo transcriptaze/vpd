@@ -32,20 +32,12 @@ pub struct Stretch {
 }
 
 impl Decoration {
-    pub fn new(
-        id: &str,
-        name: &str,
-        x: &X,
-        y: &Y,
-        offset: &Option<Offset>,
-        scale: f32,
-        stretch: &Stretch,
-    ) -> Decoration {
+    pub fn new(id: &str, name: &str, xy: &XY, scale: f32, stretch: &Stretch) -> Decoration {
         Decoration {
             version: 1,
             id: id.to_string(),
             name: name.to_string(),
-            xy: XY::new(x, y, offset),
+            xy: xy.clone(),
             scale: scale,
             stretch: stretch.clone(),
         }
@@ -183,7 +175,8 @@ impl<'de> Deserialize<'de> for Decoration {
         #[serde(untagged)]
         enum _Decoration {
             V1 {
-                version: u8,
+                #[serde(alias = "version")]
+                _version: u8,
                 id: String,
                 name: String,
                 xy: XY,
@@ -206,26 +199,15 @@ impl<'de> Deserialize<'de> for Decoration {
         match d {
             #[rustfmt::skip]
             _Decoration::V0 {id,name,x,y,scale,stretch } => {
-                Ok(Decoration {
-                    version: 0,
-                    id: id,
-                    name: name,
-                    xy: XY::new_without_offset(x,y),
-                    scale: scale,
-                    stretch: stretch,
-                })
-            },
+                let offset: Option<Offset> = None;
+                let xy = XY::new(&x, &y, &offset);
+
+                Ok(Decoration::new(&id, &name, &xy, scale, &stretch))
+            }
 
             #[rustfmt::skip]
-            _Decoration::V1 {version, id,name,xy,scale,stretch } => {
-                Ok(Decoration {
-                    version: version,
-                    id: id,
-                    name: name,
-                    xy: xy,
-                    scale: scale,
-                    stretch: stretch,
-                })
+            _Decoration::V1 {_version, id,name,xy,scale,stretch } => {
+                Ok(Decoration::new(&id, &name, &xy, scale, &stretch))
             },
         }
     }

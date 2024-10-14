@@ -1,7 +1,7 @@
 # TODO
 
 - [ ] Drop shadows
-- [ ] Encapsulate x,y fields into single xy
+- [x] Encapsulate x,y fields into single xy
       - [x] parameter
       - [x] input
       - [x] output
@@ -9,9 +9,10 @@
       - [x] widget
       - [x] label
       - [x] decoration
-      - [ ] deserialize with constructors
+      - [x] deserialize with constructors
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
+      - [ ] Negative angles
       - [ ] Polar coordinates/offsets
             - [ ] demo project
             - (?) origin

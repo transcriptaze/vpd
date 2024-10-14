@@ -5,6 +5,7 @@ use serde::Deserialize;
 use crate::command::Command;
 use crate::module::Module;
 use crate::panel;
+use crate::panel::XY;
 
 #[derive(Deserialize)]
 pub struct NewDecoration {
@@ -38,13 +39,12 @@ impl NewDecoration {
 impl Command for NewDecoration {
     fn apply(&self, m: &mut Module) {
         let id = m.new_decoration_id();
+        let xy = XY::new(&self.x, &self.y, &self.offset);
 
         m.panel.decorations.push(panel::Decoration::new(
             &id,
             &self.name,
-            &self.x,
-            &self.y,
-            &self.offset,
+            &xy,
             self.scale,
             &panel::Stretch::new(self.stretch.x, self.stretch.y),
         ));
