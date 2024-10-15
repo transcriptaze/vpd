@@ -830,6 +830,10 @@
           "named": true
         },
         {
+          "type": "polar",
+          "named": true
+        },
+        {
           "type": "x",
           "named": true
         },

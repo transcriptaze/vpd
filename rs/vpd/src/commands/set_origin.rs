@@ -3,10 +3,12 @@ use std::error::Error;
 
 use crate::command::Command;
 use crate::module::Module;
+use crate::panel::Offset;
 
 pub struct SetOrigin {
     x: XY,
     y: XY,
+    offset: Option<Offset>,
 }
 
 pub struct XY {
@@ -27,6 +29,8 @@ struct Origin {
 
     #[serde(rename = "y")]
     y: xy,
+
+    offset: Option<Offset>,
 }
 
 #[derive(Deserialize)]
@@ -52,6 +56,7 @@ impl SetOrigin {
                 reference: o.origin.y.reference,
                 offset: o.origin.y.offset,
             },
+            offset: o.origin.offset,
         })
     }
 }
@@ -60,5 +65,6 @@ impl Command for SetOrigin {
     fn apply(&self, m: &mut Module) {
         m.panel.origin.set_x(&self.x.reference, self.x.offset);
         m.panel.origin.set_y(&self.y.reference, self.y.offset);
+        m.panel.origin.set_offset(&self.offset);
     }
 }

@@ -1,12 +1,15 @@
+use std::f32::consts::PI;
+
 use serde::{Deserialize, Serialize};
 
+use crate::panel::Offset;
 use crate::panel::Panel;
-// use crate::svg::Point;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Origin {
     pub x: XY,
     pub y: XY,
+    pub offset: Option<Offset>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,6 +29,7 @@ impl Origin {
                 reference: "top".to_string(),
                 offset: 0.0,
             },
+            offset: None,
         };
     }
 
@@ -39,9 +43,15 @@ impl Origin {
         self.y.offset = offset;
     }
 
+    pub fn set_offset(&mut self, offset: &Option<Offset>) {
+        self.offset = offset.clone();
+    }
+
     pub fn resolve(&self, panel: &Panel) -> (f32, f32) {
         let w: f32 = panel.width;
         let h: f32 = panel.height;
+        let mut dx: f32 = 0.0;
+        let mut dy: f32 = 0.0;
 
         let x = match self.x.reference.as_ref() {
             "absolute" => self.x.offset,
@@ -60,6 +70,14 @@ impl Origin {
             _ => 0.0,
         };
 
-        (x, y)
+        if let Some(offset) = &self.offset {
+            let angle = offset.angle;
+            let radius = offset.radius;
+
+            dx = radius * (angle * PI / 180.0).cos();
+            dy = radius * (angle * PI / 180.0).sin();
+        }
+
+        (x + dx, y - dy)
     }
 }
