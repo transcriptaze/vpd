@@ -2,8 +2,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
-use crate::module::ISet;
-use crate::module::Is;
+use crate::module::IWidget;
 use crate::module::Item;
 use crate::panel::Offset;
 use crate::panel::Panel;
@@ -63,17 +62,9 @@ impl Widget {
             self.xy.y.reference = to.to_string();
         }
     }
-
-    pub fn x(&self) -> X {
-        return self.xy.x.clone();
-    }
-
-    pub fn y(&self) -> Y {
-        return self.xy.y.clone();
-    }
 }
 
-impl Is for Widget {
+impl IWidget for Widget {
     fn is(&self, id: &str) -> bool {
         self.id == id
     }
@@ -81,9 +72,11 @@ impl Is for Widget {
     fn named(&self, name: &str) -> bool {
         self.name.trim().to_lowercase() == name
     }
-}
 
-impl ISet for Widget {
+    fn xy(&self) -> &XY {
+        return &self.xy;
+    }
+
     fn set_x(&mut self, x: &X) {
         self.xy.x = x.clone();
     }

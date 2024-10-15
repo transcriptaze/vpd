@@ -12,6 +12,7 @@ use super::panel::Guide;
 use super::panel::Panel;
 use super::panel::DEFAULT_HEIGHT;
 use super::panel::DEFAULT_WIDTH;
+use super::panel::XY;
 use super::serde::{Deserialize, Serialize};
 
 use wasm_bindgen::prelude::*;
@@ -55,12 +56,11 @@ pub trait IItem {
     fn as_item(&self) -> Item;
 }
 
-pub trait Is {
+pub trait IWidget {
     fn is(&self, id: &str) -> bool;
     fn named(&self, name: &str) -> bool;
-}
+    fn xy(&self) -> &XY;
 
-pub trait ISet {
     fn set_x(&mut self, x: &panel::X);
     fn set_y(&mut self, y: &panel::Y);
     fn set_offset(&mut self, offset: &Option<panel::Offset>);
@@ -530,7 +530,7 @@ impl Module {
         self.find_in_list(&self.panel.labels, id)
     }
 
-    fn find_in_list<T: Is>(&self, list: &Vec<T>, id: &str) -> Option<usize> {
+    fn find_in_list<T: IWidget>(&self, list: &Vec<T>, id: &str) -> Option<usize> {
         let name = id.trim().to_lowercase();
 
         if let Some(ix) = list.iter().position(|v| v.is(id)) {

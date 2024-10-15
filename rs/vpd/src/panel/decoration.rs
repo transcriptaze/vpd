@@ -2,8 +2,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IItem;
 use crate::module::IQueryable;
-use crate::module::ISet;
-use crate::module::Is;
+use crate::module::IWidget;
 use crate::module::Item;
 use crate::module::Module;
 use crate::panel::Offset;
@@ -93,7 +92,7 @@ impl Decoration {
     }
 }
 
-impl Is for Decoration {
+impl IWidget for Decoration {
     fn is(&self, id: &str) -> bool {
         self.id == id
     }
@@ -101,9 +100,11 @@ impl Is for Decoration {
     fn named(&self, name: &str) -> bool {
         self.name.trim().to_lowercase() == name
     }
-}
 
-impl ISet for Decoration {
+    fn xy(&self) -> &XY {
+        panic!("not supported for decorations");
+    }
+
     fn set_x(&mut self, _: &X) {}
 
     fn set_y(&mut self, _: &Y) {}

@@ -2,7 +2,7 @@ use serde::Deserialize;
 use std::error::Error;
 
 use crate::command::Command;
-use crate::module::ISet;
+use crate::module::IWidget;
 use crate::module::Module;
 use crate::panel;
 

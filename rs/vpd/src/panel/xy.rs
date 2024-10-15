@@ -1,5 +1,6 @@
 use serde::{Deserialize, Deserializer, Serialize};
 
+use crate::module::IWidget;
 use crate::panel::Panel;
 use crate::panel::X;
 use crate::panel::Y;
@@ -46,6 +47,10 @@ impl XY {
         self.x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
         self.y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
         self.offset = offset.clone();
+    }
+
+    pub fn as_tuple(&self) -> (Option<X>, Option<Y>) {
+        (Some(self.x.clone()), Some(self.y.clone()))
     }
 }
 
@@ -101,48 +106,48 @@ pub fn find(panel: &Panel, itype: &str, reference: &str) -> (Option<X>, Option<Y
     match itype {
         "input" => {
             let mut it = panel.inputs.iter();
-            match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x()), Some(e.y())),
+            match it.find(|&v| v.is(reference) || v.named(reference)) {
+                Some(e) => e.xy().as_tuple(),
                 None => (None, None),
             }
         }
 
         "output" => {
             let mut it = panel.outputs.iter();
-            match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x()), Some(e.y())),
+            match it.find(|&v| v.is(reference) || v.named(reference)) {
+                Some(e) => e.xy().as_tuple(),
                 None => (None, None),
             }
         }
 
         "parameter" => {
             let mut it = panel.parameters.iter();
-            match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x()), Some(e.y())),
+            match it.find(|&v| v.is(reference) || v.named(reference)) {
+                Some(e) => e.xy().as_tuple(),
                 None => (None, None),
             }
         }
 
         "light" => {
             let mut it = panel.lights.iter();
-            match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x()), Some(e.y())),
+            match it.find(|&v| v.is(reference) || v.named(reference)) {
+                Some(e) => e.xy().as_tuple(),
                 None => (None, None),
             }
         }
 
         "widget" => {
             let mut it = panel.widgets.iter();
-            match it.find(|&v| v.id == reference || v.name == reference) {
-                Some(e) => (Some(e.x()), Some(e.y())),
+            match it.find(|&v| v.is(reference) || v.named(reference)) {
+                Some(e) => e.xy().as_tuple(),
                 None => (None, None),
             }
         }
 
         "label" => {
             let mut it = panel.labels.iter();
-            match it.find(|&v| v.id == reference || v.text == reference) {
-                Some(e) => (Some(e.x()), Some(e.y())),
+            match it.find(|&v| v.is(reference) || v.named(reference)) {
+                Some(e) => e.xy().as_tuple(),
                 None => (None, None),
             }
         }

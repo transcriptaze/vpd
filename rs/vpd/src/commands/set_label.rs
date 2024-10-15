@@ -6,7 +6,7 @@ use std::pin::Pin;
 use wasm_bindgen::prelude::*;
 
 use crate::command::Command;
-use crate::module::ISet;
+use crate::module::IWidget;
 use crate::module::Module;
 use crate::panel;
 

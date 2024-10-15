@@ -6,7 +6,6 @@
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
       - [x] Polar coordinates/offsets
-            - [x] origin
       - [x] CHANGELOG
       - [ ] README
       - [ ] User manual

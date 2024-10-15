@@ -17,7 +17,7 @@
     <circle inkscape:label="Trimpot" cx="15.24" cy="25.4" r="2.54" fill="#ff0000" />
     <circle inkscape:label="PushButton" cx="15.24" cy="45.72" r="2.54" fill="#ff0000" />
     <circle inkscape:label="Button" cx="15.24" cy="66.04" r="2.54" fill="#ff0000" />
-    <circle inkscape:label="Slider" cx="35.56" cy="45.72" r="2.54" fill="#ff0000" />
+    <circle inkscape:label="Slider" cx="35.56" cy="55.88" r="2.54" fill="#ff0000" />
     <circle inkscape:label="RoundBlackKnob" cx="25.4" cy="106.68" r="2.54" fill="#ff0000" />
     <circle inkscape:label="red" cx="40.64" cy="106.68" r="2.54" fill="#ff00ff" />
     <circle inkscape:label="orange" cx="38.598" cy="99.06" r="2.54" fill="#ff00ff" />
@@ -38,6 +38,45 @@
   <g inkscape:groupmode="layer" inkscape:label="parameters"></g>
   <g inkscape:groupmode="layer" inkscape:label="lights"></g>
   <g inkscape:groupmode="layer" inkscape:label="widgets"></g>
+
+  <g inkscape:groupmode="layer" inkscape:label="decorations">
+    <g inkscape:label="CircularGraduation@parameter[p1]" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.187" transform="translate(15.24 25.4) scale(1.1)">
+      <line x1="-1.900" y1="3.291"  x2="-2.375" y2="4.114" />
+      <line x1="-3.291" y1="1.900"  x2="-4.114" y2="2.375" />
+      <line x1="-3.800" y1="0.000"  x2="-4.750" y2="0.000" />
+      <line x1="-3.291" y1="-1.900" x2="-4.114" y2="-2.375" />
+      <line x1="-1.900" y1="-3.291" x2="-2.375" y2="-4.114" />
+      <line x1="0.000"  y1="-3.800" x2="0.000"  y2="-4.750" />
+      <line x1="1.900"  y1="-3.291" x2="2.375"  y2="-4.114" />
+      <line x1="3.291"  y1="-1.900" x2="4.114"  y2="-2.375" />
+      <line x1="3.800"  y1="0.000"  x2="4.750"  y2="0.000" />
+      <line x1="3.291"  y1="1.900"  x2="4.114"  y2="2.375" />
+      <line x1="1.900"  y1="3.291"  x2="2.375"  y2="4.114" />
+      <g>
+        <path d="M0.000,-4.750 a4.750,4.750,0,0,0,-2.375,8.864" />
+        <path d="M0.000,-4.750 a4.750,4.750,0,0,1,2.375,8.864" />
+        <circle cx="0.000" cy="0.000" r="4.750" opacity="0.5" stroke="none" />
+      </g>
+    </g>
+    <g inkscape:label="CircularGraduation@parameter[p5]" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.187" transform="translate(25.4 106.68) scale(1.4)">
+      <line x1="-1.900" y1="3.291"  x2="-2.375" y2="4.114" />
+      <line x1="-3.291" y1="1.900"  x2="-4.114" y2="2.375" />
+      <line x1="-3.800" y1="0.000"  x2="-4.750" y2="0.000" />
+      <line x1="-3.291" y1="-1.900" x2="-4.114" y2="-2.375" />
+      <line x1="-1.900" y1="-3.291" x2="-2.375" y2="-4.114" />
+      <line x1="0.000"  y1="-3.800" x2="0.000"  y2="-4.750" />
+      <line x1="1.900"  y1="-3.291" x2="2.375"  y2="-4.114" />
+      <line x1="3.291"  y1="-1.900" x2="4.114"  y2="-2.375" />
+      <line x1="3.800"  y1="0.000"  x2="4.750"  y2="0.000" />
+      <line x1="3.291"  y1="1.900"  x2="4.114"  y2="2.375" />
+      <line x1="1.900"  y1="3.291"  x2="2.375"  y2="4.114" />
+      <g>
+        <path d="M0.000,-4.750 a4.750,4.750,0,0,0,-2.375,8.864" />
+        <path d="M0.000,-4.750 a4.750,4.750,0,0,1,2.375,8.864" />
+        <circle cx="0.000" cy="0.000" r="4.750" opacity="0.5" stroke="none" />
+      </g>
+    </g>
+  </g>
 
   <g inkscape:groupmode="layer" inkscape:label="labels">
     <g inkscape:label="DEMO" transform="translate(20.275,11.665)" fill="#222222">
