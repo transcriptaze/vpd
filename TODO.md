@@ -1,11 +1,12 @@
 # TODO
 
-- [ ] Drop shadows
+- [x] Drop shadows
       - https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/
+      - https://stackoverflow.com/questions/17883655/svg-shadow-cut-off
 
 - [ ] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
-      - [ ] Polar coordinates/offsets
-            - (?) origin
+      - [x] Polar coordinates/offsets
+            - [x] origin
       - [x] CHANGELOG
       - [ ] README
       - [ ] User manual

@@ -25,4 +25,7 @@
       stroke-dasharray: 1 1;
     }
   </style>
+  <filter id="shadow" width="200%" height="200%">
+     <feDropShadow dx="0.5" dy="1" stdDeviation="1" flood-color="#808080" flood-opacity="0.8"/>
+  </filter>  
 {% endif %}
