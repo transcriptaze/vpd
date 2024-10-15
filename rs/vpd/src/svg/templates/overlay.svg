@@ -2,42 +2,42 @@
     {% if screws -%}
     {% for v in screws -%}
     <use href="#panel-screw" transform="translate({{v.x}}, {{v.y}})" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if inputs -%}
     {% for v in inputs -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if outputs -%}
     {% for v in outputs -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if parameters -%}
     {% for v in parameters -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if lights -%}
     {% for v in lights -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if widgets -%}
     {% for v in widgets -%}
     <circle cx="{{v.x}}" cy="{{v.y}}" r="1" fill="{{v.colour}}" />
-    {%- endfor %}
+    {% endfor %}
     {%- endif %}
 
     {% if parts -%}
     {% for v in parts -%}
-    <use href="#{{v.template}}" x="{{v.x}}" y="{{v.y}}" />
-    {%- endfor %}
+    <use href="#{{v.template}}" x="{{v.x}}" y="{{v.y}}" filter="url(#shadow)" />
+    {% endfor %}
     {%- endif %}
   </g>

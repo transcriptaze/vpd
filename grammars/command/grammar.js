@@ -670,19 +670,25 @@ module.exports = grammar({
         seq( 
           alias($._originy, $.y), 
           ',', 
-          alias($._originx, $.x)
+          alias($._originx, $.x),
+          optional($.polar),
         ),
         seq( 
           alias($._originx,$.x),
           ',',
           alias($._originy,$.y),
+          optional($.polar),
         ),
         seq(
           alias('@',$.absolute),
           alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.x),
           ',',
           alias(/([0-9]+)(\.[0-9]*)?(mm|h|H)/,$.y),
-         )
+        ),
+        seq(
+          alias('@',$.absolute),
+          $.polar,
+        ),
       ),
     ),
 

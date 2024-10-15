@@ -11,6 +11,19 @@ set origin @1.2mm,3.4mm
       (y))))
 
 
+=======================
+set origin @1.2mm,3.4mm
+=======================
+set origin @1.2mm,3.4mm
+---
+(command
+  (set
+    (origin
+      (absolute)
+      (x)
+      (y))))
+
+
 ===================
 set origin top,left
 ===================
@@ -55,6 +68,40 @@ set origin middle+4.5mm,right-4.5mm
         (offset)))))
 
 
+============================
+set origin top,left 30°,20mm
+============================
+set origin top,left 30°,20mm
+---
+(command
+  (set
+    (origin
+      (y
+        (reference))
+      (x
+        (reference))
+      (polar
+        (angle)
+        (radius)))))
+
+
+============================
+set origin left,top 30°,20mm
+============================
+set origin left,top 30°,20mm
+---
+(command
+  (set
+    (origin
+      (x
+        (reference))
+      (y
+        (reference))
+      (polar
+        (angle)
+        (radius)))))
+
+
 ===================================
 set origin right-4.5mm,middle+4.5mm
 ===================================
@@ -69,4 +116,55 @@ set origin right-4.5mm,middle+4.5mm
       (y
         (reference)
         (offset)))))
+
+===================================
+set origin middle+4.5mm,right-4.5mm,
+===================================
+set origin middle+4.5mm,right-4.5mm
+---
+(command
+  (set
+    (origin
+      (y
+        (reference)
+        (offset))
+      (x
+        (reference)
+        (offset)))))
+
+============================================
+set origin right-4.5mm,middle+4.5mm 30°,20mm
+============================================
+set origin right-4.5mm,middle+4.5mm 30°,20mm
+---
+(command
+  (set
+    (origin
+      (x
+        (reference)
+        (offset))
+      (y
+        (reference)
+        (offset))
+      (polar
+        (angle)
+        (radius)))))
+
+=====================================================
+set origin middle+4.5mm,right-4.5mm 30°,20mm
+=====================================================
+set origin middle+4.5mm,right-4.5mm 30°,20mm
+---
+(command
+  (set
+    (origin
+      (y
+        (reference)
+        (offset))
+      (x
+        (reference)
+        (offset))
+      (polar
+        (angle)
+        (radius)))))
 

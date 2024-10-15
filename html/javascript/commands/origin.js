@@ -1,28 +1,43 @@
-import { mm } from './commands.js'
+import { mm, polar } from './commands.js'
 
 export function set (node, src) {
   const object = {
     src: `${src}`,
     action: 'set',
     origin: {
+      offset: {
+        angle: 0.0,
+        radius: 0.0
+      }
     }
   }
 
   for (const child of node.namedChildren) {
     if (child.type === 'absolute') {
+      object.origin.x = {
+        reference: 'absolute',
+        offset: 0.0
+      }
+
+      object.origin.y = {
+        reference: 'absolute',
+        offset: 0.0
+      }
+
       for (const child of node.namedChildren) {
         if (child.type === 'x') {
-          object.origin.x = {
-            reference: 'absolute',
-            offset: mm(child)
-          }
+          object.origin.x.offset = mm(child)
         }
 
         if (child.type === 'y') {
-          object.origin.y = {
-            reference: 'absolute',
-            offset: mm(child)
-          }
+          object.origin.y.offset = mm(child)
+        }
+
+        if (child.type === 'polar') {
+          const { angle, radius } = polar(child)
+
+          object.origin.offset.angle = angle
+          object.origin.offset.radius = radius
         }
       }
 
@@ -31,12 +46,20 @@ export function set (node, src) {
   }
 
   for (const child of node.namedChildren) {
+    console.log('>>>>>>>>>>>>', child.type)
     if (child.type === 'x') {
       object.origin.x = xy(child)
     }
 
     if (child.type === 'y') {
       object.origin.y = xy(child)
+    }
+
+    if (child.type === 'polar') {
+      const { angle, radius } = polar(child)
+
+      object.origin.offset.angle = angle
+      object.origin.offset.radius = radius
     }
   }
 
