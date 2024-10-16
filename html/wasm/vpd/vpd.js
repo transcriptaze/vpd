@@ -419,19 +419,19 @@ async function __wbg_load(module, imports) {
 function __wbg_get_imports() {
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbg_log_1a419e68e473d2e4 = function(arg0, arg1) {
+    imports.wbg.__wbg_log_48cb6f029569a9d9 = function(arg0, arg1) {
         console.log(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbg_load_85c9b08e8c491c0c = function(arg0, arg1) {
+    imports.wbg.__wbg_load_77ffc046b057a88f = function(arg0, arg1) {
         load(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbg_save_734c2c34d1072b84 = function(arg0, arg1, arg2, arg3, arg4, arg5) {
+    imports.wbg.__wbg_save_0b70a8354f4af2f7 = function(arg0, arg1, arg2, arg3, arg4, arg5) {
         save(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), getArrayU8FromWasm0(arg4, arg5));
     };
-    imports.wbg.__wbg_unload_838ffdd1f262ffd0 = function(arg0, arg1, arg2, arg3) {
+    imports.wbg.__wbg_unload_cab38b697b72bc34 = function(arg0, arg1, arg2, arg3) {
         unload(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
-    imports.wbg.__wbg_list_18081b084eb1a869 = function(arg0, arg1, arg2, arg3) {
+    imports.wbg.__wbg_list_cab7dd33f09f5f57 = function(arg0, arg1, arg2, arg3) {
         list(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
     };
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
@@ -468,22 +468,22 @@ function __wbg_get_imports() {
         const ret = getStringFromWasm0(arg0, arg1);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_text2path_3c0eb3e91ccff894 = function(arg0, arg1, arg2, arg3, arg4) {
+    imports.wbg.__wbg_text2path_1b7054a56e3ca326 = function(arg0, arg1, arg2, arg3, arg4) {
         const ret = text2path(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), arg4);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_prepareFont_ab56a858cbc78a98 = function(arg0, arg1) {
+    imports.wbg.__wbg_prepareFont_9008e5c28d896704 = function(arg0, arg1) {
         const ret = prepareFont(getStringFromWasm0(arg0, arg1));
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_set_e2a5a1144a54b2cd = function(arg0, arg1) {
+    imports.wbg.__wbg_set_6bf07b5daeba9a11 = function(arg0, arg1) {
         set(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbg_stash_eef08bdabe6d7822 = function(arg0, arg1, arg2, arg3) {
+    imports.wbg.__wbg_stash_ad9effe126419dea = function(arg0, arg1, arg2, arg3) {
         const ret = stash(getStringFromWasm0(arg0, arg1), getArrayU8FromWasm0(arg2, arg3));
         return addHeapObject(ret);
     };
-    imports.wbg.__wbg_unstash_dc076bd33806239a = function(arg0, arg1) {
+    imports.wbg.__wbg_unstash_bf4769ea1d738b3d = function(arg0, arg1) {
         const ret = unstash(getStringFromWasm0(arg0, arg1));
         return addHeapObject(ret);
     };
@@ -684,7 +684,7 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1865 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper1864 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 315, __wbg_adapter_36);
         return addHeapObject(ret);
     };
