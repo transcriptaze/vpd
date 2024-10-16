@@ -57,13 +57,13 @@ new label "VEL"   (input "velocity" -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt
 new label "LEFT"  (output "left"    -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
 new label "RIGHT" (output "right"   -0mm,-5.080mm) "RobotoCondensed-Regular" 7pt centre,middle #ffffff,#222222
 
-decorate (parameter "e")     with "CircularGraduations" (scale 1.1)
-decorate (parameter "s")     with "CircularGraduations" (scale 1.1)
-decorate (parameter "theta") with "CircularGraduations" (scale 1.1)
-decorate (parameter "a")     with "CircularGraduations" (scale 1.1)
-decorate (parameter "dx")    with "CircularGraduations" (scale 1.1)
-decorate (parameter "dy")    with "CircularGraduations" (scale 1.1)
-decorate (parameter "m")     with "CircularGraduations" (scale 1.1)
+decorate (parameter "e")     with "CircularGraduations" (scale 1.25)
+decorate (parameter "s")     with "CircularGraduations" (scale 1.25)
+decorate (parameter "theta") with "CircularGraduations" (scale 1.25)
+decorate (parameter "a")     with "CircularGraduations" (scale 1.25)
+decorate (parameter "dx")    with "CircularGraduations" (scale 1.25)
+decorate (parameter "dy")    with "CircularGraduations" (scale 1.25)
+decorate (parameter "m")     with "CircularGraduations" (scale 1.25)
 
 ;; decorate (output "aux"  +0mm,+5.08mm) with Pad (stretch 1,2.4)
 decorate (output "left" +0mm,+5.08mm) with Pad (stretch 1,2.4)

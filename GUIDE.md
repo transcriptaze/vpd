@@ -121,10 +121,10 @@
 
 13. Decorate the parameter knobs with graduations:
     ```
-    decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
+    decorate (parameter "volume") with "CircularGraduations" (scale 1.25)
     ```
     ```
-    decorate (parameter "distortion") with "CircularGraduations" (scale 1.1)
+    decorate (parameter "distortion") with "CircularGraduations" (scale 1.25)
     ```
 
 14. Decorate the outputs with rectangular pads:
