@@ -2,10 +2,10 @@
 
 - [x] Drop shadows
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
-      - [x] Polar coordinates/offsets
-      - [x] CHANGELOG
-      - [x] README
-      - [x] User manual
+- [ ] DuckDuckGo
+      - [x] api.js::hasOwn
+      - [ ] db.js::localStorage
+
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

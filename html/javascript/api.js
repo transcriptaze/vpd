@@ -1,4 +1,5 @@
 import * as db from './db.js'
+import { hasOwn } from './VPD.js'
 
 export { load, unload, save, list } from './fs.js'
 export { prepareFont, text2path } from './text.js'
@@ -7,19 +8,20 @@ export function set (json) {
   try {
     const object = JSON.parse(json)
 
-    if (Object.hasOwn(object, 'module') && object.module != null) {
-      setModuleInfo(object.module)
-    }
+      if (hasOwn(object, 'module') && object.module != null) {
+        setModuleInfo(object.module)
+      }
 
-    if (Object.hasOwn(object, 'history') && object.history != null) {
-      setHistoryInfo(object.history)
-    }
+      if (hasOwn(object, 'history') && object.history != null) {
+        setHistoryInfo(object.history)
+      }
 
-    if (Object.hasOwn(object, 'command') && object.command != null) {
-      setCommand(object.command)
-    }
+      if (hasOwn(object, 'command') && object.command != null) {
+        setCommand(object.command)
+      }
   } catch (e) {
     console.error(`${e}`)
+    console.error(e)
   }
 }
 
@@ -84,7 +86,7 @@ function setHistoryInfo (object) {
   const undo = document.querySelector('#undo')
   const redo = document.querySelector('#redo')
 
-  if (Object.hasOwn(object, 'undo')) {
+  if (hasOwn(object, 'undo')) {
     const N = parseInt(`${object.undo}`)
 
     if (!Number.isNaN(N)) {
@@ -92,7 +94,7 @@ function setHistoryInfo (object) {
     }
   }
 
-  if (Object.hasOwn(object, 'redo')) {
+  if (hasOwn(object, 'redo')) {
     const N = parseInt(`${object.redo}`)
 
     if (!Number.isNaN(N)) {
@@ -105,5 +107,3 @@ function setCommand (cmd) {
   document.querySelector('#command').value = `${cmd}`
 }
 
-// export async function preaasyncText2Path (text, fontName, points) {
-// }
