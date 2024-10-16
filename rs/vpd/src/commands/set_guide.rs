@@ -65,7 +65,7 @@ impl Command for SetGuide {
                 let reference = xy.reference.as_str();
 
                 if let Some(_) = &guide.x {
-                    let x = X::new(reference, xy.offset).resolve(&m.panel);
+                    let x = X::new(reference, xy.offset, 0.0).resolve(&m.panel);
 
                     for (k, v) in m.panel.guides.iter() {
                         if let Some(g) = &v.x {
@@ -78,7 +78,7 @@ impl Command for SetGuide {
                 }
 
                 if let Some(_) = &guide.y {
-                    let y = Y::new(reference, xy.offset).resolve(&m.panel);
+                    let y = Y::new(reference, xy.offset, 0.0).resolve(&m.panel);
 
                     for (k, v) in m.panel.guides.iter() {
                         if let Some(g) = &v.y {

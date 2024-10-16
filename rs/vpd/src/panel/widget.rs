@@ -78,20 +78,15 @@ impl IWidget for Widget {
     }
 
     fn set_x(&mut self, x: &X) {
-        self.xy.x = x.clone();
+        self.xy.set_x(x);
     }
 
     fn set_y(&mut self, y: &Y) {
-        self.xy.y = y.clone();
+        self.xy.set_y(y);
     }
 
     fn set_offset(&mut self, offset: &Option<Offset>) {
-        let x = X::new_with_offset(self.xy.x.reference.as_str(), self.xy.x.offset, offset);
-        let y = Y::new_with_offset(self.xy.y.reference.as_str(), self.xy.y.offset, offset);
-
-        self.xy.x = x;
-        self.xy.y = y;
-        self.xy.offset = offset.clone();
+        self.xy.set_offset(offset);
     }
 }
 
