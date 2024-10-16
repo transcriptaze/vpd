@@ -1,3 +1,5 @@
+use std::f32::consts::PI;
+
 use serde::{Deserialize, Deserializer, Serialize};
 
 use crate::module::IWidget;
@@ -28,24 +30,48 @@ pub struct Offset {
 
 impl XY {
     pub fn new(x: &X, y: &Y, offset: &Option<Offset>) -> XY {
+        let mut dx: f32 = 0.0;
+        let mut dy: f32 = 0.0;
+
+        if let Some(v) = offset {
+            let angle = v.angle;
+            let radius = v.radius;
+
+            dx = radius * (angle * PI / 180.0).cos();
+            dy = radius * (angle * PI / 180.0).sin();
+        }
+
         XY {
-            x: X::new_with_offset(x.reference.as_str(), x.offset, &offset),
-            y: Y::new_with_offset(y.reference.as_str(), y.offset, &offset),
+            x: X::new(x.reference.as_str(), x.offset, dx),
+            y: Y::new(y.reference.as_str(), y.offset, dy),
             offset: offset.clone(),
         }
     }
 
     pub fn set_x(&mut self, x: &X) {
-        self.x = x.clone();
+        self.x.reference = x.reference.clone();
+        self.x.offset = x.offset;
     }
 
     pub fn set_y(&mut self, y: &Y) {
-        self.y = y.clone();
+        self.y.reference = y.reference.clone();
+        self.y.offset = y.offset;
     }
 
     pub fn set_offset(&mut self, offset: &Option<Offset>) {
-        self.x = X::new_with_offset(self.x.reference.as_str(), self.x.offset, offset);
-        self.y = Y::new_with_offset(self.y.reference.as_str(), self.y.offset, offset);
+        let mut dx: f32 = 0.0;
+        let mut dy: f32 = 0.0;
+
+        if let Some(v) = offset {
+            let angle = v.angle;
+            let radius = v.radius;
+
+            dx = radius * (angle * PI / 180.0).cos();
+            dy = radius * (angle * PI / 180.0).sin();
+        }
+
+        self.x = X::new(self.x.reference.as_str(), self.x.offset, dx);
+        self.y = Y::new(self.y.reference.as_str(), self.y.offset, dy);
         self.offset = offset.clone();
     }
 
@@ -68,10 +94,23 @@ impl<'de> Deserialize<'de> for XY {
         let xy = _XY::deserialize(deserializer)?;
 
         match xy {
-            #[rustfmt::skip]
-            _XY::V0 {x,y,offset } => {
-                Ok(XY::new(&x,&y,&offset))
-            },
+            _XY::V0 { x, y, offset } => {
+                let mut dx: f32 = 0.0;
+                let mut dy: f32 = 0.0;
+
+                if let Some(v) = offset.clone() {
+                    let angle = v.angle;
+                    let radius = v.radius;
+
+                    dx = radius * (angle * PI / 180.0).cos();
+                    dy = radius * (angle * PI / 180.0).sin();
+                }
+
+                let _x = X::new(&x.reference, x.offset, dx);
+                let _y = Y::new(&y.reference, y.offset, dy);
+
+                Ok(XY::new(&_x, &_y, &offset))
+            }
         }
     }
 }

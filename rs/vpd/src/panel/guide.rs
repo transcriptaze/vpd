@@ -17,12 +17,12 @@ pub struct Guide {
 impl Guide {
     pub fn new(id: &str, orientation: &str, reference: &str, offset: f32) -> Guide {
         let x = match orientation {
-            "vertical" => Some(X::new(reference, offset)),
+            "vertical" => Some(X::new(reference, offset, 0.0)),
             _ => None,
         };
 
         let y = match orientation {
-            "horizontal" => Some(Y::new(reference, offset)),
+            "horizontal" => Some(Y::new(reference, offset, 0.0)),
             _ => None,
         };
 

@@ -1,11 +1,8 @@
-use std::f32::consts::PI;
-
 use regex::Regex;
 use serde::{Deserialize, Deserializer, Serialize};
 use std::fmt;
 
 use crate::panel::xy;
-use crate::panel::Offset;
 use crate::panel::Panel;
 
 use crate::utils::log;
@@ -15,51 +12,27 @@ use crate::warnf;
 pub struct X {
     pub reference: String,
     pub offset: f32,
-    pub angle: f32,
-    pub radius: f32,
+
+    #[serde(skip_serializing, skip_deserializing)]
+    pub _dr: f32,
 
     #[serde(skip_serializing, skip_deserializing)]
     pub _offset: f32,
 }
 
 impl X {
-    pub fn new(reference: &str, dx: f32) -> X {
+    pub fn new(reference: &str, dx: f32, dr: f32) -> X {
         X {
             reference: reference.to_string(),
             offset: dx,
-            angle: 0.0,
-            radius: 0.0,
-
-            _offset: dx,
-        }
-    }
-
-    pub fn new_with_offset(reference: &str, dx: f32, offset: &Option<Offset>) -> X {
-        let mut angle: f32 = 0.0;
-        let mut radius: f32 = 0.0;
-
-        if let Some(v) = offset {
-            angle = v.angle;
-            radius = v.radius;
-        }
-
-        let dr = radius * (angle * PI / 180.0).cos();
-
-        X {
-            reference: reference.to_string(),
-            offset: dx,
-            angle: angle,
-            radius: radius,
-
+            _dr: dr,
             _offset: dx + dr,
         }
     }
 
     pub fn set_offset(&mut self, offset: f32) {
-        let dr = self.radius * (self.angle * PI / 180.0).cos();
-
         self.offset = offset;
-        self._offset = offset + dr;
+        self._offset = offset + self._dr;
     }
 
     pub fn resolve(&self, panel: &Panel) -> f32 {
@@ -149,30 +122,15 @@ impl<'de> Deserialize<'de> for X {
         struct _X {
             reference: String,
             offset: f32,
-            angle: Option<f32>,
-            radius: Option<f32>,
         }
 
         let x = _X::deserialize(deserializer)?;
-        let mut angle: f32 = 0.0;
-        let mut radius: f32 = 0.0;
-
-        if let Some(v) = x.angle {
-            angle = v;
-        }
-
-        if let Some(v) = x.radius {
-            radius = v;
-        }
-
-        let dr = radius * (angle * PI / 180.0).cos();
 
         Ok(X {
             reference: x.reference.trim().to_string(),
             offset: x.offset,
-            angle: angle,
-            radius: radius,
-            _offset: x.offset + dr,
+            _dr: 0.0,
+            _offset: x.offset + 0.0,
         })
     }
 }

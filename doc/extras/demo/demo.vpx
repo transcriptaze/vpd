@@ -33,3 +33,6 @@ new light green (parameter p5 90°,15.24mm) LED
 new light blue (parameter p5 120°,15.24mm) LED
 new light indigo (parameter p5 150°,15.24mm) LED
 new light violet (parameter p5 180°,15.24mm) LED
+set parameter p4 xy v2,h2+10.16mm
+decorate (parameter p1) with "CircularGraduations" (scale 1.1)
+decorate (parameter p5) with "CircularGraduations" (scale 1.4)

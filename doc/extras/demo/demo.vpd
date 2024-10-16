@@ -17,15 +17,11 @@
         "xy": {
           "x": {
             "reference": "v2",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h1",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "offset": null
         },
@@ -41,15 +37,11 @@
         "xy": {
           "x": {
             "reference": "v1",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h1",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "offset": null
         },
@@ -62,15 +54,11 @@
         "xy": {
           "x": {
             "reference": "v1",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h2",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "offset": null
         },
@@ -83,15 +71,11 @@
         "xy": {
           "x": {
             "reference": "v1",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h3",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "offset": null
         },
@@ -104,15 +88,11 @@
         "xy": {
           "x": {
             "reference": "v2",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h2",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 10.16
           },
           "offset": null
         },
@@ -125,15 +105,11 @@
         "xy": {
           "x": {
             "reference": "v3",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h5",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "offset": null
         },
@@ -148,15 +124,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 0.0,
@@ -172,15 +144,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 30.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 30.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 30.0,
@@ -196,15 +164,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 60.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 60.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 60.0,
@@ -220,15 +184,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 90.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 90.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 90.0,
@@ -244,15 +204,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 120.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 120.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 120.0,
@@ -268,15 +224,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 150.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 150.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 150.0,
@@ -292,15 +244,11 @@
         "xy": {
           "x": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 180.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "y": {
             "reference": "parameter<p5>",
-            "offset": 0.0,
-            "angle": 180.0,
-            "radius": 15.24
+            "offset": 0.0
           },
           "offset": {
             "angle": 180.0,
@@ -319,15 +267,11 @@
         "xy": {
           "x": {
             "reference": "centre",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "y": {
             "reference": "h0",
-            "offset": 0.0,
-            "angle": 0.0,
-            "radius": 0.0
+            "offset": 0.0
           },
           "offset": null
         },
@@ -353,7 +297,50 @@
         }
       }
     ],
-    "decorations": [],
+    "decorations": [
+      {
+        "version": 1,
+        "id": "d1",
+        "name": "CircularGraduations",
+        "xy": {
+          "x": {
+            "reference": "parameter<p1>",
+            "offset": 0.0
+          },
+          "y": {
+            "reference": "parameter<p1>",
+            "offset": 0.0
+          },
+          "offset": null
+        },
+        "scale": 1.1,
+        "stretch": {
+          "x": 1.0,
+          "y": 1.0
+        }
+      },
+      {
+        "version": 1,
+        "id": "d2",
+        "name": "CircularGraduations",
+        "xy": {
+          "x": {
+            "reference": "parameter<p5>",
+            "offset": 0.0
+          },
+          "y": {
+            "reference": "parameter<p5>",
+            "offset": 0.0
+          },
+          "offset": null
+        },
+        "scale": 1.4,
+        "stretch": {
+          "x": 1.0,
+          "y": 1.0
+        }
+      }
+    ],
     "gutter": 5.0,
     "origin": {
       "x": {
@@ -363,77 +350,56 @@
       "y": {
         "reference": "top",
         "offset": 0.0
-      }
+      },
+      "offset": null
     },
     "guides": {
-      "h0": {
-        "id": "h0",
+      "h1": {
+        "id": "h1",
         "x": null,
         "y": {
-          "reference": "top",
-          "offset": 10.16,
-          "angle": 0.0,
-          "radius": 0.0
-        }
-      },
-      "h3": {
-        "id": "h3",
-        "x": null,
-        "y": {
-          "reference": "h2",
-          "offset": 20.32,
-          "angle": 0.0,
-          "radius": 0.0
-        }
-      },
-      "v3": {
-        "id": "v3",
-        "x": {
-          "reference": "centre",
-          "offset": 0.0,
-          "angle": 0.0,
-          "radius": 0.0
-        },
-        "y": null
-      },
-      "h4": {
-        "id": "h4",
-        "x": null,
-        "y": {
-          "reference": "h3",
-          "offset": 20.32,
-          "angle": 0.0,
-          "radius": 0.0
-        }
-      },
-      "h2": {
-        "id": "h2",
-        "x": null,
-        "y": {
-          "reference": "h1",
-          "offset": 20.32,
-          "angle": 0.0,
-          "radius": 0.0
+          "reference": "h0",
+          "offset": 15.24
         }
       },
       "v1": {
         "id": "v1",
         "x": {
           "reference": "left",
-          "offset": 15.24,
-          "angle": 0.0,
-          "radius": 0.0
+          "offset": 15.24
         },
         "y": null
       },
-      "h1": {
-        "id": "h1",
+      "h3": {
+        "id": "h3",
         "x": null,
         "y": {
-          "reference": "h0",
-          "offset": 15.24,
-          "angle": 0.0,
-          "radius": 0.0
+          "reference": "h2",
+          "offset": 20.32
+        }
+      },
+      "v2": {
+        "id": "v2",
+        "x": {
+          "reference": "right",
+          "offset": -15.24
+        },
+        "y": null
+      },
+      "h0": {
+        "id": "h0",
+        "x": null,
+        "y": {
+          "reference": "top",
+          "offset": 10.16
+        }
+      },
+      "h4": {
+        "id": "h4",
+        "x": null,
+        "y": {
+          "reference": "h3",
+          "offset": 20.32
         }
       },
       "h5": {
@@ -441,20 +407,24 @@
         "x": null,
         "y": {
           "reference": "h4",
-          "offset": 20.32,
-          "angle": 0.0,
-          "radius": 0.0
+          "offset": 20.32
         }
       },
-      "v2": {
-        "id": "v2",
+      "v3": {
+        "id": "v3",
         "x": {
-          "reference": "right",
-          "offset": -15.24,
-          "angle": 0.0,
-          "radius": 0.0
+          "reference": "centre",
+          "offset": 0.0
         },
         "y": null
+      },
+      "h2": {
+        "id": "h2",
+        "x": null,
+        "y": {
+          "reference": "h1",
+          "offset": 20.32
+        }
       }
     }
   },
@@ -493,6 +463,9 @@
     "new light green (parameter p5 90°,15.24mm) LED",
     "new light blue (parameter p5 120°,15.24mm) LED",
     "new light indigo (parameter p5 150°,15.24mm) LED",
-    "new light violet (parameter p5 180°,15.24mm) LED"
+    "new light violet (parameter p5 180°,15.24mm) LED",
+    "set parameter p4 xy v2,h2+10.16mm",
+    "decorate (parameter p1) with \"CircularGraduations\" (scale 1.1)",
+    "decorate (parameter p5) with \"CircularGraduations\" (scale 1.4)"
   ]
 }

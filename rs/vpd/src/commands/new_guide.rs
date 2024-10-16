@@ -79,7 +79,7 @@ impl Command for NewGuide {
         };
 
         if orientation == "vertical" {
-            let x = X::new(reference, self.offset).resolve(&m.panel);
+            let x = X::new(reference, self.offset, 0.0).resolve(&m.panel);
 
             for (k, v) in m.panel.guides.iter() {
                 if let Some(g) = &v.x {
@@ -92,7 +92,7 @@ impl Command for NewGuide {
         }
 
         if orientation == "horizontal" {
-            let y = Y::new(reference, self.offset).resolve(&m.panel);
+            let y = Y::new(reference, self.offset, 0.0).resolve(&m.panel);
 
             for (k, v) in m.panel.guides.iter() {
                 if let Some(g) = &v.y {
