@@ -121,10 +121,10 @@
 
 13. Decorate the parameter knobs with graduations:
     ```
-    decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
+    decorate (parameter "volume") with "CircularGraduations" (scale 1.25)
     ```
     ```
-    decorate (parameter "distortion") with "CircularGraduations" (scale 1.1)
+    decorate (parameter "distortion") with "CircularGraduations" (scale 1.25)
     ```
 
 14. Decorate the outputs with rectangular pads:
@@ -242,14 +242,20 @@ To save a project as a _.vpx_ file:
 
 - Clicking on the _.h_ button saves the panel layout XY coordinates as a C++ header file.
 
-### <img width="24" src="doc/images/export-module-helper.png"> >>
+### <img width="24" src="doc/images/export-module-helper.png"> >
 
-- Clicking on the _>>_ button copies the _helper.py_ script to generate a new module to the clipboard.
+- Clicking on the _>_ button copies the _helper.py_ script to generate a new module to the clipboard.
 
 
-### Undo/Redo
+### <img width="24" src="doc/images/undo.png"> Undo
 
-_-- one of these days ---_
+- Undoes the last command and displays it in the command entry panel.
+
+
+### <img width="24" src="doc/images/undo.png"> Redo
+
+- Undoes the most recent _Undo_, if that even makes sense.
+
 
 ### Macro keys
 
@@ -307,13 +313,18 @@ Examples:
 
 ##### Location formats
 
-| Type         | `<xy>`      | Description                                                              | Example                         |
-|--------------|-------------|--------------------------------------------------------------------------|---------------------------------|
-| **absolute** | `@x,y`      | Absolute x,y location in mm relative to the top left corner of the panel | `@4.5mm,7.62mm`                 |
-| **relative** | `x,y`       | x,y location in mm relative to the origin                                | `4.5mm,-7.62mm`                 |
-| **geometry** | `h,v`       | x,y location relative to the geometry of the panel                       | `left+4mm,top+10.16mm`          |
-| **guides**   | `h,v`       | x,y location relative to the guidelines                                  | `v1+4mm,h1-10mm`                |
-| **decorate** | `(e [x,y])` | x,y location relative to the component _e_                               | `(input "audio" +4.5mm,-4.5mm)` |
+| Type          | `<xy>`               | Description                                                                                     | Example                        |
+|---------------|----------------------|-------------------------------------------------------------------------------------------------|--------------------------------|
+| **absolute**  | `@x,y`               | Absolute x,y location in mm relative to the top left corner of the panel                        | `@4.5mm,7.62mm`                |
+|               | `@angle,radius`      | Absolute x,y location in polar coordinates relative to the top left corner of the panel. The angle may be written as `°`,`deg` or `degrees` | `@30°,10.16mm` _or_ `30deg,10mm` _or_ `30degrees,10mm` |
+| **relative**  | `x,y`                | x,y location in mm relative to the origin                                                       | `4.5mm,-7.62mm`                |
+|               | `angle,radius`       | x,y location in mm relative to the origin                                                       | `30°,10.16mm  `                |
+| **geometry**  | `h,v`                | x,y location relative to the geometry of the panel                                              | `left+4mm,top+10.16mm`         |
+|               | `(h,v angle,radius)` | x,y location in polar coordinates, relative to the geometry of the panel                        | `(top,left 30°,10.16mm)`       |
+| **guides**    | `h,v`                | x,y location relative to the guidelines                                                         | `v1+4mm,h1-10mm`               |
+|               | `(h,v angle,radius)` | x,y location in polar coordinates relative to the guidelines                                    | `(v1,h1 30°,10.16mm)`          |
+| **reference** | `(e [x,y])`          | x,y location relative to the component _e_                                                      | `(input "audio" +4.5mm,-4.5mm)`|
+|               | `(e [angle,radius])` | x,y location in polar coordinates relative to the component _e_                                 | `(input "audio" 30°,10.16mm)`  |
    
 
 #### Parts
@@ -322,6 +333,11 @@ Components can be displayed on the _overlay_ layer as the physical representatio
 parts comprises:
 - `RoundBlackKnob`
 - `PJ301M`
+- `Trimpot`
+- `PushButton`
+- `Button`
+- `Slider`
+- `LED`
 
 An _unknown_ part will be displayed as an anonymous grey circle devoid of personality, joy or future.
 
@@ -360,8 +376,10 @@ xy   New origin location. May be an absolute location or a reference to the geom
 Examples:
 ```
 set origin @10mm,10mm
+set origin @30°,10mm
 set origin centre,middle
 set origin left+2.54mm,top+10.16mm
+set origin top,left -30°,10.16mm
 ```
 
 #### `new guide`
@@ -604,10 +622,16 @@ _Notes:_
 _Examples:_
 ```
 new input frequency @10.16mm,10.16mm
+new input frequency @30°,10.16mm
 new input frequency @10.16mm,10.16mm PJ301M
 new input frequency 10.16mm,10.16mm PJ301M
+new input frequency 30°,10.16mm PJ301M
 new input frequency left+5.08mm,top+2H PJ301M
-new input frequency v1+5.08mm,v2+7.62mm PJ301M
+new input frequency (left,top 30°,10.16mm)
+new input frequency v1+5.08mm,h2+7.62mm PJ301M
+new input frequency (v1,h2 30°,10.16mm) PJ301M
+new input frequency (parameter p1  10.16mm,5.08mm) PJ301M
+new input frequency (parameter p1  30°,10.16mm) PJ301M
 ````
 
 
@@ -662,7 +686,9 @@ set input freq x v1+10mm
 set input freq y @55.5mm
 set input freq x v1+10mm
 set input freq xy v1,h1
+set input freq xy (v1,h1 30°,10mm)
 set input freq xy (parameter in +10mm,+10mm)
+set input freq xy (parameter in 30°,10mm)
 set input freq x  (parameter in -2H)
 set input freq y  (parameter in +5h)
 set input freq part PJ301M
@@ -695,7 +721,9 @@ new output audio @10.16mm,10.16mm
 new output audio @10.16mm,10.16mm PJ301M
 new output audio 10.16mm,10.16mm PJ301M
 new output audio left+5.08mm,top+2H PJ301M
-new output audio v1+5.08mm,v2+7.62mm PJ301M
+new output audio (left,top 30°,10mm) PJ301M
+new output audio v1+5.08mm,h2+7.62mm PJ301M
+new output audio (v1,h2 30°,10mm) PJ301M
 ````
 
 #### `delete output`
@@ -750,7 +778,9 @@ set output left x v1+10mm
 set output left y @55.5mm
 set output left x v1+10mm
 set output left xy v1,h1
+set output left xy (v1,h1 30°,10mm)
 set output left xy (output right +10mm,+10mm)
+set output left xy (output right 30°,10mm)
 set output left x  (output right -2H)
 set output left y  (output right +5h)
 set output left part PJ301M
@@ -780,10 +810,13 @@ _Notes:_
 _Examples:_
 ```
 new parameter volume @10.16mm,10.16mm
+new parameter volume @30°,10.16mm
 new parameter volume @10.16mm,10.16mm PJ301M
 new parameter volume 10.16mm,10.16mm PJ301M
 new parameter volume left+5.08mm,top+2H PJ301M
-new parameter volume v1+5.08mm,v2+7.62mm PJ301M
+new parameter volume (left,top 30°,10.16mm) PJ301M
+new parameter volume v1+5.08mm,h2+7.62mm PJ301M
+new parameter volume (v1,h2 30°,10.16mm) PJ301M
 ````
 
 #### `delete parameter`
@@ -837,6 +870,8 @@ set parameter volume x v1+10mm
 set parameter volume y @55.5mm
 set parameter volume x v1+10mm
 set parameter volume xy v1,h1
+set parameter volume xy (v1,h1 30°,10,16mm)
+set parameter volume xy (input i1 30°,10,16mm)
 set parameter volume part RoundGreenKnob
 set parameter volume part none
 ```
@@ -864,11 +899,16 @@ _Notes:_
 _Examples:_
 ```
 new light "on" @10.16mm,10.16mm
+new light "on" @30°,10.16mm
 new light on @10.16mm,10.16mm LED
 new light on 10.16mm,10.16mm LED
+new light on 30°,10.16mm LED
 new light recording left+5.08mm,top+2H "Red LED"
-new light recording v1+5.08mm,v2+7.62mm "Red LED"
+new light recording (left,top 30°,10.16mm) "Red LED"
+new light recording v1+5.08mm,h2+7.62mm "Red LED"
+new light recording (v1,h2 30°,10.16mm) "Red LED"
 new light recording (parameter recording) LED
+new light recording (parameter recording 30°,10.16mm) LED
 ````
 
 
@@ -924,6 +964,7 @@ set light on x v1+10mm
 set light on y @55.5mm
 set light on x v1+10mm
 set light on xy v1,h1
+set light on xy (v1,h1 30°,10mm)
 set light on part RedLED
 set light on part none
 ```
@@ -951,10 +992,14 @@ _Notes:_
 _Examples:_
 ```
 new widget "channels" @10.16mm,10.16mm
+new widget "channels" @30°,10.16mm
 new widget channels  @10.16mm,10.16mm "ChDsp"
 new widget channels  10.16mm,10.16mm  "ChDsp"
+new widget channels  30°,10.16mm  "ChDsp"
 new widget channels  left+5.08mm,top+2H "ChDsp"
-new widget channels  v1+5.08mm,v2+7.62mm "ChDsp"
+new widget channels  (left,top 30°,10mm) "ChDsp"
+new widget channels  v1+5.08mm,h2+7.62mm "ChDsp"
+new widget channels  (v1,h2 30°,10mm) "ChDsp"
 ```
 
 
@@ -1010,6 +1055,7 @@ set widget display x v1+10mm
 set widget display y @55.5mm
 set widget display x v1+10mm
 set widget display xy v1,h1
+set widget display xy (v1,h1 30°,10.16mm)
 set widget display part LCD
 set widget display part none
 ```
@@ -1049,6 +1095,7 @@ _Notes:_
 _Examples:_
 ```
 new label "Lorem Ipsum" centre, top+10.16mm
+new label "Lorem Ipsum" (centre, top 30°,10.16mm)
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline
 new label "Lorem Ipsum" centre, top+10.16mm "Lato-Bold" 14.5pt centre,baseline red
@@ -1107,6 +1154,7 @@ set label qwerty text 'uiop'
 set label qwerty x v1+10mm
 set label qwerty y @55.5mm
 set label qwerty xy v1,h1
+set label qwerty xy (v1,h1 30°,10mm)
 set label qwerty font RobotoMono-Bold
 set label qwerty size 14.5pt
 set label qwerty halign centre
@@ -1147,6 +1195,7 @@ _Examples:_
 decorate (parameter "volume") with "CircularGraduations"
 decorate (parameter "volume") with "CircularGraduations" (scale 1.1)
 decorate (output "audio" +0.0mm,-2.54mm) with Pad (stretch 1,1.5)
+decorate (output "audio" 30°,10mm) with Pad (stretch 1,1.5)
 ````
 
 
@@ -1204,6 +1253,7 @@ set decoration d1 (stretch 1.1,0.9)
 set decoration d1 (scale 0.5)
 set decoration (input frequency) CircularGraduations x +10mm
 set decoration (output left) Pad (stretch 1.25,2.5)
+set decoration (output left 30°,10.16mm) Pad (stretch 1.25,2.5)
 ```
 
 ---

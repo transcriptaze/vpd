@@ -29,7 +29,7 @@ new label "VOL"     (input  "volume"   +0mm,-5.08mm) "RobotoCondensed-Regular" 8
 new label "LEFT"    (output "left"     -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle #ffffff,#222222
 new label "RIGHT"   (output "right"    -5.08mm,+0mm) "RobotoCondensed-Bold"    8pt right,middle #ffffff,#222222
 
-decorate (parameter "volume")     with "CircularGraduations" (scale 1.1)
-decorate (parameter "distortion") with "CircularGraduations" (scale 1.1)
+decorate (parameter "volume")     with "CircularGraduations" (scale 1.25)
+decorate (parameter "distortion") with "CircularGraduations" (scale 1.25)
 decorate (output    "left"  -3.54mm,+0.0mm) with Pad (stretch 2,0.9)
 decorate (output    "right" -3.54mm,+0.0mm) with Pad (stretch 2,0.9)
