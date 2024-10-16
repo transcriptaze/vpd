@@ -49,7 +49,7 @@
 
 7. What's with that weird-ass 0.338 scaling factor in the parts SVGs?
 
-   Despite the user manual emphasizing the use of millimeters, the VCV core and fundamental components are apparently designed 
+   Despite the VCV developer guide emphasizing the use of millimeters, the VCV core and fundamental components are apparently designed 
    for a panel size of 15px by 380px (cf. https://community.vcvrack.com/t/scaling-of-rack-controls-in-svg/22339). VPD
    being a well-behaved thing that follows the rules, uses a panel size of 5.08mm by 128.5mm. Scaling the widgets from
    the core and fundamental components:
