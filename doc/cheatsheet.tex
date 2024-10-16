@@ -3,6 +3,7 @@
 \usepackage{tcolorbox}
 \usepackage{fontspec}
 \usepackage{tabularx}
+\usepackage{multicol}
 \usepackage{enumitem}
 \usepackage[export]{adjustbox}
 
@@ -155,40 +156,43 @@
         \vspace{0.15cm}
         \textit{preloaded fonts:} \\
         \begin{itemize}[noitemsep,nolistsep]
-        \item Lato-Regular \\
-        \item Lato-Semibold \\
-        \item Lato-Bold \\
+        \item {\small Lato-Regular} \\
+        \item {\small Lato-Semibold} \\
+        \item {\small Lato-Bold} \\
         \vspace{0.25cm}
-        \item RobotoMono-Regular \\
-        \item RobotoMono-Bold \\
-        \item RobotoCondensed-Regular \\
-        \item RobotoCondensed-Bold \\
+        \item {\small RobotoMono-Regular} \\
+        \item {\small RobotoMono-Bold} \\
+        \item {\small RobotoCondensed-Regular} \\
+        \item {\small RobotoCondensed-Bold} \\
         \vspace{0.25cm}
-        \item StyleScript-Regular \\
+        \item {\small StyleScript-Regular} \\
         \end{itemize}
       \end{flushleft}
     \end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm,colframe=Periwinkle,title=parts]
-      \begin{flushleft}
-        list fonts \\
-        \vspace{0.15cm}
-        \textit{preloaded parts:} \\
-        \begin{itemize}[noitemsep,nolistsep]
-        \item RoundBlackKnob \\
-        \item PJ301M \\
-        \end{itemize}
-      \end{flushleft}
+        list parts
+        \vspace{-0.25cm}
+        \begin{multicols}{2}
+          \begin{itemize}[noitemsep,nolistsep]
+            \item {\small RoundBlackKnob}
+            \item {\small PJ301M}
+            \item {\small Trimpot}
+            \item {\small PushButton}
+            \item {\small Button}
+            \item {\small Slider}
+            \item {\small LED}
+          \end{itemize}
+        \end{multicols}
     \end{tcolorbox}
 
     \begin{tcolorbox}[width=7.5cm,colframe=Fuchsia,title=decorations]
       \begin{flushleft}
         list decorations \\
         \vspace{0.15cm}
-        \textit{preloaded decorations:} \\
         \begin{itemize}[noitemsep,nolistsep]
-        \item CircularGraduations \\
-        \item Pad \\
+        \item {\small CircularGraduations} \\
+        \item {\small Pad} \\
         \end{itemize}
       \end{flushleft}
     \end{tcolorbox}

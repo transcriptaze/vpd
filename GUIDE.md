@@ -242,9 +242,9 @@ To save a project as a _.vpx_ file:
 
 - Clicking on the _.h_ button saves the panel layout XY coordinates as a C++ header file.
 
-### <img width="24" src="doc/images/export-module-helper.png"> >>
+### <img width="24" src="doc/images/export-module-helper.png"> >
 
-- Clicking on the _>>_ button copies the _helper.py_ script to generate a new module to the clipboard.
+- Clicking on the _>_ button copies the _helper.py_ script to generate a new module to the clipboard.
 
 
 ### <img width="24" src="doc/images/undo.png"> Undo
