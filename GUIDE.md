@@ -316,8 +316,7 @@ Examples:
 | Type          | `<xy>`               | Description                                                                                     | Example                        |
 |---------------|----------------------|-------------------------------------------------------------------------------------------------|--------------------------------|
 | **absolute**  | `@x,y`               | Absolute x,y location in mm relative to the top left corner of the panel                        | `@4.5mm,7.62mm`                |
-|               | `@angle,radius`      | Absolute x,y location in polar coordinates relative to the top left corner of the panel. 
-                                         The angle may be written as `°``,`deg` or `degrees`                                             | `@30°,10.16mm`                 |
+|               | `@angle,radius`      | Absolute x,y location in polar coordinates relative to the top left corner of the panel. The angle may be written as `°`,`deg` or `degrees` | `@30°,10.16mm` _or_ `30deg,10mm` _or_ `30degrees,10mm` |
 | **relative**  | `x,y`                | x,y location in mm relative to the origin                                                       | `4.5mm,-7.62mm`                |
 |               | `angle,radius`       | x,y location in mm relative to the origin                                                       | `30°,10.16mm  `                |
 | **geometry**  | `h,v`                | x,y location relative to the geometry of the panel                                              | `left+4mm,top+10.16mm`         |
