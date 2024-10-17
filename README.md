@@ -167,6 +167,9 @@ You need a **bunch** of tools:
 
 2. The _web app_ is not bundled because I cannot for the life of me figure out how to resolve all the wasm dependencies.
 
+3. The DuckDuckGo browser for Mac does not support:
+   - `Object.hasOwn`
+   - `navigator.storage`
 
 ### Build instructions
 

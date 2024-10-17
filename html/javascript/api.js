@@ -1,5 +1,5 @@
 import * as db from './db.js'
-import { hasOwn } from './VPD.js'
+import { hasOwn } from './HAL.js'
 
 export { load, unload, save, list } from './fs.js'
 export { prepareFont, text2path } from './text.js'
@@ -8,17 +8,17 @@ export function set (json) {
   try {
     const object = JSON.parse(json)
 
-      if (hasOwn(object, 'module') && object.module != null) {
-        setModuleInfo(object.module)
-      }
+    if (hasOwn(object, 'module') && object.module != null) {
+      setModuleInfo(object.module)
+    }
 
-      if (hasOwn(object, 'history') && object.history != null) {
-        setHistoryInfo(object.history)
-      }
+    if (hasOwn(object, 'history') && object.history != null) {
+      setHistoryInfo(object.history)
+    }
 
-      if (hasOwn(object, 'command') && object.command != null) {
-        setCommand(object.command)
-      }
+    if (hasOwn(object, 'command') && object.command != null) {
+      setCommand(object.command)
+    }
   } catch (e) {
     console.error(`${e}`)
     console.error(e)
@@ -106,4 +106,3 @@ function setHistoryInfo (object) {
 function setCommand (cmd) {
   document.querySelector('#command').value = `${cmd}`
 }
-

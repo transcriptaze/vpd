@@ -323,17 +323,3 @@ function unbusy () {
 
   windmill.classList.remove('visible')
 }
-
-// NTS: DuckDuckGo browser does not implement hasOwn
-export function hasOwn(object, property) {
-    if (object && Object.hasOwn) {
-      return Object.hasOwn(object, 'module')
-    } 
-
-    if (object && Object.hasOwnProperty) {
-      return object.hasOwnProperty(property)
-    }
-
-      return false
-  }
-
