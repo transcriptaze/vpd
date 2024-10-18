@@ -167,6 +167,10 @@ export function onUndo () {
   }
 }
 
+export async function onRedo () {
+  console.log('** not implemented **')
+}
+
 export function onTrash () {
   const trash = document.querySelector('#trash')
   const info = document.querySelector('fieldset#module')

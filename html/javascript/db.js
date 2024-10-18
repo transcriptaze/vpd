@@ -15,7 +15,29 @@ const OPFS = {
       .catch((err) => onError(err))
   },
 
-  find: async function (filepath, fh, path) {
+  find: async function (filepath, handle = null, path = []) {
+    if (handle == null) {
+      return navigator.storage.getDirectory()
+        .then((h) => this.find(filepath, h, []))
+    }
+
+    if (filepath.length > 1) {
+      const dir = filepath[0]
+
+      return handle.getDirectoryHandle(dir, { create: true })
+        .then((h) => this.find(filepath.slice(1), h, [...path, ...[dir]]))
+    }
+
+    if (filepath.length > 0) {
+      const file = `${normalise(filepath[0])}`
+      for await (const [k, h] of handle.entries()) {
+        if (normalise(k) === file) {
+          return h
+        }
+      }
+    }
+
+    return null
   },
 
   retrieve: function (folder, filename) {
@@ -190,23 +212,11 @@ export async function storeFont (name, blob) {
 }
 
 export async function getFont (font) {
-  const key = `${normalise(font)}`
-
   if (navigator.storage) {
-    return navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => folder.entries())
-      .then(async (it) => {
-        for await (const [k, fh] of it) {
-          if (normalise(k) === key) {
-            return fh
-          }
-        }
+    const filepath = [`${BASE}`, 'fonts', `${font}`]
 
-        return null
-      })
-      .then((fh) => fh != null ? fh.getFile() : null)
+    return OPFS.find(filepath)
+      .then((handle) => handle != null ? handle.getFile() : null)
       .then((file) => file != null ? file.arrayBuffer() : null)
       .then((buffer) => buffer)
       .catch((err) => onError(err))
