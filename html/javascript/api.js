@@ -21,7 +21,6 @@ export function set (json) {
     }
   } catch (e) {
     console.error(`${e}`)
-    console.error(e)
   }
 }
 

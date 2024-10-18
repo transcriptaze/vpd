@@ -5,7 +5,10 @@
 - [ ] DuckDuckGo
       - [x] api.js::hasOwn
       - [ ] db.js::localStorage
-
+            - [x] project
+            - [x] history
+            - [x] macros
+            - [ ] fonts
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

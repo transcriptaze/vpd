@@ -169,7 +169,7 @@ You need a **bunch** of tools:
 
 3. The DuckDuckGo browser for Mac does not support:
    - `Object.hasOwn`
-   - `navigator.storage`
+   - `OPFS`
 
 ### Build instructions
 

@@ -1,9 +1,85 @@
 const BASE = 'VPD'
-const MACROS = 'VPD.macros'
 const FONTS = new Set()
 
 // Notes:
-// 1. DuckDuckGo browser does not support navigator.storage
+// 1. DuckDuckGo browser does not support OPFS
+
+const OPFS = {
+  store: function (folder, filename, bytes) {
+    navigator.storage.getDirectory()
+      .then((root) => root.getDirectoryHandle(folder, { create: true }))
+      .then((base) => base.getFileHandle(filename, { create: true }))
+      .then((fh) => fh.createWritable({ keepExistingData: false }))
+      .then((stream) => save(stream, bytes))
+      .then(() => console.log(`stored ${filename} to OPFS (${bytes.length} bytes)`))
+      .catch((err) => onError(err))
+  },
+
+  find: async function (filepath, fh, path) {
+  },
+
+  retrieve: function (folder, filename) {
+    return navigator.storage.getDirectory()
+      .then((root) => root.getDirectoryHandle(folder, { create: true }))
+      .then((base) => base.getFileHandle(filename, { create: true }))
+      .then((fh) => fh.getFile())
+      .then((file) => file.arrayBuffer())
+      .then((buffer) => {
+        console.log(`restored ${filename} from OPFS (${buffer.byteLength} bytes)`)
+        return buffer
+      })
+      .catch((err) => onError(err))
+  },
+
+  delete: function (folder, filename) {
+    navigator.storage.getDirectory()
+      .then((root) => root.getDirectoryHandle(folder, { create: true }))
+      .then((base) => base.removeEntry(filename))
+      .then(() => console.log(`deleted ${filename} from OPFS`))
+      .catch((err) => onError(err))
+  }
+}
+
+const LOCAL = {
+  store: function (folder, filename, bytes) {
+    try {
+      const encoded = btoa(String.fromCharCode.apply(null, bytes))
+
+      localStorage.setItem(`${folder}.${filename}`, encoded)
+      console.log(`stored ${filename} to local storage (${bytes.length} bytes)`)
+    } catch (err) {
+      onError(err)
+    }
+  },
+
+  find: async function (filepath, fh, path) {
+  },
+
+  retrieve: function (folder, filename) {
+    try {
+      const encoded = localStorage.getItem(`${BASE}.${filename}`)
+      if (encoded != null) {
+        const buffer = new Uint8Array(atob(encoded).split('').map(function (c) {
+          return c.charCodeAt(0)
+        }))
+
+        console.log(`restored ${filename} from local storage (${buffer.byteLength} bytes)`)
+        return buffer
+      }
+    } catch (err) {
+      onError(err)
+    }
+  },
+
+  delete: function (folder, filename) {
+    try {
+      localStorage.removeItem(`${BASE}.${filename}`)
+      console.log(`deleted ${filename} from local storage`)
+    } catch (err) {
+      onError(err)
+    }
+  }
+}
 
 export async function init () {
   if (navigator.storage) {
@@ -25,29 +101,17 @@ export function storeProject (blob) {
   const bytes = new Uint8Array(blob)
 
   if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getFileHandle('project', { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => save(stream, bytes))
-      .then(() => console.log(`stored project to OPFS (${bytes.length} bytes)`))
-      .catch((err) => onError(err))
+    OPFS.store(BASE, 'project', bytes)
+  } else if (localStorage) {
+    LOCAL.store(BASE, 'project', bytes)
   }
 }
 
 export async function getProject () {
   if (navigator.storage) {
-    return navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getFileHandle('project', { create: true }))
-      .then((fh) => fh.getFile())
-      .then((file) => file.arrayBuffer())
-      .then((buffer) => {
-        console.log(`restored project from OPFS (${buffer.byteLength} bytes)`)
-
-        return buffer
-      })
-      .catch((err) => onError(err))
+    return OPFS.retrieve(BASE, 'project')
+  } else if (localStorage) {
+    return LOCAL.retrieve(BASE, 'project')
   } else {
     return new Uint8Array()
   }
@@ -55,11 +119,9 @@ export async function getProject () {
 
 export function deleteProject () {
   if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.removeEntry('project'))
-      .then(() => console.log('deleted project from OPFS'))
-      .catch((err) => onError(err))
+    OPFS.delete(BASE, 'project')
+  } else if (localStorage) {
+    LOCAL.delete(BASE, 'project')
   }
 }
 
@@ -67,29 +129,17 @@ export async function storeHistory (blob) {
   const bytes = new Uint8Array(blob)
 
   if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getFileHandle('history', { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => save(stream, bytes))
-      .then(() => console.log(`stored history to OPFS (${bytes.length} bytes)`))
-      .catch((err) => onError(err))
+    OPFS.store(BASE, 'history', bytes)
+  } else if (localStorage) {
+    LOCAL.store(BASE, 'history', bytes)
   }
 }
 
 export async function getHistory () {
   if (navigator.storage) {
-    return navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getFileHandle('history', { create: true }))
-      .then((fh) => fh.getFile())
-      .then((file) => file.arrayBuffer())
-      .then((buffer) => {
-        console.log(`restored history from OPFS (${buffer.byteLength} bytes)`)
-
-        return buffer
-      })
-      .catch((err) => onError(err))
+    return OPFS.retrieve(BASE, 'history')
+  } else if (localStorage) {
+    return LOCAL.retrieve(BASE, 'history')
   } else {
     return new Uint8Array()
   }
@@ -97,23 +147,21 @@ export async function getHistory () {
 
 export function deleteHistory () {
   if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.removeEntry('history'))
-      .then(() => console.log('deleted history from OPFS'))
-      .catch((err) => onError(err))
+    OPFS.delete(BASE, 'history')
+  } else if (localStorage) {
+    LOCAL.delete(BASE, 'history')
   }
 }
 
 export function storeMacros (object) {
-  const key = MACROS
+  const key = `${BASE}.macros`
   const json = JSON.stringify(object)
 
   localStorage.setItem(key, json)
 }
 
 export function getMacros () {
-  const key = MACROS
+  const key = `${BASE}.macros`
   const json = localStorage.getItem(key)
 
   if (json != null) {
