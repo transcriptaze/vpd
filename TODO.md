@@ -15,6 +15,7 @@
 - [ ] Cheatsheet
       - [ ] XY
 
+- [ ] Flush font from cache on delete font
 - [ ] Export header file
       - [ ] pretty-print
       - [ ] optional prefix

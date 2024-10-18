@@ -394,6 +394,10 @@ main {
       button:disabled img {
         filter: invert(96%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(87%) contrast(113%);
       }
+
+      #debug {
+        display: none;
+      }
     }
   }
 

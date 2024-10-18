@@ -78,6 +78,7 @@
           </div>
           <div class="trash">
             <button id="trash" onclick="onTrash(event)" disabled><img src="./images/trash.svg" /></button>
+            <button id="debug" onclick="onDebug(event)"><img src="./images/bug.svg" /></button>
           </div>
         </div>
 
@@ -179,6 +180,10 @@
 
     window.onTrash = (event) => {
       VPD.onTrash()
+    }
+
+    window.onDebug = (event) => {
+      VPD.onDebug()
     }
 
     window.onError = (event) => {

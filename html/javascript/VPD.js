@@ -195,6 +195,12 @@ export function onTrash () {
   }
 }
 
+export async function onDebug () {
+  console.log('** DEBUG **')
+
+  console.log(db.listFonts())
+}
+
 export function onClickPanel (panel, x, y) {
   const bounds = panel.getBoundingClientRect()
   const dx = x / bounds.width

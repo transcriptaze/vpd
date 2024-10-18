@@ -5,16 +5,6 @@ const FONTS = new Set()
 // 1. DuckDuckGo browser does not support OPFS
 
 const OPFS = {
-  store: function (folder, filename, bytes) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(folder, { create: true }))
-      .then((base) => base.getFileHandle(filename, { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => save(stream, bytes))
-      .then(() => console.log(`stored ${filename} to OPFS (${bytes.length} bytes)`))
-      .catch((err) => onError(err))
-  },
-
   find: async function (filepath, handle = null, path = []) {
     if (handle == null) {
       return navigator.storage.getDirectory()
@@ -23,7 +13,6 @@ const OPFS = {
 
     if (filepath.length > 1) {
       const dir = filepath[0]
-
       return handle.getDirectoryHandle(dir, { create: true })
         .then((h) => this.find(filepath.slice(1), h, [...path, ...[dir]]))
     }
@@ -32,12 +21,28 @@ const OPFS = {
       const file = `${normalise(filepath[0])}`
       for await (const [k, h] of handle.entries()) {
         if (normalise(k) === file) {
-          return h
+          return {
+            folder: handle,
+            file: h
+          }
         }
       }
     }
 
-    return null
+    return {
+      folder: null,
+      file: null
+    }
+  },
+
+  store: function (folder, filename, bytes) {
+    navigator.storage.getDirectory()
+      .then((root) => root.getDirectoryHandle(folder, { create: true }))
+      .then((base) => base.getFileHandle(filename, { create: true }))
+      .then((fh) => fh.createWritable({ keepExistingData: false }))
+      .then((stream) => save(stream, bytes))
+      .then(() => console.log(`stored ${filename} to OPFS (${bytes.length} bytes)`))
+      .catch((err) => onError(err))
   },
 
   retrieve: function (folder, filename) {
@@ -108,10 +113,12 @@ export async function init () {
     navigator.storage.getDirectory()
       .then((root) => root.getDirectoryHandle(BASE, { create: true }))
       .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => folder.keys())
+      .then((folder) => folder.entries())
       .then(async (it) => {
-        for await (const font of it) {
-          FONTS.add(font)
+        for await (const [font,h] of it) {
+          if (h.kind == 'file') {
+            FONTS.add(font)            
+          }
         }
       })
       .then(() => console.log(`retrieved fonts from OPFS (${FONTS.size} fonts)`))
@@ -216,7 +223,7 @@ export async function getFont (font) {
     const filepath = [`${BASE}`, 'fonts', `${font}`]
 
     return OPFS.find(filepath)
-      .then((handle) => handle != null ? handle.getFile() : null)
+      .then((v) => v.file != null ? v.file.getFile() : null)
       .then((file) => file != null ? file.arrayBuffer() : null)
       .then((buffer) => buffer)
       .catch((err) => onError(err))
@@ -224,25 +231,19 @@ export async function getFont (font) {
 }
 
 export async function deleteFont (font) {
-  const key = `${normalise(font)}`
-
   if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => [folder, folder.keys()])
-      .then(async ([folder, it]) => {
-        for await (const k of it) {
-          if (normalise(k) === key) {
-            folder.removeEntry(k)
-              .then(() => {
-                FONTS.delete(k)
-                console.log(`deleted font ${font} from OPFS`)
-              })
-          }
+    const filepath = [`${BASE}`, 'fonts', `${font}`]
+
+    return OPFS.find(filepath)
+      .then((v) => {
+        if (v.folder != null && v.file != null) {
+          v.folder.removeEntry(v.file.name)
+            .then(() => {
+              FONTS.delete(v.file.name)
+              console.log(`deleted font ${font} from OPFS`)
+            })
         }
       })
-      .catch((err) => onError(err))
   }
 }
 
