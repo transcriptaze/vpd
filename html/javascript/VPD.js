@@ -198,7 +198,8 @@ export function onTrash () {
 export async function onDebug () {
   console.log('** DEBUG **')
 
-  console.log(db.listFonts())
+  // db.deleteHistory()
+  // db.deleteProject()
 }
 
 export function onClickPanel (panel, x, y) {
