@@ -115,9 +115,9 @@ export async function init () {
       .then((base) => base.getDirectoryHandle('fonts', { create: true }))
       .then((folder) => folder.entries())
       .then(async (it) => {
-        for await (const [font,h] of it) {
-          if (h.kind == 'file') {
-            FONTS.add(font)            
+        for await (const [font, h] of it) {
+          if (h.kind === 'file') {
+            FONTS.add(font)
           }
         }
       })
