@@ -1,37 +1,4 @@
-// Notes:
-// 1. DuckDuckGo browser does not support OPFS
-
-export const OPFS = {
-  find: async function (filepath, handle = null, path = []) {
-    if (handle == null) {
-      return navigator.storage.getDirectory()
-        .then((h) => this.find(filepath, h, []))
-    }
-
-    if (filepath.length > 1) {
-      const dir = filepath[0]
-      return handle.getDirectoryHandle(dir, { create: true })
-        .then((h) => this.find(filepath.slice(1), h, [...path, ...[dir]]))
-    }
-
-    if (filepath.length > 0) {
-      const file = `${normalise(filepath[0])}`
-      for await (const [k, h] of handle.entries()) {
-        if (normalise(k) === file) {
-          return {
-            folder: handle,
-            file: h
-          }
-        }
-      }
-    }
-
-    return {
-      folder: null,
-      file: null
-    }
-  },
-
+const OPFS = {
   put: function (filepath, bytes, handle = null, path = []) {
     if (handle == null) {
       return navigator.storage.getDirectory()
@@ -41,7 +8,7 @@ export const OPFS = {
     if (filepath.length > 1) {
       const dir = filepath[0]
       return handle.getDirectoryHandle(dir, { create: true })
-        .then((h) => this.put(filepath.slice(1), bytes, h, [...path, ...[dir]]))
+        .then((h) => this.put(filepath.slice(1), bytes, h, path.concat(dir)))
     }
 
     if (filepath.length > 0) {
@@ -65,17 +32,17 @@ export const OPFS = {
     if (filepath.length > 1) {
       const dir = filepath[0]
       return handle.getDirectoryHandle(dir, { create: true })
-        .then((h) => this.get(filepath.slice(1), h, [...path, ...[dir]]))
+        .then((h) => this.get(filepath.slice(1), h, path.concat(dir)))
     }
 
     if (filepath.length > 0) {
       const filename = filepath[0]
 
-      return handle.getFileHandle(filename, { create: true })
+      return handle.getFileHandle(filename)
         .then((h) => h.getFile())
         .then((file) => file.arrayBuffer())
         .then((buffer) => {
-          console.log(`restored ${filename} from OPFS (${buffer.byteLength} bytes)`)
+          console.log(`retrieved ${filename} from OPFS (${buffer.byteLength} bytes)`)
           return buffer
         })
         .catch((err) => onError(err))
@@ -91,7 +58,7 @@ export const OPFS = {
     if (filepath.length > 1) {
       const dir = filepath[0]
       return handle.getDirectoryHandle(dir, { create: true })
-        .then((h) => this.delete(filepath.slice(1), h, [...path, ...[dir]]))
+        .then((h) => this.delete(filepath.slice(1), h, path.concat(dir)))
     }
 
     if (filepath.length > 0) {
@@ -101,6 +68,30 @@ export const OPFS = {
         .then(() => console.log(`deleted ${filename} from OPFS`))
         .catch((err) => onError(err))
     }
+  },
+
+  find: async function (filepath, handle = null, path = []) {
+    if (handle == null) {
+      return navigator.storage.getDirectory()
+        .then((h) => this.find(filepath, h, []))
+    }
+
+    if (filepath.length > 1) {
+      const dir = filepath[0]
+      return handle.getDirectoryHandle(dir, { create: true })
+        .then((h) => this.find(filepath.slice(1), h, path.concat(dir)))
+    }
+
+    if (filepath.length > 0) {
+      const file = `${normalise(filepath[0])}`
+      for await (const [k, _] of handle.entries()) {
+        if (normalise(k) === file) {
+          return path.concat(`${k}`).join('/')
+        }
+      }
+    }
+
+    return null
   },
 
   list: function (filepath, handle = null, path = []) {
@@ -135,67 +126,151 @@ export const OPFS = {
     return []
   }
 
-// export async function deleteAllFonts () {
-//   if (navigator.storage) {
-//     navigator.storage.getDirectory()
-//       .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-//       .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-//       .then((folder) => [folder, folder.keys()])
-//       .then(async ([folder, it]) => {
-//         for await (const k of it) {
-//           folder.removeEntry(k)
-//             .then(() => {
-//               FONTS.delete(k)
-//               console.log(`deleted font ${k} from OPFS`)
-//             })
-//         }
-//       })
-//       .catch((err) => onError(err))
-//   }
-// }
 }
 
-export const LOCAL = {
-  store: function (folder, filename, bytes) {
+const LOCAL = {
+  put: function (filepath, bytes) {
     try {
       const encoded = btoa(String.fromCharCode.apply(null, bytes))
+      const key = filepath.join('.')
 
-      localStorage.setItem(`${folder}.${filename}`, encoded)
-      console.log(`stored ${filename} to local storage (${bytes.length} bytes)`)
+      localStorage.setItem(key, encoded)
+      console.log(`stored ${filepath.join('/')} to local storage (${bytes.length} bytes)`)
     } catch (err) {
       onError(err)
     }
   },
 
-  find: async function (filepath, fh, path) {
+  get: function (filepath) {
+    try {
+      const key = filepath.join('.')
+
+      for (let ix = 0; ix < localStorage.length; ix++) {
+        const k = localStorage.key(ix)
+
+        if (k === key) {
+          const encoded = localStorage.getItem(k)
+          if (encoded != null) {
+            const buffer = new Uint8Array(atob(encoded).split('').map((c) => c.charCodeAt(0)))
+
+            console.log(`restored ${filepath.join('/')} from local storage (${buffer.byteLength} bytes)`)
+
+            return buffer
+          }
+        }
+      }
+    } catch (err) {
+      onError(err)
+    }
+
+    return new Uint8Array()
   },
 
-  retrieve: function (folder, filename) {
-    const BASE = 'VPD'
+  delete: function (filepath) {
+    const key = filepath.join('.')
 
     try {
-      const encoded = localStorage.getItem(`${BASE}.${filename}`)
-      if (encoded != null) {
-        const buffer = new Uint8Array(atob(encoded).split('').map(function (c) {
-          return c.charCodeAt(0)
-        }))
-
-        console.log(`restored ${filename} from local storage (${buffer.byteLength} bytes)`)
-        return buffer
+      for (let ix = 0; ix < localStorage.length; ix++) {
+        const k = localStorage.key(ix)
+        if (k === key) {
+          localStorage.removeItem(k)
+          console.log(`deleted ${filepath.join('/')} from local storage`)
+          return
+        }
       }
     } catch (err) {
       onError(err)
     }
   },
 
-  delete: function (folder, filename) {
-    const BASE = 'VPD'
+  find: function (filepath, fh, path) {
+    const key = normalise(`${filepath.join('.')}`)
 
-    try {
-      localStorage.removeItem(`${BASE}.${filename}`)
-      console.log(`deleted ${filename} from local storage`)
-    } catch (err) {
-      onError(err)
+    for (let ix = 0; ix < localStorage.length; ix++) {
+      const k = localStorage.key(ix)
+      if (normalise(k) === key) {
+        return path.concat(`${k}`).join('/')
+      }
+    }
+  },
+
+  list: function (filepath) {
+    const folder = `${filepath.join('.')}`
+    const start = folder.length
+    const files = []
+
+    for (let ix = 0; ix < localStorage.length; ix++) {
+      const k = localStorage.key(ix)
+
+      if (k.startsWith(`${folder}.`)) {
+        files.push(k.substring(start + 1))
+      }
+    }
+
+    return files
+  }
+}
+
+// Notes:
+// 1. DuckDuckGo browser does not support OPFS
+export const FS = {
+  put: function (filepath, bytes) {
+    const path = filepath.split('/')
+
+    if (navigator.storage) {
+      return OPFS.put(path, bytes)
+    } else if (localStorage) {
+      return new Promise((resolve) => {
+        LOCAL.put(path, bytes)
+      })
+    }
+  },
+
+  get: function (filepath) {
+    const path = filepath.split('/')
+
+    if (navigator.storage) {
+      return OPFS.get(path)
+    } else if (localStorage) {
+      return LOCAL.get(path)
+    } else {
+      return new Uint8Array()
+    }
+  },
+
+  delete: function (filepath) {
+    const path = filepath.split('/')
+
+    if (navigator.storage) {
+      OPFS.delete(path)
+    } else if (localStorage) {
+      LOCAL.delete(path)
+    }
+  },
+
+  find: function (filepath) {
+    const path = filepath.split('/')
+
+    if (navigator.storage) {
+      return OPFS.find(path)
+    } else if (localStorage) {
+      return new Promise((resolve) => {
+        resolve(LOCAL.find(path))
+      })
+    }
+  },
+
+  list: function (folder) {
+    const path = folder.split('/')
+
+    if (navigator.storage) {
+      return OPFS.list(path)
+    } else if (localStorage) {
+      return new Promise((resolve) => {
+        const files = LOCAL.list(path)
+
+        resolve(files)
+      })
     }
   }
 }

@@ -9,6 +9,8 @@
             - [x] history
             - [x] macros
             - [ ] fonts
+            - [ ] move logging to db
+            - [ ] errors - what to do
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
@@ -22,6 +24,8 @@
 
 - [ ] _load_ web component
 - [ ] _command_ web component
+- [ ] preload fonts, javascript, etc
+      - https://www.youtube.com/watch?v=-Ln-8QM8KhQ
 
 ### Fonts
    - [ ] `unload all fonts`
