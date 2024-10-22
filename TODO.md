@@ -8,9 +8,11 @@
             - [x] project
             - [x] history
             - [x] macros
-            - [ ] fonts
-            - [ ] move logging to db
-            - [ ] errors - what to do
+            - [x] fonts
+            - (?) defer errors to db error handler
+            - (?) move logging to db
+      - [ ] _info_
+      - [ ] _undo_
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

@@ -45,7 +45,6 @@ const OPFS = {
           console.log(`retrieved ${filename} from OPFS (${buffer.byteLength} bytes)`)
           return buffer
         })
-        .catch((err) => onError(err))
     }
   },
 
@@ -66,7 +65,6 @@ const OPFS = {
 
       handle.removeEntry(filename)
         .then(() => console.log(`deleted ${filename} from OPFS`))
-        .catch((err) => onError(err))
     }
   },
 
@@ -120,7 +118,6 @@ const OPFS = {
 
           return files
         })
-        .catch((err) => onError(err))
     }
 
     return []
@@ -151,9 +148,9 @@ const LOCAL = {
         if (k === key) {
           const encoded = localStorage.getItem(k)
           if (encoded != null) {
-            const buffer = new Uint8Array(atob(encoded).split('').map((c) => c.charCodeAt(0)))
+            const buffer = new Uint8Array(atob(encoded).split('').map((c) => c.charCodeAt(0))).buffer
 
-            console.log(`restored ${filepath.join('/')} from local storage (${buffer.byteLength} bytes)`)
+            console.log(`retrieved ${filepath.join('/')} from local storage (${buffer.byteLength} bytes)`)
 
             return buffer
           }
@@ -183,13 +180,13 @@ const LOCAL = {
     }
   },
 
-  find: function (filepath, fh, path) {
+  find: function (filepath) {
     const key = normalise(`${filepath.join('.')}`)
 
     for (let ix = 0; ix < localStorage.length; ix++) {
       const k = localStorage.key(ix)
       if (normalise(k) === key) {
-        return path.concat(`${k}`).join('/')
+        return filepath.join('/')
       }
     }
   },
@@ -221,7 +218,7 @@ export const FS = {
       return OPFS.put(path, bytes)
     } else if (localStorage) {
       return new Promise((resolve) => {
-        LOCAL.put(path, bytes)
+        resolve(LOCAL.put(path, bytes))
       })
     }
   },
@@ -232,9 +229,13 @@ export const FS = {
     if (navigator.storage) {
       return OPFS.get(path)
     } else if (localStorage) {
-      return LOCAL.get(path)
+      return new Promise((resolve) => {
+        resolve(LOCAL.get(path))
+      })
     } else {
-      return new Uint8Array()
+      return new Promise((resolve) => {
+        resolve(new Uint8Array())
+      })
     }
   },
 
@@ -267,9 +268,7 @@ export const FS = {
       return OPFS.list(path)
     } else if (localStorage) {
       return new Promise((resolve) => {
-        const files = LOCAL.list(path)
-
-        resolve(files)
+        resolve(LOCAL.list(path))
       })
     }
   }

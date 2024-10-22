@@ -13,26 +13,32 @@ export async function init () {
 
 export function storeProject (blob) {
   FS.put(`${BASE}/project`, new Uint8Array(blob))
+    .catch((err) => onError(err))
 }
 
 export async function getProject () {
   return FS.get(`${BASE}/project`)
+    .catch((err) => onError(err))
 }
 
 export function deleteProject () {
   FS.delete(`${BASE}/project`)
+    .catch((err) => onError(err))
 }
 
 export async function storeHistory (blob) {
   FS.put(`${BASE}/history`, new Uint8Array(blob))
+    .catch((err) => onError(err))
 }
 
 export async function getHistory () {
   return FS.get(`${BASE}/history`)
+    .catch((err) => onError(err))
 }
 
 export function deleteHistory () {
   FS.delete(`${BASE}/history`)
+    .catch((err) => onError(err))
 }
 
 export function storeMacros (object) {
@@ -50,19 +56,16 @@ export function getMacros () {
 
 export async function storeFont (name, blob) {
   FS.put(`${BASE}/fonts/${name}`, new Uint8Array(blob))
-    .then(() => {
-      FONTS.add(name)
-    })
+    .then(() => FONTS.add(name))
+    .catch((err) => onError(err))
 }
 
 export async function getFont (font) {
-  if (navigator.storage) {
-    const filepath = `${BASE}/fonts/${font}`
+  const filepath = `${BASE}/fonts/${font}`
 
-    return FS.find(filepath)
-      .then((path) => FS.get(path))
-      .catch((err) => onError(err))
-  }
+  return FS.find(filepath)
+    .then((path) => FS.get(path))
+    .catch((err) => onError(err))
 }
 
 export async function deleteFont (font) {
@@ -72,8 +75,10 @@ export async function deleteFont (font) {
     .then((path) => {
       if (path != null) {
         FS.delete(path)
+        FONTS.delete(font)
       }
     })
+    .catch((err) => onError(err))
 }
 
 export function listFonts () {
