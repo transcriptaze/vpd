@@ -281,7 +281,7 @@ export function hasOwn (object, property) {
   }
 
   if (object && Object.hasOwnProperty) {
-    return Object.prototype.hasOwnProperty.call(property)
+    return Object.prototype.hasOwnProperty.call(object,property)
   }
 
   return false

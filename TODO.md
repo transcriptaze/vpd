@@ -4,6 +4,7 @@
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
 - [ ] DuckDuckGo
       - [x] api.js::hasOwn
+      - [x] _undo_
       - [ ] db.js::localStorage
             - [x] project
             - [x] history
@@ -12,7 +13,6 @@
             - (?) defer errors to db error handler
             - (?) move logging to db
       - [ ] _info_
-      - [ ] _undo_
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
