@@ -112,7 +112,7 @@ function onDragOver (drop, evt) {
   // if (types.includes('files')) {
   //   const files = evt.dataTransfer.files
   //   const items = evt.dataTransfer.items
-  // 
+  //
   //   if (files.length > 0) {
   //     evt.preventDefault()
   //     div.classList.add('dropping')
