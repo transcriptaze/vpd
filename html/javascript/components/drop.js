@@ -100,23 +100,27 @@ function onDragLeave (drop, evt) {
   div.classList.remove('dropping')
 }
 
+// NTS: DuckDuckGo does not include the data transfer information in the dragover event
 function onDragOver (drop, evt) {
   const shadow = drop.shadowRoot
   const div = shadow.querySelector('div.vpd-drop')
-  const types = evt.dataTransfer.types.map((v) => v.toLowerCase())
 
-  if (types.includes('files')) {
-    const files = evt.dataTransfer.files
-    const items = evt.dataTransfer.items
+  evt.preventDefault()
+  div.classList.add('dropping')
 
-    if (files.length > 0) {
-      evt.preventDefault()
-      div.classList.add('dropping')
-    } else if (items.length > 0) {
-      evt.preventDefault()
-      div.classList.add('dropping')
-    }
-  }
+  // const types = evt.dataTransfer.types.map((v) => v.toLowerCase())
+  // if (types.includes('files')) {
+  //   const files = evt.dataTransfer.files
+  //   const items = evt.dataTransfer.items
+  // 
+  //   if (files.length > 0) {
+  //     evt.preventDefault()
+  //     div.classList.add('dropping')
+  //   } else if (items.length > 0) {
+  //     evt.preventDefault()
+  //     div.classList.add('dropping')
+  //   }
+  // }
 }
 
 function onDrop (drop, evt) {
