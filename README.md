@@ -6,13 +6,18 @@
 
 VPD is a [web application](https://vpdx.pages.dev) to create the SVG files for a basic VCV module panel. 
 
-It has been tested on:
-- Chrome
-- Firefox
-- Opera
-- Safari
+It should (perhaps, maybe) work in most WASM capable browsers, but TBH it's been mostly tested on Chrome
+(and more recently on DuckDuckGo):
 
-(_but TBH, mostly on Chrome_).
+|              | MacOS          | Linux | Windows |
+|--------------|----------------|-------|---------|
+| _Chrome_     | 130.0.6723.70  | ?     | ?       |
+| _Firefox_    | 131.0.3        | ?     | ?       |
+| _Opera_      | 114.0.5282.102 | ?     | ?       |
+| _Safari_     | 16.6.1         | ?     | ?       |
+| _DuckDuckGo_ | 1.110.0        | ?     | ?       |
+
+
 
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands (along with a summary [cheatsheet](/doc/cheatsheet.pdf))

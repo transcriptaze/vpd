@@ -1,169 +1,78 @@
+import { FS } from './HAL.js'
+
 const BASE = 'VPD'
 const FONTS = new Set()
 
-// Notes:
-// 1. DuckDuckGo browser does not support OPFS
-
-const OPFS = {
-  store: function (folder, filename, bytes) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(folder, { create: true }))
-      .then((base) => base.getFileHandle(filename, { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => save(stream, bytes))
-      .then(() => console.log(`stored ${filename} to OPFS (${bytes.length} bytes)`))
-      .catch((err) => onError(err))
-  },
-
-  find: async function (filepath, fh, path) {
-  },
-
-  retrieve: function (folder, filename) {
-    return navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(folder, { create: true }))
-      .then((base) => base.getFileHandle(filename, { create: true }))
-      .then((fh) => fh.getFile())
-      .then((file) => file.arrayBuffer())
-      .then((buffer) => {
-        console.log(`restored ${filename} from OPFS (${buffer.byteLength} bytes)`)
-        return buffer
-      })
-      .catch((err) => onError(err))
-  },
-
-  delete: function (folder, filename) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(folder, { create: true }))
-      .then((base) => base.removeEntry(filename))
-      .then(() => console.log(`deleted ${filename} from OPFS`))
-      .catch((err) => onError(err))
-  }
-}
-
-const LOCAL = {
-  store: function (folder, filename, bytes) {
-    try {
-      const encoded = btoa(String.fromCharCode.apply(null, bytes))
-
-      localStorage.setItem(`${folder}.${filename}`, encoded)
-      console.log(`stored ${filename} to local storage (${bytes.length} bytes)`)
-    } catch (err) {
-      onError(err)
-    }
-  },
-
-  find: async function (filepath, fh, path) {
-  },
-
-  retrieve: function (folder, filename) {
-    try {
-      const encoded = localStorage.getItem(`${BASE}.${filename}`)
-      if (encoded != null) {
-        const buffer = new Uint8Array(atob(encoded).split('').map(function (c) {
-          return c.charCodeAt(0)
-        }))
-
-        console.log(`restored ${filename} from local storage (${buffer.byteLength} bytes)`)
-        return buffer
-      }
-    } catch (err) {
-      onError(err)
-    }
-  },
-
-  delete: function (folder, filename) {
-    try {
-      localStorage.removeItem(`${BASE}.${filename}`)
-      console.log(`deleted ${filename} from local storage`)
-    } catch (err) {
-      onError(err)
-    }
-  }
-}
-
 export async function init () {
-  if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => folder.keys())
-      .then(async (it) => {
-        for await (const font of it) {
-          FONTS.add(font)
-        }
-      })
-      .then(() => console.log(`retrieved fonts from OPFS (${FONTS.size} fonts)`))
-      .catch((err) => onError(err))
-  }
+  FS.list(`${BASE}/fonts`)
+    .then((v) => {
+      v.forEach(font => FONTS.add(font))
+      console.log(`retrieved ${FONTS.size} fonts from FS`)
+    })
 }
 
 export function storeProject (blob) {
+  const filepath = `${BASE}/project`
   const bytes = new Uint8Array(blob)
 
-  if (navigator.storage) {
-    OPFS.store(BASE, 'project', bytes)
-  } else if (localStorage) {
-    LOCAL.store(BASE, 'project', bytes)
-  }
+  FS.put(filepath, bytes)
+    .then(() => console.log(`stored ${filepath} to FS (${bytes.length} bytes)`))
+    .catch((err) => onError(err))
 }
 
 export async function getProject () {
-  if (navigator.storage) {
-    return OPFS.retrieve(BASE, 'project')
-  } else if (localStorage) {
-    return LOCAL.retrieve(BASE, 'project')
-  } else {
-    return new Uint8Array()
-  }
+  const filepath = `${BASE}/project`
+
+  return FS.get(filepath)
+    .then((buffer) => {
+      console.log(`retrieved ${filepath} from FS (${buffer.byteLength} bytes)`)
+      return buffer
+    })
+    .catch((err) => onError(err))
 }
 
 export function deleteProject () {
-  if (navigator.storage) {
-    OPFS.delete(BASE, 'project')
-  } else if (localStorage) {
-    LOCAL.delete(BASE, 'project')
-  }
+  const filepath = `${BASE}/project`
+
+  FS.delete(filepath)
+    .then(() => console.log(`deleted ${filepath} from FS`))
+    .catch((err) => onError(err))
 }
 
 export async function storeHistory (blob) {
+  const filepath = `${BASE}/history`
   const bytes = new Uint8Array(blob)
 
-  if (navigator.storage) {
-    OPFS.store(BASE, 'history', bytes)
-  } else if (localStorage) {
-    LOCAL.store(BASE, 'history', bytes)
-  }
+  FS.put(`${BASE}/history`, bytes)
+    .then(() => console.log(`stored ${filepath} to FS (${bytes.length} bytes)`))
+    .catch((err) => onError(err))
 }
 
 export async function getHistory () {
-  if (navigator.storage) {
-    return OPFS.retrieve(BASE, 'history')
-  } else if (localStorage) {
-    return LOCAL.retrieve(BASE, 'history')
-  } else {
-    return new Uint8Array()
-  }
+  const filepath = `${BASE}/history`
+
+  return FS.get(filepath)
+    .then((buffer) => {
+      console.log(`retrieved ${filepath} from FS (${buffer.byteLength} bytes)`)
+      return buffer
+    })
+    .catch((err) => onError(err))
 }
 
 export function deleteHistory () {
-  if (navigator.storage) {
-    OPFS.delete(BASE, 'history')
-  } else if (localStorage) {
-    LOCAL.delete(BASE, 'history')
-  }
+  const filepath = `${BASE}/history`
+
+  FS.delete(`${BASE}/history`)
+    .then(() => console.log(`deleted ${filepath} from FS`))
+    .catch((err) => onError(err))
 }
 
 export function storeMacros (object) {
-  const key = `${BASE}.macros`
-  const json = JSON.stringify(object)
-
-  localStorage.setItem(key, json)
+  localStorage.setItem(`${BASE}.macros`, JSON.stringify(object))
 }
 
 export function getMacros () {
-  const key = `${BASE}.macros`
-  const json = localStorage.getItem(key)
-
+  const json = localStorage.getItem(`${BASE}.macros`)
   if (json != null) {
     return JSON.parse(json)
   }
@@ -172,68 +81,45 @@ export function getMacros () {
 }
 
 export async function storeFont (name, blob) {
+  const filepath = `${BASE}/fonts/${name}`
   const bytes = new Uint8Array(blob)
 
-  if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => folder.getFileHandle(name, { create: true }))
-      .then((fh) => fh.createWritable({ keepExistingData: false }))
-      .then((stream) => save(stream, bytes))
-      .then(() => {
-        FONTS.add(name)
-        console.log(`stored font ${name} to OPFS (${bytes.length} bytes)`)
-      })
-      .catch((err) => onError(err))
-  }
+  FS.put(filepath, bytes)
+    .then(() => FONTS.add(name))
+    .then(() => console.log(`stored ${filepath} to FS (${bytes.length} bytes)`))
+    .catch((err) => onError(err))
 }
 
 export async function getFont (font) {
-  const key = `${normalise(font)}`
+  const filepath = `${BASE}/fonts/${font}`
 
-  if (navigator.storage) {
-    return navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => folder.entries())
-      .then(async (it) => {
-        for await (const [k, fh] of it) {
-          if (normalise(k) === key) {
-            return fh
-          }
-        }
-
-        return null
-      })
-      .then((fh) => fh != null ? fh.getFile() : null)
-      .then((file) => file != null ? file.arrayBuffer() : null)
-      .then((buffer) => buffer)
-      .catch((err) => onError(err))
-  }
+  return FS.find(filepath)
+    .then((path) => {
+      if (path == null) {
+        throw new Error(`missing font ${font}`)
+      } else {
+        return FS.get(path)
+      }
+    })
+    .then((buffer) => {
+      console.log(`retrieved ${filepath} from FS (${buffer.byteLength} bytes)`)
+      return buffer
+    })
+    .catch((err) => onError(err))
 }
 
 export async function deleteFont (font) {
-  const key = `${normalise(font)}`
+  const filepath = `${BASE}/fonts/${font}`
 
-  if (navigator.storage) {
-    navigator.storage.getDirectory()
-      .then((root) => root.getDirectoryHandle(BASE, { create: true }))
-      .then((base) => base.getDirectoryHandle('fonts', { create: true }))
-      .then((folder) => [folder, folder.keys()])
-      .then(async ([folder, it]) => {
-        for await (const k of it) {
-          if (normalise(k) === key) {
-            folder.removeEntry(k)
-              .then(() => {
-                FONTS.delete(k)
-                console.log(`deleted font ${font} from OPFS`)
-              })
-          }
-        }
-      })
-      .catch((err) => onError(err))
-  }
+  FS.find(filepath)
+    .then((path) => {
+      if (path != null) {
+        FS.delete(path)
+        FONTS.delete(font)
+        console.log(`deleted ${filepath} from FS`)
+      }
+    })
+    .catch((err) => onError(err))
 }
 
 export function listFonts () {
@@ -248,15 +134,6 @@ export function listDecorations () {
   return []
 }
 
-async function save (stream, bytes) {
-  await stream.write(bytes)
-  await stream.close()
-}
-
 function onError (err) {
   console.error(err)
-}
-
-function normalise (name) {
-  return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
 }

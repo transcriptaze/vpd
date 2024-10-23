@@ -69,7 +69,10 @@ pub async fn restore() -> Result<(), JsValue> {
     // ... unstash project
     {
         let array = unstash("project").await;
-        let bytes = Uint8Array::new(&array).to_vec();
+        let bytes = match array.is_null() || array.is_undefined() {
+            false => Uint8Array::new(&array).to_vec(),
+            _ => Vec::new(),
+        };
 
         state.module.gunzip(&bytes);
     }
@@ -77,7 +80,10 @@ pub async fn restore() -> Result<(), JsValue> {
     // ... unstash undo history
     {
         let array = unstash("history").await;
-        let bytes = Uint8Array::new(&array).to_vec();
+        let bytes = match array.is_null() || array.is_undefined() {
+            false => Uint8Array::new(&array).to_vec(),
+            _ => Vec::new(),
+        };
 
         state.history.gunzip(&bytes);
     }

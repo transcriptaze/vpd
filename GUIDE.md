@@ -254,7 +254,7 @@ To save a project as a _.vpx_ file:
 
 ### <img width="24" src="doc/images/undo.png"> Redo
 
-- Undoes the most recent _Undo_, if that even makes sense.
+- When it is eventually implemented it will undoe the most recent _Undo_. 
 
 
 ### Macro keys

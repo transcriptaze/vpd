@@ -46,7 +46,6 @@ export function set (node, src) {
   }
 
   for (const child of node.namedChildren) {
-    console.log('>>>>>>>>>>>>', child.type)
     if (child.type === 'x') {
       object.origin.x = xy(child)
     }

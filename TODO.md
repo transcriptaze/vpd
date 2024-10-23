@@ -4,26 +4,34 @@
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
 - [ ] DuckDuckGo
       - [x] api.js::hasOwn
-      - [ ] db.js::localStorage
+      - [x] _undo_
+      - [x] click for _info_
+      - [x] drag 'n drop
+      - [x] db.js::localStorage
             - [x] project
             - [x] history
             - [x] macros
-            - [ ] fonts
+            - [x] fonts
+            - [x] move logging to db
+            - [x] defer errors to db error handler
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
 - [ ] Cheatsheet
       - [ ] XY
 
+- [ ] Flush font from cache on delete font
 - [ ] Export header file
       - [ ] pretty-print
       - [ ] optional prefix
 
 - [ ] _load_ web component
 - [ ] _command_ web component
+- [ ] preload fonts, javascript, etc
+      - https://www.youtube.com/watch?v=-Ln-8QM8KhQ
 
 ### Fonts
-   - [ ] `unload all fonts`
+   - [ ] `delete all fonts`
 
 ### [ ] `redo`
    - [ ] save

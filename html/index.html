@@ -78,6 +78,7 @@
           </div>
           <div class="trash">
             <button id="trash" onclick="onTrash(event)" disabled><img src="./images/trash.svg" /></button>
+            <button id="debug" onclick="onDebug(event)"><img src="./images/bug.svg" /></button>
           </div>
         </div>
 
@@ -181,6 +182,10 @@
       VPD.onTrash()
     }
 
+    window.onDebug = (event) => {
+      VPD.onDebug()
+    }
+
     window.onError = (event) => {
       VPD.onError(null)
     }
@@ -190,21 +195,14 @@
               VPD.onDropped(e.detail.file)
             })
 
-    document.querySelector('main')
-            .addEventListener('click', (e) => {
-              const x = e.clientX
-              const y = e.clientY
+    document.querySelectorAll('div.clickable').forEach((p) => {
+      p.addEventListener('click', (e) => {
+        const x = e.offsetX
+        const y = e.offsetY
 
-              document.querySelectorAll('div.clickable').forEach((p) => {
-                const bounds = p.getBoundingClientRect()
-                const xʼ = x - bounds.left
-                const yʼ = y - bounds.top
-
-                if (bounds.left < x && bounds.right > x && bounds.top < y && bounds.bottom > y) {
-                    VPD.onClickPanel(p,xʼ,yʼ)
-                }
-              })
-            })
+        VPD.onClickPanel(p,x,y)
+      })
+    })
 
   </script>
 </html>

@@ -167,6 +167,10 @@ export function onUndo () {
   }
 }
 
+export async function onRedo () {
+  console.log('** not implemented **')
+}
+
 export function onTrash () {
   const trash = document.querySelector('#trash')
   const info = document.querySelector('fieldset#module')
@@ -189,6 +193,13 @@ export function onTrash () {
   } catch (err) {
     console.error(err)
   }
+}
+
+export async function onDebug () {
+  console.log('** DEBUG **')
+
+  // const font = await db.getFont('DSEG7ClassicMini-BoldItalic')
+  // console.log('>>>>>>>>', font)
 }
 
 export function onClickPanel (panel, x, y) {
