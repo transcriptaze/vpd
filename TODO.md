@@ -12,7 +12,7 @@
             - [x] fonts
             - (?) defer errors to db error handler
             - (?) move logging to db
-      - [ ] _info_
+      - [x] _info_
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
@@ -30,7 +30,7 @@
       - https://www.youtube.com/watch?v=-Ln-8QM8KhQ
 
 ### Fonts
-   - [ ] `unload all fonts`
+   - [ ] `delete all fonts`
 
 ### [ ] `redo`
    - [ ] save

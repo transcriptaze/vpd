@@ -198,8 +198,8 @@ export function onTrash () {
 export async function onDebug () {
   console.log('** DEBUG **')
 
-  const font = await db.getFont('DSEG7ClassicMini-BoldItalic')
-  console.log('>>>>>>>>', font)
+  // const font = await db.getFont('DSEG7ClassicMini-BoldItalic')
+  // console.log('>>>>>>>>', font)
 }
 
 export function onClickPanel (panel, x, y) {
