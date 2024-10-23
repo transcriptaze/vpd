@@ -12,32 +12,58 @@ export async function init () {
 }
 
 export function storeProject (blob) {
-  FS.put(`${BASE}/project`, new Uint8Array(blob))
+  const filepath = `${BASE}/project`
+  const bytes = new Uint8Array(blob)
+
+  FS.put(filepath, bytes)
+    .then(() => console.log(`stored ${filepath} to FS (${bytes.length} bytes)`))
     .catch((err) => onError(err))
 }
 
 export async function getProject () {
-  return FS.get(`${BASE}/project`)
+  const filepath = `${BASE}/project`
+
+  return FS.get(filepath)
+    .then((buffer) => {
+      console.log(`retrieved ${filepath} from FS (${buffer.byteLength} bytes)`)
+      return buffer
+    })
     .catch((err) => onError(err))
 }
 
 export function deleteProject () {
-  FS.delete(`${BASE}/project`)
+  const filepath = `${BASE}/project`
+
+  FS.delete(filepath)
+    .then(() => console.log(`deleted ${filepath} from FS`))
     .catch((err) => onError(err))
 }
 
 export async function storeHistory (blob) {
-  FS.put(`${BASE}/history`, new Uint8Array(blob))
+  const filepath = `${BASE}/history`
+  const bytes = new Uint8Array(blob)
+
+  FS.put(`${BASE}/history`, bytes)
+    .then(() => console.log(`stored ${filepath} to FS (${bytes.length} bytes)`))
     .catch((err) => onError(err))
 }
 
 export async function getHistory () {
-  return FS.get(`${BASE}/history`)
+  const filepath = `${BASE}/history`
+
+  return FS.get(filepath)
+    .then((buffer) => {
+      console.log(`retrieved ${filepath} from FS (${buffer.byteLength} bytes)`)
+      return buffer
+    })
     .catch((err) => onError(err))
 }
 
 export function deleteHistory () {
+  const filepath = `${BASE}/history`
+
   FS.delete(`${BASE}/history`)
+    .then(() => console.log(`deleted ${filepath} from FS`))
     .catch((err) => onError(err))
 }
 
@@ -55,8 +81,12 @@ export function getMacros () {
 }
 
 export async function storeFont (name, blob) {
-  FS.put(`${BASE}/fonts/${name}`, new Uint8Array(blob))
+  const filepath = `${BASE}/fonts/${name}`
+  const bytes = new Uint8Array(blob)
+
+  FS.put(filepath, bytes)
     .then(() => FONTS.add(name))
+    .then(() => console.log(`stored ${filepath} to FS (${bytes.length} bytes)`))
     .catch((err) => onError(err))
 }
 
@@ -64,7 +94,17 @@ export async function getFont (font) {
   const filepath = `${BASE}/fonts/${font}`
 
   return FS.find(filepath)
-    .then((path) => FS.get(path))
+    .then((path) => {
+      if (path == null) {
+        throw new Error(`missing font ${font}`)
+      } else {
+        return FS.get(path)
+      }
+    })
+    .then((buffer) => {
+      console.log(`retrieved ${filepath} from FS (${buffer.byteLength} bytes)`)
+      return buffer
+    })
     .catch((err) => onError(err))
 }
 
@@ -76,6 +116,7 @@ export async function deleteFont (font) {
       if (path != null) {
         FS.delete(path)
         FONTS.delete(font)
+        console.log(`deleted ${filepath} from FS`)
       }
     })
     .catch((err) => onError(err))

@@ -7,13 +7,13 @@
       - [x] _undo_
       - [x] click for _info_
       - [x] drag 'n drop
-      - [ ] db.js::localStorage
+      - [x] db.js::localStorage
             - [x] project
             - [x] history
             - [x] macros
             - [x] fonts
-            - (?) defer errors to db error handler
-            - (?) move logging to db
+            - [x] move logging to db
+            - [x] defer errors to db error handler
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

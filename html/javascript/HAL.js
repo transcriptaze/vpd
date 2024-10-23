@@ -17,9 +17,6 @@ const OPFS = {
       return handle.getFileHandle(filename, { create: true })
         .then((fh) => fh.createWritable({ keepExistingData: false }))
         .then((stream) => save(stream, bytes))
-        .then(() => {
-          console.log(`stored ${filename} to OPFS (${bytes.length} bytes)`)
-        })
     }
   },
 
@@ -41,10 +38,6 @@ const OPFS = {
       return handle.getFileHandle(filename)
         .then((h) => h.getFile())
         .then((file) => file.arrayBuffer())
-        .then((buffer) => {
-          console.log(`retrieved ${filename} from OPFS (${buffer.byteLength} bytes)`)
-          return buffer
-        })
     }
   },
 
@@ -64,7 +57,6 @@ const OPFS = {
       const filename = filepath[0]
 
       handle.removeEntry(filename)
-        .then(() => console.log(`deleted ${filename} from OPFS`))
     }
   },
 
@@ -132,7 +124,6 @@ const LOCAL = {
       const key = filepath.join('.')
 
       localStorage.setItem(key, encoded)
-      console.log(`stored ${filepath.join('/')} to local storage (${bytes.length} bytes)`)
     } catch (err) {
       onError(err)
     }
@@ -148,11 +139,7 @@ const LOCAL = {
         if (k === key) {
           const encoded = localStorage.getItem(k)
           if (encoded != null) {
-            const buffer = new Uint8Array(atob(encoded).split('').map((c) => c.charCodeAt(0))).buffer
-
-            console.log(`retrieved ${filepath.join('/')} from local storage (${buffer.byteLength} bytes)`)
-
-            return buffer
+            return new Uint8Array(atob(encoded).split('').map((c) => c.charCodeAt(0))).buffer
           }
         }
       }
@@ -171,7 +158,6 @@ const LOCAL = {
         const k = localStorage.key(ix)
         if (k === key) {
           localStorage.removeItem(k)
-          console.log(`deleted ${filepath.join('/')} from local storage`)
           return
         }
       }
