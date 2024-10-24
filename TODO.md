@@ -8,12 +8,16 @@
       - [x] click for _info_
       - [x] drag 'n drop
       - [x] db.js::localStorage
-            - [x] project
-            - [x] history
-            - [x] macros
-            - [x] fonts
-            - [x] move logging to db
-            - [x] defer errors to db error handler
+      - [ ] dark mode parts
+      - [ ] dark mode load from file
+
+- [ ] Safari
+      - [ ] dark mode parts
+      - [ ] load VPD file
+
+- [ ] Firefox
+      - [ ] dark mode parts
+      - [ ] load VPD file
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

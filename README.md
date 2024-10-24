@@ -12,11 +12,10 @@ It should (perhaps, maybe) work in most WASM capable browsers, but TBH it's been
 |              | MacOS          | Linux | Windows |
 |--------------|----------------|-------|---------|
 | _Chrome_     | 130.0.6723.70  | ?     | ?       |
-| _Firefox_    | 131.0.3        | ?     | ?       |
+| _Firefox_    | _in progress_  | ?     | ?       |
 | _Opera_      | 114.0.5282.102 | ?     | ?       |
-| _Safari_     | 16.6.1         | ?     | ?       |
+| _Safari_     | _in progress_  | ?     | ?       |
 | _DuckDuckGo_ | 1.110.0        | ?     | ?       |
-
 
 
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
