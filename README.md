@@ -9,13 +9,11 @@ VPD is a [web application](https://vpdx.pages.dev) to create the SVG files for a
 It has mostly (well, almost exclusively) been developed using Google Chrome on MacOS. Other WASM capable browsers are 
 a work in progress:
 
-|              | MacOS                                              | Linux | Windows |
-|--------------|----------------------------------------------------|-------|---------|
-| _Chrome_     | ✓ (130.0)                                          | ?     | ?       |
-| _Firefox_    | _in progress_                                      | ?     | ?       |
-| _Opera_      | <img width="32" src="doc/images/tick.png"> (114.0) | ?     | ?       |
-| _Safari_     | _in progress_                                      | ?     | ?       |
-| _DuckDuckGo_ | _in progress_                                      | ?     | ?       |
+|           | Chrome      | Firefox       | Opera       | Safari        | Edge | DuckDuckGo    |
+|-----------|-------------|---------------|-------------|---------------|------|---------------|
+| _MacOS_   | ✓ _(130.0)_ | _in progress_ | ✓ _(114.0)_ | _in progress_ | -    | _in progress_ |
+| _Linux_   | ?           | ?             | ?           | -             | -    | -             |
+| _Windows_ | ?           | ?             | ?           | -             | ?    | -             |
 
 
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
