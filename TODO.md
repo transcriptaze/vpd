@@ -8,21 +8,15 @@
 - [x] Safari
       - [x] dark mode parts
       - [x] load VPD file
+      - [x] opentype CORS issue
       - [ ] db.js:138
+            - https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system
+            - https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle
 ```
 TypeError: fh.createWritable is not a function. (In 'fh.createWritable({ keepExistingData: false })', 'fh.createWritable' is undefined)
 (anonymous function) — HAL.js:18
 ```
 
-- [ ] opentype CORS issue
-```
-NetworkError when attempting to fetch resource.
-Resource URL: https://unpkg.com/opentype.js/dist/opentype.module.js
-Source Map URL: opentype.module.js.map
-```
-```
-Cancelled load to https://unpkg.com/opentype.js@1.3.4/dist/opentype.module.js.map because it violates the resource's Cross-Origin-Resource-Policy response header.
-```
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

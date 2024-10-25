@@ -1,4 +1,5 @@
-import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
+// import * as opentype from 'https://unpkg.com/opentype.js/dist/opentype.module.js'
+import * as opentype from './opentype/opentype.module.js'
 
 import * as db from './db.js'
 
