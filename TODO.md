@@ -3,21 +3,26 @@
 - [x] Drop shadows
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
 - [x] DuckDuckGo
-      - [x] api.js::hasOwn
-      - [x] _undo_
-      - [x] click for _info_
-      - [x] drag 'n drop
-      - [x] db.js::localStorage
-      - [x] load VPD file
-      - [x] dark mode parts
+- [x] Firefox
 
 - [x] Safari
       - [x] dark mode parts
       - [x] load VPD file
+      - [ ] db.js:138
+```
+TypeError: fh.createWritable is not a function. (In 'fh.createWritable({ keepExistingData: false })', 'fh.createWritable' is undefined)
+(anonymous function) — HAL.js:18
+```
 
-- [x] Firefox
-      - [x] dark mode parts
-      - [x] load VPD file
+- [ ] opentype CORS issue
+```
+NetworkError when attempting to fetch resource.
+Resource URL: https://unpkg.com/opentype.js/dist/opentype.module.js
+Source Map URL: opentype.module.js.map
+```
+```
+Cancelled load to https://unpkg.com/opentype.js@1.3.4/dist/opentype.module.js.map because it violates the resource's Cross-Origin-Resource-Policy response header.
+```
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

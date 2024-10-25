@@ -6,22 +6,22 @@
 
 VPD is a [web application](https://vpdx.pages.dev) to create the SVG files for a basic VCV module panel. 
 
-It has mostly (well, almost exclusively) been developed using Google Chrome on MacOS. Other browsers are 
-a work in progress:
-
-|           | Chrome      | Firefox       | Opera       | Safari       | Edge | DuckDuckGo    |
-|-----------|-------------|---------------|-------------|--------------|------|---------------|
-| _MacOS_   | ✓ _(130.0)_ | ✓ _(131.0.3)_ | ✓ _(114.0)_ | ✓ _(16.6.1)_ | -    | ✓ _(1.110.1)_ |
-| _Linux_   | ?           | ?             | ?           | -            | -    | -             |
-| _Windows_ | ?           | ?             | ?           | -            | ?    | ?             |
-
-
 There is a brief [Getting started](#getting-started) section below and a somewhat more comprehensive [user guide](GUIDE.md) which 
 describes all the available commands (along with a summary [cheatsheet](/doc/cheatsheet.pdf))
 
 **Status**: _ALPHA_
 
 <img width="800" src="doc/images/screenshot.png">
+
+It has mostly (well, almost exclusively) been developed using Google Chrome on MacOS. Other browsers are 
+a work in progress:
+
+|           | Chrome      | Firefox       | Opera       | Safari        | Edge | DuckDuckGo    |
+|-----------|-------------|---------------|-------------|---------------|------|---------------|
+| _MacOS_   | ✓ _(130.0)_ | ✓ _(131.0.3)_ | ✓ _(114.0)_ | _in progress_ | -    | ✓ _(1.110.1)_ |
+| _Linux_   | ?           | ?             | ?           | -             | -    | -             |
+| _Windows_ | ?           | ?             | ?           | -             | ?    | ?             |
+
 
 ### Raison d’être
 
