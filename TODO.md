@@ -2,18 +2,22 @@
 
 - [x] Drop shadows
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
-- [ ] DuckDuckGo
+- [x] DuckDuckGo
       - [x] api.js::hasOwn
       - [x] _undo_
       - [x] click for _info_
       - [x] drag 'n drop
       - [x] db.js::localStorage
-            - [x] project
-            - [x] history
-            - [x] macros
-            - [x] fonts
-            - [x] move logging to db
-            - [x] defer errors to db error handler
+      - [x] load VPD file
+      - [x] dark mode parts
+
+- [x] Safari
+      - [x] dark mode parts
+      - [x] load VPD file
+
+- [x] Firefox
+      - [x] dark mode parts
+      - [x] load VPD file
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width

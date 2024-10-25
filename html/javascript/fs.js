@@ -95,7 +95,7 @@ function chooseVPD () {
   file.onchange = async (e) => {
     const files = e.target.files
 
-    if (files.length > 0 && files.item[0].name.endsWith('.vpz')) {
+    if (files.length > 0 && files.item(0).name.endsWith('.vpz')) {
       loadVPZ(files.item(0))
     } else {
       loadVPD(files.item(0))
