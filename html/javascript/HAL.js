@@ -1,23 +1,44 @@
 const OPFS = {
+  // put: function (filepath, bytes, handle = null, path = []) {
+  //   if (handle == null) {
+  //     return navigator.storage.getDirectory()
+  //       .then((h) => this.put(filepath, bytes, h, []))
+  //   }
+  //
+  //   if (filepath.length > 1) {
+  //     const dir = filepath[0]
+  //     return handle.getDirectoryHandle(dir, { create: true })
+  //       .then((h) => this.put(filepath.slice(1), bytes, h, path.concat(dir)))
+  //   }
+  //
+  //   if (filepath.length > 0) {
+  //     const filename = filepath[0]
+  //     return handle.getFileHandle(filename, { create: true })
+  //       .then((fh) => fh.createWritable({ keepExistingData: false }))
+  //       .then((stream) => {
+  //           await stream.write(bytes)
+  //           await stream.close()
+  //       })
+  //     }
+  //   }
+  // },
+
+  // ... sigh! Safari:
+  //     1. Does not support FileSystemHandle.createWritable and
+  //     2. FileSystemHandle is not cloneable
   put: function (filepath, bytes, handle = null, path = []) {
-    if (handle == null) {
-      return navigator.storage.getDirectory()
-        .then((h) => this.put(filepath, bytes, h, []))
-    }
+    return new Promise((resolve) => {
+      if (window.Worker) {
+        const url = new URL('javascript/worker.js', window.location.origin)
+        const worker = new Worker(url)
+        const object = {
+          filepath,
+          bytes
+        }
 
-    if (filepath.length > 1) {
-      const dir = filepath[0]
-      return handle.getDirectoryHandle(dir, { create: true })
-        .then((h) => this.put(filepath.slice(1), bytes, h, path.concat(dir)))
-    }
-
-    if (filepath.length > 0) {
-      const filename = filepath[0]
-
-      return handle.getFileHandle(filename, { create: true })
-        .then((fh) => fh.createWritable({ keepExistingData: false }))
-        .then((stream) => save(stream, bytes))
-    }
+        worker.postMessage(object)
+      }
+    })
   },
 
   get: function (filepath, handle = null, path = []) {
@@ -275,11 +296,6 @@ export function hasOwn (object, property) {
 
 function normalise (name) {
   return `${name}`.toLowerCase().replaceAll(/[^a-zA-Z0-9]/gm, '')
-}
-
-async function save (stream, bytes) {
-  await stream.write(bytes)
-  await stream.close()
 }
 
 function onError (err) {

@@ -16,11 +16,11 @@ describes all the available commands (along with a summary [cheatsheet](/doc/che
 It has mostly (well, almost exclusively) been developed using Google Chrome on MacOS. Other browsers are 
 a work in progress:
 
-|           | Chrome      | Firefox       | Opera       | Safari        | Edge | DuckDuckGo    |
-|-----------|-------------|---------------|-------------|---------------|------|---------------|
-| _MacOS_   | ✓ _(130.0)_ | ✓ _(131.0.3)_ | ✓ _(114.0)_ | _in progress_ | -    | ✓ _(1.110.1)_ |
-| _Linux_   | ?           | ?             | ?           | -             | -    | -             |
-| _Windows_ | ?           | ?             | ?           | -             | ?    | ?             |
+|           | Chrome      | Firefox       | Opera       | Safari       | Edge | DuckDuckGo    |
+|-----------|-------------|---------------|-------------|--------------|------|---------------|
+| _MacOS_   | ✓ _(130.0)_ | ✓ _(131.0.3)_ | ✓ _(114.0)_ | ✓ _(16.6.1)_ | -    | ✓ _(1.110.1)_ |
+| _Linux_   | ?           | ?             | ?           | -            | -    | -             |
+| _Windows_ | ?           | ?             | ?           | -            | ?    | ?             |
 
 
 ### Raison d’être
