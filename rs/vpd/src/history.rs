@@ -55,6 +55,18 @@ impl History {
         }
     }
 
+    pub fn unpush(&mut self, cmd: &str, blob: &str) {
+        self.redo.push_front(Item::new(cmd, blob));
+    }
+
+    pub fn unpop(&mut self) -> Option<(String, String)> {
+        if let Some(v) = self.redo.pop_front() {
+            Some((v.cmd, v.blob))
+        } else {
+            None
+        }
+    }
+
     pub fn clear(&mut self) {
         self.undo.clear();
         self.redo.clear();

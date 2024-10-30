@@ -4,7 +4,6 @@
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
 - [x] DuckDuckGo
 - [x] Firefox
-
 - [x] Safari
       - [x] dark mode parts
       - [x] load VPD file
@@ -12,13 +11,23 @@
       - [x] db.js:138
             - https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system
             - https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle
+      - [ ] sigh .. probably need to wait for 'completed' message
+```
+worker.js:28
+NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' on 'FileSystemFileHandle': Access Handles cannot be created if there is another open Access Handle or Writable stream associated with the same file.
+```      
+
+- [ ] `redo`
+      - [x] undo/redo state
+      - [ ] undo/redo command
+      - [ ] save
+      - [ ] restore
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
 - [ ] Cheatsheet
       - [ ] XY
 
-- [ ] Flush font from cache on delete font
 - [ ] Export header file
       - [ ] pretty-print
       - [ ] optional prefix
@@ -30,10 +39,7 @@
 
 ### Fonts
    - [ ] `delete all fonts`
-
-### [ ] `redo`
-   - [ ] save
-   - [ ] restore
+   - [ ] Flush font from cache on delete font
 
 ### _undo_
    - [ ] enable/disable trash (empty project + empty stack)
