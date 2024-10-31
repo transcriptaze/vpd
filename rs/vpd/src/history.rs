@@ -40,28 +40,28 @@ pub fn new() -> History {
 
 impl History {
     pub fn push(&mut self, cmd: &str, blob: &str) {
+        self.redo.clear();
         self.undo.push_front(Item::new(cmd, blob));
-
-        while self.undo.len() > MAX_HISTORY {
-            self.undo.pop_back();
-        }
+        self.undo.truncate(MAX_HISTORY);
     }
 
-    pub fn pop(&mut self) -> Option<(String, String)> {
+    pub fn pop(&mut self, blob: &str) -> Option<(String, String)> {
         if let Some(v) = self.undo.pop_front() {
+            self.redo.push_front(Item::new(v.cmd.as_str(), blob));
             Some((v.cmd, v.blob))
         } else {
             None
         }
     }
 
-    pub fn unpush(&mut self, cmd: &str, blob: &str) {
-        self.redo.push_front(Item::new(cmd, blob));
-    }
-
-    pub fn unpop(&mut self) -> Option<(String, String)> {
+    pub fn unpop(&mut self, blob: &str) -> Option<(String, String)> {
         if let Some(v) = self.redo.pop_front() {
-            Some((v.cmd, v.blob))
+            self.undo.push_front(Item::new(v.cmd.as_str(), blob));
+
+            match self.redo.front() {
+                Some(u) => Some((u.cmd.clone(), v.blob)),
+                None => Some(("".to_string(), v.blob)),
+            }
         } else {
             None
         }
@@ -94,6 +94,7 @@ impl History {
                 match rs {
                     Ok(history) => {
                         self.undo = history.undo;
+                        self.redo = history.redo;
                     }
 
                     Err(e) => {

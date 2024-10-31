@@ -13,12 +13,12 @@
             - https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle
       - [x]`NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' ...`
 
-
-- [ ] `redo`
+- [x] `redo`
       - [x] undo/redo state
-      - [ ] undo/redo command
-      - [ ] save
-      - [ ] restore
+      - [x] undo/redo command
+      - [x] save
+      - [x] restore
+      - [x] User guide
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
