@@ -17,14 +17,18 @@ function put (filepath, bytes, handle = null, path = []) {
   }
 
   if (filepath.length > 0) {
+    const lockfile = filepath.join('/')
     const filename = filepath[0]
-    return handle.getFileHandle(filename, { create: true })
-      .then((fh) => fh.createSyncAccessHandle({ mode: 'readwrite' }))
-      .then((h) => {
-        h.write(bytes)
-        h.flush()
-        h.close()
-      })
-      .catch((err) => console.error(err))
+
+    navigator.locks.request(lockfile, async (lock) => {
+      return handle.getFileHandle(filename, { create: true })
+        .then((fh) => fh.createSyncAccessHandle({ mode: 'readwrite' }))
+        .then((h) => {
+          h.write(bytes)
+          h.flush()
+          h.close()
+        })
+        .catch((err) => console.error(err))
+    })
   }
 }

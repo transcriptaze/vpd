@@ -11,11 +11,8 @@
       - [x] db.js:138
             - https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system
             - https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle
-      - [ ] sigh .. probably need to wait for 'completed' message
-```
-worker.js:28
-NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' on 'FileSystemFileHandle': Access Handles cannot be created if there is another open Access Handle or Writable stream associated with the same file.
-```      
+      - [x]`NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' ...`
+
 
 - [ ] `redo`
       - [x] undo/redo state
@@ -40,6 +37,7 @@ NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' on 'FileS
 ### Fonts
    - [ ] `delete all fonts`
    - [ ] Flush font from cache on delete font
+   - https://developer.mozilla.org/en-US/docs/Web/API/CSS_Font_Loading_API
 
 ### _undo_
    - [ ] enable/disable trash (empty project + empty stack)

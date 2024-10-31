@@ -26,6 +26,7 @@ const OPFS = {
   // ... sigh! Safari:
   //     1. Does not support FileSystemHandle.createWritable and
   //     2. FileSystemHandle is not cloneable
+  //     so .. a web-working we will go
   put: function (filepath, bytes, handle = null, path = []) {
     return new Promise((resolve) => {
       if (window.Worker) {
