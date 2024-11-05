@@ -14,7 +14,7 @@
 |   - [_Export SVG_](#export-svg)         | [`export module >>`](#export-module-)   | [`set module width`](#set-module-width)   |                                            | [`set guide <attribute>`](#set-guide-attribute)           |
 |   - [_Export .h_](#-export-h-file)      |                                         | [`set background`](#set-background)       |                                            |                                                           |
 |   - [_>>_](#-)                          | [`load font`](#load-font)               |                                           | [`delete input`](#delete-input)            |                                                           |
-|   - [_Undo/Redo_](#undoredo)            | [`unload font`](#unload-font)           |                                           | [`delete output`](#delete-output)          |                                                           |
+|   - [_Undo/Redo_](#undo)            | [`unload font`](#unload-font)           |                                           | [`delete output`](#delete-output)          |                                                           |
 |   - [_Macro keys_](#macro-keys)         |                                         |                                           | [`delete parameter`](#delete-parameter)    |                                                           |
 |   - [_Command area_](#command-area)     | [`list fonts`](#list-fonts)             |                                           | [`delete light`](#delete-light)            |                                                           |
 |                                         | [`list parts`](#list-parts)             |                                           | [`delete widget`](#delete-widget)          |                                                           |
@@ -256,11 +256,11 @@ To save a project as a _.vpx_ file:
 
 - _Redo_ undoes the ost recent _Undo_ and displays the next command (if any). 
 
-The _redo_ implementation is fairly basic and executing any command other than another _undo or _redo_ **clears the redo stack**
+The _redo_ implementation is fairly basic and executing any command other than another _undo_ or _redo_ **clears the redo stack**
 i.e. save the script if you have recent changes you would rather not lose. 
 
-The _undo_/_redo_ implementation is mostly intended as a convenience to review recent commands - and for fixing simple mistakes. 
-More complex changes should rather be done by editing and then loading a VPX script.
+The _undo_/_redo_ implementation is mostly intended as a convenience to review recent commands and for fixing simple mistakes. 
+More complex changes should rather be done by editing and reloading a VPX script.
 
 ### Macro keys
 
