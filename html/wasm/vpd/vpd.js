@@ -1,4 +1,4 @@
-import { load, unload, save, list, prepareFont, text2path, set, stash, unstash } from '../../javascript/api.js';
+import { load, unload, save, list, set, stash, unstash, prepareFont, text2path } from '../../javascript/api.js';
 
 let wasm;
 
@@ -264,6 +264,14 @@ export function undo() {
 }
 
 /**
+* @returns {Promise<boolean>}
+*/
+export function redo() {
+    const ret = wasm.redo();
+    return takeObject(ret);
+}
+
+/**
 * @param {string} object
 * @returns {any}
 */
@@ -381,7 +389,7 @@ function handleError(f, args) {
         wasm.__wbindgen_exn_store(addHeapObject(e));
     }
 }
-function __wbg_adapter_100(arg0, arg1, arg2, arg3) {
+function __wbg_adapter_101(arg0, arg1, arg2, arg3) {
     wasm.wasm_bindgen__convert__closures__invoke2_mut__hd1bb6cd9dfc64a7f(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
 }
 
@@ -468,6 +476,9 @@ function __wbg_get_imports() {
         const ret = getStringFromWasm0(arg0, arg1);
         return addHeapObject(ret);
     };
+    imports.wbg.__wbg_set_6bf07b5daeba9a11 = function(arg0, arg1) {
+        set(getStringFromWasm0(arg0, arg1));
+    };
     imports.wbg.__wbg_text2path_1b7054a56e3ca326 = function(arg0, arg1, arg2, arg3, arg4) {
         const ret = text2path(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3), arg4);
         return addHeapObject(ret);
@@ -475,9 +486,6 @@ function __wbg_get_imports() {
     imports.wbg.__wbg_prepareFont_9008e5c28d896704 = function(arg0, arg1) {
         const ret = prepareFont(getStringFromWasm0(arg0, arg1));
         return addHeapObject(ret);
-    };
-    imports.wbg.__wbg_set_6bf07b5daeba9a11 = function(arg0, arg1) {
-        set(getStringFromWasm0(arg0, arg1));
     };
     imports.wbg.__wbindgen_is_null = function(arg0) {
         const ret = getObject(arg0) === null;
@@ -626,7 +634,7 @@ function __wbg_get_imports() {
                 const a = state0.a;
                 state0.a = 0;
                 try {
-                    return __wbg_adapter_100(a, state0.b, arg0, arg1);
+                    return __wbg_adapter_101(a, state0.b, arg0, arg1);
                 } finally {
                     state0.a = a;
                 }
@@ -688,8 +696,8 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1865 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 315, __wbg_adapter_38);
+    imports.wbg.__wbindgen_closure_wrapper1818 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 300, __wbg_adapter_38);
         return addHeapObject(ret);
     };
 

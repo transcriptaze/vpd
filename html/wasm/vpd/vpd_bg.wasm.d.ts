@@ -5,6 +5,7 @@ export function main(): void;
 export function restore(): number;
 export function exec(a: number, b: number): number;
 export function undo(): number;
+export function redo(): number;
 export function serialize(a: number, b: number, c: number): void;
 export function clear(a: number): void;
 export function load(a: number, b: number): number;

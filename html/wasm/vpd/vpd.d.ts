@@ -17,6 +17,10 @@ export function exec(json: string): Promise<boolean>;
 */
 export function undo(): Promise<boolean>;
 /**
+* @returns {Promise<boolean>}
+*/
+export function redo(): Promise<boolean>;
+/**
 * @param {string} object
 * @returns {any}
 */
@@ -49,6 +53,7 @@ export interface InitOutput {
   readonly restore: () => number;
   readonly exec: (a: number, b: number) => number;
   readonly undo: () => number;
+  readonly redo: () => number;
   readonly serialize: (a: number, b: number, c: number) => void;
   readonly clear: (a: number) => void;
   readonly load: (a: number, b: number) => number;
