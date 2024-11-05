@@ -254,8 +254,11 @@ To save a project as a _.vpx_ file:
 
 ### <img width="24" src="doc/images/undo.png"> Redo
 
-- When it is eventually implemented it will undoe the most recent _Undo_. 
+- _Redo_ undoes the ost recent _Undo_ and displays the next command (if any). 
 
+The _redo_ implementation is fairly basic and mostly intended to help locate a recent point in the command stack
+at which to start making changes. Executing any command other than another _undo or _redo_ clears the redo stack
+so if you're intending to make a change deep in the command stack rather save and modify the current script.
 
 ### Macro keys
 

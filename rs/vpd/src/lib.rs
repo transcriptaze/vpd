@@ -155,8 +155,46 @@ pub async fn exec(json: &str) -> Result<bool, JsValue> {
 #[wasm_bindgen]
 pub async fn undo() -> Result<bool, JsValue> {
     let mut state = STATE.lock().unwrap();
+    let blob = serde_json::to_string(&state.module).unwrap();
 
-    if let Some(v) = state.history.pop() {
+    if let Some(v) = state.history.pop(&blob) {
+        let cmd = v.0;
+        let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(&v.1);
+
+        match rs {
+            Ok(m) => {
+                state.module = m;
+
+                let info = Info {
+                    module: Some(state.module.info()),
+                    history: Some(state.history.info()),
+                    command: Some(cmd),
+                };
+
+                let project = state.module.gzip();
+                let history = state.history.gzip();
+                let object = serde_json::to_string(&info).unwrap();
+
+                stash("project", &project).await;
+                stash("history", &history).await;
+                set(&object);
+
+                Ok(true)
+            }
+
+            Err(e) => Err(JsValue::from(format!("{}", e))),
+        }
+    } else {
+        Ok(false)
+    }
+}
+
+#[wasm_bindgen]
+pub async fn redo() -> Result<bool, JsValue> {
+    let mut state = STATE.lock().unwrap();
+    let blob = serde_json::to_string(&state.module).unwrap();
+
+    if let Some(v) = state.history.unpop(&blob) {
         let cmd = v.0;
         let rs: Result<module::Module, serde_json::Error> = serde_json::from_str(&v.1);
 

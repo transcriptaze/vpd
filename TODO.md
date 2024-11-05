@@ -4,7 +4,6 @@
 - [x] [Add supported component and position items in polar coordinates](cf. https://github.com/transcriptaze/vpd/issues/4)
 - [x] DuckDuckGo
 - [x] Firefox
-
 - [x] Safari
       - [x] dark mode parts
       - [x] load VPD file
@@ -12,13 +11,20 @@
       - [x] db.js:138
             - https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system
             - https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle
+      - [x]`NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' ...`
+
+- [x] `redo`
+      - [x] undo/redo state
+      - [x] undo/redo command
+      - [x] save
+      - [x] restore
+      - [x] User guide
 
 - !! https://v8.dev/blog/jspi
 - [ ] Set CSS panel element width from module width
 - [ ] Cheatsheet
       - [ ] XY
 
-- [ ] Flush font from cache on delete font
 - [ ] Export header file
       - [ ] pretty-print
       - [ ] optional prefix
@@ -30,10 +36,8 @@
 
 ### Fonts
    - [ ] `delete all fonts`
-
-### [ ] `redo`
-   - [ ] save
-   - [ ] restore
+   - [ ] Flush font from cache on delete font
+   - https://developer.mozilla.org/en-US/docs/Web/API/CSS_Font_Loading_API
 
 ### _undo_
    - [ ] enable/disable trash (empty project + empty stack)
