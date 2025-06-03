@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-promise": "^6.1.1",
-    "mocha": "^10.3.0",
+    "mocha": "^10.8.2",
     "tree-sitter": "^0.20.6",
     "web-tree-sitter": "^0.21.0"
   }
